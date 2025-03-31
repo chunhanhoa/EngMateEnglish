@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EngMate</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/engmate.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TiengAnh.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+    
+    <style>
+        /* Fix cho vấn đề dropdown ngôn ngữ bị dồn */
+        .language-dropdown .btn {
+            min-width: 150px;
+            text-align: left;
+        }
+        
+        /* Cải thiện khoảng cách giữa các mục menu và ngăn không cho xuống dòng */
+        .navbar-nav {
+            flex-wrap: nowrap; /* Ngăn các mục menu xuống dòng */
+            width: auto;
+            overflow-x: visible;
+        }
+        
+        /* Điều chỉnh các mục menu để vừa một dòng */
+        .navbar-nav .nav-item {
+            margin-right: 5px; /* Giảm margin để tạo nhiều không gian hơn */
+            white-space: nowrap; /* Ngăn text xuống dòng */
+        }
+        
+        /* Giảm padding của nav-link để tiết kiệm không gian */
+        .navbar-nav .nav-link {
+            padding: 8px 10px !important; /* Giảm padding */
+            font-size: 1rem; /* Điều chỉnh font size */
+            white-space: nowrap;
+        }
+        
+        /* Đảm bảo chiều cao nhất quán */
+        .navbar {
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+        }
+        
+        /* Container rộng hơn để chứa menu */
+        .container {
+            max-width: 1400px;
+        }
+        
+        /* Cải thiện căn chỉnh menu */
+        .navbar-collapse {
+            justify-content: space-between;
+            flex-wrap: nowrap;
+        }
+        
+        /* Cải thiện dropdown menu */
+        .dropdown-menu {
+            min-width: 220px; /* Tăng chiều rộng từ 200px lên 220px */
+            padding: 10px 0; /* Tăng padding bên trong dropdown menu */
+        }
+        
+        /* Tăng kích thước cho dropdown items */
+        .dropdown-item {
+            padding: 10px 20px; /* Tăng padding cho dropdown items */
+        }
+        
+        /* Cải thiện buttons đăng nhập/đăng ký */
+        .user-menu .btn {
+            padding: 8px 12px; /* Giảm kích thước nút */
+            font-size: 1rem; /* Giảm font size */
+        }
+        
+        /* Tăng khoảng cách giữa menu và dropdowns */
+        .dropdown {
+            margin-left: 5px;
+        }
+
+        .guest-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Ngăn các mục giao diện người dùng bị xuống dòng */
+        .d-flex.align-items-center {
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+        
+        /* Responsive adjustments */
+        @@media (max-width: 991.98px) {
+            .navbar-nav {
+                flex-direction: column;
+            }
+            
+            .navbar-nav .nav-item {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary-soft">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/Logo.png" alt="EngMate Logo" class="me-2 animate__animated animate__bounceIn" width="40" height="40" />
+                    <span class="brand-text">EngMate</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home"></i> Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Vocabulary" asp-action="Index">
+                                <i class="fas fa-book"></i> Từ vựng
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Grammar" asp-action="Index">
+                                <i class="fas fa-pen"></i> Ngữ pháp
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Exercise" asp-action="Index">
+                                <i class="fas fa-tasks"></i> Bài tập
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Test" asp-action="Index">
+                                <i class="fas fa-check-circle"></i> Kiểm tra
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="progressDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-chart-line"></i> Tiến trình
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="progressDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Progress" asp-action="Index">
+                                        <i class="fas fa-chart-bar me-2"></i> Tiến trình học
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Progress" asp-action="Favorites">
+                                        <i class="fas fa-heart me-2"></i> Mục yêu thích
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                       
+
+                        <!-- Đăng nhập/Đăng ký hoặc User Profile -->
+                        <div class="user-menu">
+                            @if (User.Identity?.IsAuthenticated ?? false)
+                            {
+                                <!-- Hiển thị khi đã đăng nhập -->
+                                <div class="user-logged-in">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            @{
+                                                // Lấy avatar từ claim
+                                                var avatarPath = User.Claims.FirstOrDefault(c => c.Type == "Avatar")?.Value ?? "/images/avatars/default.jpg";
+                                            }
+                                            <img src="@avatarPath" alt="User Avatar" class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;">
+                                            <span class="user-name">@User.Claims.FirstOrDefault(c => c.Type == "DisplayName")?.Value</span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("Profile", "Account")">
+                                                    <i class="fas fa-user me-2"></i> Hồ sơ của tôi
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Progress")">
+                                                    <i class="fas fa-chart-line me-2"></i> Tiến trình học
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="@Url.Action("Favorites", "Progress")">
+                                                    <i class="fas fa-heart me-2"></i> Mục yêu thích
+                                                </a>
+                                            </li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li>
+                                                <form action="@Url.Action("Logout", "Account")" method="post" id="logoutForm">
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="dropdown-item text-danger">
+                                                        <i class="fas fa-sign-out-alt me-2"></i> Đăng xuất
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <!-- Hiển thị khi chưa đăng nhập -->
+                                <div class="guest-menu">
+                                    <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary me-2">Đăng nhập</a>
+                                    <a href="@Url.Action("Register", "Account")" class="btn btn-primary">Đăng ký</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="pb-3 flex-grow-1">
+        @RenderBody()
+        <div style="padding-bottom: 2.5rem;"></div> <!-- Thêm padding phía dưới để đảm bảo nội dung không bị footer che -->
+    </main>
+
+    <footer class="footer text-center py-4 bg-primary-soft">
+        <div class="container">
+            <div class="row py-2">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="mb-2">Về EngMate</h5>
+                    <p class="small mb-0">Giúp học sinh học tiếng Anh thông qua các bài học và trò chơi tương tác thú vị!</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="mb-2">Liên kết nhanh</h5>
+                    <ul class="list-unstyled small mb-0">
+                        <li><a href="@Url.Action("Index", "Home")" class="text-decoration-none">Trang chủ</a></li>
+                        <li><a href="@Url.Action("Index", "Vocabulary")" class="text-decoration-none">Từ vựng</a></li>
+                        <li><a href="@Url.Action("Index", "Grammar")" class="text-decoration-none">Ngữ pháp</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")" class="text-decoration-none">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-2">Kết nối với chúng tôi</h5>
+                    <div class="social-icons">
+                        <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p class="small mt-2 mb-0">&copy; 2024 - EngMate - Đã đăng ký bản quyền</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/animations.js" asp-append-version="true"></script>
+    
+    <!-- Tắt mô phỏng đăng nhập vì chúng ta đã có xác thực thực sự -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cải thiện xử lý chuyển đổi ngôn ngữ nếu cần
+            const languageItems = document.querySelectorAll('#languageDropdown + .dropdown-menu .dropdown-item');
+            if (languageItems && languageItems.length > 0) {
+                languageItems.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        if (!this.classList.contains('active')) {
+                            // Lưu ngôn ngữ được chọn vào localStorage
+                            localStorage.setItem('appLanguage', this.textContent.trim());
+                            
+                            // Cập nhật UI để hiển thị ngôn ngữ đã chọn
+                            const languageText = document.querySelector('.language-text');
+                            if (languageText) {
+                                languageText.textContent = this.textContent.trim().replace(/^✓\s*/, '');
+                            }
+                            
+                            // Đánh dấu ngôn ngữ hiện tại là active
+                            languageItems.forEach(function(l) {
+                                l.classList.remove('active');
+                                l.innerHTML = l.textContent.trim();
+                            });
+                            this.classList.add('active');
+                            this.innerHTML = '<i class="fas fa-check me-1"></i> ' + this.textContent.trim();
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

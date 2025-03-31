@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EngMate</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/engmate.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TiengAnh.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary-soft">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/new-logo.png" alt="EngMate Logo" class="me-2 animate__animated animate__bounceIn" width="40" height="40" />
+                    <span class="brand-text">EngMate</span>
+                </a>
+                <span class="ms-3 fw-bold">Làm bài kiểm tra</span>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="pb-3 flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <!-- Leave Test Modal -->
+    <div class="modal fade" id="leaveTestModal" tabindex="-1" aria-labelledby="leaveTestModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="leaveTestModalLabel">Xác nhận rời khỏi bài kiểm tra</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn rời khỏi bài kiểm tra?</p>
+                    <p>Tất cả câu trả lời của bạn sẽ bị mất và không thể khôi phục.</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tiếp tục làm bài</button>
+                    <a href="@Url.Action("Index", "Test")" class="btn btn-outline-danger">Rời khỏi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/animations.js" asp-append-version="true"></script>
+    
+    <script>
+        // Xử lý khi người dùng cố gắng rời khỏi trang hoặc làm mới trang
+        window.addEventListener('beforeunload', function(e) {
+            e.preventDefault();
+            e.returnValue = 'Bạn có chắc chắn muốn rời khỏi trang? Tất cả câu trả lời của bạn sẽ bị mất.';
+        });
+        
+        // Xử lý khi click vào logo EngMate hoặc các liên kết khác
+        document.querySelector('.navbar-brand').addEventListener('click', function(e) {
+            e.preventDefault();
+            $('#leaveTestModal').modal('show');
+        });
+    </script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

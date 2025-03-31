@@ -1,0 +1,111 @@
+@model TestModel
+@{
+    ViewData["Title"] = "Kết quả kiểm tra";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Test")">Bài kiểm tra</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Details", "Test", new { id = Model.TestID })">@Model.TestName</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Kết quả</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Test Result Section -->
+    <div class="row mb-5">
+        <div class="col-md-12 text-center">
+            <h1 class="display-4 fw-bold mb-3">Kết quả bài kiểm tra</h1>
+            <p class="lead">@Model.TestName</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+            <div class="test-result-card p-5">
+                <div class="mb-4">
+                    <i class="fas fa-award text-warning fa-4x mb-3"></i>
+                    <h2 class="fw-bold">Chúc mừng! Bạn đã hoàn thành bài kiểm tra</h2>
+                </div>
+                
+                <div class="row justify-content-center mb-4">
+                    <div class="col-6">
+                        <div class="progress" style="height: 25px;">
+                            <div class="progress-bar bg-success" id="scoreProgressBar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-6">
+                        <div class="card border-0 bg-light p-4">
+                            <div class="test-score mb-2">75%</div>
+                            <div class="test-feedback good">Tốt</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="result-stats mb-5">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-md-3">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body p-3">
+                                    <h3 class="text-success fw-bold mb-0" id="correctAnswers">15</h3>
+                                    <p class="mb-0">Câu đúng</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body p-3">
+                                    <h3 class="text-danger fw-bold mb-0" id="wrongAnswers">5</h3>
+                                    <p class="mb-0">Câu sai</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body p-3">
+                                    <h3 class="text-warning fw-bold mb-0" id="unansweredCount">0</h3>
+                                    <p class="mb-0">Câu bỏ qua</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h4 class="mb-3">Nhận xét</h4>
+                    <p>Bạn đã làm tốt trong phần từ vựng và ngữ pháp cơ bản. Hãy cố gắng cải thiện thêm phần thì trong tiếng Anh.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="alert alert-info">
+                                <h5><i class="fas fa-lightbulb me-2"></i> Gợi ý cải thiện</h5>
+                                <ul class="mb-0 text-start">
+                                    <li>Ôn lại các thì trong tiếng Anh</li>
+                                    <li>Học thêm về danh từ đếm được và không đếm được</li>
+                                    <li>Làm thêm bài tập về mạo từ</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-5">
+                    <a href="@Url.Action("Review", "Test", new { id = Model.TestID })" class="btn btn-primary me-2">
+                        <i class="fas fa-search me-2"></i> Xem lại đáp án
+                    </a>
+                    <a href="@Url.Action("Index", "Test")" class="btn btn-outline-primary">
+                        <i class="fas fa-th-list me-2"></i> Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

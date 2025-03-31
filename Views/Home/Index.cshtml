@@ -1,0 +1,160 @@
+﻿@model IEnumerable<TiengAnh.Models.ChuDe>
+
+@{
+    ViewData["Title"] = "Trang chủ";
+    // Lấy danh sách chủ đề từ ViewBag, hoặc dùng Model trực tiếp
+    var topics = Model;
+}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 fade-in-left">
+                <h1 class="animate__animated animate__fadeInUp">Learn English the Fun Way!</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                    EngMate makes learning English exciting with interactive lessons, 
+                    fun vocabulary games, and engaging exercise.
+                </p>
+            </div>
+            <div class="col-md-6 text-center fade-in-right">
+                <img src="~/images/TrangChu.jpg" alt="Kids Learning English" class="hero-image animate__animated animate__bounceIn animate__delay-1s" style="max-width: 40%; height: auto;" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Phần hiển thị chủ đề từ vựng -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <h2 class="fw-bold">Chủ đề từ vựng</h2>
+                <p class="lead">Khám phá và học từ vựng theo nhiều chủ đề hấp dẫn</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <a href="@Url.Action("Index", "Vocabulary")" class="btn btn-outline-primary">
+                    Xem tất cả <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+
+        @if (!topics.Any())
+        {
+            <div class="alert alert-info" role="alert">
+                <i class="fas fa-info-circle me-2"></i>
+                Hiện tại không có chủ đề từ vựng nào. Vui lòng quay lại sau.
+                <button type="button" class="btn btn-sm btn-primary ms-3" onclick="window.location.reload()">
+                    <i class="fas fa-sync-alt me-1"></i> Tải lại trang
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 topics-container">
+                @foreach (var topic in topics.Take(6)) // Hiển thị tối đa 6 chủ đề trên trang chủ
+                {
+                    string bgColor = "#e6f6ff"; // Màu mặc định
+                    string iconPath = "/images/icons/topic-default.png"; // Icon mặc định
+                    
+                    <div class="col topic-item" data-id="@topic.IdCd" style="display: block; opacity: 1; visibility: visible;">
+                        <div class="card h-100 border-0 shadow-sm" style="background-color: @bgColor">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="topic-icon me-3">
+                                        <img src="@iconPath" alt="@topic.NameCd" class="img-fluid" width="50">
+                                    </div>
+                                    <h4 class="card-title mb-0">@topic.NameCd</h4>
+                                </div>
+                                <p class="card-text text-muted">@topic.DiscriptionCd</p>
+                                <a href="@Url.Action("Topic", "Vocabulary", new { id = topic.IdCd })" 
+                                   class="btn btn-primary mt-2">Học ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Tại sao nên học với EngMate?</h2>
+            <p class="lead">Được thiết kế để làm cho việc học tiếng Anh trở nên thú vị và hiệu quả cho mọi người</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-gamepad text-primary fa-2x"></i>
+                        </div>
+                        <h4 class="card-title">Trò chơi học tập thú vị</h4>
+                        <p class="card-text">Học thông qua các trò chơi, tạo tương tác giúp bạn ghi nhớ từ vựng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-headphones text-primary fa-2x"></i>
+                        </div>
+                        <h4 class="card-title">Phát âm</h4>
+                        <p class="card-text">Nghe người bản ngữ nói và luyện phát âm bằng hướng dẫn audio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-chart-line text-primary fa-2x"></i>
+                        </div>
+                        <h4 class="card-title">Theo dõi tiến độ</h4>
+                        <p class="card-text">Xem tiến trình học tập và thành tích của bạn với số liệu thống kê chi tiết.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white text-center">
+    <div class="container">
+        <h2 class="display-5 fw-bold mb-4">Ready to Start Learning?</h2>
+        <p class="lead mb-4">Join thousands of students who are already learning English with EngMate!</p>
+        <a href="#" class="btn btn-light btn-lg px-5">Sign Up for Free</a>
+    </div>
+</section>
+
+@section Scripts {
+<script>
+    $(document).ready(function() {
+        // Xóa bỏ hiệu ứng fadeIn vì đã đảm bảo hiển thị bằng CSS
+        // Chỉ thêm xử lý các hiệu ứng khác nếu cần
+        
+        console.log("Trang đã tải xong, đảm bảo hiển thị chủ đề từ vựng");
+        
+        // Cẩn thận khắc phục nếu vẫn ẩn bởi JavaScript khác
+        $('.topic-item').css({
+            'display': 'block',
+            'opacity': '1',
+            'visibility': 'visible'
+        });
+        
+        $('.vocabulary-item').css({
+            'display': 'block',
+            'opacity': '1',
+            'visibility': 'visible'
+        });
+    });
+</script>
+}

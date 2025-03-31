@@ -1,0 +1,166 @@
+@model List<TiengAnh.Models.BaiTap>
+@{
+    ViewData["Title"] = ViewBag.Topic?.NameCd ?? "Chủ đề";
+    var topic = ViewBag.Topic as TiengAnh.Models.ChuDe;
+}
+
+<!-- Topic Header -->
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@(topic?.NameCd ?? "Chủ đề")</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold mb-3">Bài tập: @(topic?.NameCd ?? "Chủ đề")</h1>
+            <p class="lead">@(topic?.DiscriptionCd ?? "Mô tả chủ đề")</p>
+            <div class="d-flex align-items-center mt-3">
+                <span class="badge badge-primary me-2">@Model.Count câu hỏi</span>
+                <span class="badge badge-warning">Thời gian: 15 phút</span>
+            </div>
+        </div>
+        <div class="col-md-4 text-end">
+            <img src="/images/icons/topic-default.png" alt="@(topic?.NameCd ?? "Chủ đề")" class="topic-icon-large animate__animated animate__bounce" style="width: 120px; height: 120px;" />
+        </div>
+    </div>
+
+    <!-- Instructions Section -->
+    <div class="card border-0 shadow-sm mb-5">
+        <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3">
+                <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                    <i class="fas fa-lightbulb text-primary fa-lg"></i>
+                </div>
+                <h3 class="h4 mb-0">Hướng dẫn</h3>
+            </div>
+            <p>Bạn sẽ được làm các bài tập liên quan đến chủ đề này. Có nhiều loại bài tập khác nhau để bạn rèn luyện.</p>
+            <div class="row g-4 mt-3">
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle text-success fa-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="h6 mb-1">Trắc nghiệm</h4>
+                            <p class="small mb-0">Chọn đáp án đúng từ các lựa chọn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i class="fas fa-keyboard text-success fa-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="h6 mb-1">Điền từ</h4>
+                            <p class="small mb-0">Điền từ thích hợp vào chỗ trống</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exercise Types -->
+    <div class="row mb-5 g-4">
+        <!-- Trắc nghiệm -->
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm exercise-card">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                            <i class="fas fa-check-circle text-primary"></i>
+                        </div>
+                        <h4 class="card-title mb-0">Trắc nghiệm</h4>
+                    </div>
+                    <p class="card-text text-muted mb-3">Kiểm tra kiến thức từ vựng với các câu hỏi trắc nghiệm. Phù hợp cho người mới bắt đầu.</p>
+                    <a href="@Url.Action("MultipleChoice", "Exercise", new { id = topic?.IdCd })" class="btn btn-primary w-100">
+                        <i class="fas fa-play me-2"></i> Bắt đầu
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Điền từ -->
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm exercise-card">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                            <i class="fas fa-keyboard text-primary"></i>
+                        </div>
+                        <h4 class="card-title mb-0">Điền từ</h4>
+                    </div>
+                    <p class="card-text text-muted mb-3">Hoàn thành câu bằng cách điền từ thích hợp. Giúp cải thiện từ vựng và ngữ pháp.</p>
+                    <a href="@Url.Action("FillBlank", "Exercise", new { id = topic?.IdCd })" class="btn btn-primary w-100">
+                        <i class="fas fa-play me-2"></i> Bắt đầu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample Question Preview -->
+    @if (Model.Any())
+    {
+        var firstExercise = Model.First();
+        <div class="card border-0 shadow-sm mb-5">
+            <div class="card-body p-4">
+                <h3 class="h4 mb-4">Ví dụ câu hỏi</h3>
+                <div class="question-preview p-4 border rounded mb-4">
+                    <h5 class="mb-4">@firstExercise.QuestionBt</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-check p-3 border rounded @(firstExercise.AnswerBt == "A" ? "border-success bg-success-subtle" : "")">
+                                <input class="form-check-input" type="radio" name="sampleAnswer" id="optionA" disabled @(firstExercise.AnswerBt == "A" ? "checked" : "")>
+                                <label class="form-check-label w-100" for="optionA">@firstExercise.OptionA</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check p-3 border rounded @(firstExercise.AnswerBt == "B" ? "border-success bg-success-subtle" : "")">
+                                <input class="form-check-input" type="radio" name="sampleAnswer" id="optionB" disabled @(firstExercise.AnswerBt == "B" ? "checked" : "")>
+                                <label class="form-check-label w-100" for="optionB">@firstExercise.OptionB</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check p-3 border rounded @(firstExercise.AnswerBt == "C" ? "border-success bg-success-subtle" : "")">
+                                <input class="form-check-input" type="radio" name="sampleAnswer" id="optionC" disabled @(firstExercise.AnswerBt == "C" ? "checked" : "")>
+                                <label class="form-check-label w-100" for="optionC">@firstExercise.OptionC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check p-3 border rounded @(firstExercise.AnswerBt == "D" ? "border-success bg-success-subtle" : "")">
+                                <input class="form-check-input" type="radio" name="sampleAnswer" id="optionD" disabled @(firstExercise.AnswerBt == "D" ? "checked" : "")>
+                                <label class="form-check-label w-100" for="optionD">@firstExercise.OptionD</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-light rounded">
+                        <p class="mb-0"><strong>Giải thích:</strong> @firstExercise.ExplanationBt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+<script>
+    $(document).ready(function() {
+        // Hiệu ứng hover cho thẻ bài tập
+        $(".exercise-card").hover(function() {
+            $(this).addClass("shadow");
+        }, function() {
+            $(this).removeClass("shadow");
+        });
+    });
+</script>
+}

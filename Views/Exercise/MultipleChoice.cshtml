@@ -1,0 +1,523 @@
+@model List<TiengAnh.Models.BaiTap>
+@{
+    ViewData["Title"] = "Bài tập trắc nghiệm - " + ViewBag.Topic?.NameCd ?? "Chủ đề";
+    var topic = ViewBag.Topic as TiengAnh.Models.ChuDe;
+}
+
+<!-- Header Section -->
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.IdCd })">@(topic?.NameCd ?? "Chủ đề")</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Trắc nghiệm</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Title and Instructions -->
+    <div class="row mb-5">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold mb-3">Trắc nghiệm: @(topic?.NameCd ?? "Chủ đề")</h1>
+            <p class="lead">Kiểm tra kiến thức với các câu hỏi trắc nghiệm đơn giản. Phù hợp cho người mới bắt đầu.</p>
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-lightbulb text-warning me-2"></i>Hướng dẫn</h5>
+                    <ul class="mb-0">
+                        <li>Đọc câu hỏi cẩn thận và chọn đáp án đúng</li>
+                        <li>Mỗi câu hỏi chỉ có một đáp án đúng</li>
+                        <li>Hoàn thành tất cả các câu hỏi trước khi nộp bài</li>
+                        <li>Kết quả sẽ hiển thị sau khi nộp bài</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-end">
+            <div class="progress-container bg-light p-3 rounded shadow-sm">
+                <h5 class="mb-3">Tiến độ</h5>
+                <div class="progress mb-2" style="height: 25px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar">
+                        0%
+                    </div>
+                </div>
+                <p class="text-center mb-0">
+                    <span id="answered-count">0</span>/<span id="total-count">@Model.Count</span> câu
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Questions -->
+    <div class="row">
+        <div class="col-lg-8">
+            <form id="quiz-form">
+                @foreach (var (exercise, index) in Model.Select((ex, i) => (ex, i + 1)))
+                {
+                    <div class="card border-0 shadow-sm mb-4 question-card" id="question-@index" data-question-id="@exercise.IdBt">
+                        <div class="card-body p-4">
+                            <h4 class="fw-bold mb-4">Câu @index: @exercise.QuestionBt</h4>
+                            
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-check p-3 border rounded quiz-option" data-answer="A" data-correct="@(exercise.AnswerBt == "A" ? "true" : "false")">
+                                        <input class="form-check-input" type="radio" name="answer@(exercise.IdBt)" id="optionA@(exercise.IdBt)" value="A">
+                                        <label class="form-check-label w-100" for="optionA@(exercise.IdBt)">@exercise.OptionA</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check p-3 border rounded quiz-option" data-answer="B" data-correct="@(exercise.AnswerBt == "B" ? "true" : "false")">
+                                        <input class="form-check-input" type="radio" name="answer@(exercise.IdBt)" id="optionB@(exercise.IdBt)" value="B">
+                                        <label class="form-check-label w-100" for="optionB@(exercise.IdBt)">@exercise.OptionB</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check p-3 border rounded quiz-option" data-answer="C" data-correct="@(exercise.AnswerBt == "C" ? "true" : "false")">
+                                        <input class="form-check-input" type="radio" name="answer@(exercise.IdBt)" id="optionC@(exercise.IdBt)" value="C">
+                                        <label class="form-check-label w-100" for="optionC@(exercise.IdBt)">@exercise.OptionC</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check p-3 border rounded quiz-option" data-answer="D" data-correct="@(exercise.AnswerBt == "D" ? "true" : "false")">
+                                        <input class="form-check-input" type="radio" name="answer@(exercise.IdBt)" id="optionD@(exercise.IdBt)" value="D">
+                                        <label class="form-check-label w-100" for="optionD@(exercise.IdBt)">@exercise.OptionD</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation mt-4 p-3 rounded" style="display: none; background-color: #f8f9fa;">
+                                <p class="mb-0">
+                                    <strong>Giải thích:</strong> @exercise.ExplanationBt
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="d-flex justify-content-between mb-5">
+                    <button type="button" class="btn btn-outline-primary" id="prevBtn" disabled>
+                        <i class="fas fa-arrow-left me-2"></i> Câu trước
+                    </button>
+                    <div>
+                        <span class="badge bg-primary p-2 me-2" id="progressText">Câu 1/@Model.Count</span>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary" id="nextBtn">
+                        Câu tiếp theo <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+                <div class="d-grid">
+                    <button type="button" class="btn btn-primary btn-lg" id="submitBtn">
+                        <i class="fas fa-check-circle me-2"></i> Nộp bài
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">Danh sách câu hỏi</h5>
+                    <div class="question-navigator d-flex flex-wrap">
+                        @for (int i = 1; i <= Model.Count; i++)
+                        {
+                            <button class="btn btn-outline-secondary question-nav-btn me-2 mb-2" data-question="@i">@i</button>
+                        }
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between mb-2">
+                        <span><i class="fas fa-circle text-secondary me-2"></i> Chưa trả lời</span>
+                        <span id="unanswered-count">@Model.Count</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span><i class="fas fa-circle text-primary me-2"></i> Đã trả lời</span>
+                        <span id="nav-answered-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultsModalLabel">Kết quả bài tập</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="score-circle mb-3">
+                            <span id="score-percentage">0%</span>
+                        </div>
+                        <h4><span id="score-correct">0</span>/<span id="score-total">@Model.Count</span> câu đúng</h4>
+                        <p id="score-message">Hãy cố gắng hơn!</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p><strong>Thời gian làm bài:</strong> <span id="time-spent">0 phút 0 giây</span></p>
+                        </div>
+                        <div>
+                            <p><strong>Độ chính xác:</strong> <span id="accuracy">0%</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" id="reviewBtn">Xem lại bài làm</button>
+                    <button type="button" class="btn btn-success" id="retryBtn">Làm lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .quiz-option {
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .quiz-option:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .quiz-option.selected {
+        background-color: #cfe2ff;
+        border-color: #9ec5fe;
+    }
+    
+    .quiz-option.correct {
+        background-color: #d1e7dd;
+        border-color: #a3cfbb;
+    }
+    
+    .quiz-option.incorrect {
+        background-color: #f8d7da;
+        border-color: #f5c2c7;
+    }
+    
+    .question-nav-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    
+    .question-nav-btn.active {
+        background-color: #0d6efd;
+        color: white;
+    }
+    
+    .question-nav-btn.answered {
+        background-color: #cfe2ff;
+        border-color: #9ec5fe;
+    }
+    
+    .score-circle {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        border: 10px solid #0d6efd;
+    }
+    
+    .score-circle span {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    
+    .question-card {
+        display: none;
+    }
+    
+    .question-card.active {
+        display: block;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy các element DOM
+            const questionCards = document.querySelectorAll('.question-card');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progressText');
+            const answeredCount = document.getElementById('answered-count');
+            const navAnsweredCount = document.getElementById('nav-answered-count');
+            const unansweredCount = document.getElementById('unanswered-count');
+            const totalCount = document.getElementById('total-count');
+            const questionNavBtns = document.querySelectorAll('.question-nav-btn');
+            
+            // Modal elements
+            const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+            const scorePercentage = document.getElementById('score-percentage');
+            const scoreCorrect = document.getElementById('score-correct');
+            const scoreTotal = document.getElementById('score-total');
+            const scoreMessage = document.getElementById('score-message');
+            const timeSpent = document.getElementById('time-spent');
+            const accuracy = document.getElementById('accuracy');
+            const reviewBtn = document.getElementById('reviewBtn');
+            const retryBtn = document.getElementById('retryBtn');
+            
+            // Variables
+            let currentQuestion = 1;
+            let totalQuestions = questionCards.length;
+            // Reset answeredQuestions array to ensure all are initially false
+            let answeredQuestions = new Array(totalQuestions).fill(false);
+            let userAnswers = new Array(totalQuestions).fill(null);
+            let startTime = new Date();
+            
+            // Initialize the first question
+            showQuestion(currentQuestion);
+            updateProgress();
+            
+            // Add event listeners for the quiz options
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Clear any existing styling first
+                    this.classList.remove('selected', 'correct', 'incorrect');
+                    
+                    // Get the current question card
+                    const questionCard = this.closest('.question-card');
+                    const questionIndex = parseInt(questionCard.id.split('-')[1]) - 1;
+                    
+                    // Remove selected class from all options in this question
+                    questionCard.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Update answered questions array only when user actually selects an option
+                    answeredQuestions[questionIndex] = true;
+                    userAnswers[questionIndex] = this.getAttribute('data-answer');
+                    
+                    // Update question navigation
+                    questionNavBtns[questionIndex].classList.add('answered');
+                    
+                    // Update progress
+                    updateProgress();
+                });
+            });
+            
+            // Navigation buttons
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestion > 1) {
+                    showQuestion(currentQuestion - 1);
+                }
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                if (currentQuestion < totalQuestions) {
+                    showQuestion(currentQuestion + 1);
+                }
+            });
+            
+            // Question navigation buttons
+            questionNavBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const questionNum = parseInt(this.getAttribute('data-question'));
+                    showQuestion(questionNum);
+                });
+            });
+            
+            // Submit button
+            submitBtn.addEventListener('click', function() {
+                // Check if all questions are answered
+                if (answeredQuestions.every(answered => answered)) {
+                    // Calculate results
+                    let correctCount = 0;
+                    userAnswers.forEach((answer, index) => {
+                        const correctAnswer = document.querySelector(`#question-${index + 1} .quiz-option[data-correct="true"]`).getAttribute('data-answer');
+                        if (answer === correctAnswer) {
+                            correctCount++;
+                        }
+                    });
+                    
+                    // Calculate time spent
+                    const endTime = new Date();
+                    const timeDiff = Math.floor((endTime - startTime) / 1000); // in seconds
+                    const minutes = Math.floor(timeDiff / 60);
+                    const seconds = timeDiff % 60;
+                    
+                    // Calculate percentage
+                    const percentageScore = Math.round((correctCount / totalQuestions) * 100);
+                    
+                    // Update modal content
+                    scorePercentage.textContent = `${percentageScore}%`;
+                    scoreCorrect.textContent = correctCount;
+                    scoreTotal.textContent = totalQuestions;
+                    timeSpent.textContent = `${minutes} phút ${seconds} giây`;
+                    accuracy.textContent = `${percentageScore}%`;
+                    
+                    // Set message based on score
+                    if (percentageScore >= 80) {
+                        scoreMessage.textContent = 'Xuất sắc! Bạn đã nắm vững kiến thức này.';
+                    } else if (percentageScore >= 60) {
+                        scoreMessage.textContent = 'Tốt! Bạn đã hiểu được phần lớn nội dung.';
+                    } else if (percentageScore >= 40) {
+                        scoreMessage.textContent = 'Có thể tốt hơn. Hãy ôn tập lại kiến thức.';
+                    } else {
+                        scoreMessage.textContent = 'Cần cố gắng nhiều hơn. Hãy học lại từ đầu.';
+                    }
+                    
+                    // Show modal
+                    resultsModal.show();
+                    
+                    // Save results to localStorage
+                    saveResults(correctCount, totalQuestions, timeDiff);
+                } else {
+                    // Alert user to answer all questions
+                    alert('Vui lòng trả lời tất cả các câu hỏi trước khi nộp bài!');
+                    
+                    // Go to the first unanswered question
+                    const firstUnansweredIndex = answeredQuestions.findIndex(answered => !answered);
+                    if (firstUnansweredIndex !== -1) {
+                        showQuestion(firstUnansweredIndex + 1);
+                    }
+                }
+            });
+            
+            // Review button
+            reviewBtn.addEventListener('click', function() {
+                resultsModal.hide();
+                reviewQuiz();
+            });
+            
+            // Retry button
+            retryBtn.addEventListener('click', function() {
+                location.reload();
+            });
+            
+            // Function to show a specific question
+            function showQuestion(questionNum) {
+                // Hide all question cards
+                questionCards.forEach(card => {
+                    card.classList.remove('active');
+                });
+                
+                // Show the selected question card
+                document.getElementById(`question-${questionNum}`).classList.add('active');
+                
+                // Update current question
+                currentQuestion = questionNum;
+                
+                // Update navigation buttons
+                prevBtn.disabled = currentQuestion === 1;
+                nextBtn.disabled = currentQuestion === totalQuestions;
+                
+                // Update progress text
+                progressText.textContent = `Câu ${currentQuestion}/${totalQuestions}`;
+                
+                // Update question navigation
+                questionNavBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                questionNavBtns[currentQuestion - 1].classList.add('active');
+            }
+            
+            // Function to update progress
+            function updateProgress() {
+                // Count answered questions
+                const answeredQuestionsCount = answeredQuestions.filter(Boolean).length;
+                
+                // Update progress bar
+                const progressPercentage = Math.round((answeredQuestionsCount / totalQuestions) * 100);
+                progressBar.style.width = `${progressPercentage}%`;
+                progressBar.textContent = `${progressPercentage}%`;
+                
+                // Update counters
+                answeredCount.textContent = answeredQuestionsCount;
+                navAnsweredCount.textContent = answeredQuestionsCount;
+                unansweredCount.textContent = totalQuestions - answeredQuestionsCount;
+            }
+            
+            // Function to review the quiz
+            function reviewQuiz() {
+                // Show all questions
+                questionCards.forEach((card, index) => {
+                    card.classList.add('active');
+                    
+                    // Get the selected option
+                    const selectedOption = card.querySelector('.quiz-option.selected');
+                    
+                    // Get the correct option
+                    const correctOption = card.querySelector('.quiz-option[data-correct="true"]');
+                    
+                    // Mark correct and incorrect answers
+                    if (selectedOption) {
+                        if (selectedOption.getAttribute('data-correct') === 'true') {
+                            selectedOption.classList.add('correct');
+                        } else {
+                            selectedOption.classList.add('incorrect');
+                            correctOption.classList.add('correct');
+                        }
+                    }
+                    
+                    // Show explanation
+                    card.querySelector('.explanation').style.display = 'block';
+                });
+                
+                // Hide navigation buttons and submit button
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'none';
+                document.getElementById('progressText').style.display = 'none';
+                
+                // Add a back to top button
+                const backToTopBtn = document.createElement('button');
+                backToTopBtn.className = 'btn btn-primary fixed-bottom m-3';
+                backToTopBtn.innerHTML = '<i class="fas fa-arrow-up me-2"></i> Lên đầu trang';
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                document.body.appendChild(backToTopBtn);
+            }
+            
+            // Function to save results to localStorage
+            function saveResults(correctCount, totalCount, timeInSeconds) {
+                const topicId = @(topic?.IdCd ?? 0);
+                const exerciseType = 'multiple-choice';
+                
+                // Get existing results or initialize new object
+                let exerciseResults = JSON.parse(localStorage.getItem('exerciseResults') || '{}');
+                
+                // Create topic results if it doesn't exist
+                if (!exerciseResults[topicId]) {
+                    exerciseResults[topicId] = {};
+                }
+                
+                // Save the new result
+                exerciseResults[topicId][exerciseType] = {
+                    correctCount: correctCount,
+                    totalCount: totalCount,
+                    percentage: Math.round((correctCount / totalCount) * 100),
+                    timeInSeconds: timeInSeconds,
+                    date: new Date().toISOString()
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('exerciseResults', JSON.stringify(exerciseResults));
+            }
+        });
+    </script>
+}

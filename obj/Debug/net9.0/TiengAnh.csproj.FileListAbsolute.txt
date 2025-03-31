@@ -1,0 +1,440 @@
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\appsettings.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.staticwebassets.endpoints.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.staticwebassets.runtime.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.exe
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.deps.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.runtimeconfig.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.pdb
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.AssemblyInfoInputs.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.AssemblyInfo.cs
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cs
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.sourcelink.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\scopedcss\bundle\TiengAnh.styles.css
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\scopedcss\projectbundle\TiengAnh.bundle.scp.css
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\r0oddzukdf-absat773vx.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\iijk969xo7-njz64pnm3v.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\rx9f2lwypc-9lkn66e9uq.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\47u2crj2zu-kyafcqcfaq.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\unmac4mia2-pewmqhatka.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\qf29jbnmt9-r1253dw952.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\7spxvce9tb-bqjiyaj88i.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\tvzhdfex91-c2jlpeoesf.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\szzshzmjcm-erw9l3u2r3.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\rgkl3qixzi-aexeepp0ev.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\zq4ykl4iek-d7shbmvgxk.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ot36nrmb37-ausgxo2sd3.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\5r4n2uzjfk-k8d9w2qqmf.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\pre1c0fkdg-cosvhxvwiu.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\6ilfq91myj-ub07r2b239.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ji49l0j5sd-fvhpjtyr6v.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\t4pdg2xqfe-b7pk76d08c.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\v0b0xjk6xm-fsbi9cje9m.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\b009kisnbi-rzd6atqjts.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\tef79duo2v-ee0r1s7dh0.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\6ql9944fs0-dxx9fxp4il.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\la4jm6smum-jd9uben2k1.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\xo1ms1dpnw-khv3u5hwcm.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\4q7ucy81ae-r4e9w2rdcm.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ksglj8scd0-lcd1t2u6c8.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\qerirnpca9-c2oey78nd0.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\fdthse3cqb-tdbxkamptv.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\mb6ze4wo3l-j5mq2jizvt.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\0sw8czs48u-06098lyss8.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\hbtcx7ziik-nvvlpmu67g.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\orpkym8140-s35ty4nyc5.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\yz8tb6jaw5-pj5nd1wqec.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\zjysmqaykv-46ein0sx1k.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\nj69ewdc7q-v0zj4ognzu.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\icllj9dujd-37tfw0ft22.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\pt8by7ke9r-hrwsygsryq.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\psgzkt6rzd-pk9g2wxc8p.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\cpg232qve1-ft3s53vfgj.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\jo044lm5hu-6cfz1n2cew.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\rlm2lv95mi-6pdc2jztkx.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ei5pkz8ai9-493y06b0oq.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\oofuy0gzwo-iovd86k7lj.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\h680kgu1gf-vr1egmr9el.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\u380i5tshx-kbrnm935zg.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\5vm8kb8o3r-jj8uyg4cgr.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\4q19yctqi0-y7v9cxd14o.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\dsc6gm2azu-notf2xhcfb.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\dyc2r4ba94-h1s4sie4z3.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\stia33v2rq-63fj8s7r0e.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ko24yubb5y-0j3bgjxly4.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\84fifxnjbl-47otxtyo56.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\oc8sce4zrj-4v8eqarkd7.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\5ndl79n5jl-356vix0kms.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\8a1zkhioua-83jwlth58m.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\lktdmgcov9-mrlpezrjn3.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\s1978a7g3q-lzl9nlhx6b.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\58dgqpoab7-ag7o75518u.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\mwi0j9hldx-x0q3zqp4vz.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\3k87ltws0u-0i3buxo5is.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\k6g4pbd9u0-o1o13a6vjx.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\pma3m1a18g-ttgo8qnofa.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\qajciy11l6-2z0ns9nrw6.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\pedmrmgo6i-muycvpuwrr.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\7lvwl1nv3e-87fc7y1x7t.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ybd996lgdz-mlv21k5csn.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\anuluj38qy-pg6yj2y2c8.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\b2gc7z27dd-pg6yj2y2c8.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.TiengAnh.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.TiengAnh.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.build.TiengAnh.props
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.TiengAnh.props
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.TiengAnh.props
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.pack.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\refint\TiengAnh.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.pdb
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.genruntimeconfig.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test10\TiengAnh\TiengAnh\obj\Debug\net9.0\ref\TiengAnh.dll
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\appsettings.json
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\TiengAnh.staticwebassets.runtime.json
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\TiengAnh.staticwebassets.endpoints.json
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\TiengAnh.exe
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\TiengAnh.deps.json
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\TiengAnh.runtimeconfig.json
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\TiengAnh.dll
+C:\Users\ASUS\Downloads\TiengAnh\bin\Debug\net9.0\TiengAnh.pdb
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.AssemblyInfoInputs.cache
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.AssemblyInfo.cs
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cache
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cs
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.sourcelink.json
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\scopedcss\bundle\TiengAnh.styles.css
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\scopedcss\projectbundle\TiengAnh.bundle.scp.css
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\r0oddzukdf-absat773vx.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\iijk969xo7-njz64pnm3v.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\rx9f2lwypc-9lkn66e9uq.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\47u2crj2zu-kyafcqcfaq.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\unmac4mia2-pewmqhatka.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\qf29jbnmt9-r1253dw952.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\7spxvce9tb-bqjiyaj88i.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\tvzhdfex91-c2jlpeoesf.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\szzshzmjcm-erw9l3u2r3.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\rgkl3qixzi-aexeepp0ev.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\zq4ykl4iek-d7shbmvgxk.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\ot36nrmb37-ausgxo2sd3.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\5r4n2uzjfk-k8d9w2qqmf.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\pre1c0fkdg-cosvhxvwiu.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\6ilfq91myj-ub07r2b239.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\ji49l0j5sd-fvhpjtyr6v.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\t4pdg2xqfe-b7pk76d08c.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\v0b0xjk6xm-fsbi9cje9m.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\b009kisnbi-rzd6atqjts.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\tef79duo2v-ee0r1s7dh0.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\6ql9944fs0-dxx9fxp4il.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\la4jm6smum-jd9uben2k1.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\xo1ms1dpnw-khv3u5hwcm.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\4q7ucy81ae-r4e9w2rdcm.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\ksglj8scd0-lcd1t2u6c8.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\qerirnpca9-c2oey78nd0.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\fdthse3cqb-tdbxkamptv.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\mb6ze4wo3l-j5mq2jizvt.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\0sw8czs48u-06098lyss8.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\hbtcx7ziik-nvvlpmu67g.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\orpkym8140-s35ty4nyc5.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\yz8tb6jaw5-pj5nd1wqec.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\zjysmqaykv-46ein0sx1k.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\nj69ewdc7q-v0zj4ognzu.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\icllj9dujd-37tfw0ft22.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\pt8by7ke9r-hrwsygsryq.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\psgzkt6rzd-pk9g2wxc8p.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\cpg232qve1-ft3s53vfgj.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\jo044lm5hu-6cfz1n2cew.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\rlm2lv95mi-6pdc2jztkx.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\ei5pkz8ai9-493y06b0oq.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\oofuy0gzwo-iovd86k7lj.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\h680kgu1gf-vr1egmr9el.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\u380i5tshx-kbrnm935zg.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\5vm8kb8o3r-jj8uyg4cgr.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\4q19yctqi0-y7v9cxd14o.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\dsc6gm2azu-notf2xhcfb.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\dyc2r4ba94-h1s4sie4z3.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\stia33v2rq-63fj8s7r0e.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\ko24yubb5y-0j3bgjxly4.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\84fifxnjbl-47otxtyo56.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\oc8sce4zrj-4v8eqarkd7.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\5ndl79n5jl-356vix0kms.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\8a1zkhioua-83jwlth58m.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\lktdmgcov9-mrlpezrjn3.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\s1978a7g3q-lzl9nlhx6b.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\58dgqpoab7-ag7o75518u.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\mwi0j9hldx-x0q3zqp4vz.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\3k87ltws0u-0i3buxo5is.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\k6g4pbd9u0-o1o13a6vjx.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\pma3m1a18g-ttgo8qnofa.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\qajciy11l6-2z0ns9nrw6.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\pedmrmgo6i-muycvpuwrr.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\7lvwl1nv3e-87fc7y1x7t.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\ybd996lgdz-mlv21k5csn.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\anuluj38qy-pg6yj2y2c8.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\compressed\b2gc7z27dd-pg6yj2y2c8.gz
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.TiengAnh.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.TiengAnh.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.build.TiengAnh.props
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.TiengAnh.props
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.TiengAnh.props
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\staticwebassets.pack.json
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.dll
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\refint\TiengAnh.dll
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.pdb
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\TiengAnh.genruntimeconfig.cache
+C:\Users\ASUS\Downloads\TiengAnh\obj\Debug\net9.0\ref\TiengAnh.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\appsettings.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.staticwebassets.runtime.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.staticwebassets.endpoints.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.exe
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.deps.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.runtimeconfig.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\TiengAnh.pdb
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Azure.Core.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Azure.Identity.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Humanizer.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.ClientModel.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Drawing.Common.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Formats.Asn1.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Memory.Data.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Runtime.Caching.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Text.Json.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.csproj.AssemblyReference.cache
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.AssemblyInfoInputs.cache
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.AssemblyInfo.cs
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cache
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cs
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.sourcelink.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\scopedcss\bundle\TiengAnh.styles.css
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\scopedcss\projectbundle\TiengAnh.bundle.scp.css
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\r0oddzukdf-e7e61mv8e5.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\r2ps2hej0h-fyb3iv9fix.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\iijk969xo7-njz64pnm3v.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\rx9f2lwypc-9lkn66e9uq.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\be6ibmupwm-gvpulnlvdh.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\47u2crj2zu-kyafcqcfaq.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\unmac4mia2-pewmqhatka.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\qf29jbnmt9-stbc0cq7hb.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\7spxvce9tb-bqjiyaj88i.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\tvzhdfex91-c2jlpeoesf.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\szzshzmjcm-erw9l3u2r3.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\rgkl3qixzi-aexeepp0ev.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\zq4ykl4iek-d7shbmvgxk.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ot36nrmb37-ausgxo2sd3.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\5r4n2uzjfk-k8d9w2qqmf.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\pre1c0fkdg-cosvhxvwiu.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\6ilfq91myj-ub07r2b239.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ji49l0j5sd-fvhpjtyr6v.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\t4pdg2xqfe-b7pk76d08c.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\v0b0xjk6xm-fsbi9cje9m.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\b009kisnbi-rzd6atqjts.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\tef79duo2v-ee0r1s7dh0.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\6ql9944fs0-dxx9fxp4il.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\la4jm6smum-jd9uben2k1.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\xo1ms1dpnw-khv3u5hwcm.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\4q7ucy81ae-r4e9w2rdcm.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ksglj8scd0-lcd1t2u6c8.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\qerirnpca9-c2oey78nd0.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\fdthse3cqb-tdbxkamptv.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\mb6ze4wo3l-j5mq2jizvt.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\0sw8czs48u-06098lyss8.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\hbtcx7ziik-nvvlpmu67g.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\orpkym8140-s35ty4nyc5.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\yz8tb6jaw5-pj5nd1wqec.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\zjysmqaykv-46ein0sx1k.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\nj69ewdc7q-v0zj4ognzu.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\icllj9dujd-37tfw0ft22.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\pt8by7ke9r-hrwsygsryq.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\psgzkt6rzd-pk9g2wxc8p.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\cpg232qve1-ft3s53vfgj.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\jo044lm5hu-6cfz1n2cew.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\rlm2lv95mi-6pdc2jztkx.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ei5pkz8ai9-493y06b0oq.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\oofuy0gzwo-iovd86k7lj.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\h680kgu1gf-vr1egmr9el.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\u380i5tshx-kbrnm935zg.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\5vm8kb8o3r-jj8uyg4cgr.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\4q19yctqi0-y7v9cxd14o.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\dsc6gm2azu-notf2xhcfb.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\dyc2r4ba94-h1s4sie4z3.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\stia33v2rq-63fj8s7r0e.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ko24yubb5y-0j3bgjxly4.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\84fifxnjbl-47otxtyo56.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\oc8sce4zrj-4v8eqarkd7.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\5ndl79n5jl-356vix0kms.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\8a1zkhioua-83jwlth58m.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\lktdmgcov9-mrlpezrjn3.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\s1978a7g3q-lzl9nlhx6b.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\58dgqpoab7-ag7o75518u.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\mwi0j9hldx-x0q3zqp4vz.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\3k87ltws0u-0i3buxo5is.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\k6g4pbd9u0-o1o13a6vjx.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\pma3m1a18g-ttgo8qnofa.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\qajciy11l6-2z0ns9nrw6.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\pedmrmgo6i-muycvpuwrr.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\7lvwl1nv3e-87fc7y1x7t.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\ybd996lgdz-mlv21k5csn.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\anuluj38qy-pg6yj2y2c8.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\compressed\b2gc7z27dd-pg6yj2y2c8.gz
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.TiengAnh.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.TiengAnh.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.build.TiengAnh.props
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.TiengAnh.props
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.TiengAnh.props
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\staticwebassets.pack.json
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.csproj.Up2Date
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\refint\TiengAnh.dll
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.pdb
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\TiengAnh.genruntimeconfig.cache
+C:\Users\ASUS\Downloads\TiengAnh\TiengAnh\obj\Debug\net9.0\ref\TiengAnh.dll

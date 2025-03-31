@@ -1,0 +1,309 @@
+@model List<YeuThichViewModel>
+@{
+    ViewData["Title"] = "Mục yêu thích";
+    var vocabularies = ViewBag.VocabularyItems as List<VocabularyModel>;
+    var grammars = ViewBag.GrammarItems as List<GrammarModel>;
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Profile", "Account")">Hồ sơ của tôi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Mục yêu thích</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="fw-bold mb-4">Mục yêu thích của tôi</h2>
+                    
+                    @if (Model == null || !Model.Any())
+                    {
+                        <div class="text-center py-5">
+                            <div class="mb-3">
+                                <i class="far fa-heart text-muted fa-4x"></i>
+                            </div>
+                            <h3 class="h5 mb-2">Bạn chưa có mục yêu thích nào</h3>
+                            <p class="text-muted">Khi bạn yêu thích từ vựng, ngữ pháp hoặc bài tập, chúng sẽ xuất hiện ở đây.</p>
+                            <div class="mt-4">
+                                <a href="@Url.Action("Index", "Vocabulary")" class="btn btn-primary me-2">
+                                    <i class="fas fa-book me-1"></i> Khám phá từ vựng
+                                </a>
+                                <a href="@Url.Action("Index", "Grammar")" class="btn btn-outline-primary">
+                                    <i class="fas fa-book-open me-1"></i> Học ngữ pháp
+                                </a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Tab Headers -->
+                        <ul class="nav nav-pills mb-4" id="favoritesTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="vocabulary-tab" data-bs-toggle="pill" data-bs-target="#vocabulary" type="button" role="tab" aria-controls="vocabulary" aria-selected="true">
+                                    <i class="fas fa-book me-2"></i> Từ vựng
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="grammar-tab" data-bs-toggle="pill" data-bs-target="#grammar" type="button" role="tab" aria-controls="grammar" aria-selected="false">
+                                    <i class="fas fa-pen me-2"></i> Ngữ pháp
+                                </button>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content" id="favoritesTabContent">
+                            <!-- Vocabulary Tab -->
+                            <div class="tab-pane fade show active" id="vocabulary" role="tabpanel" aria-labelledby="vocabulary-tab">
+                                @if (vocabularies != null && vocabularies.Any())
+                                {
+                                    <div class="row g-4">
+                                        @foreach (var vocab in vocabularies)
+                                        {
+                                            <div class="col-lg-6">
+                                                <div class="card border-0 shadow-sm vocabulary-card h-100">
+                                                    <div class="card-body p-0">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-4">
+                                                                <div class="vocabulary-img-container">
+                                                                    <img src="@vocab.Image_TV" alt="@vocab.Word_TV" class="img-fluid vocabulary-img"
+                                                                        onerror="this.src='/images/vocabulary/default.jpg';this.onerror='';">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="p-3">
+                                                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                                                        <h5 class="card-title mb-0">@vocab.Word_TV</h5>
+                                                                        <span class="badge badge-@GetLevelClass(vocab.Level_TV)">@vocab.Level_TV</span>
+                                                                    </div>
+                                                                    <p class="text-muted small mb-2">@vocab.PartOfSpeech</p>
+                                                                    <p class="card-text mb-3">@vocab.Meaning_TV</p>
+                                                                    <div class="d-flex justify-content-between align-items-center mt-auto">
+                                                                        <button class="btn btn-sm btn-outline-danger remove-favorite" data-id="@vocab.ID_TV" data-type="TuVung">
+                                                                            <i class="fas fa-trash me-1"></i> Xóa
+                                                                        </button>
+                                                                        <a href="@Url.Action("Details", "Vocabulary", new { id = vocab.ID_TV })" class="btn btn-sm btn-primary">
+                                                                            <i class="fas fa-eye me-1"></i> Xem chi tiết
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="text-center py-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-book text-muted fa-3x"></i>
+                                        </div>
+                                        <h3 class="h5 mb-2">Chưa có từ vựng yêu thích</h3>
+                                        <p class="text-muted">Khi bạn yêu thích một từ vựng, nó sẽ xuất hiện ở đây.</p>
+                                        <a href="@Url.Action("Index", "Vocabulary")" class="btn btn-primary mt-2">
+                                            <i class="fas fa-book me-1"></i> Khám phá từ vựng
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+
+                            <!-- Grammar Tab -->
+                            <div class="tab-pane fade" id="grammar" role="tabpanel" aria-labelledby="grammar-tab">
+                                @if (grammars != null && grammars.Any())
+                                {
+                                    <div class="row g-4">
+                                        @foreach (var grammar in grammars)
+                                        {
+                                            string levelClass = GetLevelClass(grammar.Level);
+                                            
+                                            <div class="col-lg-6">
+                                                <div class="card border-0 shadow-sm h-100">
+                                                    <div class="card-header bg-light border-0">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span class="badge bg-@levelClass">@grammar.Level</span>
+                                                            <small class="text-muted">
+                                                                <i class="far fa-calendar-alt me-1"></i>
+                                                                @(grammar.TimeUpload_NP.HasValue ? grammar.TimeUpload_NP.Value.ToString("dd/MM/yyyy") : "Gần đây")
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body p-3">
+                                                        <h5 class="card-title mb-2">@grammar.Title_NP</h5>
+                                                        <p class="card-text mb-3 text-muted small">@grammar.Description_NP</p>
+                                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                                            <button class="btn btn-sm btn-outline-danger remove-favorite" data-id="@grammar.ID_NP" data-type="NguPhap">
+                                                                <i class="fas fa-trash me-1"></i> Xóa
+                                                            </button>
+                                                            <a href="@Url.Action("Details", "Grammar", new { id = grammar.ID_NP })" class="btn btn-sm btn-primary">
+                                                                <i class="fas fa-eye me-1"></i> Xem chi tiết
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="text-center py-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-pen text-muted fa-3x"></i>
+                                        </div>
+                                        <h3 class="h5 mb-2">Chưa có ngữ pháp yêu thích</h3>
+                                        <p class="text-muted">Khi bạn yêu thích một bài ngữ pháp, nó sẽ xuất hiện ở đây.</p>
+                                        <a href="@Url.Action("Index", "Grammar")" class="btn btn-primary mt-2">
+                                            <i class="fas fa-pen me-1"></i> Khám phá ngữ pháp
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    $(document).ready(function() {
+        // Xử lý xóa mục yêu thích
+        $('.remove-favorite').on('click', function() {
+            const id = $(this).data('id');
+            const type = $(this).data('type');
+            const cardElement = $(this).closest('.col-lg-6');
+            
+            if (confirm('Bạn có chắc chắn muốn xóa khỏi mục yêu thích không?')) {
+                $.ajax({
+                    url: '@Url.Action("RemoveFavorite", "Progress")',
+                    type: 'POST',
+                    data: { id: id, type: type },
+                    success: function(response) {
+                        if (response.success) {
+                            // Hiệu ứng fade out và xóa card
+                            cardElement.fadeOut(300, function() {
+                                $(this).remove();
+                                
+                                // Kiểm tra nếu không còn mục nào trong tab hiện tại
+                                const activeTab = $('.tab-pane.active');
+                                if (activeTab.find('.col-lg-6').length === 0) {
+                                    // Hiển thị thông báo không có dữ liệu
+                                    if (activeTab.attr('id') === 'vocabulary') {
+                                        activeTab.html(`
+                                            <div class="text-center py-4">
+                                                <div class="mb-3">
+                                                    <i class="fas fa-book text-muted fa-3x"></i>
+                                                </div>
+                                                <h3 class="h5 mb-2">Chưa có từ vựng yêu thích</h3>
+                                                <p class="text-muted">Khi bạn yêu thích một từ vựng, nó sẽ xuất hiện ở đây.</p>
+                                                <a href="@Url.Action("Index", "Vocabulary")" class="btn btn-primary mt-2">
+                                                    <i class="fas fa-book me-1"></i> Khám phá từ vựng
+                                                </a>
+                                            </div>
+                                        `);
+                                    } else {
+                                        activeTab.html(`
+                                            <div class="text-center py-4">
+                                                <div class="mb-3">
+                                                    <i class="fas fa-pen text-muted fa-3x"></i>
+                                                </div>
+                                                <h3 class="h5 mb-2">Chưa có ngữ pháp yêu thích</h3>
+                                                <p class="text-muted">Khi bạn yêu thích một bài ngữ pháp, nó sẽ xuất hiện ở đây.</p>
+                                                <a href="@Url.Action("Index", "Grammar")" class="btn btn-primary mt-2">
+                                                    <i class="fas fa-pen me-1"></i> Khám phá ngữ pháp
+                                                </a>
+                                            </div>
+                                        `);
+                                    }
+                                }
+                                
+                                // Hiển thị thông báo thành công
+                                var notification = $(`
+                                    <div class="position-fixed top-0 end-0 p-3 fade-out" style="z-index: 1050">
+                                        <div class="toast show bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+                                            <div class="toast-header bg-success text-white">
+                                                <strong class="me-auto">Thông báo</strong>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                                            </div>
+                                            <div class="toast-body">
+                                                Đã xóa khỏi mục yêu thích thành công!
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
+                                
+                                $('body').append(notification);
+                                setTimeout(function() {
+                                    notification.fadeOut(500, function() {
+                                        $(this).remove();
+                                    });
+                                }, 3000);
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+}
+
+@section Styles {
+<style>
+    .vocabulary-img-container {
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .vocabulary-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .vocabulary-card {
+        transition: transform 0.3s ease;
+    }
+    
+    .vocabulary-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .fade-out {
+        animation: fadeOut 0.5s ease-in-out forwards;
+        animation-delay: 2.5s;
+    }
+    
+    @@keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+</style>
+}
+
+@functions {
+    public string GetLevelClass(string level)
+    {
+        return level switch {
+            "A1" => "success",
+            "A2" => "info",
+            "B1" => "warning",
+            "B2" => "danger",
+            "C1" => "primary",
+            "C2" => "secondary",
+            _ => "primary"
+        };
+    }
+}

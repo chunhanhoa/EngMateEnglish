@@ -1,0 +1,538 @@
+@model List<VocabularyModel>
+@{
+    ViewData["Title"] = "Flashcard - " + ViewBag.Topic?.Name_CD ?? "Học từ vựng";
+    var topic = ViewBag.Topic as TopicModel;
+}
+
+<!-- Header Section -->
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Vocabulary")">Từ vựng</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Vocabulary", new { id = topic?.ID_CD })">@(topic?.Name_CD ?? "Chủ đề")</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Flashcard</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Title and Instructions -->
+    <div class="row mb-5">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold mb-3">Flashcard: @(topic?.Name_CD ?? "Từ vựng")</h1>
+            <p class="lead">Luyện từ vựng nhanh chóng với phương pháp Flashcard hiệu quả. Nhấn vào thẻ để xem nghĩa của từ.</p>
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-lightbulb text-warning me-2"></i>Hướng dẫn sử dụng</h5>
+                    <ul class="mb-0">
+                        <li>Nhấn vào thẻ để lật xem mặt sau (nghĩa tiếng Việt)</li>
+                        <li>Sử dụng nút <span class="badge bg-success"><i class="fas fa-check"></i> Đã thuộc</span> nếu bạn đã thuộc từ này</li>
+                        <li>Sử dụng nút <span class="badge bg-danger"><i class="fas fa-times"></i> Chưa thuộc</span> nếu bạn cần học lại</li>
+                        <li>Nhấn vào biểu tượng <i class="fas fa-volume-up text-primary"></i> để nghe phát âm</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-end">
+            <div class="progress-container bg-light p-3 rounded shadow-sm">
+                <h5 class="mb-3">Tiến độ học</h5>
+                <div class="progress mb-2" style="height: 25px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar">
+                        0%
+                    </div>
+                </div>
+                <p class="text-center mb-0">
+                    <span id="learned-count">0</span>/<span id="total-count">@Model.Count</span> từ
+                </p>
+                <div class="d-flex justify-content-between mt-3">
+                    <button class="btn btn-outline-secondary btn-sm" id="reset-btn">
+                        <i class="fas fa-redo me-1"></i> Học lại
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" id="focus-btn">
+                        <i class="fas fa-star me-1"></i> Tập trung vào từ chưa thuộc
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flashcard Section -->
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="flashcard-container position-relative">
+                @foreach (var (vocab, index) in Model.Select((v, i) => (v, i)))
+                {
+                    <div class="flashcard @(index == 0 ? "active" : "")" data-index="@index" data-id="@vocab.ID_TV" data-status="unlearned">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="flashcard-content text-center">
+                                    <h2 class="vocabulary-title mb-3">@vocab.Word_TV</h2>
+                                    <div class="d-flex justify-content-center align-items-center mb-4">
+                                        <span class="badge bg-light text-dark me-2 part-of-speech">
+                                            @GetPartOfSpeechName(vocab.PartOfSpeech)
+                                        </span>
+                                        <span class="level-badge level-@vocab.Level_TV">@vocab.Level_TV</span>
+                                    </div>
+                                    <button class="audio-btn" data-word="@vocab.Word_TV">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <div class="mt-4 small text-muted">Nhấn vào thẻ để xem nghĩa</div>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="flashcard-content text-center">
+                                    <h3 class="vocabulary-meaning mb-3">@vocab.Meaning_TV</h3>
+                                    <p class="example"><em>@vocab.Example_TV</em></p>
+                                    <img src="@vocab.Image_TV" alt="@vocab.Word_TV" class="img-fluid rounded mb-3" style="max-height: 150px; object-fit: contain;"
+                                        onerror="this.src='/images/vocabulary/default.jpg';this.onerror='';">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+                <div class="flashcard-completed text-center py-5" style="display: none;">
+                    <div class="completed-icon mb-4">
+                        <i class="fas fa-check-circle text-success fa-5x"></i>
+                    </div>
+                    <h2 class="mb-3">Chúc mừng!</h2>
+                    <p class="lead mb-4">Bạn đã học xong tất cả các từ vựng trong chủ đề này.</p>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-success me-2" id="review-btn">
+                            <i class="fas fa-redo me-1"></i> Học lại toàn bộ
+                        </button>
+                        <a href="@Url.Action("Exercise", "Vocabulary", new { id = topic?.ID_CD })" class="btn btn-primary">
+                            <i class="fas fa-tasks me-1"></i> Làm bài tập
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="flashcard-controls d-flex justify-content-between align-items-center">
+                <button class="btn btn-outline-secondary" id="prev-btn" disabled>
+                    <i class="fas fa-arrow-left me-1"></i> Từ trước
+                </button>
+                <div class="d-flex">
+                    <button class="btn btn-danger me-2" id="unknown-btn">
+                        <i class="fas fa-times me-1"></i> Chưa thuộc
+                    </button>
+                    <button class="btn btn-success" id="known-btn">
+                        <i class="fas fa-check me-1"></i> Đã thuộc
+                    </button>
+                </div>
+                <button class="btn btn-outline-secondary" id="next-btn">
+                    Từ tiếp theo <i class="fas fa-arrow-right ms-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .flashcard-container {
+        perspective: 1000px;
+        height: 400px;
+        margin-bottom: 2rem;
+    }
+    
+    .flashcard {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateY(20px);
+    }
+    
+    .flashcard.active {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .flashcard-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 16px;
+        cursor: pointer;
+    }
+    
+    .flashcard.flipped .flashcard-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .flashcard-front, .flashcard-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        padding: 20px;
+    }
+    
+    .flashcard-front {
+        background-color: #ffffff;
+        color: #333;
+    }
+    
+    .flashcard-back {
+        background-color: #f8f9fa;
+        color: #333;
+        transform: rotateY(180deg);
+    }
+    
+    .flashcard-content {
+        width: 100%;
+    }
+    
+    .audio-btn {
+        background: none;
+        border: none;
+        color: #0d6efd;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    .audio-btn:hover {
+        color: #0a58ca;
+    }
+    
+    .vocabulary-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    
+    .vocabulary-meaning {
+        font-size: 1.8rem;
+    }
+    
+    .part-of-speech {
+        font-size: 0.9rem;
+    }
+    
+    .flashcard-controls {
+        margin-top: 20px;
+    }
+    
+    .flashcard-completed {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy các element DOM
+            const flashcards = document.querySelectorAll('.flashcard');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const knownBtn = document.getElementById('known-btn');
+            const unknownBtn = document.getElementById('unknown-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const focusBtn = document.getElementById('focus-btn');
+            const reviewBtn = document.getElementById('review-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const learnedCount = document.getElementById('learned-count');
+            const flashcardCompleted = document.querySelector('.flashcard-completed');
+            
+            let currentIndex = 0;
+            let totalCount = flashcards.length;
+            let learnedWords = 0;
+            let focusMode = false;
+            let learnedStatus = Array(totalCount).fill(false);
+            
+            // Khởi tạo dữ liệu từ localStorage nếu có
+            loadLearnedStatus();
+            updateProgress();
+            
+            // Lật thẻ khi click
+            flashcards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('flipped');
+                });
+            });
+            
+            // Xử lý nút trước
+            prevBtn.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    navigateToCard(currentIndex - 1);
+                }
+            });
+            
+            // Xử lý nút tiếp theo
+            nextBtn.addEventListener('click', function() {
+                if (currentIndex < totalCount - 1) {
+                    navigateToCard(currentIndex + 1);
+                } else {
+                    // Hiển thị màn hình hoàn thành nếu đã đến thẻ cuối cùng
+                    showCompletedScreen();
+                }
+            });
+            
+            // Xử lý nút "Đã thuộc"
+            knownBtn.addEventListener('click', function() {
+                // Đánh dấu từ hiện tại là đã thuộc
+                const currentCard = flashcards[currentIndex];
+                currentCard.dataset.status = 'learned';
+                learnedStatus[currentIndex] = true;
+                
+                // Cập nhật localStorage
+                saveLearnedStatus();
+                
+                // Cập nhật tiến độ
+                updateProgress();
+                
+                // Chuyển đến thẻ tiếp theo hoặc hiển thị màn hình hoàn thành
+                if (currentIndex < totalCount - 1) {
+                    navigateToCard(currentIndex + 1);
+                } else {
+                    showCompletedScreen();
+                }
+            });
+            
+            // Xử lý nút "Chưa thuộc"
+            unknownBtn.addEventListener('click', function() {
+                // Đánh dấu từ hiện tại là chưa thuộc
+                const currentCard = flashcards[currentIndex];
+                currentCard.dataset.status = 'unlearned';
+                learnedStatus[currentIndex] = false;
+                
+                // Cập nhật localStorage
+                saveLearnedStatus();
+                
+                // Cập nhật tiến độ
+                updateProgress();
+                
+                // Chuyển đến thẻ tiếp theo hoặc hiển thị màn hình hoàn thành
+                if (currentIndex < totalCount - 1) {
+                    navigateToCard(currentIndex + 1);
+                } else {
+                    showCompletedScreen();
+                }
+            });
+            
+            // Xử lý nút "Học lại"
+            resetBtn.addEventListener('click', function() {
+                if (confirm('Bạn có chắc muốn đặt lại tiến độ học?')) {
+                    resetLearningProgress();
+                }
+            });
+            
+            // Xử lý nút "Tập trung vào từ chưa thuộc"
+            focusBtn.addEventListener('click', function() {
+                focusMode = !focusMode;
+                
+                if (focusMode) {
+                    this.innerHTML = '<i class="fas fa-star me-1"></i> Học tất cả các từ';
+                    navigateToFirstUnlearnedCard();
+                } else {
+                    this.innerHTML = '<i class="fas fa-star me-1"></i> Tập trung vào từ chưa thuộc';
+                    navigateToCard(0);
+                }
+            });
+            
+            // Xử lý nút "Học lại toàn bộ" trên màn hình hoàn thành
+            reviewBtn.addEventListener('click', function() {
+                resetLearningProgress();
+                hideCompletedScreen();
+            });
+            
+            // Xử lý các nút phát âm
+            const audioButtons = document.querySelectorAll('.audio-btn');
+            audioButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Ngăn sự kiện click lan ra thẻ flashcard
+                    const word = this.dataset.word;
+                    speakWord(word);
+                });
+            });
+            
+            // Hàm chuyển đến thẻ cụ thể
+            function navigateToCard(index) {
+                // Ẩn thẻ hiện tại
+                flashcards[currentIndex].classList.remove('active');
+                flashcards[currentIndex].classList.remove('flipped');
+                
+                // Cập nhật index hiện tại
+                currentIndex = index;
+                
+                // Hiển thị thẻ mới
+                flashcards[currentIndex].classList.add('active');
+                
+                // Cập nhật trạng thái các nút
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalCount - 1 && allWordsLearned();
+                
+                // Nếu đang ở chế độ focus, kiểm tra nếu là từ đã thuộc thì chuyển đến từ chưa thuộc tiếp theo
+                if (focusMode && learnedStatus[currentIndex] === true && !allWordsLearned()) {
+                    navigateToNextUnlearnedCard();
+                }
+            }
+            
+            // Hàm chuyển đến từ chưa thuộc đầu tiên
+            function navigateToFirstUnlearnedCard() {
+                for (let i = 0; i < totalCount; i++) {
+                    if (!learnedStatus[i]) {
+                        navigateToCard(i);
+                        return;
+                    }
+                }
+                
+                // Nếu tất cả các từ đều đã thuộc, chuyển đến thẻ đầu tiên
+                navigateToCard(0);
+            }
+            
+            // Hàm chuyển đến từ chưa thuộc tiếp theo
+            function navigateToNextUnlearnedCard() {
+                for (let i = currentIndex + 1; i < totalCount; i++) {
+                    if (!learnedStatus[i]) {
+                        navigateToCard(i);
+                        return;
+                    }
+                }
+                
+                // Nếu không còn từ chưa thuộc ở phía sau, tìm từ đầu
+                for (let i = 0; i < currentIndex; i++) {
+                    if (!learnedStatus[i]) {
+                        navigateToCard(i);
+                        return;
+                    }
+                }
+                
+                // Nếu tất cả các từ đều đã thuộc, hiển thị màn hình hoàn thành
+                showCompletedScreen();
+            }
+            
+            // Hàm kiểm tra tất cả các từ đã được học chưa
+            function allWordsLearned() {
+                return learnedStatus.every(status => status === true);
+            }
+            
+            // Hàm cập nhật tiến độ
+            function updateProgress() {
+                learnedWords = learnedStatus.filter(status => status === true).length;
+                const progressPercentage = Math.round((learnedWords / totalCount) * 100);
+                
+                progressBar.style.width = progressPercentage + '%';
+                progressBar.textContent = progressPercentage + '%';
+                learnedCount.textContent = learnedWords;
+                
+                // Nếu tất cả các từ đều đã được học, hiển thị màn hình hoàn thành
+                if (allWordsLearned()) {
+                    showCompletedScreen();
+                }
+            }
+            
+            // Hàm lưu trạng thái đã học vào localStorage
+            function saveLearnedStatus() {
+                const topicId = @(topic?.ID_CD ?? 0);
+                localStorage.setItem(`flashcard_progress_${topicId}`, JSON.stringify(learnedStatus));
+            }
+            
+            // Hàm tải trạng thái đã học từ localStorage
+            function loadLearnedStatus() {
+                const topicId = @(topic?.ID_CD ?? 0);
+                const savedStatus = localStorage.getItem(`flashcard_progress_${topicId}`);
+                
+                if (savedStatus) {
+                    learnedStatus = JSON.parse(savedStatus);
+                    
+                    // Cập nhật trạng thái cho các thẻ
+                    flashcards.forEach((card, index) => {
+                        if (learnedStatus[index]) {
+                            card.dataset.status = 'learned';
+                        }
+                    });
+                }
+            }
+            
+            // Hàm đặt lại tiến độ học
+            function resetLearningProgress() {
+                learnedStatus = Array(totalCount).fill(false);
+                
+                // Cập nhật trạng thái cho các thẻ
+                flashcards.forEach(card => {
+                    card.dataset.status = 'unlearned';
+                });
+                
+                // Cập nhật localStorage
+                saveLearnedStatus();
+                
+                // Cập nhật tiến độ
+                updateProgress();
+                
+                // Chuyển về thẻ đầu tiên
+                navigateToCard(0);
+                
+                // Ẩn màn hình hoàn thành nếu đang hiển thị
+                hideCompletedScreen();
+            }
+            
+            // Hàm hiển thị màn hình hoàn thành
+            function showCompletedScreen() {
+                flashcards.forEach(card => {
+                    card.classList.remove('active');
+                    card.classList.remove('flipped');
+                });
+                
+                flashcardCompleted.style.display = 'block';
+            }
+            
+            // Hàm ẩn màn hình hoàn thành
+            function hideCompletedScreen() {
+                flashcardCompleted.style.display = 'none';
+                navigateToCard(0);
+            }
+            
+            // Hàm phát âm từ vựng
+            function speakWord(word) {
+                // Sử dụng Web Speech API nếu có
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(word);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.9;
+                    window.speechSynthesis.speak(utterance);
+                }
+            }
+        });
+    </script>
+}
+
+@functions {
+    public string GetPartOfSpeechName(string code)
+    {
+        Dictionary<string, string> types = new Dictionary<string, string>
+        {
+            { "n", "Danh từ (Noun)" },
+            { "v", "Động từ (Verb)" },
+            { "adj", "Tính từ (Adjective)" },
+            { "adv", "Trạng từ (Adverb)" },
+            { "prep", "Giới từ (Preposition)" },
+            { "conj", "Liên từ (Conjunction)" },
+            { "pron", "Đại từ (Pronoun)" },
+            { "det", "Hạn định từ (Determiner)" },
+            { "interj", "Thán từ (Interjection)" }
+        };
+        
+        return types.ContainsKey(code) ? types[code] : code;
+    }
+}

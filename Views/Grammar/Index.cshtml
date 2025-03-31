@@ -1,0 +1,257 @@
+@model List<GrammarModel>
+@{
+    ViewData["Title"] = "Ngữ pháp tiếng Anh";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ngữ pháp</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-lg-8">
+            <h1 class="display-5 fw-bold mb-3">Ngữ pháp tiếng Anh</h1>
+            <p class="lead">Học ngữ pháp tiếng Anh một cách đơn giản và hiệu quả với các bài học được thiết kế rõ ràng, dễ hiểu</p>
+        </div>
+        <div class="col-lg-4 text-end">
+            <img src="/images/grammar-icon.png" alt="Grammar Icon" class="img-fluid" style="max-width: 120px;" />
+        </div>
+    </div>
+
+    <!-- Grammar Level Filter -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-3">
+                    <h5 class="mb-3"><i class="fas fa-filter text-primary me-2"></i>Lọc theo cấp độ</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button class="btn btn-sm btn-outline-primary level-filter active" data-level="all">Tất cả</button>
+                        <button class="btn btn-sm btn-outline-success level-filter" data-level="A1">Sơ cấp (A1)</button>
+                        <button class="btn btn-sm btn-outline-info level-filter" data-level="A2">Tiền trung cấp (A2)</button>
+                        <button class="btn btn-sm btn-outline-warning level-filter" data-level="B1">Trung cấp (B1)</button>
+                        <button class="btn btn-sm btn-outline-danger level-filter" data-level="B2">Cao trung cấp (B2)</button>
+                        <button class="btn btn-sm btn-outline-purple level-filter" data-level="C1">Cao cấp (C1)</button>
+                        <button class="btn btn-sm btn-outline-teal level-filter" data-level="C2">Chuyên sâu (C2)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grammar Lessons List -->
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading"><i class="fas fa-exclamation-circle me-2"></i>Không tìm thấy bài học nào!</h4>
+            <p>Hiện tại chưa có bài học ngữ pháp nào được thêm vào hệ thống. Vui lòng quay lại sau.</p>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4 grammar-cards">
+            @foreach (var grammar in Model)
+            {
+                string levelClass = grammar.Level switch {
+                    "A1" => "success",
+                    "A2" => "info",
+                    "B1" => "warning",
+                    "B2" => "danger",
+                    "C1" => "purple",
+                    "C2" => "teal",
+                    _ => "primary"
+                };
+                
+                string levelText = grammar.Level switch {
+                    "A1" => "Sơ cấp",
+                    "A2" => "Tiền trung cấp",
+                    "B1" => "Trung cấp",
+                    "B2" => "Cao trung cấp",
+                    "C1" => "Cao cấp",
+                    "C2" => "Chuyên sâu",
+                    _ => "Cơ bản"
+                };
+
+                string iconClass = GetGrammarIcon(grammar.Title_NP);
+                
+                <div class="col-lg-4 col-md-6 grammar-item" data-level="@grammar.Level">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-header border-0 py-3" style="background-color: rgba(var(--bs-@levelClass-rgb), 0.15);">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-@levelClass">@grammar.Level - @levelText</span>
+                                <span class="badge bg-light text-dark">
+                                    <i class="far fa-calendar-alt me-1"></i>
+                                    @(grammar.TimeUpload_NP.HasValue ? grammar.TimeUpload_NP.Value.ToString("dd/MM/yyyy") : "Mới cập nhật")
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="grammar-icon-container me-3">
+                                    <i class="@iconClass text-@levelClass grammar-icon"></i>
+                                </div>
+                                <h4 class="card-title mb-0">@grammar.Title_NP</h4>
+                            </div>
+                            <p class="card-text text-muted mb-4">@grammar.Description_NP</p>
+                            <div class="d-grid gap-2">
+                                <a href="@Url.Action("Details", "Grammar", new { id = grammar.ID_NP })" class="btn btn-@levelClass">
+                                    <i class="fas fa-book-open me-2"></i> Xem bài học
+                                </a>
+                                <a href="@Url.Action("GrammarExercise", "Exercise", new { id = grammar.ID_NP })" class="btn btn-outline-@levelClass">
+                                    <i class="fas fa-tasks me-2"></i> Làm bài tập
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@section Styles {
+    <style>
+        /* Hover card effect */
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        /* Màu sắc tùy chỉnh cho C1 và C2 */
+        .bg-purple {
+            background-color: #6f42c1 !important;
+            color: white !important;
+        }
+        
+        .bg-teal {
+            background-color: #20c997 !important;
+            color: white !important;
+        }
+        
+        .text-purple {
+            color: #6f42c1 !important;
+        }
+        
+        .text-teal {
+            color: #20c997 !important;
+        }
+        
+        /* Màu nền cho button filter */
+        .btn-outline-purple {
+            color: #6f42c1;
+            border-color: #6f42c1;
+        }
+        
+        .btn-outline-purple:hover, .btn-outline-purple.active {
+            background-color: #6f42c1;
+            color: white;
+        }
+        
+        .btn-outline-teal {
+            color: #20c997;
+            border-color: #20c997;
+        }
+        
+        .btn-outline-teal:hover, .btn-outline-teal.active {
+            background-color: #20c997;
+            color: white;
+        }
+        
+        /* CSS biến cho màu sắc */
+        :root {
+            --bs-purple-rgb: 111, 66, 193;
+            --bs-teal-rgb: 32, 201, 151;
+        }
+        
+        /* Grammar icon styling */
+        .grammar-icon-container {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+        }
+        
+        .grammar-icon {
+            font-size: 1.5rem;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            console.log("Grammar page loaded");
+            console.log("Total lessons: @Model.Count");
+            
+            // Đảm bảo các phần tử luôn hiển thị
+            $('.grammar-item').css({
+                'display': 'block',
+                'opacity': '1',
+                'visibility': 'visible'
+            });
+            
+            // Filter theo level
+            $('.level-filter').on('click', function() {
+                const level = $(this).data('level');
+                
+                // Active button
+                $('.level-filter').removeClass('active');
+                $(this).addClass('active');
+                
+                if (level === 'all') {
+                    $('.grammar-item').show();
+                } else {
+                    $('.grammar-item').hide();
+                    $(`.grammar-item[data-level="${level}"]`).show();
+                }
+            });
+        });
+    </script>
+}
+
+@functions {
+    public string GetGrammarIcon(string title)
+    {
+        title = (title ?? "").ToLower();
+        
+        if (title.Contains("tense") || title.Contains("time") || title.Contains("thì"))
+            return "fas fa-clock";
+        if (title.Contains("verb") || title.Contains("động từ"))
+            return "fas fa-running";
+        if (title.Contains("noun") || title.Contains("danh từ"))
+            return "fas fa-cube";
+        if (title.Contains("adjective") || title.Contains("tính từ"))
+            return "fas fa-palette";
+        if (title.Contains("adverb") || title.Contains("trạng từ"))
+            return "fas fa-tachometer-alt";
+        if (title.Contains("preposition") || title.Contains("giới từ"))
+            return "fas fa-map-marker-alt";
+        if (title.Contains("conjunction") || title.Contains("liên từ"))
+            return "fas fa-link";
+        if (title.Contains("pronoun") || title.Contains("đại từ"))
+            return "fas fa-user";
+        if (title.Contains("article") || title.Contains("mạo từ"))
+            return "fas fa-newspaper";
+        if (title.Contains("passive") || title.Contains("bị động"))
+            return "fas fa-exchange-alt";
+        if (title.Contains("condition") || title.Contains("điều kiện"))
+            return "fas fa-random";
+        if (title.Contains("modal") || title.Contains("khả năng"))
+            return "fas fa-lightbulb";
+            
+        return "fas fa-book"; // default icon
+    }
+}

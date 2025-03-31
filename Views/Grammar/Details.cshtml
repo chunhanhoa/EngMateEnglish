@@ -1,0 +1,68 @@
+@model GrammarModel
+@{
+    ViewData["Title"] = Model.Title_NP;
+}
+
+<!-- Grammar Detail Header -->
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Grammar")">Ngữ pháp</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Title_NP</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Main Content - Mở rộng chiều rộng để chiếm toàn bộ không gian -->
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <h1 class="display-6 fw-bold mb-3">@Model.Title_NP</h1>
+                    
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge bg-primary me-2">@Model.Level</span>
+                        <span class="text-muted">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            @(Model.TimeUpload_NP.HasValue ? Model.TimeUpload_NP.Value.ToString("dd/MM/yyyy") : "Không có ngày")
+                        </span>
+                    </div>
+                    
+                    <!-- Description -->
+                    <p class="lead mb-4">@Model.Description_NP</p>
+                    
+                    <hr class="my-4">
+                    
+                    <!-- Grammar Content -->
+                    <div class="grammar-content">
+                        @Html.Raw(Model.Content)
+                    </div>
+                    
+                    <!-- Navigation buttons -->
+                    <div class="d-flex justify-content-between mt-5">
+                        <a href="@Url.Action("Index", "Grammar")" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i> Quay lại danh sách
+                        </a>
+                        
+                        <!-- Liên kết tới trang bài tập ngữ pháp -->
+                        <a href="@Url.Action("GrammarExercise", "Exercise", new { id = Model.ID_NP })" class="btn btn-outline-success">
+                            <i class="fas fa-tasks me-2"></i> Làm bài tập
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    $(document).ready(function() {
+        console.log("Grammar details page loaded");
+    });
+</script>
+}

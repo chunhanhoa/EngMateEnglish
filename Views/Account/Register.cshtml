@@ -1,0 +1,114 @@
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="text-center mb-4">
+                        <img src="~/images/Logo.png" alt="EngMate Logo" class="mb-3" style="width: 80px; height: 80px;" />
+                        <h1 class="h3 fw-bold mb-3">Tạo tài khoản EngMate</h1>
+                        <p class="text-muted">Đăng ký để bắt đầu học tiếng Anh cùng EngMate</p>
+                    </div>
+
+                    <form asp-controller="Account" asp-action="Register" method="post">
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Họ và tên</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="fullName" asp-for="FullName" placeholder="Nhập họ và tên của bạn" required autofocus>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" asp-for="Email" placeholder="Nhập địa chỉ email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" asp-for="Password" placeholder="Tạo mật khẩu (ít nhất 8 ký tự)" required>
+                            </div>
+                            <div class="form-text">Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số.</div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="confirmPassword" asp-for="ConfirmPassword" placeholder="Nhập lại mật khẩu" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="acceptTerms" asp-for="AcceptTerms" required>
+                                <label class="form-check-label" for="acceptTerms">
+                                    Tôi đồng ý với <a href="#" class="text-decoration-none">Điều khoản sử dụng</a> và <a href="#" class="text-decoration-none">Chính sách riêng tư</a>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-user-plus me-2"></i> Đăng ký
+                            </button>
+                        </div>
+                        
+                        <div class="text-center my-4">
+                            <span class="divider-text">Hoặc đăng ký với</span>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <form asp-action="ExternalLogin" asp-route-provider="Google" method="post">
+                                <button type="submit" class="btn btn-outline-danger w-100">
+                                    <i class="fab fa-google me-2"></i> Google
+                                </button>
+                            </form>
+                            <button type="button" class="btn btn-outline-primary">
+                                <i class="fab fa-facebook-f me-2"></i> Facebook
+                            </button>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="mb-0">Bạn đã có tài khoản? <a href="@Url.Action("Login", "Account")" class="text-decoration-none fw-bold">Đăng nhập ngay</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .divider-text {
+            position: relative;
+            text-align: center;
+            color: #6c757d;
+        }
+        .divider-text::before,
+        .divider-text::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: #dee2e6;
+        }
+        .divider-text::before {
+            left: 0;
+        }
+        .divider-text::after {
+            right: 0;
+        }
+    </style>
+}

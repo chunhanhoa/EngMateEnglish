@@ -1,0 +1,243 @@
+@model VocabularyModel
+@{
+    ViewData["Title"] = Model.Word_TV;
+}
+
+<!-- Vocabulary Detail Header -->
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Vocabulary")">Từ vựng</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Vocabulary", new { id = Model.ID_CD })">@Model.TopicName</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Word_TV</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h1 class="display-4 fw-bold text-primary mb-0">@Model.Word_TV</h1>
+                            <div class="d-flex align-items-center mt-2">
+                                <span class="part-of-speech me-2">@Model.PartOfSpeech</span>
+                                <span class="level-badge level-@Model.Level_TV">@Model.Level_TV</span>
+                            </div>
+                        </div>
+                        <button class="audio-btn" style="width: 50px; height: 50px;">
+                            <i class="fas fa-volume-up fa-lg"></i>
+                        </button>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-5">
+                            <img src="@Model.Image_TV" alt="@Model.Word_TV" class="img-fluid rounded shadow-sm" 
+                                 onerror="this.src='/images/vocabulary/default.jpg';this.onerror='';" />
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="fw-bold mb-3">Nghĩa</h3>
+                            <p class="lead mb-4">@Model.Meaning_TV</p>
+
+                            <h3 class="fw-bold mb-3">Ví dụ</h3>
+                            <div class="example-card p-3 mb-3 rounded" style="background-color: #f8f9fa;">
+                                <p class="mb-0 font-italic">@Model.Example_TV</p>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <button class="btn btn-outline-primary me-2 toggle-favorite" data-id="@Model.ID_TV" data-type="TuVung">
+                                    <i class="@(ViewBag.IsFavorite ? "fas" : "far") fa-heart me-1"></i> Yêu thích
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-share-alt me-1"></i> Chia sẻ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="fw-bold mb-3">Ghi chú bổ sung</h3>
+                            <p>Từ "@Model.Word_TV" thuộc chủ đề <strong>@Model.TopicName</strong> và thường xuất hiện trong các bài học trình độ @Model.Level_TV.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-3">
+                        <i class="fas fa-lightbulb text-warning me-2"></i>
+                        Mẹo học từ vựng
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Nghe phát âm và lặp lại nhiều lần
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Viết câu ví dụ với từ này
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Kết hợp với hình ảnh để nhớ lâu hơn
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Ôn lại từ này sau 1 ngày, 3 ngày và 1 tuần
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-3">
+                        <i class="fas fa-link text-primary me-2"></i>
+                        Từ liên quan
+                    </h4>
+                    <div class="related-words">
+                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">House</a>
+                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">Home</a>
+                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">Building</a>
+                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">Apartment</a>
+                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">Room</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="fw-bold mb-4">Luyện tập với từ này</h3>
+            
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h4 class="card-title mb-3">Hoàn thành câu</h4>
+                    <p>Điền từ <strong>@Model.Word_TV</strong> vào chỗ trống thích hợp:</p>
+                    
+                    <div class="mb-3">
+                        <p>1. I have a black ______ as a pet.</p>
+                        <input type="text" class="form-control" placeholder="Nhập câu trả lời...">
+                    </div>
+                    
+                    <div>
+                        <p>2. The ______ is sleeping on the sofa.</p>
+                        <input type="text" class="form-control" placeholder="Nhập câu trả lời...">
+                    </div>
+                    
+                    <div class="mt-3">
+                        <button class="btn btn-primary">Kiểm tra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup audio button
+            const audioBtn = document.querySelector('.audio-btn');
+            if (audioBtn) {
+                audioBtn.addEventListener('click', function() {
+                    // In a real app, this would play the actual audio from Model.Audio_TV
+                    const word = '@Model.Word_TV';
+                    const audioUrl = 'https://ssl.gstatic.com/dictionary/static/sounds/oxford/' + word.toLowerCase() + '--_us_1.mp3';
+                    const audio = new Audio(audioUrl);
+                    
+                    // Add animation to button while playing
+                    this.innerHTML = '<i class="fas fa-volume-up fa-lg fa-beat"></i>';
+                    
+                    audio.play();
+                    
+                    // Reset button after audio ends
+                    audio.onended = () => {
+                        this.innerHTML = '<i class="fas fa-volume-up fa-lg"></i>';
+                    };
+                });
+            }
+        });
+
+        // Xử lý yêu thích
+        $('.toggle-favorite').on('click', function() {
+            const button = $(this);
+            const id = button.data('id');
+            const type = button.data('type');
+            
+            $.ajax({
+                url: '@Url.Action("ToggleFavorite", "Progress")',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ itemId: id, itemType: type }),
+                success: function(response) {
+                    if (response.success) {
+                        // Thay đổi biểu tượng trái tim
+                        const icon = button.find('i');
+                        if (response.isFavorite) {
+                            icon.removeClass('far').addClass('fas');
+                            showToast('Đã thêm vào mục yêu thích', 'success');
+                        } else {
+                            icon.removeClass('fas').addClass('far');
+                            showToast('Đã xóa khỏi mục yêu thích', 'info');
+                        }
+                    } else {
+                        showToast(response.message, 'error');
+                    }
+                },
+                error: function() {
+                    showToast('Đã xảy ra lỗi khi cập nhật yêu thích', 'error');
+                }
+            });
+        });
+        
+        // Hiển thị toast thông báo
+        function showToast(message, type) {
+            // Loại bỏ toast cũ nếu có
+            $('.toast-container').remove();
+            
+            // Xác định màu sắc dựa trên loại
+            let bgColor = 'bg-success';
+            if (type === 'error') bgColor = 'bg-danger';
+            if (type === 'info') bgColor = 'bg-info';
+            
+            // Tạo toast mới
+            const toast = $(`
+                <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+                    <div class="toast ${bgColor} text-white" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-body d-flex align-items-center">
+                            <i class="${type === 'error' ? 'fas fa-times-circle' : 'fas fa-check-circle'} me-2"></i>
+                            ${message}
+                            <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            `);
+            
+            $('body').append(toast);
+            
+            // Hiển thị toast
+            const toastEl = new bootstrap.Toast(toast.find('.toast')[0], {
+                autohide: true,
+                delay: 3000
+            });
+            toastEl.show();
+            
+            // Tự động xóa sau khi ẩn
+            toast.on('hidden.bs.toast', function() {
+                $(this).remove();
+            });
+        }
+    </script>
+}

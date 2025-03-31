@@ -1,0 +1,452 @@
+@model UserModel
+@{
+    ViewData["Title"] = "Hồ sơ người dùng";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Hồ sơ của tôi</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <!-- Profile Sidebar -->
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="card border-0 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <div class="position-relative mb-4 mx-auto" style="width: 150px;">
+                        <img src="@Model.Avatar" alt="@Model.FullName" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
+                        <button class="btn btn-sm btn-primary position-absolute bottom-0 end-0" style="border-radius: 50%; width: 40px; height: 40px;" data-bs-toggle="modal" data-bs-target="#changeAvatarModal">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    
+                    <h3 class="fw-bold mb-1">@Model.FullName</h3>
+                    <p class="text-muted mb-3">@Model.Email</p>
+                    
+                    <div class="d-flex justify-content-center mb-3">
+                        <div class="badge badge-primary py-2 px-3 me-2">
+                            <i class="fas fa-medal me-1"></i> Trình độ @Model.Level
+                        </div>
+                        <div class="badge badge-success py-2 px-3">
+                            <i class="fas fa-star me-1"></i> @Model.Points điểm
+                        </div>
+                    </div>
+                    
+                    <a href="@Url.Action("EditProfile", "Account")" class="btn btn-primary w-100 mb-3">
+                        <i class="fas fa-edit me-2"></i> Chỉnh sửa hồ sơ
+                    </a>
+                    
+                    <div class="text-start mt-4">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center border-top-0">
+                                <span class="fw-bold"><i class="fas fa-user me-2 text-primary"></i> Thông tin cá nhân</span>
+                                <a href="@Url.Action("EditProfile", "Account")" class="text-decoration-none">
+                                    <i class="fas fa-chevron-right text-muted"></i>
+                                </a>
+                            </li>
+                            <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                                <span class="fw-bold"><i class="fas fa-trophy me-2 text-primary"></i> Thành tích học tập</span>
+                                <a href="@Url.Action("Index", "Progress")" class="text-decoration-none">
+                                    <i class="fas fa-chevron-right text-muted"></i>
+                                </a>
+                            </li>
+                            <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                                <span class="fw-bold"><i class="fas fa-heart me-2 text-primary"></i> Mục yêu thích</span>
+                                <a href="@Url.Action("Favorites", "Progress")" class="text-decoration-none">
+                                    <i class="fas fa-chevron-right text-muted"></i>
+                                </a>
+                            </li>
+                            <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                                <span class="fw-bold"><i class="fas fa-bell me-2 text-primary"></i> Thông báo</span>
+                                <span class="badge rounded-pill bg-danger">3</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="col-lg-8">
+            <!-- Progress Overview Card -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h3 class="fw-bold mb-4">Tiến độ học tập</h3>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="progress-circle position-relative mx-auto" style="width: 120px; height: 120px;">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg"
+                                        d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none"
+                                        stroke="#eee"
+                                        stroke-width="2"/>
+                                    <path class="circle"
+                                        d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none"
+                                        stroke="#4e73fa"
+                                        stroke-width="2"
+                                        stroke-dasharray="@Model.VocabularyProgress, 100"/>
+                                </svg>
+                                <div class="progress-value text-center">
+                                    <h4 class="mb-0 fw-bold">@Model.VocabularyProgress%</h4>
+                                    <span class="small">Từ vựng</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="progress-circle position-relative mx-auto" style="width: 120px; height: 120px;">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg"
+                                        d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none"
+                                        stroke="#eee"
+                                        stroke-width="2"/>
+                                    <path class="circle"
+                                        d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none"
+                                        stroke="#5cb85c"
+                                        stroke-width="2"
+                                        stroke-dasharray="@Model.GrammarProgress, 100"/>
+                                </svg>
+                                <div class="progress-value text-center">
+                                    <h4 class="mb-0 fw-bold">@Model.GrammarProgress%</h4>
+                                    <span class="small">Ngữ pháp</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="progress-circle position-relative mx-auto" style="width: 120px; height: 120px;">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg"
+                                        d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none"
+                                        stroke="#eee"
+                                        stroke-width="2"/>
+                                    <path class="circle"
+                                        d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        fill="none"
+                                        stroke="#f0ad4e"
+                                        stroke-width="2"
+                                        stroke-dasharray="@Model.ExerciseProgress, 100"/>
+                                </svg>
+                                <div class="progress-value text-center">
+                                    <h4 class="mb-0 fw-bold">@Model.ExerciseProgress%</h4>
+                                    <span class="small">Bài tập</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity Card -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-bold mb-0">Hoạt động gần đây</h3>
+                        <a href="@Url.Action("Index", "Progress")" class="text-decoration-none">Xem tất cả</a>
+                    </div>
+                    
+                    <div class="activity-timeline">
+                        @if(Model.RecentActivities != null && Model.RecentActivities.Any())
+                        {
+                            @foreach (var activity in Model.RecentActivities)
+                            {
+                                <div class="activity-item d-flex pb-3 mb-3 border-bottom">
+                                    <div class="activity-icon me-3 bg-primary-soft rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; min-width: 45px;">
+                                        @if (activity.Type == "TuVung")
+                                        {
+                                            <i class="fas fa-book text-primary"></i>
+                                        }
+                                        else if (activity.Type == "NguPhap")
+                                        {
+                                            <i class="fas fa-pen text-primary"></i>
+                                        }
+                                        else if (activity.Type == "BaiTap") 
+                                        {
+                                            <i class="fas fa-tasks text-primary"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-star text-primary"></i>
+                                        }
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h5 class="fw-bold mb-1">@activity.Title</h5>
+                                        <p class="text-muted mb-1">@activity.Description</p>
+                                        <span class="small text-muted">
+                                            <i class="far fa-clock me-1"></i> @activity.Timestamp.ToString("dd/MM/yyyy HH:mm")
+                                        </span>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-center py-4">
+                                <i class="fas fa-history text-muted fa-3x mb-3"></i>
+                                <h5>Chưa có hoạt động gần đây</h5>
+                                <p class="text-muted">Bắt đầu học để xem lịch sử hoạt động của bạn tại đây!</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Learning Recommendations -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-bold mb-0">Gợi ý học tập</h3>
+                        <a href="#" class="text-decoration-none">Xem thêm</a>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm bg-light-hover">
+                                <div class="card-body p-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-puzzle-piece text-primary me-2"></i>
+                                        <h5 class="fw-bold mb-0">Bài tập từ vựng</h5>
+                                    </div>
+                                    <p class="small mb-3">Luyện tập từ vựng "Food & Drinks" với các bài tập đa dạng.</p>
+                                    <a href="#" class="btn btn-sm btn-primary w-100">Làm ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm bg-light-hover">
+                                <div class="card-body p-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-book-open text-primary me-2"></i>
+                                        <h5 class="fw-bold mb-0">Ngữ pháp thì tương lai</h5>
+                                    </div>
+                                    <p class="small mb-3">Học các cấu trúc thì tương lai đơn và tương lai gần.</p>
+                                    <a href="#" class="btn btn-sm btn-primary w-100">Bắt đầu học</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal đổi ảnh đại diện -->
+<div class="modal fade" id="changeAvatarModal" tabindex="-1" aria-labelledby="changeAvatarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="changeAvatarModalLabel">Đổi ảnh đại diện</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-4">
+                    <img src="@Model.Avatar" alt="@Model.FullName" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;" id="avatarPreview">
+                </div>
+                <form id="avatarForm">
+                    @Html.AntiForgeryToken()
+                    <div class="mb-3">
+                        <label for="avatarFile" class="form-label">Chọn ảnh mới</label>
+                        <input class="form-control" type="file" id="avatarFile" accept="image/*">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-primary" id="saveAvatar">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .progress-circle {
+            margin: 0 auto;
+        }
+        
+        .circular-chart {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .circle-bg {
+            fill: none;
+            stroke: #eee;
+            stroke-width: 2;
+        }
+        
+        .circle {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            animation: progress 1s ease-out forwards;
+        }
+        
+        .progress-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        @@keyframes progress {
+            0% {
+                stroke-dasharray: 0 100;
+            }
+        }
+        
+        .activity-timeline .activity-item:last-child {
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+        
+        .bg-primary-soft {
+            background-color: rgba(78, 115, 250, 0.1);
+        }
+        
+        .bg-success-soft {
+            background-color: rgba(92, 184, 92, 0.1);
+        }
+        
+        .bg-warning-soft {
+            background-color: rgba(240, 173, 78, 0.1);
+        }
+        
+        .bg-light-hover:hover {
+            background-color: #f8f9fa !important;
+            transition: all 0.3s ease;
+        }
+        
+        .badge-primary {
+            background-color: #4e73fa;
+            color: white;
+        }
+        
+        .badge-success {
+            background-color: #5cb85c;
+            color: white;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        // Hiển thị xem trước ảnh đại diện
+        document.getElementById('avatarFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatarPreview').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Xử lý lưu ảnh đại diện
+        document.getElementById('saveAvatar').addEventListener('click', function() {
+            const fileInput = document.getElementById('avatarFile');
+            if (fileInput.files.length === 0) {
+                alert('Vui lòng chọn ảnh trước khi lưu.');
+                return;
+            }
+            
+            // Tạo form data để gửi
+            const formData = new FormData();
+            formData.append('avatar', fileInput.files[0]);
+            
+            // Hiển thị trạng thái đang tải
+            const saveButton = this;
+            const originalText = saveButton.innerHTML;
+            saveButton.disabled = true;
+            saveButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang tải...';
+            
+            // Gửi yêu cầu đến server
+            fetch('@Url.Action("UploadAvatar", "Account")', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Cập nhật ảnh đại diện trên trang
+                    document.querySelectorAll('img[alt="@Model.FullName"]').forEach(img => {
+                        img.src = data.avatarUrl;
+                    });
+                    
+                    // Hiển thị thông báo thành công
+                    const notification = $(`
+                        <div class="position-fixed top-0 end-0 p-3" style="z-index: 1050">
+                            <div class="toast show bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="toast-header bg-success text-white">
+                                    <strong class="me-auto">Thông báo</strong>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                                <div class="toast-body">
+                                    ${data.message}
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                    
+                    $('body').append(notification);
+                    setTimeout(() => notification.fadeOut(500, function() { $(this).remove(); }), 3000);
+                    
+                    // Đóng modal
+                    $('#changeAvatarModal').modal('hide');
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi tải ảnh lên. Vui lòng thử lại.');
+            })
+            .finally(() => {
+                // Khôi phục nút
+                saveButton.disabled = false;
+                saveButton.innerHTML = originalText;
+            });
+        });
+    </script>
+}

@@ -1,0 +1,60 @@
+.min-height-50 {
+    min-height: 50px;
+}
+
+.word-item {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.word-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.word-item.dragging {
+    opacity: 0.5;
+}
+
+.answer-area {
+    min-height: 60px;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.answer-area:hover {
+    background-color: #e9ecef;
+}
+
+.empty-message {
+    color: #adb5bd;
+}
+
+/* Styling for exercise items */
+.exercise-item, .fill-blank-item, .word-order-item {
+    transition: all 0.3s ease;
+}
+
+.exercise-item.border-success, .fill-blank-item.border-success, .word-order-item.border-success {
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+}
+
+.exercise-item.border-danger, .fill-blank-item.border-danger, .word-order-item.border-danger {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+/* Tooltip customization */
+.tooltip {
+    font-size: 0.9rem;
+}
+
+/* Fill-in-the-blank exercise styling */
+.fill-blank-input {
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.fill-blank-input:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}

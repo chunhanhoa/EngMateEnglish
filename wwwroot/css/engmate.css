@@ -1,0 +1,746 @@
+/* EngMate - Main CSS File */
+:root {
+    --primary: #4e73fa;
+    --primary-light: #7c98ff;
+    --primary-dark: #2852f5;
+    --secondary: #ff6b6b;
+    --success: #5cb85c;
+    --info: #5bc0de;
+    --warning: #f0ad4e;
+    --danger: #d9534f;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --primary-soft: #e9efff;
+    --yellow: #ffd166;
+    --purple: #6f42c1;
+    --teal: #20c997;
+    --orange: #fd7e14;
+    --pink: #e83e8c;
+    --green: #28a745;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f9fafe;
+    color: #4a4a4a;
+}
+
+.brand-text {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+/* Background colors */
+.bg-primary-soft {
+    background-color: var(--primary-soft);
+}
+
+.bg-yellow-soft {
+    background-color: #fff8e6;
+}
+
+.bg-teal-soft {
+    background-color: #e6fff9;
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 0.8rem 1rem;
+}
+
+.navbar .nav-link {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    background-color: rgba(78, 115, 250, 0.1);
+    transform: translateY(-2px);
+}
+
+.navbar .nav-link i {
+    margin-right: 5px;
+}
+
+/* Active nav link */
+.navbar-nav .nav-link.active {
+    background-color: rgba(78, 115, 250, 0.15);
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Cards */
+.card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Topic card */
+.topic-card {
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.topic-card.animals {
+    background-color: #e6f6ff;
+}
+
+.topic-card.food {
+    background-color: #fff0e6;
+}
+
+.topic-card.sports {
+    background-color: #e6ffe6;
+}
+
+.topic-card.family {
+    background-color: #f9e6ff;
+}
+
+.topic-card.school {
+    background-color: #fffde6;
+}
+
+.topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.topic-card .topic-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.topic-card h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Hero section */
+.hero-section {
+    background: linear-gradient(135deg, #7c98ff 0%, #4e73fa 100%);
+    padding: 5rem 0;
+    color: white;
+    border-radius: 0 0 50px 50px;
+    margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-image {
+    max-width: 100%;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Vocabulary card */
+.vocabulary-card {
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.vocabulary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.vocabulary-card .word {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.vocabulary-card .meaning {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.vocabulary-card .part-of-speech {
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.vocabulary-card .example {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.vocabulary-card .audio-btn {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.vocabulary-card .audio-btn:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Footer styles */
+footer {
+    position: relative;
+    background-color: var(--primary-soft);
+    color: #4a4a4a;
+    font-size: 1rem; /* Tăng kích thước font từ 0.9rem lên 1rem */
+    margin-top: auto; /* Đảm bảo footer luôn nằm cuối trang */
+}
+
+footer h5 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.2rem; /* Tăng kích thước font từ 1rem lên 1.2rem */
+}
+
+footer a {
+    color: #4a4a4a;
+    transition: all 0.3s ease;
+    font-size: 1rem; /* Tăng kích thước font cho các liên kết */
+}
+
+footer a:hover {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* Thêm mới: tăng kích thước cho tất cả văn bản và liên kết trong footer */
+footer p, 
+footer .small, 
+footer ul li, 
+footer .list-unstyled li {
+    font-size: 1.05rem; /* Kích thước văn bản lớn hơn */
+}
+
+footer .small {
+    font-size: 0.95rem !important; /* Tăng kích thước nhưng vẫn nhỏ hơn văn bản thông thường */
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: white;
+    color: var(--primary);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+social-icons a:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Social icons large */
+.social-icons-large a {
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons-large a:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Footer styles override */
+.footer {
+  position: relative !important; /* Ghi đè position absolute */
+  bottom: auto !important; /* Xóa bỏ thuộc tính bottom */
+  margin-top: 2rem; /* Thêm khoảng cách với nội dung */
+  padding: 1.5rem 0;
+  background-color: var(--primary-soft);
+  color: #4a4a4a;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}
+
+.fade-in-left {
+    animation: fadeInLeft 0.8s ease-in-out;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}
+
+.fade-in-right {
+    animation: fadeInRight 0.8s ease-in-out;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Progress bar */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+/* Badge */
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.badge-primary {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+}
+
+.badge-warning {
+    background-color: #fff8e6;
+    color: var(--warning);
+}
+
+.badge-success {
+    background-color: #e6fff2;
+    color: var(--success);
+}
+
+/* Level badge */
+.level-badge {
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+}
+
+.level-A1 {
+    background-color: #e6fff2;
+    color: var(--success);
+}
+
+.level-A2 {
+    background-color: #e6f9ff;
+    color: var(--info);
+}
+
+.level-B1 {
+    background-color: #e6eeff;
+    color: var(--primary);
+}
+
+.level-B2 {
+    background-color: #f2e6ff;
+    color: var(--purple);
+}
+
+.level-C1 {
+    background-color: #ffe6f6;
+    color: var(--pink);
+}
+
+.level-C2 {
+    background-color: #ffe6e6;
+    color: var(--danger);
+}
+
+/* Quiz styles */
+.quiz-option {
+    display: block;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.quiz-option:hover {
+    border-color: var(--primary-light);
+    background-color: var(--primary-soft);
+}
+
+.quiz-option.selected {
+    border-color: var(--primary);
+    background-color: var(--primary-soft);
+}
+
+.quiz-option.correct {
+    border-color: var(--success);
+    background-color: #e6fff2;
+}
+
+.quiz-option.incorrect {
+    border-color: var(--danger);
+    background-color: #ffe6e6;
+}
+
+/* Test styles */
+.test-card {
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.test-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.test-card .test-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.test-timer {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-timer i {
+    margin-right: 10px;
+}
+
+.test-progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    margin-bottom: 0.5rem;
+}
+
+.test-progress-bar {
+    height: 100%;
+    border-radius: 5px;
+    background-color: var(--primary);
+}
+
+.test-question {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.test-option {
+    display: block;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.test-option:hover {
+    border-color: var(--primary-light);
+    background-color: var(--primary-soft);
+}
+
+.test-option.selected {
+    border-color: var(--primary);
+    background-color: var(--primary-soft);
+}
+
+.test-option.correct {
+    border-color: var(--success);
+    background-color: #e6fff2;
+}
+
+.test-option.incorrect {
+    border-color: var(--danger);
+    background-color: #ffe6e6;
+}
+
+.test-result-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.test-score {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.test-feedback {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.test-feedback.excellent {
+    color: var(--success);
+}
+
+.test-feedback.good {
+    color: var(--info);
+}
+
+.test-feedback.average {
+    color: var(--warning);
+}
+
+.test-feedback.poor {
+    color: var(--danger);
+}
+
+/* Badge styles for test level */
+.level-badge.level-A1A2 {
+    background-color: linear-gradient(90deg, #e6fff2, #e6f9ff);
+    color: var(--success);
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    width: 300px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1050;
+    transition: all 0.5s ease;
+}
+
+.notification-success {
+    background-color: #e6fff2;
+    color: var(--success);
+    border-left: 5px solid var(--success);
+}
+
+.notification-error {
+    background-color: #ffe6e6;
+    color: var(--danger);
+    border-left: 5px solid var(--danger);
+}
+
+.notification-warning {
+    background-color: #fff8e6;
+    color: var(--warning);
+    border-left: 5px solid var(--warning);
+}
+
+.notification-info {
+    background-color: #e6f9ff;
+    color: var(--info);
+    border-left: 5px solid var(--info);
+}
+
+/* Auth styles */
+.divider-text {
+    position: relative;
+    text-align: center;
+    color: #6c757d;
+    padding: 10px 0;
+}
+
+.divider-text::before,
+.divider-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #dee2e6;
+}
+
+.divider-text::before {
+    left: 0;
+}
+
+.divider-text::after {
+    right: 0;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 250, 0.25);
+}
+
+.auth-card {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Thêm vào cuối file css */
+.topic-item {
+    display: block !important; /* Đảm bảo luôn hiển thị */
+    opacity: 1 !important; /* Đảm bảo độ trong suốt luôn là 100% */
+    visibility: visible !important; /* Đảm bảo luôn nhìn thấy được */
+}
+
+.vocabulary-item {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Điều chỉnh lại hiệu ứng fade-in để không ảnh hưởng đến khả năng hiển thị */
+.fade-in-left, .fade-in-right {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+[data-level], 
+[data-type], 
+.fade-in,
+.animate__animated {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}

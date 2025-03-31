@@ -1,0 +1,147 @@
+@model TestModel
+@{
+    ViewData["Title"] = "Xem lại đáp án";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Test")">Bài kiểm tra</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Details", "Test", new { id = Model.TestID })">@Model.TestName</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Result", "Test", new { id = Model.TestID })">Kết quả</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Xem lại đáp án</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h1 class="display-5 fw-bold mb-3">Xem lại đáp án</h1>
+            <p class="lead">@Model.TestName</p>
+        </div>
+    </div>
+
+    <!-- Câu hỏi và đáp án -->
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <!-- Câu hỏi 1 -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h3 class="card-title fw-bold">Câu hỏi 1</h3>
+                        <span class="badge bg-success p-2">Đúng</span>
+                    </div>
+                    
+                    <h4 class="mb-4">What is the past tense of "go"?</h4>
+                    
+                    <div class="test-options">
+                        <div class="test-option">
+                            <span>A. Goed</span>
+                        </div>
+                        <div class="test-option correct">
+                            <span>B. Went</span>
+                            <i class="fas fa-check-circle text-success ms-2"></i>
+                            <span class="badge bg-success ms-2">Đáp án của bạn</span>
+                        </div>
+                        <div class="test-option">
+                            <span>C. Gone</span>
+                        </div>
+                        <div class="test-option">
+                            <span>D. Going</span>
+                        </div>
+                    </div>
+                    
+                    <div class="explanation mt-4 p-3 rounded" style="background-color: #f8f9fa;">
+                        <p class="mb-0">
+                            <strong>Giải thích:</strong> "Went" là dạng quá khứ đơn của động từ "go".
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 2 -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h3 class="card-title fw-bold">Câu hỏi 2</h3>
+                        <span class="badge bg-danger p-2">Sai</span>
+                    </div>
+                    
+                    <h4 class="mb-4">Which of the following is a countable noun?</h4>
+                    
+                    <div class="test-options">
+                        <div class="test-option">
+                            <span>A. Water</span>
+                        </div>
+                        <div class="test-option">
+                            <span>B. Rice</span>
+                            <span class="badge bg-danger ms-2">Đáp án của bạn</span>
+                        </div>
+                        <div class="test-option correct">
+                            <span>C. Apple</span>
+                            <i class="fas fa-check-circle text-success ms-2"></i>
+                            <span class="badge bg-success ms-2">Đáp án đúng</span>
+                        </div>
+                        <div class="test-option">
+                            <span>D. Milk</span>
+                        </div>
+                    </div>
+                    
+                    <div class="explanation mt-4 p-3 rounded" style="background-color: #f8f9fa;">
+                        <p class="mb-0">
+                            <strong>Giải thích:</strong> "Apple" (quả táo) là danh từ đếm được vì chúng ta có thể đếm số lượng quả táo (one apple, two apples). Các lựa chọn khác như "Water" (nước), "Rice" (gạo) và "Milk" (sữa) là danh từ không đếm được.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Câu hỏi 3 -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h3 class="card-title fw-bold">Câu hỏi 3</h3>
+                        <span class="badge bg-success p-2">Đúng</span>
+                    </div>
+                    
+                    <h4 class="mb-4">Choose the correct sentence:</h4>
+                    
+                    <div class="test-options">
+                        <div class="test-option">
+                            <span>A. She don't like coffee.</span>
+                        </div>
+                        <div class="test-option correct">
+                            <span>B. She doesn't like coffee.</span>
+                            <i class="fas fa-check-circle text-success ms-2"></i>
+                            <span class="badge bg-success ms-2">Đáp án của bạn</span>
+                        </div>
+                        <div class="test-option">
+                            <span>C. She not like coffee.</span>
+                        </div>
+                        <div class="test-option">
+                            <span>D. She doesn't likes coffee.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="explanation mt-4 p-3 rounded" style="background-color: #f8f9fa;">
+                        <p class="mb-0">
+                            <strong>Giải thích:</strong> Câu phủ định ở thì hiện tại đơn với chủ ngữ là ngôi thứ 3 số ít (he, she, it) sử dụng trợ động từ "doesn't" + động từ nguyên mẫu không 'to'.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mb-5">
+        <a href="@Url.Action("Result", "Test", new { id = Model.TestID })" class="btn btn-primary me-2">
+            <i class="fas fa-arrow-left me-2"></i> Quay lại kết quả
+        </a>
+        <a href="@Url.Action("Index", "Test")" class="btn btn-outline-primary">
+            <i class="fas fa-th-list me-2"></i> Danh sách bài kiểm tra
+        </a>
+    </div>
+</div>

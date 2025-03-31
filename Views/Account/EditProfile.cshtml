@@ -1,0 +1,190 @@
+@model EditProfileViewModel
+@{
+    ViewData["Title"] = "Chỉnh sửa hồ sơ";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Profile", "Account")">Hồ sơ của tôi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa thông tin</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="fw-bold mb-4">Chỉnh sửa thông tin cá nhân</h2>
+
+                    <form asp-action="EditProfile" method="post" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <div class="mb-3">
+                                    <label asp-for="FullName" class="form-label">Họ và tên</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        <input asp-for="FullName" class="form-control" required />
+                                    </div>
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input asp-for="Email" class="form-control" required />
+                                    </div>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="PhoneNumber" class="form-label">Số điện thoại</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        <input asp-for="PhoneNumber" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="UserName" class="form-label">Tên đăng nhập</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                        <input asp-for="UserName" class="form-control" readonly disabled />
+                                    </div>
+                                    <small class="text-muted">Tên đăng nhập không thể thay đổi</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h5 class="fw-bold mb-3">Thay đổi mật khẩu</h5>
+                                        <p class="text-muted small mb-3">Để thay đổi mật khẩu, vui lòng nhập mật khẩu hiện tại và mật khẩu mới</p>
+                                        <div class="mb-3">
+                                            <label asp-for="CurrentPassword" class="form-label">Mật khẩu hiện tại</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                                <input asp-for="CurrentPassword" class="form-control" />
+                                            </div>
+                                            <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label asp-for="NewPassword" class="form-label">Mật khẩu mới</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                                <input asp-for="NewPassword" class="form-control" />
+                                            </div>
+                                            <span asp-validation-for="NewPassword" class="text-danger"></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label asp-for="ConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                                <input asp-for="ConfirmPassword" class="form-control" />
+                                            </div>
+                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="@Url.Action("Profile", "Account")" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i> Quay lại
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i> Lưu thay đổi
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script>
+        // Bật tính năng kiểm tra hợp lệ của form Bootstrap
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+        
+        // Hiển thị/ẩn mật khẩu khi nhấp vào icon
+        function setupPasswordToggle(inputId) {
+            const toggleIcon = document.createElement('span');
+            toggleIcon.innerHTML = '<i class="fas fa-eye"></i>';
+            toggleIcon.className = 'position-absolute end-0 top-50 translate-middle-y pe-3 cursor-pointer';
+            toggleIcon.style.cursor = 'pointer';
+            toggleIcon.style.zIndex = '5';
+            
+            const inputElement = document.getElementById(inputId);
+            if (inputElement) {
+                inputElement.parentElement.style.position = 'relative';
+                inputElement.parentElement.appendChild(toggleIcon);
+                
+                toggleIcon.addEventListener('click', function() {
+                    const type = inputElement.getAttribute('type') === 'password' ? 'text' : 'password';
+                    inputElement.setAttribute('type', type);
+                    toggleIcon.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+                });
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            setupPasswordToggle('CurrentPassword');
+            setupPasswordToggle('NewPassword');
+            setupPasswordToggle('ConfirmPassword');
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card {
+            transition: all 0.3s ease;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-group-text {
+            background-color: #f8f9fa;
+            border-right: none;
+        }
+        
+        .form-control {
+            border-left: none;
+        }
+        
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #ced4da;
+        }
+        
+        .form-control:focus + .input-group-text {
+            border-color: #80bdff;
+        }
+    </style>
+}
