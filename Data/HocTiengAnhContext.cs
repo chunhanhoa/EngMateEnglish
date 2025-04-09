@@ -108,9 +108,9 @@ public partial class HocTiengAnhContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("answer_CH");
-            entity.Property(e => e.ExplanationCh)
+            entity.Property(e => e.ExplanationBt)
                 .HasMaxLength(255)
-                .HasColumnName("explanation_BT");
+                .HasColumnName("explanation_CH");
             entity.Property(e => e.IdKt).HasColumnName("ID_KT");
             entity.Property(e => e.OptionA)
                 .HasMaxLength(255)
@@ -345,6 +345,14 @@ public partial class HocTiengAnhContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("type_TTH");
+            
+            // Thêm cấu hình cho thuộc tính score
+            entity.Property(e => e.ScoreTth)
+                .HasColumnName("score_TTH");
+            
+            // Thêm cấu hình cho thuộc tính IdCd
+            entity.Property(e => e.IdCd)
+                .HasColumnName("ID_CD");
 
             entity.HasOne(d => d.IdTkNavigation).WithMany(p => p.TienTrinhHocs)
                 .HasForeignKey(d => d.IdTk)

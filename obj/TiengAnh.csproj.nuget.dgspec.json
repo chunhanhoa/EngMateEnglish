@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Downloads\\TiengAnh\\TiengAnh\\TiengAnh.csproj": {}
+    "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\TiengAnh.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Downloads\\TiengAnh\\TiengAnh\\TiengAnh.csproj": {
+    "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\TiengAnh.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Downloads\\TiengAnh\\TiengAnh\\TiengAnh.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\TiengAnh.csproj",
         "projectName": "TiengAnh",
-        "projectPath": "C:\\Users\\ASUS\\Downloads\\TiengAnh\\TiengAnh\\TiengAnh.csproj",
+        "projectPath": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\TiengAnh.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Downloads\\TiengAnh\\TiengAnh\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

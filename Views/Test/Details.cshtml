@@ -1,186 +1,48 @@
-@model TestModel
+@model TiengAnh.Models.KiemTra
+
 @{
-    ViewData["Title"] = Model.TestName;
+    ViewData["Title"] = "Chi tiết bài kiểm tra";
 }
 
-<!-- Test Detail Header -->
-<div class="container mt-5">
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Test")">Bài kiểm tra</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">@Model.TestName</li>
-                </ol>
-            </nav>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h1 class="card-title">@Model.TitleKt</h1>
         </div>
-    </div>
-
-    <div class="row align-items-center mb-5">
-        <div class="col-md-8">
-            <h1 class="display-5 fw-bold mb-3">@Model.TestName</h1>
-            <p class="lead">@Model.Description</p>
-            <div class="d-flex align-items-center mt-3">
-                <span class="badge badge-primary me-2">@Model.TotalQuestions câu hỏi</span>
-                <span class="badge badge-warning me-2">
-                    <i class="far fa-clock me-1"></i> @Model.Duration phút
-                </span>
-                <span class="level-badge level-@Model.Level.Replace("-", "")">@Model.Level</span>
-            </div>
-        </div>
-        <div class="col-md-4 text-end">
-            <img src="@Model.ImageUrl" alt="@Model.TestName" class="img-fluid rounded-circle shadow-sm animate__animated animate__pulse" 
-                 onerror="this.src='/images/test/default.jpg';this.onerror='';" style="width: 180px; height: 180px; object-fit: cover;" />
-        </div>
-    </div>
-
-    <!-- Test Overview Card -->
-    <div class="row mb-5">
-        <div class="col-12">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h3 class="card-title fw-bold mb-4"><i class="fas fa-info-circle text-primary me-2"></i> Thông tin bài kiểm tra</h3>
-                    
-                    <div class="row g-4">
-                        <div class="col-md-4">
-                            <div class="d-flex align-items-center">
-                                <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-tasks text-primary"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-1">Số câu hỏi</h5>
-                                    <p class="mb-0 fw-bold">@Model.TotalQuestions câu</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                            <div class="d-flex align-items-center">
-                                <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-clock text-primary"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-1">Thời gian làm bài</h5>
-                                    <p class="mb-0 fw-bold">@Model.Duration phút</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                            <div class="d-flex align-items-center">
-                                <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-star text-primary"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-1">Trình độ</h5>
-                                    <p class="mb-0 fw-bold">@Model.Level</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Test Instructions -->
-    <div class="row mb-5">
-        <div class="col-md-8">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-body p-4">
-                    <h3 class="card-title fw-bold mb-4"><i class="fas fa-list-ol text-primary me-2"></i> Hướng dẫn làm bài</h3>
-                    
-                    <ol class="list-group list-group-numbered mb-4">
-                        <li class="list-group-item border-0 ps-0 pb-3">Bài kiểm tra gồm @Model.TotalQuestions câu hỏi và có thời gian @Model.Duration phút để hoàn thành.</li>
-                        <li class="list-group-item border-0 ps-0 pb-3">Đọc kỹ từng câu hỏi và chọn đáp án phù hợp nhất.</li>
-                        <li class="list-group-item border-0 ps-0 pb-3">Khi chọn xong, nhấn "Câu tiếp theo" để tiếp tục.</li>
-                        <li class="list-group-item border-0 ps-0 pb-3">Bạn có thể quay lại các câu hỏi trước đó để xem lại hoặc thay đổi câu trả lời.</li>
-                        <li class="list-group-item border-0 ps-0 pb-3">Khi hoàn thành tất cả câu hỏi, nhấn "Nộp bài" để kết thúc bài kiểm tra.</li>
-                    </ol>
-                    
-                    <div class="alert alert-warning">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        <strong>Lưu ý:</strong> Bạn sẽ không thể quay lại bài kiểm tra sau khi nộp bài.
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-body p-4">
-                    <h3 class="card-title fw-bold mb-4"><i class="fas fa-trophy text-primary me-2"></i> Điểm số và đánh giá</h3>
-                    
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <i class="fas fa-check-circle text-success me-2"></i>
-                            <strong>90-100%:</strong> Xuất sắc
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-check-circle text-success me-2"></i>
-                            <strong>75-89%:</strong> Tốt
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-check-circle text-warning me-2"></i>
-                            <strong>60-74%:</strong> Khá
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-check-circle text-warning me-2"></i>
-                            <strong>40-59%:</strong> Trung bình
-                        </li>
-                        <li>
-                            <i class="fas fa-times-circle text-danger me-2"></i>
-                            <strong>0-39%:</strong> Cần cải thiện
-                        </li>
-                    </ul>
-                    
-                    <p class="mt-4 mb-0">Kết quả sẽ được hiển thị ngay sau khi nộp bài.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Start Test Button -->
-    <div class="text-center mb-5">
-        <button type="button" class="btn btn-primary btn-lg px-5 py-3" data-bs-toggle="modal" data-bs-target="#startTestModal">
-            <i class="fas fa-play-circle me-2"></i> Bắt đầu làm bài
-        </button>
-    </div>
-</div>
-
-<!-- Start Test Modal -->
-<div class="modal fade" id="startTestModal" tabindex="-1" aria-labelledby="startTestModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <h5 class="modal-title fw-bold" id="startTestModalLabel">Bắt đầu bài kiểm tra</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Bạn sắp bắt đầu bài kiểm tra <strong>@Model.TestName</strong>.</p>
-                <p>Thời gian làm bài là <strong>@Model.Duration phút</strong> và sẽ bắt đầu tính ngay khi bạn nhấn "Bắt đầu".</p>
-                <p>Bạn đã sẵn sàng chưa?</p>
-            </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Để sau</button>
-                <button type="button" class="btn btn-primary" onclick="startTest()">Bắt đầu ngay</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    <script>
-        function startTest() {
-            // Đóng modal
-            $('#startTestModal').modal('hide');
+        <div class="card-body">
+            <p>
+                <strong>Chủ đề:</strong> @Model.IdCdNavigation.NameCd
+            </p>
             
-            // Giả lập chuyển hướng đến trang làm bài kiểm tra
-            // Trong ứng dụng thực tế, đây sẽ là một URL thực đến trang làm bài
-            setTimeout(() => {
-                window.location.href = "/Test/Take/@Model.TestID";
-            }, 500);
-        }
-    </script>
-}
+            <p>
+                <strong>Mô tả chủ đề:</strong> @Model.IdCdNavigation.DiscriptionCd
+            </p>
+            
+            <p>
+                <strong>Loại bài kiểm tra:</strong> Trắc nghiệm
+            </p>
+            
+            <p>
+                <strong>Hình thức:</strong> 10 câu trắc nghiệm mỗi câu có 4 lựa chọn
+            </p>
+            
+            <p>
+                <strong>Thời gian làm bài:</strong> Không giới hạn
+            </p>
+            
+            <p>
+                <strong>Đánh giá:</strong> Điểm số từ 0-100
+            </p>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Quay lại
+                </a>
+                <a asp-action="Take" asp-route-id="@Model.IdKt" class="btn btn-success">
+                    <i class="bi bi-pencil-square"></i> Bắt đầu làm bài
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

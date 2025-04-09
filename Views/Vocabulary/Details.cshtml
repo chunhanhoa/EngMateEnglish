@@ -146,6 +146,7 @@
 </div>
 
 @section Scripts {
+    <script src="~/js/progress-tracker.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Setup audio button
@@ -166,6 +167,42 @@
                     audio.onended = () => {
                         this.innerHTML = '<i class="fas fa-volume-up fa-lg"></i>';
                     };
+                });
+            }
+
+            // Auto-track vocabulary view after 10 seconds
+            setTimeout(function() {
+                // Lưu tiến trình khi người dùng xem từ vựng trong 10 giây
+                ProgressTracker.saveProgress(
+                    @Model.ID_TV, 
+                    'TuVung', 
+                    100, 
+                    @Model.ID_CD
+                );
+            }, 10000);
+            
+            // Favorites button
+            const favoriteBtn = document.querySelector('.favorite-button');
+            if (favoriteBtn) {
+                favoriteBtn.addEventListener('click', function() {
+                    ProgressTracker.toggleFavorite(@Model.ID_TV, 'TuVung')
+                        .then(response => {
+                            if (response.success) {
+                                const isFavorite = response.isFavorite;
+                                // Update UI
+                                favoriteBtn.innerHTML = isFavorite ? 
+                                    '<i class="fas fa-heart"></i> Đã yêu thích' : 
+                                    '<i class="far fa-heart"></i> Yêu thích';
+                                    
+                                favoriteBtn.classList.toggle('btn-danger', isFavorite);
+                                favoriteBtn.classList.toggle('btn-outline-danger', !isFavorite);
+                                
+                                // Show feedback
+                                const toast = new bootstrap.Toast(document.getElementById('favoriteToast'));
+                                document.getElementById('toastMessage').textContent = response.message;
+                                toast.show();
+                            }
+                        });
                 });
             }
         });

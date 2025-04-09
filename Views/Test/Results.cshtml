@@ -1,0 +1,181 @@
+@model TiengAnh.Models.KetQuaKiemTra
+
+@{
+    ViewData["Title"] = "Kết quả bài kiểm tra";
+    
+    // Kiểm tra Model có null hay không trước khi tính toán
+    if (Model == null)
+    {
+        <div class="container mt-4">
+            <div class="alert alert-danger">
+                <h4 class="alert-heading">Lỗi!</h4>
+                <p>Không tìm thấy kết quả bài kiểm tra hoặc dữ liệu không hợp lệ.</p>
+                <hr>
+                <p class="mb-0">
+                    <a asp-action="Index" asp-controller="Test" class="btn btn-outline-primary">
+                        <i class="bi bi-list-ul"></i> Quay lại danh sách bài kiểm tra
+                    </a>
+                </p>
+            </div>
+        </div>
+        return;
+    }
+    
+    // Kiểm tra các thuộc tính con
+    if (Model.IdKtNavigation == null)
+    {
+        <div class="container mt-4">
+            <div class="alert alert-danger">
+                <h4 class="alert-heading">Lỗi!</h4>
+                <p>Không tìm thấy thông tin bài kiểm tra hoặc dữ liệu không đầy đủ.</p>
+                <hr>
+                <p class="mb-0">
+                    <a asp-action="Index" asp-controller="Test" class="btn btn-outline-primary">
+                        <i class="bi bi-list-ul"></i> Quay lại danh sách bài kiểm tra
+                    </a>
+                </p>
+            </div>
+        </div>
+        return;
+    }
+    
+    // Calculate statistics with null check
+    int totalQuestions = Model.ChiTietKetQuas?.Count ?? 0;
+    int correctAnswers = Model.ChiTietKetQuas?.Count(a => a.IsCorrectCtkq == true) ?? 0;
+    int wrongAnswers = totalQuestions - correctAnswers;
+}
+
+<div class="container mt-4">
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            <h1 class="display-6 mb-0">Kết quả bài kiểm tra</h1>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h3>@Model.IdKtNavigation.TitleKt</h3>
+                    <p>Chủ đề: @(Model.IdKtNavigation.IdCdNavigation?.NameCd ?? "Không xác định")</p>
+                    <p>Thời gian hoàn thành: @(Model.FinishTimeKq?.ToString("dd/MM/yyyy HH:mm:ss") ?? "Không xác định")</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <div class="display-1 fw-bold 
+                            @(Model.ScoreKq >= 80 ? "text-success" : 
+                               Model.ScoreKq >= 60 ? "text-primary" : 
+                               Model.ScoreKq >= 40 ? "text-warning" : "text-danger")">
+                            @Model.ScoreKq
+                        </div>
+                        <p class="text-muted">điểm</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light h-100">
+                        <div class="card-body">
+                            <h4 class="text-primary">@totalQuestions</h4>
+                            <p class="mb-0">Tổng số câu</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light h-100">
+                        <div class="card-body">
+                            <h4 class="text-success">@correctAnswers</h4>
+                            <p class="mb-0">Số câu đúng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light h-100">
+                        <div class="card-body">
+                            <h4 class="text-danger">@wrongAnswers</h4>
+                            <p class="mb-0">Số câu sai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="mb-3">Chi tiết bài làm</h4>
+            
+            <div class="accordion" id="resultAccordion">
+                @{
+                    int questionNumber = 1;
+                    foreach (var answer in Model.ChiTietKetQuas?.OrderBy(a => a.IdCh) ?? Enumerable.Empty<TiengAnh.Models.ChiTietKetQua>())
+                    {
+                        <div class="accordion-item mb-2 border">
+                            <h2 class="accordion-header" id="heading@(answer.IdCh)">
+                                <button class="accordion-button collapsed @(answer.IsCorrectCtkq == true ? "bg-success bg-opacity-10" : "bg-danger bg-opacity-10")" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#collapse@(answer.IdCh)" 
+                                        aria-expanded="false" 
+                                        aria-controls="collapse@(answer.IdCh)">
+                                    <div class="d-flex align-items-center w-100">
+                                        <span class="me-3">Câu @(questionNumber)</span>
+                                        @if (answer.IsCorrectCtkq == true)
+                                        {
+                                            <span class="badge bg-success ms-auto">Đúng</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger ms-auto">Sai</span>
+                                        }
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="collapse@(answer.IdCh)" class="accordion-collapse collapse" aria-labelledby="heading@(answer.IdCh)" data-bs-parent="#resultAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>@answer.IdChNavigation.QuestionCh</strong></p>
+                                    
+                                    <div class="mb-1 @(answer.UserAnswerCtkq == "A" && answer.IsCorrectCtkq != true ? "text-danger" : (answer.IdChNavigation.AnswerCh == "A" ? "text-success" : ""))">
+                                        A. @answer.IdChNavigation.OptionA
+                                        @if (answer.UserAnswerCtkq == "A") { <i class="bi bi-check-circle-fill ms-2"></i> }
+                                        @if (answer.IdChNavigation.AnswerCh == "A") { <i class="bi bi-star-fill ms-2"></i> }
+                                    </div>
+                                    
+                                    <div class="mb-1 @(answer.UserAnswerCtkq == "B" && answer.IsCorrectCtkq != true ? "text-danger" : (answer.IdChNavigation.AnswerCh == "B" ? "text-success" : ""))">
+                                        B. @answer.IdChNavigation.OptionB
+                                        @if (answer.UserAnswerCtkq == "B") { <i class="bi bi-check-circle-fill ms-2"></i> }
+                                        @if (answer.IdChNavigation.AnswerCh == "B") { <i class="bi bi-star-fill ms-2"></i> }
+                                    </div>
+                                    
+                                    <div class="mb-1 @(answer.UserAnswerCtkq == "C" && answer.IsCorrectCtkq != true ? "text-danger" : (answer.IdChNavigation.AnswerCh == "C" ? "text-success" : ""))">
+                                        C. @answer.IdChNavigation.OptionC
+                                        @if (answer.UserAnswerCtkq == "C") { <i class="bi bi-check-circle-fill ms-2"></i> }
+                                        @if (answer.IdChNavigation.AnswerCh == "C") { <i class="bi bi-star-fill ms-2"></i> }
+                                    </div>
+                                    
+                                    <div class="mb-1 @(answer.UserAnswerCtkq == "D" && answer.IsCorrectCtkq != true ? "text-danger" : (answer.IdChNavigation.AnswerCh == "D" ? "text-success" : ""))">
+                                        D. @answer.IdChNavigation.OptionD
+                                        @if (answer.UserAnswerCtkq == "D") { <i class="bi bi-check-circle-fill ms-2"></i> }
+                                        @if (answer.IdChNavigation.AnswerCh == "D") { <i class="bi bi-star-fill ms-2"></i> }
+                                    </div>
+                                    
+                                    @if(!String.IsNullOrEmpty(answer.IdChNavigation.ExplanationBt))
+                                    {
+                                        <div class="mt-2 p-2 bg-light">
+                                            <p class="mb-0"><strong>Giải thích:</strong> @answer.IdChNavigation.ExplanationBt</p>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        questionNumber++;
+                    }
+                }
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-primary">
+                    <i class="bi bi-list-ul"></i> Danh sách bài kiểm tra
+                </a>
+                <a asp-action="Take" asp-route-id="@Model.IdKt" class="btn btn-primary">
+                    <i class="bi bi-arrow-clockwise"></i> Làm lại bài kiểm tra
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
