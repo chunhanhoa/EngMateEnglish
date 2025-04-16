@@ -677,8 +677,8 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test15\TiengAnh\obj\
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\Test15\TiengAnh\obj\Debug\net9.0\ref\TiengAnh.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\appsettings.json
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.staticwebassets.endpoints.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.staticwebassets.runtime.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.staticwebassets.endpoints.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.exe
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.deps.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.runtimeconfig.json

@@ -21,6 +21,34 @@
             text-align: left;
         }
         
+        /* Style cho dropdown ngôn ngữ */
+        .language-selector .dropdown-toggle {
+            border-radius: 20px;
+            padding: 0.375rem 1rem;
+        }
+        
+        .language-selector .dropdown-toggle:hover {
+            background-color: var(--primary-soft);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .language-selector .dropdown-item.active {
+            background-color: var(--primary-soft);
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .language-selector .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        /* Style cho thông báo thay đổi ngôn ngữ */
+        .language-notification {
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+        
         /* Cải thiện khoảng cách giữa các mục menu và ngăn không cho xuống dòng */
         .navbar-nav {
             flex-wrap: nowrap; /* Ngăn các mục menu xuống dòng */
@@ -161,9 +189,19 @@
                         </li>
                     </ul>
                     <div class="d-flex align-items-center">
-                       
-
-                        <!-- Đăng nhập/Đăng ký hoặc User Profile -->
+                        <!-- Thêm menu dropdown ngôn ngữ vào đây, trước phần login/username -->
+                        <div class="language-selector me-2">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-globe me-1"></i> <span class="language-text">Tiếng Việt</span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                    <li><a class="dropdown-item active" href="#"><i class="fas fa-check me-1"></i> Tiếng Việt</a></li>
+                                    <li><a class="dropdown-item" href="#">English</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
                         <div class="user-menu">
                             @if (User.Identity?.IsAuthenticated ?? false)
                             {
@@ -264,12 +302,36 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/animations.js" asp-append-version="true"></script>
     
-    <!-- Tắt mô phỏng đăng nhập vì chúng ta đã có xác thực thực sự -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Cải thiện xử lý chuyển đổi ngôn ngữ nếu cần
+            // Xử lý chức năng chuyển ngôn ngữ
             const languageItems = document.querySelectorAll('#languageDropdown + .dropdown-menu .dropdown-item');
             if (languageItems && languageItems.length > 0) {
+                // Khôi phục ngôn ngữ đã chọn từ localStorage nếu có, ngược lại sử dụng "Tiếng Việt" làm mặc định
+                const savedLanguage = localStorage.getItem('appLanguage') || 'Tiếng Việt';
+                
+                // Lưu ngôn ngữ mặc định nếu không có gì trong localStorage
+                if (!localStorage.getItem('appLanguage')) {
+                    localStorage.setItem('appLanguage', 'Tiếng Việt');
+                }
+                
+                const languageText = document.querySelector('.language-text');
+                if (languageText) {
+                    languageText.textContent = savedLanguage;
+                }
+                
+                // Cập nhật trạng thái active cho ngôn ngữ đã chọn
+                languageItems.forEach(function(item) {
+                    item.classList.remove('active');
+                    item.innerHTML = item.textContent.trim();
+                    
+                    if (item.textContent.trim() === savedLanguage) {
+                        item.classList.add('active');
+                        item.innerHTML = '<i class="fas fa-check me-1"></i> ' + savedLanguage;
+                    }
+                });
+                
+                // Thêm sự kiện click cho các mục ngôn ngữ
                 languageItems.forEach(function(link) {
                     link.addEventListener('click', function() {
                         if (!this.classList.contains('active')) {
@@ -279,7 +341,7 @@
                             // Cập nhật UI để hiển thị ngôn ngữ đã chọn
                             const languageText = document.querySelector('.language-text');
                             if (languageText) {
-                                languageText.textContent = this.textContent.trim().replace(/^✓\s*/, '');
+                                languageText.textContent = this.textContent.trim();
                             }
                             
                             // Đánh dấu ngôn ngữ hiện tại là active
@@ -289,9 +351,43 @@
                             });
                             this.classList.add('active');
                             this.innerHTML = '<i class="fas fa-check me-1"></i> ' + this.textContent.trim();
+                            
+                            // Tạm thời hiển thị thông báo thay đổi ngôn ngữ
+                            showLanguageChangeNotification(this.textContent.trim());
                         }
                     });
                 });
+            }
+            
+            // Hàm hiển thị thông báo thay đổi ngôn ngữ
+            function showLanguageChangeNotification(language) {
+                // Tạo phần tử thông báo
+                const notification = document.createElement('div');
+                notification.className = 'language-notification';
+                notification.innerHTML = `<div class="alert alert-success alert-dismissible fade show">
+                    <i class="fas fa-check-circle me-2"></i> Đã chuyển sang ${language}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+                
+                // Style cho thông báo
+                notification.style.position = 'fixed';
+                notification.style.top = '80px';
+                notification.style.right = '20px';
+                notification.style.zIndex = '9999';
+                
+                // Thêm vào body
+                document.body.appendChild(notification);
+                
+                // Tự động ẩn sau 3 giây
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 500);
+                }, 3000);
             }
         });
     </script>
