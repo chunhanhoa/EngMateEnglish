@@ -19,7 +19,7 @@ public partial class CauHoiKt
 
     public string AnswerCh { get; set; } = null!;
 
-    public string? ExplanationBt { get; set; } // Đổi tên từ ExplanationCh thành ExplanationBt để khớp với cơ sở dữ liệu
+    public string? ExplanationCh { get; set; } // Đổi tên từ ExplanationBt thành ExplanationCh
 
     public int IdKt { get; set; }
 

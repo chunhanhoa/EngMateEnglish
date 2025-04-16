@@ -60,43 +60,9 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/progress-tracker.js"></script>
-    <script>
-        $(document).ready(function() {
-            console.log("Grammar details page loaded");
-            
-            // Auto-track grammar view after 30 seconds
-            setTimeout(function() {
-                // Lưu tiến trình khi người dùng xem ngữ pháp trong 30 giây
-                ProgressTracker.saveProgress(
-                    @Model.ID_NP, 
-                    'NguPhap', 
-                    100, 
-                    @Model.ID_CD
-                );
-            }, 30000);
-            
-            // Favorites button
-            $('.favorite-button').on('click', function() {
-                ProgressTracker.toggleFavorite(@Model.ID_NP, 'NguPhap')
-                    .then(response => {
-                        if (response.success) {
-                            const isFavorite = response.isFavorite;
-                            // Update UI
-                            $(this).html(isFavorite ? 
-                                '<i class="fas fa-heart"></i> Đã yêu thích' : 
-                                '<i class="far fa-heart"></i> Yêu thích');
-                                
-                            $(this).toggleClass('btn-danger', isFavorite);
-                            $(this).toggleClass('btn-outline-danger', !isFavorite);
-                            
-                            // Show feedback
-                            const toast = new bootstrap.Toast($('#favoriteToast')[0]);
-                            $('#toastMessage').text(response.message);
-                            toast.show();
-                        }
-                    });
-            });
-        });
-    </script>
+<script>
+    $(document).ready(function() {
+        console.log("Grammar details page loaded");
+    });
+</script>
 }

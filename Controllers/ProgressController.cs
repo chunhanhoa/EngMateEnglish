@@ -343,61 +343,6 @@ namespace TiengAnh.Controllers
             }
         }
 
-        // API endpoint để lưu tiến trình học tập
-        [HttpPost]
-        public async Task<IActionResult> SaveProgress([FromBody] SaveProgressRequest request)
-        {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!User.Identity?.IsAuthenticated ?? false)
-            {
-                return Json(new { success = false, message = "Cần đăng nhập để lưu tiến trình" });
-            }
-
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
-            if (!int.TryParse(userIdStr, out int userId))
-            {
-                return Json(new { success = false, message = "Không xác định được người dùng" });
-            }
-
-            try
-            {
-                // Kiểm tra xem tiến trình đã tồn tại chưa
-                var existingProgress = await _context.TienTrinhHocs
-                    .FirstOrDefaultAsync(t => t.IdTk == userId && t.TypeTth == request.Type && t.IdTypeTth == request.ItemId);
-
-                if (existingProgress != null)
-                {
-                    // Cập nhật tiến trình hiện tại
-                    existingProgress.LastTimeStudyTth = DateTime.Now;
-                    existingProgress.ScoreTth = request.Score;
-                    _context.TienTrinhHocs.Update(existingProgress);
-                }
-                else
-                {
-                    // Tạo tiến trình mới
-                    var newProgress = new TienTrinhHoc
-                    {
-                        IdTk = userId,
-                        IdTypeTth = request.ItemId,
-                        TypeTth = request.Type,
-                        LastTimeStudyTth = DateTime.Now,
-                        ScoreTth = request.Score,
-                        IdCd = request.TopicId
-                    };
-                    _context.TienTrinhHocs.Add(newProgress);
-                }
-
-                await _context.SaveChangesAsync();
-                return Json(new { success = true, message = "Đã lưu tiến trình học tập" });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Lỗi khi lưu tiến trình: {@Request}", request);
-                return Json(new { success = false, message = "Có lỗi xảy ra khi lưu tiến trình" });
-            }
-        }
-
         private async Task<List<CompletedTopicModel>> GetCompletedTopicsAsync(int userId)
         {
             var result = new List<CompletedTopicModel>();

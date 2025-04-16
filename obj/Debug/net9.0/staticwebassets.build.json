@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+EzHPFZNL9X6olHjWNfQ3ZAgMWZMNFJpvyErH48IEIs=",
+  "Hash": "dLsnOP49srved9CADPXyPC38KdIF4FV8Z/tTee8ZPQU=",
   "Source": "TiengAnh",
   "BasePath": "_content/TiengAnh",
   "Mode": "Default",
@@ -456,27 +456,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
-    },
-    {
-      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\dufysslt1n-1vfwnwp8a1.gz",
-      "SourceId": "TiengAnh",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\",
-      "BasePath": "_content/TiengAnh",
-      "RelativePath": "js/progress-tracker#[.{fingerprint=1vfwnwp8a1}]?.js.gz",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\progress-tracker.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "Fingerprint": "tq1njhjh8j",
-      "Integrity": "la8wu9t5W8d/AEmVCkRl8eTeUUExbQcr6Cwl6+sPQOo=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\progress-tracker.js"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\dyc2r4ba94-h1s4sie4z3.gz",
@@ -1382,27 +1361,6 @@
       "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\wwtxiutthd-u2c9ea34b8.gz",
-      "SourceId": "TiengAnh",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\",
-      "BasePath": "_content/TiengAnh",
-      "RelativePath": "css/test#[.{fingerprint=u2c9ea34b8}]?.css.gz",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\test.css",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "Fingerprint": "r9c52hspyn",
-      "Integrity": "oQwco/FeH8CrMhYXtE0g672KKnrPmzq6CH9ztFfJv8U=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\test.css"
-    },
-    {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\xo1ms1dpnw-khv3u5hwcm.gz",
       "SourceId": "TiengAnh",
       "SourceType": "Discovered",
@@ -1613,27 +1571,6 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\test.css",
-      "SourceId": "TiengAnh",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
-      "BasePath": "_content/TiengAnh",
-      "RelativePath": "css/test#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "u2c9ea34b8",
-      "Integrity": "ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\test.css"
-    },
-    {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\favicon.ico",
       "SourceId": "TiengAnh",
       "SourceType": "Discovered",
@@ -1800,27 +1737,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\animations.js"
-    },
-    {
-      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\progress-tracker.js",
-      "SourceId": "TiengAnh",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
-      "BasePath": "_content/TiengAnh",
-      "RelativePath": "js/progress-tracker#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "1vfwnwp8a1",
-      "Integrity": "s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\progress-tracker.js"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\site.js",
@@ -4021,304 +3937,6 @@
       ]
     },
     {
-      "Route": "css/test.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\wwtxiutthd-u2c9ea34b8.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001912045889"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "522"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oQwco/FeH8CrMhYXtE0g672KKnrPmzq6CH9ztFfJv8U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 03:39:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE="
-        }
-      ]
-    },
-    {
-      "Route": "css/test.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\test.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1351"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 03:39:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE="
-        }
-      ]
-    },
-    {
-      "Route": "css/test.css.gz",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\wwtxiutthd-u2c9ea34b8.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "522"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oQwco/FeH8CrMhYXtE0g672KKnrPmzq6CH9ztFfJv8U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 03:39:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-oQwco/FeH8CrMhYXtE0g672KKnrPmzq6CH9ztFfJv8U="
-        }
-      ]
-    },
-    {
-      "Route": "css/test.u2c9ea34b8.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\wwtxiutthd-u2c9ea34b8.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001912045889"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "522"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oQwco/FeH8CrMhYXtE0g672KKnrPmzq6CH9ztFfJv8U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 03:39:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "u2c9ea34b8"
-        },
-        {
-          "Name": "label",
-          "Value": "css/test.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE="
-        }
-      ]
-    },
-    {
-      "Route": "css/test.u2c9ea34b8.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\test.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1351"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 03:39:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "u2c9ea34b8"
-        },
-        {
-          "Name": "label",
-          "Value": "css/test.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ZgsZ0G/rRpcCqLC3VJhOXsAUd/0Jqm4k6r76XcItGpE="
-        }
-      ]
-    },
-    {
-      "Route": "css/test.u2c9ea34b8.css.gz",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\wwtxiutthd-u2c9ea34b8.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "522"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oQwco/FeH8CrMhYXtE0g672KKnrPmzq6CH9ztFfJv8U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 03:39:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "u2c9ea34b8"
-        },
-        {
-          "Name": "label",
-          "Value": "css/test.css.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-oQwco/FeH8CrMhYXtE0g672KKnrPmzq6CH9ztFfJv8U="
-        }
-      ]
-    },
-    {
       "Route": "favicon.9lkn66e9uq.ico",
       "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\rx9f2lwypc-9lkn66e9uq.gz",
       "Selectors": [
@@ -5619,304 +5237,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-1pzhSiWX1g7jWoqtDtu4QNkJJPNFl57errfzrRGPZRY="
-        }
-      ]
-    },
-    {
-      "Route": "js/progress-tracker.1vfwnwp8a1.js",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\dufysslt1n-1vfwnwp8a1.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001490312966"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "670"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"la8wu9t5W8d/AEmVCkRl8eTeUUExbQcr6Cwl6+sPQOo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:12:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "1vfwnwp8a1"
-        },
-        {
-          "Name": "label",
-          "Value": "js/progress-tracker.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I="
-        }
-      ]
-    },
-    {
-      "Route": "js/progress-tracker.1vfwnwp8a1.js",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\progress-tracker.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2406"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:12:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "1vfwnwp8a1"
-        },
-        {
-          "Name": "label",
-          "Value": "js/progress-tracker.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I="
-        }
-      ]
-    },
-    {
-      "Route": "js/progress-tracker.1vfwnwp8a1.js.gz",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\dufysslt1n-1vfwnwp8a1.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "670"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"la8wu9t5W8d/AEmVCkRl8eTeUUExbQcr6Cwl6+sPQOo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:12:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "1vfwnwp8a1"
-        },
-        {
-          "Name": "label",
-          "Value": "js/progress-tracker.js.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-la8wu9t5W8d/AEmVCkRl8eTeUUExbQcr6Cwl6+sPQOo="
-        }
-      ]
-    },
-    {
-      "Route": "js/progress-tracker.js",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\dufysslt1n-1vfwnwp8a1.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001490312966"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "670"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"la8wu9t5W8d/AEmVCkRl8eTeUUExbQcr6Cwl6+sPQOo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:12:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I="
-        }
-      ]
-    },
-    {
-      "Route": "js/progress-tracker.js",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\progress-tracker.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2406"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:12:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-s2AO/xCyNCLrkWFrIL5/b8zf57HI4758VUhExKD+l6I="
-        }
-      ]
-    },
-    {
-      "Route": "js/progress-tracker.js.gz",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\dufysslt1n-1vfwnwp8a1.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "670"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"la8wu9t5W8d/AEmVCkRl8eTeUUExbQcr6Cwl6+sPQOo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:12:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-la8wu9t5W8d/AEmVCkRl8eTeUUExbQcr6Cwl6+sPQOo="
         }
       ]
     },
@@ -24205,7 +23525,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24258,7 +23578,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24295,7 +23615,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24342,7 +23662,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24403,7 +23723,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24448,7 +23768,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24503,7 +23823,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24564,7 +23884,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24609,7 +23929,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24664,7 +23984,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24717,7 +24037,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24754,7 +24074,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 04:24:03 GMT"
+          "Value": "Sun, 30 Mar 2025 03:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
