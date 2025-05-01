@@ -1,0 +1,120 @@
+@model TiengAnh.Models.ViewModels.UserCreateViewModel
+@{
+    ViewData["Title"] = "Thêm người dùng mới";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("ManageUsers", "Account")">Quản lý người dùng</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thêm người dùng mới</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="fw-bold mb-4">Thêm người dùng mới</h3>
+                    
+                    <form asp-action="CreateUser" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="FullName" class="form-label">Họ và tên</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên" />
+                            </div>
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input asp-for="Email" class="form-control" placeholder="Nhập địa chỉ email" />
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Username" class="form-label">Tên đăng nhập</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+                            </div>
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="Password" class="form-label">Mật khẩu</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input asp-for="Password" class="form-control" placeholder="Nhập mật khẩu" />
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="ConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Nhập lại mật khẩu" />
+                                </div>
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label asp-for="Role" class="form-label">Vai trò</label>
+                                <select asp-for="Role" class="form-select">
+                                    <option value="User">User</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                                <span asp-validation-for="Role" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Level" class="form-label">Trình độ</label>
+                                <select asp-for="Level" class="form-select">
+                                    <option value="A1">A1</option>
+                                    <option value="A2">A2</option>
+                                    <option value="B1">B1</option>
+                                    <option value="B2">B2</option>
+                                    <option value="C1">C1</option>
+                                    <option value="C2">C2</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="Points" class="form-label">Điểm</label>
+                                <input asp-for="Points" class="form-control" type="number" min="0" />
+                                <span asp-validation-for="Points" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <a href="@Url.Action("ManageUsers", "Account")" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-1"></i> Hủy
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i> Tạo người dùng
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

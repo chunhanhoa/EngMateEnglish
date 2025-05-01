@@ -50,8 +50,8 @@
                             </div>
                             
                             <div class="mt-4">
-                                <button class="btn btn-outline-primary me-2 toggle-favorite" data-id="@Model.ID_TV" data-type="TuVung">
-                                    <i class="@(ViewBag.IsFavorite ? "fas" : "far") fa-heart me-1"></i> Yêu thích
+                                <button class="btn btn-outline-primary me-2 favorite-btn" data-id="@Model.ID_TV">
+                                    <i class="far fa-heart me-1"></i> Yêu thích
                                 </button>
                                 <button class="btn btn-outline-primary">
                                     <i class="fas fa-share-alt me-1"></i> Chia sẻ
@@ -170,74 +170,72 @@
             }
         });
 
-        // Xử lý yêu thích
-        $('.toggle-favorite').on('click', function() {
-            const button = $(this);
-            const id = button.data('id');
-            const type = button.data('type');
-            
-            $.ajax({
-                url: '@Url.Action("ToggleFavorite", "Progress")',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify({ itemId: id, itemType: type }),
-                success: function(response) {
-                    if (response.success) {
-                        // Thay đổi biểu tượng trái tim
-                        const icon = button.find('i');
-                        if (response.isFavorite) {
-                            icon.removeClass('far').addClass('fas');
-                            showToast('Đã thêm vào mục yêu thích', 'success');
-                        } else {
-                            icon.removeClass('fas').addClass('far');
-                            showToast('Đã xóa khỏi mục yêu thích', 'info');
+        // Xử lý nút yêu thích
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = parseInt(this.dataset.id, 10);
+                
+                window.progressTracker.toggleFavorite(id, 'Vocabulary')
+                    .then(data => {
+                        // Cập nhật giao diện
+                        if (data.success) {
+                            // Đổi icon nếu thành công
+                            const icon = this.querySelector('i');
+                            if (icon.classList.contains('far')) {
+                                icon.classList.replace('far', 'fas');
+                                this.setAttribute('title', 'Đã thêm vào yêu thích');
+                                showNotification('Đã thêm vào mục yêu thích', 'success');
+                            } else {
+                                icon.classList.replace('fas', 'far');
+                                this.setAttribute('title', 'Thêm vào yêu thích');
+                                showNotification('Đã xóa khỏi mục yêu thích', 'info');
+                            }
                         }
-                    } else {
-                        showToast(response.message, 'error');
-                    }
-                },
-                error: function() {
-                    showToast('Đã xảy ra lỗi khi cập nhật yêu thích', 'error');
-                }
+                    });
             });
         });
         
-        // Hiển thị toast thông báo
-        function showToast(message, type) {
-            // Loại bỏ toast cũ nếu có
-            $('.toast-container').remove();
+        // Gửi cập nhật tiến độ khi hoàn thành từ vựng
+        function markAsCompleted() {
+            const vocabularyId = @Model.ID_TV;
+            const vocabularyTitle = "@Model.Word_TV";
+            const topicId = @Model.ID_CD;
+            const topicName = "@Model.TopicName";
             
-            // Xác định màu sắc dựa trên loại
-            let bgColor = 'bg-success';
-            if (type === 'error') bgColor = 'bg-danger';
-            if (type === 'info') bgColor = 'bg-info';
-            
-            // Tạo toast mới
-            const toast = $(`
-                <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
-                    <div class="toast ${bgColor} text-white" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-body d-flex align-items-center">
-                            <i class="${type === 'error' ? 'fas fa-times-circle' : 'fas fa-check-circle'} me-2"></i>
-                            ${message}
-                            <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                    </div>
-                </div>
-            `);
-            
-            $('body').append(toast);
-            
-            // Hiển thị toast
-            const toastEl = new bootstrap.Toast(toast.find('.toast')[0], {
-                autohide: true,
-                delay: 3000
+            window.progressTracker.updateProgress({
+                type: 'Vocabulary',
+                title: vocabularyTitle,
+                score: 100,
+                pointsEarned: 5,
+                topicId: topicId,
+                topicName: topicName,
+                completionPercentage: 100
+            }).then(data => {
+                if (data.success) {
+                    showNotification('Đã cập nhật tiến độ học tập', 'success');
+                }
             });
-            toastEl.show();
+        }
+        
+        // Hiển thị thông báo
+        function showNotification(message, type) {
+            // Tạo phần tử thông báo
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type} notification-toast position-fixed`;
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '9999';
+            notification.style.minWidth = '300px';
+            notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+            notification.innerHTML = message;
             
-            // Tự động xóa sau khi ẩn
-            toast.on('hidden.bs.toast', function() {
-                $(this).remove();
-            });
+            // Thêm vào body
+            document.body.appendChild(notification);
+            
+            // Tự động xóa sau 3 giây
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
         }
     </script>
 }

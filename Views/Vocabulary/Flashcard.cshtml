@@ -1,3 +1,4 @@
+@using TiengAnh.Extensions
 @model List<VocabularyModel>
 @{
     ViewData["Title"] = "Flashcard - " + ViewBag.Topic?.Name_CD ?? "Học từ vựng";
@@ -72,9 +73,12 @@
                                     <h2 class="vocabulary-title mb-3">@vocab.Word_TV</h2>
                                     <div class="d-flex justify-content-center align-items-center mb-4">
                                         <span class="badge bg-light text-dark me-2 part-of-speech">
-                                            @GetPartOfSpeechName(vocab.PartOfSpeech)
+                                            @FormatPartOfSpeech(vocab.PartOfSpeech ?? "")
                                         </span>
                                         <span class="level-badge level-@vocab.Level_TV">@vocab.Level_TV</span>
+                                    </div>
+                                    <div class="card-part-of-speech">
+                                        @Html.DisplayPartOfSpeech(vocab.PartOfSpeech ?? "")
                                     </div>
                                     <button class="audio-btn" data-word="@vocab.Word_TV">
                                         <i class="fas fa-volume-up"></i>
@@ -518,8 +522,11 @@
 }
 
 @functions {
-    public string GetPartOfSpeechName(string code)
+    public string FormatPartOfSpeech(string code)
     {
+        if (string.IsNullOrEmpty(code))
+            return string.Empty;
+            
         Dictionary<string, string> types = new Dictionary<string, string>
         {
             { "n", "Danh từ (Noun)" },

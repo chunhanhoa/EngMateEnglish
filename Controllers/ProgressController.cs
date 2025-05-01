@@ -1,470 +1,268 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;  // Add this namespace for Activity class
-using System.Security.Claims;
-using TiengAnh.Data;
+using System.Threading.Tasks;
 using TiengAnh.Models;
+using TiengAnh.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.Extensions.Logging;
 
 namespace TiengAnh.Controllers
 {
+    [Authorize] // Đảm bảo chỉ người dùng đăng nhập mới truy cập được
     public class ProgressController : Controller
     {
         private readonly ILogger<ProgressController> _logger;
-        private readonly HocTiengAnhContext _context;
+        private readonly ProgressRepository _progressRepository;
+        private readonly VocabularyRepository _vocabularyRepository;
+        private readonly GrammarRepository _grammarRepository;
 
-        public ProgressController(ILogger<ProgressController> logger, HocTiengAnhContext context)
+        public ProgressController(
+            ILogger<ProgressController> logger,
+            ProgressRepository progressRepository,
+            VocabularyRepository vocabularyRepository,
+            GrammarRepository grammarRepository)
         {
             _logger = logger;
-            _context = context;
+            _progressRepository = progressRepository;
+            _vocabularyRepository = vocabularyRepository;
+            _grammarRepository = grammarRepository;
         }
-
+        
         public async Task<IActionResult> Index()
         {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!User.Identity?.IsAuthenticated ?? false)
+            // Lấy ID của người dùng đăng nhập hiện tại từ Claims
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
             {
+                _logger.LogWarning("Không thể xác định người dùng đăng nhập");
                 return RedirectToAction("Login", "Account");
             }
 
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
+            // Lấy thông tin tiến độ của người dùng
+            var progress = await _progressRepository.GetByUserIdAsync(userId);
             
-            if (!int.TryParse(userIdStr, out int userId))
+            // Nếu chưa có dữ liệu tiến độ, tạo mới
+            if (progress == null)
             {
-                return NotFound();
-            }
-
-            // Lấy thông tin người dùng từ database
-            var dbUser = await _context.TaiKhoans
-                .FirstOrDefaultAsync(u => u.IdTk == userId);
-
-            if (dbUser == null)
-            {
-                return NotFound();
-            }
-
-            // Đếm số từ vựng đã học
-            var vocabularyCount = await _context.TuVungs.CountAsync();
-            var vocabularyLearned = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "TuVung");
-
-            // Đếm số ngữ pháp đã học
-            var grammarCount = await _context.NguPhaps.CountAsync();
-            var grammarLearned = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "NguPhap");
-
-            // Đếm số bài tập đã làm
-            var exerciseCount = await _context.BaiTaps.CountAsync();
-            var exercisesCompleted = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "BaiTap");
-                
-            // Tính phần trăm hoàn thành
-            var vocabularyPercentage = vocabularyCount > 0 ? (vocabularyLearned * 100) / vocabularyCount : 0;
-            var grammarPercentage = grammarCount > 0 ? (grammarLearned * 100) / grammarCount : 0;
-            var exercisePercentage = exerciseCount > 0 ? (exercisesCompleted * 100) / exerciseCount : 0;
-            
-            // Tạo model thống kê
-            var progressModel = new ProgressStatsModel
-            {
-                TotalVocabulary = vocabularyCount,
-                LearnedVocabulary = vocabularyLearned,
-                VocabularyPercentage = vocabularyPercentage,
-                
-                TotalGrammar = grammarCount,
-                LearnedGrammar = grammarLearned,
-                GrammarPercentage = grammarPercentage,
-                
-                TotalExercises = exerciseCount,
-                CompletedExercises = exercisesCompleted,
-                ExercisesPercentage = exercisePercentage,
-            };
-            
-            // Lấy các hoạt động gần đây
-            var recentActivities = await _context.TienTrinhHocs
-                .Where(t => t.IdTk == userId)
-                .OrderByDescending(t => t.LastTimeStudyTth)
-                .Take(10)
-                .Select(t => new LastCompletedItemModel
+                progress = new ProgressModel
                 {
-                    Id = t.IdTypeTth,
-                    Type = t.TypeTth ?? string.Empty,
-                    Title = t.TypeTth ?? string.Empty, // Sẽ được cập nhật bởi code phía dưới
-                    CompletedDate = t.LastTimeStudyTth,
-                    Score = 0 // Mặc định
-                })
-                .ToListAsync();
+                    UserId = userId,
+                    VocabularyProgress = 0,
+                    GrammarProgress = 0,
+                    ExerciseProgress = 0,
+                    TotalPoints = 0,
+                    Level = "A1", // Mặc định bắt đầu từ A1
+                    LastCompletedItems = new List<LastCompletedItemModel>(),
+                    CompletedTopics = new List<CompletedTopicModel>()
+                };
                 
-            // Cập nhật thông tin chi tiết cho các hoạt động
-            foreach (var activity in recentActivities)
-            {
-                if (activity.Type == "TuVung")
-                {
-                    var vocab = await _context.TuVungs
-                        .FirstOrDefaultAsync(v => v.IdTv == activity.Id);
-                    
-                    if (vocab != null)
-                    {
-                        activity.Title = vocab.WordTv ?? string.Empty;
-                    }
-                }
-                else if (activity.Type == "NguPhap")
-                {
-                    var grammar = await _context.NguPhaps
-                        .FirstOrDefaultAsync(g => g.IdNp == activity.Id);
-                    
-                    if (grammar != null)
-                    {
-                        activity.Title = grammar.TitleNp ?? string.Empty;
-                    }
-                }
+                // Lưu progress mới vào database
+                await _progressRepository.AddAsync(progress);
+                _logger.LogInformation($"Đã tạo dữ liệu tiến độ mới cho người dùng {userId}");
             }
             
-            progressModel.RecentActivities = recentActivities;
-            
-            // Lấy các chủ đề đã hoàn thành
-            var completedTopics = await GetCompletedTopicsAsync(userId);
-            progressModel.CompletedTopics = completedTopics;
-            
-            return View(progressModel);
+            return View(progress);
         }
-
+        
         public async Task<IActionResult> Favorites()
         {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!User.Identity?.IsAuthenticated ?? false)
+            // Lấy ID của người dùng đăng nhập hiện tại
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
             {
+                _logger.LogWarning("Không thể xác định người dùng đăng nhập");
                 return RedirectToAction("Login", "Account");
             }
-
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
             
-            if (!int.TryParse(userIdStr, out int userId))
-            {
-                return NotFound();
-            }
-
-            try {
-                // Phương pháp 1: Truy vấn SQL trực tiếp - tránh sử dụng Entity Framework
-                using (var command = _context.Database.GetDbConnection().CreateCommand())
-                {
-                    command.CommandText = @"
-                        SELECT YT.*, TV.word_TV, TV.meaning_TV, TV.image_TV, TV.level_TV, NP.title_NP, NP.discription_NP
-                        FROM YeuThich YT
-                        LEFT JOIN TuVung TV ON YT.ID_type_YT = TV.ID_TV AND YT.type_YT = 'TuVung'
-                        LEFT JOIN NguPhap NP ON YT.ID_type_YT = NP.ID_NP AND YT.type_YT = 'NguPhap'
-                        WHERE YT.ID_TK = @userId
-                        ORDER BY YT.date_check_YT DESC";
-
-                    var parameter = command.CreateParameter();
-                    parameter.ParameterName = "@userId";
-                    parameter.Value = userId;
-                    command.Parameters.Add(parameter);
-
-                    _context.Database.OpenConnection();
-                    
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        var favoriteViewModels = new List<YeuThichViewModel>();
-                        var vocabularies = new List<VocabularyModel>();
-                        var grammars = new List<GrammarModel>();
-                        
-                        while (await reader.ReadAsync())
-                        {
-                            var favoriteType = reader.GetString(reader.GetOrdinal("type_YT"));
-                            var favoriteId = reader.GetInt32(reader.GetOrdinal("ID_YT"));
-                            var dateAdded = reader.IsDBNull(reader.GetOrdinal("date_check_YT")) 
-                                ? DateTime.Now 
-                                : reader.GetDateTime(reader.GetOrdinal("date_check_YT"));
-                            var itemId = reader.GetInt32(reader.GetOrdinal("ID_type_YT"));
-                            
-                            var viewModel = new YeuThichViewModel
-                            {
-                                ID = favoriteId,
-                                Type = favoriteType,
-                                ItemID = itemId,
-                                DateAdded = dateAdded
-                            };
-                            
-                            if (favoriteType == "TuVung" && !reader.IsDBNull(reader.GetOrdinal("word_TV")))
-                            {
-                                viewModel.Title = reader.GetString(reader.GetOrdinal("word_TV"));
-                                viewModel.Description = reader.IsDBNull(reader.GetOrdinal("meaning_TV")) ? "" : reader.GetString(reader.GetOrdinal("meaning_TV"));
-                                viewModel.ImageUrl = reader.IsDBNull(reader.GetOrdinal("image_TV")) ? "/images/vocabulary/default.jpg" : reader.GetString(reader.GetOrdinal("image_TV"));
-                                
-                                var vocab = new VocabularyModel
-                                {
-                                    ID_TV = itemId,
-                                    Word_TV = viewModel.Title,
-                                    Meaning_TV = viewModel.Description,
-                                    Image_TV = viewModel.ImageUrl,
-                                    Level_TV = reader.IsDBNull(reader.GetOrdinal("level_TV")) ? "A1" : reader.GetString(reader.GetOrdinal("level_TV"))
-                                };
-                                vocabularies.Add(vocab);
-                            }
-                            else if (favoriteType == "NguPhap" && !reader.IsDBNull(reader.GetOrdinal("title_NP")))
-                            {
-                                viewModel.Title = reader.GetString(reader.GetOrdinal("title_NP"));
-                                viewModel.Description = reader.IsDBNull(reader.GetOrdinal("discription_NP")) ? "" : reader.GetString(reader.GetOrdinal("discription_NP"));
-                                viewModel.ImageUrl = "/images/grammar-icon.png";
-                                
-                                var grammar = new GrammarModel
-                                {
-                                    ID_NP = itemId,
-                                    Title_NP = viewModel.Title,
-                                    Description_NP = viewModel.Description
-                                };
-                                grammars.Add(grammar);
-                            }
-                            
-                            favoriteViewModels.Add(viewModel);
-                        }
-                        
-                        ViewBag.VocabularyItems = vocabularies;
-                        ViewBag.GrammarItems = grammars;
-                        
-                        return View(favoriteViewModels);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                return View("Error", new ErrorViewModel { 
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = "Có lỗi khi tải dữ liệu mục yêu thích: " + ex.Message
-                });
-            }
+            // Lấy dữ liệu yêu thích của người dùng từ database
+            var vocabularies = await _vocabularyRepository.GetFavoriteVocabulariesAsync(userId);
+            var grammars = await _grammarRepository.GetFavoriteGrammarsAsync(userId);
+            
+            ViewBag.Vocabularies = vocabularies;
+            ViewBag.Grammars = grammars;
+            
+            return View();
         }
 
+        // Thêm phương thức để cập nhật tiến độ học
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RemoveFavorite(int id, string type)
+        public async Task<IActionResult> UpdateProgress([FromBody] ProgressUpdateModel model)
         {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!User.Identity?.IsAuthenticated ?? false)
+            if (!ModelState.IsValid)
             {
-                return Json(new { success = false, message = "Bạn cần đăng nhập để thực hiện thao tác này." });
+                return BadRequest(ModelState);
             }
-
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
             
-            if (!int.TryParse(userIdStr, out int userId))
+            // Lấy ID của người dùng đăng nhập hiện tại
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
             {
-                return Json(new { success = false, message = "Không xác định được người dùng." });
+                return Unauthorized(new { Message = "Người dùng chưa đăng nhập" });
             }
-
-            try
-            {
-                // Tìm mục yêu thích trong database
-                var favorite = await _context.YeuThiches
-                    .FirstOrDefaultAsync(y => y.IdTk == userId && y.TypeYt == type && y.IdYtType == id); // Sử dụng thuộc tính IdYtType
-                
-                if (favorite != null)
-                {
-                    _context.YeuThiches.Remove(favorite);
-                    await _context.SaveChangesAsync();
-                    return Json(new { success = true, message = "Đã xóa khỏi mục yêu thích." });
-                }
-                
-                return Json(new { success = false, message = "Không tìm thấy mục yêu thích." });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Lỗi khi xóa mục yêu thích {Type} {Id}", type, id);
-                return Json(new { success = false, message = "Đã xảy ra lỗi khi xóa mục yêu thích." });
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> ToggleFavorite([FromBody] ToggleFavoriteRequest request)
-        {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!(User.Identity?.IsAuthenticated ?? false))  // Fix null reference warning by inverting the condition
-            {
-                return Json(new { success = false, message = "Bạn cần đăng nhập để yêu thích." });
-            }
-
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
             
-            if (!int.TryParse(userIdStr, out int userId))
+            // Lấy thông tin tiến độ hiện tại
+            var progress = await _progressRepository.GetByUserIdAsync(userId);
+            if (progress == null)
             {
-                return Json(new { success = false, message = "Không xác định được người dùng." });
-            }
-
-            try
-            {
-                // Kiểm tra xem mục đã được yêu thích chưa
-                var existingFavorite = await _context.YeuThiches
-                    .FirstOrDefaultAsync(y => y.IdTk == userId && y.TypeYt == request.ItemType && y.IdYtType == request.ItemId); // Sử dụng thuộc tính IdYtType
-                
-                bool isFavorite;
-                
-                if (existingFavorite != null)
+                // Tạo mới nếu chưa có
+                progress = new ProgressModel
                 {
-                    // Nếu đã yêu thích rồi thì xóa (bỏ yêu thích)
-                    _context.YeuThiches.Remove(existingFavorite);
-                    isFavorite = false;
+                    UserId = userId,
+                    VocabularyProgress = 0,
+                    GrammarProgress = 0,
+                    ExerciseProgress = 0,
+                    TotalPoints = 0,
+                    Level = "A1",
+                    LastCompletedItems = new List<LastCompletedItemModel>(),
+                    CompletedTopics = new List<CompletedTopicModel>()
+                };
+            }
+            
+            // Cập nhật thông tin tiến độ
+            if (model.Type == "Vocabulary")
+            {
+                progress.VocabularyProgress = CalculateNewProgress(progress.VocabularyProgress, model.CompletionPercentage);
+            }
+            else if (model.Type == "Grammar")
+            {
+                progress.GrammarProgress = CalculateNewProgress(progress.GrammarProgress, model.CompletionPercentage);
+            }
+            else if (model.Type == "Exercise")
+            {
+                progress.ExerciseProgress = CalculateNewProgress(progress.ExerciseProgress, model.CompletionPercentage);
+            }
+            
+            // Thêm vào danh sách hoạt động gần đây
+            progress.LastCompletedItems.Add(new LastCompletedItemModel
+            {
+                Id = progress.LastCompletedItems.Count > 0 ? 
+                    progress.LastCompletedItems.Max(i => i.Id) + 1 : 1,
+                Type = model.Type,
+                Title = model.Title,
+                CompletedDate = DateTime.Now,
+                Score = model.Score
+            });
+            
+            // Giới hạn số lượng hoạt động hiển thị (chỉ giữ 10 hoạt động gần nhất)
+            if (progress.LastCompletedItems.Count > 10)
+            {
+                progress.LastCompletedItems = progress.LastCompletedItems
+                    .OrderByDescending(i => i.CompletedDate)
+                    .Take(10)
+                    .ToList();
+            }
+            
+            // Cập nhật hoặc thêm mới topic nếu có
+            if (!string.IsNullOrEmpty(model.TopicName))
+            {
+                var existingTopic = progress.CompletedTopics
+                    .FirstOrDefault(t => t.TopicId == model.TopicId);
+                
+                if (existingTopic != null)
+                {
+                    existingTopic.CompletionPercentage = model.CompletionPercentage;
                 }
                 else
                 {
-                    // Nếu chưa yêu thích thì thêm mới (yêu thích)
-                    var newFavorite = new YeuThich
+                    progress.CompletedTopics.Add(new CompletedTopicModel
                     {
-                        IdTk = userId,
-                        TypeYt = request.ItemType,
-                        IdYtType = request.ItemId, // Sử dụng thuộc tính IdYtType
-                        DateCheckYt = DateTime.Now
-                    };
-                    
-                    _context.YeuThiches.Add(newFavorite);
-                    isFavorite = true;
+                        TopicId = model.TopicId,
+                        TopicName = model.TopicName,
+                        CompletionPercentage = model.CompletionPercentage
+                    });
                 }
-                
-                await _context.SaveChangesAsync();
-                
-                return Json(new FavoriteResponse
-                {
-                    Success = true,
-                    Message = isFavorite ? "Đã thêm vào mục yêu thích." : "Đã xóa khỏi mục yêu thích.",
-                    IsFavorite = isFavorite
-                });
             }
-            catch (Exception ex)
+            
+            // Cập nhật điểm và cấp độ
+            progress.TotalPoints += model.PointsEarned;
+            progress.Level = CalculateLevel(progress.TotalPoints);
+            
+            // Lưu thay đổi vào database
+            bool result;
+            if (string.IsNullOrEmpty(progress.Id))
             {
-                _logger.LogError(ex, "Lỗi khi toggle yêu thích {Type} {Id}", request.ItemType, request.ItemId);
-                return Json(new FavoriteResponse
-                {
-                    Success = false,
-                    Message = "Đã xảy ra lỗi khi cập nhật mục yêu thích.",
-                    IsFavorite = false
-                });
+                await _progressRepository.AddAsync(progress);
+                result = true;
             }
-        }
-
-        private async Task<List<CompletedTopicModel>> GetCompletedTopicsAsync(int userId)
-        {
-            var result = new List<CompletedTopicModel>();
-            
-            // Lấy danh sách tất cả chủ đề
-            var topics = await _context.ChuDes.ToListAsync();
-            
-            foreach (var topic in topics)
+            else
             {
-                // Đếm số từ vựng trong chủ đề
-                var vocabCount = await _context.TuVungs
-                    .CountAsync(v => v.IdCd == topic.IdCd);
-                
-                // Đếm số từ vựng đã học trong chủ đề
-                var learnedCount = await _context.TienTrinhHocs
-                    .Where(t => t.IdTk == userId && t.TypeTth == "TuVung")
-                    .Join(_context.TuVungs,
-                        history => history.IdTypeTth,
-                        vocab => vocab.IdTv,
-                        (history, vocab) => new { vocab.IdCd })
-                    .CountAsync(joined => joined.IdCd == topic.IdCd);
-                
-                // Tính phần trăm hoàn thành
-                int completionPercentage = vocabCount > 0 ? (learnedCount * 100) / vocabCount : 0;
-                
-                result.Add(new CompletedTopicModel
-                {
-                    TopicId = topic.IdCd,
-                    TopicName = topic.NameCd,
-                    CompletionPercentage = completionPercentage
-                });
+                result = await _progressRepository.UpdateAsync(progress);
             }
             
-            // Sắp xếp theo phần trăm hoàn thành giảm dần
-            return result.OrderByDescending(t => t.CompletionPercentage).ToList();
-        }
-
-        private string GetLevelFromTitle(string title)
-        {
-            // Thử xác định cấp độ từ tiêu đề
-            title = title.ToLower();
+            if (result)
+            {
+                return Ok(new { Success = true, Progress = progress });
+            }
             
-            if (title.Contains("elementary") || title.Contains("beginner"))
-                return "A1";
-            if (title.Contains("pre-intermediate"))
-                return "A2";
-            if (title.Contains("intermediate"))
-                return "B1";
-            if (title.Contains("upper-intermediate"))
-                return "B2";
-            if (title.Contains("advanced"))
-                return "C1";
-            if (title.Contains("proficient") || title.Contains("mastery"))
-                return "C2";
-                
-            // Mặc định là B1
-            return "B1";
+            return StatusCode(500, new { Message = "Không thể cập nhật tiến độ" });
         }
-
-        [HttpGet]
-        public IActionResult CheckYeuThichSchema()
+        
+        // Phương thức tính toán tiến độ mới
+        private int CalculateNewProgress(int currentProgress, int completionPercentage)
         {
-            try {
-                // Thực hiện truy vấn trực tiếp để lấy thông tin schema
-                var columns = _context.Database.ExecuteSqlRaw("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'YeuThich'");
-                
-                // Thử một truy vấn đơn giản để xem danh sách yêu thích
-                var favorites = _context.YeuThiches.Take(1).ToList();
-                
-                return Json(new { success = true, message = "Truy vấn thành công", data = favorites });
-            }
-            catch (Exception ex) {
-                return Json(new { success = false, message = ex.Message, innerException = ex.InnerException?.Message });
-            }
+            // Tính trung bình có trọng số
+            // Ý tưởng: giữ 70% tiến độ hiện tại, thêm 30% từ tiến độ mới
+            return (int)Math.Round(currentProgress * 0.7 + completionPercentage * 0.3);
         }
-
-        [HttpGet]
-        public async Task<IActionResult> TestFavorites()
+        
+        // Phương thức tính toán level dựa trên điểm
+        private string CalculateLevel(int points)
         {
-            try {
-                if (!User.Identity?.IsAuthenticated ?? false)
-                {
-                    return Json(new { error = "Chưa đăng nhập" });
-                }
-
-                var userIdStr = User.FindFirstValue("UserID");
-                if (!int.TryParse(userIdStr, out int userId))
-                {
-                    return Json(new { error = "Không xác định được ID người dùng" });
-                }
-                
-                // Truy vấn SQL thuần túy để kiểm tra
-                var connection = _context.Database.GetDbConnection();
-                if (connection.State != System.Data.ConnectionState.Open)
-                {
-                    await connection.OpenAsync();
-                }
-                
-                using var command = connection.CreateCommand();
-                command.CommandText = $"SELECT * FROM YeuThich WHERE ID_TK = {userId}";
-                
-                using var reader = await command.ExecuteReaderAsync();
-                var favorites = new List<object>();
-                
-                while (await reader.ReadAsync())
-                {
-                    var favorite = new
-                    {
-                        ID_YT = reader.GetInt32(0),
-                        ID_TK = reader.GetInt32(1),
-                        ID_type_YT = reader.GetInt32(2),
-                        type_YT = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        date_check_YT = reader.IsDBNull(4) ? (DateTime?)null : reader.GetDateTime(4)
-                    };
-                    favorites.Add(favorite);
-                }
-                
-                return Json(new { success = true, data = favorites });
-            }
-            catch (Exception ex) {
-                return Json(new { error = ex.Message, stack = ex.StackTrace });
-            }
+            if (points >= 2000) return "C2";
+            if (points >= 1500) return "C1";
+            if (points >= 1000) return "B2";
+            if (points >= 700) return "B1";
+            if (points >= 400) return "A2";
+            return "A1";
         }
+
+        // Thêm vào mục yêu thích
+        [HttpPost]
+        public async Task<IActionResult> ToggleFavorite([FromBody] ToggleFavoriteModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            // Lấy ID của người dùng đăng nhập hiện tại
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized(new { Message = "Người dùng chưa đăng nhập" });
+            }
+            
+            bool result = false;
+            
+            if (model.Type.ToLower() == "vocabulary")
+            {
+                result = await _vocabularyRepository.ToggleFavoriteAsync(model.Id, userId);
+            }
+            else if (model.Type.ToLower() == "grammar") 
+            {
+                result = await _grammarRepository.ToggleFavoriteAsync(model.Id, userId);
+            }
+            
+            return Ok(new { Success = result });
+        }
+    }
+
+    // Model cho API cập nhật tiến độ
+    public class ProgressUpdateModel
+    {
+        public string Type { get; set; } = string.Empty; // Vocabulary, Grammar hoặc Exercise
+        public string Title { get; set; } = string.Empty;
+        public int Score { get; set; }
+        public int PointsEarned { get; set; }
+        public int TopicId { get; set; }
+        public string TopicName { get; set; } = string.Empty;
+        public int CompletionPercentage { get; set; }
+    }
+
+    // Model cho API thêm/xóa yêu thích
+    public class ToggleFavoriteModel
+    {
+        public int Id { get; set; }
+        public string Type { get; set; } = string.Empty; // "Vocabulary" hoặc "Grammar"
     }
 }

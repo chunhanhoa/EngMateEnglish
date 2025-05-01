@@ -23,83 +23,44 @@
     <div class="row mb-5">
         <div class="col-md-8">
             <h1 class="display-5 fw-bold mb-3">Luyện tập: @(topic?.Name_CD ?? "Từ vựng")</h1>
-            <p class="lead">Chọn loại bài tập từ vựng bạn muốn luyện tập</p>
+            <p class="lead">Luyện tập từ vựng với các bài tập đa dạng. Chọn một bài tập để bắt đầu.</p>
         </div>
     </div>
 
-    <!-- Exercise Type Selection -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <ul class="nav nav-pills nav-fill mb-4" id="exerciseTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="listening-tab" data-bs-toggle="pill" data-bs-target="#listening-exercise" 
-                            type="button" role="tab" aria-controls="listening-exercise" aria-selected="true">
-                        <i class="fas fa-headphones me-2"></i>Luyện tập nghe
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="word-ordering-tab" data-bs-toggle="pill" data-bs-target="#word-ordering-exercise" 
-                            type="button" role="tab" aria-controls="word-ordering-exercise" aria-selected="false">
-                        <i class="fas fa-sort-alpha-down me-2"></i>Sắp xếp câu
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Exercise Content -->
+    <!-- Exercise Tabs -->
     <div class="row mb-5">
         <div class="col-md-12">
-            <div class="tab-content" id="exerciseTabContent">
-                <!-- Listening Exercise Tab -->
-                <div class="tab-pane fade show active" id="listening-exercise" role="tabpanel" aria-labelledby="listening-tab">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <h3 class="mb-4"><i class="fas fa-headphones me-2 text-primary"></i>Luyện tập nghe</h3>
-                            <p class="text-muted mb-4">Nhấn vào nút phát âm để nghe từ vựng, sau đó gõ từ bạn nghe được vào ô và kiểm tra.</p>
-                            
-                            <div id="listening-questions" class="listening-container">
-                                <!-- Các câu hỏi nghe sẽ được thêm vào đây qua JavaScript -->
-                                <div class="text-center py-4">
-                                    <div class="spinner-border text-primary" role="status">
-                                        <span class="visually-hidden">Đang tải...</span>
-                                    </div>
-                                    <p class="mt-2">Đang tải bài tập...</p>
-                                </div>
-                            </div>
-
-                            <div id="result-listening" class="result-container mt-4" style="display: none;">
-                                <div class="result-content"></div>
-                                <button type="button" class="btn btn-primary mt-3" id="retry-listening">Làm lại</button>
-                                <button type="button" class="btn btn-success mt-3" id="share-result-listening">Chia sẻ kết quả</button>
-                            </div>
-                        </div>
+            <ul class="nav nav-tabs" id="exerciseTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="multiple-choice-tab" data-bs-toggle="tab" data-bs-target="#multiple-choice" type="button" role="tab" aria-controls="multiple-choice" aria-selected="true">Trắc nghiệm</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="matching-tab" data-bs-toggle="tab" data-bs-target="#matching" type="button" role="tab" aria-controls="matching" aria-selected="false">Nối từ</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="listening-tab" data-bs-toggle="tab" data-bs-target="#listening" type="button" role="tab" aria-controls="listening" aria-selected="false">Nghe</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="exerciseTabsContent">
+                <div class="tab-pane fade show active" id="multiple-choice" role="tabpanel" aria-labelledby="multiple-choice-tab">
+                    <!-- Multiple Choice Exercise -->
+                    <div id="multiple-choice-questions" class="mt-4"></div>
+                    <div id="result-mc" class="result-container mt-4" style="display: none;">
+                        <div class="result-content"></div>
                     </div>
                 </div>
-
-                <!-- Word Ordering Exercise Tab -->
-                <div class="tab-pane fade" id="word-ordering-exercise" role="tabpanel" aria-labelledby="word-ordering-tab">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <h3 class="mb-4"><i class="fas fa-sort-alpha-down me-2 text-primary"></i>Sắp xếp câu</h3>
-                            <p class="text-muted mb-4">Sắp xếp các từ để tạo thành câu hoàn chỉnh. Luyện tập cấu trúc ngữ pháp và từ vựng.</p>
-                            
-                            <div id="word-ordering-questions" class="word-ordering-container">
-                                <!-- Các câu hỏi sắp xếp câu sẽ được thêm vào đây qua JavaScript -->
-                                <div class="text-center py-4">
-                                    <div class="spinner-border text-primary" role="status">
-                                        <span class="visually-hidden">Đang tải...</span>
-                                    </div>
-                                    <p class="mt-2">Đang tải bài tập...</p>
-                                </div>
-                            </div>
-
-                            <div id="result-word-ordering" class="result-container mt-4" style="display: none;">
-                                <div class="result-content"></div>
-                                <button type="button" class="btn btn-primary mt-3" id="retry-word-ordering">Làm lại</button>
-                                <button type="button" class="btn btn-success mt-3" id="share-result-word-ordering">Chia sẻ kết quả</button>
-                            </div>
-                        </div>
+                <div class="tab-pane fade" id="matching" role="tabpanel" aria-labelledby="matching-tab">
+                    <!-- Matching Exercise -->
+                    <div id="matching-words" class="mt-4"></div>
+                    <div id="result-matching" class="result-container mt-4" style="display: none;">
+                        <div class="result-content"></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="listening" role="tabpanel" aria-labelledby="listening-tab">
+                    <!-- Listening Exercise -->
+                    <div id="listening-questions" class="mt-4"></div>
+                    <div id="result-listening" class="result-container mt-4" style="display: none;">
+                        <div class="result-content"></div>
                     </div>
                 </div>
             </div>
@@ -107,561 +68,435 @@
     </div>
 </div>
 
+<style>
+    .result-container {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        padding: 1.5rem;
+    }
+    
+    .result-badge {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+    
+    .result-badge.success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    
+    .result-badge.warning {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+    
+    .result-badge.danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+</style>
+
 @section Scripts {
     <script>
-        $(document).ready(function() {
-            // Dữ liệu từ vựng từ Model
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy danh sách từ vựng từ model
             const vocabularies = @Html.Raw(Json.Serialize(Model));
             
-            // Khởi tạo các biến
-            let listeningCreated = false;
-            let wordOrderingCreated = false;
-            
-            // Theo dõi sự kiện thay đổi tab để tạo bài tập tương ứng
-            $('#exerciseTab button').on('shown.bs.tab', function (e) {
-                const targetId = $(e.target).attr("id");
+            // Tạo bài tập trắc nghiệm
+            function createMultipleChoiceExercise(vocabularies) {
+                const container = document.getElementById('multiple-choice-questions');
+                container.innerHTML = '';
                 
-                // Tạo bài tập tương ứng với tab được chọn
-                if (targetId === 'listening-tab') {
-                    createListeningExercise(vocabularies);
-                } else if (targetId === 'word-ordering-tab') {
-                    createWordOrderingExercise(vocabularies);
-                }
-            });
-            
-            // Mặc định tạo bài tập nghe khi trang được tải
-            setTimeout(() => {
-                createListeningExercise(vocabularies);
-                
-                // Thêm sự kiện cho nút làm lại
-                document.getElementById('retry-listening')?.addEventListener('click', function() {
-                    listeningCreated = false; // Reset để có thể tạo lại
-                    createListeningExercise(vocabularies);
-                    document.getElementById('result-listening').style.display = 'none';
+                vocabularies.forEach((vocab, index) => {
+                    const questionContainer = document.createElement('div');
+                    questionContainer.className = 'question-container mb-4';
+                    
+                    const question = document.createElement('p');
+                    question.className = 'fw-bold';
+                    question.textContent = `${index + 1}. Nghĩa của từ "${vocab.Word_TV}" là gì?`;
+                    
+                    const options = document.createElement('div');
+                    options.className = 'options';
+                    
+                    const correctOption = document.createElement('div');
+                    correctOption.className = 'form-check';
+                    correctOption.innerHTML = `
+                        <input class="form-check-input" type="radio" name="question-${index}" id="option-${index}-1" value="correct">
+                        <label class="form-check-label" for="option-${index}-1">${vocab.Meaning_TV}</label>
+                    `;
+                    
+                    const incorrectOption1 = document.createElement('div');
+                    incorrectOption1.className = 'form-check';
+                    incorrectOption1.innerHTML = `
+                        <input class="form-check-input" type="radio" name="question-${index}" id="option-${index}-2" value="incorrect">
+                        <label class="form-check-label" for="option-${index}-2">Một loại đồ ăn</label>
+                    `;
+                    
+                    const incorrectOption2 = document.createElement('div');
+                    incorrectOption2.className = 'form-check';
+                    incorrectOption2.innerHTML = `
+                        <input class="form-check-input" type="radio" name="question-${index}" id="option-${index}-3" value="incorrect">
+                        <label class="form-check-label" for="option-${index}-3">Một loại xe</label>
+                    `;
+                    
+                    const incorrectOption3 = document.createElement('div');
+                    incorrectOption3.className = 'form-check';
+                    incorrectOption3.innerHTML = `
+                        <input class="form-check-input" type="radio" name="question-${index}" id="option-${index}-4" value="incorrect">
+                        <label class="form-check-label" for="option-${index}-4">Một loại cây</label>
+                    `;
+                    
+                    options.appendChild(correctOption);
+                    options.appendChild(incorrectOption1);
+                    options.appendChild(incorrectOption2);
+                    options.appendChild(incorrectOption3);
+                    
+                    questionContainer.appendChild(question);
+                    questionContainer.appendChild(options);
+                    
+                    container.appendChild(questionContainer);
                 });
                 
-                document.getElementById('retry-word-ordering')?.addEventListener('click', function() {
-                    wordOrderingCreated = false; // Reset để có thể tạo lại
-                    createWordOrderingExercise(vocabularies);
-                    document.getElementById('result-word-ordering').style.display = 'none';
+                const submitBtn = document.createElement('button');
+                submitBtn.className = 'btn btn-primary';
+                submitBtn.textContent = 'Nộp bài';
+                submitBtn.addEventListener('click', function() {
+                    const correctCount = document.querySelectorAll('input[type="radio"][value="correct"]:checked').length;
+                    const totalCount = vocabularies.length;
+                    showResult('mc', correctCount, totalCount);
                 });
-            }, 300);
+                
+                container.appendChild(submitBtn);
+            }
+            
+            // Tạo bài tập nối từ
+            function createMatchingExercise(vocabularies) {
+                const container = document.getElementById('matching-words');
+                container.innerHTML = '';
+                
+                const shuffledVocabularies = vocabularies.sort(() => 0.5 - Math.random());
+                
+                shuffledVocabularies.forEach((vocab, index) => {
+                    const matchingItem = document.createElement('div');
+                    matchingItem.className = 'matching-item mb-3';
+                    
+                    const word = document.createElement('div');
+                    word.className = 'word';
+                    word.textContent = vocab.Word_TV;
+                    
+                    const meaning = document.createElement('div');
+                    meaning.className = 'meaning';
+                    meaning.textContent = vocab.Meaning_TV;
+                    
+                    matchingItem.appendChild(word);
+                    matchingItem.appendChild(meaning);
+                    
+                    container.appendChild(matchingItem);
+                });
+                
+                const submitBtn = document.createElement('button');
+                submitBtn.className = 'btn btn-primary';
+                submitBtn.textContent = 'Nộp bài';
+                submitBtn.addEventListener('click', function() {
+                    const correctCount = document.querySelectorAll('.matching-item.correct').length;
+                    const totalCount = vocabularies.length;
+                    showResult('matching', correctCount, totalCount);
+                });
+                
+                container.appendChild(submitBtn);
+            }
             
             // Tạo bài tập nghe
-            function createListeningExercise(vocabularyList) {
-                if (listeningCreated) return; // Tránh tạo lại
+            function createListeningExercise(vocabularies) {
+                const container = document.getElementById('listening-questions');
+                container.innerHTML = '';
                 
-                try {
-                    const container = document.getElementById('listening-questions');
-                    container.innerHTML = '';
+                vocabularies.forEach((vocab, index) => {
+                    const listeningItem = document.createElement('div');
+                    listeningItem.className = 'listening-item mb-4';
                     
-                    if (!vocabularyList || vocabularyList.length === 0) {
-                        container.innerHTML = '<div class="alert alert-warning">Không có từ vựng nào để tạo bài tập. Vui lòng thử lại sau.</div>';
-                        return;
-                    }
+                    const question = document.createElement('p');
+                    question.className = 'fw-bold';
+                    question.textContent = `${index + 1}. Nghe và chọn nghĩa đúng của từ "${vocab.Word_TV}"`;
                     
-                    // Shuffle từ vựng để tạo câu hỏi ngẫu nhiên
-                    const shuffledVocab = [...vocabularyList].sort(() => 0.5 - Math.random()).slice(0, 8);
+                    const options = document.createElement('div');
+                    options.className = 'options';
                     
-                    // Tạo các câu hỏi nghe
-                    shuffledVocab.forEach((vocab, index) => {
-                        const listItem = document.createElement('div');
-                        listItem.className = 'listening-item card mb-3';
-                        
-                        const cardBody = document.createElement('div');
-                        cardBody.className = 'card-body';
-                        
-                        // Tạo phần nghe
-                        const audioSection = document.createElement('div');
-                        audioSection.className = 'd-flex align-items-center mb-3';
-                        audioSection.innerHTML = `
-                            <button class="btn btn-primary me-3 play-audio" data-word="${vocab.word_TV}">
-                                <i class="fas fa-volume-up"></i> Nghe
-                            </button>
-                            <h5 class="mb-0">Câu ${index + 1}</h5>
-                        `;
-                        
-                        // Tạo ô nhập đáp án
-                        const inputGroup = document.createElement('div');
-                        inputGroup.className = 'input-group mb-3';
-                        inputGroup.innerHTML = `
-                            <input type="text" class="form-control listening-input" placeholder="Nhập từ bạn nghe được" data-correct="${vocab.word_TV}">
-                            <button class="btn btn-outline-secondary check-answer" type="button">Kiểm tra</button>
-                        `;
-                        
-                        // Tạo phần phản hồi
-                        const feedback = document.createElement('div');
-                        feedback.className = 'feedback mt-2 d-none';
-                        feedback.innerHTML = `
-                            <div class="correct-feedback text-success d-none">
-                                <i class="fas fa-check-circle me-1"></i> Chính xác! Từ này có nghĩa: ${vocab.meaning_TV}
-                            </div>
-                            <div class="incorrect-feedback text-danger d-none">
-                                <i class="fas fa-times-circle me-1"></i> Không chính xác. Đáp án đúng là: ${vocab.word_TV}
-                            </div>
-                        `;
-                        
-                        // Thêm các phần tử vào card
-                        cardBody.appendChild(audioSection);
-                        cardBody.appendChild(inputGroup);
-                        cardBody.appendChild(feedback);
-                        listItem.appendChild(cardBody);
-                        container.appendChild(listItem);
-                        
-                        // Thêm sự kiện cho nút phát âm thanh
-                        const playButton = cardBody.querySelector('.play-audio');
-                        playButton.addEventListener('click', function() {
-                            const word = this.dataset.word;
-                            speakWord(word);
-                        });
-                        
-                        // Thêm sự kiện cho nút kiểm tra
-                        const checkButton = cardBody.querySelector('.check-answer');
-                        checkButton.addEventListener('click', function() {
-                            const input = this.parentElement.querySelector('.listening-input');
-                            const userAnswer = input.value.trim().toLowerCase();
-                            const correctAnswer = input.dataset.correct.toLowerCase();
-                            
-                            const feedbackElem = this.parentElement.nextElementSibling;
-                            const correctFeedback = feedbackElem.querySelector('.correct-feedback');
-                            const incorrectFeedback = feedbackElem.querySelector('.incorrect-feedback');
-                            
-                            feedbackElem.classList.remove('d-none');
-                            
-                            if (userAnswer === correctAnswer) {
-                                correctFeedback.classList.remove('d-none');
-                                incorrectFeedback.classList.add('d-none');
-                                input.classList.add('is-valid');
-                                input.classList.remove('is-invalid');
-                            } else {
-                                correctFeedback.classList.add('d-none');
-                                incorrectFeedback.classList.remove('d-none');
-                                input.classList.add('is-invalid');
-                                input.classList.remove('is-valid');
-                            }
-                        });
+                    const correctOption = document.createElement('div');
+                    correctOption.className = 'form-check';
+                    correctOption.innerHTML = `
+                        <input class="form-check-input" type="radio" name="listening-${index}" id="listening-option-${index}-1" value="correct">
+                        <label class="form-check-label" for="listening-option-${index}-1">${vocab.Meaning_TV}</label>
+                    `;
+                    
+                    const incorrectOption1 = document.createElement('div');
+                    incorrectOption1.className = 'form-check';
+                    incorrectOption1.innerHTML = `
+                        <input class="form-check-input" type="radio" name="listening-${index}" id="listening-option-${index}-2" value="incorrect">
+                        <label class="form-check-label" for="listening-option-${index}-2">Một loại đồ ăn</label>
+                    `;
+                    
+                    const incorrectOption2 = document.createElement('div');
+                    incorrectOption2.className = 'form-check';
+                    incorrectOption2.innerHTML = `
+                        <input class="form-check-input" type="radio" name="listening-${index}" id="listening-option-${index}-3" value="incorrect">
+                        <label class="form-check-label" for="listening-option-${index}-3">Một loại xe</label>
+                    `;
+                    
+                    const incorrectOption3 = document.createElement('div');
+                    incorrectOption3.className = 'form-check';
+                    incorrectOption3.innerHTML = `
+                        <input class="form-check-input" type="radio" name="listening-${index}" id="listening-option-${index}-4" value="incorrect">
+                        <label class="form-check-label" for="listening-option-${index}-4">Một loại cây</label>
+                    `;
+                    
+                    options.appendChild(correctOption);
+                    options.appendChild(incorrectOption1);
+                    options.appendChild(incorrectOption2);
+                    options.appendChild(incorrectOption3);
+                    
+                    const audioBtn = document.createElement('button');
+                    audioBtn.className = 'btn btn-outline-primary audio-btn';
+                    audioBtn.textContent = 'Nghe';
+                    audioBtn.addEventListener('click', function() {
+                        speakWord(vocab.Word_TV);
                     });
                     
-                    listeningCreated = true;
-                } catch (error) {
-                    console.error('Error creating listening exercise:', error);
-                    document.getElementById('listening-questions').innerHTML = 
-                        '<div class="alert alert-danger">Đã xảy ra lỗi khi tạo bài tập nghe. Vui lòng tải lại trang.</div>';
-                }
-            }
-
-            // Tạo bài tập sắp xếp câu
-            function createWordOrderingExercise(vocabularyList) {
-                if (wordOrderingCreated) return; // Tránh tạo lại
-                
-                try {
-                    const container = document.getElementById('word-ordering-questions');
-                    container.innerHTML = '';
+                    listeningItem.appendChild(question);
+                    listeningItem.appendChild(options);
+                    listeningItem.appendChild(audioBtn);
                     
-                    // Lấy thông tin chủ đề
-                    const topicId = @(topic?.ID_CD ?? 0);
-                    const topicName = '@(topic?.Name_CD ?? "")';
-                    
-                    // Fake data - các câu mẫu liên quan đến chủ đề
-                    const fakeSentences = getTopicRelatedSentences(topicId, topicName);
-                    
-                    // Lọc từ vựng có câu ví dụ hợp lệ
-                    let validExamples = [];
-                    if (vocabularyList && vocabularyList.length > 0) {
-                        validExamples = vocabularyList.filter(v => v.Example_TV && v.Example_TV.split(' ').length > 3)
-                                                     .sort(() => 0.5 - Math.random()).slice(0, 5);
-                    }
-                    
-                    // Nếu không có đủ câu ví dụ từ dữ liệu thực, sử dụng fake data
-                    if (validExamples.length < 5) {
-                        console.log("Không có đủ câu ví dụ, sử dụng fake data cho chủ đề: " + topicName);
-                        const remainingNeeded = 5 - validExamples.length;
-                        
-                        // Thêm fake sentences để đủ 5 câu
-                        for (let i = 0; i < remainingNeeded; i++) {
-                            validExamples.push({
-                                Example_TV: fakeSentences[i],
-                                word_TV: "Sample" + (i + 1),
-                                meaning_TV: "Ví dụ " + (i + 1)
-                            });
-                        }
-                    }
-                    
-                    // Tạo các câu hỏi sắp xếp câu
-                    validExamples.forEach((vocab, index) => {
-                        const listItem = document.createElement('div');
-                        listItem.className = 'word-ordering-item card mb-3';
-                        listItem.id = `word-item-${index}`;
-                        
-                        const cardBody = document.createElement('div');
-                        cardBody.className = 'card-body';
-                        
-                        // Tạo phần câu hỏi
-                        const questionSection = document.createElement('div');
-                        questionSection.className = 'mb-3';
-                        questionSection.innerHTML = `
-                            <h5 class="mb-2">Câu ${index + 1}</h5>
-                            <p class="text-muted mb-3">Sắp xếp các từ sau để tạo thành câu hoàn chỉnh:</p>
-                        `;
-                        
-                        // Tạo word bank
-                        const wordBank = document.createElement('div');
-                        wordBank.className = 'word-bank d-flex flex-wrap gap-2 mb-3';
-                        wordBank.id = `word-bank-${index}`;
-                        
-                        // Xử lý câu ví dụ, loại bỏ dấu câu nếu cần
-                        const exampleSentence = vocab.Example_TV.replace(/[.,!?;:]/g, "");
-                        const words = exampleSentence.split(' ').sort(() => 0.5 - Math.random());
-                        
-                        words.forEach(word => {
-                            const wordItem = document.createElement('span');
-                            wordItem.className = 'word-item badge bg-secondary text-white px-3 py-2 m-1';
-                            wordItem.textContent = word;
-                            wordItem.setAttribute('data-word', word);
-                            wordItem.style.cursor = 'pointer';
-                            wordBank.appendChild(wordItem);
-                        });
-                        
-                        // Tạo answer area
-                        const answerArea = document.createElement('div');
-                        answerArea.className = 'answer-area border rounded p-3 min-height-60';
-                        answerArea.id = `answer-area-${index}`;
-                        answerArea.setAttribute('data-correct', exampleSentence);
-                        answerArea.innerHTML = '<p class="text-muted empty-message">Nhấp vào các từ bên trên để đặt chúng vào đây</p>';
-                        
-                        // Tạo phần feedback
-                        const feedback = document.createElement('div');
-                        feedback.className = 'feedback mt-3';
-                        feedback.style.display = 'none';
-                        feedback.innerHTML = `
-                            <div class="correct-feedback alert alert-success">
-                                <i class="fas fa-check-circle me-1"></i> Chính xác! Câu đã được sắp xếp đúng.
-                            </div>
-                            <div class="incorrect-feedback alert alert-danger">
-                                <i class="fas fa-times-circle me-1"></i> Chưa đúng. Câu đúng là: 
-                                <strong class="correct-answer">${exampleSentence}</strong>
-                            </div>
-                        `;
-                        
-                        // Hiển thị thêm thông tin về từ vựng nếu có
-                        if (vocab.word_TV && vocab.word_TV !== 'Sample' + (index + 1)) {
-                            const vocabInfo = document.createElement('div');
-                            vocabInfo.className = 'vocab-info mt-3 p-2 bg-light rounded';
-                            vocabInfo.innerHTML = `
-                                <p class="mb-0"><strong>Từ vựng liên quan:</strong> ${vocab.word_TV} - ${vocab.meaning_TV || ''}</p>
-                            `;
-                            feedback.appendChild(vocabInfo);
-                        }
-                        
-                        // Tạo nút kiểm tra và reset
-                        const buttonsDiv = document.createElement('div');
-                        buttonsDiv.className = 'd-flex gap-2 mt-3';
-                        buttonsDiv.innerHTML = `
-                            <button type="button" class="btn btn-primary check-sentence-btn" data-index="${index}">
-                                <i class="fas fa-check me-1"></i> Kiểm tra
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary reset-sentence-btn" data-index="${index}">
-                                <i class="fas fa-redo me-1"></i> Làm lại
-                            </button>
-                        `;
-                        
-                        // Thêm các phần tử vào card
-                        cardBody.appendChild(questionSection);
-                        cardBody.appendChild(wordBank);
-                        cardBody.appendChild(answerArea);
-                        cardBody.appendChild(feedback);
-                        cardBody.appendChild(buttonsDiv);
-                        listItem.appendChild(cardBody);
-                        container.appendChild(listItem);
-                        
-                        // Thêm sự kiện cho các từ trong word bank
-                        setupWordItemsEvents(wordBank, answerArea, index);
-                        
-                        // Thêm sự kiện cho nút kiểm tra và reset
-                        const checkButton = cardBody.querySelector('.check-sentence-btn');
-                        checkButton.addEventListener('click', function() {
-                            checkSentence(index);
-                        });
-                        
-                        const resetButton = cardBody.querySelector('.reset-sentence-btn');
-                        resetButton.addEventListener('click', function() {
-                            resetSentence(index);
-                        });
-                    });
-                    
-                    // Thêm nút kiểm tra tất cả
-                    const checkAllButton = document.createElement('button');
-                    checkAllButton.className = 'btn btn-primary btn-lg mt-4 mx-auto d-block';
-                    checkAllButton.innerHTML = '<i class="fas fa-check-circle me-2"></i> Kiểm tra tất cả';
-                    checkAllButton.addEventListener('click', checkAllSentences);
-                    container.appendChild(checkAllButton);
-                    
-                    wordOrderingCreated = true;
-                } catch (error) {
-                    console.error('Error creating word ordering exercise:', error);
-                    document.getElementById('word-ordering-questions').innerHTML = 
-                        '<div class="alert alert-danger">Đã xảy ra lỗi khi tạo bài tập sắp xếp câu. Vui lòng tải lại trang.</div>';
-                }
-            }
-            
-            // Hàm tạo câu ví dụ dựa trên chủ đề
-            function getTopicRelatedSentences(topicId, topicName) {
-                // Mặc định các câu ví dụ chung
-                let sentences = [
-                    "This is an example sentence",
-                    "English is an interesting language",
-                    "Learning vocabulary is important",
-                    "Practice makes perfect",
-                    "Reading helps improve vocabulary"
-                ];
-                
-                // Dựa vào ID hoặc tên chủ đề để chọn câu ví dụ phù hợp
-                switch(topicId) {
-                    case 1: // Animals - Động vật
-                        return [
-                            "Cats are popular pets in many homes",
-                            "Lions are wild animals in Africa",
-                            "Dogs are loyal to their owners",
-                            "Elephants have long trunks and big ears",
-                            "Birds can fly in the sky"
-                        ];
-                    case 2: // Food and Drinks - Thức ăn và đồ uống
-                        return [
-                            "I like to eat pizza for dinner",
-                            "Coffee is a popular morning drink",
-                            "Vietnamese food is very delicious",
-                            "Fresh fruits are good for health",
-                            "She drinks water every morning"
-                        ];
-                    case 3: // School - Trường học
-                        return [
-                            "Students study at the school",
-                            "The teacher explains the lesson",
-                            "We have many books in our library",
-                            "Mathematics is an important subject",
-                            "Children play in the schoolyard"
-                        ];
-                    case 4: // Family - Gia đình
-                        return [
-                            "My father works in an office",
-                            "Her mother is a doctor",
-                            "We have dinner with family",
-                            "Grandparents tell interesting stories",
-                            "My brother plays football every weekend"
-                        ];
-                    case 5: // Sports - Thể thao
-                        return [
-                            "Football is popular worldwide",
-                            "Swimming is good exercise",
-                            "They play basketball every afternoon",
-                            "Tennis requires good coordination",
-                            "Running helps maintain good health"
-                        ];
-                    case 6: // Jobs - Nghề nghiệp
-                        return [
-                            "Doctors work in hospitals",
-                            "Teachers educate students at schools",
-                            "Farmers grow crops in fields",
-                            "Engineers design new technology",
-                            "Police officers ensure public safety"
-                        ];
-                    default:
-                        // Nếu không nhận dạng được chủ đề qua ID, thử dùng tên
-                        if (topicName.includes("animal") || topicName.toLowerCase().includes("động vật"))
-                            return getTopicRelatedSentences(1);
-                        if (topicName.includes("food") || topicName.toLowerCase().includes("thức ăn"))
-                            return getTopicRelatedSentences(2);
-                        if (topicName.includes("school") || topicName.toLowerCase().includes("trường học"))
-                            return getTopicRelatedSentences(3);
-                        if (topicName.includes("family") || topicName.toLowerCase().includes("gia đình"))
-                            return getTopicRelatedSentences(4);
-                        if (topicName.includes("sport") || topicName.toLowerCase().includes("thể thao"))
-                            return getTopicRelatedSentences(5);
-                        if (topicName.includes("job") || topicName.toLowerCase().includes("nghề nghiệp"))
-                            return getTopicRelatedSentences(6);
-                            
-                        return sentences;
-                }
-            }
-            
-            // Hàm thiết lập sự kiện cho các từ
-            function setupWordItemsEvents(wordBank, answerArea, index) {
-                const wordItems = wordBank.querySelectorAll('.word-item');
-                
-                wordItems.forEach(wordItem => {
-                    wordItem.addEventListener('click', function() {
-                        // Di chuyển từ từ word bank sang answer area
-                        const clone = this.cloneNode(true);
-                        this.style.display = 'none';
-                        
-                        // Thêm sự kiện cho từ được clone để có thể di chuyển trở lại word bank
-                        clone.addEventListener('click', function() {
-                            // Tìm từ gốc trong word bank và hiển thị lại
-                            const word = this.getAttribute('data-word');
-                            const originalWord = wordBank.querySelector(`.word-item[data-word="${word}"]`);
-                            if (originalWord) {
-                                originalWord.style.display = 'inline-block';
-                            }
-                            
-                            // Xóa từ được clone
-                            this.remove();
-                            
-                            // Hiển thị/ẩn thông báo trống
-                            updateEmptyMessage(answerArea);
-                        });
-                        
-                        // Thêm từ được clone vào answer area
-                        answerArea.appendChild(clone);
-                        
-                        // Ẩn thông báo trống
-                        updateEmptyMessage(answerArea);
-                    });
-                });
-            }
-            
-            // Hàm cập nhật thông báo trống
-            function updateEmptyMessage(answerArea) {
-                const emptyMessage = answerArea.querySelector('.empty-message');
-                if (emptyMessage) {
-                    const wordItems = answerArea.querySelectorAll('.word-item');
-                    emptyMessage.style.display = wordItems.length === 0 ? 'block' : 'none';
-                }
-            }
-            
-            // Hàm kiểm tra câu
-            function checkSentence(index) {
-                const answerArea = document.getElementById(`answer-area-${index}`);
-                const wordItems = answerArea.querySelectorAll('.word-item');
-                const feedbackContainer = document.querySelector(`#word-item-${index} .feedback`);
-                const correctFeedback = feedbackContainer.querySelector('.correct-feedback');
-                const incorrectFeedback = feedbackContainer.querySelector('.incorrect-feedback');
-                
-                // Kiểm tra xem đã đặt đủ từ chưa
-                if (wordItems.length === 0) {
-                    alert('Vui lòng đặt các từ vào ô trước khi kiểm tra.');
-                    return;
-                }
-                
-                // Lấy câu người dùng đã sắp xếp
-                const userSentence = Array.from(wordItems).map(item => item.getAttribute('data-word')).join(' ');
-                
-                // Lấy câu đúng
-                const correctSentence = answerArea.getAttribute('data-correct');
-                
-                // Hiển thị feedback
-                feedbackContainer.style.display = 'block';
-                
-                // Kiểm tra câu trả lời
-                if (userSentence.toLowerCase() === correctSentence.toLowerCase()) {
-                    correctFeedback.style.display = 'block';
-                    incorrectFeedback.style.display = 'none';
-                    answerArea.classList.add('border-success');
-                } else {
-                    correctFeedback.style.display = 'none';
-                    incorrectFeedback.style.display = 'block';
-                    answerArea.classList.add('border-danger');
-                }
-                
-                // Vô hiệu hóa các từ để ngăn thay đổi sau khi kiểm tra
-                wordItems.forEach(item => {
-                    item.style.pointerEvents = 'none';
-                });
-            }
-            
-            // Hàm kiểm tra tất cả các câu
-            function checkAllSentences() {
-                const wordItems = document.querySelectorAll('.word-ordering-item');
-                let correctCount = 0;
-                
-                wordItems.forEach((item, index) => {
-                    const answerArea = document.getElementById(`answer-area-${index}`);
-                    const words = answerArea.querySelectorAll('.word-item');
-                    const userSentence = Array.from(words).map(w => w.getAttribute('data-word')).join(' ');
-                    const correctSentence = answerArea.getAttribute('data-correct');
-                    
-                    if (userSentence.toLowerCase() === correctSentence.toLowerCase()) {
-                        correctCount++;
-                    }
-                    
-                    // Kiểm tra từng câu
-                    checkSentence(index);
+                    container.appendChild(listeningItem);
                 });
                 
-                // Hiển thị kết quả tổng quát
-                const totalCount = wordItems.length;
+                const submitBtn = document.createElement('button');
+                submitBtn.className = 'btn btn-primary';
+                submitBtn.textContent = 'Nộp bài';
+                submitBtn.addEventListener('click', function() {
+                    const correctCount = document.querySelectorAll('input[type="radio"][value="correct"]:checked').length;
+                    const totalCount = vocabularies.length;
+                    showResult('listening', correctCount, totalCount);
+                });
+                
+                container.appendChild(submitBtn);
+            }
+            
+            // Hàm hiển thị kết quả
+            function showResult(type, correctCount, totalCount) {
+                // Lấy container kết quả
+                const resultContainer = document.getElementById(`result-${type}`);
+                resultContainer.style.display = 'block';
+                
+                // Lấy container nội dung kết quả
+                const resultContent = resultContainer.querySelector('.result-content');
+                
+                // Tính phần trăm đúng
                 const percentage = Math.round((correctCount / totalCount) * 100);
                 
-                alert(`Bạn đã hoàn thành: ${correctCount}/${totalCount} câu đúng (${percentage}%)`);
-            }
-            
-            // Hàm reset câu
-            function resetSentence(index) {
-                const wordBank = document.getElementById(`word-bank-${index}`);
-                const answerArea = document.getElementById(`answer-area-${index}`);
-                const feedbackContainer = document.querySelector(`#word-item-${index} .feedback`);
+                // Xác định loại kết quả
+                let resultType = '';
+                let message = '';
                 
-                // Hiển thị lại tất cả các từ trong word bank
-                wordBank.querySelectorAll('.word-item').forEach(item => {
-                    item.style.display = 'inline-block';
-                });
-                
-                // Xóa tất cả các từ trong answer area
-                const clonedWordItems = answerArea.querySelectorAll('.word-item');
-                clonedWordItems.forEach(item => item.remove());
-                
-                // Hiển thị lại thông báo trống
-                const emptyMessage = answerArea.querySelector('.empty-message');
-                if (emptyMessage) {
-                    emptyMessage.style.display = 'block';
+                if (percentage >= 80) {
+                    resultType = 'success';
+                    message = 'Xuất sắc! Bạn thực sự giỏi.';
+                } else if (percentage >= 60) {
+                    resultType = 'warning';
+                    message = 'Khá tốt! Bạn có thể làm tốt hơn.';
+                } else {
+                    resultType = 'danger';
+                    message = 'Cần cố gắng hơn! Hãy học lại các từ vựng.';
                 }
                 
-                // Ẩn feedback
-                feedbackContainer.style.display = 'none';
+                // Tạo nội dung kết quả
+                resultContent.innerHTML = `
+                    <div class="text-center mb-3">
+                        <div class="result-badge ${resultType} mb-3">
+                            <h3 class="mb-0">${percentage}%</h3>
+                        </div>
+                        <h4>${correctCount}/${totalCount} câu đúng</h4>
+                        <p>${message}</p>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-primary" id="continue-btn-${type}">
+                            <i class="fas fa-forward me-2"></i> Tiếp tục học
+                        </button>
+                        <button class="btn btn-outline-primary" id="share-btn-${type}">
+                            <i class="fas fa-share-alt me-2"></i> Chia sẻ kết quả
+                        </button>
+                    </div>
+                `;
                 
-                // Xóa border màu
-                answerArea.classList.remove('border-success', 'border-danger');
+                // Thêm xử lý sự kiện cho nút tiếp tục học
+                document.getElementById(`continue-btn-${type}`).addEventListener('click', function() {
+                    // Chuyển đến phần khác hoặc làm mới bài tập
+                    if (type === 'mc') {
+                        resetMultipleChoiceExercise();
+                    } else if (type === 'matching') {
+                        resetMatchingExercise();
+                    } else if (type === 'listening') {
+                        resetListeningExercise();
+                    }
+                });
+                
+                // Thêm xử lý sự kiện cho nút chia sẻ kết quả
+                document.getElementById(`share-btn-${type}`).addEventListener('click', function() {
+                    shareResults(percentage, correctCount, totalCount);
+                });
+                
+                // Lưu kết quả vào localStorage để theo dõi tiến độ
+                saveProgress(type, correctCount, totalCount);
             }
             
-            // Hàm phát âm từ
+            // Hàm chia sẻ kết quả
+            function shareResults(percentage, correctCount, totalCount) {
+                const text = `Tôi vừa đạt ${percentage}% (${correctCount}/${totalCount}) trong bài tập từ vựng tiếng Anh trên EngMate!`;
+                
+                // Kiểm tra hỗ trợ Web Share API
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Kết quả học từ vựng',
+                        text: text,
+                        url: window.location.href
+                    })
+                    .catch(error => console.log('Error sharing:', error));
+                } else {
+                    // Fallback: Copy thông báo vào clipboard
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    
+                    alert('Đã sao chép kết quả! Bạn có thể chia sẻ nó ngay bây giờ.');
+                }
+            }
+            
+            // Hàm lưu tiến độ
+            function saveProgress(type, correctCount, totalCount) {
+                // Lấy thông tin chủ đề hiện tại
+                const topicId = @(topic?.ID_CD ?? 0);
+                const topicName = '@(topic?.Name_CD ?? "Vocabulary")';
+                
+                // Lấy dữ liệu tiến độ từ localStorage
+                let progress = JSON.parse(localStorage.getItem('vocab_exercise_progress') || '{}');
+                
+                // Kiểm tra và khởi tạo đối tượng cho chủ đề nếu chưa có
+                if (!progress[topicId]) {
+                    progress[topicId] = {
+                        name: topicName,
+                        exercises: {}
+                    };
+                }
+                
+                // Cập nhật tiến độ cho loại bài tập hiện tại
+                progress[topicId].exercises[type] = {
+                    correctCount: correctCount,
+                    totalCount: totalCount,
+                    percentage: Math.round((correctCount / totalCount) * 100),
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Lưu lại vào localStorage
+                localStorage.setItem('vocab_exercise_progress', JSON.stringify(progress));
+                
+                // Cập nhật biểu tượng hoàn thành trên tab nếu đạt từ 80% trở lên
+                const percentage = Math.round((correctCount / totalCount) * 100);
+                if (percentage >= 80) {
+                    markTabAsCompleted(type);
+                }
+            }
+            
+            // Hàm đánh dấu tab đã hoàn thành
+            function markTabAsCompleted(type) {
+                let tabId = '';
+                
+                if (type === 'mc') {
+                    tabId = 'multiple-choice-tab';
+                } else if (type === 'matching') {
+                    tabId = 'matching-tab';
+                } else if (type === 'listening') {
+                    tabId = 'listening-tab';
+                }
+                
+                if (tabId) {
+                    const tab = document.getElementById(tabId);
+                    
+                    // Thêm biểu tượng hoàn thành vào tab
+                    if (!tab.querySelector('.tab-completed')) {
+                        const icon = document.createElement('span');
+                        icon.className = 'tab-completed ms-2 text-success';
+                        icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                        tab.appendChild(icon);
+                    }
+                }
+            }
+            
+            // Hàm phát âm từ tiếng Anh
             function speakWord(word) {
+                // Kiểm tra hỗ trợ Web Speech API
                 if ('speechSynthesis' in window) {
                     const utterance = new SpeechSynthesisUtterance(word);
                     utterance.lang = 'en-US';
                     utterance.rate = 0.9; // Tốc độ nói chậm hơn một chút
                     window.speechSynthesis.speak(utterance);
-                } else {
-                    alert("Trình duyệt của bạn không hỗ trợ chức năng đọc văn bản");
                 }
             }
             
-            // Thêm CSS tùy chỉnh
-            const style = document.createElement('style');
-            style.textContent = `
-                .min-height-60 {
-                    min-height: 60px;
+            // Kiểm tra và khôi phục tiến độ đã lưu
+            function loadSavedProgress() {
+                const topicId = @(topic?.ID_CD ?? 0);
+                
+                // Lấy dữ liệu tiến độ từ localStorage
+                const progress = JSON.parse(localStorage.getItem('vocab_exercise_progress') || '{}');
+                
+                // Kiểm tra tiến độ của chủ đề hiện tại
+                if (progress[topicId] && progress[topicId].exercises) {
+                    const exercises = progress[topicId].exercises;
+                    
+                    // Khôi phục tiến độ cho từng loại bài tập
+                    for (const type in exercises) {
+                        const exercise = exercises[type];
+                        if (exercise.percentage >= 80) {
+                            markTabAsCompleted(type);
+                        }
+                    }
                 }
-                .word-item {
-                    cursor: pointer;
-                    transition: all 0.2s;
-                }
-                .word-item:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-                }
-                .answer-area {
-                    min-height: 80px;
-                    transition: all 0.3s;
-                }
-                .border-success {
-                    border-color: #28a745 !important;
-                    background-color: rgba(40, 167, 69, 0.1);
-                }
-                .border-danger {
-                    border-color: #dc3545 !important;
-                    background-color: rgba(220, 53, 69, 0.1);
-                }
-            `;
-            document.head.appendChild(style);
+            }
+            
+            // Tải tiến độ đã lưu khi trang được tải
+            loadSavedProgress();
+            
+            // Xử lý chuyển tab để đảm bảo các bài tập được khởi tạo đúng
+            const exerciseTabs = document.querySelectorAll('#exerciseTabs button[data-bs-toggle="tab"]');
+            exerciseTabs.forEach(tab => {
+                tab.addEventListener('shown.bs.tab', function(e) {
+                    const targetId = e.target.getAttribute('data-bs-target').substring(1);
+                    
+                    if (targetId === 'multiple-choice') {
+                        // Đảm bảo bài tập trắc nghiệm có sẵn
+                        if (document.querySelectorAll('#multiple-choice-questions .question-container').length === 0) {
+                            createMultipleChoiceExercise(vocabularies);
+                        }
+                    } else if (targetId === 'matching') {
+                        // Đảm bảo bài tập nối từ có sẵn
+                        if (document.querySelectorAll('#matching-words .matching-item').length === 0) {
+                            createMatchingExercise(vocabularies);
+                        }
+                    } else if (targetId === 'listening') {
+                        // Đảm bảo bài tập nghe có sẵn
+                        if (document.querySelectorAll('#listening-questions .listening-item').length === 0) {
+                            createListeningExercise(vocabularies);
+                        }
+                    }
+                });
+            });
         });
     </script>
 }

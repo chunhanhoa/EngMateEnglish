@@ -1,257 +1,358 @@
-@model List<GrammarModel>
+@using System.Security.Claims
+@model Dictionary<string, List<GrammarModel>>
 @{
     ViewData["Title"] = "Ngữ pháp tiếng Anh";
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 
-<div class="container mt-5">
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Ngữ pháp</li>
-                </ol>
-            </nav>
+<!-- Hero Section -->
+<section class="hero-section" style="padding: 3rem 0;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h1 class="display-4 fw-bold mb-3">Ngữ pháp tiếng Anh</h1>
+                <p class="lead mb-4">
+                    Học ngữ pháp tiếng Anh từ căn bản đến nâng cao với phương pháp học tập hiệu quả.
+                    Các quy tắc ngữ pháp được giải thích rõ ràng kèm theo ví dụ thực tế.
+                </p>
+            </div>
+            <div class="col-md-5 text-center">
+                <img src="~/images/grammar-hero.png" alt="Grammar Learning" class="hero-image img-fluid" style="max-height: 250px;" />
+            </div>
         </div>
     </div>
+</section>
 
-    <div class="row mb-5">
-        <div class="col-lg-8">
-            <h1 class="display-5 fw-bold mb-3">Ngữ pháp tiếng Anh</h1>
-            <p class="lead">Học ngữ pháp tiếng Anh một cách đơn giản và hiệu quả với các bài học được thiết kế rõ ràng, dễ hiểu</p>
-        </div>
-        <div class="col-lg-4 text-end">
-            <img src="/images/grammar-icon.png" alt="Grammar Icon" class="img-fluid" style="max-width: 120px;" />
-        </div>
+<!-- Grammar Navigation -->
+<section class="py-3 bg-light sticky-top shadow-sm">
+    <div class="container">
+        <ul class="nav nav-pills nav-fill" id="grammarTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active px-4 py-3" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic-grammar-tab" type="button" role="tab">
+                    <i class="fas fa-baby me-2"></i> Ngữ pháp cơ bản (A1-A2)
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link px-4 py-3" id="intermediate-tab" data-bs-toggle="tab" data-bs-target="#intermediate-grammar-tab" type="button" role="tab">
+                    <i class="fas fa-user-graduate me-2"></i> Ngữ pháp trung cấp (B1-B2)
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link px-4 py-3" id="advanced-tab" data-bs-toggle="tab" data-bs-target="#advanced-grammar-tab" type="button" role="tab">
+                    <i class="fas fa-brain me-2"></i> Ngữ pháp nâng cao (C1-C2)
+                </button>
+            </li>
+        </ul>
     </div>
+</section>
 
-    <!-- Grammar Level Filter -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-3">
-                    <h5 class="mb-3"><i class="fas fa-filter text-primary me-2"></i>Lọc theo cấp độ</h5>
-                    <div class="d-flex flex-wrap gap-2">
-                        <button class="btn btn-sm btn-outline-primary level-filter active" data-level="all">Tất cả</button>
-                        <button class="btn btn-sm btn-outline-success level-filter" data-level="A1">Sơ cấp (A1)</button>
-                        <button class="btn btn-sm btn-outline-info level-filter" data-level="A2">Tiền trung cấp (A2)</button>
-                        <button class="btn btn-sm btn-outline-warning level-filter" data-level="B1">Trung cấp (B1)</button>
-                        <button class="btn btn-sm btn-outline-danger level-filter" data-level="B2">Cao trung cấp (B2)</button>
-                        <button class="btn btn-sm btn-outline-purple level-filter" data-level="C1">Cao cấp (C1)</button>
-                        <button class="btn btn-sm btn-outline-teal level-filter" data-level="C2">Chuyên sâu (C2)</button>
+<!-- Grammar Content -->
+<section class="py-5">
+    <div class="container">
+        <!-- Tab Content -->
+        <div class="tab-content" id="grammarTabsContent">
+            <!-- Basic Grammar Tab -->
+            <div class="tab-pane fade show active" id="basic-grammar-tab" role="tabpanel">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card border-0 bg-primary-soft mb-4 p-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h2 class="fw-bold mb-2">Ngữ pháp cơ bản</h2>
+                                    <p class="mb-0">Các bài học ngữ pháp dành cho người mới bắt đầu, giúp xây dựng nền tảng vững chắc.</p>
+                                </div>
+                                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                    <span class="badge bg-primary p-2 fs-6">Phù hợp cho trình độ A1-A2</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="row g-4">
+                    @if (Model.ContainsKey("Basic Grammar"))
+                    {
+                        @foreach (var grammar in Model["Basic Grammar"])
+                        {
+                            <div class="col-lg-6 grammar-card-container">
+                                <div class="card h-100 border-0 shadow-sm hover-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="level-badge level-@grammar.Level">@grammar.Level</span>
+                                        </div>
+
+                                        <h3 class="card-title fw-bold mb-3">@grammar.Title_NP</h3>
+                                        <p class="card-text text-muted mb-4">@grammar.Description_NP</p>
+
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between align-items-center small mb-1">
+                                                <span>Tiến độ học</span>
+                                                <span>@grammar.ProgressPercentage%</span>
+                                            </div>
+                                            <div class="progress" style="height: 8px;">
+                                                <div class="progress-bar bg-primary" role="progressbar" 
+                                                     style="width: @grammar.ProgressPercentage%;" 
+                                                     aria-valuenow="@grammar.ProgressPercentage" 
+                                                     aria-valuemin="0" 
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <a href="@Url.Action("Details", "Grammar", new { id = grammar.ID_NP })" 
+                                           class="btn btn-primary w-100 mt-2">
+                                            <i class="fas fa-book-open me-2"></i> Học ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <div class="alert alert-info text-center">
+                                Chưa có bài học ngữ pháp cơ bản nào. Vui lòng quay lại sau!
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            <!-- Intermediate Grammar Tab -->
+            <div class="tab-pane fade" id="intermediate-grammar-tab" role="tabpanel">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card border-0 bg-success-soft mb-4 p-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h2 class="fw-bold mb-2">Ngữ pháp trung cấp</h2>
+                                    <p class="mb-0">Các bài học dành cho người đã có kiến thức cơ bản, giúp nâng cao trình độ.</p>
+                                </div>
+                                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                    <span class="badge bg-success p-2 fs-6">Phù hợp cho trình độ B1-B2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    @if (Model.ContainsKey("Intermediate Grammar"))
+                    {
+                        @foreach (var grammar in Model["Intermediate Grammar"])
+                        {
+                            <div class="col-lg-6 grammar-card-container">
+                                <div class="card h-100 border-0 shadow-sm hover-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="level-badge level-@grammar.Level">@grammar.Level</span>
+                                        </div>
+
+                                        <h3 class="card-title fw-bold mb-3">@grammar.Title_NP</h3>
+                                        <p class="card-text text-muted mb-4">@grammar.Description_NP</p>
+
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between align-items-center small mb-1">
+                                                <span>Tiến độ học</span>
+                                                <span>@grammar.ProgressPercentage%</span>
+                                            </div>
+                                            <div class="progress" style="height: 8px;">
+                                                <div class="progress-bar bg-success" role="progressbar" 
+                                                     style="width: @grammar.ProgressPercentage%;" 
+                                                     aria-valuenow="@grammar.ProgressPercentage" 
+                                                     aria-valuemin="0" 
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <a href="@Url.Action("Details", "Grammar", new { id = grammar.ID_NP })" 
+                                           class="btn btn-success w-100 mt-2">
+                                            <i class="fas fa-book-open me-2"></i> Học ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <div class="alert alert-info text-center">
+                                <i class="fas fa-info-circle me-2"></i> Chưa có bài học ngữ pháp trung cấp nào. Vui lòng quay lại sau!
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            <!-- Advanced Grammar Tab -->
+            <div class="tab-pane fade" id="advanced-grammar-tab" role="tabpanel">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card border-0 bg-danger-soft mb-4 p-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h2 class="fw-bold mb-2">Ngữ pháp nâng cao</h2>
+                                    <p class="mb-0">Các bài học chuyên sâu dành cho người học muốn thành thạo tiếng Anh.</p>
+                                </div>
+                                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                    <span class="badge bg-danger p-2 fs-6">Phù hợp cho trình độ C1-C2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    @if (Model.ContainsKey("Advanced Grammar"))
+                    {
+                        @foreach (var grammar in Model["Advanced Grammar"])
+                        {
+                            <div class="col-lg-6 grammar-card-container">
+                                <div class="card h-100 border-0 shadow-sm hover-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <span class="level-badge level-@grammar.Level">@grammar.Level</span>
+                                        </div>
+
+                                        <h3 class="card-title fw-bold mb-3">@grammar.Title_NP</h3>
+                                        <p class="card-text text-muted mb-4">@grammar.Description_NP</p>
+
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between align-items-center small mb-1">
+                                                <span>Tiến độ học</span>
+                                                <span>@grammar.ProgressPercentage%</span>
+                                            </div>
+                                            <div class="progress" style="height: 8px;">
+                                                <div class="progress-bar bg-danger" role="progressbar" 
+                                                     style="width: @grammar.ProgressPercentage%;" 
+                                                     aria-valuenow="@grammar.ProgressPercentage" 
+                                                     aria-valuemin="0" 
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <a href="@Url.Action("Details", "Grammar", new { id = grammar.ID_NP })" 
+                                           class="btn btn-danger w-100 mt-2">
+                                            <i class="fas fa-book-open me-2"></i> Học ngay
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <div class="alert alert-info text-center">
+                                <i class="fas fa-info-circle me-2"></i> Chưa có bài học ngữ pháp nâng cao nào. Vui lòng quay lại sau!
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- Grammar Lessons List -->
-    @if (!Model.Any())
-    {
-        <div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading"><i class="fas fa-exclamation-circle me-2"></i>Không tìm thấy bài học nào!</h4>
-            <p>Hiện tại chưa có bài học ngữ pháp nào được thêm vào hệ thống. Vui lòng quay lại sau.</p>
-        </div>
+<!-- Thêm CSS để tạo giao diện đẹp hơn -->
+<style>
+    /* Màu nền mềm cho các tab */
+    .bg-primary-soft { 
+        background-color: rgba(78, 115, 250, 0.1); 
     }
-    else
-    {
-        <div class="row g-4 grammar-cards">
-            @foreach (var grammar in Model)
-            {
-                string levelClass = grammar.Level switch {
-                    "A1" => "success",
-                    "A2" => "info",
-                    "B1" => "warning",
-                    "B2" => "danger",
-                    "C1" => "purple",
-                    "C2" => "teal",
-                    _ => "primary"
-                };
-                
-                string levelText = grammar.Level switch {
-                    "A1" => "Sơ cấp",
-                    "A2" => "Tiền trung cấp",
-                    "B1" => "Trung cấp",
-                    "B2" => "Cao trung cấp",
-                    "C1" => "Cao cấp",
-                    "C2" => "Chuyên sâu",
-                    _ => "Cơ bản"
-                };
-
-                string iconClass = GetGrammarIcon(grammar.Title_NP);
-                
-                <div class="col-lg-4 col-md-6 grammar-item" data-level="@grammar.Level">
-                    <div class="card h-100 border-0 shadow-sm hover-card">
-                        <div class="card-header border-0 py-3" style="background-color: rgba(var(--bs-@levelClass-rgb), 0.15);">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="badge bg-@levelClass">@grammar.Level - @levelText</span>
-                                <span class="badge bg-light text-dark">
-                                    <i class="far fa-calendar-alt me-1"></i>
-                                    @(grammar.TimeUpload_NP.HasValue ? grammar.TimeUpload_NP.Value.ToString("dd/MM/yyyy") : "Mới cập nhật")
-                                </span>
-                            </div>
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="grammar-icon-container me-3">
-                                    <i class="@iconClass text-@levelClass grammar-icon"></i>
-                                </div>
-                                <h4 class="card-title mb-0">@grammar.Title_NP</h4>
-                            </div>
-                            <p class="card-text text-muted mb-4">@grammar.Description_NP</p>
-                            <div class="d-grid gap-2">
-                                <a href="@Url.Action("Details", "Grammar", new { id = grammar.ID_NP })" class="btn btn-@levelClass">
-                                    <i class="fas fa-book-open me-2"></i> Xem bài học
-                                </a>
-                                <a href="@Url.Action("GrammarExercise", "Exercise", new { id = grammar.ID_NP })" class="btn btn-outline-@levelClass">
-                                    <i class="fas fa-tasks me-2"></i> Làm bài tập
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
+    .bg-success-soft { 
+        background-color: rgba(40, 167, 69, 0.1); 
     }
-</div>
-
-@section Styles {
-    <style>
-        /* Hover card effect */
-        .hover-card {
-            transition: all 0.3s ease;
-        }
-        
-        .hover-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-        }
-        
-        /* Màu sắc tùy chỉnh cho C1 và C2 */
-        .bg-purple {
-            background-color: #6f42c1 !important;
-            color: white !important;
-        }
-        
-        .bg-teal {
-            background-color: #20c997 !important;
-            color: white !important;
-        }
-        
-        .text-purple {
-            color: #6f42c1 !important;
-        }
-        
-        .text-teal {
-            color: #20c997 !important;
-        }
-        
-        /* Màu nền cho button filter */
-        .btn-outline-purple {
-            color: #6f42c1;
-            border-color: #6f42c1;
-        }
-        
-        .btn-outline-purple:hover, .btn-outline-purple.active {
-            background-color: #6f42c1;
-            color: white;
-        }
-        
-        .btn-outline-teal {
-            color: #20c997;
-            border-color: #20c997;
-        }
-        
-        .btn-outline-teal:hover, .btn-outline-teal.active {
-            background-color: #20c997;
-            color: white;
-        }
-        
-        /* CSS biến cho màu sắc */
-        :root {
-            --bs-purple-rgb: 111, 66, 193;
-            --bs-teal-rgb: 32, 201, 151;
-        }
-        
-        /* Grammar icon styling */
-        .grammar-icon-container {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: #f8f9fa;
-        }
-        
-        .grammar-icon {
-            font-size: 1.5rem;
-        }
-    </style>
-}
+    .bg-danger-soft { 
+        background-color: rgba(220, 53, 69, 0.1); 
+    }
+    
+    /* Hiệu ứng hover cho card */
+    .hover-card {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Hiệu ứng nút active trên nav pills */
+    .nav-pills .nav-link {
+        border-radius: 10px;
+        font-weight: 600;
+        color: #495057;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-pills .nav-link.active {
+        background-color: #4e73fa;
+        color: white;
+        box-shadow: 0 4px 10px rgba(78, 115, 250, 0.3);
+    }
+    
+    .nav-pills .nav-link:not(.active):hover {
+        background-color: #e9ecef;
+    }
+    
+    /* Level badges */
+    .level-badge {
+        padding: 0.35rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+    
+    /* Animation cho card */
+    .grammar-card-container {
+        animation: fadeIn 0.6s ease-in-out forwards;
+        opacity: 0;
+    }
+    
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Delay cho animation */
+    .grammar-card-container:nth-child(1) { animation-delay: 0.1s; }
+    .grammar-card-container:nth-child(2) { animation-delay: 0.2s; }
+    .grammar-card-container:nth-child(3) { animation-delay: 0.3s; }
+    .grammar-card-container:nth-child(4) { animation-delay: 0.4s; }
+    .grammar-card-container:nth-child(5) { animation-delay: 0.5s; }
+    .grammar-card-container:nth-child(6) { animation-delay: 0.6s; }
+    
+    /* Thiết lập sticky top nav không đè lên nội dung */
+    .sticky-top {
+        top: 0;
+        z-index: 100;
+    }
+</style>
 
 @section Scripts {
     <script>
-        $(document).ready(function() {
-            console.log("Grammar page loaded");
-            console.log("Total lessons: @Model.Count");
-            
-            // Đảm bảo các phần tử luôn hiển thị
-            $('.grammar-item').css({
-                'display': 'block',
-                'opacity': '1',
-                'visibility': 'visible'
-            });
-            
-            // Filter theo level
-            $('.level-filter').on('click', function() {
-                const level = $(this).data('level');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hiển thị thông báo
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type} notification-toast`;
+                notification.style.position = 'fixed';
+                notification.style.top = '20px';
+                notification.style.right = '20px';
+                notification.style.zIndex = '9999';
+                notification.style.minWidth = '300px';
+                notification.style.padding = '15px';
+                notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+                notification.innerHTML = message;
                 
-                // Active button
-                $('.level-filter').removeClass('active');
-                $(this).addClass('active');
+                document.body.appendChild(notification);
                 
-                if (level === 'all') {
-                    $('.grammar-item').show();
-                } else {
-                    $('.grammar-item').hide();
-                    $(`.grammar-item[data-level="${level}"]`).show();
-                }
-            });
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
         });
     </script>
-}
-
-@functions {
-    public string GetGrammarIcon(string title)
-    {
-        title = (title ?? "").ToLower();
-        
-        if (title.Contains("tense") || title.Contains("time") || title.Contains("thì"))
-            return "fas fa-clock";
-        if (title.Contains("verb") || title.Contains("động từ"))
-            return "fas fa-running";
-        if (title.Contains("noun") || title.Contains("danh từ"))
-            return "fas fa-cube";
-        if (title.Contains("adjective") || title.Contains("tính từ"))
-            return "fas fa-palette";
-        if (title.Contains("adverb") || title.Contains("trạng từ"))
-            return "fas fa-tachometer-alt";
-        if (title.Contains("preposition") || title.Contains("giới từ"))
-            return "fas fa-map-marker-alt";
-        if (title.Contains("conjunction") || title.Contains("liên từ"))
-            return "fas fa-link";
-        if (title.Contains("pronoun") || title.Contains("đại từ"))
-            return "fas fa-user";
-        if (title.Contains("article") || title.Contains("mạo từ"))
-            return "fas fa-newspaper";
-        if (title.Contains("passive") || title.Contains("bị động"))
-            return "fas fa-exchange-alt";
-        if (title.Contains("condition") || title.Contains("điều kiện"))
-            return "fas fa-random";
-        if (title.Contains("modal") || title.Contains("khả năng"))
-            return "fas fa-lightbulb";
-            
-        return "fas fa-book"; // default icon
-    }
 }

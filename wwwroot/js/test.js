@@ -5,17 +5,11 @@ let currentQuestion = 1;
 let totalQuestions = 0;
 let timeLeft = 0;
 let timerInterval;
-let answeredQuestions = [];
-let userAnswers = [];
 
 // Khởi tạo bài kiểm tra
 function initTest(duration, questions) {
     totalQuestions = questions;
     timeLeft = duration * 60; // Chuyển từ phút sang giây
-    
-    // Khởi tạo mảng theo dõi câu trả lời của người dùng
-    answeredQuestions = new Array(totalQuestions).fill(false);
-    userAnswers = new Array(totalQuestions).fill(null);
     
     // Khởi tạo bộ đếm thời gian
     startTimer();
@@ -30,15 +24,6 @@ function initTest(duration, questions) {
         
         // Thêm class selected vào option được chọn
         $(this).addClass('selected');
-        
-        // Cập nhật trạng thái câu hỏi đã trả lời
-        const questionCard = $(this).closest('.test-question-card');
-        const questionIndex = parseInt(questionCard.data('question')) - 1;
-        answeredQuestions[questionIndex] = true;
-        userAnswers[questionIndex] = $(this).data('answer');
-        
-        // Cập nhật tiến trình
-        updateProgressBar();
     });
     
     // Xử lý khi click nút Câu tiếp theo
@@ -93,14 +78,10 @@ function updateNavigationButtons() {
 
 // Cập nhật thanh tiến trình
 function updateProgressBar() {
-    // Đếm số câu đã trả lời
-    let answeredCount = answeredQuestions.filter(Boolean).length;
-    
-    // Cập nhật thanh tiến trình
-    let progressPercentage = Math.round((answeredCount / totalQuestions) * 100);
+    let progressPercentage = (currentQuestion / totalQuestions) * 100;
     $('#progressBar').css('width', progressPercentage + '%');
     $('#progressBar').attr('aria-valuenow', progressPercentage);
-    $('#progressBar').text(answeredCount + '/' + totalQuestions);
+    $('#progressBar').text(currentQuestion + '/' + totalQuestions);
 }
 
 // Khởi tạo bộ đếm thời gian
@@ -125,6 +106,12 @@ function startTimer() {
             alert('Hết thời gian! Bài kiểm tra của bạn sẽ được nộp tự động.');
             submitTest();
         }
+        
+        // Cảnh báo khi còn ít thời gian
+        if (timeLeft === 60) { // Còn 1 phút
+            $('#timer').addClass('text-danger').addClass('fw-bold');
+            $('#timer').parent().addClass('animate__animated animate__pulse animate__infinite');
+        }
     }, 1000);
 }
 
@@ -134,28 +121,24 @@ function submitTest() {
     clearInterval(timerInterval);
     
     // Tính toán kết quả
+    // Trong ứng dụng thực tế, dữ liệu này sẽ được gửi đến server
     let correctAnswers = 0;
-    let answeredCount = answeredQuestions.filter(Boolean).length;
+    let wrongAnswers = 0;
+    let unanswered = 0;
     
-    // Đếm số câu trả lời đúng (trong thực tế sẽ cần so sánh với đáp án đúng)
-    $('.test-question-card').each(function(index) {
-        const selectedOption = $(this).find('.test-option.selected');
-        if (selectedOption.length && selectedOption.data('correct') === true) {
-            correctAnswers++;
-        }
-    });
-    
-    // Tính điểm
-    const score = Math.round((correctAnswers / totalQuestions) * 100);
+    // Mô phỏng việc tính điểm
+    // Trong thực tế, điểm sẽ được tính dựa trên câu trả lời thực tế của người dùng
+    correctAnswers = 15;
+    wrongAnswers = 5;
+    unanswered = totalQuestions - correctAnswers - wrongAnswers;
     
     // Lưu kết quả vào localStorage để hiển thị ở trang kết quả
+    // Trong ứng dụng thực tế, kết quả sẽ được lưu trữ trong database
     localStorage.setItem('testResult', JSON.stringify({
-        testId: getTestId(),
         correctAnswers: correctAnswers,
-        totalQuestions: totalQuestions,
-        score: score,
-        timeSpent: $('#timer').text(),
-        answeredCount: answeredCount
+        wrongAnswers: wrongAnswers,
+        unanswered: unanswered,
+        score: (correctAnswers / totalQuestions) * 100
     }));
     
     // Chuyển hướng đến trang kết quả

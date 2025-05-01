@@ -1,0 +1,35 @@
+/* Fix hiển thị avatar */
+img[src*="avatar"] {
+    /* Đảm bảo avatar hiển thị đúng kích thước */
+    object-fit: cover !important;
+}
+
+/* Áp dụng vòng tải khi đang tải avatar */
+.avatar-loading {
+    position: relative;
+}
+
+.avatar-loading::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 123, 255, 0.3);
+    border-top-color: #007bff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Sửa lỗi avatar không tải được */
+img.rounded-circle[src=""],
+img.avatar-image[src=""],
+img.rounded-circle:not([src]),
+img.avatar-image:not([src]) {
+    content: url('/images/default-avatar.png') !important;
+}

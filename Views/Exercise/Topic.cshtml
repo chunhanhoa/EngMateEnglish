@@ -1,7 +1,8 @@
-@model List<TiengAnh.Models.BaiTap>
+@using TiengAnh.Extensions
+@model List<ExerciseModel>
 @{
-    ViewData["Title"] = ViewBag.Topic?.NameCd ?? "Chủ đề";
-    var topic = ViewBag.Topic as TiengAnh.Models.ChuDe;
+    ViewData["Title"] = "Bài tập - " + (ViewBag.Topic?.Name_CD ?? "Chủ đề");
+    var topic = ViewBag.Topic as TopicModel;
 }
 
 <!-- Topic Header -->
@@ -12,7 +13,9 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">@(topic?.NameCd ?? "Chủ đề")</li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @(ViewBag.Topic?.Name_CD ?? "Chủ đề không xác định")
+                    </li>
                 </ol>
             </nav>
         </div>
@@ -20,15 +23,18 @@
 
     <div class="row align-items-center mb-5">
         <div class="col-md-8">
-            <h1 class="display-5 fw-bold mb-3">Bài tập: @(topic?.NameCd ?? "Chủ đề")</h1>
-            <p class="lead">@(topic?.DiscriptionCd ?? "Mô tả chủ đề")</p>
+            <h1 class="display-5 fw-bold mb-3">Bài tập: @topic?.Name_CD</h1>
+            <p class="lead">@topic?.Description_CD</p>
             <div class="d-flex align-items-center mt-3">
                 <span class="badge badge-primary me-2">@Model.Count câu hỏi</span>
                 <span class="badge badge-warning">Thời gian: 15 phút</span>
             </div>
         </div>
         <div class="col-md-4 text-end">
-            <img src="/images/icons/topic-default.png" alt="@(topic?.NameCd ?? "Chủ đề")" class="topic-icon-large animate__animated animate__bounce" style="width: 120px; height: 120px;" />
+            @if (topic != null && !string.IsNullOrEmpty(topic.IconPath))
+            {
+                <img src="@topic.IconPath" alt="@topic.Name_CD" class="topic-icon-large animate__animated animate__bounce" style="width: 120px; height: 120px;" />
+            }
         </div>
     </div>
 
@@ -37,31 +43,72 @@
         <div class="card-body p-4">
             <div class="d-flex align-items-center mb-3">
                 <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                    <i class="fas fa-lightbulb text-primary fa-lg"></i>
+                    <i class="fas fa-info-circle text-primary fa-2x"></i>
                 </div>
-                <h3 class="h4 mb-0">Hướng dẫn</h3>
+                <h3 class="card-title mb-0">Hướng dẫn</h3>
             </div>
-            <p>Bạn sẽ được làm các bài tập liên quan đến chủ đề này. Có nhiều loại bài tập khác nhau để bạn rèn luyện.</p>
-            <div class="row g-4 mt-3">
-                <div class="col-md-6">
-                    <div class="d-flex">
-                        <div class="me-3">
-                            <i class="fas fa-check-circle text-success fa-lg"></i>
-                        </div>
-                        <div>
-                            <h4 class="h6 mb-1">Trắc nghiệm</h4>
-                            <p class="small mb-0">Chọn đáp án đúng từ các lựa chọn</p>
+            <p class="card-text mb-0">
+                Đọc kỹ câu hỏi và chọn đáp án đúng. Bạn có thể xem giải thích sau khi trả lời từng câu. 
+                Để hoàn thành bài tập, hãy làm hết tất cả các câu hỏi và nhấn nút "Kết thúc bài làm" ở cuối trang.
+            </p>
+        </div>
+    </div>
+
+    <!-- Exercise Types Section -->
+    <div class="card border-0 shadow-sm mb-5">
+        <div class="card-body p-4">
+            <h3 class="card-title mb-4">Loại bài tập</h3>
+            <div class="row g-4">
+                <!-- Trắc nghiệm -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-question-circle text-primary"></i>
+                                </div>
+                                <h5 class="card-title mb-0">Trắc nghiệm</h5>
+                            </div>
+                            <p class="card-text text-muted mb-3">Kiểm tra kiến thức với các câu hỏi trắc nghiệm đơn giản. Phù hợp cho người mới bắt đầu.</p>
+                            <a href="@Url.Action("MultipleChoice", "Exercise", new { id = topic?.ID_CD })" class="btn btn-primary w-100">
+                                <i class="fas fa-play me-2"></i> Bắt đầu
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="d-flex">
-                        <div class="me-3">
-                            <i class="fas fa-keyboard text-success fa-lg"></i>
+                
+                <!-- Điền từ -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-keyboard text-primary"></i>
+                                </div>
+                                <h5 class="card-title mb-0">Điền từ</h5>
+                            </div>
+                            <p class="card-text text-muted mb-3">Hoàn thành câu bằng cách điền từ thích hợp. Giúp cải thiện từ vựng và ngữ pháp.</p>
+                            <a href="@Url.Action("FillBlank", "Exercise", new { id = topic?.ID_CD })" class="btn btn-primary w-100">
+                                <i class="fas fa-play me-2"></i> Bắt đầu
+                            </a>
                         </div>
-                        <div>
-                            <h4 class="h6 mb-1">Điền từ</h4>
-                            <p class="small mb-0">Điền từ thích hợp vào chỗ trống</p>
+                    </div>
+                </div>
+                
+                <!-- Sắp xếp câu -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-sort text-primary"></i>
+                                </div>
+                                <h5 class="card-title mb-0">Sắp xếp câu</h5>
+                            </div>
+                            <p class="card-text text-muted mb-3">Sắp xếp các từ để tạo thành câu có nghĩa. Luyện tập cấu trúc ngữ pháp và từ vựng.</p>
+                            <a href="@Url.Action("WordOrdering", "Exercise", new { id = topic?.ID_CD })" class="btn btn-primary w-100">
+                                <i class="fas fa-play me-2"></i> Bắt đầu
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -69,98 +116,207 @@
         </div>
     </div>
 
-    <!-- Exercise Types -->
-    <div class="row mb-5 g-4">
-        <!-- Trắc nghiệm -->
-        <div class="col-md-6">
-            <div class="card h-100 border-0 shadow-sm exercise-card">
+    <!-- Exercise Questions -->
+    <form id="exerciseForm">
+        @foreach (var (exercise, index) in Model.Select((ex, i) => (ex, i + 1)))
+        {
+            <div class="card border-0 shadow-sm mb-4 exercise-question" id="question-@index">
                 <div class="card-body p-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                            <i class="fas fa-check-circle text-primary"></i>
+                    <h4 class="fw-bold mb-4">Câu @index: @exercise.Question_BT</h4>
+                    
+                    <div class="options-list">
+                        <div class="quiz-option" data-answer="A" data-correct="@(exercise.Answer_BT == "A" ? "true" : "false")">
+                            <span>A. @exercise.Option_A</span>
                         </div>
-                        <h4 class="card-title mb-0">Trắc nghiệm</h4>
-                    </div>
-                    <p class="card-text text-muted mb-3">Kiểm tra kiến thức từ vựng với các câu hỏi trắc nghiệm. Phù hợp cho người mới bắt đầu.</p>
-                    <a href="@Url.Action("MultipleChoice", "Exercise", new { id = topic?.IdCd })" class="btn btn-primary w-100">
-                        <i class="fas fa-play me-2"></i> Bắt đầu
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Điền từ -->
-        <div class="col-md-6">
-            <div class="card h-100 border-0 shadow-sm exercise-card">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                            <i class="fas fa-keyboard text-primary"></i>
+                        <div class="quiz-option" data-answer="B" data-correct="@(exercise.Answer_BT == "B" ? "true" : "false")">
+                            <span>B. @exercise.Option_B</span>
                         </div>
-                        <h4 class="card-title mb-0">Điền từ</h4>
-                    </div>
-                    <p class="card-text text-muted mb-3">Hoàn thành câu bằng cách điền từ thích hợp. Giúp cải thiện từ vựng và ngữ pháp.</p>
-                    <a href="@Url.Action("FillBlank", "Exercise", new { id = topic?.IdCd })" class="btn btn-primary w-100">
-                        <i class="fas fa-play me-2"></i> Bắt đầu
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sample Question Preview -->
-    @if (Model.Any())
-    {
-        var firstExercise = Model.First();
-        <div class="card border-0 shadow-sm mb-5">
-            <div class="card-body p-4">
-                <h3 class="h4 mb-4">Ví dụ câu hỏi</h3>
-                <div class="question-preview p-4 border rounded mb-4">
-                    <h5 class="mb-4">@firstExercise.QuestionBt</h5>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="form-check p-3 border rounded @(firstExercise.AnswerBt == "A" ? "border-success bg-success-subtle" : "")">
-                                <input class="form-check-input" type="radio" name="sampleAnswer" id="optionA" disabled @(firstExercise.AnswerBt == "A" ? "checked" : "")>
-                                <label class="form-check-label w-100" for="optionA">@firstExercise.OptionA</label>
-                            </div>
+                        <div class="quiz-option" data-answer="C" data-correct="@(exercise.Answer_BT == "C" ? "true" : "false")">
+                            <span>C. @exercise.Option_C</span>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-check p-3 border rounded @(firstExercise.AnswerBt == "B" ? "border-success bg-success-subtle" : "")">
-                                <input class="form-check-input" type="radio" name="sampleAnswer" id="optionB" disabled @(firstExercise.AnswerBt == "B" ? "checked" : "")>
-                                <label class="form-check-label w-100" for="optionB">@firstExercise.OptionB</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-check p-3 border rounded @(firstExercise.AnswerBt == "C" ? "border-success bg-success-subtle" : "")">
-                                <input class="form-check-input" type="radio" name="sampleAnswer" id="optionC" disabled @(firstExercise.AnswerBt == "C" ? "checked" : "")>
-                                <label class="form-check-label w-100" for="optionC">@firstExercise.OptionC</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-check p-3 border rounded @(firstExercise.AnswerBt == "D" ? "border-success bg-success-subtle" : "")">
-                                <input class="form-check-input" type="radio" name="sampleAnswer" id="optionD" disabled @(firstExercise.AnswerBt == "D" ? "checked" : "")>
-                                <label class="form-check-label w-100" for="optionD">@firstExercise.OptionD</label>
-                            </div>
+                        <div class="quiz-option" data-answer="D" data-correct="@(exercise.Answer_BT == "D" ? "true" : "false")">
+                            <span>D. @exercise.Option_D</span>
                         </div>
                     </div>
-                    <div class="mt-4 p-3 bg-light rounded">
-                        <p class="mb-0"><strong>Giải thích:</strong> @firstExercise.ExplanationBt</p>
+                    
+                    <div class="explanation mt-4 p-3 rounded" style="background-color: #f8f9fa; display: none;">
+                        <p class="mb-0">
+                            <strong>Giải thích:</strong> @exercise.Explanation_BT
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </form>
 </div>
 
 @section Scripts {
-<script>
-    $(document).ready(function() {
-        // Hiệu ứng hover cho thẻ bài tập
-        $(".exercise-card").hover(function() {
-            $(this).addClass("shadow");
-        }, function() {
-            $(this).removeClass("shadow");
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup quiz functionality
+            setupQuiz();
+            
+            // Setup navigation for exercise questions
+            const questions = document.querySelectorAll('.exercise-question');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            const progressText = document.getElementById('progressText');
+            const resultsSection = document.getElementById('resultsSection');
+            const scoreProgressBar = document.getElementById('scoreProgressBar');
+            const correctAnswers = document.getElementById('correctAnswers');
+            const wrongAnswers = document.getElementById('wrongAnswers');
+            const scorePoints = document.getElementById('scorePoints');
+            const reviewBtn = document.getElementById('reviewBtn');
+            
+            // Kiểm tra nếu các phần tử có tồn tại trước khi sử dụng
+            if (questions && questions.length > 0) {
+                // Hide all questions except the first one
+                let currentQuestion = 0;
+                updateQuestionVisibility();
+                
+                // Setup buttons nếu chúng tồn tại
+                if (prevBtn) prevBtn.addEventListener('click', showPreviousQuestion);
+                if (nextBtn) nextBtn.addEventListener('click', showNextQuestion);
+                if (submitBtn) submitBtn.addEventListener('click', showResults);
+                if (reviewBtn) reviewBtn.addEventListener('click', reviewAnswers);
+                
+                function updateQuestionVisibility() {
+                    questions.forEach((question, index) => {
+                        if (index === currentQuestion) {
+                            question.style.display = 'block';
+                        } else {
+                            question.style.display = 'none';
+                        }
+                    });
+                    
+                    // Update navigation buttons nếu chúng tồn tại
+                    if (prevBtn) prevBtn.disabled = currentQuestion === 0;
+                    
+                    if (nextBtn && submitBtn) {
+                        if (currentQuestion === questions.length - 1) {
+                            nextBtn.style.display = 'none';
+                            submitBtn.style.display = 'inline-block';
+                        } else {
+                            nextBtn.style.display = 'inline-block';
+                            submitBtn.style.display = 'none';
+                        }
+                    }
+                    
+                    // Update progress text nếu nó tồn tại
+                    if (progressText) {
+                        progressText.textContent = `Câu ${currentQuestion + 1}/${questions.length}`;
+                    }
+                }
+                
+                function showPreviousQuestion() {
+                    if (currentQuestion > 0) {
+                        currentQuestion--;
+                        updateQuestionVisibility();
+                    }
+                }
+                
+                function showNextQuestion() {
+                    if (currentQuestion < questions.length - 1) {
+                        currentQuestion++;
+                        updateQuestionVisibility();
+                    }
+                }
+                
+                function showResults() {
+                    // Kiểm tra nếu các phần tử cần thiết tồn tại
+                    if (!resultsSection || !scoreProgressBar || !correctAnswers || !wrongAnswers || !scorePoints) {
+                        console.error('Required elements for showing results are missing');
+                        return;
+                    }
+                    
+                    // Calculate results
+                    let correct = 0;
+                    let wrong = 0;
+                    
+                    questions.forEach(question => {
+                        const selectedOption = question.querySelector('.quiz-option.selected');
+                        if (selectedOption) {
+                            if (selectedOption.dataset.correct === 'true') {
+                                correct++;
+                            } else {
+                                wrong++;
+                            }
+                        } else {
+                            wrong++;
+                        }
+                    });
+                    
+                    // Update result section
+                    const totalQuestions = questions.length;
+                    const score = Math.round((correct / totalQuestions) * 10);
+                    const percentage = Math.round((correct / totalQuestions) * 100);
+                    
+                    correctAnswers.textContent = correct;
+                    wrongAnswers.textContent = wrong;
+                    scorePoints.textContent = `${score}/10`;
+                    scoreProgressBar.style.width = `${percentage}%`;
+                    scoreProgressBar.textContent = `${percentage}%`;
+                    scoreProgressBar.setAttribute('aria-valuenow', percentage);
+                    
+                    // Show results section
+                    document.getElementById('exerciseForm').style.display = 'none';
+                    resultsSection.style.display = 'block';
+                }
+                
+                function reviewAnswers() {
+                    // Kiểm tra nếu phần tử form tồn tại
+                    const exerciseForm = document.getElementById('exerciseForm');
+                    if (!exerciseForm || !resultsSection) {
+                        console.error('Required elements for reviewing answers are missing');
+                        return;
+                    }
+                    
+                    exerciseForm.style.display = 'block';
+                    resultsSection.style.display = 'none';
+                    
+                    // Show all questions with explanations
+                    questions.forEach(question => {
+                        question.style.display = 'block';
+                        const explanation = question.querySelector('.explanation');
+                        if (explanation) explanation.style.display = 'block';
+                    });
+                    
+                    // Hide navigation buttons
+                    if (prevBtn) prevBtn.style.display = 'none';
+                    if (nextBtn) nextBtn.style.display = 'none';
+                    if (submitBtn) submitBtn.style.display = 'none';
+                    if (progressText) progressText.style.display = 'none';
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                }
+            }
+            
+            // Định nghĩa hàm setupQuiz() nếu chưa tồn tại
+            if (typeof setupQuiz !== 'function') {
+                window.setupQuiz = function() {
+                    // Xử lý sự kiện click cho các quiz-option
+                    document.querySelectorAll('.quiz-option').forEach(option => {
+                        option.addEventListener('click', function() {
+                            // Xóa lớp selected từ tất cả các option trong cùng một câu hỏi
+                            const parent = this.closest('.options-list');
+                            parent.querySelectorAll('.quiz-option').forEach(opt => {
+                                opt.classList.remove('selected');
+                            });
+                            
+                            // Thêm lớp selected cho option được chọn
+                            this.classList.add('selected');
+                            
+                            // Hiển thị giải thích
+                            const explanation = this.closest('.card-body').querySelector('.explanation');
+                            if (explanation) {
+                                explanation.style.display = 'block';
+                            }
+                        });
+                    });
+                }
+            }
         });
-    });
-</script>
+    </script>
 }

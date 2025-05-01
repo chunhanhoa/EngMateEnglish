@@ -1,94 +1,77 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TiengAnh.Data;
-using TiengAnh.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
+using System.Security.Claims;
+using TiengAnh.Models;
+using TiengAnh.Repositories;
 
 namespace TiengAnh.Controllers
 {
     public class GrammarController : Controller
     {
         private readonly ILogger<GrammarController> _logger;
-        private readonly HocTiengAnhContext _context;
+        private readonly GrammarRepository _grammarRepository;
 
-        public GrammarController(ILogger<GrammarController> logger, HocTiengAnhContext context)
+        public GrammarController(ILogger<GrammarController> logger, GrammarRepository grammarRepository)
         {
             _logger = logger;
-            _context = context;
+            _grammarRepository = grammarRepository;
         }
-
+        
         public async Task<IActionResult> Index()
         {
-            try
+            // Lấy ID người dùng hiện tại từ claims
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+            
+            var grammarDict = await _grammarRepository.GetGrammarsByLevelGroupAsync();
+            
+            // Cập nhật trạng thái yêu thích cho từng bài ngữ pháp
+            foreach (var level in grammarDict.Keys)
             {
-                // Truy vấn tất cả dữ liệu ngữ pháp từ database
-                var nguPhaps = await _context.NguPhaps
-                    .Include(n => n.IdCdNavigation)
-                    .ToListAsync();
-                
-                _logger.LogInformation($"Tìm thấy {nguPhaps.Count} bài ngữ pháp trong database.");
-                
-                // Chuyển đổi từ NguPhap sang GrammarModel để hiển thị trên view
-                var grammarLessons = nguPhaps.Select(np => new GrammarModel
+                foreach (var grammar in grammarDict[level])
                 {
-                    ID_NP = np.IdNp,
-                    Title_NP = np.TitleNp ?? string.Empty,
-                    Description_NP = np.DiscriptionNp ?? string.Empty,
-                    TimeUpload_NP = np.TimeuploadNp.HasValue ? 
-                        new DateTime(np.TimeuploadNp.Value.Year, np.TimeuploadNp.Value.Month, np.TimeuploadNp.Value.Day) : null,
-                    ID_CD = np.IdCd,
-                    TopicName = np.IdCdNavigation?.NameCd ?? "Chưa phân loại",
-                    Level = "A1", // Default level
-                    Content = np.ContentNp ?? string.Empty // Sử dụng ContentNp để hiển thị nội dung HTML
-                }).ToList();
-
-                return View(grammarLessons);
+                    grammar.IsFavorite = !string.IsNullOrEmpty(userId) && grammar.FavoriteByUsers != null && 
+                                         grammar.FavoriteByUsers.Contains(userId);
+                }
             }
-            catch (Exception ex)
+            
+            return View(grammarDict);
+        }
+        
+        public async Task<IActionResult> Level(string level)
+        {
+            // Lấy ID người dùng hiện tại từ claims
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+            
+            var grammars = await _grammarRepository.GetGrammarsByLevelAsync(level);
+            
+            // Cập nhật trạng thái yêu thích cho từng bài ngữ pháp
+            foreach (var grammar in grammars)
             {
-                _logger.LogError(ex, "Lỗi khi truy vấn dữ liệu ngữ pháp từ database");
-                return View(new List<GrammarModel>());
+                grammar.IsFavorite = !string.IsNullOrEmpty(userId) && grammar.FavoriteByUsers != null && 
+                                     grammar.FavoriteByUsers.Contains(userId);
             }
+            
+            ViewBag.Level = level;
+            return View(grammars);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            try
+            var grammar = await _grammarRepository.GetByGrammarIdAsync(id);
+            if (grammar == null)
             {
-                var nguPhap = await _context.NguPhaps
-                    .Include(n => n.IdCdNavigation)
-                    .FirstOrDefaultAsync(g => g.IdNp == id);
-                
-                if (nguPhap == null)
-                {
-                    _logger.LogWarning($"Không tìm thấy bài ngữ pháp với ID = {id}");
-                    return NotFound();
-                }
-
-                // Chuyển đổi từ NguPhap sang GrammarModel
-                var grammarModel = new GrammarModel
-                {
-                    ID_NP = nguPhap.IdNp,
-                    Title_NP = nguPhap.TitleNp ?? string.Empty,
-                    Description_NP = nguPhap.DiscriptionNp ?? string.Empty,
-                    TimeUpload_NP = nguPhap.TimeuploadNp.HasValue ?
-                        new DateTime(nguPhap.TimeuploadNp.Value.Year, nguPhap.TimeuploadNp.Value.Month, nguPhap.TimeuploadNp.Value.Day) : null,
-                    ID_CD = nguPhap.IdCd,
-                    TopicName = nguPhap.IdCdNavigation?.NameCd ?? "Chưa phân loại",
-                    Level = "A1", // Default level
-                    Content = nguPhap.ContentNp ?? string.Empty // Sử dụng ContentNp cho nội dung chi tiết
-                };
-
-                return View(grammarModel);
+                return NotFound();
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Lỗi khi truy vấn chi tiết ngữ pháp với ID = {id}");
-                return RedirectToAction(nameof(Index));
-            }
+            
+            // Cập nhật trạng thái yêu thích dựa vào người dùng hiện tại
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+            grammar.IsFavorite = !string.IsNullOrEmpty(userId) && grammar.FavoriteByUsers != null && 
+                                 grammar.FavoriteByUsers.Contains(userId);
+            
+            return View(grammar);
         }
     }
 }

@@ -1,0 +1,34 @@
+[
+  {
+    "LogId": "log1",
+    "UserId": "user123",
+    "ActivityType": "Login",
+    "Description": "Đăng nhập vào hệ thống",
+    "Timestamp": {"$date": "2023-10-15T08:30:00Z"},
+    "IpAddress": "192.168.1.100",
+    "UserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+  },
+  {
+    "LogId": "log2",
+    "UserId": "user123",
+    "ActivityType": "LessonCompletion",
+    "Description": "Hoàn thành bài học: Giới thiệu về động vật",
+    "Timestamp": {"$date": "2023-10-15T09:15:00Z"},
+    "Details": {
+      "LessonId": 1,
+      "TimeSpent": 28,
+      "Score": 85
+    }
+  },
+  {
+    "LogId": "log3",
+    "UserId": "teacher456",
+    "ActivityType": "ContentCreation",
+    "Description": "Tạo bài học mới",
+    "Timestamp": {"$date": "2023-10-14T14:45:00Z"},
+    "Details": {
+      "LessonId": 4,
+      "Title": "Các địa điểm trong thành phố"
+    }
+  }
+]

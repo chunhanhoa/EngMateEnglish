@@ -1,0 +1,63 @@
+[
+  {
+    "ID_BT": 1,
+    "Question": "What color is the sky?",
+    "Question_BT": "What color is the sky?",
+    "CorrectAnswer": "Blue",
+    "Answer_BT": "Blue",
+    "Options": ["Red", "Blue", "Green", "Yellow"],
+    "Option_A": "Red",
+    "Option_B": "Blue",
+    "Option_C": "Green",
+    "Option_D": "Yellow",
+    "ExerciseType": "MultipleChoice",
+    "Level": "A1",
+    "ID_CD": 1,
+    "Explanation": "Bầu trời có màu xanh dương (blue) khi nhìn từ Trái Đất vào ban ngày.",
+    "TopicName": "Colors"
+  },
+  {
+    "ID_BT": 2,
+    "Question": "She ___ to school every day.",
+    "CorrectAnswer": "goes",
+    "Options": ["go", "goes", "going", "gone"],
+    "ExerciseType": "FillBlank",
+    "Level": "A1",
+    "ID_CD": 1,
+    "Explanation": "Với chủ ngữ ngôi thứ 3 số ít (she), động từ trong thì hiện tại đơn thêm 's/es'.",
+    "TopicName": "Grammar"
+  },
+  {
+    "ID_BT": 3,
+    "Question": "Put the words in the correct order: 'cat, black, a, is, it'",
+    "CorrectAnswer": "It is a black cat",
+    "Options": ["It", "is", "a", "black", "cat"],
+    "ExerciseType": "WordOrdering",
+    "Level": "A1",
+    "ID_CD": 1,
+    "Explanation": "The correct word order in English is typically Subject-Verb-Object.",
+    "TopicName": "Animals"
+  },
+  {
+    "ID_BT": 4,
+    "Question": "The cat ___ on the sofa.",
+    "CorrectAnswer": "is",
+    "Options": ["is", "are", "am", "be"],
+    "ExerciseType": "FillBlank",
+    "Level": "A1",
+    "ID_CD": 1,
+    "Explanation": "Với chủ ngữ là 'The cat' (số ít), ta dùng 'is'.",
+    "TopicName": "Animals"
+  },
+  {
+    "ID_BT": 5,
+    "Question": "Put the words in the correct order: 'cat, black, a, is, it'",
+    "CorrectAnswer": "It is a black cat",
+    "Options": ["It", "is", "a", "black", "cat"],
+    "ExerciseType": "WordOrdering",
+    "Level": "A1",
+    "ID_CD": 1,
+    "Explanation": "Thứ tự đúng: subject + verb + article + adjective + noun.",
+    "TopicName": "Animals"
+  }
+]

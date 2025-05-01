@@ -1,0 +1,44 @@
+@section Scripts 
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy thông tin từ kết quả bài tập
+            const correctAnswers = @Model.CorrectAnswers;
+            const totalQuestions = @Model.TotalQuestions;
+            const topicId = @Model.TopicId;
+            const topicName = "@Model.TopicName";
+            const exerciseType = "@Model.ExerciseType";
+            
+            // Tính tỉ lệ chính xác
+            const correctPercentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            // Tính điểm thưởng dựa vào tỉ lệ chính xác
+            const pointsEarned = calculatePoints(correctPercentage);
+            
+            // Cập nhật tiến độ
+            window.progressTracker.updateProgress({
+                type: 'Exercise',
+                title: exerciseType + ' - ' + topicName,
+                score: correctPercentage,
+                pointsEarned: pointsEarned,
+                topicId: topicId,
+                topicName: topicName,
+                completionPercentage: correctPercentage
+            }).then(data => {
+                if (data.success) {
+                    console.log('Đã cập nhật tiến độ bài tập thành công');
+                }
+            });
+            
+            // Hàm tính điểm thưởng
+            function calculatePoints(percentage) {
+                if (percentage >= 90) return 20;
+                if (percentage >= 80) return 15;
+                if (percentage >= 70) return 10;
+                if (percentage >= 60) return 8;
+                if (percentage >= 50) return 5;
+                return 3; // Ít nhất cũng cho 3 điểm khi hoàn thành
+            }
+        });
+    </script>
+}

@@ -1,7 +1,8 @@
-@model List<TiengAnh.Models.BaiTap>
+@using TiengAnh.Extensions
+@model List<ExerciseModel>
 @{
-    ViewData["Title"] = "Bài tập điền từ - " + ViewBag.Topic?.NameCd ?? "Chủ đề";
-    var topic = ViewBag.Topic as TiengAnh.Models.ChuDe;
+    ViewData["Title"] = "Điền vào chỗ trống - " + ViewBag.Topic?.Name_CD ?? "Chủ đề";
+    var topic = ViewBag.Topic as TopicModel;
 }
 
 <!-- Header Section -->
@@ -12,7 +13,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.IdCd })">@(topic?.NameCd ?? "Chủ đề")</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })">@(topic?.Name_CD ?? "Chủ đề")</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Điền từ</li>
                 </ol>
             </nav>
@@ -22,16 +23,16 @@
     <!-- Title and Instructions -->
     <div class="row mb-5">
         <div class="col-md-8">
-            <h1 class="display-5 fw-bold mb-3">Điền từ: @(topic?.NameCd ?? "Chủ đề")</h1>
-            <p class="lead">Hoàn thành các câu bằng cách điền từ thích hợp vào chỗ trống.</p>
+            <h1 class="display-5 fw-bold mb-3">Điền từ: @(topic?.Name_CD ?? "Chủ đề")</h1>
+            <p class="lead">Hoàn thành câu bằng cách điền từ thích hợp. Giúp cải thiện từ vựng và ngữ pháp.</p>
             <div class="card bg-light mb-4">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-lightbulb text-warning me-2"></i>Hướng dẫn</h5>
                     <ul class="mb-0">
-                        <li>Đọc câu hỏi cẩn thận và điền từ thích hợp vào chỗ trống</li>
-                        <li>Đối chiếu từ điền vào với ngữ cảnh của câu</li>
-                        <li>Nhập đúng chính tả và viết thường</li>
-                        <li>Nhấn "Kiểm tra" sau khi hoàn thành tất cả câu hỏi</li>
+                        <li>Đọc toàn bộ câu và xác định từ phù hợp để điền vào chỗ trống</li>
+                        <li>Chú ý đến ngữ cảnh và cấu trúc ngữ pháp của câu</li>
+                        <li>Có thể dùng gợi ý nếu cần thiết</li>
+                        <li>Bấm "Kiểm tra" để xem kết quả sau khi hoàn thành</li>
                     </ul>
                 </div>
             </div>
@@ -47,125 +48,108 @@
                 <p class="text-center mb-0">
                     <span id="completed-count">0</span>/<span id="total-count">@Model.Count</span> câu
                 </p>
-                <p class="text-center text-muted mt-2 mb-0">
-                    <i class="fas fa-star text-warning me-1"></i>
-                    Điểm: <span id="current-score">0</span>/<span id="max-score">@Model.Count</span>
-                </p>
             </div>
         </div>
     </div>
 
-    <!-- Fill in the blanks exercise -->
+    <!-- Fill in the blank Exercise -->
     <div class="row">
-        <div class="col-lg-8">
-            <form id="fill-blank-form">
-                @foreach (var (exercise, index) in Model.Select((ex, i) => (ex, i + 1)))
-                {
-                    <div class="card border-0 shadow-sm mb-4 fill-blank-item" id="question-@index" data-question-id="@exercise.IdBt" data-answer="@exercise.AnswerBt">
-                        <div class="card-body p-4">
-                            <h4 class="fw-bold mb-4">Câu @index:</h4>
-                            
-                            <div class="fill-blank-question mb-4">
-                                @{
-                                    // Tạo câu hỏi từ question_BT, chèn một ô input vào vị trí có ____ hoặc .... hoặc [BLANK]
-                                    string question = exercise.QuestionBt;
-                                    string pattern = @"(____)|(\.\.\.\.|(\[BLANK\]))";
-                                    string formattedQuestion = System.Text.RegularExpressions.Regex.Replace(
-                                        question, 
-                                        pattern, 
-                                        m => $"<div class='d-inline-block'><input type='text' class='form-control fill-blank-input' style='width: 120px;' name='answer{exercise.IdBt}' data-question='{index}'></div>"
-                                    );
-
-                                    // Xác định đáp án thật sự dựa vào mã đáp án (A, B, C, D)
-                                    string actualAnswer = exercise.AnswerBt switch
-                                    {
-                                        "A" => exercise.OptionA ?? string.Empty,
-                                        "B" => exercise.OptionB ?? string.Empty,
-                                        "C" => exercise.OptionC ?? string.Empty,
-                                        "D" => exercise.OptionD ?? string.Empty,
-                                        _ => exercise.AnswerBt // Giữ nguyên nếu không phải A, B, C, D
-                                    };
-                                }
-                                <div class="fill-blank-text fs-5">
-                                    @Html.Raw(formattedQuestion)
+        <div class="col-lg-9">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <form id="fill-blank-form">
+                        @foreach (var (exercise, index) in Model.Select((ex, i) => (ex, i + 1)))
+                        {
+                            <div class="fill-blank-item mb-4 pb-3 border-bottom" id="fill-item-@index">
+                                <h5 class="mb-3">@index. @CreateSentenceWithBlank(exercise.Question_BT)</h5>
+                                
+                                <div class="fill-blank-sentence">
+                                    @{
+                                        var sentence = exercise.Question_BT.Replace("[BLANK]", $"<input type='text' class='fill-blank-input' id='blank-{index}' data-correct='{GetCorrectAnswer(exercise)}' placeholder='Điền từ vào đây'>");
+                                    }
+                                    @Html.Raw(sentence)
+                                    
+                                    <button type="button" class="btn btn-sm btn-outline-info hint-btn ms-2" data-bs-toggle="tooltip" title="@GetHint(exercise)">
+                                        <i class="fas fa-lightbulb"></i> Gợi ý
+                                    </button>
+                                </div>
+                                
+                                <div class="feedback mt-2" style="display: none;">
+                                    <div class="correct-feedback text-success" style="display: none;">
+                                        <i class="fas fa-check-circle me-1"></i> Chính xác!
+                                    </div>
+                                    <div class="incorrect-feedback text-danger" style="display: none;">
+                                        <i class="fas fa-times-circle me-1"></i> Chưa đúng! Đáp án đúng là: <strong class="correct-answer"></strong>
+                                    </div>
+                                </div>
+                                
+                                <div class="explanation text-muted mt-2 fst-italic" style="display: none;">
+                                    <i class="fas fa-info-circle me-1"></i> @exercise.Explanation_BT
                                 </div>
                             </div>
-                            
-                            <div class="hint-container mb-3">
-                                <button type="button" class="btn btn-link text-muted hint-btn p-0" data-bs-toggle="tooltip" 
-                                data-bs-title="Gợi ý: Bắt đầu bằng '@((actualAnswer?.Length > 0 ? actualAnswer[0].ToString() : ""))'">
-                                    <i class="fas fa-lightbulb me-1"></i> Gợi ý
-                                </button>
-                            </div>
-                            
-                            <div class="feedback mt-3" style="display: none;">
-                                <div class="alert alert-success correct-feedback" style="display: none;">
-                                    <i class="fas fa-check-circle me-2"></i> Đúng! Đáp án đúng là: <strong class="correct-answer-text">@actualAnswer</strong>
-                                </div>
-                                <div class="alert alert-danger incorrect-feedback" style="display: none;">
-                                    <i class="fas fa-times-circle me-2"></i> Sai! Đáp án đúng là: <strong class="correct-answer-text">@actualAnswer</strong>
-                                </div>
-                                <div class="explanation bg-light p-3 rounded mt-2">
-                                    <p><strong>Giải thích:</strong> @exercise.ExplanationBt</p>
-                                </div>
-                            </div>
+                        }
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-primary" id="check-answers-btn">
+                                <i class="fas fa-check me-1"></i> Kiểm tra
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="reset-btn">
+                                <i class="fas fa-redo me-1"></i> Làm lại
+                            </button>
                         </div>
-                    </div>
-                }
-
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
-                    <button type="button" id="check-answers" class="btn btn-primary">
-                        <i class="fas fa-check me-2"></i> Kiểm tra
-                    </button>
-                    <button type="button" id="reset-exercise" class="btn btn-outline-secondary">
-                        <i class="fas fa-redo me-2"></i> Làm lại
-                    </button>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
         
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
                 <div class="card-body p-4">
-                    <h5 class="card-title mb-3">Hướng dẫn điền từ</h5>
-                    <div class="tips mb-4">
-                        <div class="d-flex mb-3">
-                            <div class="me-3 text-primary">
-                                <i class="fas fa-info-circle fa-lg"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-1 fw-bold">Đọc kỹ câu hỏi</h6>
-                                <p class="small mb-0">Hiểu rõ ngữ cảnh của câu trước khi điền từ</p>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <div class="me-3 text-primary">
-                                <i class="fas fa-spell-check fa-lg"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-1 fw-bold">Kiểm tra chính tả</h6>
-                                <p class="small mb-0">Đảm bảo từ điền vào đúng chính tả</p>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <div class="me-3 text-primary">
-                                <i class="fas fa-lightbulb fa-lg"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-1 fw-bold">Sử dụng gợi ý</h6>
-                                <p class="small mb-0">Nhấn vào "Gợi ý" nếu bạn gặp khó khăn</p>
-                            </div>
-                        </div>
+                    <h5 class="card-title mb-3"><i class="fas fa-info-circle text-primary me-2"></i>Thông tin</h5>
+                    
+                    <p>Bài tập điền từ giúp bạn:</p>
+                    <ul>
+                        <li>Ôn tập từ vựng hiệu quả</li>
+                        <li>Nắm vững cấu trúc câu</li>
+                        <li>Cải thiện khả năng đọc hiểu</li>
+                    </ul>
+                    
+                    <hr />
+                    
+                    <h6 class="mb-2">Điểm của bạn</h6>
+                    <div class="score-display p-2 bg-light rounded mb-3 text-center">
+                        <span id="current-score" class="fs-4 fw-bold">0</span>/<span id="max-score">@Model.Count</span>
                     </div>
                     
-                    <hr class="my-4">
-                    
-                    <div class="text-center">
-                        <h6 class="fw-bold mb-3">Kết quả hiện tại</h6>
-                        <div class="score-circle mx-auto mb-3">
+                    <div class="tips bg-primary-soft p-3 rounded">
+                        <h6 class="mb-2">Mẹo làm bài</h6>
+                        <p class="small mb-0">Để ý đến loại từ (danh từ, động từ, tính từ...) cần điền và chắc chắn rằng nó phù hợp với ngữ cảnh của câu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultsModalLabel">Kết quả bài tập</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="score-circle mb-3">
                             <span id="score-percentage">0%</span>
                         </div>
+                        <h4><span id="score-correct">0</span>/<span id="score-total">@Model.Count</span> câu đúng</h4>
+                        <p id="score-message">Hãy cố gắng hơn!</p>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continue-btn">Tiếp tục</button>
+                    <button type="button" class="btn btn-success" id="retry-btn">Làm lại</button>
                 </div>
             </div>
         </div>
@@ -175,39 +159,32 @@
 <style>
     .fill-blank-input {
         display: inline-block;
-        min-width: 120px;
-        transition: all 0.3s ease;
+        width: 150px;
+        border: 2px solid #dee2e6;
+        border-radius: 4px;
+        padding: 0.375rem 0.75rem;
+        margin: 0 0.25rem;
     }
     
-    .fill-blank-input.is-valid {
+    .fill-blank-input.correct {
         border-color: #198754;
-        padding-right: calc(1.5em + 0.75rem);
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-position: right calc(0.375em + 0.1875rem) center;
-        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        background-color: #d1e7dd;
     }
     
-    .fill-blank-input.is-invalid {
+    .fill-blank-input.incorrect {
         border-color: #dc3545;
-        padding-right: calc(1.5em + 0.75rem);
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-position: right calc(0.375em + 0.1875rem) center;
-        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        background-color: #f8d7da;
     }
     
-    .fill-blank-item.border-success {
-        box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.25) !important;
-    }
-    
-    .fill-blank-item.border-danger {
-        box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25) !important;
+    .fill-blank-input:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        outline: 0;
     }
     
     .score-circle {
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         background-color: #f8f9fa;
         display: flex;
@@ -218,7 +195,7 @@
     }
     
     .score-circle span {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
         font-weight: bold;
     }
     
@@ -233,7 +210,7 @@
 
 @section Scripts {
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function() {
             // Initialize tooltips
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -246,138 +223,298 @@
             const totalCount = document.getElementById('total-count');
             const currentScore = document.getElementById('current-score');
             const maxScore = document.getElementById('max-score');
-            const scorePercentage = document.getElementById('score-percentage');
-            const checkAnswersBtn = document.getElementById('check-answers');
-            const resetBtn = document.getElementById('reset-exercise');
+            const checkAnswersBtn = document.getElementById('check-answers-btn');
+            const resetBtn = document.getElementById('reset-btn');
             const fillBlankInputs = document.querySelectorAll('.fill-blank-input');
-            const fillBlankItems = document.querySelectorAll('.fill-blank-item');
+            const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+            const scorePercentage = document.getElementById('score-percentage');
+            const scoreCorrect = document.getElementById('score-correct');
+            const scoreTotal = document.getElementById('score-total');
+            const scoreMessage = document.getElementById('score-message');
+            const continueBtn = document.getElementById('continue-btn');
+            const retryBtn = document.getElementById('retry-btn');
             
             // Variables
-            const totalQuestions = fillBlankItems.length;
-            let completedQuestions = 0;
-            let correctAnswers = 0;
+            let startTime = new Date();
+            let completed = new Array(fillBlankInputs.length).fill(false);
             
             // Event listeners
-            fillBlankInputs.forEach(input => {
+            fillBlankInputs.forEach((input, index) => {
                 input.addEventListener('input', function() {
-                    // Mark question as attempted if input has value
                     if (this.value.trim() !== '') {
-                        const questionIndex = parseInt(this.getAttribute('data-question')) - 1;
-                        updateProgress();
+                        completed[index] = true;
+                    } else {
+                        completed[index] = false;
+                    }
+                    updateProgress();
+                });
+                
+                // Enter key to submit
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const nextInput = document.getElementById(`blank-${index + 1}`);
+                        if (nextInput) {
+                            nextInput.focus();
+                        } else {
+                            checkAnswersBtn.click();
+                        }
                     }
                 });
             });
             
             // Check answers button
             checkAnswersBtn.addEventListener('click', function() {
-                correctAnswers = 0;
-                completedQuestions = 0;
+                let correctCount = 0;
+                let completedCount = 0;
                 
-                fillBlankItems.forEach((item, index) => {
-                    const questionId = item.getAttribute('data-question-id');
+                fillBlankInputs.forEach((input, index) => {
+                    const userAnswer = input.value.trim().toLowerCase();
+                    const correctAnswer = input.dataset.correct.toLowerCase();
+                    const feedbackContainer = input.closest('.fill-blank-item').querySelector('.feedback');
+                    const correctFeedback = feedbackContainer.querySelector('.correct-feedback');
+                    const incorrectFeedback = feedbackContainer.querySelector('.incorrect-feedback');
+                    const explanation = input.closest('.fill-blank-item').querySelector('.explanation');
                     
-                    // Lấy đáp án từ cơ sở dữ liệu (A, B, C, D)
-                    const databaseAnswer = item.getAttribute('data-answer');
+                    feedbackContainer.style.display = 'block';
+                    explanation.style.display = 'block';
                     
-                    // Lấy đáp án thật từ phần hiển thị
-                    const correctAnswerText = item.querySelector('.correct-answer-text').textContent.toLowerCase().trim();
+                    if (userAnswer === '') {
+                        // Highlight empty fields
+                        input.style.borderColor = '#ffc107';
+                        return;
+                    }
                     
-                    const userInput = document.querySelector(`input[name="answer${questionId}"]`).value.toLowerCase().trim();
-                    const feedbackDiv = item.querySelector('.feedback');
-                    const correctFeedback = item.querySelector('.correct-feedback');
-                    const incorrectFeedback = item.querySelector('.incorrect-feedback');
+                    completedCount++;
                     
-                    // Show feedback
-                    feedbackDiv.style.display = 'block';
-                    
-                    // So sánh với đáp án thật (text), không phải với mã đáp án (A, B, C, D)
-                    if (userInput === correctAnswerText) {
-                        correctAnswers++;
-                        item.classList.add('border-success');
-                        item.classList.remove('border-danger');
+                    if (userAnswer === correctAnswer) {
+                        input.classList.add('correct');
                         correctFeedback.style.display = 'block';
                         incorrectFeedback.style.display = 'none';
-                        
-                        // Add valid class to input
-                        item.querySelector('.fill-blank-input').classList.add('is-valid');
-                        item.querySelector('.fill-blank-input').classList.remove('is-invalid');
+                        correctCount++;
                     } else {
-                        item.classList.add('border-danger');
-                        item.classList.remove('border-success');
-                        incorrectFeedback.style.display = 'block';
+                        input.classList.add('incorrect');
                         correctFeedback.style.display = 'none';
-                        
-                        // Add invalid class to input
-                        item.querySelector('.fill-blank-input').classList.add('is-invalid');
-                        item.querySelector('.fill-blank-input').classList.remove('is-valid');
+                        incorrectFeedback.style.display = 'block';
+                        incorrectFeedback.querySelector('.correct-answer').textContent = correctAnswer;
                     }
                     
-                    // Count completed questions
-                    if (userInput !== '') {
-                        completedQuestions++;
-                    }
+                    // Disable input after checking
+                    input.disabled = true;
                 });
                 
-                // Update progress and score
-                updateProgress();
-                updateScore();
+                if (completedCount === fillBlankInputs.length) {
+                    // Update score display
+                    currentScore.textContent = correctCount;
+                    
+                    // Calculate time spent
+                    const endTime = new Date();
+                    const timeDiff = Math.floor((endTime - startTime) / 1000); // in seconds
+                    
+                    // Show results modal
+                    showResults(correctCount, fillBlankInputs.length, timeDiff);
+                    
+                    // Save results
+                    saveResults(correctCount, fillBlankInputs.length, timeDiff);
+                } else {
+                    alert('Vui lòng điền tất cả các ô trống!');
+                }
             });
             
             // Reset button
             resetBtn.addEventListener('click', function() {
-                // Clear all inputs
-                fillBlankInputs.forEach(input => {
-                    input.value = '';
-                    input.classList.remove('is-valid', 'is-invalid');
+                if (confirm('Bạn có chắc muốn làm lại bài tập này?')) {
+                    resetExercise();
+                }
+            });
+            
+            // Continue button
+            continueBtn.addEventListener('click', function() {
+                // Could navigate to next exercise or back to topic
+            });
+            
+            // Retry button
+            retryBtn.addEventListener('click', function() {
+                resetExercise();
+                resultsModal.hide();
+            });
+            
+            // Hint buttons
+            document.querySelectorAll('.hint-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // The tooltip is already handled by Bootstrap
                 });
-                
-                // Hide all feedback
-                document.querySelectorAll('.feedback').forEach(div => {
-                    div.style.display = 'none';
-                });
-                
-                // Remove all border classes
-                fillBlankItems.forEach(item => {
-                    item.classList.remove('border-success', 'border-danger');
-                });
-                
-                // Reset variables
-                completedQuestions = 0;
-                correctAnswers = 0;
-                
-                // Update UI
-                updateProgress();
-                updateScore();
             });
             
             // Functions
             function updateProgress() {
-                // Count filled inputs
-                let filledCount = 0;
-                fillBlankInputs.forEach(input => {
-                    if (input.value.trim() !== '') {
-                        filledCount++;
-                    }
-                });
+                const filledCount = completed.filter(Boolean).length;
+                const percentage = Math.round((filledCount / fillBlankInputs.length) * 100);
                 
-                // Update completed count
-                completedQuestions = filledCount;
-                completedCount.textContent = completedQuestions;
-                
-                // Update progress bar
-                const progressPercent = Math.round((completedQuestions / totalQuestions) * 100);
-                progressBar.style.width = `${progressPercent}%`;
-                progressBar.textContent = `${progressPercent}%`;
+                progressBar.style.width = `${percentage}%`;
+                progressBar.textContent = `${percentage}%`;
+                completedCount.textContent = filledCount;
             }
             
-            function updateScore() {
-                // Update score
-                currentScore.textContent = correctAnswers;
+            function resetExercise() {
+                fillBlankInputs.forEach((input, index) => {
+                    input.value = '';
+                    input.disabled = false;
+                    input.classList.remove('correct', 'incorrect');
+                    input.style.borderColor = '#dee2e6';
+                    
+                    // Hide feedback
+                    const feedbackContainer = input.closest('.fill-blank-item').querySelector('.feedback');
+                    const explanation = input.closest('.fill-blank-item').querySelector('.explanation');
+                    feedbackContainer.style.display = 'none';
+                    explanation.style.display = 'none';
+                    
+                    completed[index] = false;
+                });
                 
-                // Update percentage
-                const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-                scorePercentage.textContent = `${percentage}%`;
+                // Reset score
+                currentScore.textContent = '0';
+                
+                // Reset progress
+                updateProgress();
+                
+                // Reset timer
+                startTime = new Date();
             }
+            
+            function showResults(correctCount, totalCount, timeInSeconds) {
+                const percentage = Math.round((correctCount / totalCount) * 100);
+                
+                // Update modal content
+                scorePercentage.textContent = `${percentage}%`;
+                scoreCorrect.textContent = correctCount;
+                scoreTotal.textContent = totalCount;
+                
+                // Set message based on score
+                if (percentage >= 80) {
+                    scoreMessage.textContent = 'Xuất sắc! Bạn đã nắm vững kiến thức này.';
+                } else if (percentage >= 60) {
+                    scoreMessage.textContent = 'Tốt! Bạn đã hiểu được phần lớn nội dung.';
+                } else if (percentage >= 40) {
+                    scoreMessage.textContent = 'Có thể tốt hơn. Hãy ôn tập lại kiến thức.';
+                } else {
+                    scoreMessage.textContent = 'Cần cố gắng nhiều hơn. Hãy học lại từ đầu.';
+                }
+                
+                // Show modal
+                resultsModal.show();
+            }
+            
+            function saveResults(correctCount, totalCount, timeInSeconds) {
+                const topicId = @(topic?.ID_CD ?? 0);
+                const exerciseType = 'fill-blank';
+                
+                // Get existing results or initialize new object
+                let exerciseResults = JSON.parse(localStorage.getItem('exerciseResults') || '{}');
+                
+                // Create topic results if it doesn't exist
+                if (!exerciseResults[topicId]) {
+                    exerciseResults[topicId] = {};
+                }
+                
+                // Save the new result
+                exerciseResults[topicId][exerciseType] = {
+                    correctCount: correctCount,
+                    totalCount: totalCount,
+                    percentage: Math.round((correctCount / totalCount) * 100),
+                    timeInSeconds: timeInSeconds,
+                    date: new Date().toISOString()
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('exerciseResults', JSON.stringify(exerciseResults));
+            }
+            
+            function createAnswerHtml(exercise) {
+                // Đảm bảo chuyển đổi đúng kiểu dữ liệu - Sử dụng toString() để chuyển đổi
+                const optionA = exercise.option_A || "";
+                const optionB = exercise.option_B || "";
+                const optionC = exercise.option_C || "";
+                const optionD = exercise.option_D || "";
+                
+                const html = `
+                    <div class="answer-options mt-3">
+                        <div class="option-item d-flex align-items-center mb-2" data-option="A" onclick="checkFillAnswer(${exercise.id_BT}, 'A')">
+                            <div class="option-marker">A</div>
+                            <div class="option-text">${optionA}</div>
+                        </div>
+                        <div class="option-item d-flex align-items-center mb-2" data-option="B" onclick="checkFillAnswer(${exercise.id_BT}, 'B')">
+                            <div class="option-marker">B</div>
+                            <div class="option-text">${optionB}</div>
+                        </div>
+                        <div class="option-item d-flex align-items-center mb-2" data-option="C" onclick="checkFillAnswer(${exercise.id_BT}, 'C')">
+                            <div class="option-marker">C</div>
+                            <div class="option-text">${optionC}</div>
+                        </div>
+                        <div class="option-item d-flex align-items-center mb-2" data-option="D" onclick="checkFillAnswer(${exercise.id_BT}, 'D')">
+                            <div class="option-marker">D</div>
+                            <div class="option-text">${optionD}</div>
+                        </div>
+                    </div>
+                `;
+                return html;
+            }
+            
+            window.checkFillAnswer = function(questionId, selectedOption) {
+                const exercise = exercises.find(ex => ex.id_BT === questionId);
+                if (!exercise) return;
+                
+                const isCorrect = (selectedOption === 'A' && exercise.answer_BT.toUpperCase().startsWith('A')) ||
+                                 (selectedOption === 'B' && exercise.answer_BT.toUpperCase().startsWith('B')) ||
+                                 (selectedOption === 'C' && exercise.answer_BT.toUpperCase().startsWith('C')) ||
+                                 (selectedOption === 'D' && exercise.answer_BT.toUpperCase().startsWith('D'));
+                
+                // Handle the result
+            };
         });
     </script>
+}
+
+@functions {
+    public string CreateSentenceWithBlank(string question)
+    {
+        // Giữ nguyên câu hỏi vì đã được xử lý trong controller
+        return question;
+    }
+    
+    public string GetCorrectAnswer(ExerciseModel exercise)
+    {
+        // Trích xuất đáp án đúng dựa trên câu hỏi và lựa chọn
+        string blankQuestion = exercise.Question_BT;
+        
+        if (blankQuestion.Contains("[BLANK]"))
+        {
+            // Sửa lại các case so sánh để sử dụng string thay vì char
+            switch (exercise.Answer_BT)
+            {
+                case "A": return exercise.Option_A;
+                case "B": return exercise.Option_B;
+                case "C": return exercise.Option_C;
+                case "D": return exercise.Option_D;
+                default: return "answer";
+            }
+        }
+        
+        return "answer";
+    }
+    
+    public string GetHint(ExerciseModel exercise)
+    {
+        // Lấy đáp án đúng
+        string correctAnswer = GetCorrectAnswer(exercise);
+        
+        // Tạo gợi ý dựa trên chữ cái đầu tiên và độ dài
+        if (!string.IsNullOrEmpty(correctAnswer))
+        {
+            return $"Từ này bắt đầu bằng chữ '{correctAnswer[0]}' và có {correctAnswer.Length} chữ cái";
+        }
+        
+        return "Không có gợi ý";
+    }
 }

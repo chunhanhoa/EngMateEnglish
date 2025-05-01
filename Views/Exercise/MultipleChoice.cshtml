@@ -1,7 +1,8 @@
-@model List<TiengAnh.Models.BaiTap>
+@using TiengAnh.Extensions
+@model List<ExerciseModel>
 @{
-    ViewData["Title"] = "Bài tập trắc nghiệm - " + ViewBag.Topic?.NameCd ?? "Chủ đề";
-    var topic = ViewBag.Topic as TiengAnh.Models.ChuDe;
+    ViewData["Title"] = "Trắc nghiệm - " + ViewBag.Topic?.Name_CD ?? "Chủ đề";
+    var topic = ViewBag.Topic as TopicModel;
 }
 
 <!-- Header Section -->
@@ -12,7 +13,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.IdCd })">@(topic?.NameCd ?? "Chủ đề")</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })">@(topic?.Name_CD ?? "Chủ đề")</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Trắc nghiệm</li>
                 </ol>
             </nav>
@@ -22,7 +23,7 @@
     <!-- Title and Instructions -->
     <div class="row mb-5">
         <div class="col-md-8">
-            <h1 class="display-5 fw-bold mb-3">Trắc nghiệm: @(topic?.NameCd ?? "Chủ đề")</h1>
+            <h1 class="display-5 fw-bold mb-3">Trắc nghiệm: @(topic?.Name_CD ?? "Chủ đề")</h1>
             <p class="lead">Kiểm tra kiến thức với các câu hỏi trắc nghiệm đơn giản. Phù hợp cho người mới bắt đầu.</p>
             <div class="card bg-light mb-4">
                 <div class="card-body">
@@ -57,46 +58,34 @@
             <form id="quiz-form">
                 @foreach (var (exercise, index) in Model.Select((ex, i) => (ex, i + 1)))
                 {
-                    <div class="card border-0 shadow-sm mb-4 question-card" id="question-@index" data-question-id="@exercise.IdBt">
+                    <div class="card border-0 shadow-sm mb-4 question-card" id="question-@index" data-question-id="@exercise.ID_BT">
                         <div class="card-body p-4">
-                            <h4 class="fw-bold mb-4">Câu @index: @exercise.QuestionBt</h4>
+                            <h4 class="fw-bold mb-4">Câu @index: @exercise.Question_BT</h4>
                             
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-check p-3 border rounded quiz-option" data-answer="A" data-correct="@(exercise.AnswerBt == "A" ? "true" : "false")">
-                                        <input class="form-check-input" type="radio" name="answer@(exercise.IdBt)" id="optionA@(exercise.IdBt)" value="A">
-                                        <label class="form-check-label w-100" for="optionA@(exercise.IdBt)">@exercise.OptionA</label>
-                                    </div>
+                            <div class="options-list">
+                                <div class="quiz-option" data-answer="A" data-correct="@(exercise.IsAnswer('A') ? "true" : "false")">
+                                    <span>A. @exercise.Option_A</span>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-check p-3 border rounded quiz-option" data-answer="B" data-correct="@(exercise.AnswerBt == "B" ? "true" : "false")">
-                                        <input class="form-check-input" type="radio" name="answer@(exercise.IdBt)" id="optionB@(exercise.IdBt)" value="B">
-                                        <label class="form-check-label w-100" for="optionB@(exercise.IdBt)">@exercise.OptionB</label>
-                                    </div>
+                                <div class="quiz-option" data-answer="B" data-correct="@(exercise.IsAnswer('B') ? "true" : "false")">
+                                    <span>B. @exercise.Option_B</span>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-check p-3 border rounded quiz-option" data-answer="C" data-correct="@(exercise.AnswerBt == "C" ? "true" : "false")">
-                                        <input class="form-check-input" type="radio" name="answer@(exercise.IdBt)" id="optionC@(exercise.IdBt)" value="C">
-                                        <label class="form-check-label w-100" for="optionC@(exercise.IdBt)">@exercise.OptionC</label>
-                                    </div>
+                                <div class="quiz-option" data-answer="C" data-correct="@(exercise.IsAnswer('C') ? "true" : "false")">
+                                    <span>C. @exercise.Option_C</span>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-check p-3 border rounded quiz-option" data-answer="D" data-correct="@(exercise.AnswerBt == "D" ? "true" : "false")">
-                                        <input class="form-check-input" type="radio" name="answer@(exercise.IdBt)" id="optionD@(exercise.IdBt)" value="D">
-                                        <label class="form-check-label w-100" for="optionD@(exercise.IdBt)">@exercise.OptionD</label>
-                                    </div>
+                                <div class="quiz-option" data-answer="D" data-correct="@(exercise.IsAnswer('D') ? "true" : "false")">
+                                    <span>D. @exercise.Option_D</span>
                                 </div>
                             </div>
                             
                             <div class="explanation mt-4 p-3 rounded" style="display: none; background-color: #f8f9fa;">
                                 <p class="mb-0">
-                                    <strong>Giải thích:</strong> @exercise.ExplanationBt
+                                    <strong>Giải thích:</strong> @exercise.Explanation_BT
                                 </p>
                             </div>
                         </div>
                     </div>
                 }
-
+                
                 <div class="d-flex justify-content-between mb-5">
                     <button type="button" class="btn btn-outline-primary" id="prevBtn" disabled>
                         <i class="fas fa-arrow-left me-2"></i> Câu trước
@@ -252,7 +241,7 @@
 
 @section Scripts {
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function() {
             // Lấy các element DOM
             const questionCards = document.querySelectorAll('.question-card');
             const prevBtn = document.getElementById('prevBtn');
@@ -280,7 +269,6 @@
             // Variables
             let currentQuestion = 1;
             let totalQuestions = questionCards.length;
-            // Reset answeredQuestions array to ensure all are initially false
             let answeredQuestions = new Array(totalQuestions).fill(false);
             let userAnswers = new Array(totalQuestions).fill(null);
             let startTime = new Date();
@@ -292,9 +280,6 @@
             // Add event listeners for the quiz options
             document.querySelectorAll('.quiz-option').forEach(option => {
                 option.addEventListener('click', function() {
-                    // Clear any existing styling first
-                    this.classList.remove('selected', 'correct', 'incorrect');
-                    
                     // Get the current question card
                     const questionCard = this.closest('.question-card');
                     const questionIndex = parseInt(questionCard.id.split('-')[1]) - 1;
@@ -307,7 +292,7 @@
                     // Add selected class to clicked option
                     this.classList.add('selected');
                     
-                    // Update answered questions array only when user actually selects an option
+                    // Update answered questions array
                     answeredQuestions[questionIndex] = true;
                     userAnswers[questionIndex] = this.getAttribute('data-answer');
                     
@@ -495,7 +480,7 @@
             
             // Function to save results to localStorage
             function saveResults(correctCount, totalCount, timeInSeconds) {
-                const topicId = @(topic?.IdCd ?? 0);
+                const topicId = @(topic?.ID_CD ?? 0);
                 const exerciseType = 'multiple-choice';
                 
                 // Get existing results or initialize new object

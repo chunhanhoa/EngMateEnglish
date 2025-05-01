@@ -1,0 +1,27 @@
+/**
+ * File này vô hiệu hóa tất cả các hiệu ứng animation có thể gây ra hiện tượng "mờ mờ rồi tắt"
+ */
+
+/* Vô hiệu hóa mọi animation và transition cho các phần tử */
+.topic-card, .vocabulary-card, .feature-card,
+.fade-in, .fade-in-left, .fade-in-right,
+.hero-section h1, .hero-section p, .hero-section .btn {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: box-shadow 0.3s ease !important; /* chỉ giữ lại hiệu ứng box-shadow khi hover */
+}
+
+/* Đảm bảo tất cả phần tử đều hiển thị rõ ràng */
+[class*="fade-"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+/* Ngăn chặn các hiệu ứng scroll-triggered */
+[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}

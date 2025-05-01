@@ -1,30 +1,63 @@
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+
 namespace TiengAnh.Models
 {
-    public class ProgressModel
+    public class ProgressModel : BaseModel
     {
-        public string UserId { get; set; } = string.Empty;
-        public int VocabularyProgress { get; set; } // Phần trăm từ vựng đã học
-        public int GrammarProgress { get; set; } // Phần trăm ngữ pháp đã học
-        public int ExerciseProgress { get; set; } // Phần trăm bài tập đã hoàn thành
+        [BsonElement("UserId")]
+        public string UserId { get; set; } = null!;
+        
+        [BsonElement("VocabularyProgress")]
+        public int VocabularyProgress { get; set; }
+        
+        [BsonElement("GrammarProgress")]
+        public int GrammarProgress { get; set; }
+        
+        [BsonElement("ExerciseProgress")]
+        public int ExerciseProgress { get; set; }
+        
+        [BsonElement("TotalPoints")]
         public int TotalPoints { get; set; }
-        public string Level { get; set; } = string.Empty;
+        
+        [BsonElement("Level")]
+        public string Level { get; set; } = null!;
+        
+        [BsonElement("LastCompletedItems")]
         public List<LastCompletedItemModel> LastCompletedItems { get; set; } = new List<LastCompletedItemModel>();
+        
+        [BsonElement("CompletedTopics")]
         public List<CompletedTopicModel> CompletedTopics { get; set; } = new List<CompletedTopicModel>();
     }
 
     public class LastCompletedItemModel
     {
+        [BsonElement("Id")]
         public int Id { get; set; }
-        public string Type { get; set; } = string.Empty;
-        public string Title { get; set; } = string.Empty;
-        public DateTime? CompletedDate { get; set; }
+        
+        [BsonElement("Type")]
+        public string Type { get; set; } = null!;
+        
+        [BsonElement("Title")]
+        public string Title { get; set; } = null!;
+        
+        [BsonElement("CompletedDate")]
+        public DateTime CompletedDate { get; set; }
+        
+        [BsonElement("Score")]
         public int Score { get; set; }
     }
 
     public class CompletedTopicModel
     {
+        [BsonElement("TopicId")]
         public int TopicId { get; set; }
-        public string TopicName { get; set; } = string.Empty;
+        
+        [BsonElement("TopicName")]
+        public string TopicName { get; set; } = null!;
+        
+        [BsonElement("CompletionPercentage")]
         public int CompletionPercentage { get; set; }
     }
 }

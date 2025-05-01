@@ -1,213 +1,401 @@
-@model ProgressStatsModel
+@model ProgressModel
 @{
-    ViewData["Title"] = "Tiến trình học tập";
+    ViewData["Title"] = "Tiến trình học";
 }
 
 <div class="container mt-5">
+    <!-- Breadcrumbs -->
     <div class="row mb-4">
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tiến trình học tập</li>
+                    <li class="breadcrumb-item active" aria-current="page">Tiến trình học</li>
                 </ol>
             </nav>
         </div>
     </div>
 
-    <!-- Thông tin tổng quan -->
+    <!-- Header -->
     <div class="row mb-4">
-        <div class="col-12">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h2 class="fw-bold mb-4">Tiến trình học tập của tôi</h2>
-                    
-                    <div class="row g-4">
-                        <div class="col-md-3">
-                            <div class="card border-0 shadow-sm text-center h-100">
-                                <div class="card-body p-4">
-                                    <h5 class="card-title mb-3">Từ vựng đã học</h5>
-                                    <h2 class="text-primary fw-bold mb-2">@Model.LearnedVocabulary</h2>
-                                    <p class="text-muted mb-0">/@Model.TotalVocabulary từ</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card border-0 shadow-sm text-center h-100">
-                                <div class="card-body p-4">
-                                    <h5 class="card-title mb-3">Điểm tích lũy</h5>
-                                    <h2 class="text-primary fw-bold mb-2">@Model.TotalPoints</h2>
-                                    <p class="text-muted mb-0">Điểm thưởng</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card border-0 shadow-sm text-center h-100">
-                                <div class="card-body p-4">
-                                    <h5 class="card-title mb-3">Ngày học liên tiếp</h5>
-                                    <h2 class="text-success fw-bold mb-2">7</h2>
-                                    <p class="text-muted mb-0">Streak hiện tại</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card border-0 shadow-sm text-center h-100">
-                                <div class="card-body p-4">
-                                    <h5 class="card-title mb-3">Bài tập đã làm</h5>
-                                    <h2 class="text-warning fw-bold mb-2">@Model.CompletedExercises</h2>
-                                    <p class="text-muted mb-0">/@Model.TotalExercises bài tập</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-12 text-center">
+            <h1 class="display-5 fw-bold mb-3">Tiến trình học của bạn</h1>
+            <p class="lead mb-0">Theo dõi quá trình học tập và tiến bộ của bạn</p>
         </div>
     </div>
 
-    <!-- Biểu đồ tiến trình -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h3 class="fw-bold mb-4">Tiến độ học tập</h3>
-                    
-                    <div class="row g-4">
-                        <!-- Từ vựng -->
-                        <div class="col-md-4">
-                            <div class="progress-card p-4 rounded bg-light">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h5 class="mb-0">Từ vựng</h5>
-                                    <span class="badge bg-primary">@Model.VocabularyPercentage%</span>
-                                </div>
-                                <div class="progress mb-2" style="height: 15px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: @Model.VocabularyPercentage%;" 
-                                         aria-valuenow="@Model.VocabularyPercentage" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="small text-muted mb-0">@Model.LearnedVocabulary/@Model.TotalVocabulary từ đã học</p>
-                            </div>
+    <!-- Main Navigation Tabs -->
+    <ul class="nav nav-pills nav-fill mb-4" id="progressTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active px-4 py-3" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                <i class="fas fa-chart-pie me-2"></i> Tổng quan
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link px-4 py-3" id="topics-tab" data-bs-toggle="tab" data-bs-target="#topics" type="button" role="tab">
+                <i class="fas fa-list-alt me-2"></i> Chủ đề học tập
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link px-4 py-3" id="activities-tab" data-bs-toggle="tab" data-bs-target="#activities" type="button" role="tab">
+                <i class="fas fa-history me-2"></i> Hoạt động gần đây
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link px-4 py-3" id="recommendations-tab" data-bs-toggle="tab" data-bs-target="#recommendations" type="button" role="tab">
+                <i class="fas fa-lightbulb me-2"></i> Đề xuất học tập
+            </button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="progressTabContent">
+        <!-- Overview Tab -->
+        <div class="tab-pane fade show active" id="overview" role="tabpanel">
+            <!-- Stats Cards -->
+            <div class="row g-4 mb-5 stats-row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 stats-card">
+                        <div class="card-body p-4 text-center">
+                            <div class="level-badge-large level-@Model.Level mb-2">@Model.Level</div>
+                            <h5 class="stats-title">Trình độ hiện tại</h5>
+                            <p class="text-muted mb-0">Pre-Intermediate</p>
                         </div>
-                        
-                        <!-- Ngữ pháp -->
-                        <div class="col-md-4">
-                            <div class="progress-card p-4 rounded bg-light">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h5 class="mb-0">Ngữ pháp</h5>
-                                    <span class="badge bg-success">@Model.GrammarPercentage%</span>
-                                </div>
-                                <div class="progress mb-2" style="height: 15px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: @Model.GrammarPercentage%;" 
-                                         aria-valuenow="@Model.GrammarPercentage" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="small text-muted mb-0">@Model.LearnedGrammar/@Model.TotalGrammar bài học đã hoàn thành</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 stats-card">
+                        <div class="card-body p-4 text-center">
+                            <div class="stats-icon bg-primary-soft mb-2">
+                                <i class="fas fa-trophy"></i>
                             </div>
+                            <h2 class="stats-value text-primary">@Model.TotalPoints</h2>
+                            <h5 class="stats-title">Điểm tích lũy</h5>
                         </div>
-                        
-                        <!-- Bài tập -->
-                        <div class="col-md-4">
-                            <div class="progress-card p-4 rounded bg-light">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h5 class="mb-0">Bài tập</h5>
-                                    <span class="badge bg-warning">@Model.ExercisesPercentage%</span>
-                                </div>
-                                <div class="progress mb-2" style="height: 15px;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: @Model.ExercisesPercentage%;" 
-                                         aria-valuenow="@Model.ExercisesPercentage" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="small text-muted mb-0">@Model.CompletedExercises/@Model.TotalExercises bài tập đã làm</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 stats-card">
+                        <div class="card-body p-4 text-center">
+                            <div class="stats-icon bg-success-soft mb-2">
+                                <i class="fas fa-fire"></i>
                             </div>
+                            <h2 class="stats-value text-success">7</h2>
+                            <h5 class="stats-title">Ngày học liên tiếp</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 stats-card">
+                        <div class="card-body p-4 text-center">
+                            <div class="stats-icon bg-warning-soft mb-2">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h2 class="stats-value text-warning">36h</h2>
+                            <h5 class="stats-title">Tổng thời gian học</h5>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <!-- Hoạt động gần đây -->
-    <div class="row mb-4">
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h3 class="fw-bold mb-4">Hoạt động gần đây</h3>
-                    
-                    @if (Model.RecentActivities != null && Model.RecentActivities.Any())
-                    {
-                        <div class="activity-timeline">
-                            @foreach (var activity in Model.RecentActivities)
-                            {
-                                <div class="activity-item d-flex pb-3 mb-3 border-bottom">
-                                    <div class="activity-icon me-3 rounded-circle d-flex align-items-center justify-content-center" 
-                                         style="width: 45px; height: 45px; min-width: 45px; background-color: rgba(13, 110, 253, 0.1);">
-                                        @if (activity.Type == "TuVung")
-                                        {
-                                            <i class="fas fa-book text-primary"></i>
-                                        }
-                                        else if (activity.Type == "NguPhap")
-                                        {
-                                            <i class="fas fa-pen text-primary"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="fas fa-tasks text-primary"></i>
-                                        }
-                                    </div>
-                                    <div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h5 class="mb-1 fw-bold">@activity.Title</h5>
-                                            <small class="text-muted">
-                                                @(activity.CompletedDate.HasValue 
-                                                    ? activity.CompletedDate.Value.ToString("dd/MM/yyyy HH:mm") 
-                                                    : "Gần đây")
-                                            </small>
+
+            <!-- Progress Charts -->
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-4">Tiến độ học tập</h3>
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <h5 class="mb-3">Từ vựng</h5>
+                                    <div class="progress-container">
+                                        <div class="progress mb-2" style="height: 16px;">
+                                            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" 
+                                                style="width: @Model.VocabularyProgress%;" 
+                                                aria-valuenow="@Model.VocabularyProgress" aria-valuemin="0" aria-valuemax="100">
+                                                @Model.VocabularyProgress%
+                                            </div>
                                         </div>
-                                        <p class="mb-0">@activity.Type</p>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="small text-muted">450 từ đã học</p>
+                                            <p class="small text-muted">700 từ tổng cộng</p>
+                                        </div>
                                     </div>
                                 </div>
-                            }
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="text-center py-4">
-                            <div class="mb-3">
-                                <i class="fas fa-book text-muted fa-3x"></i>
+                                <div class="col-md-4">
+                                    <h5 class="mb-3">Ngữ pháp</h5>
+                                    <div class="progress-container">
+                                        <div class="progress mb-2" style="height: 16px;">
+                                            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" 
+                                                style="width: @Model.GrammarProgress%;" 
+                                                aria-valuenow="@Model.GrammarProgress" aria-valuemin="0" aria-valuemax="100">
+                                                @Model.GrammarProgress%
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="small text-muted">8 bài đã học</p>
+                                            <p class="small text-muted">20 bài tổng cộng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="mb-3">Bài tập</h5>
+                                    <div class="progress-container">
+                                        <div class="progress mb-2" style="height: 16px;">
+                                            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" 
+                                                style="width: @Model.ExerciseProgress%;" 
+                                                aria-valuenow="@Model.ExerciseProgress" aria-valuemin="0" aria-valuemax="100">
+                                                @Model.ExerciseProgress%
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="small text-muted">15 bài đã làm</p>
+                                            <p class="small text-muted">50 bài tổng cộng</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="mb-1">Chưa có hoạt động nào</h5>
-                            <p class="text-muted">Hãy bắt đầu học để xem lịch sử hoạt động của bạn tại đây.</p>
+                            
+                            <!-- Circular Progress -->
+                            <div class="row mt-5">
+                                <div class="col-md-12">
+                                    <h5 class="text-center mb-4">Phân bổ hoạt động học tập</h5>
+                                    <div class="d-flex justify-content-center gap-5">
+                                        <div class="text-center">
+                                            <div class="progress-circle position-relative mx-auto" style="width: 100px; height: 100px;">
+                                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#eee" stroke-width="2"/>
+                                                    <path class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#4e73fa" stroke-width="2" stroke-dasharray="75, 100"/>
+                                                </svg>
+                                                <div class="progress-value">
+                                                    <h4 class="mb-0 fw-bold">75%</h4>
+                                                </div>
+                                            </div>
+                                            <p class="mt-2 mb-0 fw-bold">Từ vựng</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="progress-circle position-relative mx-auto" style="width: 100px; height: 100px;">
+                                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#eee" stroke-width="2"/>
+                                                    <path class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#5cb85c" stroke-width="2" stroke-dasharray="60, 100"/>
+                                                </svg>
+                                                <div class="progress-value">
+                                                    <h4 class="mb-0 fw-bold">60%</h4>
+                                                </div>
+                                            </div>
+                                            <p class="mt-2 mb-0 fw-bold">Ngữ pháp</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="progress-circle position-relative mx-auto" style="width: 100px; height: 100px;">
+                                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#eee" stroke-width="2"/>
+                                                    <path class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#ffc107" stroke-width="2" stroke-dasharray="40, 100"/>
+                                                </svg>
+                                                <div class="progress-value">
+                                                    <h4 class="mb-0 fw-bold">40%</h4>
+                                                </div>
+                                            </div>
+                                            <p class="mt-2 mb-0 fw-bold">Bài tập</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    }
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Chủ đề đã hoàn thành -->
-        <div class="col-lg-4">
+        <!-- Topics Tab -->
+        <div class="tab-pane fade" id="topics" role="tabpanel">
+            <div class="card border-0 shadow-sm mb-5">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-4">Tiến độ theo chủ đề</h3>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle topic-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%">Chủ đề</th>
+                                    <th style="width: 50%">Tiến độ</th>
+                                    <th class="text-end" style="width: 25%">Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var topic in Model.CompletedTopics.OrderByDescending(t => t.CompletionPercentage))
+                                {
+                                    <tr class="topic-row">
+                                        <td>
+                                            <strong>@topic.TopicName</strong>
+                                        </td>
+                                        <td>
+                                            <div class="progress-container">
+                                                <div class="progress">
+                                                    <div class="progress-bar @GetProgressBarColor(topic.CompletionPercentage)" 
+                                                        role="progressbar" style="width: @topic.CompletionPercentage%;" 
+                                                        aria-valuenow="@topic.CompletionPercentage" aria-valuemin="0" aria-valuemax="100">
+                                                        @topic.CompletionPercentage%
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-end">
+                                            @if (topic.CompletionPercentage == 100)
+                                            {
+                                                <span class="badge bg-success">Hoàn thành</span>
+                                            }
+                                            else if (topic.CompletionPercentage >= 50)
+                                            {
+                                                <span class="badge bg-warning">Đang học</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-info">Mới bắt đầu</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Achievement Badges -->
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
-                    <h3 class="fw-bold mb-4">Chủ đề đã học</h3>
-                    
-                    @if (Model.CompletedTopics != null && Model.CompletedTopics.Any())
-                    {
-                        foreach (var topic in Model.CompletedTopics)
-                        {
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                    <h6 class="mb-0">@topic.TopicName</h6>
-                                    <span class="badge bg-primary">@topic.CompletionPercentage%</span>
+                    <h3 class="card-title fw-bold mb-4">Huy hiệu thành tích</h3>
+                    <div class="row g-4">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="achievement-badge text-center">
+                                <div class="badge-icon unlocked">
+                                    <i class="fas fa-book"></i>
                                 </div>
-                                <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: @topic.CompletionPercentage%;" 
-                                         aria-valuenow="@topic.CompletionPercentage" aria-valuemin="0" aria-valuemax="100"></div>
+                                <h5 class="badge-title mt-3">Từ vựng cơ bản</h5>
+                                <p class="badge-description">Hoàn thành 100 từ vựng</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="achievement-badge text-center">
+                                <div class="badge-icon unlocked">
+                                    <i class="fas fa-pen"></i>
+                                </div>
+                                <h5 class="badge-title mt-3">Ngữ pháp A1</h5>
+                                <p class="badge-description">Hoàn thành 5 bài ngữ pháp</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="achievement-badge text-center">
+                                <div class="badge-icon unlocked">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                                <h5 class="badge-title mt-3">Streak 7 ngày</h5>
+                                <p class="badge-description">Học 7 ngày liên tiếp</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="achievement-badge text-center">
+                                <div class="badge-icon locked">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h5 class="badge-title mt-3">Cấp độ A2</h5>
+                                <p class="badge-description">Đạt trình độ A2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activities Tab -->
+        <div class="tab-pane fade" id="activities" role="tabpanel">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-4">Hoạt động gần đây</h3>
+                    
+                    <div class="activity-timeline">
+                        @foreach (var item in Model.LastCompletedItems.OrderByDescending(i => i.CompletedDate))
+                        {
+                            <div class="activity-item">
+                                <div class="activity-date">
+                                    <span class="date-display">@item.CompletedDate.ToString("dd/MM")</span>
+                                    <span class="time-display">@item.CompletedDate.ToString("HH:mm")</span>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-icon @GetActivityIconClass(item.Type)">
+                                        <i class="@GetActivityIcon(item.Type)"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h5 class="mb-0 fw-bold">@item.Title</h5>
+                                            <span class="badge bg-light text-dark score-badge">
+                                                <i class="fas fa-star text-warning me-1"></i> @item.Score điểm
+                                            </span>
+                                        </div>
+                                        <p class="activity-type mb-0">
+                                            <span class="badge @GetActivityBadgeClass(item.Type)">@GetActivityTypeName(item.Type)</span>
+                                            <span class="text-muted ms-2">
+                                                <i class="far fa-clock me-1"></i> @item.CompletedDate.ToString("dd/MM/yyyy HH:mm")
+                                            </span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         }
-                    }
-                    else
-                    {
-                        <div class="text-center py-3">
-                            <p class="mb-0 text-muted">Chưa có chủ đề nào được hoàn thành.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recommendations Tab -->
+        <div class="tab-pane fade" id="recommendations" role="tabpanel">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="card-title fw-bold mb-4">Đề xuất học tập</h3>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm recommendation-card">
+                                <div class="card-body p-4">
+                                    <div class="recommendation-icon bg-primary-soft">
+                                        <i class="fas fa-book text-primary"></i>
+                                    </div>
+                                    <h5 class="card-title fw-bold mt-3">Học từ vựng mới</h5>
+                                    <p class="card-text">Tiếp tục học từ vựng chủ đề "Sports" để nâng cấp trình độ.</p>
+                                    <a href="@Url.Action("Topic", "Vocabulary", new { id = 5 })" class="btn btn-primary w-100 mt-3">
+                                        <i class="fas fa-arrow-right me-2"></i> Học ngay
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    }
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm recommendation-card">
+                                <div class="card-body p-4">
+                                    <div class="recommendation-icon bg-success-soft">
+                                        <i class="fas fa-pen text-success"></i>
+                                    </div>
+                                    <h5 class="card-title fw-bold mt-3">Ôn tập ngữ pháp</h5>
+                                    <p class="card-text">Ôn lại ngữ pháp "Present Continuous Tense" để củng cố kiến thức.</p>
+                                    <a href="@Url.Action("Details", "Grammar", new { id = 2 })" class="btn btn-success w-100 mt-3">
+                                        <i class="fas fa-arrow-right me-2"></i> Ôn tập
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm recommendation-card">
+                                <div class="card-body p-4">
+                                    <div class="recommendation-icon bg-warning-soft">
+                                        <i class="fas fa-tasks text-warning"></i>
+                                    </div>
+                                    <h5 class="card-title fw-bold mt-3">Làm bài tập</h5>
+                                    <p class="card-text">Làm bài tập về chủ đề "School" để kiểm tra kiến thức.</p>
+                                    <a href="@Url.Action("Topic", "Exercise", new { id = 3 })" class="btn btn-warning w-100 mt-3">
+                                        <i class="fas fa-arrow-right me-2"></i> Làm bài
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -216,18 +404,379 @@
 
 @section Styles {
     <style>
-        .activity-timeline .activity-item:last-child {
-            border-bottom: none !important;
-            margin-bottom: 0 !important;
-            padding-bottom: 0 !important;
+        /* Tabs */
+        .nav-pills .nav-link {
+            border-radius: 10px;
+            font-weight: 600;
+            color: #495057;
+            transition: all 0.3s ease;
         }
         
-        .progress-card {
-            transition: transform 0.3s ease;
+        .nav-pills .nav-link.active {
+            background-color: #4e73fa;
+            color: white;
+            box-shadow: 0 4px 10px rgba(78, 115, 250, 0.3);
         }
         
-        .progress-card:hover {
+        .nav-pills .nav-link:not(.active):hover {
+            background-color: #e9ecef;
+        }
+        
+        /* Stats Cards */
+        .stats-row {
+            margin-top: 10px;
+        }
+        
+        .stats-card {
+            transition: all 0.3s ease;
+            border-radius: 15px;
+        }
+        
+        .stats-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        
+        .stats-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin: 10px 0;
+        }
+        
+        .stats-title {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        
+        .stats-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .stats-icon i {
+            font-size: 1.8rem;
+        }
+        
+        /* Level Badge */
+        .level-badge-large {
+            display: inline-block;
+            padding: 15px 20px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .level-A1 {
+            background-color: #e6fff2;
+            color: #1b8754;
+        }
+        
+        .level-A2 {
+            background-color: #e6f9ff;
+            color: #0d6efd;
+        }
+        
+        /* Progress Indicators */
+        .progress-container {
+            margin-bottom: 1rem;
+        }
+        
+        .progress {
+            height: 10px;
+            border-radius: 10px;
+            background-color: #e9ecef;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar {
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        
+        /* Circular Progress */
+        .progress-circle {
+            position: relative;
+        }
+        
+        .circular-chart {
+            display: block;
+            max-width: 100%;
+        }
+        
+        .circle-bg {
+            fill: none;
+            stroke: #eee;
+            stroke-width: 2;
+        }
+        
+        .circle {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            animation: progress 1s ease-out forwards;
+        }
+        
+        .progress-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+            color: #495057;
+        }
+        
+        /* Activity Timeline */
+        .activity-timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .activity-item {
+            position: relative;
+            padding-left: 60px;
+            padding-bottom: 30px;
+            display: flex;
+        }
+        
+        .activity-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 36px;
+            height: calc(100% - 30px);
+            width: 2px;
+            background-color: #e9ecef;
+        }
+        
+        .activity-date {
+            min-width: 80px;
+            text-align: right;
+            padding-right: 20px;
+        }
+        
+        .date-display {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .time-display {
+            display: block;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .activity-content {
+            flex: 1;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .activity-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .activity-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .activity-details {
+            flex: 1;
+        }
+        
+        .activity-type {
+            display: flex;
+            align-items: center;
+        }
+        
+        .score-badge {
+            font-size: 0.9rem;
+            padding: 5px 10px;
+        }
+        
+        /* Topic Table */
+        .topic-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            border-top: none;
+            padding: 15px;
+        }
+        
+        .topic-row {
+            transition: background-color 0.2s ease;
+        }
+        
+        .topic-row:hover {
+            background-color: #f8f9fa;
+        }
+        
+        /* Achievement badges */
+        .achievement-badge {
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .badge-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 2rem;
+        }
+        
+        .badge-icon.unlocked {
+            background-color: #ffc107;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+        }
+        
+        .badge-icon.locked {
+            background-color: #e9ecef;
+            color: #6c757d;
+        }
+        
+        .badge-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .badge-description {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        /* Recommendation Cards */
+        .recommendation-card {
+            transition: all 0.3s ease;
+            border-radius: 15px;
+        }
+        
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        
+        .recommendation-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .recommendation-icon i {
+            font-size: 1.5rem;
+        }
+        
+        /* Background colors */
+        .bg-primary-soft {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        
+        .bg-success-soft {
+            background-color: rgba(25, 135, 84, 0.1);
+        }
+        
+        .bg-warning-soft {
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+        
+        .bg-danger-soft {
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        
+        @@keyframes progress {
+            0% { stroke-dasharray: 0 100; }
         }
     </style>
+}
+
+@functions {
+    public string GetProgressBarColor(int percentage)
+    {
+        if (percentage >= 75)
+            return "bg-success";
+        else if (percentage >= 50)
+            return "bg-primary";
+        else if (percentage >= 25)
+            return "bg-info";
+        else
+            return "bg-warning";
+    }
+    
+    public string GetActivityIconClass(string type)
+    {
+        switch (type)
+        {
+            case "Vocabulary": return "bg-primary";
+            case "Grammar": return "bg-success";
+            case "Exercise": return "bg-warning";
+            default: return "bg-info";
+        }
+    }
+    
+    public string GetActivityBadgeClass(string type)
+    {
+        switch (type)
+        {
+            case "Vocabulary": return "bg-primary";
+            case "Grammar": return "bg-success";
+            case "Exercise": return "bg-warning";
+            default: return "bg-info";
+        }
+    }
+    
+    public string GetActivityIcon(string type)
+    {
+        switch (type)
+        {
+            case "Vocabulary": return "fas fa-book";
+            case "Grammar": return "fas fa-pen";
+            case "Exercise": return "fas fa-tasks";
+            default: return "fas fa-star";
+        }
+    }
+    
+    public string GetActivityTypeName(string type)
+    {
+        switch (type)
+        {
+            case "Vocabulary": return "Từ vựng";
+            case "Grammar": return "Ngữ pháp";
+            case "Exercise": return "Bài tập";
+            default: return type;
+        }
+    }
 }

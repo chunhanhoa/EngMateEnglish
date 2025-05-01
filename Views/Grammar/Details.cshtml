@@ -1,9 +1,11 @@
+@using TiengAnh.Extensions
+@using System.Security.Claims
 @model GrammarModel
 @{
     ViewData["Title"] = Model.Title_NP;
 }
 
-<!-- Grammar Detail Header -->
+<!-- Grammar Lesson Header -->
 <div class="container mt-5">
     <div class="row mb-4">
         <div class="col-md-12">
@@ -17,42 +19,168 @@
         </div>
     </div>
 
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold mb-3">@Model.Title_NP</h1>
+            <div class="d-flex align-items-center mb-4">
+                <span class="level-badge level-@Model.Level">@Model.Level</span>
+                <button class="btn btn-sm @(Model.IsFavorite ? "btn-danger" : "btn-outline-danger") favorite-btn ms-2" data-id="@Model.ID_NP" title="@(Model.IsFavorite ? "Đã thêm vào yêu thích" : "Thêm vào yêu thích")">
+                    <i class="@(Model.IsFavorite ? "fas" : "far") fa-heart"></i> Yêu thích
+                </button>
+            </div>
+            <p class="lead">@(Model.Description_NP != null ? Model.Description_NP : "Không có mô tả")</p>
+            <div class="d-flex align-items-center">
+                <span class="badge badge-primary me-2">@Model.TopicName</span>
+                <span class="badge badge-warning">
+                    <i class="far fa-calendar-alt me-1"></i> @Model.TimeUpload_NP.ToString("dd/MM/yyyy")
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4 text-end">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-outline-primary me-2" id="translateToggle">
+                    <i class="fas fa-language me-1"></i> Hiển thị song ngữ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <div class="row">
-        <!-- Main Content - Mở rộng chiều rộng để chiếm toàn bộ không gian -->
-        <div class="col-12">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-5">
-                    <h1 class="display-6 fw-bold mb-3">@Model.Title_NP</h1>
-                    
-                    <div class="d-flex align-items-center mb-4">
-                        <span class="badge bg-primary me-2">@Model.Level</span>
-                        <span class="text-muted">
-                            <i class="fas fa-calendar-alt me-1"></i>
-                            @(Model.TimeUpload_NP.HasValue ? Model.TimeUpload_NP.Value.ToString("dd/MM/yyyy") : "Không có ngày")
-                        </span>
-                    </div>
-                    
-                    <!-- Description -->
-                    <p class="lead mb-4">@Model.Description_NP</p>
-                    
-                    <hr class="my-4">
-                    
-                    <!-- Grammar Content -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
                     <div class="grammar-content">
-                        @Html.Raw(Model.Content)
+                        <h3 class="fw-bold mb-3">Khái niệm</h3>
+                        <div class="row bilingual-content">
+                            <div class="col-md-12 english-content">
+                                <p>@Model.Content</p>
+                            </div>
+                            <div class="col-md-12 vietnamese-content" style="display: none;">
+                                <p>@Html.GetVietnameseContent(Model.Content)</p>
+                            </div>
+                        </div>
+
+                        <h3 class="fw-bold mb-3 mt-4">Cấu trúc</h3>
+                        <div class="row bilingual-content">
+                            <div class="col-md-12 english-content">
+                                <div class="card bg-light mb-3">
+                                    <div class="card-body p-3">
+                                        <ul class="mb-0">
+                                            <li><strong>Khẳng định:</strong> Subject + base form (infinitive without 'to')</li>
+                                            <li><strong>Phủ định:</strong> Subject + do/does + not + base form</li>
+                                            <li><strong>Nghi vấn:</strong> Do/Does + subject + base form?</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 vietnamese-content" style="display: none;">
+                                <div class="card bg-light mb-3">
+                                    <div class="card-body p-3">
+                                        <ul class="mb-0">
+                                            <li><strong>Khẳng định:</strong> Chủ ngữ + động từ nguyên mẫu (không có 'to')</li>
+                                            <li><strong>Phủ định:</strong> Chủ ngữ + do/does + not + động từ nguyên mẫu</li>
+                                            <li><strong>Nghi vấn:</strong> Do/Does + chủ ngữ + động từ nguyên mẫu?</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="fw-bold mb-3 mt-4">Ví dụ</h3>
+                        @foreach (var example in Model.Examples)
+                        {
+                            <div class="card bg-primary-soft mb-3 example-card">
+                                <div class="card-body p-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-quote-left text-primary me-2"></i>
+                                        <p class="mb-0 fw-bold">@example</p>
+                                    </div>
+                                    <div class="translation mt-2" style="display: none;">
+                                        <hr class="my-2">
+                                        <p class="mb-0 fst-italic text-muted">@(Model.Examples != null ? GetVietnameseExample(example) : "")</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <h3 class="fw-bold mb-3 mt-4">Cách sử dụng</h3>
+                        <div class="row bilingual-content">
+                            <div class="col-md-12 english-content">
+                                <ol>
+                                    <li><strong>Habits and routines:</strong> Things that happen regularly.</li>
+                                    <li><strong>Facts or permanent situations:</strong> Things that are generally true.</li>
+                                    <li><strong>Timetables and schedules:</strong> For scheduled events in the near future.</li>
+                                </ol>
+                            </div>
+                            <div class="col-md-12 vietnamese-content" style="display: none;">
+                                <ol>
+                                    <li><strong>Thói quen và hoạt động thường xuyên:</strong> Những việc xảy ra thường xuyên.</li>
+                                    <li><strong>Sự thật hoặc tình huống cố định:</strong> Những điều nhìn chung là đúng.</li>
+                                    <li><strong>Thời gian biểu và lịch trình:</strong> Cho các sự kiện đã lên lịch trong tương lai gần.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <h3 class="fw-bold mb-3 mt-4">Giải thích</h3>
+                        @if (!string.IsNullOrEmpty(Model.Content_NP))
+                        {
+                            @Model.Content_NP
+                        }
+                        else
+                        {
+                            <text>Không có giải thích</text>
+                        }
                     </div>
-                    
-                    <!-- Navigation buttons -->
-                    <div class="d-flex justify-content-between mt-5">
-                        <a href="@Url.Action("Index", "Grammar")" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i> Quay lại danh sách
-                        </a>
-                        
-                        <!-- Liên kết tới trang bài tập ngữ pháp -->
-                        <a href="@Url.Action("GrammarExercise", "Exercise", new { id = Model.ID_NP })" class="btn btn-outline-success">
-                            <i class="fas fa-tasks me-2"></i> Làm bài tập
-                        </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Các phần bổ sung... -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-3">Lưu ý quan trọng</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item px-0 border-0">
+                            <i class="fas fa-info-circle text-primary me-2"></i>
+                            Thêm 's' hoặc 'es' vào động từ khi chủ ngữ là ngôi thứ ba số ít (he, she, it).
+                        </li>
+                        <li class="list-group-item px-0 border-0">
+                            <i class="fas fa-info-circle text-primary me-2"></i>
+                            Sử dụng <strong>does not (doesn't)</strong> cho phủ định với chủ ngữ ngôi thứ ba số ít.
+                        </li>
+                        <li class="list-group-item px-0 border-0">
+                            <i class="fas fa-info-circle text-primary me-2"></i>
+                            Sử dụng <strong>do not (don't)</strong> cho phủ định với các chủ ngữ khác.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-3">Bài tập liên quan</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item px-0 d-flex justify-content-between align-items-center border-0">
+                            <a href="#" class="text-decoration-none">Bài tập Simple Present (Cơ bản)</a>
+                            <span class="badge bg-primary rounded-pill">10 câu</span>
+                        </li>
+                        <li class="list-group-item px-0 d-flex justify-content-between align-items-center border-0">
+                            <a href="#" class="text-decoration-none">Bài tập Simple Present (Nâng cao)</a>
+                            <span class="badge bg-primary rounded-pill">15 câu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-3">Video hướng dẫn</h4>
+                    <div class="ratio ratio-16x9 mb-3">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
                     </div>
+                    <p class="small text-muted mb-0">Video này sẽ giúp bạn hiểu rõ hơn về Simple Present Tense và cách sử dụng.</p>
                 </div>
             </div>
         </div>
@@ -60,9 +188,239 @@
 </div>
 
 @section Scripts {
-<script>
-    $(document).ready(function() {
-        console.log("Grammar details page loaded");
-    });
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Nút chuyển đổi hiển thị song ngữ
+            const translateToggle = document.getElementById('translateToggle');
+            translateToggle.addEventListener('click', function() {
+                const vietnameseContent = document.querySelectorAll('.vietnamese-content');
+                const translations = document.querySelectorAll('.translation');
+                
+                // Kiểm tra trạng thái hiện tại
+                const isShowing = vietnameseContent[0].style.display !== 'none';
+                
+                // Cập nhật hiển thị tiếng Việt
+                vietnameseContent.forEach(element => {
+                    element.style.display = isShowing ? 'none' : 'block';
+                });
+                
+                // Cập nhật hiển thị phần dịch của ví dụ
+                translations.forEach(element => {
+                    element.style.display = isShowing ? 'none' : 'block';
+                });
+                
+                // Cập nhật text của nút
+                if (isShowing) {
+                    this.innerHTML = '<i class="fas fa-language me-1"></i> Hiển thị song ngữ';
+                } else {
+                    this.innerHTML = '<i class="fas fa-language me-1"></i> Ẩn tiếng Việt';
+                }
+            });
+            
+            // Xử lý khi click vào nút yêu thích
+            const favoriteBtn = document.querySelector('.favorite-btn');
+            favoriteBtn.addEventListener('click', function() {
+                const grammarId = this.getAttribute('data-id');
+                
+                // Thay đổi trạng thái yêu thích
+                if (this.querySelector('i').classList.contains('far')) {
+                    // Thêm vào yêu thích
+                    this.querySelector('i').classList.replace('far', 'fas');
+                    this.classList.replace('btn-outline-danger', 'btn-danger');
+                    
+                    // Lưu vào localStorage
+                    saveToFavorites(grammarId, 'grammar');
+                } else {
+                    // Xóa khỏi yêu thích
+                    this.querySelector('i').classList.replace('fas', 'far');
+                    this.classList.replace('btn-danger', 'btn-outline-danger');
+                    
+                    // Xóa khỏi localStorage
+                    removeFromFavorites(grammarId, 'grammar');
+                }
+            });
+            
+            // Hàm lưu vào danh sách yêu thích
+            function saveToFavorites(id, type) {
+                let favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+                if (!favorites.includes(id)) {
+                    favorites.push(id);
+                    localStorage.setItem('grammarFavorites', JSON.stringify(favorites));
+                    
+                    // Hiển thị thông báo
+                    showNotification('Đã thêm vào danh sách yêu thích!', 'success');
+                }
+            }
+            
+            // Hàm xóa khỏi danh sách yêu thích
+            function removeFromFavorites(id, type) {
+                let favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+                const index = favorites.indexOf(id);
+                if (index !== -1) {
+                    favorites.splice(index, 1);
+                    localStorage.setItem('grammarFavorites', JSON.stringify(favorites));
+                    
+                    // Hiển thị thông báo
+                    showNotification('Đã xóa khỏi danh sách yêu thích', 'info');
+                }
+            }
+            
+            // Hiển thị thông báo
+            function showNotification(message, type) {
+                const notif = document.createElement('div');
+                notif.className = `alert alert-${type} position-fixed`;
+                notif.style.top = '20px';
+                notif.style.right = '20px';
+                notif.style.zIndex = '9999';
+                notif.innerHTML = message;
+                
+                document.body.appendChild(notif);
+                
+                setTimeout(() => {
+                    notif.style.opacity = '0';
+                    notif.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        document.body.removeChild(notif);
+                    }, 500);
+                }, 3000);
+            }
+            
+            // Kiểm tra và cập nhật nút yêu thích
+            function updateFavoriteButton() {
+                const favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+                const grammarId = favoriteBtn.getAttribute('data-id');
+                if (favorites.includes(grammarId)) {
+                    favoriteBtn.querySelector('i').classList.replace('far', 'fas');
+                    favoriteBtn.classList.replace('btn-outline-danger', 'btn-danger');
+                }
+            }
+            
+            // Cập nhật trạng thái nút yêu thích khi tải trang
+            updateFavoriteButton();
+
+            // Xử lý nút yêu thích
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.dataset.id, 10);
+                    
+                    window.progressTracker.toggleFavorite(id, 'Grammar')
+                        .then(data => {
+                            if (data.success) {
+                                // Đổi icon nếu thành công
+                                const icon = this.querySelector('i');
+                                if (icon.classList.contains('far')) {
+                                    icon.classList.replace('far', 'fas');
+                                    this.classList.replace('btn-outline-danger', 'btn-danger');
+                                    this.setAttribute('title', 'Đã thêm vào yêu thích');
+                                    showNotification('Đã thêm vào mục yêu thích', 'success');
+                                    
+                                    // Cập nhật trang yêu thích nếu đang mở
+                                    updateFavoritesPage('add', id, 'Grammar');
+                                } else {
+                                    icon.classList.replace('fas', 'far');
+                                    this.classList.replace('btn-danger', 'btn-outline-danger');
+                                    this.setAttribute('title', 'Thêm vào yêu thích');
+                                    showNotification('Đã xóa khỏi mục yêu thích', 'info');
+                                    
+                                    // Cập nhật trang yêu thích nếu đang mở
+                                    updateFavoritesPage('remove', id, 'Grammar');
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Lỗi khi cập nhật trạng thái yêu thích:', error);
+                            showNotification('Có lỗi xảy ra. Vui lòng đăng nhập và thử lại', 'danger');
+                        });
+                });
+            });
+            
+            // Hiển thị thông báo
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type} notification-toast`;
+                notification.style.position = 'fixed';
+                notification.style.top = '20px';
+                notification.style.right = '20px';
+                notification.style.zIndex = '9999';
+                notification.style.minWidth = '300px';
+                notification.style.padding = '15px';
+                notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+                notification.innerHTML = message;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+            
+            // Hàm cập nhật trang yêu thích nếu đang mở
+            function updateFavoritesPage(action, itemId, itemType) {
+                // Cập nhật thông qua localStorage để các tab khác biết
+                if (window.localStorage) {
+                    // Sử dụng localStorage để giao tiếp giữa các tab
+                    const message = {
+                        action: action,
+                        itemId: itemId,
+                        itemType: itemType,
+                        timestamp: new Date().getTime()
+                    };
+                    window.localStorage.setItem('favoriteUpdate', JSON.stringify(message));
+                }
+                
+                // Gửi thông điệp tới cửa sổ khác (nếu có)
+                try {
+                    if (window.opener && window.opener !== window) {
+                        window.opener.postMessage({
+                            action: action,
+                            itemId: itemId,
+                            itemType: itemType
+                        }, '*');
+                    }
+                } catch (e) {
+                    console.error('Không thể gửi thông điệp tới cửa sổ khác:', e);
+                }
+            }
+        });
+        
+        // Vô hiệu hóa các chức năng cũ liên quan đến localStorage trực tiếp
+        function saveToFavorites() { return false; }
+        function removeFromFavorites() { return false; }
+        function updateFavoriteButton() { return false; }
+    </script>
+}
+
+@functions {
+    public string GetVietnameseContent(string englishContent)
+    {
+        // Trong ứng dụng thực tế, bạn có thể sử dụng dịch vụ dịch thuật hoặc dữ liệu từ database
+        
+        if (englishContent.Contains("simple present tense"))
+        {
+            return "Thì hiện tại đơn được sử dụng để diễn tả thói quen, sự thật và hoạt động thường xuyên. Thì này được tạo thành bằng cách sử dụng dạng cơ bản của động từ (động từ nguyên mẫu không có 'to') cho tất cả các ngôi trừ ngôi thứ ba số ít (he, she, it), sẽ thêm đuôi -s hoặc -es vào cuối động từ.";
+        }
+        
+        // Đây là hàm giả lập dịch tiếng Anh sang tiếng Việt
+        return "Bản dịch tiếng Việt sẽ hiển thị ở đây.";
+    }
+    
+    public string GetVietnameseExample(string englishExample)
+    {
+        // Đây là hàm giả lập dịch ví dụ sang tiếng Việt
+        Dictionary<string, string> examples = new Dictionary<string, string>
+        {
+            { "I go to school every day.", "Tôi đi học mỗi ngày." },
+            { "She doesn't like coffee.", "Cô ấy không thích cà phê." },
+            { "Do they live in London?", "Họ có sống ở London không?" },
+            { "The Earth revolves around the Sun.", "Trái Đất quay quanh Mặt Trời." },
+            { "He plays football twice a week.", "Anh ấy chơi bóng đá hai lần một tuần." }
+        };
+        
+        if (examples.ContainsKey(englishExample))
+        {
+            return examples[englishExample];
+        }
+        
+        return "Bản dịch tiếng Việt của ví dụ.";
+    }
 }

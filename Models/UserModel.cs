@@ -1,39 +1,83 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace TiengAnh.Models
 {
-    public class UserModel
+    [BsonIgnoreExtraElements]
+    public class UserModel : BaseModel
     {
-        public string Id { get; set; } = string.Empty;
-        public string UserName { get; set; } = string.Empty;
+        [BsonElement("UserId")]
+        public string UserId { get; set; } = string.Empty;
+        
+        [BsonElement("Username")]
+        public string Username { get; set; } = string.Empty;
+        
+        [BsonElement("UserName")]
+        public string UserName 
+        { 
+            get { return Username; }
+            set { Username = value; }
+        }
+        
+        [BsonElement("Email")]
         public string Email { get; set; } = string.Empty;
+        
+        [BsonElement("PasswordHash")]
+        public string PasswordHash { get; set; } = string.Empty;
+        
+        [BsonElement("FullName")]
         public string FullName { get; set; } = string.Empty;
-        public string? PhoneNumber { get; set; }
-        public string Avatar { get; set; } = string.Empty;
-        public string Level { get; set; } = string.Empty;
-        public DateTime RegisterDate { get; set; } = DateTime.Now;
-        public int Points { get; set; }
+        
+        [BsonElement("Avatar")]
+        public string? Avatar { get; set; }
+        
+        [BsonElement("Level")]
+        public string Level { get; set; } = "A1";
+        
+        [BsonElement("Role")]
+        public string Role { get; set; } = "User";
+        
+        [BsonElement("Roles")]
         public List<string> Roles { get; set; } = new List<string>();
         
-        // Thêm thông tin học tập thực tế
-        public int VocabularyProgress { get; set; }
-        public int GrammarProgress { get; set; }
-        public int ExerciseProgress { get; set; }
-        public List<UserActivity> RecentActivities { get; set; } = new List<UserActivity>();
-    }
+        [BsonElement("RegisterDate")]
+        public DateTime RegisterDate { get; set; } = DateTime.Now;
+        
+        [BsonElement("Points")]
+        public int Points { get; set; }
+        
+        [BsonElement("Phone")]
+        public string Phone { get; set; } = string.Empty;
+        
+        [BsonElement("Address")]
+        public string Address { get; set; } = string.Empty;
+        
+        [BsonElement("DateOfBirth")]
+        [DataType(DataType.Date)]
+        public DateTime? DateOfBirth { get; set; }
+        
+        [BsonElement("Gender")]
+        public string Gender { get; set; } = string.Empty;
+        
+        [BsonElement("Bio")]
+        public string Bio { get; set; } = string.Empty;
+        
+        [BsonElement("Specialization")]
+        public string Specialization { get; set; } = string.Empty;
 
-    public class UserActivity
-    {
-        public string Title { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string Type { get; set; } = string.Empty;
-        public DateTime Timestamp { get; set; }
-    }
+        [BsonElement("CreatedAt")]
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-    public class RegisterViewModel
-    {
-        public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-        public string ConfirmPassword { get; set; } = string.Empty;
-        public string FullName { get; set; } = string.Empty;
-        public bool AcceptTerms { get; set; }
+        [BsonElement("LastLogin")]
+        public DateTime? LastLogin { get; set; }
+
+        [BsonElement("IsVerified")]
+        public bool IsVerified { get; set; } = false;
     }
+    
+    // Xóa các lớp model trùng lặp ở đây để tránh xung đột
+    // LoginViewModel và RegisterViewModel đã được chuyển vào namespace Models.ViewModels
 }

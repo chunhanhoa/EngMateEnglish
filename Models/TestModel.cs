@@ -1,27 +1,61 @@
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+
 namespace TiengAnh.Models
 {
-    public class TestModel
+    public class TestModel : BaseModel
     {
+        [BsonElement("TestID")]
         public int TestID { get; set; }
-        public string TestName { get; set; } = string.Empty;
-        public string Title { get; set; } = string.Empty;
-        public int TopicID { get; set; }
-        public string TopicName { get; set; } = string.Empty;
-        public int TotalQuestions { get; set; }
-        public string Level { get; set; } = string.Empty;
-        public int TimeLimit { get; set; }
+        
+        [BsonElement("Title")]
+        public string Title { get; set; } = null!;
+        
+        [BsonElement("TestName")]
+        public string TestName
+        {
+            get { return Title; }
+            set { Title = value; }
+        }
+        
+        [BsonElement("Description")]
+        public string Description { get; set; } = null!;
+        
+        [BsonElement("Duration")]
         public int Duration { get; set; }
-        public string Description { get; set; } = string.Empty;
-        public string ImageUrl { get; set; } = string.Empty;
-        public string Category { get; set; } = string.Empty;
+        
+        [BsonElement("TotalQuestions")]
+        public int TotalQuestions { get; set; }
+        
+        [BsonElement("Level")]
+        public string Level { get; set; } = null!;
+        
+        [BsonElement("CreatedDate")]
+        public DateTime CreatedDate { get; set; }
+        
+        [BsonElement("Questions")]
+        public List<TestQuestionModel> Questions { get; set; } = new List<TestQuestionModel>();
+        
+        [BsonElement("ImageUrl")]
+        public string? ImageUrl { get; set; }
+        
+        [BsonElement("Category")]
+        public string? Category { get; set; }
     }
-
-    public class QuestionModel
+    
+    public class TestQuestionModel
     {
+        [BsonElement("QuestionID")]
         public int QuestionID { get; set; }
-        public string Text { get; set; } = string.Empty;
+        
+        [BsonElement("QuestionText")]
+        public string QuestionText { get; set; } = null!;
+        
+        [BsonElement("Options")]
         public List<string> Options { get; set; } = new List<string>();
-        public string CorrectAnswer { get; set; } = string.Empty;
-        public string Explanation { get; set; } = string.Empty;
+        
+        [BsonElement("CorrectAnswer")]
+        public int CorrectAnswer { get; set; }
     }
 }

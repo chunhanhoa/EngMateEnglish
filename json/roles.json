@@ -1,0 +1,41 @@
+[
+  {
+    "RoleId": "admin",
+    "RoleName": "Admin",
+    "Description": "Quản trị viên hệ thống với quyền truy cập đầy đủ",
+    "Permissions": [
+      "ManageUsers",
+      "ManageContent",
+      "ManageSystem",
+      "ViewReports",
+      "ManageRoles",
+      "ManageSettings"
+    ]
+  },
+  {
+    "RoleId": "teacher",
+    "RoleName": "Teacher",
+    "Description": "Giáo viên có quyền tạo và quản lý nội dung học tập",
+    "Permissions": [
+      "CreateLessons",
+      "EditLessons",
+      "CreateExercises",
+      "GradeStudents",
+      "ViewStudentProgress",
+      "ManageOwnContent"
+    ]
+  },
+  {
+    "RoleId": "student",
+    "RoleName": "Student",
+    "Description": "Học viên có quyền truy cập nội dung học tập và theo dõi tiến trình",
+    "Permissions": [
+      "ViewLessons",
+      "TakeExercises",
+      "TrackOwnProgress",
+      "SaveFavorites",
+      "SubmitFeedback",
+      "AccessDiscussions"
+    ]
+  }
+]

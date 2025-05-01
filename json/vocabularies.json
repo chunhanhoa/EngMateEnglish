@@ -1,0 +1,72 @@
+[
+  {
+    "ID_TV": 1,
+    "Word_TV": "Cat",
+    "Meaning_TV": "Con mèo",
+    "Example_TV": "I have a black cat as a pet.",
+    "Audio_TV": "/audio/cat.mp3",
+    "Image_TV": "/images/vocabulary/cat.jpg",
+    "Level_TV": "A1",
+    "ID_CD": 1,
+    "ID_LT": "n",
+    "PartOfSpeech": "noun",
+    "TopicName": "Animals",
+    "IsFavorite": false
+  },
+  {
+    "ID_TV": 2,
+    "Word_TV": "Dog",
+    "Meaning_TV": "Con chó",
+    "Example_TV": "My dog likes to play in the garden.",
+    "Audio_TV": "/audio/dog.mp3",
+    "Image_TV": "/images/vocabulary/dog.jpg",
+    "Level_TV": "A1",
+    "ID_CD": 1,
+    "ID_LT": "n",
+    "PartOfSpeech": "noun",
+    "TopicName": "Animals",
+    "IsFavorite": true
+  },
+  {
+    "ID_TV": 3,
+    "Word_TV": "Elephant",
+    "Meaning_TV": "Con voi",
+    "Example_TV": "Elephants are the largest land animals.",
+    "Audio_TV": "/audio/elephant.mp3",
+    "Image_TV": "/images/vocabulary/elephant.jpg",
+    "Level_TV": "A1",
+    "ID_CD": 1,
+    "ID_LT": "n",
+    "PartOfSpeech": "noun",
+    "TopicName": "Animals",
+    "IsFavorite": false
+  },
+  {
+    "ID_TV": 4,
+    "Word_TV": "Apple",
+    "Meaning_TV": "Quả táo",
+    "Example_TV": "I eat an apple every day.",
+    "Audio_TV": "/audio/apple.mp3",
+    "Image_TV": "/images/vocabulary/apple.jpg",
+    "Level_TV": "A1",
+    "ID_CD": 2,
+    "ID_LT": "n",
+    "PartOfSpeech": "noun",
+    "TopicName": "Food & Drinks",
+    "IsFavorite": true
+  },
+  {
+    "ID_TV": 5,
+    "Word_TV": "Pencil",
+    "Meaning_TV": "Bút chì",
+    "Example_TV": "I write with a pencil.",
+    "Audio_TV": "/audio/pencil.mp3",
+    "Image_TV": "/images/vocabulary/pencil.jpg",
+    "Level_TV": "A1",
+    "ID_CD": 3,
+    "ID_LT": "n",
+    "PartOfSpeech": "noun",
+    "TopicName": "School",
+    "IsFavorite": false
+  }
+]

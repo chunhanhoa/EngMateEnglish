@@ -1,0 +1,296 @@
+@using System.Security.Claims
+@model List<GrammarModel>
+@{
+    string levelTitle = "";
+    string levelDescription = "";
+    string badgeColor = "";
+    string progressColor = "";
+    string btnColor = "";
+    ViewData["Title"] = $"Ngữ pháp tiếng Anh - Trình độ {ViewBag.Level}";
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    
+    switch (ViewBag.Level) {
+        case "A1":
+        case "A2":
+            levelTitle = "Ngữ pháp cơ bản";
+            levelDescription = "Các bài học ngữ pháp dành cho người mới bắt đầu, giúp xây dựng nền tảng vững chắc.";
+            badgeColor = "primary";
+            progressColor = "primary";
+            btnColor = "primary";
+            break;
+        case "B1":
+        case "B2":
+            levelTitle = "Ngữ pháp trung cấp";
+            levelDescription = "Các bài học dành cho người đã có kiến thức cơ bản, giúp nâng cao trình độ.";
+            badgeColor = "success";
+            progressColor = "success";
+            btnColor = "success";
+            break;
+        case "C1":
+        case "C2":
+            levelTitle = "Ngữ pháp nâng cao";
+            levelDescription = "Các bài học chuyên sâu dành cho người học muốn thành thạo tiếng Anh.";
+            badgeColor = "danger";
+            progressColor = "danger";
+            btnColor = "danger";
+            break;
+    }
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Grammar")">Ngữ pháp</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Trình độ @ViewBag.Level</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 bg-@(badgeColor)-soft mb-4 p-4">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="fw-bold mb-2">@levelTitle (Level @ViewBag.Level)</h2>
+                        <p class="mb-0">@levelDescription</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <span class="badge bg-@badgeColor p-2 fs-6">@ViewBag.Level</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var grammar in Model)
+            {
+                <div class="col-lg-6 grammar-card-container">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="level-badge level-@grammar.Level">@grammar.Level</span>
+                                <button class="btn btn-sm btn-outline-danger favorite-btn" data-id="@grammar.ID_NP">
+                                    <i class="@(grammar.IsFavorite ? "fas" : "far") fa-heart"></i>
+                                </button>
+                            </div>
+
+                            <h3 class="card-title fw-bold mb-3">@grammar.Title_NP</h3>
+                            <p class="card-text text-muted mb-4">@grammar.Description_NP</p>
+
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center small mb-1">
+                                    <span>Tiến độ học</span>
+                                    <span>@grammar.ProgressPercentage%</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-@progressColor" role="progressbar" 
+                                        style="width: @grammar.ProgressPercentage%;" 
+                                        aria-valuenow="@grammar.ProgressPercentage" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                            <a href="@Url.Action("Details", "Grammar", new { id = grammar.ID_NP })" 
+                                class="btn btn-@btnColor w-100 mt-2">
+                                <i class="fas fa-book-open me-2"></i> Học ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle me-2"></i> Chưa có bài học ngữ pháp nào cho trình độ @ViewBag.Level. Vui lòng quay lại sau!
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    /* Level badges */
+    .level-badge {
+        padding: 0.35rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+    
+    .level-A1 {
+        background-color: #e9f5ff;
+        color: #0d6efd;
+    }
+    
+    .level-A2 {
+        background-color: #d7f2ff;
+        color: #0d6efd;
+    }
+    
+    .level-B1 {
+        background-color: #e3f9e5;
+        color: #198754;
+    }
+    
+    .level-B2 {
+        background-color: #d1f5d3;
+        color: #198754;
+    }
+    
+    .level-C1 {
+        background-color: #ffe8e8;
+        color: #dc3545;
+    }
+    
+    .level-C2 {
+        background-color: #ffd7d7;
+        color: #dc3545;
+    }
+
+    /* Bg soft colors */
+    .bg-primary-soft { 
+        background-color: rgba(78, 115, 250, 0.1); 
+    }
+    .bg-success-soft { 
+        background-color: rgba(40, 167, 69, 0.1); 
+    }
+    .bg-danger-soft { 
+        background-color: rgba(220, 53, 69, 0.1); 
+    }
+    
+    /* Hover effect for cards */
+    .hover-card {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Animation for cards */
+    .grammar-card-container {
+        animation: fadeIn 0.6s ease-in-out forwards;
+        opacity: 0;
+    }
+    
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Animation delay */
+    .grammar-card-container:nth-child(1) { animation-delay: 0.1s; }
+    .grammar-card-container:nth-child(2) { animation-delay: 0.2s; }
+    .grammar-card-container:nth-child(3) { animation-delay: 0.3s; }
+    .grammar-card-container:nth-child(4) { animation-delay: 0.4s; }
+    .grammar-card-container:nth-child(5) { animation-delay: 0.5s; }
+    .grammar-card-container:nth-child(6) { animation-delay: 0.6s; }
+</style>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Xử lý nút yêu thích
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault(); // Ngăn chặn chuyển trang khi click
+                    
+                    const id = parseInt(this.dataset.id, 10);
+                    
+                    window.progressTracker.toggleFavorite(id, 'Grammar')
+                        .then(data => {
+                            if (data.success) {
+                                // Đổi icon nếu thành công
+                                const icon = this.querySelector('i');
+                                if (icon.classList.contains('far')) {
+                                    icon.classList.replace('far', 'fas');
+                                    this.classList.replace('btn-outline-danger', 'btn-danger');
+                                    this.setAttribute('title', 'Đã thêm vào yêu thích');
+                                    showNotification('Đã thêm vào mục yêu thích', 'success');
+                                    
+                                    // Cập nhật trang yêu thích nếu đang mở
+                                    updateFavoritesPage('add', id, 'Grammar');
+                                } else {
+                                    icon.classList.replace('fas', 'far');
+                                    this.classList.replace('btn-danger', 'btn-outline-danger');
+                                    this.setAttribute('title', 'Thêm vào yêu thích');
+                                    showNotification('Đã xóa khỏi mục yêu thích', 'info');
+                                    
+                                    // Cập nhật trang yêu thích nếu đang mở
+                                    updateFavoritesPage('remove', id, 'Grammar');
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Lỗi khi cập nhật trạng thái yêu thích:', error);
+                            showNotification('Có lỗi xảy ra. Vui lòng đăng nhập và thử lại', 'danger');
+                        });
+                });
+            });
+            
+            // Hiển thị thông báo
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type} notification-toast`;
+                notification.style.position = 'fixed';
+                notification.style.top = '20px';
+                notification.style.right = '20px';
+                notification.style.zIndex = '9999';
+                notification.style.minWidth = '300px';
+                notification.style.padding = '15px';
+                notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+                notification.innerHTML = message;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+            
+            // Hàm cập nhật trang yêu thích nếu đang mở
+            function updateFavoritesPage(action, itemId, itemType) {
+                // Cập nhật thông qua localStorage để các tab khác biết
+                if (window.localStorage) {
+                    // Sử dụng localStorage để giao tiếp giữa các tab
+                    const message = {
+                        action: action,
+                        itemId: itemId,
+                        itemType: itemType,
+                        timestamp: new Date().getTime()
+                    };
+                    window.localStorage.setItem('favoriteUpdate', JSON.stringify(message));
+                }
+                
+                // Gửi thông điệp tới cửa sổ khác (nếu có)
+                try {
+                    if (window.opener && window.opener !== window) {
+                        window.opener.postMessage({
+                            action: action,
+                            itemId: itemId,
+                            itemType: itemType
+                        }, '*');
+                    }
+                } catch (e) {
+                    console.error('Không thể gửi thông điệp tới cửa sổ khác:', e);
+                }
+            }
+        });
+        
+        // Vô hiệu hóa các chức năng cũ liên quan đến localStorage trực tiếp
+        function saveFavorite() { return false; }
+        function removeFavorite() { return false; }
+    </script>
+}

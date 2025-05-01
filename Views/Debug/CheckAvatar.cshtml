@@ -1,0 +1,252 @@
+@{
+    ViewData["Title"] = "Kiểm tra Avatar";
+}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h1>Thông tin chẩn đoán Avatar</h1>
+        </div>
+        <div class="card-body">
+            <h2>Thông tin người dùng</h2>
+            <div class="mb-4">
+                <p><strong>ID người dùng từ Claims:</strong> @ViewBag.UserIdFromClaim</p>
+                <p><strong>Email từ Claims:</strong> @ViewBag.EmailFromClaim</p>
+                
+                @if (ViewBag.UserFound == true)
+                {
+                    <div class="alert alert-success">
+                        <h4>Tìm thấy người dùng</h4>
+                        <p><strong>ID:</strong> @ViewBag.User.Id</p>
+                        <p><strong>Tên người dùng:</strong> @ViewBag.User.Username</p>
+                        <p><strong>Email:</strong> @ViewBag.User.Email</p>
+                        <p><strong>Đường dẫn Avatar trong DB:</strong> @ViewBag.User.Avatar</p>
+                        <p><strong>Đường dẫn trong ViewBag:</strong> @ViewBag.UserAvatar</p>
+                    </div>
+                    
+                    <!-- Bảng kiểm tra kết nối avatar -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-info text-white">Kiểm tra Avatar</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">1. Avatar từ Database</div>
+                                        <div class="card-body text-center">
+                                            @if (!string.IsNullOrEmpty(ViewBag.User.Avatar))
+                                            {
+                                                <img src="@ViewBag.User.Avatar" class="img-thumbnail mb-2" 
+                                                     style="max-width: 150px; max-height: 150px; object-fit: cover">
+                                                <p>@ViewBag.User.Avatar</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="text-danger">Không có avatar được lưu trữ</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">2. Avatar từ ViewBag</div>
+                                        <div class="card-body text-center">
+                                            @if (!string.IsNullOrEmpty(ViewBag.UserAvatar))
+                                            {
+                                                <img src="@ViewBag.UserAvatar" class="img-thumbnail mb-2" 
+                                                     style="max-width: 150px; max-height: 150px; object-fit: cover">
+                                                <p>@ViewBag.UserAvatar</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="text-danger">ViewBag.UserAvatar rỗng</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">3. Avatar với Timestamp</div>
+                                        <div class="card-body text-center">
+                                            @{ 
+                                                var timestamp = DateTime.Now.Ticks;
+                                                var avatarUrl = !string.IsNullOrEmpty(ViewBag.User?.Avatar) 
+                                                    ? ViewBag.User.Avatar 
+                                                    : "/images/default-avatar.png";
+                                                var avatarWithTimestamp = $"{avatarUrl}?v={timestamp}";
+                                            }
+                                            <img src="@avatarWithTimestamp" class="img-thumbnail mb-2" 
+                                                 style="max-width: 150px; max-height: 150px; object-fit: cover">
+                                            <p>@avatarWithTimestamp</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        <h4>Không tìm thấy người dùng</h4>
+                        <p>@ViewBag.ErrorMessage</p>
+                    </div>
+                }
+            </div>
+            
+            <h2>Thông tin thư mục Avatar</h2>
+            <div class="mb-4">
+                @if (ViewBag.AvatarFolderExists == true)
+                {
+                    <div class="alert alert-success">
+                        <h4>Thư mục Avatar tồn tại</h4>
+                        <p><strong>Đường dẫn:</strong> @ViewBag.AvatarFolderPath</p>
+                        
+                        <h5 class="mt-3">Danh sách file Avatar:</h5>
+                        <ul>
+                            @foreach (var file in ViewBag.AvatarFiles)
+                            {
+                                <li>@file</li>
+                            }
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        <h4>Thư mục Avatar không tồn tại</h4>
+                        <p><strong>Đường dẫn:</strong> @ViewBag.AvatarFolderPath</p>
+                    </div>
+                }
+            </div>
+            
+            <h2>Kiểm tra tập tin Avatar</h2>
+            <div class="mb-4">
+                @if (!string.IsNullOrEmpty(ViewBag.AvatarPath))
+                {
+                    @if (ViewBag.AvatarFileExists == true)
+                    {
+                        <div class="alert alert-success">
+                            <h4>Tập tin Avatar tồn tại</h4>
+                            <p><strong>Đường dẫn:</strong> @ViewBag.AvatarPath</p>
+                            <p><strong>Đường dẫn vật lý:</strong> @ViewBag.AvatarPhysicalPath</p>
+                            
+                            <div class="mt-3">
+                                <h5>Xem trước:</h5>
+                                <img src="@ViewBag.AvatarPath" alt="Avatar" class="img-thumbnail" style="width: 200px; height: 200px; object-fit: cover;" />
+                                
+                                <h5 class="mt-2">Với timestamp:</h5>
+                                @{ var timestamp = DateTime.Now.Ticks; }
+                                <img src="@ViewBag.AvatarPath?v=@timestamp" alt="Avatar with timestamp" class="img-thumbnail" style="width: 200px; height: 200px; object-fit: cover;" />
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            <h4>Tập tin Avatar không tồn tại</h4>
+                            <p><strong>Đường dẫn:</strong> @ViewBag.AvatarPath</p>
+                            <p><strong>Đường dẫn vật lý:</strong> @ViewBag.AvatarPhysicalPath</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <p>@ViewBag.AvatarMessage</p>
+                    </div>
+                }
+            </div>
+            
+            <!-- Thêm công cụ xóa cache và làm mới -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning">Công cụ khắc phục</div>
+                <div class="card-body">
+                    <p class="fw-bold">Các thao tác để khắc phục vấn đề avatar:</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button id="clear-cache-btn" class="btn btn-outline-warning">
+                            <i class="fas fa-broom me-1"></i> Xóa Cache
+                        </button>
+                        <a href="@Url.Action("Profile", "Account")?refresh=@Guid.NewGuid().ToString()" class="btn btn-outline-primary">
+                            <i class="fas fa-sync me-1"></i> Làm mới Profile
+                        </a>
+                        <button id="fix-avatar-btn" class="btn btn-outline-success">
+                            <i class="fas fa-wrench me-1"></i> Sửa Avatar
+                        </button>
+                        <button id="logout-btn" class="btn btn-outline-danger">
+                            <i class="fas fa-sign-out-alt me-1"></i> Đăng xuất & Đăng nhập lại
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <a href="/Account/Profile" class="btn btn-primary">Quay lại Hồ sơ</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Button xóa cache
+            document.getElementById('clear-cache-btn').addEventListener('click', function() {
+                localStorage.clear();
+                sessionStorage.clear();
+                
+                // Xóa cookies
+                document.cookie.split(";").forEach(function(c) {
+                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, 
+                        "=;expires=" + new Date().toUTCString() + ";path=/");
+                });
+                
+                alert('Đã xóa cache trình duyệt! Trang sẽ tải lại sau 1 giây.');
+                setTimeout(function() {
+                    window.location.reload(true);
+                }, 1000);
+            });
+            
+            // Button sửa avatar
+            document.getElementById('fix-avatar-btn').addEventListener('click', function() {
+                const userAvatar = '@ViewBag.User?.Avatar';
+                if (!userAvatar) {
+                    alert('Không tìm thấy thông tin avatar!');
+                    return;
+                }
+                
+                const userId = '@ViewBag.User?.Id';
+                if (!userId) {
+                    alert('Không tìm thấy ID người dùng!');
+                    return;
+                }
+                
+                // Gửi yêu cầu cập nhật avatar
+                fetch('/debug/fix-avatar?userId=' + encodeURIComponent(userId) + 
+                      '&avatarPath=' + encodeURIComponent(userAvatar))
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Đã sửa avatar thành công! Trang sẽ tải lại sau 1 giây.');
+                            setTimeout(function() {
+                                window.location.reload(true);
+                            }, 1000);
+                        } else {
+                            alert('Lỗi: ' + data.error);
+                        }
+                    })
+                    .catch(error => {
+                        alert('Lỗi: ' + error);
+                    });
+            });
+            
+            // Button đăng xuất
+            document.getElementById('logout-btn').addEventListener('click', function() {
+                if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+                    window.location.href = '/Account/Logout';
+                }
+            });
+        });
+    </script>
+}

@@ -1,9 +1,6 @@
-﻿@model IEnumerable<TiengAnh.Models.ChuDe>
-
+﻿@model List<TopicModel>
 @{
-    ViewData["Title"] = "Trang chủ";
-    // Lấy danh sách chủ đề từ ViewBag, hoặc dùng Model trực tiếp
-    var topics = Model;
+    ViewData["Title"] = "Home";
 }
 
 <!-- Hero Section -->
@@ -24,57 +21,44 @@
     </div>
 </section>
 
-<!-- Phần hiển thị chủ đề từ vựng -->
-<section class="py-5 bg-light">
+<!-- Topics Section -->
+<section id="topics" class="py-5">
     <div class="container">
-        <div class="row mb-4">
-            <div class="col-md-8">
-                <h2 class="fw-bold">Chủ đề từ vựng</h2>
-                <p class="lead">Khám phá và học từ vựng theo nhiều chủ đề hấp dẫn</p>
-            </div>
-            <div class="col-md-4 text-end">
-                <a href="@Url.Action("Index", "Vocabulary")" class="btn btn-outline-primary">
-                    Xem tất cả <i class="fas fa-arrow-right ms-1"></i>
-                </a>
-            </div>
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Chủ đề từ vựng</h2>
+            <p class="lead">Bắt đầu học với những chủ đề thú vị được thiết kế dành cho người mới bắt đầu</p>
         </div>
 
-        @if (!topics.Any())
-        {
-            <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>
-                Hiện tại không có chủ đề từ vựng nào. Vui lòng quay lại sau.
-                <button type="button" class="btn btn-sm btn-primary ms-3" onclick="window.location.reload()">
-                    <i class="fas fa-sync-alt me-1"></i> Tải lại trang
-                </button>
-            </div>
-        }
-        else
-        {
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 topics-container">
-                @foreach (var topic in topics.Take(6)) // Hiển thị tối đa 6 chủ đề trên trang chủ
+        <div class="row g-4">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var topic in Model)
                 {
-                    string bgColor = "#e6f6ff"; // Màu mặc định
-                    string iconPath = "/images/icons/topic-default.png"; // Icon mặc định
+                    string backgroundColor = !string.IsNullOrEmpty(topic.BackgroundColor) ? topic.BackgroundColor : "#f0f8ff";
                     
-                    <div class="col topic-item" data-id="@topic.IdCd" style="display: block; opacity: 1; visibility: visible;">
-                        <div class="card h-100 border-0 shadow-sm" style="background-color: @bgColor">
-                            <div class="card-body p-4">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="topic-icon me-3">
-                                        <img src="@iconPath" alt="@topic.NameCd" class="img-fluid" width="50">
-                                    </div>
-                                    <h4 class="card-title mb-0">@topic.NameCd</h4>
-                                </div>
-                                <p class="card-text text-muted">@topic.DiscriptionCd</p>
-                                <a href="@Url.Action("Topic", "Vocabulary", new { id = topic.IdCd })" 
-                                   class="btn btn-primary mt-2">Học ngay</a>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card border-0 shadow-sm h-100" 
+                             style="background: linear-gradient(to right, @(topic.BackgroundColor ?? "#FFFFFF"), @(topic.BackgroundColor ?? "#FFFFFF"));">
+                            <img src="@(string.IsNullOrEmpty(topic.IconPath) ? "/images/icons/default.png" : topic.IconPath)" 
+                                 alt="@topic.Name_CD" class="topic-icon" 
+                                 onerror="this.src='/images/icons/default.png';this.onerror='';" />
+                            <h3>@topic.Name_CD</h3>
+                            <p>@topic.Description_CD</p>
+                            <div class="d-flex align-items-center justify-content-between mt-3">
+                                <span class="badge bg-light text-dark">@topic.TotalItems từ vựng</span>
+                                <a href="@Url.Action("Topic", "Vocabulary", new { id = topic.ID_CD })" class="btn btn-sm btn-primary">Bắt đầu học</a>
                             </div>
                         </div>
                     </div>
                 }
-            </div>
-        }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    <p>Không tìm thấy chủ đề nào. Vui lòng thử lại sau.</p>
+                </div>
+            }
+        </div>
     </div>
 </section>
 
@@ -126,27 +110,3 @@
     </div>
 </section>
 
-
-@section Scripts {
-<script>
-    $(document).ready(function() {
-        // Xóa bỏ hiệu ứng fadeIn vì đã đảm bảo hiển thị bằng CSS
-        // Chỉ thêm xử lý các hiệu ứng khác nếu cần
-        
-        console.log("Trang đã tải xong, đảm bảo hiển thị chủ đề từ vựng");
-        
-        // Cẩn thận khắc phục nếu vẫn ẩn bởi JavaScript khác
-        $('.topic-item').css({
-            'display': 'block',
-            'opacity': '1',
-            'visibility': 'visible'
-        });
-        
-        $('.vocabulary-item').css({
-            'display': 'block',
-            'opacity': '1',
-            'visibility': 'visible'
-        });
-    });
-</script>
-}

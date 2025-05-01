@@ -1,217 +1,186 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TiengAnh.Data;
-using TiengAnh.Models;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
 using System.Security.Claims;
+using TiengAnh.Models;
+using TiengAnh.Repositories;
 
 namespace TiengAnh.Controllers
 {
     public class VocabularyController : Controller
     {
         private readonly ILogger<VocabularyController> _logger;
-        private readonly HocTiengAnhContext _context;
+        private readonly VocabularyRepository _vocabularyRepository;
+        private readonly TopicRepository _topicRepository;
 
-        public VocabularyController(ILogger<VocabularyController> logger, HocTiengAnhContext context)
+        public VocabularyController(
+            ILogger<VocabularyController> logger,
+            VocabularyRepository vocabularyRepository,
+            TopicRepository topicRepository)
         {
             _logger = logger;
-            _context = context;
+            _vocabularyRepository = vocabularyRepository;
+            _topicRepository = topicRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            var topics = await _context.ChuDes.ToListAsync();
-            
-            var topicModels = topics.Select(topic => new VocabularyTopicModel
+            try
             {
-                ID_CD = topic.IdCd,
-                Name_CD = topic.NameCd ?? string.Empty,
-                Description_CD = topic.DiscriptionCd ?? string.Empty,
-                IconPath = "/images/icons/topic-default.png", // Default icon path
-                BackgroundColor = "#e6f6ff", // Default background color
-                WordCount = _context.TuVungs.Count(tv => tv.IdCd == topic.IdCd)
-            }).ToList();
-            
-            return View(topicModels);
+                // Lấy tất cả các chủ đề và log số lượng
+                var allTopics = await _topicRepository.GetAllTopicsAsync();
+                _logger.LogInformation("Found {Count} total topics", allTopics.Count);
+                
+                // Lấy các chủ đề Vocabulary - nếu Type_CD chưa có thì lấy tất cả
+                var topics = allTopics.Where(t => string.IsNullOrEmpty(t.Type_CD) || t.Type_CD == "Vocabulary").ToList();
+                _logger.LogInformation("Filtered to {Count} vocabulary topics", topics.Count);
+                
+                // Thêm log để kiểm tra từng topic
+                foreach (var topic in topics)
+                {
+                    _logger.LogInformation("Topic ID: {ID_CD}, Name: {Name_CD}, WordCount: {WordCount}, TotalWords: {TotalWords}", topic.ID_CD, topic.Name_CD, topic.WordCount, topic.TotalWords);
+                }
+                
+                // Trả về view với danh sách chủ đề
+                return View(topics);
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError("Error in Index action: {Message}", ex.Message);
+                // Hiển thị lỗi cho người dùng hoặc trả về view với danh sách rỗng
+                return View(new List<TopicModel>());
+            }
         }
 
         public async Task<IActionResult> Topic(int id)
         {
-            var tuVungs = await _context.TuVungs
-                .Include(t => t.IdLtNavigation)
-                .Where(v => v.IdCd == id)
-                .ToListAsync();
-                
-            var topic = await _context.ChuDes.FindAsync(id);
-            
+            var topic = await _topicRepository.GetByTopicIdAsync(id);
             if (topic == null)
             {
                 return NotFound();
             }
-
-            // Chuyển đổi từ TuVung sang VocabularyModel
-            var vocabularies = tuVungs.Select(tv => new VocabularyModel
+            
+            var vocabularies = await _vocabularyRepository.GetVocabulariesByTopicIdAsync(id);
+            
+            // Cập nhật trạng thái yêu thích cho từng từ vựng
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+            foreach (var vocab in vocabularies)
             {
-                ID_TV = tv.IdTv,
-                Word_TV = tv.WordTv ?? string.Empty,
-                Meaning_TV = tv.MeaningTv ?? string.Empty,
-                ID_LT = tv.IdLt ?? string.Empty,
-                WordType = tv.IdLtNavigation?.NameLt ?? string.Empty,
-                PartOfSpeech = tv.IdLtNavigation?.NameLt ?? string.Empty, // Sử dụng LoaiTu.NameLt làm PartOfSpeech
-                Example_TV = tv.ExampleTv ?? string.Empty,
-                Image_TV = tv.ImageTv ?? string.Empty,
-                Audio_TV = tv.AudioTv ?? string.Empty,
-                Level_TV = tv.LevelTv ?? string.Empty,
-                ID_CD = tv.IdCd,
-                TopicName = topic.NameCd ?? string.Empty
-            }).ToList();
-
-            // Convert topic to TopicModel
-            var topicModel = new TopicModel
-            {
-                ID_CD = topic.IdCd,
-                Name_CD = topic.NameCd ?? string.Empty,
-                Description_CD = topic.DiscriptionCd ?? string.Empty,
-                IconPath = "/images/icons/topic-default.png",
-                BackgroundColor = "#e6f6ff",
-                WordCount = vocabularies.Count
-            };
-
-            ViewBag.Topic = topicModel;
+                vocab.IsFavorite = !string.IsNullOrEmpty(userId) && vocab.FavoriteByUsers != null && 
+                                   vocab.FavoriteByUsers.Contains(userId);
+            }
+            
+            ViewBag.Topic = topic;
             return View(vocabularies);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            var vocabulary = await _context.TuVungs
-                .Include(t => t.IdLtNavigation)
-                .Include(t => t.IdCdNavigation)
-                .FirstOrDefaultAsync(v => v.IdTv == id);
-            
+            var vocabulary = await _vocabularyRepository.GetByVocabularyIdAsync(id);
             if (vocabulary == null)
             {
                 return NotFound();
             }
             
-            // Convert TuVung to VocabularyModel
-            var vocabularyModel = ConvertToVocabularyModel(vocabulary);
-
-            // Safely handle the favorite check
-            bool isFavorite = false;
+            // Cập nhật trạng thái yêu thích dựa vào người dùng hiện tại
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+            vocabulary.IsFavorite = !string.IsNullOrEmpty(userId) && vocabulary.FavoriteByUsers != null && 
+                                   vocabulary.FavoriteByUsers.Contains(userId);
             
-            try
-            {
-                // Only check if user is authenticated
-                if (User.Identity?.IsAuthenticated ?? false)
-                {
-                    var userIdStr = User.FindFirstValue("UserID");
-                    
-                    if (int.TryParse(userIdStr, out int userId))
-                    {
-                        isFavorite = await _context.YeuThiches
-                            .AnyAsync(y => y.IdTk == userId && y.TypeYt == "TuVung" && y.IdYtType == id);
-                    }
-                }
-                
-                // Explicitly set as a boolean value
-                ViewBag.IsFavorite = isFavorite;
-            }
-            catch (Exception ex)
-            {
-                // Log the error but continue with the page
-                _logger.LogError(ex, "Error checking favorite status for vocabulary {Id}", id);
-                ViewBag.IsFavorite = false;
-            }
-
-            return View(vocabularyModel);
+            var topic = await _topicRepository.GetByTopicIdAsync(vocabulary.ID_CD);
+            ViewBag.Topic = topic;
+            return View(vocabulary);
         }
 
         public async Task<IActionResult> Flashcard(int id)
         {
-            var tuVungs = await _context.TuVungs
-                .Include(t => t.IdLtNavigation)
-                .Include(t => t.IdCdNavigation)
-                .Where(v => v.IdCd == id)
-                .ToListAsync();
-                
-            var topic = await _context.ChuDes.FindAsync(id);
-            
+            var topic = await _topicRepository.GetByTopicIdAsync(id);
             if (topic == null)
             {
                 return NotFound();
             }
-
-            // Convert list of TuVung to list of VocabularyModel
-            var vocabularyModels = tuVungs.Select(tv => ConvertToVocabularyModel(tv)).ToList();
-
-            // Convert topic to TopicModel
-            var topicModel = new TopicModel
-            {
-                ID_CD = topic.IdCd,
-                Name_CD = topic.NameCd ?? string.Empty,
-                Description_CD = topic.DiscriptionCd ?? string.Empty,
-                IconPath = "/images/icons/topic-default.png",
-                BackgroundColor = "#e6f6ff",
-                WordCount = tuVungs.Count
-            };
-
-            ViewBag.Topic = topicModel;
-            return View(vocabularyModels);
+            
+            var vocabularies = await _vocabularyRepository.GetVocabulariesByTopicIdAsync(id);
+            ViewBag.Topic = topic;
+            return View(vocabularies);
         }
 
         public async Task<IActionResult> Exercise(int id)
         {
-            var tuVungs = await _context.TuVungs
-                .Include(t => t.IdLtNavigation)
-                .Include(t => t.IdCdNavigation)
-                .Where(v => v.IdCd == id)
-                .ToListAsync();
-                
-            var topic = await _context.ChuDes.FindAsync(id);
-            
+            var topic = await _topicRepository.GetByTopicIdAsync(id);
             if (topic == null)
             {
                 return NotFound();
             }
-
-            // Convert list of TuVung to list of VocabularyModel
-            var vocabularyModels = tuVungs.Select(tv => ConvertToVocabularyModel(tv)).ToList();
-
-            // Convert topic to TopicModel
-            var topicModel = new TopicModel
-            {
-                ID_CD = topic.IdCd,
-                Name_CD = topic.NameCd ?? string.Empty,
-                Description_CD = topic.DiscriptionCd ?? string.Empty,
-                IconPath = "/images/icons/topic-default.png",
-                BackgroundColor = "#e6f6ff",
-                WordCount = tuVungs.Count
-            };
-
-            ViewBag.Topic = topicModel;
-            return View(vocabularyModels);
+            
+            var vocabularies = await _vocabularyRepository.GetVocabulariesByTopicIdAsync(id);
+            ViewBag.Topic = topic;
+            return View(vocabularies);
         }
 
-        // Helper method to convert TuVung to VocabularyModel
-        private VocabularyModel ConvertToVocabularyModel(TuVung vocabulary)
+        // Thêm phương thức để khởi tạo dữ liệu chủ đề
+
+        public async Task<IActionResult> InitializeTopics()
         {
-            return new VocabularyModel
+            if (await _topicRepository.HasDataAsync())
             {
-                ID_TV = vocabulary.IdTv,
-                Word_TV = vocabulary.WordTv ?? string.Empty,
-                Meaning_TV = vocabulary.MeaningTv ?? string.Empty,
-                ID_LT = vocabulary.IdLt ?? string.Empty,
-                WordType = vocabulary.IdLtNavigation?.NameLt ?? string.Empty,
-                PartOfSpeech = vocabulary.IdLtNavigation?.NameLt ?? string.Empty,
-                Example_TV = vocabulary.ExampleTv ?? string.Empty,
-                Image_TV = vocabulary.ImageTv ?? string.Empty,
-                Audio_TV = vocabulary.AudioTv ?? string.Empty,
-                Level_TV = vocabulary.LevelTv ?? string.Empty,
-                ID_CD = vocabulary.IdCd,
-                TopicName = vocabulary.IdCdNavigation?.NameCd ?? string.Empty
+                return RedirectToAction("Index", new { message = "Data already exists" });
+            }
+
+            var topics = new List<TopicModel>
+            {
+                new TopicModel
+                {
+                    ID_CD = 1,
+                    Name_CD = "Animals",
+                    Description_CD = "Từ vựng về các loài động vật phổ biến",
+                    IconPath = "/images/topics/animals.png",
+                    Image_CD = "/images/topics/animals.jpg",
+                    Level = "A1",
+                    TotalItems = 15,
+                    TotalWords = 15,
+                    WordCount = 15,
+                    BackgroundColor = "#f8d7da",
+                    Type_CD = "Vocabulary"
+                },
+                new TopicModel
+                {
+                    ID_CD = 2,
+                    Name_CD = "Food & Drinks",
+                    Description_CD = "Từ vựng về đồ ăn và thức uống",
+                    IconPath = "/images/topics/food.png",
+                    Image_CD = "/images/topics/food.jpg",
+                    Level = "A1",
+                    TotalItems = 20,
+                    TotalWords = 20,
+                    WordCount = 20,
+                    BackgroundColor = "#d1e7dd",
+                    Type_CD = "Vocabulary"
+                },
+                new TopicModel
+                {
+                    ID_CD = 3,
+                    Name_CD = "School",
+                    Description_CD = "Từ vựng về trường học và học tập",
+                    IconPath = "/images/topics/school.png",
+                    Image_CD = "/images/topics/school.jpg",
+                    Level = "A1",
+                    TotalItems = 18,
+                    TotalWords = 18,
+                    WordCount = 18,
+                    BackgroundColor = "#cff4fc",
+                    Type_CD = "Vocabulary"
+                }
             };
+
+            foreach (var topic in topics)
+            {
+                await _topicRepository.CreateAsync(topic);
+            }
+
+            return RedirectToAction("Index", new { message = "Initialized topics" });
         }
     }
 }

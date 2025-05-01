@@ -1,0 +1,88 @@
+@model UserModel
+@{
+    ViewData["Title"] = "Xóa người dùng";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("ManageUsers", "Account")">Quản lý người dùng</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Xóa người dùng</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <div class="mb-3">
+                            <img src="@(string.IsNullOrEmpty(Model.Avatar) ? "/images/avatar/default.jpg" : Model.Avatar)" 
+                                 class="rounded-circle" alt="@Model.FullName" width="100" height="100" style="object-fit: cover;">
+                        </div>
+                        <h3 class="fw-bold">Xóa người dùng</h3>
+                        <p class="text-danger">Bạn có chắc chắn muốn xóa người dùng này?</p>
+                    </div>
+                    
+                    <div class="table-responsive mb-4">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th style="width: 150px;">Họ và tên:</th>
+                                <td>@Model.FullName</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <th>Tên đăng nhập:</th>
+                                <td>@Model.Username</td>
+                            </tr>
+                            <tr>
+                                <th>Vai trò:</th>
+                                <td>
+                                    @if (Model.Role == "Admin")
+                                    {
+                                        <span class="badge bg-danger">@Model.Role</span>
+                                    }
+                                    else if (Model.Role == "Teacher")
+                                    {
+                                        <span class="badge bg-success">@Model.Role</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-primary">@Model.Role</span>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Ngày đăng ký:</th>
+                                <td>@Model.RegisterDate.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="alert alert-warning mb-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i> Hành động này không thể hoàn tác. Tất cả dữ liệu liên quan đến người dùng này sẽ bị xóa vĩnh viễn.
+                    </div>
+                    
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="@Url.Action("ManageUsers", "Account")" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-1"></i> Quay lại
+                        </a>
+                        <form asp-action="ConfirmDeleteUser" asp-route-id="@(Model.Id ?? Model.UserId)" method="post">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash-alt me-1"></i> Xác nhận xóa
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

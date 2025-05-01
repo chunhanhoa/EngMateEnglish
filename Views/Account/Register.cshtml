@@ -1,4 +1,4 @@
-@model RegisterViewModel
+@model TiengAnh.Models.ViewModels.RegisterViewModel
 @{
     ViewData["Title"] = "Đăng ký";
 }
@@ -28,6 +28,14 @@
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                 <input type="email" class="form-control" id="email" asp-for="Email" placeholder="Nhập địa chỉ email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Tên người dùng</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                <input type="text" class="form-control" id="userName" asp-for="UserName" placeholder="Chọn tên người dùng" required>
                             </div>
                         </div>
                         
@@ -67,15 +75,12 @@
                             <span class="divider-text">Hoặc đăng ký với</span>
                         </div>
                         
-                        <div class="d-grid gap-2">
+                        <div class="d-grid">
                             <form asp-action="ExternalLogin" asp-route-provider="Google" method="post">
                                 <button type="submit" class="btn btn-outline-danger w-100">
                                     <i class="fab fa-google me-2"></i> Google
                                 </button>
                             </form>
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="fab fa-facebook-f me-2"></i> Facebook
-                            </button>
                         </div>
                         
                         <div class="text-center mt-4">

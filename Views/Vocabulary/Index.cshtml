@@ -1,68 +1,144 @@
-@model List<VocabularyTopicModel>
+@model List<TopicModel>
 @{
-    ViewData["Title"] = "Từ vựng tiếng Anh";
+    ViewData["Title"] = "Từ vựng";
 }
 
-<div class="container mt-5">
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <h1 class="display-4 fw-bold">Chủ đề từ vựng</h1>
-            <p class="lead">Chọn chủ đề bạn muốn học từ vựng</p>
+<!-- Hero Section -->
+<section class="hero-section" style="padding: 3rem 0;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7 fade-in-left">
+                <h1 class="animate__animated animate__fadeInUp">Khám phá từ vựng tiếng Anh</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                    Học từ vựng tiếng Anh qua các chủ đề thú vị và dễ hiểu với EngMate. Mỗi từ vựng đều
+                    có hình ảnh, audio và ví dụ giúp bạn nhớ nhanh và lâu hơn.
+                </p>
+            </div>
+            <div class="col-md-5 text-center fade-in-right">
+                <img src="~/images/vocabulary-hero.png" alt="Vocabulary Learning" class="hero-image animate__animated animate__bounceIn animate__delay-1s" style="max-height: 250px;" />
+            </div>
         </div>
     </div>
+</section>
 
-    @if (Model == null || !Model.Any())
-    {
-        <div class="alert alert-info" role="alert">
-            <i class="fas fa-info-circle me-2"></i>
-            Hiện tại không có chủ đề từ vựng nào. Vui lòng quay lại sau.
-            <button type="button" class="btn btn-sm btn-primary ms-3" onclick="window.location.reload()">
-                <i class="fas fa-sync-alt me-1"></i> Tải lại trang
-            </button>
+<!-- Topics Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Chủ đề từ vựng</h2>
+            <p class="lead">Chọn một chủ đề để bắt đầu học từ vựng</p>
         </div>
-    }
-    else
-    {
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5 topic-container">
-            @foreach (var topic in Model)
+        <div class="row g-4">
+            @if (Model != null && Model.Any())
             {
-                <div class="col topic-item">
-                    <div class="card h-100 border-0 shadow-sm" style="background-color: @topic.BackgroundColor">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="topic-icon me-3">
-                                    <img src="@topic.IconPath" alt="@topic.Name_CD" class="img-fluid" width="50">
+                @foreach (var topic in Model)
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card border-0 shadow-sm" style="background-color: @(topic.BackgroundColor ?? "#FFFFFF");">
+                            <img src="@(string.IsNullOrEmpty(topic.IconPath) ? "/images/topics/default.png" : topic.IconPath)" 
+                                 alt="@topic.Name_CD" class="topic-icon" />
+                            <div class="card-body">
+                                <h3>@topic.Name_CD</h3>
+                                <p>@topic.Description_CD</p>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <span class="badge bg-light text-dark">@((topic.WordCount > 0 ? topic.WordCount : (topic.TotalWords))) từ vựng</span>
+                                    <a href="@Url.Action("Topic", "Vocabulary", new { id = topic.ID_CD })" class="btn btn-sm btn-primary">Học ngay</a>
                                 </div>
-                                <h4 class="card-title mb-0">@topic.Name_CD</h4>
-                            </div>
-                            <p class="card-text text-muted">@topic.Description_CD</p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <span class="badge bg-light text-dark px-3 py-2">
-                                    <i class="fas fa-book-open me-1"></i> @topic.WordCount từ vựng
-                                </span>
-                                <a href="@Url.Action("Topic", "Vocabulary", new { id = topic.ID_CD })" 
-                                   class="btn btn-primary">Học ngay</a>
                             </div>
                         </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Hiện tại chưa có chủ đề từ vựng nào. Vui lòng quay lại sau!
                     </div>
                 </div>
             }
         </div>
-    }
-</div>
+    </div>
+</section>
+
+<!-- Learning Tips -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Mẹo học từ vựng hiệu quả</h2>
+            <p class="lead">Áp dụng những phương pháp sau để học từ vựng hiệu quả hơn</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-repeat text-primary"></i>
+                            </div>
+                            <h4 class="card-title mb-0">Học theo chu kỳ</h4>
+                        </div>
+                        <p class="card-text">Học từ vựng theo chu kỳ lặp lại giúp bạn nhớ từ lâu hơn. Thử ôn lại sau 1 ngày, 3 ngày, 1 tuần và 1 tháng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-images text-primary"></i>
+                            </div>
+                            <h4 class="card-title mb-0">Liên kết hình ảnh</h4>
+                        </div>
+                        <p class="card-text">Kết hợp từ vựng với hình ảnh sẽ giúp bộ não ghi nhớ hiệu quả hơn. Hãy tưởng tượng hình ảnh khi học từ mới.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-volume-up text-primary"></i>
+                            </div>
+                            <h4 class="card-title mb-0">Luyện phát âm</h4>
+                        </div>
+                        <p class="card-text">Đọc to các từ vựng và luyện tập phát âm thường xuyên. Nghe và bắt chước giọng phát âm chuẩn để cải thiện kỹ năng nói.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
-<script>
-    $(document).ready(function() {
-        // Đảm bảo hiển thị chủ đề
-        if ($('.topic-container').length > 0 && $('.topic-item').length > 0) {
-            $('.topic-item').fadeIn(300);
-        }
-        
-        // Thêm xử lý tải lại nếu không hiển thị
-        if ($('.topic-item:visible').length === 0 && $('.topic-item').length > 0) {
-            $('.topic-item').fadeIn(300);
-        }
-    });
-</script>
+    <script>
+        // Xử lý nút yêu thích trên danh sách từ vựng
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault(); // Ngăn chặn chuyển trang khi click
+                
+                const id = parseInt(this.dataset.id, 10);
+                
+                window.progressTracker.toggleFavorite(id, 'Vocabulary')
+                    .then(data => {
+                        // Cập nhật giao diện
+                        if (data.success) {
+                            // Đổi icon nếu thành công
+                            const icon = this.querySelector('i');
+                            if (icon.classList.contains('far')) {
+                                icon.classList.replace('far', 'fas');
+                            } else {
+                                icon.classList.replace('fas', 'far');
+                            }
+                        }
+                    });
+            });
+        });
+    </script>
 }

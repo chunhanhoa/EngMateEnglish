@@ -1,0 +1,52 @@
+[
+  {
+    "TestID": 1,
+    "Title": "Bài kiểm tra trình độ A1",
+    "Description": "Bài kiểm tra đánh giá trình độ cơ bản A1",
+    "Duration": 30,
+    "TotalQuestions": 20,
+    "Level": "A1",
+    "CreatedDate": {"$date": "2023-09-01T00:00:00Z"},
+    "Category": "Trình độ",
+    "ImageUrl": "/images/tests/test-a1.jpg",
+    "Questions": [
+      {
+        "QuestionID": 1,
+        "QuestionText": "What is your name?",
+        "Options": ["My name is John", "I am fine", "I am 25 years old", "I am from London"],
+        "CorrectAnswer": 0
+      },
+      {
+        "QuestionID": 2,
+        "QuestionText": "She ___ a student",
+        "Options": ["am", "is", "are", "be"],
+        "CorrectAnswer": 1
+      }
+    ]
+  },
+  {
+    "TestID": 2,
+    "Title": "Kiểm tra từ vựng chủ đề Animals",
+    "Description": "Bài kiểm tra từ vựng về động vật",
+    "Duration": 15,
+    "TotalQuestions": 10,
+    "Level": "A1",
+    "CreatedDate": {"$date": "2023-09-10T00:00:00Z"},
+    "Category": "Vocabulary",
+    "ImageUrl": "/images/tests/vocabulary-animals.jpg",
+    "Questions": [
+      {
+        "QuestionID": 1,
+        "QuestionText": "What is this animal? [image of a cat]",
+        "Options": ["Dog", "Cat", "Rabbit", "Bird"],
+        "CorrectAnswer": 1
+      },
+      {
+        "QuestionID": 2,
+        "QuestionText": "Which animal makes the sound 'woof woof'?",
+        "Options": ["Cat", "Dog", "Duck", "Sheep"],
+        "CorrectAnswer": 1
+      }
+    ]
+  }
+]

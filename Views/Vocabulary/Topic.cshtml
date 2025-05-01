@@ -1,7 +1,10 @@
+@using TiengAnh.Extensions
+@using System.Security.Claims
 @model List<VocabularyModel>
 @{
     ViewData["Title"] = ViewBag.Topic?.Name_CD ?? "Chủ đề từ vựng";
     var topic = ViewBag.Topic as TopicModel;
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 
 <!-- Topic Header -->
@@ -104,68 +107,52 @@
     </div>
 
     <div class="row g-4">
-        @if (!Model.Any())
+        @foreach (var vocab in Model)
         {
-            <div class="col-12">
-                <div class="alert alert-info" role="alert">
-                    <i class="fas fa-info-circle me-2"></i>
-                    Hiện tại không có từ vựng nào trong chủ đề này. Vui lòng quay lại sau.
-                    <button type="button" class="btn btn-sm btn-primary ms-3" onclick="window.location.reload()">
-                        <i class="fas fa-sync-alt me-1"></i> Tải lại trang
-                    </button>
-                </div>
-            </div>
-        }
-        else
-        {
-            foreach (var vocab in Model)
-            {
-                <div class="col-lg-6 vocabulary-item" data-level="@vocab.Level_TV" data-type="@vocab.PartOfSpeech" 
-                     style="display: block !important; opacity: 1 !important; visibility: visible !important;">
-                    <div class="card border-0 shadow-sm vocabulary-card h-100">
-                        <div class="card-body p-0">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <div class="vocabulary-img-container">
-                                        <img src="@vocab.Image_TV" alt="@vocab.Word_TV" class="img-fluid vocabulary-img"
-                                            onerror="this.src='/images/vocabulary/default.jpg';this.onerror='';">
-                                    </div>
+            <div class="col-lg-6 vocabulary-item" data-level="@vocab.Level_TV" data-type="@vocab.PartOfSpeech">
+                <div class="card border-0 shadow-sm vocabulary-card h-100">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <div class="vocabulary-img-container">
+                                    <img src="@vocab.Image_TV" alt="@vocab.Word_TV" class="img-fluid vocabulary-img"
+                                        onerror="this.src='/images/vocabulary/default.jpg';this.onerror='';">
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="p-3">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
-                                            <div>
-                                                <h3 class="vocabulary-title word">@vocab.Word_TV</h3>
-                                                <div class="d-flex align-items-center">
-                                                    <span class="badge bg-light text-dark me-2 part-of-speech">
-                                                        @GetPartOfSpeechName(vocab.PartOfSpeech)
-                                                    </span>
-                                                    <span class="level-badge level-@vocab.Level_TV">@vocab.Level_TV</span>
-                                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h3 class="vocabulary-title word">@vocab.Word_TV</h3>
+                                            <div class="d-flex align-items-center">
+                                                <span class="badge bg-light text-dark me-2 part-of-speech">
+                                                    @Html.DisplayPartOfSpeech(vocab.PartOfSpeech ?? "")
+                                                </span>
+                                                <span class="level-badge level-@vocab.Level_TV">@vocab.Level_TV</span>
                                             </div>
-                                            <button class="audio-btn" data-word="@vocab.Word_TV">
-                                                <i class="fas fa-volume-up"></i>
-                                            </button>
                                         </div>
+                                        <button class="audio-btn" data-word="@vocab.Word_TV">
+                                            <i class="fas fa-volume-up"></i>
+                                        </button>
+                                    </div>
 
-                                        <p class="vocabulary-translation mb-2"><strong>Nghĩa:</strong> @vocab.Meaning_TV</p>
-                                        <p class="example text-muted mb-3"><em>@vocab.Example_TV</em></p>
-                                        
-                                        <div class="d-flex justify-content-between">
-                                            <a href="@Url.Action("Details", "Vocabulary", new { id = vocab.ID_TV })" class="btn btn-sm btn-outline-primary">
-                                                Chi tiết <i class="fas fa-arrow-right ms-1"></i>
-                                            </a>
-                                            <button class="btn btn-sm btn-outline-danger favorite-btn" data-id="@vocab.ID_TV">
-                                                <i class="far fa-heart"></i> Yêu thích
-                                            </button>
-                                        </div>
+                                    <p class="vocabulary-translation mb-2"><strong>Nghĩa:</strong> @vocab.Meaning_TV</p>
+                                    <p class="example text-muted mb-3"><em>@vocab.Example_TV</em></p>
+                                    
+                                    <div class="d-flex justify-content-between">
+                                        <a href="@Url.Action("Details", "Vocabulary", new { id = vocab.ID_TV })" class="btn btn-sm btn-outline-primary">
+                                            Chi tiết <i class="fas fa-arrow-right ms-1"></i>
+                                        </a>
+                                        <button class="btn btn-sm @(vocab.IsFavorite ? "btn-danger" : "btn-outline-danger") favorite-btn" data-id="@vocab.ID_TV" title="@(vocab.IsFavorite ? "Đã thêm vào yêu thích" : "Thêm vào yêu thích")">
+                                            <i class="@(vocab.IsFavorite ? "fas" : "far") fa-heart"></i> Yêu thích
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            }
+            </div>
         }
     </div>
 </div>
@@ -223,23 +210,7 @@
 
 @section Scripts {
     <script>
-        $(document).ready(function() {
-            // Đảm bảo hiển thị danh sách từ vựng
-            $('.vocabulary-item').css({
-                'display': 'block !important',
-                'opacity': '1 !important',
-                'visibility': 'visible !important'
-            });
-            
-            // Thêm kiểm tra định kỳ để đảm bảo hiển thị
-            setInterval(function() {
-                $('.vocabulary-item').each(function() {
-                    if ($(this).css('display') === 'none' || $(this).css('opacity') < 1) {
-                        $(this).attr('style', 'display: block !important; opacity: 1 !important; visibility: visible !important');
-                    }
-                });
-            }, 1000);
-            
+        document.addEventListener('DOMContentLoaded', function() {
             // Xử lý khi click vào nút bộ lọc trình độ
             const levelFilterItems = document.querySelectorAll('#levelFilterDropdown + .dropdown-menu .dropdown-item');
             levelFilterItems.forEach(item => {
@@ -281,25 +252,43 @@
             // Xử lý khi click vào nút yêu thích
             const favoriteButtons = document.querySelectorAll('.favorite-btn');
             favoriteButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
                     const wordId = this.getAttribute('data-id');
                     
-                    // Thay đổi trạng thái yêu thích
-                    if (this.querySelector('i').classList.contains('far')) {
-                        // Thêm vào yêu thích
-                        this.querySelector('i').classList.replace('far', 'fas');
-                        this.classList.replace('btn-outline-danger', 'btn-danger');
-                        
-                        // Lưu vào localStorage
-                        saveToFavorites(wordId);
-                    } else {
-                        // Xóa khỏi yêu thích
-                        this.querySelector('i').classList.replace('fas', 'far');
-                        this.classList.replace('btn-danger', 'btn-outline-danger');
-                        
-                        // Xóa khỏi localStorage
-                        removeFromFavorites(wordId);
-                    }
+                    // Lưu trạng thái hiện tại trước khi gọi API
+                    const icon = this.querySelector('i');
+                    const currentlyFavorited = icon.classList.contains('fas');
+                    
+                    // Gọi API để toggle trạng thái yêu thích
+                    window.progressTracker.toggleFavorite(wordId, 'Vocabulary')
+                        .then(data => {
+                            if (data.success) {
+                                if (!currentlyFavorited) {
+                                    // Nếu chưa yêu thích, thêm vào yêu thích
+                                    icon.classList.replace('far', 'fas');
+                                    this.classList.replace('btn-outline-danger', 'btn-danger');
+                                    this.setAttribute('title', 'Đã thêm vào yêu thích');
+                                    showNotification('Đã thêm vào danh sách yêu thích', 'success');
+                                    
+                                    // Cập nhật trang yêu thích nếu đang mở
+                                    updateFavoritesPage('add', wordId, 'Vocabulary');
+                                } else {
+                                    // Nếu đã yêu thích, bỏ yêu thích
+                                    icon.classList.replace('fas', 'far');
+                                    this.classList.replace('btn-danger', 'btn-outline-danger');
+                                    this.setAttribute('title', 'Thêm vào yêu thích');
+                                    showNotification('Đã xóa khỏi danh sách yêu thích', 'info');
+                                    
+                                    // Cập nhật trang yêu thích nếu đang mở
+                                    updateFavoritesPage('remove', wordId, 'Vocabulary');
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Lỗi khi cập nhật trạng thái yêu thích:', error);
+                            showNotification('Có lỗi xảy ra. Vui lòng đăng nhập và thử lại', 'danger');
+                        });
                 });
             });
             
@@ -325,86 +314,61 @@
                 });
             }
             
-            // Hàm lưu từ vựng vào danh sách yêu thích
-            function saveToFavorites(wordId) {
-                let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-                if (!favorites.includes(wordId)) {
-                    favorites.push(wordId);
-                    localStorage.setItem('favorites', JSON.stringify(favorites));
-                    
-                    // Hiển thị thông báo
-                    showNotification('Đã thêm vào danh sách yêu thích!', 'success');
-                }
-            }
-            
-            // Hàm xóa từ vựng khỏi danh sách yêu thích
-            function removeFromFavorites(wordId) {
-                let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-                const index = favorites.indexOf(wordId);
-                if (index !== -1) {
-                    favorites.splice(index, 1);
-                    localStorage.setItem('favorites', JSON.stringify(favorites));
-                    
-                    // Hiển thị thông báo
-                    showNotification('Đã xóa khỏi danh sách yêu thích', 'info');
-                }
-            }
-            
             // Hiển thị thông báo
             function showNotification(message, type) {
-                const notif = document.createElement('div');
-                notif.className = `alert alert-${type} position-fixed`;
-                notif.style.top = '20px';
-                notif.style.right = '20px';
-                notif.style.zIndex = '9999';
-                notif.innerHTML = message;
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type} notification-toast`;
+                notification.style.position = 'fixed';
+                notification.style.top = '20px';
+                notification.style.right = '20px';
+                notification.style.zIndex = '9999';
+                notification.style.minWidth = '300px';
+                notification.style.padding = '15px';
+                notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+                notification.innerHTML = message;
                 
-                document.body.appendChild(notif);
+                document.body.appendChild(notification);
                 
                 setTimeout(() => {
-                    notif.style.opacity = '0';
-                    notif.style.transition = 'opacity 0.5s';
-                    
-                    setTimeout(() => {
-                        document.body.removeChild(notif);
-                    }, 500);
+                    notification.remove();
                 }, 3000);
             }
             
-            // Kiểm tra và cập nhật các nút yêu thích đã được lưu
-            function updateFavoriteButtons() {
-                const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            // Trả về tên đầy đủ của loại từ
+            function getPartOfSpeechName(code) {
+                const types = {
+                    'n': 'Noun',
+                    'v': 'Verb',
+                    'adj': 'Adjective',
+                    'adv': 'Adverb',
+                    'prep': 'Preposition',
+                    'conj': 'Conjunction',
+                    'pron': 'Pronoun',
+                    'det': 'Determiner',
+                    'interj': 'Interjection'
+                };
                 
-                favoriteButtons.forEach(button => {
-                    const wordId = button.getAttribute('data-id');
-                    
-                    if (favorites.includes(wordId)) {
-                        button.querySelector('i').classList.replace('far', 'fas');
-                        button.classList.replace('btn-outline-danger', 'btn-danger');
-                    }
-                });
+                return types[code] || code;
             }
             
-            // Cập nhật trạng thái nút yêu thích khi tải trang
-            updateFavoriteButtons();
+            // Hàm cập nhật trang yêu thích nếu đang mở
+            function updateFavoritesPage(action, itemId, itemType) {
+                // Kiểm tra xem có đang mở tab favorites không (nếu dùng iframe hoặc cửa sổ đa tab)
+                const favoritesWindow = window.opener || window.parent;
+                if (favoritesWindow && favoritesWindow !== window) {
+                    try {
+                        // Gửi thông điệp tới cửa sổ khác để cập nhật
+                        favoritesWindow.postMessage({
+                            action: action,
+                            itemId: itemId,
+                            itemType: itemType
+                        }, '*');
+                    } catch (e) {
+                        console.error('Không thể cập nhật trang yêu thích:', e);
+                    }
+                }
+            }
         });
-        
-        // Trả về tên đầy đủ của loại từ
-        function getPartOfSpeechName(code) {
-            const types = {
-                'n': 'Noun',
-                'v': 'Verb',
-                'adj': 'Adjective',
-                'adv': 'Adverb',
-                'prep': 'Preposition',
-                'conj': 'Conjunction',
-                'pron': 'Pronoun',
-                'det': 'Determiner',
-                'interj': 'Interjection'
-            };
-            
-            return types[code] || code;
-        }
     </script>
 }
 

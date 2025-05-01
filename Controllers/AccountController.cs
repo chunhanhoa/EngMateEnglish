@@ -1,100 +1,172 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using TiengAnh.Data;
-using TiengAnh.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using TiengAnh.Models;
+using TiengAnh.Models.ViewModels;
+using TiengAnh.Repositories;
+using TiengAnh.Services;
+using BCrypt.Net;
 
 namespace TiengAnh.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly ILogger<AccountController> _logger;
-        private readonly HocTiengAnhContext _context;
+        private readonly MongoDbService _mongoDbService;
+        private readonly UserRepository _userRepository;
 
-        public AccountController(ILogger<AccountController> logger, HocTiengAnhContext context)
+        public AccountController(
+            ILogger<AccountController> logger,
+            MongoDbService mongoDbService,
+            UserRepository userRepository) : base(mongoDbService)
         {
             _logger = logger;
-            _context = context;
+            _mongoDbService = mongoDbService;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
-        public IActionResult Login(string? returnUrl = null)
+        public IActionResult Login(string returnUrl = null)
         {
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToAction("Profile", "Account");
+            }
+
             ViewData["ReturnUrl"] = returnUrl;
-            return View();
+            return View(new Models.ViewModels.LoginViewModel { ReturnUrl = returnUrl });
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
+        public async Task<IActionResult> Login(TiengAnh.Models.ViewModels.LoginViewModel model)
         {
-            // Xử lý khi returnUrl là null hoặc rỗng
-            if (string.IsNullOrEmpty(model.ReturnUrl) || model.ReturnUrl == "/")
-            {
-                model.ReturnUrl = "/";
-            }
-
-            ViewData["ReturnUrl"] = model.ReturnUrl;
-
             if (ModelState.IsValid)
             {
-                // Log thông tin để debug
-                _logger.LogInformation("Đang thử đăng nhập với Email/Username: {Email}", model.Email);
-
-                // Tìm kiếm người dùng trong cơ sở dữ liệu dựa trên email hoặc tên đăng nhập
-                var user = await _context.TaiKhoans
-                    .Include(t => t.IdQNavigation) // Include thông tin quyền
-                    .FirstOrDefaultAsync(u => (u.EmailTk == model.Email || u.NameTk == model.Email) && u.PasswordTk == model.Password);
-
-                if (user != null)
+                try
                 {
-                    _logger.LogInformation("Người dùng đăng nhập thành công: {Email}", model.Email);
+                    var user = await _mongoDbService.GetCollection<UserModel>("Users")
+                        .Find(u => u.Email.ToLower() == model.Email.ToLower())
+                        .FirstOrDefaultAsync();
 
-                    // Lấy đường dẫn avatar hoặc mặc định nếu không có
-                    string avatarPath = string.IsNullOrEmpty(user.AvatarTk) ? "/images/avatars/default.jpg" : user.AvatarTk;
-
-                    // Tạo các claim cho người dùng
-                    var claims = new List<Claim>
+                    if (user != null)
                     {
-                        new Claim(ClaimTypes.Name, user.DisplaynameTk ?? user.NameTk ?? string.Empty),
-                        new Claim(ClaimTypes.NameIdentifier, user.IdTk.ToString()),
-                        new Claim(ClaimTypes.Email, user.EmailTk ?? string.Empty),
-                        new Claim(ClaimTypes.Role, user.IdQNavigation?.NameQ ?? "student"),
-                        new Claim("DisplayName", user.DisplaynameTk ?? string.Empty),
-                        new Claim("UserID", user.IdTk.ToString()),
-                        new Claim("UserRole", user.IdQNavigation?.NameQ ?? "student"),
-                        new Claim("Avatar", avatarPath) // Thêm avatar vào claims
-                    };
+                        bool isPasswordValid = false;
+                        try
+                        {
+                            if (user.PasswordHash?.StartsWith("$2") == true)
+                            {
+                                isPasswordValid = BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash);
+                            }
+                            else
+                            {
+                                isPasswordValid = (user.PasswordHash == model.Password);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError($"Password verification error: {ex.Message}");
+                            isPasswordValid = (user.PasswordHash == model.Password);
+                        }
 
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    var authProperties = new AuthenticationProperties
-                    {
-                        IsPersistent = model.RememberMe,
-                        ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
-                    };
+                        if (isPasswordValid)
+                        {
+                            var claims = new List<Claim>
+                            {
+                                new Claim(ClaimTypes.NameIdentifier, user.Id ?? user.UserId ?? Guid.NewGuid().ToString()),
+                                new Claim(ClaimTypes.Name, user.UserName ?? user.Username ?? "unknown"),
+                                new Claim(ClaimTypes.Email, user.Email),
+                                new Claim(ClaimTypes.Role, user.Role ?? (user.Roles?.FirstOrDefault() ?? "User"))
+                            };
 
-                    // Đăng nhập người dùng
-                    await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(claimsIdentity),
-                        authProperties);
+                            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                            var authProperties = new AuthenticationProperties
+                            {
+                                IsPersistent = model.RememberMe,
+                                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
+                            };
 
-                    // Chuyển hướng người dùng
-                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    {
-                        return Redirect(returnUrl);
+                            await HttpContext.SignInAsync(
+                                CookieAuthenticationDefaults.AuthenticationScheme,
+                                new ClaimsPrincipal(claimsIdentity),
+                                authProperties);
+                            
+                            _logger.LogInformation($"User {user.Email} logged in successfully");
+                            return RedirectToAction("Profile", "Account");
+                        }
                     }
-                    return RedirectToAction("Index", "Home");
-                }
 
-                // Ghi log khi đăng nhập thất bại
-                _logger.LogWarning("Đăng nhập thất bại cho email/username: {Email}", model.Email);
-                ModelState.AddModelError(string.Empty, "Tên đăng nhập hoặc mật khẩu không đúng.");
+                    ModelState.AddModelError(string.Empty, "Email hoặc mật khẩu không đúng.");
+                    return View(model);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"Login error: {ex.Message}");
+                    ModelState.AddModelError(string.Empty, "Đã xảy ra lỗi trong quá trình đăng nhập.");
+                    return View(model);
+                }
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Profile()
+        {
+            try
+            {
+                _logger.LogInformation($"Profile: User.Identity.IsAuthenticated: {User.Identity?.IsAuthenticated}");
+                _logger.LogInformation($"Profile: User.Identity.Name: {User.Identity?.Name}");
+                
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                _logger.LogInformation($"Profile: User ID from Claims: {userId}");
+                
+                if (string.IsNullOrEmpty(userId))
+                {
+                    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                    return RedirectToAction("Login");
+                }
+
+                var user = await _userRepository.GetByUserIdAsync(userId);
+                if (user == null)
+                {
+                    var email = User.FindFirstValue(ClaimTypes.Email);
+                    if (!string.IsNullOrEmpty(email))
+                    {
+                        user = await _userRepository.GetByEmailAsync(email);
+                        _logger.LogInformation($"Profile: Found user by email: {email}, User: {user?.Id}");
+                    }
+                }
+                else
+                {
+                    _logger.LogInformation($"Profile: Found user by userId: {userId}, User: {user?.Id}, Avatar: {user?.Avatar}");
+                }
+
+                if (user == null)
+                {
+                    _logger.LogWarning($"Profile: User not found for ID: {userId}");
+                    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                    return RedirectToAction("Login");
+                }
+
+                ViewBag.CurrentUser = user;
+                return View(user);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Profile: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi tải thông tin người dùng.";
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpGet]
@@ -104,497 +176,618 @@ namespace TiengAnh.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(TiengAnh.Models.ViewModels.RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // Kiểm tra xem email đã tồn tại chưa
-                var existingUser = await _context.TaiKhoans
-                    .FirstOrDefaultAsync(u => u.EmailTk == model.Email);
-
+                var existingUser = await _mongoDbService.GetCollection<UserModel>("Users")
+                    .Find(u => u.Email.ToLower() == model.Email.ToLower())
+                    .FirstOrDefaultAsync();
                 if (existingUser != null)
                 {
-                    ModelState.AddModelError("Email", "Email này đã được sử dụng.");
+                    ModelState.AddModelError(string.Empty, "Email đã được sử dụng.");
                     return View(model);
                 }
 
-                // Tạo tài khoản mới (quyền mặc định là 3 - Student)
-                var newUser = new TaiKhoan
+                var user = new UserModel
                 {
-                    NameTk = model.Email.Split('@')[0], // Tạo username từ phần đầu của email
-                    EmailTk = model.Email,
-                    PasswordTk = model.Password, // Lưu ý: Trong thực tế, bạn nên mã hóa mật khẩu
-                    DisplaynameTk = model.FullName,
-                    IdQ = 3 // Student role
+                    Email = model.Email,
+                    Username = model.UserName,
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password),
+                    FullName = model.FullName,
+                    Avatar = "/images/avatar/default.jpg",
+                    Role = "User",
+                    Roles = new List<string> { "User" },
+                    CreatedAt = DateTime.Now,
+                    RegisterDate = DateTime.Now,
+                    IsVerified = false
                 };
 
-                try
+                await _mongoDbService.GetCollection<UserModel>("Users").InsertOneAsync(user);
+                return RedirectToAction("Login");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateProfile(UserModel model)
+        {
+            try
+            {
+                _logger.LogInformation($"UpdateProfile: ID={model.Id}, FullName={model.FullName}, Avatar={model.Avatar}");
+                _logger.LogInformation($"UpdateProfile: DateOfBirth from form: {model.DateOfBirth}");
+                
+                string userIdFromClaims = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                string emailFromClaims = User.FindFirstValue(ClaimTypes.Email);
+                
+                var currentUser = await _userRepository.GetByUserIdAsync(userIdFromClaims);
+                if (currentUser == null && !string.IsNullOrEmpty(emailFromClaims))
                 {
-                    _context.TaiKhoans.Add(newUser);
-                    await _context.SaveChangesAsync();
-                    _logger.LogInformation("Người dùng đã tạo tài khoản mới: {Email}", model.Email);
+                    currentUser = await _userRepository.GetByEmailAsync(emailFromClaims);
+                }
 
-                    // Tự động đăng nhập sau khi đăng ký
-                    await LoginAfterRegistration(newUser);
+                if (currentUser == null)
+                {
+                    _logger.LogWarning($"UpdateProfile: User not found for ID: {userIdFromClaims}, Email: {emailFromClaims}");
+                    TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng hiện tại.";
+                    return View("Profile", model);
+                }
 
-                    return RedirectToAction("Index", "Home");
+                _logger.LogInformation($"UpdateProfile: Found user: ID={currentUser.Id}, Email={currentUser.Email}, Avatar={currentUser.Avatar}");
+                _logger.LogInformation($"UpdateProfile: Current DateOfBirth: {currentUser.DateOfBirth}");
+
+                currentUser.FullName = model.FullName;
+                currentUser.Phone = model.Phone ?? "";
+                currentUser.Address = model.Address ?? "";
+                currentUser.Gender = model.Gender ?? "";
+                currentUser.Bio = model.Bio ?? "";
+                currentUser.Username = model.Username ?? currentUser.Username;
+                currentUser.UserName = model.Username ?? currentUser.UserName;
+                
+                if (model.DateOfBirth.HasValue)
+                {
+                    var day = model.DateOfBirth.Value.Day;
+                    var month = model.DateOfBirth.Value.Month;
+                    var year = model.DateOfBirth.Value.Year;
+                    currentUser.DateOfBirth = new DateTime(year, month, day, 12, 0, 0, DateTimeKind.Local);
+                    _logger.LogInformation($"UpdateProfile: Set DateOfBirth: {currentUser.DateOfBirth}, Day={day}, Month={month}, Year={year}");
+                }
+                else
+                {
+                    currentUser.DateOfBirth = null;
+                }
+                
+                if (!string.IsNullOrEmpty(model.Avatar))
+                {
+                    currentUser.Avatar = model.Avatar;
+                }
+                
+                bool updateResult = await _userRepository.UpdateUserAsync(currentUser);
+                _logger.LogInformation($"UpdateProfile: Update result: {updateResult}");
+                
+                if (updateResult)
+                {
+                    var updatedUser = await _userRepository.GetByUserIdAsync(currentUser.Id);
+                    _logger.LogInformation($"UpdateProfile: After update - DateOfBirth: {updatedUser?.DateOfBirth}, Avatar: {updatedUser?.Avatar}");
+                    
+                    TempData["SuccessMessage"] = "Cập nhật thông tin thành công!";
+                    return RedirectToAction("Profile", new { v = DateTime.Now.Ticks });
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Không thể cập nhật thông tin người dùng.";
+                }
+
+                return View("Profile", currentUser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"UpdateProfile: Error: {ex.Message}, Stack: {ex.StackTrace}");
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi cập nhật thông tin: " + ex.Message;
+                return View("Profile", model);
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetAvatarUrl()
+        {
+            try
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                _logger.LogInformation($"GetAvatarUrl: User ID from Claims: {userId}");
+
+                if (string.IsNullOrEmpty(userId))
+                {
+                    _logger.LogWarning("GetAvatarUrl: Người dùng chưa đăng nhập");
+                    return Json(new { success = false, message = "Người dùng chưa đăng nhập" });
+                }
+
+                var user = await _userRepository.GetByUserIdAsync(userId);
+                if (user == null)
+                {
+                    var email = User.FindFirstValue(ClaimTypes.Email);
+                    if (!string.IsNullOrEmpty(email))
+                    {
+                        user = await _userRepository.GetByEmailAsync(email);
+                        _logger.LogInformation($"GetAvatarUrl: Found user by email: {email}, User: {user?.Id}, Avatar: {user?.Avatar}");
+                    }
+                }
+                else
+                {
+                    _logger.LogInformation($"GetAvatarUrl: Found user by userId: {userId}, User: {user?.Id}, Avatar: {user?.Avatar}");
+                }
+
+                if (user == null)
+                {
+                    _logger.LogWarning($"GetAvatarUrl: User not found for ID: {userId}");
+                    return Json(new { success = false, message = "Không tìm thấy người dùng" });
+                }
+
+                var avatarPath = !string.IsNullOrEmpty(user.Avatar) ? user.Avatar : "/images/default-avatar.png";
+                var timestamp = DateTime.Now.Ticks;
+                var avatarWithTimestamp = $"{avatarPath}?v={timestamp}";
+
+                Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
+                Response.Headers.Add("Pragma", "no-cache");
+                Response.Headers.Add("Expires", "0");
+
+                return Json(new { success = true, avatarPath, avatarWithTimestamp });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"GetAvatarUrl: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                return Json(new { success = false, message = "Lỗi khi lấy đường dẫn avatar" });
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateAvatar([FromBody] AvatarUpdateModel model)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(model.AvatarData))
+                {
+                    _logger.LogWarning("UpdateAvatar: Không có dữ liệu ảnh");
+                    return Json(new { success = false, message = "Không có dữ liệu ảnh" });
+                }
+
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                string userEmail = User.FindFirstValue(ClaimTypes.Email);
+                
+                var user = await _userRepository.GetByUserIdAsync(userId);
+                if (user == null && !string.IsNullOrEmpty(userEmail))
+                {
+                    user = await _userRepository.GetByEmailAsync(userEmail);
+                }
+
+                if (user == null)
+                {
+                    _logger.LogWarning($"UpdateAvatar: User not found for ID: {userId}, Email: {userEmail}");
+                    return Json(new { success = false, message = "Không thể tìm thấy thông tin người dùng" });
+                }
+
+                _logger.LogInformation($"UpdateAvatar: Found user: ID={user.Id}, Email={user.Email}, Current Avatar={user.Avatar}");
+
+                if (model.AvatarData.StartsWith("/images/avatar/"))
+                {
+                    user.Avatar = model.AvatarData;
+                    var updateResult = await _userRepository.UpdateUserAsync(user);
+                    
+                    if (updateResult)
+                    {
+                        _logger.LogInformation($"UpdateAvatar: Updated avatar to {user.Avatar} for user ID: {user.Id}");
+                        return Json(new { 
+                            success = true, 
+                            avatarUrl = user.Avatar,
+                            message = "Cập nhật ảnh đại diện thành công!",
+                            reload = true
+                        });
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"UpdateAvatar: Failed to update avatar in database for user ID: {user.Id}");
+                        return Json(new { success = false, message = "Lỗi cập nhật vào database" });
+                    }
+                }
+
+                try 
+                {
+                    string base64Data = model.AvatarData;
+                    string dataPrefix = "data:image/";
+                    
+                    int startIndex = base64Data.IndexOf(dataPrefix);
+                    if (startIndex < 0)
+                    {
+                        _logger.LogWarning("UpdateAvatar: Định dạng ảnh không hợp lệ");
+                        return Json(new { success = false, message = "Định dạng ảnh không hợp lệ" });
+                    }
+                    
+                    startIndex += dataPrefix.Length;
+                    int endIndex = base64Data.IndexOf(";base64,", startIndex);
+                    if (endIndex < 0)
+                    {
+                        _logger.LogWarning("UpdateAvatar: Định dạng dữ liệu không hợp lệ");
+                        return Json(new { success = false, message = "Định dạng dữ liệu không hợp lệ" });
+                    }
+                    
+                    string fileExtension = base64Data.Substring(startIndex, endIndex - startIndex);
+                    if (!new[] { "jpg", "jpeg", "png", "gif" }.Contains(fileExtension.ToLower()))
+                    {
+                        _logger.LogWarning($"UpdateAvatar: Unsupported file extension: {fileExtension}");
+                        return Json(new { success = false, message = "Chỉ hỗ trợ định dạng JPG, JPEG, PNG, GIF" });
+                    }
+
+                    int dataIndex = base64Data.IndexOf("base64,") + "base64,".Length;
+                    string imageData = base64Data.Substring(dataIndex);
+                    
+                    string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "avatar");
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+                    
+                    string fileName = $"{user.Id}_{DateTime.Now:yyyyMMddHHmmss}.{fileExtension}";
+                    string filePath = Path.Combine(uploadsFolder, fileName);
+                    
+                    byte[] imageBytes = Convert.FromBase64String(imageData);
+                    await System.IO.File.WriteAllBytesAsync(filePath, imageBytes);
+                    
+                    string avatarPath = $"/images/avatar/{fileName}";
+                    
+                    user.Avatar = avatarPath;
+                    bool result = await _userRepository.UpdateUserAsync(user);
+                    
+                    if (result)
+                    {
+                        _logger.LogInformation($"UpdateAvatar: Updated avatar to {avatarPath} for user ID: {user.Id}");
+                        Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
+                        Response.Headers.Add("Pragma", "no-cache");
+                        Response.Headers.Add("Expires", "0");
+                        
+                        return Json(new { 
+                            success = true, 
+                            avatarUrl = avatarPath,
+                            message = "Cập nhật ảnh đại diện thành công!",
+                            reload = true
+                        });
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"UpdateAvatar: Failed to update avatar in database for user ID: {user.Id}");
+                        return Json(new { success = false, message = "Lỗi cập nhật vào database" });
+                    }
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Lỗi khi đăng ký người dùng mới");
-                    ModelState.AddModelError(string.Empty, "Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại sau.");
+                    _logger.LogError($"UpdateAvatar: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                    return Json(new { success = false, message = $"Lỗi khi lưu ảnh: {ex.Message}" });
                 }
-            }
-
-            return View(model);
-        }
-
-        private async Task LoginAfterRegistration(TaiKhoan user)
-        {
-            // Lấy đường dẫn avatar mặc định cho người dùng mới
-            string avatarPath = "/images/avatars/default.jpg";
-
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.DisplaynameTk ?? user.NameTk ?? string.Empty),
-                new Claim(ClaimTypes.NameIdentifier, user.IdTk.ToString()),
-                new Claim(ClaimTypes.Email, user.EmailTk ?? string.Empty),
-                new Claim(ClaimTypes.Role, "student"), // Quyền mặc định cho người dùng mới
-                new Claim("DisplayName", user.DisplaynameTk ?? string.Empty),
-                new Claim("UserID", user.IdTk.ToString()),
-                new Claim("UserRole", "student"),
-                new Claim("Avatar", avatarPath) // Thêm avatar vào claims
-            };
-
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity));
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Profile()
-        {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!(User.Identity?.IsAuthenticated ?? false))
-            {
-                return RedirectToAction("Login");
-            }
-
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
-
-            if (!int.TryParse(userIdStr, out int userId))
-            {
-                return NotFound();
-            }
-
-            // Lấy thông tin người dùng từ database
-            var dbUser = await _context.TaiKhoans
-                .Include(t => t.IdQNavigation)
-                .FirstOrDefaultAsync(u => u.IdTk == userId);
-
-            if (dbUser == null)
-            {
-                return NotFound();
-            }
-
-            // Lấy thông tin học tập từ database (ví dụ: số từ vựng đã học, số bài tập đã làm)
-            var learningStats = await GetLearningStatisticsAsync(userId);
-
-            // Lấy hoạt động gần đây
-            var recentActivities = await GetRecentActivitiesAsync(userId);
-
-            // Chuyển đổi thành UserModel để hiển thị
-            var userModel = new UserModel
-            {
-                Id = dbUser.IdTk.ToString(),
-                UserName = dbUser.NameTk,
-                Email = dbUser.EmailTk,
-                FullName = dbUser.DisplaynameTk,
-                PhoneNumber = dbUser.PhoneTk,
-                Avatar = string.IsNullOrEmpty(dbUser.AvatarTk) ? "/images/avatars/default.jpg" : dbUser.AvatarTk,
-                Level = await CalculateUserLevelAsync(userId),
-                RegisterDate = DateTime.Now, // Thời gian đăng ký thật nếu có trong DB
-                Points = await CalculateUserPointsAsync(userId),
-                Roles = new List<string> { dbUser.IdQNavigation?.NameQ ?? "student" },
-                VocabularyProgress = learningStats.VocabularyProgress,
-                GrammarProgress = learningStats.GrammarProgress,
-                ExerciseProgress = learningStats.ExerciseProgress,
-                RecentActivities = recentActivities
-            };
-
-            return View(userModel);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> EditProfile()
-        {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!(User.Identity?.IsAuthenticated ?? false))
-            {
-                return RedirectToAction("Login");
-            }
-
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
-
-            if (!int.TryParse(userIdStr, out int userId))
-            {
-                return NotFound();
-            }
-
-            // Lấy thông tin người dùng từ database
-            var dbUser = await _context.TaiKhoans
-                .FirstOrDefaultAsync(u => u.IdTk == userId);
-
-            if (dbUser == null)
-            {
-                return NotFound();
-            }
-
-            // Chuyển đổi thành EditProfileViewModel để hiển thị form chỉnh sửa
-            var model = new EditProfileViewModel
-            {
-                FullName = dbUser.DisplaynameTk,
-                Email = dbUser.EmailTk,
-                PhoneNumber = dbUser.PhoneTk,
-                UserName = dbUser.NameTk
-            };
-
-            return View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
-
-            if (!int.TryParse(userIdStr, out int userId))
-            {
-                return NotFound();
-            }
-
-            // Lấy thông tin người dùng từ database
-            var dbUser = await _context.TaiKhoans
-                .FirstOrDefaultAsync(u => u.IdTk == userId);
-
-            if (dbUser == null)
-            {
-                return NotFound();
-            }
-
-            // Cập nhật thông tin
-            dbUser.DisplaynameTk = model.FullName;
-            dbUser.PhoneTk = model.PhoneNumber ?? string.Empty;
-
-            // Kiểm tra nếu email được thay đổi và đảm bảo không trùng với người dùng khác
-            if (dbUser.EmailTk != model.Email)
-            {
-                var emailExists = await _context.TaiKhoans
-                    .AnyAsync(u => u.EmailTk == model.Email && u.IdTk != userId);
-
-                if (emailExists)
-                {
-                    ModelState.AddModelError("Email", "Email này đã được sử dụng bởi tài khoản khác.");
-                    return View(model);
-                }
-
-                dbUser.EmailTk = model.Email;
-            }
-
-            // Kiểm tra nếu mật khẩu được cung cấp
-            if (!string.IsNullOrEmpty(model.NewPassword))
-            {
-                if (dbUser.PasswordTk != model.CurrentPassword)
-                {
-                    ModelState.AddModelError("CurrentPassword", "Mật khẩu hiện tại không đúng.");
-                    return View(model);
-                }
-
-                dbUser.PasswordTk = model.NewPassword;
-            }
-
-            try
-            {
-                await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Thông tin cá nhân đã được cập nhật thành công.";
-                return RedirectToAction("Profile");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Lỗi khi cập nhật thông tin người dùng");
-                ModelState.AddModelError(string.Empty, "Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại sau.");
-                return View(model);
+                _logger.LogError($"UpdateAvatar: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                return Json(new { success = false, message = $"Lỗi: {ex.Message}" });
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> UploadAvatar(IFormFile avatar)
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ChangePassword()
         {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!User.Identity?.IsAuthenticated ?? false)
+            await Task.CompletedTask;
+            return View(new ChangePasswordViewModel());
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
             {
-                return Json(new { success = false, message = "Bạn cần đăng nhập để thực hiện hành động này." });
+                try
+                {
+                    string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var user = await _userRepository.GetByUserIdAsync(userId);
+
+                    if (user != null)
+                    {
+                        bool isCurrentPasswordValid = false;
+                        if (user.PasswordHash?.StartsWith("$2") == true)
+                        {
+                            isCurrentPasswordValid = BCrypt.Net.BCrypt.Verify(model.CurrentPassword, user.PasswordHash);
+                        }
+                        else
+                        {
+                            isCurrentPasswordValid = (user.PasswordHash == model.CurrentPassword);
+                        }
+
+                        if (!isCurrentPasswordValid)
+                        {
+                            ModelState.AddModelError("CurrentPassword", "Mật khẩu hiện tại không đúng");
+                            return View(model);
+                        }
+
+                        string newPasswordHash = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
+                        
+                        bool updateResult = await _userRepository.UpdatePasswordAsync(userId, newPasswordHash);
+                        
+                        if (updateResult)
+                        {
+                            TempData["SuccessMessage"] = "Đổi mật khẩu thành công!";
+                            return RedirectToAction("Profile");
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Không thể cập nhật mật khẩu.";
+                        }
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"ChangePassword: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                    TempData["ErrorMessage"] = "Đã xảy ra lỗi khi đổi mật khẩu.";
+                }
             }
 
-            // Kiểm tra tập tin tải lên
-            if (avatar == null || avatar.Length == 0)
-            {
-                return Json(new { success = false, message = "Không tìm thấy tập tin tải lên." });
-            }
+            return View(model);
+        }
 
-            // Kiểm tra định dạng tập tin
-            if (!IsValidImageFile(avatar))
-            {
-                return Json(new { success = false, message = "Chỉ chấp nhận hình ảnh định dạng JPG, PNG, GIF." });
-            }
-
-            // Lấy ID người dùng từ claims
-            var userIdStr = User.FindFirstValue("UserID");
-            
-            if (!int.TryParse(userIdStr, out int userId))
-            {
-                return Json(new { success = false, message = "Không xác định được người dùng." });
-            }
-
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ManageUsers()
+        {
             try
             {
-                // Lấy thông tin người dùng từ database
-                var user = await _context.TaiKhoans.FindAsync(userId);
+                var users = await _userRepository.GetAllUsersAsync();
+                return View(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"ManageUsers: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi tải danh sách người dùng.";
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var user = await _userRepository.GetByUserIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditUser(UserModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var existingUser = await _userRepository.GetByUserIdAsync(model.Id);
+                    if (existingUser == null)
+                    {
+                        return NotFound();
+                    }
+
+                    existingUser.FullName = model.FullName;
+                    existingUser.Username = model.Username;
+                    existingUser.Email = model.Email;
+                    existingUser.Phone = model.Phone;
+                    existingUser.Address = model.Address;
+                    existingUser.Gender = model.Gender;
+                    existingUser.DateOfBirth = model.DateOfBirth;
+                    existingUser.Bio = model.Bio;
+                    existingUser.Level = model.Level;
+                    existingUser.Role = model.Role;
+                    existingUser.Roles = model.Roles;
+                    existingUser.Points = model.Points;
+                    
+                    bool updateResult = await _userRepository.UpdateUserAsync(existingUser);
+                    
+                    if (updateResult)
+                    {
+                        TempData["SuccessMessage"] = "Cập nhật thông tin người dùng thành công!";
+                        return RedirectToAction("ManageUsers");
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = "Không thể cập nhật thông tin người dùng.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"EditUser: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                    TempData["ErrorMessage"] = "Đã xảy ra lỗi khi cập nhật thông tin người dùng.";
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var user = await _userRepository.GetByUserIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ConfirmDeleteUser(string id)
+        {
+            try
+            {
+                bool deleteResult = await _userRepository.DeleteUserAsync(id);
                 
+                if (deleteResult)
+                {
+                    TempData["SuccessMessage"] = "Xóa người dùng thành công!";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Không thể xóa người dùng.";
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"ConfirmDeleteUser: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi xóa người dùng.";
+            }
+
+            return RedirectToAction("ManageUsers");
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public IActionResult CreateUser()
+        {
+            return View(new UserCreateViewModel());
+        }
+        
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> CreateUser(UserCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var existingUser = await _userRepository.GetByEmailAsync(model.Email);
+                    if (existingUser != null)
+                    {
+                        ModelState.AddModelError("Email", "Email đã được sử dụng.");
+                        return View(model);
+                    }
+
+                    var user = new UserModel
+                    {
+                        Email = model.Email,
+                        Username = model.Username,
+                        UserName = model.Username,
+                        PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password),
+                        FullName = model.FullName,
+                        Avatar = "/images/avatar/default.jpg",
+                        Role = model.Role,
+                        Roles = new List<string> { model.Role },
+                        Level = model.Level ?? "A1",
+                        Points = model.Points,
+                        CreatedAt = DateTime.Now,
+                        RegisterDate = DateTime.Now,
+                        IsVerified = true
+                    };
+
+                    await _mongoDbService.GetCollection<UserModel>("Users").InsertOneAsync(user);
+                    
+                    TempData["SuccessMessage"] = "Tạo người dùng mới thành công!";
+                    return RedirectToAction("ManageUsers");
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"CreateUser: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                    TempData["ErrorMessage"] = "Đã xảy ra lỗi khi tạo người dùng mới.";
+                }
+            }
+            
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpGet("Account/Debug")]
+        public async Task<IActionResult> DebugUserInfo()
+        {
+            try
+            {
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                _logger.LogInformation($"DebugUserInfo: User ID: {userId}");
+                
+                if (string.IsNullOrEmpty(userId))
+                {
+                    TempData["ErrorMessage"] = "Không thể xác định người dùng";
+                    return RedirectToAction("Profile");
+                }
+
+                var user = await _userRepository.GetByUserIdAsync(userId);
                 if (user == null)
                 {
-                    return Json(new { success = false, message = "Không tìm thấy thông tin người dùng." });
-                }
-
-                // Tạo thư mục lưu ảnh nếu chưa tồn tại
-                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "avatars");
-                
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                // Tạo tên file duy nhất
-                string uniqueFileName = $"{userId}_{Guid.NewGuid().ToString().Substring(0, 8)}{Path.GetExtension(avatar.FileName)}";
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                // Lưu tập tin
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await avatar.CopyToAsync(stream);
-                }
-
-                // Xóa ảnh cũ (nếu có và không phải ảnh mặc định)
-                if (!string.IsNullOrEmpty(user.AvatarTk) && 
-                    !user.AvatarTk.EndsWith("default.jpg") && 
-                    System.IO.File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", user.AvatarTk.TrimStart('/'))))
-                {
-                    System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", user.AvatarTk.TrimStart('/')));
-                }
-
-                // Cập nhật đường dẫn ảnh trong database
-                string relativePath = $"/images/avatars/{uniqueFileName}";
-                user.AvatarTk = relativePath;
-                await _context.SaveChangesAsync();
-
-                // Cập nhật claim Avatar
-                var identity = User.Identity as ClaimsIdentity;
-                if (identity != null)
-                {
-                    var existingClaim = identity.FindFirst("Avatar");
-                    if (existingClaim != null)
+                    var email = User.FindFirstValue(ClaimTypes.Email);
+                    if (!string.IsNullOrEmpty(email))
                     {
-                        identity.RemoveClaim(existingClaim);
+                        user = await _userRepository.GetByEmailAsync(email);
                     }
-                    identity.AddClaim(new Claim("Avatar", relativePath));
-                    
-                    // Cập nhật principal
-                    await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(identity));
                 }
 
-                return Json(new { success = true, message = "Cập nhật ảnh đại diện thành công.", avatarUrl = relativePath });
+                if (user == null)
+                {
+                    TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng";
+                    return RedirectToAction("Profile");
+                }
+
+                return View("Debug", user);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Lỗi khi cập nhật ảnh đại diện cho người dùng {UserId}", userId);
-                return Json(new { success = false, message = "Đã xảy ra lỗi khi cập nhật ảnh đại diện. Vui lòng thử lại sau." });
+                _logger.LogError($"DebugUserInfo: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi lấy thông tin người dùng";
+                return RedirectToAction("Profile");
             }
-        }
-
-        private bool IsValidImageFile(IFormFile file)
-        {
-            // Kiểm tra định dạng tập tin
-            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
-            string fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
-            
-            if (string.IsNullOrEmpty(fileExtension) || !allowedExtensions.Contains(fileExtension))
-            {
-                return false;
-            }
-
-            // Kiểm tra MIME type
-            string[] allowedMimeTypes = { "image/jpeg", "image/png", "image/gif" };
-            return allowedMimeTypes.Contains(file.ContentType);
-        }
-
-        // Phương thức hỗ trợ để lấy số liệu thống kê học tập
-        private async Task<(int VocabularyProgress, int GrammarProgress, int ExerciseProgress)> GetLearningStatisticsAsync(int userId)
-        {
-            // Đếm số từ vựng đã học
-            var vocabularyLearned = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "TuVung");
-
-            // Đếm số ngữ pháp đã học
-            var grammarLearned = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "NguPhap");
-
-            // Đếm số bài tập đã làm
-            var exerciseCompleted = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "BaiTap");
-
-            // Tổng số từ vựng, ngữ pháp, bài tập trong hệ thống
-            var totalVocabulary = await _context.TuVungs.CountAsync();
-            var totalGrammar = await _context.NguPhaps.CountAsync();
-            var totalExercises = await _context.BaiTaps.CountAsync();
-
-            // Tính phần trăm
-            int vocabularyProgress = totalVocabulary > 0 ? (vocabularyLearned * 100) / totalVocabulary : 0;
-            int grammarProgress = totalGrammar > 0 ? (grammarLearned * 100) / totalGrammar : 0;
-            int exerciseProgress = totalExercises > 0 ? (exerciseCompleted * 100) / totalExercises : 0;
-
-            return (vocabularyProgress, grammarProgress, exerciseProgress);
-        }
-
-        // Phương thức hỗ trợ để lấy hoạt động gần đây
-        private async Task<List<UserActivity>> GetRecentActivitiesAsync(int userId)
-        {
-            var activities = await _context.TienTrinhHocs
-                .Where(t => t.IdTk == userId)
-                .OrderByDescending(t => t.LastTimeStudyTth)
-                .Take(5)
-                .ToListAsync();
-
-            var result = new List<UserActivity>();
-
-            foreach (var activity in activities)
-            {
-                string title = "";
-                string description = "";
-                string type = activity.TypeTth ?? "Unknown";
-                DateTime timestamp = activity.LastTimeStudyTth ?? DateTime.Now;
-
-                if (type == "TuVung")
-                {
-                    var vocab = await _context.TuVungs
-                        .Include(t => t.IdCdNavigation)
-                        .FirstOrDefaultAsync(t => t.IdTv == activity.IdTypeTth);
-
-                    if (vocab != null)
-                    {
-                        title = "Học từ vựng";
-                        description = $"Đã học từ \"{vocab?.WordTv ?? "không xác định"}\" trong chủ đề {vocab?.IdCdNavigation?.NameCd ?? "không xác định"}";
-                    }
-                }
-                else if (type == "NguPhap")
-                {
-                    var grammar = await _context.NguPhaps
-                        .FirstOrDefaultAsync(n => n.IdNp == activity.IdTypeTth);
-
-                    if (grammar != null)
-                    {
-                        title = "Học ngữ pháp";
-                        description = $"Đã học \"{grammar.TitleNp}\"";
-                    }
-                }
-                else if (type == "BaiTap")
-                {
-                    title = "Làm bài tập";
-                    description = "Đã hoàn thành một bài tập";
-                }
-
-                result.Add(new UserActivity
-                {
-                    Title = title,
-                    Description = description,
-                    Type = type,
-                    Timestamp = timestamp
-                });
-            }
-
-            return result;
-        }
-
-        private async Task<string> CalculateUserLevelAsync(int userId)
-        {
-            // Tính điểm người dùng
-            var points = await CalculateUserPointsAsync(userId);
-
-            // Xác định cấp độ dựa trên điểm
-            if (points < 100) return "A1";
-            if (points < 300) return "A2";
-            if (points < 600) return "B1";
-            if (points < 1000) return "B2";
-            if (points < 1500) return "C1";
-            return "C2";
-        }
-
-        private async Task<int> CalculateUserPointsAsync(int userId)
-        {
-            // Đếm số từ vựng đã học
-            var vocabularyLearned = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "TuVung");
-
-            // Đếm số ngữ pháp đã học
-            var grammarLearned = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "NguPhap");
-
-            // Đếm số bài tập đã làm
-            var exerciseCompleted = await _context.TienTrinhHocs
-                .CountAsync(t => t.IdTk == userId && t.TypeTth == "BaiTap");
-
-            // Tính điểm: mỗi từ vựng 5 điểm, mỗi ngữ pháp 10 điểm, mỗi bài tập 3 điểm
-            return (vocabularyLearned * 5) + (grammarLearned * 10) + (exerciseCompleted * 3);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Logout()
+        public IActionResult ExternalLogin(string provider)
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
 
-        // Tạo action này để debug - khi cần kiểm tra thông tin đăng nhập
         [HttpGet]
-        public IActionResult LoginStatus()
+        public async Task<IActionResult> Logout()
         {
-            var isAuthenticated = User.Identity?.IsAuthenticated ?? false;
-            var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
-
-            return Json(new
-            {
-                IsAuthenticated = isAuthenticated,
-                Username = User.Identity?.Name ?? string.Empty,
-                Claims = claims,
-                DatabaseName = _context.Database.GetDbConnection().Database,
-                DatabaseState = _context.Database.CanConnect() ? "Connected" : "Not Connected"
-            });
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            TempData["SuccessMessage"] = "Bạn đã đăng xuất thành công.";
+            return RedirectToAction("Index", "Home");
         }
 
-        // Add this action to your AccountController class
+        [HttpGet]
         public IActionResult AccessDenied()
         {
             return View();
         }
+    }
+    
+    public class AvatarUpdateModel
+    {
+        public string? AvatarData { get; set; }
     }
 }

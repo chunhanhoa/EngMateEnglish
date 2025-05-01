@@ -1,4 +1,4 @@
-@model LoginViewModel
+@model TiengAnh.Models.ViewModels.LoginViewModel
 @{
     ViewData["Title"] = "Đăng nhập";
 }
@@ -14,27 +14,29 @@
                         <p class="text-muted">Vui lòng đăng nhập để truy cập các tính năng đầy đủ</p>
                     </div>
 
+                    <!-- Hiển thị lỗi -->
                     @if (!ViewData.ModelState.IsValid)
                     {
                         <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                                {
-                                    <li>@error.ErrorMessage</li>
-                                }
-                            </ul>
+                            <div asp-validation-summary="All" class="text-danger"></div>
                         </div>
                     }
 
                     <form asp-controller="Account" asp-action="Login" method="post">
-                        @* Sửa phần hidden input để xử lý khi ViewData["ReturnUrl"] là null *@
-                        <input type="hidden" asp-for="ReturnUrl" value="@(ViewData["ReturnUrl"] ?? "/")" />
+                        @if (Model?.ReturnUrl != null)
+                        {
+                            <input type="hidden" asp-for="ReturnUrl" />
+                        }
+                        else
+                        {
+                            <input type="hidden" name="ReturnUrl" value="" />
+                        }
                         
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email hoặc tên đăng nhập</label>
+                            <label for="email" class="form-label">Email</label>
                             <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" id="email" asp-for="Email" placeholder="Nhập email hoặc tên đăng nhập" required autofocus>
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" asp-for="Email" placeholder="Nhập địa chỉ email" required autofocus>
                             </div>
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
@@ -51,9 +53,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="rememberMe" asp-for="RememberMe">
-                                <label class="form-check-label" for="rememberMe">
-                                    Ghi nhớ đăng nhập
-                                </label>
+                                <label class="form-check-label" for="rememberMe">Ghi nhớ đăng nhập</label>
                             </div>
                             <a href="#" class="text-decoration-none">Quên mật khẩu?</a>
                         </div>
@@ -68,15 +68,12 @@
                             <span class="divider-text">Hoặc đăng nhập với</span>
                         </div>
                         
-                        <div class="d-grid gap-2">
+                        <div class="d-grid">
                             <form asp-action="ExternalLogin" asp-route-provider="Google" method="post">
                                 <button type="submit" class="btn btn-outline-danger w-100">
                                     <i class="fab fa-google me-2"></i> Google
                                 </button>
                             </form>
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="fab fa-facebook-f me-2"></i> Facebook
-                            </button>
                         </div>
                         
                         <div class="text-center mt-4">
@@ -88,6 +85,7 @@
         </div>
     </div>
 </div>
+
 
 @section Styles {
     <style>

@@ -1,7 +1,7 @@
-@model List<TiengAnh.Models.BaiTap>
+@model List<ExerciseModel>
 @{
-    ViewData["Title"] = "Sắp xếp câu - " + ViewBag.Topic?.NameCd ?? "Chủ đề";
-    var topic = ViewBag.Topic as TiengAnh.Models.ChuDe;
+    ViewData["Title"] = "Sắp xếp câu - " + ViewBag.Topic?.Name_CD ?? "Chủ đề";
+    var topic = ViewBag.Topic as TopicModel;
 }
 
 <!-- Header Section -->
@@ -12,7 +12,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.IdCd })">@(topic?.NameCd ?? "Chủ đề")</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })">@(topic?.Name_CD ?? "Chủ đề")</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Sắp xếp câu</li>
                 </ol>
             </nav>
@@ -22,16 +22,16 @@
     <!-- Title and Instructions -->
     <div class="row mb-5">
         <div class="col-md-8">
-            <h1 class="display-5 fw-bold mb-3">Sắp xếp câu: @(topic?.NameCd ?? "Chủ đề")</h1>
+            <h1 class="display-5 fw-bold mb-3">Sắp xếp câu: @(topic?.Name_CD ?? "Chủ đề")</h1>
             <p class="lead">Sắp xếp các từ để tạo thành câu có nghĩa. Luyện tập cấu trúc ngữ pháp và từ vựng.</p>
             <div class="card bg-light mb-4">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-lightbulb text-warning me-2"></i>Hướng dẫn</h5>
                     <ul class="mb-0">
-                        <li>Nhấp vào các từ để đưa chúng vào ô trả lời</li>
+                        <li>Nhấp vào các từ theo đúng thứ tự để tạo thành câu hoàn chỉnh</li>
                         <li>Chú ý đến cấu trúc ngữ pháp và trật tự từ trong câu tiếng Anh</li>
-                        <li>Nhấp vào từ trong ô trả lời để đưa nó trở lại danh sách từ</li>
-                        <li>Nhấn "Kiểm tra" khi bạn đã sắp xếp xong câu</li>
+                        <li>Có thể nhấp vào từ đã chọn để đưa nó trở lại danh sách từ</li>
+                        <li>Nhấn "Kiểm tra" khi bạn đã hoàn thành tất cả các câu</li>
                     </ul>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <p class="text-center mb-0">
-                    <span id="completed-count">0</span>/<span id="total-count" data-count="@Model.Count">@Model.Count</span> câu
+                    <span id="completed-count">0</span>/<span id="total-count">@Model.Count</span> câu
                 </p>
             </div>
         </div>
@@ -55,18 +55,72 @@
     <div class="row">
         <div class="col-lg-9">
             <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body p-4" id="word-ordering-questions">
-                    <!-- Exercise content will be generated dynamically -->
-                    <div class="text-center py-4">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Đang tải...</span>
+                <div class="card-body p-4">
+                    <form id="word-ordering-form">
+                        @foreach (var (exercise, index) in Model.Select((ex, i) => (ex, i + 1)))
+                        {
+                            <div class="word-ordering-item mb-5" id="order-item-@index" data-correct-sentence="@GetCorrectSentence(exercise)">
+                                <h5 class="mb-3">@index. Sắp xếp các từ sau thành một câu có nghĩa:</h5>
+                                
+                                <div class="word-bank mb-3 p-3 border rounded bg-light" id="word-bank-@index">
+                                    @foreach (var word in GetShuffledWords(exercise))
+                                    {
+                                        <span class="word-item badge bg-white text-dark border m-1 px-3 py-2" data-word="@word">@word</span>
+                                    }
+                                </div>
+                                
+                                <div class="answer-area mb-3 p-3 border rounded" id="answer-area-@index">
+                                    <p class="text-muted text-center mb-0 empty-message">Nhấp vào các từ ở trên để tạo câu</p>
+                                </div>
+                                
+                                <div class="feedback mt-2" style="display: none;">
+                                    <div class="correct-feedback text-success" style="display: none;">
+                                        <i class="fas fa-check-circle me-1"></i> Chính xác! Câu của bạn đã đúng.
+                                    </div>
+                                    <div class="incorrect-feedback text-danger" style="display: none;">
+                                        <i class="fas fa-times-circle me-1"></i> Chưa đúng! Câu đúng là: <strong class="correct-answer"></strong>
+                                    </div>
+                                </div>
+                                
+                                <div class="explanation text-muted mt-2 fst-italic" style="display: none;">
+                                    <i class="fas fa-info-circle me-1"></i> @exercise.Explanation_BT
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mt-2">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary reset-sentence-btn" data-index="@index">
+                                        <i class="fas fa-redo me-1"></i> Làm lại câu này
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target="#hint-@index">
+                                        <i class="fas fa-lightbulb me-1"></i> Gợi ý
+                                    </button>
+                                </div>
+                                
+                                <div class="collapse mt-2" id="hint-@index">
+                                    <div class="card card-body bg-light">
+                                        <p class="mb-0">Thứ tự câu tiếng Anh thường là: <strong>Chủ ngữ + Động từ + Đối tượng</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            @if (index < Model.Count)
+                            {
+                                <hr class="my-4">
+                            }
+                        }
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-primary" id="check-answers-btn">
+                                <i class="fas fa-check me-1"></i> Kiểm tra
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="reset-btn">
+                                <i class="fas fa-redo me-1"></i> Làm lại tất cả
+                            </button>
                         </div>
-                        <p class="mt-2">Đang tải bài tập...</p>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-lg-3">
             <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
                 <div class="card-body p-4">
@@ -180,20 +234,6 @@
     .bg-primary-soft {
         background-color: #cfe2ff;
     }
-    
-    .border-success {
-        border-color: #28a745 !important;
-        background-color: rgba(40, 167, 69, 0.1);
-    }
-    
-    .border-danger {
-        border-color: #dc3545 !important;
-        background-color: rgba(220, 53, 69, 0.1);
-    }
-    
-    .min-height-60 {
-        min-height: 80px;
-    }
 </style>
 
 @section Scripts {
@@ -205,6 +245,8 @@
             const totalCount = document.getElementById('total-count');
             const currentScore = document.getElementById('current-score');
             const maxScore = document.getElementById('max-score');
+            const checkAnswersBtn = document.getElementById('check-answers-btn');
+            const resetBtn = document.getElementById('reset-btn');
             const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
             const scorePercentage = document.getElementById('score-percentage');
             const scoreCorrect = document.getElementById('score-correct');
@@ -215,17 +257,20 @@
             
             // Variables
             let startTime = new Date();
-            let exercises = [];
-            let completed = [];
+            let completed = new Array(@Model.Count).fill(false);
             
-            // Lấy thông tin chủ đề hiện tại
-            const topicId = @(topic?.IdCd ?? 0);
-            const topicName = '@(topic?.NameCd ?? "")';
+            // Set up the word ordering exercise
+            setupWordOrdering();
             
-            // Initialize the exercises
-            initializeExercises();
+            // Event listeners for check answers and reset buttons
+            checkAnswersBtn.addEventListener('click', checkAnswers);
+            resetBtn.addEventListener('click', function() {
+                if (confirm('Bạn có chắc muốn làm lại tất cả các câu?')) {
+                    resetExercise();
+                }
+            });
             
-            // Event listeners for buttons in modal
+            // Event listeners for retry and continue buttons in results modal
             retryBtn.addEventListener('click', function() {
                 resetExercise();
                 resultsModal.hide();
@@ -235,312 +280,61 @@
                 // Could navigate to next exercise or back to topic
             });
             
-            // Function to initialize exercises
-            function initializeExercises() {
-                // Get exercises from server data or use fake data
-                exercises = getExerciseData();
-                
-                if (!exercises || exercises.length === 0) {
-                    document.getElementById('word-ordering-questions').innerHTML = 
-                        '<div class="alert alert-warning">Không tìm thấy bài tập. Vui lòng thử lại sau.</div>';
-                    return;
-                }
-                
-                // Initialize completed array
-                completed = new Array(exercises.length).fill(false);
-                
-                // Update total count
-                totalCount.textContent = exercises.length;
-                scoreTotal.textContent = exercises.length;
-                maxScore.textContent = exercises.length;
-                
-                // Create exercise items
-                createExerciseItems();
-            }
+            // Event listeners for reset sentence buttons
+            document.querySelectorAll('.reset-sentence-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    resetSentence(index);
+                });
+            });
             
-            // Function to get exercise data - combines server data with fake data if needed
-            function getExerciseData() {
-                let data = [];
+            // Function to set up word ordering exercise
+            function setupWordOrdering() {
+                const wordBanks = document.querySelectorAll('.word-bank');
+                const answerAreas = document.querySelectorAll('.answer-area');
                 
-                try {
-                    // Tạo dữ liệu đơn giản từ mô hình server mà không có tham chiếu vòng tròn
-                    const serverData = @Html.Raw(Json.Serialize(Model.Select(m => new { 
-                        id = m.IdBt,
-                        sentence = m.QuestionBt,
-                        explanation = m.ExplanationBt
-                    })));
+                // Set up each word bank and answer area
+                wordBanks.forEach((wordBank, index) => {
+                    const answerArea = answerAreas[index];
                     
-                    if (serverData && serverData.length > 0) {
-                        // Map server data to our format
-                        data = serverData.map(item => ({
-                            id: item.id,
-                            sentence: item.sentence || GetCorrectSentence(item),
-                            explanation: item.explanation || "Thử sắp xếp câu theo cấu trúc chủ ngữ + động từ + tân ngữ"
-                        })).filter(item => item.sentence && item.sentence.split(' ').length > 2);
-                    }
+                    // Get all word items in the word bank
+                    const wordItems = wordBank.querySelectorAll('.word-item');
                     
-                    // If we still don't have enough data, add fake data
-                    if (data.length < 5) {
-                        const neededFake = 5 - data.length;
-                        const fakeSentences = getTopicRelatedSentences(topicId, topicName);
-                        
-                        for (let i = 0; i < neededFake; i++) {
-                            data.push({
-                                id: 1000 + i,
-                                sentence: fakeSentences[i],
-                                explanation: "Thử sắp xếp câu theo cấu trúc chủ ngữ + động từ + tân ngữ"
+                    // Add click event to each word item
+                    wordItems.forEach(wordItem => {
+                        wordItem.addEventListener('click', function() {
+                            // Move word from word bank to answer area
+                            const clone = this.cloneNode(true);
+                            this.style.display = 'none';
+                            
+                            // Add click event to the cloned word to move it back to word bank
+                            clone.addEventListener('click', function() {
+                                // Find the original word item and show it
+                                const word = this.getAttribute('data-word');
+                                const originalWord = wordBank.querySelector(`.word-item[data-word="${word}"]`);
+                                if (originalWord) {
+                                    originalWord.style.display = 'inline-block';
+                                }
+                                
+                                // Remove the cloned word
+                                this.remove();
+                                
+                                // Show/hide empty message
+                                updateEmptyMessage(answerArea);
+                                
+                                // Update completed status
+                                updateCompletedStatus(index, answerArea);
                             });
-                        }
-                    }
-                    
-                    return data;
-                } catch (error) {
-                    console.error('Error getting exercise data:', error);
-                    
-                    // Return fake data related to topic if there's an error
-                    const fakeSentences = getTopicRelatedSentences(topicId, topicName);
-                    return fakeSentences.slice(0, 5).map((sentence, index) => ({
-                        id: 1000 + index,
-                        sentence: sentence,
-                        explanation: "Thử sắp xếp câu theo cấu trúc chủ ngữ + động từ + tân ngữ"
-                    }));
-                }
-            }
-            
-            // Hàm tạo câu ví dụ dựa trên chủ đề
-            function getTopicRelatedSentences(topicId, topicName) {
-                // Mặc định các câu ví dụ chung
-                let sentences = [
-                    "This is an example sentence",
-                    "English is an interesting language",
-                    "Learning vocabulary is important",
-                    "Practice makes perfect",
-                    "Reading helps improve vocabulary"
-                ];
-                
-                // Dựa vào ID hoặc tên chủ đề để chọn câu ví dụ phù hợp
-                switch(topicId) {
-                    case 1: // Animals - Động vật
-                        return [
-                            "Cats are popular pets in many homes",
-                            "Lions are wild animals in Africa",
-                            "Dogs are loyal to their owners",
-                            "Elephants have long trunks and big ears",
-                            "Birds can fly in the sky"
-                        ];
-                    case 2: // Food and Drinks - Thức ăn và đồ uống
-                        return [
-                            "I like to eat pizza for dinner",
-                            "Coffee is a popular morning drink",
-                            "Vietnamese food is very delicious",
-                            "Fresh fruits are good for health",
-                            "She drinks water every morning"
-                        ];
-                    case 3: // School - Trường học
-                        return [
-                            "Students study at the school",
-                            "The teacher explains the lesson",
-                            "We have many books in our library",
-                            "Mathematics is an important subject",
-                            "Children play in the schoolyard"
-                        ];
-                    case 4: // Family - Gia đình
-                        return [
-                            "My father works in an office",
-                            "Her mother is a doctor",
-                            "We have dinner with family",
-                            "Grandparents tell interesting stories",
-                            "My brother plays football every weekend"
-                        ];
-                    case 5: // Sports - Thể thao
-                        return [
-                            "Football is popular worldwide",
-                            "Swimming is good exercise",
-                            "They play basketball every afternoon",
-                            "Tennis requires good coordination",
-                            "Running helps maintain good health"
-                        ];
-                    case 6: // Jobs - Nghề nghiệp
-                        return [
-                            "Doctors work in hospitals",
-                            "Teachers educate students at schools",
-                            "Farmers grow crops in fields",
-                            "Engineers design new technology",
-                            "Police officers ensure public safety"
-                        ];
-                    default:
-                        // Nếu không nhận dạng được chủ đề qua ID, thử dùng tên
-                        if (topicName.includes("animal") || topicName.toLowerCase().includes("động vật"))
-                            return getTopicRelatedSentences(1);
-                        if (topicName.includes("food") || topicName.toLowerCase().includes("thức ăn"))
-                            return getTopicRelatedSentences(2);
-                        if (topicName.includes("school") || topicName.toLowerCase().includes("trường học"))
-                            return getTopicRelatedSentences(3);
-                        if (topicName.includes("family") || topicName.toLowerCase().includes("gia đình"))
-                            return getTopicRelatedSentences(4);
-                        if (topicName.includes("sport") || topicName.toLowerCase().includes("thể thao"))
-                            return getTopicRelatedSentences(5);
-                        if (topicName.includes("job") || topicName.toLowerCase().includes("nghề nghiệp"))
-                            return getTopicRelatedSentences(6);
                             
-                        return sentences;
-                }
-            }
-            
-            // Function to get correct sentence from exercise
-            function GetCorrectSentence(exercise) {
-                if (!exercise) return "";
-                
-                // Try to get sentence from different properties
-                if (exercise.QuestionBt) return exercise.QuestionBt;
-                
-                // If all else fails, return this default
-                return "This is a sample sentence";
-            }
-            
-            // Function to create exercise items
-            function createExerciseItems() {
-                const container = document.getElementById('word-ordering-questions');
-                container.innerHTML = '';
-                
-                // Create elements for each exercise
-                exercises.forEach((exercise, index) => {
-                    const listItem = document.createElement('div');
-                    listItem.className = 'word-ordering-item mb-4';
-                    listItem.id = `word-item-${index}`;
-                    listItem.setAttribute('data-correct-sentence', exercise.sentence);
-                    
-                    // Clean the sentence - remove punctuation
-                    const cleanSentence = exercise.sentence.replace(/[.,!?;:]/g, "");
-                    
-                    // Shuffle words
-                    const words = cleanSentence.split(' ').sort(() => 0.5 - Math.random());
-                    
-                    listItem.innerHTML = `
-                        <h5 class="mb-3">${index + 1}. Sắp xếp các từ sau thành một câu có nghĩa:</h5>
-                        
-                        <div class="word-bank mb-3 p-3 border rounded bg-light" id="word-bank-${index}">
-                            ${words.map(word => 
-                                `<span class="word-item badge bg-secondary text-white px-3 py-2 m-1" data-word="${word}">${word}</span>`
-                            ).join('')}
-                        </div>
-                        
-                        <div class="answer-area mb-3 p-3 border rounded min-height-60" id="answer-area-${index}">
-                            <p class="text-muted text-center mb-0 empty-message">Nhấp vào các từ ở trên để tạo câu</p>
-                        </div>
-                        
-                        <div class="feedback mt-2" style="display: none;">
-                            <div class="correct-feedback alert alert-success" style="display: none;">
-                                <i class="fas fa-check-circle me-1"></i> Chính xác! Câu của bạn đã đúng.
-                            </div>
-                            <div class="incorrect-feedback alert alert-danger" style="display: none;">
-                                <i class="fas fa-times-circle me-1"></i> Chưa đúng. Câu đúng là: 
-                                <strong class="correct-answer">${cleanSentence}</strong>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex justify-content-between mt-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary reset-sentence-btn" data-index="${index}">
-                                <i class="fas fa-redo me-1"></i> Làm lại câu này
-                            </button>
-                            <button type="button" class="btn btn-primary check-sentence-btn" data-index="${index}">
-                                <i class="fas fa-check me-1"></i> Kiểm tra
-                            </button>
-                        </div>
-                        
-                        <div class="explanation text-muted mt-2 fst-italic" style="display: none;">
-                            <i class="fas fa-info-circle me-1"></i> ${exercise.explanation}
-                        </div>
-                    `;
-                    
-                    container.appendChild(listItem);
-                    
-                    if (index < exercises.length - 1) {
-                        const divider = document.createElement('hr');
-                        divider.className = 'my-4';
-                        container.appendChild(divider);
-                    }
-                });
-                
-                // Add "Check All" button at the end
-                const checkAllButton = document.createElement('div');
-                checkAllButton.className = 'd-grid gap-2';
-                checkAllButton.innerHTML = `
-                    <button type="button" class="btn btn-primary btn-lg mt-3" id="check-all-btn">
-                        <i class="fas fa-check-circle me-2"></i> Kiểm tra tất cả
-                    </button>
-                `;
-                container.appendChild(checkAllButton);
-                
-                // Setup event listeners
-                setupEventListeners();
-            }
-            
-            // Function to set up event listeners
-            function setupEventListeners() {
-                // Set up word bank items
-                document.querySelectorAll('.word-bank').forEach((wordBank, index) => {
-                    const answerArea = document.getElementById(`answer-area-${index}`);
-                    setupWordItemEvents(wordBank, answerArea, index);
-                });
-                
-                // Set up reset buttons
-                document.querySelectorAll('.reset-sentence-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const index = parseInt(this.getAttribute('data-index'));
-                        resetSentence(index);
-                    });
-                });
-                
-                // Set up check buttons
-                document.querySelectorAll('.check-sentence-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const index = parseInt(this.getAttribute('data-index'));
-                        checkSentence(index);
-                    });
-                });
-                
-                // Set up check all button
-                document.getElementById('check-all-btn').addEventListener('click', checkAllSentences);
-            }
-            
-            // Function to set up word item events
-            function setupWordItemEvents(wordBank, answerArea, index) {
-                const wordItems = wordBank.querySelectorAll('.word-item');
-                
-                wordItems.forEach(wordItem => {
-                    wordItem.addEventListener('click', function() {
-                        // Move word from word bank to answer area
-                        const clone = this.cloneNode(true);
-                        this.style.display = 'none';
-                        
-                        // Add click event to the cloned word to move it back to word bank
-                        clone.addEventListener('click', function() {
-                            // Find the original word item and show it
-                            const word = this.getAttribute('data-word');
-                            const originalWord = wordBank.querySelector(`.word-item[data-word="${word}"]`);
-                            if (originalWord) {
-                                originalWord.style.display = 'inline-block';
-                            }
+                            // Add the cloned word to the answer area
+                            answerArea.appendChild(clone);
                             
-                            // Remove the cloned word
-                            this.remove();
-                            
-                            // Update empty message visibility
+                            // Hide empty message
                             updateEmptyMessage(answerArea);
                             
                             // Update completed status
                             updateCompletedStatus(index, answerArea);
                         });
-                        
-                        // Add the cloned word to the answer area
-                        answerArea.appendChild(clone);
-                        
-                        // Update empty message visibility
-                        updateEmptyMessage(answerArea);
-                        
-                        // Update completed status
-                        updateCompletedStatus(index, answerArea);
                     });
                 });
             }
@@ -549,6 +343,7 @@
             function updateEmptyMessage(answerArea) {
                 const emptyMessage = answerArea.querySelector('.empty-message');
                 if (emptyMessage) {
+                    // Show message if no words in answer area
                     const wordItems = answerArea.querySelectorAll('.word-item');
                     emptyMessage.style.display = wordItems.length === 0 ? 'block' : 'none';
                 }
@@ -558,8 +353,7 @@
             function updateCompletedStatus(index, answerArea) {
                 // Check if all words have been moved to the answer area
                 const wordBank = document.getElementById(`word-bank-${index}`);
-                const visibleWordItems = Array.from(wordBank.querySelectorAll('.word-item'))
-                    .filter(item => item.style.display !== 'none');
+                const visibleWordItems = Array.from(wordBank.querySelectorAll('.word-item')).filter(item => item.style.display !== 'none');
                 
                 // Mark as completed if all words have been moved
                 completed[index] = visibleWordItems.length === 0;
@@ -570,109 +364,80 @@
             
             // Function to update progress
             function updateProgress() {
-                const completedItems = completed.filter(Boolean).length;
-                const percentage = Math.round((completedItems / completed.length) * 100);
+                const completedCount = completed.filter(Boolean).length;
+                const percentage = Math.round((completedCount / completed.length) * 100);
                 
                 progressBar.style.width = `${percentage}%`;
                 progressBar.textContent = `${percentage}%`;
-                completedCount.textContent = completedItems;
+                document.getElementById('completed-count').textContent = completedCount;
             }
             
-            // Function to check a sentence
-            function checkSentence(index) {
-                const answerArea = document.getElementById(`answer-area-${index}`);
-                const wordItems = answerArea.querySelectorAll('.word-item');
-                const feedbackContainer = document.querySelector(`#word-item-${index} .feedback`);
-                const correctFeedback = feedbackContainer.querySelector('.correct-feedback');
-                const incorrectFeedback = feedbackContainer.querySelector('.incorrect-feedback');
-                const explanation = document.querySelector(`#word-item-${index} .explanation`);
-                
-                // Check if there are any words placed
-                if (wordItems.length === 0) {
-                    alert('Vui lòng đặt các từ vào ô trước khi kiểm tra!');
-                    return;
-                }
-                
-                // Get user's answer
-                const userSentence = Array.from(wordItems).map(item => item.getAttribute('data-word')).join(' ');
-                
-                // Get correct answer
-                const correctSentence = document.getElementById(`word-item-${index}`).getAttribute('data-correct-sentence').replace(/[.,!?;:]/g, "");
-                
-                // Show feedback
-                feedbackContainer.style.display = 'block';
-                explanation.style.display = 'block';
-                
-                // Check if answer is correct
-                if (userSentence.toLowerCase() === correctSentence.toLowerCase()) {
-                    correctFeedback.style.display = 'block';
-                    incorrectFeedback.style.display = 'none';
-                    answerArea.classList.add('border-success');
-                    
-                    // Update score
-                    updateScore(1);
-                } else {
-                    correctFeedback.style.display = 'none';
-                    incorrectFeedback.style.display = 'block';
-                    answerArea.classList.add('border-danger');
-                }
-                
-                // Disable word items to prevent changes after checking
-                wordItems.forEach(item => {
-                    item.style.pointerEvents = 'none';
-                });
-            }
-            
-            // Function to check all sentences
-            function checkAllSentences() {
-                // Count how many are completed
-                const notCompletedCount = completed.filter(item => !item).length;
-                
-                if (notCompletedCount > 0) {
-                    alert(`Bạn cần hoàn thành thêm ${notCompletedCount} câu nữa trước khi kiểm tra tất cả.`);
+            // Function to check answers
+            function checkAnswers() {
+                // Check if all sentences are completed
+                if (!completed.every(Boolean)) {
+                    alert('Vui lòng hoàn thành tất cả các câu trước khi kiểm tra!');
                     return;
                 }
                 
                 let correctCount = 0;
                 
                 // Check each sentence
-                exercises.forEach((_, index) => {
+                document.querySelectorAll('.word-ordering-item').forEach((item, index) => {
                     const answerArea = document.getElementById(`answer-area-${index}`);
+                    const feedbackContainer = item.querySelector('.feedback');
+                    const correctFeedback = feedbackContainer.querySelector('.correct-feedback');
+                    const incorrectFeedback = feedbackContainer.querySelector('.incorrect-feedback');
+                    const explanation = item.querySelector('.explanation');
+                    
+                    // Get user's answer
                     const wordItems = answerArea.querySelectorAll('.word-item');
                     const userSentence = Array.from(wordItems).map(item => item.getAttribute('data-word')).join(' ');
-                    const correctSentence = document.getElementById(`word-item-${index}`).getAttribute('data-correct-sentence').replace(/[.,!?;:]/g, "");
                     
+                    // Get correct answer
+                    const correctSentence = item.getAttribute('data-correct-sentence');
+                    
+                    // Show feedback
+                    feedbackContainer.style.display = 'block';
+                    explanation.style.display = 'block';
+                    
+                    // Check if answer is correct
                     if (userSentence.toLowerCase() === correctSentence.toLowerCase()) {
+                        correctFeedback.style.display = 'block';
+                        incorrectFeedback.style.display = 'none';
+                        answerArea.classList.add('correct');
                         correctCount++;
+                    } else {
+                        correctFeedback.style.display = 'none';
+                        incorrectFeedback.style.display = 'block';
+                        incorrectFeedback.querySelector('.correct-answer').textContent = correctSentence;
+                        answerArea.classList.add('incorrect');
                     }
                     
-                    // Check individual sentence
-                    checkSentence(index);
+                    // Disable word items
+                    wordItems.forEach(item => {
+                        item.style.pointerEvents = 'none';
+                    });
                 });
+                
+                // Update score
+                currentScore.textContent = correctCount;
                 
                 // Calculate time spent
                 const endTime = new Date();
-                const timeInSeconds = Math.floor((endTime - startTime) / 1000);
+                const timeDiff = Math.floor((endTime - startTime) / 1000); // in seconds
                 
                 // Show results modal
-                showResults(correctCount, exercises.length, timeInSeconds);
+                showResults(correctCount, completed.length, timeDiff);
                 
                 // Save results
-                saveResults(correctCount, exercises.length, timeInSeconds);
+                saveResults(correctCount, completed.length, timeDiff);
             }
             
-            // Function to update score
-            function updateScore(points) {
-                const currentValue = parseInt(currentScore.textContent) || 0;
-                currentScore.textContent = currentValue + points;
-            }
-            
-            // Function to reset a sentence
+            // Function to reset a specific sentence
             function resetSentence(index) {
                 const wordBank = document.getElementById(`word-bank-${index}`);
                 const answerArea = document.getElementById(`answer-area-${index}`);
-                const feedbackContainer = document.querySelector(`#word-item-${index} .feedback`);
-                const explanation = document.querySelector(`#word-item-${index} .explanation`);
                 
                 // Show all words in word bank
                 wordBank.querySelectorAll('.word-item').forEach(item => {
@@ -680,8 +445,8 @@
                 });
                 
                 // Remove all words from answer area
-                const clonedItems = answerArea.querySelectorAll('.word-item');
-                clonedItems.forEach(item => item.remove());
+                const wordItems = answerArea.querySelectorAll('.word-item');
+                wordItems.forEach(item => item.remove());
                 
                 // Show empty message
                 const emptyMessage = answerArea.querySelector('.empty-message');
@@ -695,20 +460,22 @@
                 // Update progress
                 updateProgress();
                 
-                // Hide feedback and explanation
-                feedbackContainer.style.display = 'none';
-                explanation.style.display = 'none';
+                // Reset feedback
+                const feedbackContainer = document.querySelector(`#order-item-${index} .feedback`);
+                const explanation = document.querySelector(`#order-item-${index} .explanation`);
+                if (feedbackContainer) feedbackContainer.style.display = 'none';
+                if (explanation) explanation.style.display = 'none';
                 
-                // Remove styling classes
-                answerArea.classList.remove('border-success', 'border-danger');
+                // Reset answer area styling
+                answerArea.classList.remove('correct', 'incorrect');
             }
             
-            // Function to reset entire exercise
+            // Function to reset the entire exercise
             function resetExercise() {
                 // Reset each sentence
-                exercises.forEach((_, index) => {
-                    resetSentence(index);
-                });
+                for (let i = 0; i < completed.length; i++) {
+                    resetSentence(i);
+                }
                 
                 // Reset score
                 currentScore.textContent = '0';
@@ -717,7 +484,7 @@
                 startTime = new Date();
             }
             
-            // Function to show results modal
+            // Function to show results
             function showResults(correctCount, totalCount, timeInSeconds) {
                 const percentage = Math.round((correctCount / totalCount) * 100);
                 
@@ -743,7 +510,7 @@
             
             // Function to save results
             function saveResults(correctCount, totalCount, timeInSeconds) {
-                const topicId = @(topic?.IdCd ?? 0);
+                const topicId = @(topic?.ID_CD ?? 0);
                 const exerciseType = 'word-ordering';
                 
                 // Get existing results or initialize new object
@@ -768,4 +535,32 @@
             }
         });
     </script>
+}
+
+@functions {
+    public string GetCorrectSentence(ExerciseModel exercise)
+    {
+        // Lấy câu đúng từ câu hỏi
+        return exercise.Question_BT;
+    }
+    
+    public List<string> GetShuffledWords(ExerciseModel exercise)
+    {
+        // Tách từng từ trong câu và trộn ngẫu nhiên
+        var words = exercise.Question_BT.Split(' ').ToList();
+        
+        // Trộn ngẫu nhiên từ
+        Random rng = new Random();
+        int n = words.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            string value = words[k];
+            words[k] = words[n];
+            words[n] = value;
+        }
+        
+        return words;
+    }
 }

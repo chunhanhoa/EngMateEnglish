@@ -1,6 +1,17 @@
 @model UserModel
 @{
     ViewData["Title"] = "Hồ sơ người dùng";
+    bool isEditMode = ViewContext.HttpContext.Request.Query.ContainsKey("edit");
+    string cacheBuster = DateTime.Now.Ticks.ToString();
+    string defaultAvatarPath = "/images/default-avatar.png";
+    bool hasAvatar = !string.IsNullOrEmpty(Model?.Avatar);
+    string avatarUrl = hasAvatar ? Model.Avatar : defaultAvatarPath;
+    if (!string.IsNullOrEmpty(avatarUrl) && !avatarUrl.StartsWith("/"))
+    {
+        avatarUrl = "/" + avatarUrl;
+    }
+    string avatarUrlWithTimestamp = $"{avatarUrl}?v={cacheBuster}";
+    string userIdFromClaims = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 }
 
 <div class="container mt-5">
@@ -14,29 +25,48 @@
             </nav>
         </div>
     </div>
-
+    
     @if (TempData["SuccessMessage"] != null)
     {
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
             <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
-
+    
     <div class="row">
         <!-- Profile Sidebar -->
         <div class="col-lg-4 mb-4 mb-lg-0">
             <div class="card border-0 shadow-sm text-center">
                 <div class="card-body p-4">
                     <div class="position-relative mb-4 mx-auto" style="width: 150px;">
-                        <img src="@Model.Avatar" alt="@Model.FullName" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
-                        <button class="btn btn-sm btn-primary position-absolute bottom-0 end-0" style="border-radius: 50%; width: 40px; height: 40px;" data-bs-toggle="modal" data-bs-target="#changeAvatarModal">
-                            <i class="fas fa-camera"></i>
-                        </button>
+                        <img id="avatar-preview" 
+                             src="@avatarUrlWithTimestamp" 
+                             alt="@Model?.FullName" 
+                             class="rounded-circle img-fluid avatar-image"
+                             data-userid="@userIdFromClaims"
+                             data-original-src="@avatarUrl"
+                             style="width: 150px; height: 150px; object-fit: cover;"
+                             onerror="handleAvatarError(this, '@avatarUrl', '@defaultAvatarPath')">
+                        @if (isEditMode)
+                        {
+                            <div class="image-upload">
+                                <label for="avatar-upload" class="btn btn-sm btn-primary position-absolute bottom-0 end-0" style="border-radius: 50%; width: 40px; height: 40px;">
+                                    <i class="fas fa-camera"></i>
+                                </label>
+                                <input id="avatar-upload" name="AvatarFile" type="file" style="display: none;" accept="image/*">
+                            </div>
+                        }
+                        else
+                        {
+                            <button id="edit-avatar-btn" type="button" class="btn btn-sm btn-primary position-absolute bottom-0 end-0" style="border-radius: 50%; width: 40px; height: 40px;">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        }
                     </div>
                     
-                    <h3 class="fw-bold mb-1">@Model.FullName</h3>
-                    <p class="text-muted mb-3">@Model.Email</p>
+                    <h4 class="fw-bold mb-0">@Model.FullName</h4>
+                    <p class="text-muted mb-3">@Model.Username</p>
                     
                     <div class="d-flex justify-content-center mb-3">
                         <div class="badge badge-primary py-2 px-3 me-2">
@@ -47,247 +77,244 @@
                         </div>
                     </div>
                     
-                    <a href="@Url.Action("EditProfile", "Account")" class="btn btn-primary w-100 mb-3">
-                        <i class="fas fa-edit me-2"></i> Chỉnh sửa hồ sơ
-                    </a>
-                    
                     <div class="text-start mt-4">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center border-top-0">
                                 <span class="fw-bold"><i class="fas fa-user me-2 text-primary"></i> Thông tin cá nhân</span>
-                                <a href="@Url.Action("EditProfile", "Account")" class="text-decoration-none">
-                                    <i class="fas fa-chevron-right text-muted"></i>
-                                </a>
+                                @if (!isEditMode)
+                                {
+                                    <a href="?edit=true" class="btn btn-sm btn-outline-primary px-3">
+                                        <i class="fas fa-edit me-1"></i> Chỉnh sửa
+                                    </a>
+                                }
                             </li>
                             <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
-                                <span class="fw-bold"><i class="fas fa-trophy me-2 text-primary"></i> Thành tích học tập</span>
-                                <a href="@Url.Action("Index", "Progress")" class="text-decoration-none">
-                                    <i class="fas fa-chevron-right text-muted"></i>
+                                <span class="fw-bold"><i class="fas fa-lock me-2 text-primary"></i> Bảo mật</span>
+                                <a href="@Url.Action("ChangePassword", "Account")" class="btn btn-sm btn-outline-primary px-3">
+                                    <i class="fas fa-key me-1"></i> Đổi mật khẩu
                                 </a>
-                            </li>
-                            <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
-                                <span class="fw-bold"><i class="fas fa-heart me-2 text-primary"></i> Mục yêu thích</span>
-                                <a href="@Url.Action("Favorites", "Progress")" class="text-decoration-none">
-                                    <i class="fas fa-chevron-right text-muted"></i>
-                                </a>
-                            </li>
-                            <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
-                                <span class="fw-bold"><i class="fas fa-bell me-2 text-primary"></i> Thông báo</span>
-                                <span class="badge rounded-pill bg-danger">3</span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <!-- Profile Content -->
         <div class="col-lg-8">
-            <!-- Progress Overview Card -->
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body p-4">
-                    <h3 class="fw-bold mb-4">Tiến độ học tập</h3>
-                    
-                    <div class="row g-4">
-                        <div class="col-md-4">
-                            <div class="progress-circle position-relative mx-auto" style="width: 120px; height: 120px;">
-                                <svg viewBox="0 0 36 36" class="circular-chart">
-                                    <path class="circle-bg"
-                                        d="M18 2.0845
-                                        a 15.9155 15.9155 0 0 1 0 31.831
-                                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                                        fill="none"
-                                        stroke="#eee"
-                                        stroke-width="2"/>
-                                    <path class="circle"
-                                        d="M18 2.0845
-                                        a 15.9155 15.9155 0 0 1 0 31.831
-                                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                                        fill="none"
-                                        stroke="#4e73fa"
-                                        stroke-width="2"
-                                        stroke-dasharray="@Model.VocabularyProgress, 100"/>
-                                </svg>
-                                <div class="progress-value text-center">
-                                    <h4 class="mb-0 fw-bold">@Model.VocabularyProgress%</h4>
-                                    <span class="small">Từ vựng</span>
-                                </div>
-                            </div>
+            @if (isEditMode)
+            {
+                <!-- Edit Profile Form -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3 class="fw-bold mb-0">Chỉnh sửa thông tin cá nhân</h3>
                         </div>
                         
-                        <div class="col-md-4">
-                            <div class="progress-circle position-relative mx-auto" style="width: 120px; height: 120px;">
-                                <svg viewBox="0 0 36 36" class="circular-chart">
-                                    <path class="circle-bg"
-                                        d="M18 2.0845
-                                        a 15.9155 15.9155 0 0 1 0 31.831
-                                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                                        fill="none"
-                                        stroke="#eee"
-                                        stroke-width="2"/>
-                                    <path class="circle"
-                                        d="M18 2.0845
-                                        a 15.9155 15.9155 0 0 1 0 31.831
-                                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                                        fill="none"
-                                        stroke="#5cb85c"
-                                        stroke-width="2"
-                                        stroke-dasharray="@Model.GrammarProgress, 100"/>
-                                </svg>
-                                <div class="progress-value text-center">
-                                    <h4 class="mb-0 fw-bold">@Model.GrammarProgress%</h4>
-                                    <span class="small">Ngữ pháp</span>
+                        <form asp-action="UpdateProfile" method="post" asp-antiforgery="true">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="UserId" />
+                            <input type="hidden" asp-for="Avatar" id="avatar-path" />
+                            <input type="hidden" asp-for="Email" />
+                            <input type="hidden" asp-for="Username" />
+                            <input type="hidden" asp-for="UserName" />
+                            <input type="hidden" asp-for="Level" />
+                            <input type="hidden" asp-for="Points" />
+                            <input type="hidden" asp-for="RegisterDate" />
+                            <input type="hidden" asp-for="Role" />
+                            <input type="hidden" asp-for="CreatedAt" />
+                            <input type="hidden" asp-for="IsVerified" />
+                            <input type="hidden" asp-for="PasswordHash" />
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label">Họ và tên</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        <input type="text" class="form-control" asp-for="FullName" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" asp-for="Email" readonly>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                            <div class="progress-circle position-relative mx-auto" style="width: 120px; height: 120px;">
-                                <svg viewBox="0 0 36 36" class="circular-chart">
-                                    <path class="circle-bg"
-                                        d="M18 2.0845
-                                        a 15.9155 15.9155 0 0 1 0 31.831
-                                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                                        fill="none"
-                                        stroke="#eee"
-                                        stroke-width="2"/>
-                                    <path class="circle"
-                                        d="M18 2.0845
-                                        a 15.9155 15.9155 0 0 1 0 31.831
-                                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                                        fill="none"
-                                        stroke="#f0ad4e"
-                                        stroke-width="2"
-                                        stroke-dasharray="@Model.ExerciseProgress, 100"/>
-                                </svg>
-                                <div class="progress-value text-center">
-                                    <h4 class="mb-0 fw-bold">@Model.ExerciseProgress%</h4>
-                                    <span class="small">Bài tập</span>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label">Số điện thoại</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        <input type="tel" class="form-control" asp-for="Phone">
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Recent Activity Card -->
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="fw-bold mb-0">Hoạt động gần đây</h3>
-                        <a href="@Url.Action("Index", "Progress")" class="text-decoration-none">Xem tất cả</a>
-                    </div>
-                    
-                    <div class="activity-timeline">
-                        @if(Model.RecentActivities != null && Model.RecentActivities.Any())
-                        {
-                            @foreach (var activity in Model.RecentActivities)
-                            {
-                                <div class="activity-item d-flex pb-3 mb-3 border-bottom">
-                                    <div class="activity-icon me-3 bg-primary-soft rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; min-width: 45px;">
-                                        @if (activity.Type == "TuVung")
+                                <div class="col-md-6">
+                                    <label class="form-label">Ngày sinh</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                        @if (Model.DateOfBirth.HasValue)
                                         {
-                                            <i class="fas fa-book text-primary"></i>
-                                        }
-                                        else if (activity.Type == "NguPhap")
-                                        {
-                                            <i class="fas fa-pen text-primary"></i>
-                                        }
-                                        else if (activity.Type == "BaiTap") 
-                                        {
-                                            <i class="fas fa-tasks text-primary"></i>
+                                            <input type="date" class="form-control" asp-for="DateOfBirth" value="@Model.DateOfBirth.Value.ToString("yyyy-MM-dd")">
                                         }
                                         else
                                         {
-                                            <i class="fas fa-star text-primary"></i>
+                                            <input type="date" class="form-control" asp-for="DateOfBirth">
                                         }
                                     </div>
-                                    <div class="flex-grow-1">
-                                        <h5 class="fw-bold mb-1">@activity.Title</h5>
-                                        <p class="text-muted mb-1">@activity.Description</p>
-                                        <span class="small text-muted">
-                                            <i class="far fa-clock me-1"></i> @activity.Timestamp.ToString("dd/MM/yyyy HH:mm")
-                                        </span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label">Giới tính</label>
+                                    <select class="form-select" asp-for="Gender">
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                        <option value="Khác">Khác</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Tên người dùng</label>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" asp-for="Username" placeholder="Tên người dùng">
+                                        <label>Tên người dùng</label>
                                     </div>
                                 </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-center py-4">
-                                <i class="fas fa-history text-muted fa-3x mb-3"></i>
-                                <h5>Chưa có hoạt động gần đây</h5>
-                                <p class="text-muted">Bắt đầu học để xem lịch sử hoạt động của bạn tại đây!</p>
                             </div>
-                        }
+
+                            <div class="mb-3">
+                                <label class="form-label">Địa chỉ</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                    <input type="text" class="form-control" asp-for="Address">
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Giới thiệu bản thân</label>
+                                <textarea class="form-control" asp-for="Bio" rows="4" placeholder="Viết một vài điều về bản thân..."></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2">
+                                <a href="@Url.Action("Profile")" class="btn btn-outline-secondary px-4">
+                                    <i class="fas fa-times me-1"></i> Hủy
+                                </a>
+                                <button type="submit" class="btn btn-primary px-4">
+                                    <i class="fas fa-save me-1"></i> Lưu thay đổi
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Learning Recommendations -->
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="fw-bold mb-0">Gợi ý học tập</h3>
-                        <a href="#" class="text-decoration-none">Xem thêm</a>
-                    </div>
-                    
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-sm bg-light-hover">
-                                <div class="card-body p-3">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <i class="fas fa-puzzle-piece text-primary me-2"></i>
-                                        <h5 class="fw-bold mb-0">Bài tập từ vựng</h5>
-                                    </div>
-                                    <p class="small mb-3">Luyện tập từ vựng "Food & Drinks" với các bài tập đa dạng.</p>
-                                    <a href="#" class="btn btn-sm btn-primary w-100">Làm ngay</a>
-                                </div>
-                            </div>
+            }
+            else
+            {
+                <!-- User Info Card -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3 class="fw-bold mb-0">Thông tin cá nhân</h3>
+                            <a href="?edit=true" class="btn btn-sm btn-outline-primary px-3">
+                                <i class="fas fa-edit me-1"></i> Chỉnh sửa
+                            </a>
                         </div>
                         
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-sm bg-light-hover">
-                                <div class="card-body p-3">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <i class="fas fa-book-open text-primary me-2"></i>
-                                        <h5 class="fw-bold mb-0">Ngữ pháp thì tương lai</h5>
-                                    </div>
-                                    <p class="small mb-3">Học các cấu trúc thì tương lai đơn và tương lai gần.</p>
-                                    <a href="#" class="btn btn-sm btn-primary w-100">Bắt đầu học</a>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <label>Họ và tên</label>
+                                    <p>@Model.FullName</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <label>Email</label>
+                                    <p>@Model.Email</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <label>Số điện thoại</label>
+                                    <p>@(string.IsNullOrEmpty(Model.Phone) ? "Chưa cập nhật" : Model.Phone)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <label>Ngày sinh</label>
+                                    <p>@(Model.DateOfBirth.HasValue ? Model.DateOfBirth.Value.ToString("dd/MM/yyyy") : "Chưa cập nhật")</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <label>Giới tính</label>
+                                    <p>@(string.IsNullOrEmpty(Model.Gender) ? "Chưa cập nhật" : Model.Gender)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <label>Tên người dùng</label>
+                                    <p>@Model.Username</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="info-item">
+                                    <label>Địa chỉ</label>
+                                    <p>@(string.IsNullOrEmpty(Model.Address) ? "Chưa cập nhật" : Model.Address)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="info-item">
+                                    <label>Giới thiệu bản thân</label>
+                                    <p>@(string.IsNullOrEmpty(Model.Bio) ? "Chưa cập nhật" : Model.Bio)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="info-item">
+                                    <label>Thông tin tài khoản</label>
+                                    <p>Đã tham gia @(Model.CreatedAt.Year < DateTime.Now.Year 
+                                       ? $"{DateTime.Now.Year - Model.CreatedAt.Year} năm trước" 
+                                       : "trong năm nay")</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>
 
-<!-- Modal đổi ảnh đại diện -->
-<div class="modal fade" id="changeAvatarModal" tabindex="-1" aria-labelledby="changeAvatarModalLabel" aria-hidden="true">
+<!-- Avatar Edit Modal -->
+<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header border-0">
-                <h5 class="modal-title" id="changeAvatarModalLabel">Đổi ảnh đại diện</h5>
+            <div class="modal-header">
+                <h5 class="modal-title" id="avatarModalLabel">Cập nhật ảnh đại diện</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="text-center mb-4">
-                    <img src="@Model.Avatar" alt="@Model.FullName" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;" id="avatarPreview">
+            <div class="modal-body text-center">
+                <div class="avatar-preview mb-3">
+                    <img src="@avatarUrlWithTimestamp" id="modal-avatar-preview" 
+                         class="rounded-circle img-thumbnail avatar-image" 
+                         style="width: 200px; height: 200px; object-fit: cover;" 
+                         data-userid="@userIdFromClaims"
+                         data-original-src="@avatarUrl"
+                         onerror="handleAvatarError(this, '@avatarUrl', '@defaultAvatarPath')">
                 </div>
-                <form id="avatarForm">
-                    @Html.AntiForgeryToken()
-                    <div class="mb-3">
-                        <label for="avatarFile" class="form-label">Chọn ảnh mới</label>
-                        <input class="form-control" type="file" id="avatarFile" accept="image/*">
-                    </div>
-                </form>
+                
+                <div class="mb-3">
+                    <label for="modal-avatar-upload" class="btn btn-outline-primary">
+                        <i class="fas fa-upload me-2"></i> Chọn ảnh
+                    </label>
+                    <input id="modal-avatar-upload" type="file" accept="image/*" style="display: none;">
+                </div>
             </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
-                <button type="button" class="btn btn-primary" id="saveAvatar">Lưu thay đổi</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" id="save-avatar-btn">Lưu thay đổi</button>
             </div>
         </div>
     </div>
@@ -295,158 +322,163 @@
 
 @section Styles {
     <style>
-        .progress-circle {
-            margin: 0 auto;
-        }
-        
-        .circular-chart {
-            display: block;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        
-        .circle-bg {
-            fill: none;
-            stroke: #eee;
-            stroke-width: 2;
-        }
-        
-        .circle {
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            animation: progress 1s ease-out forwards;
-        }
-        
-        .progress-value {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        @@keyframes progress {
-            0% {
-                stroke-dasharray: 0 100;
-            }
-        }
-        
-        .activity-timeline .activity-item:last-child {
-            border-bottom: none !important;
-            margin-bottom: 0 !important;
-            padding-bottom: 0 !important;
-        }
-        
-        .bg-primary-soft {
-            background-color: rgba(78, 115, 250, 0.1);
-        }
-        
-        .bg-success-soft {
-            background-color: rgba(92, 184, 92, 0.1);
-        }
-        
-        .bg-warning-soft {
-            background-color: rgba(240, 173, 78, 0.1);
-        }
-        
-        .bg-light-hover:hover {
-            background-color: #f8f9fa !important;
-            transition: all 0.3s ease;
-        }
-        
-        .badge-primary {
-            background-color: #4e73fa;
-            color: white;
-        }
-        
-        .badge-success {
-            background-color: #5cb85c;
-            color: white;
-        }
+        .progress-circle { margin: 0 auto; }
+        .circular-chart { display: block; max-width: 100%; max-height: 100%; }
+        .circle-bg { fill: none; stroke: #eee; stroke-width: 2; }
+        .circle { fill: none; stroke-width: 2; stroke-linecap: round; animation: progress 1s ease-out forwards; }
+        .progress-value { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        @@keyframes progress { 0% { stroke-dasharray: 0 100; } }
+        .avatar-error { border: 2px solid #ffcccb; opacity: 0.8; }
+        .avatar-success { border: 2px solid #d4edda; }
+        img.avatar-loading { position: relative; background-color: #f8f9fa; animation: pulse 1.5s infinite ease-in-out; }
+        @@keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+        .activity-timeline .activity-item:last-child { border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+        .bg-primary-soft { background-color: rgba(78, 115, 250, 0.1); }
+        .bg-success-soft { background-color: rgba(92, 184, 92, 0.1); }
+        .bg-warning-soft { background-color: rgba(240, 173, 78, 0.1); }
+        .bg-light-hover:hover { background-color: #f8f9fa !important; transition: all 0.3s ease; }
+        .info-item { margin-bottom: 0.5rem; }
+        .info-item label { display: block; color: #6c757d; font-size: 0.875rem; margin-bottom: 0.25rem; }
+        .info-item p { font-weight: 500; margin-bottom: 0; }
+        .image-upload { cursor: pointer; }
+        .image-upload:hover .btn { opacity: 0.9; }
+        .form-control:focus, .form-select:focus { border-color: #4e73fa; box-shadow: 0 0 0 0.25rem rgba(78, 115, 250, 0.25); }
     </style>
 }
 
 @section Scripts {
     <script>
-        // Hiển thị xem trước ảnh đại diện
-        document.getElementById('avatarFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('avatarPreview').src = e.target.result;
+        // Avatar upload preview trong form
+        const avatarUpload = document.getElementById('avatar-upload');
+        if (avatarUpload) {
+            avatarUpload.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.querySelector('#avatar-preview').src = e.target.result;
+                        document.querySelector('#avatar-path').value = e.target.result;
+                    }
+                    reader.readAsDataURL(this.files[0]);
                 }
-                reader.readAsDataURL(file);
-            }
-        });
-        
-        // Xử lý lưu ảnh đại diện
-        document.getElementById('saveAvatar').addEventListener('click', function() {
-            const fileInput = document.getElementById('avatarFile');
-            if (fileInput.files.length === 0) {
-                alert('Vui lòng chọn ảnh trước khi lưu.');
-                return;
-            }
-            
-            // Tạo form data để gửi
-            const formData = new FormData();
-            formData.append('avatar', fileInput.files[0]);
-            
-            // Hiển thị trạng thái đang tải
-            const saveButton = this;
-            const originalText = saveButton.innerHTML;
-            saveButton.disabled = true;
-            saveButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang tải...';
-            
-            // Gửi yêu cầu đến server
-            fetch('@Url.Action("UploadAvatar", "Account")', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Cập nhật ảnh đại diện trên trang
-                    document.querySelectorAll('img[alt="@Model.FullName"]').forEach(img => {
-                        img.src = data.avatarUrl;
-                    });
-                    
-                    // Hiển thị thông báo thành công
-                    const notification = $(`
-                        <div class="position-fixed top-0 end-0 p-3" style="z-index: 1050">
-                            <div class="toast show bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
-                                <div class="toast-header bg-success text-white">
-                                    <strong class="me-auto">Thông báo</strong>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-                                </div>
-                                <div class="toast-body">
-                                    ${data.message}
-                                </div>
-                            </div>
-                        </div>
-                    `);
-                    
-                    $('body').append(notification);
-                    setTimeout(() => notification.fadeOut(500, function() { $(this).remove(); }), 3000);
-                    
-                    // Đóng modal
-                    $('#changeAvatarModal').modal('hide');
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Đã xảy ra lỗi khi tải ảnh lên. Vui lòng thử lại.');
-            })
-            .finally(() => {
-                // Khôi phục nút
-                saveButton.disabled = false;
-                saveButton.innerHTML = originalText;
             });
+        }
+
+        // Avatar edit button (non-edit mode)
+        const editAvatarBtn = document.getElementById('edit-avatar-btn');
+        if (editAvatarBtn) {
+            editAvatarBtn.addEventListener('click', function() {
+                const avatarModal = new bootstrap.Modal(document.getElementById('avatarModal'));
+                avatarModal.show();
+            });
+        }
+
+        // Modal avatar upload
+        const modalAvatarUpload = document.getElementById('modal-avatar-upload');
+        if (modalAvatarUpload) {
+            modalAvatarUpload.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.querySelector('#modal-avatar-preview').src = e.target.result;
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        }
+
+        // Save avatar button in modal
+        const saveAvatarBtn = document.getElementById('save-avatar-btn');
+        if (saveAvatarBtn) {
+            saveAvatarBtn.addEventListener('click', function() {
+                const originalButtonText = this.innerHTML;
+                this.disabled = true;
+                this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang lưu...';
+
+                const newAvatarSrc = document.querySelector('#modal-avatar-preview').src;
+                const token = document.querySelector('form input[name="__RequestVerificationToken"]')?.value;
+
+                fetch('@Url.Action("UpdateAvatar", "Account")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token || ''
+                    },
+                    body: JSON.stringify({ avatarData: newAvatarSrc })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Cập nhật ảnh đại diện thành công!', 'success');
+                        bootstrap.Modal.getInstance(document.getElementById('avatarModal')).hide();
+                        if (data.reload) {
+                            setTimeout(() => window.location.reload(), 1000);
+                        }
+                    } else {
+                        showNotification('Có lỗi xảy ra: ' + data.message, 'error');
+                        this.disabled = false;
+                        this.innerHTML = originalButtonText;
+                    }
+                })
+                .catch(error => {
+                    showNotification('Có lỗi xảy ra khi cập nhật ảnh đại diện: ' + error.message, 'error');
+                    this.disabled = false;
+                    this.innerHTML = originalButtonText;
+                });
+            });
+        }
+
+        // Auto-dismiss alerts
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+                if (bsAlert) bsAlert.close();
+            }, 5000);
         });
+
+        // Hiển thị thông báo
+        function showNotification(message, type) {
+            document.querySelectorAll('.notification-toast').forEach(n => n.remove());
+            const notificationDiv = document.createElement('div');
+            notificationDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show notification-toast position-fixed`;
+            notificationDiv.style.top = '20px';
+            notificationDiv.style.right = '20px';
+            notificationDiv.style.zIndex = '9999';
+            notificationDiv.style.minWidth = '300px';
+            notificationDiv.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+            notificationDiv.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i> ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(notificationDiv);
+            setTimeout(() => {
+                try {
+                    bootstrap.Alert.getOrCreateInstance(notificationDiv).close();
+                } catch (e) {
+                    notificationDiv.remove();
+                }
+            }, 5000);
+        }
+
+        // Thêm kiểm tra form trước khi submit
+        const profileForm = document.querySelector('form[asp-action="UpdateProfile"]');
+        if (profileForm) {
+            profileForm.addEventListener('submit', function(e) {
+                const requiredFields = profileForm.querySelectorAll('[required]');
+                let isValid = true;
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('is-invalid');
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+                if (!isValid) {
+                    e.preventDefault();
+                    showNotification('Vui lòng điền đầy đủ thông tin bắt buộc', 'error');
+                }
+            });
+        }
     </script>
 }

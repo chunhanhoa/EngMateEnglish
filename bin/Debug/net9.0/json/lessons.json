@@ -1,0 +1,44 @@
+[
+  {
+    "LessonId": 1,
+    "Title": "Giới thiệu về động vật",
+    "Description": "Bài học về các loài động vật và đặc điểm của chúng",
+    "Content": "<h2>Các loại động vật</h2><p>Bài học này giới thiệu các loài động vật phổ biến và cách mô tả chúng trong tiếng Anh.</p>",
+    "TopicId": 1,
+    "Level": "A1",
+    "Duration": 30,
+    "CreatedDate": {"$date": "2023-08-01T10:00:00Z"},
+    "VideoUrl": "/videos/animals-intro.mp4",
+    "Order": 1,
+    "IsPublished": true,
+    "AuthorId": "teacher456"
+  },
+  {
+    "LessonId": 2,
+    "Title": "Món ăn và đồ uống",
+    "Description": "Học về các món ăn và đồ uống phổ biến",
+    "Content": "<h2>Món ăn và đồ uống</h2><p>Trong bài học này, bạn sẽ học các từ vựng về đồ ăn và cách đặt món trong nhà hàng.</p>",
+    "TopicId": 2,
+    "Level": "A1",
+    "Duration": 25,
+    "CreatedDate": {"$date": "2023-08-15T14:30:00Z"},
+    "VideoUrl": "/videos/food-intro.mp4",
+    "Order": 1,
+    "IsPublished": true,
+    "AuthorId": "teacher456"
+  },
+  {
+    "LessonId": 3,
+    "Title": "Đồ dùng học tập",
+    "Description": "Học về các đồ dùng học tập phổ biến",
+    "Content": "<h2>Đồ dùng học tập</h2><p>Bài học này giới thiệu các đồ dùng học tập và cách sử dụng chúng.</p>",
+    "TopicId": 3,
+    "Level": "A1",
+    "Duration": 20,
+    "CreatedDate": {"$date": "2023-09-05T09:15:00Z"},
+    "VideoUrl": "/videos/school-supplies.mp4",
+    "Order": 1,
+    "IsPublished": true,
+    "AuthorId": "teacher456"
+  }
+]

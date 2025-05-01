@@ -1,0 +1,35 @@
+[
+  {
+    "ID_CD": 1,
+    "Name_CD": "Animals",
+    "Description_CD": "Từ vựng về các loài động vật phổ biến",
+    "Image_CD": "/images/topics/animals.jpg",
+    "Level": "A1",
+    "TotalItems": 15,
+    "IconPath": "/images/icons/animals.png",
+    "WordCount": 15,
+    "BackgroundColor": "#f8d7da"
+  },
+  {
+    "ID_CD": 2,
+    "Name_CD": "Food & Drinks",
+    "Description_CD": "Từ vựng về đồ ăn và thức uống",
+    "Image_CD": "/images/topics/food.jpg",
+    "Level": "A1",
+    "TotalItems": 20,
+    "IconPath": "/images/icons/food.png",
+    "WordCount": 20,
+    "BackgroundColor": "#d1e7dd"
+  },
+  {
+    "ID_CD": 3,
+    "Name_CD": "School",
+    "Description_CD": "Từ vựng về trường học và học tập",
+    "Image_CD": "/images/topics/school.jpg",
+    "Level": "A1",
+    "TotalItems": 18,
+    "IconPath": "/images/icons/school.png",
+    "WordCount": 18,
+    "BackgroundColor": "#cff4fc"
+  }
+]

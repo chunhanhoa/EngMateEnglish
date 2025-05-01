@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize animations for elements with specific classes
     initializeAnimations();
     
-    // Add scroll animations
-    addScrollAnimations();
-    
     // Add hover effects
     addHoverEffects();
+    
+    // Add scroll animations
+    initScrollAnimations();
     
     // Add audio button functionality
     setupAudioButtons();
@@ -17,108 +17,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize animations
 function initializeAnimations() {
-    // Topic cards animation
-    const topicCards = document.querySelectorAll('.topic-card');
-    
-    topicCards.forEach((card, index) => {
-        // Add a slight delay to each card for a staggered effect
-        gsap.from(card, {
-            duration: 0.6,
-            opacity: 0,
-            y: 30,
-            delay: 0.2 + (index * 0.1),
-            ease: "power2.out"
-        });
-    });
-    
-    // Vocabulary cards animation
-    const vocabularyCards = document.querySelectorAll('.vocabulary-card');
-    
-    vocabularyCards.forEach((card, index) => {
-        gsap.from(card, {
-            duration: 0.6,
-            opacity: 0,
-            y: 20,
-            delay: 0.3 + (index * 0.1),
-            ease: "power2.out"
-        });
-    });
-    
-    // Main page hero section animation
-    const heroTitle = document.querySelector('.hero-title');
-    const heroText = document.querySelector('.hero-text');
+    // Tìm các phần tử cần hiển thị
+    const heroTitle = document.querySelector('.hero-section h1');
+    const heroText = document.querySelector('.hero-section p');
     const heroButtons = document.querySelectorAll('.hero-section .btn');
     
+    // Hiển thị ngay lập tức thay vì animation
     if (heroTitle) {
-        gsap.from(heroTitle, {
-            duration: 1,
-            y: 50,
-            opacity: 0,
-            ease: "power3.out"
-        });
+        heroTitle.style.opacity = 1;
+        heroTitle.style.transform = 'translateY(0)';
     }
     
     if (heroText) {
-        gsap.from(heroText, {
-            duration: 1,
-            y: 30,
-            opacity: 0,
-            delay: 0.3,
-            ease: "power3.out"
-        });
+        heroText.style.opacity = 1;
+        heroText.style.transform = 'translateY(0)';
     }
     
     if (heroButtons.length > 0) {
-        gsap.from(heroButtons, {
-            duration: 0.8,
-            y: 20,
-            opacity: 0,
-            stagger: 0.2,
-            delay: 0.6,
-            ease: "power3.out"
+        heroButtons.forEach(button => {
+            button.style.opacity = 1;
+            button.style.transform = 'translateY(0)';
         });
     }
-}
 
-// Add scroll animations
-function addScrollAnimations() {
-    // Animate elements when they come into view
-    const elementsToAnimate = document.querySelectorAll('.card, .topic-card, h2, .lead');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // If element is h2 or lead, fade in from bottom
-                if (entry.target.tagName === 'H2' || entry.target.classList.contains('lead')) {
-                    gsap.fromTo(entry.target, 
-                        {opacity: 0, y: 30}, 
-                        {duration: 0.8, opacity: 1, y: 0, ease: "power2.out"}
-                    );
-                } 
-                // For cards, add a scale + fade animation
-                else if (entry.target.classList.contains('card') || entry.target.classList.contains('topic-card')) {
-                    gsap.fromTo(entry.target, 
-                        {opacity: 0, y: 20, scale: 0.95}, 
-                        {duration: 0.6, opacity: 1, y: 0, scale: 1, ease: "back.out(1.7)"}
-                    );
-                }
-                
-                // Once the animation is complete, stop observing this element
-                observer.unobserve(entry.target);
-            }
+    // Hiển thị ngay các danh sách chủ đề và từ vựng
+    const topicCards = document.querySelectorAll('.topic-card, .vocabulary-card');
+    if (topicCards.length > 0) {
+        topicCards.forEach(card => {
+            card.style.opacity = 1;
+            card.style.transform = 'translateY(0)';
         });
-    }, {
-        threshold: 0.1, // Trigger when at least 10% of the element is visible
-        rootMargin: "0px 0px -10% 0px" // Slightly offset to trigger before the element is fully in view
-    });
-    
-    elementsToAnimate.forEach(element => {
-        observer.observe(element);
-    });
+    }
 }
 
 // Add hover effects
 function addHoverEffects() {
+    // Vẫn giữ hiệu ứng hover nhưng loại bỏ animation khi load
+    const cards = document.querySelectorAll('.feature-card, .topic-card');
+    
     // Audio buttons hover effect
     const audioButtons = document.querySelectorAll('.audio-btn');
     
@@ -145,10 +81,14 @@ function addHoverEffects() {
         });
     });
     
-    // Vocabulary cards hover effect
+    // Vocabulary cards hover effect - giữ nguyên hiệu ứng hover
     const vocabularyCards = document.querySelectorAll('.vocabulary-card');
     
     vocabularyCards.forEach(card => {
+        // Set hiển thị mặc định ngay lập tức
+        card.style.opacity = 1;
+        card.style.transform = 'translateY(0)';
+        
         card.addEventListener('mouseenter', () => {
             gsap.to(card, {duration: 0.3, y: -5, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)", ease: "power2.out"});
         });
@@ -156,6 +96,17 @@ function addHoverEffects() {
         card.addEventListener('mouseleave', () => {
             gsap.to(card, {duration: 0.3, y: 0, boxShadow: "0 5px 15px rgba(0, 0, 0, 0.05)", ease: "power2.out"});
         });
+    });
+}
+
+// Sửa đổi phần scroll animation để không có hiệu ứng fading
+function initScrollAnimations() {
+    const elementsToAnimate = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+    
+    elementsToAnimate.forEach(element => {
+        // Hiển thị ngay lập tức không cần scroll trigger
+        element.style.opacity = 1;
+        element.style.transform = 'translateY(0) translateX(0)';
     });
 }
 

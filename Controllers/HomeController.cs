@@ -1,35 +1,47 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using TiengAnh.Data;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using TiengAnh.Models;
+using TiengAnh.Repositories;
+using TiengAnh.Services;
+using MongoDB.Driver;
 
 namespace TiengAnh.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly HocTiengAnhContext _context;
+        private readonly ITopicRepository _topicRepository;
 
-        public HomeController(ILogger<HomeController> logger, HocTiengAnhContext context)
+        public HomeController(MongoDbService mongoDbService, ILogger<HomeController> logger, ITopicRepository topicRepository) 
+            : base(mongoDbService)
         {
             _logger = logger;
-            _context = context;
+            _topicRepository = topicRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            // Lấy danh sách chủ đề từ database
-            var chuDes = await _context.ChuDes.ToListAsync();
+            _logger.LogInformation("Tải dữ liệu chủ đề cho trang chủ");
+            var topics = await _topicRepository.GetAllAsync();
             
-            // Truyền dữ liệu chủ đề vào ViewBag để sử dụng trong giao diện phong phú
-            ViewBag.Topics = chuDes;
+            // Log để kiểm tra số lượng chủ đề được tải
+            _logger.LogInformation("Đã tìm thấy {Count} chủ đề từ database", topics.Count);
             
-            // Vẫn truyền Model như cũ để tương thích với code hiện tại
-            return View(chuDes);
+            return View(topics);
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult About()
         {
             return View();
         }

@@ -4,46 +4,55 @@
 }
 
 <!-- Hero Section -->
-<section class="hero-section" style="padding: 3rem 0;">
+<section class="hero-section py-5 mb-4 bg-light rounded-3">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-7 fade-in-left">
-                <h1 class="animate__animated animate__fadeInUp">Luyện tập tiếng Anh</h1>
-                <p class="animate__animated animate__fadeInUp animate__delay-1s">
-                    Thực hành và kiểm tra kiến thức của bạn với các bài tập đa dạng, từ trắc nghiệm đơn giản </p>
+            <div class="col-md-7">
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold mb-3">Luyện tập tiếng Anh</h1>
+                    <p class="lead mb-4">
+                        Thực hành và kiểm tra kiến thức của bạn với các bài tập đa dạng, từ trắc nghiệm đơn giản 
+                        đến các bài tập tương tác. Luyện tập là chìa khóa để thành thạo tiếng Anh!
+                    </p>
+                </div>
             </div>
-            <div class="col-md-5 text-center fade-in-right">
-                <img src="~/images/exercise-hero.png" alt="Exercise Learning" class="hero-image animate__animated animate__bounceIn animate__delay-1s" style="max-height: 250px;" />
+            <div class="col-md-5 text-center">
+                <div class="text-center">
+                    <img src="~/images/exercise-hero.png" alt="Exercise Learning" class="hero-image img-fluid" style="max-height: 300px;">
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Exercise Categories -->
-<section class="py-5">
+<section class="py-5" id="exercise-categories">
     <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold mb-3">Danh mục bài tập</h2>
-            <p class="lead">Chọn một chủ đề để bắt đầu luyện tập</p>
+        <div class="section-header text-center mb-5">
+            <h2 class="display-5 fw-bold">Danh mục bài tập</h2>
+            <div class="divider mx-auto my-3"></div>
+            <p class="lead text-muted">Chọn một chủ đề để bắt đầu luyện tập phù hợp với nhu cầu của bạn</p>
         </div>
 
         <div class="row g-4">
             @foreach (var topic in Model)
             {
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 exercise-card shadow-sm">
                         <div class="card-body p-4">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
-                                    <img src="@topic.IconPath" alt="@topic.Name_CD" width="30" height="30">
+                                <div class="topic-icon-wrapper me-3">
+                                    <img src="@topic.IconPath" alt="@topic.Name_CD" class="topic-icon">
                                 </div>
-                                <h3 class="card-title mb-0 fw-bold">@topic.Name_CD</h3>
+                                <h3 class="card-title h4 fw-bold mb-0">@topic.Name_CD</h3>
                             </div>
-                            <p class="card-text mb-4">@topic.Description_CD</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="badge badge-primary">@topic.WordCount bài tập</span>
-                                <a href="@Url.Action("Topic", "Exercise", new { id = topic.ID_CD })" class="btn btn-primary">
-                                    Làm bài
+                            <p class="card-text text-muted mb-4">@topic.Description_CD</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="badge bg-light text-dark">
+                                    <i class="fas fa-list-ul me-1"></i> @topic.WordCount câu hỏi
+                                </span>
+                                <a href="@Url.Action("Topic", "Exercise", new { id = topic.ID_CD })" class="btn btn-outline-primary">
+                                    <i class="fas fa-arrow-right me-1"></i> Làm bài
                                 </a>
                             </div>
                         </div>
@@ -55,46 +64,47 @@
 </section>
 
 <!-- Exercise Types -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-light rounded-3">
     <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold mb-3">Các loại bài tập</h2>
-            <p class="lead">EngMate cung cấp nhiều loại bài tập đa dạng phù hợp với nhiều trình độ</p>
+        <div class="section-header text-center mb-5">
+            <h2 class="display-5 fw-bold">Các loại bài tập</h2>
+            <div class="divider mx-auto my-3"></div>
+            <p class="lead text-muted">EngMate cung cấp nhiều loại bài tập đa dạng phù hợp với nhiều trình độ</p>
         </div>
 
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                            <i class="fas fa-tasks text-primary fa-2x"></i>
-                        </div>
-                        <h4 class="card-title">Trắc nghiệm</h4>
-                        <p class="card-text">Kiểm tra kiến thức với các câu hỏi trắc nghiệm đơn giản. Phù hợp cho người mới bắt đầu.</p>
+                <div class="exercise-type-card">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="content">
+                        <h4 class="mb-3">Trắc nghiệm</h4>
+                        <p class="text-muted">Kiểm tra kiến thức với các câu hỏi trắc nghiệm đơn giản. Phù hợp cho người mới bắt đầu.</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                            <i class="fas fa-puzzle-piece text-primary fa-2x"></i>
-                        </div>
-                        <h4 class="card-title">Điền từ</h4>
-                        <p class="card-text">Hoàn thành câu bằng cách điền từ thích hợp. Giúp cải thiện từ vựng và ngữ pháp.</p>
+                <div class="exercise-type-card">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="content">
+                        <h4 class="mb-3">Điền từ</h4>
+                        <p class="text-muted">Hoàn thành câu bằng cách điền từ thích hợp. Giúp cải thiện từ vựng và ngữ pháp.</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                            <i class="fas fa-sort text-primary fa-2x"></i>
-                        </div>
-                        <h4 class="card-title">Sắp xếp câu</h4>
-                        <p class="card-text">Sắp xếp các từ để tạo thành câu có nghĩa. Luyện tập cấu trúc ngữ pháp và từ vựng.</p>
+                <div class="exercise-type-card">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-sort"></i>
+                    </div>
+                    <div class="content">
+                        <h4 class="mb-3">Sắp xếp câu</h4>
+                        <p class="text-muted">Sắp xếp các từ để tạo thành câu có nghĩa. Luyện tập cấu trúc ngữ pháp và từ vựng.</p>
                     </div>
                 </div>
             </div>
@@ -103,33 +113,235 @@
 </section>
 
 <!-- Exercise Tips -->
-<section class="py-5 bg-primary text-white text-center">
+<section class="py-5">
     <div class="container">
-        <h2 class="display-5 fw-bold mb-4">Mẹo làm bài tập hiệu quả</h2>
-        <p class="lead mb-5">Để đạt kết quả tốt nhất khi làm bài tập</p>
+        <div class="section-header text-center mb-5">
+            <h2 class="display-5 fw-bold">Mẹo làm bài tập hiệu quả</h2>
+            <div class="divider mx-auto my-3"></div>
+            <p class="lead text-muted mb-5">Để đạt kết quả tốt nhất khi làm bài tập</p>
+        </div>
 
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="p-4 bg-white bg-opacity-10 rounded-3 h-100">
-                    <i class="fas fa-clock fa-3x mb-3 text-warning"></i>
-                    <h4 class="mb-3">Thực hành đều đặn</h4>
-                    <p class="mb-0">Dành ít nhất 15-20 phút mỗi ngày để làm bài tập. Sự đều đặn sẽ mang lại hiệu quả cao.</p>
+            <div class="col-md-6 col-lg-3">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>Thực hành đều đặn</h4>
+                    <p>Dành ít nhất 15-20 phút mỗi ngày để làm bài tập. Sự đều đặn sẽ mang lại hiệu quả cao.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="p-4 bg-white bg-opacity-10 rounded-3 h-100">
-                    <i class="fas fa-search fa-3x mb-3 text-warning"></i>
-                    <h4 class="mb-3">Xem lại lỗi sai</h4>
-                    <p class="mb-0">Đừng bỏ qua lỗi sai. Hãy xem lại và hiểu rõ lý do bạn mắc lỗi để tránh lặp lại.</p>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>Xem lại lỗi sai</h4>
+                    <p>Đừng bỏ qua lỗi sai. Hãy xem lại và hiểu rõ lý do bạn mắc lỗi để tránh lặp lại.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="p-4 bg-white bg-opacity-10 rounded-3 h-100">
-                    <i class="fas fa-level-up-alt fa-3x mb-3 text-warning"></i>
-                    <h4 class="mb-3">Tăng dần độ khó</h4>
-                    <p class="mb-0">Bắt đầu với các bài tập dễ và tăng dần độ khó. Điều này giúp xây dựng sự tự tin và kiến thức.</p>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-level-up-alt"></i>
+                    </div>
+                    <h4>Tăng dần độ khó</h4>
+                    <p>Bắt đầu với các bài tập dễ và tăng dần độ khó. Điều này giúp xây dựng sự tự tin và kiến thức.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-sticky-note"></i>
+                    </div>
+                    <h4>Ghi chú từ mới</h4>
+                    <p>Luôn ghi chú lại những từ mới bạn gặp trong bài tập. Điều này giúp mở rộng vốn từ vựng của bạn.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    /* General Styles */
+    .display-4 {
+        font-size: 2.5rem;
+        letter-spacing: -0.5px;
+    }
+    
+    .divider {
+        height: 4px;
+        width: 70px;
+        background-color: var(--bs-primary);
+        border-radius: 2px;
+    }
+    
+    .bg-primary-soft {
+        background-color: rgba(13, 110, 253, 0.1);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+    }
+    
+    .hero-image {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    @@keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+    
+    /* Exercise Cards */
+    .exercise-card {
+        transition: all 0.3s ease;
+        border-radius: 16px;
+    }
+    
+    .exercise-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    
+    .topic-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(13, 110, 253, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .topic-icon {
+        width: 25px;
+        height: 25px;
+    }
+    
+    /* Exercise Type Cards */
+    .exercise-type-card {
+        display: flex;
+        align-items: flex-start;
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .exercise-type-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .exercise-type-card .icon-wrapper {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        background-color: rgba(13, 110, 253, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+    }
+    
+    .exercise-type-card .icon-wrapper i {
+        font-size: 24px;
+        color: var(--bs-primary);
+    }
+    
+    .exercise-type-card .content {
+        flex: 1;
+    }
+    
+    /* Tip Cards */
+    .tip-card {
+        background-color: #ffffff;
+        padding: 30px 20px;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        text-align: center;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .tip-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .tip-card .tip-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: rgba(13, 110, 253, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+    }
+    
+    .tip-card .tip-icon i {
+        font-size: 28px;
+        color: var(--bs-primary);
+    }
+    
+    .tip-card h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    
+    .tip-card p {
+        color: #6c757d;
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+    
+    /* Section Headers */
+    .section-header {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Responsive Adjustments */
+    @@media (max-width: 991px) {
+        .exercise-type-card {
+            padding: 20px;
+        }
+        
+        .exercise-type-card .icon-wrapper {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .tip-card {
+            padding: 25px 15px;
+        }
+        
+        .tip-card .tip-icon {
+            width: 60px;
+            height: 60px;
+        }
+    }
+    
+    @@media (max-width: 767px) {
+        .exercise-type-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .exercise-type-card .icon-wrapper {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+    }
+</style>

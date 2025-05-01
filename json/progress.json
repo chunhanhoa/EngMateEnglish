@@ -1,0 +1,38 @@
+[
+  {
+    "UserId": "user123",
+    "VocabularyProgress": 35,
+    "GrammarProgress": 42,
+    "ExerciseProgress": 28,
+    "TotalPoints": 450,
+    "Level": "A2",
+    "LastCompletedItems": [
+      {
+        "Id": 1,
+        "Type": "Vocabulary",
+        "Title": "Animals",
+        "CompletedDate": {"$date": "2023-09-20T15:30:00Z"},
+        "Score": 80
+      },
+      {
+        "Id": 2,
+        "Type": "Grammar",
+        "Title": "Present Simple",
+        "CompletedDate": {"$date": "2023-09-22T10:45:00Z"},
+        "Score": 75
+      }
+    ],
+    "CompletedTopics": [
+      {
+        "TopicId": 1,
+        "TopicName": "Animals",
+        "CompletionPercentage": 80
+      },
+      {
+        "TopicId": 2,
+        "TopicName": "Food & Drinks",
+        "CompletionPercentage": 50
+      }
+    ]
+  }
+]

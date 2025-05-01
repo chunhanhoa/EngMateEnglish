@@ -137,8 +137,10 @@ body {
 .topic-card {
     border-radius: 15px;
     padding: 1.5rem;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease;
     height: 100%;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .topic-card.animals {
@@ -162,8 +164,8 @@ body {
 }
 
 .topic-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: none;
 }
 
 .topic-card .topic-icon {
@@ -202,13 +204,11 @@ body {
 
 .hero-image {
     max-width: 100%;
-    animation: float 4s ease-in-out infinite;
+    animation: none;
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0%, 50%, 100% { transform: translateY(0px); }
 }
 
 /* Vocabulary card */
@@ -218,15 +218,14 @@ body {
     margin-bottom: 1.5rem;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: block !important;
+    transition: box-shadow 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .vocabulary-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: none;
 }
 
 .vocabulary-card .word {
@@ -277,12 +276,106 @@ body {
     transform: scale(1.1);
 }
 
+/* Vocabulary Card Styles */
+.vocabulary-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+    height: 100%;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.vocabulary-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: none;
+}
+
+.vocabulary-card .word {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.vocabulary-card .meaning {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.vocabulary-card .part-of-speech {
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.vocabulary-card .example {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.vocabulary-card .audio-btn {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.vocabulary-card .audio-btn:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.level-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: #e3f2fd;
+    color: #0d6efd;
+}
+
+.level-badge.level-A1 {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.level-badge.level-A2 {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.level-badge.level-B1 {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.level-badge.level-B2 {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
 /* Footer styles */
 footer {
     position: relative;
     background-color: var(--primary-soft);
     color: #4a4a4a;
-    font-size: 1rem; /* Tăng kích thước font từ 0.9rem lên 1rem */
+    font-size: 0.9rem;
     margin-top: auto; /* Đảm bảo footer luôn nằm cuối trang */
 }
 
@@ -290,30 +383,17 @@ footer h5 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     color: var(--primary);
-    font-size: 1.2rem; /* Tăng kích thước font từ 1rem lên 1.2rem */
+    font-size: 1rem;
 }
 
 footer a {
     color: #4a4a4a;
     transition: all 0.3s ease;
-    font-size: 1rem; /* Tăng kích thước font cho các liên kết */
 }
 
 footer a:hover {
     color: var(--primary);
     text-decoration: none;
-}
-
-/* Thêm mới: tăng kích thước cho tất cả văn bản và liên kết trong footer */
-footer p, 
-footer .small, 
-footer ul li, 
-footer .list-unstyled li {
-    font-size: 1.05rem; /* Kích thước văn bản lớn hơn */
-}
-
-footer .small {
-    font-size: 0.95rem !important; /* Tăng kích thước nhưng vẫn nhỏ hơn văn bản thông thường */
 }
 
 .social-icons a {
@@ -329,7 +409,7 @@ footer .small {
     transition: all 0.3s ease;
 }
 
-social-icons a:hover {
+.social-icons a:hover {
     background-color: var(--primary);
     color: white;
     transform: translateY(-3px);
@@ -365,25 +445,10 @@ social-icons a:hover {
 }
 
 /* Animations */
-.fade-in {
-    animation: fadeIn 0.8s ease-in-out;
-    opacity: 1 !important;
-    visibility: visible !important;
+.fade-in, .fade-in-left, .fade-in-right {
     animation: none !important;
-}
-
-.fade-in-left {
-    animation: fadeInLeft 0.8s ease-in-out;
     opacity: 1 !important;
-    visibility: visible !important;
-    animation: none !important;
-}
-
-.fade-in-right {
-    animation: fadeInRight 0.8s ease-in-out;
-    opacity: 1 !important;
-    visibility: visible !important;
-    animation: none !important;
+    transform: translateY(0) translateX(0) !important;
 }
 
 @keyframes fadeIn {
@@ -588,16 +653,6 @@ social-icons a:hover {
     background-color: var(--primary-soft);
 }
 
-.test-option.correct {
-    border-color: var(--success);
-    background-color: #e6fff2;
-}
-
-.test-option.incorrect {
-    border-color: var(--danger);
-    background-color: #ffe6e6;
-}
-
 .test-result-card {
     text-align: center;
     padding: 2rem;
@@ -712,35 +767,4 @@ social-icons a:hover {
 .auth-card {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Thêm vào cuối file css */
-.topic-item {
-    display: block !important; /* Đảm bảo luôn hiển thị */
-    opacity: 1 !important; /* Đảm bảo độ trong suốt luôn là 100% */
-    visibility: visible !important; /* Đảm bảo luôn nhìn thấy được */
-}
-
-.vocabulary-item {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    animation: none !important;
-    transition: none !important;
-}
-
-/* Điều chỉnh lại hiệu ứng fade-in để không ảnh hưởng đến khả năng hiển thị */
-.fade-in-left, .fade-in-right {
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-[data-level], 
-[data-type], 
-.fade-in,
-.animate__animated {
-    opacity: 1 !important;
-    visibility: visible !important;
-    animation: none !important;
 }

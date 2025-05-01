@@ -1,0 +1,46 @@
+[
+  {
+    "AchievementId": 1,
+    "Title": "Người mới bắt đầu",
+    "Description": "Hoàn thành 5 bài học đầu tiên",
+    "IconUrl": "/images/achievements/beginner.png",
+    "Points": 50,
+    "Criteria": {
+      "Type": "LessonCompletion",
+      "Count": 5
+    }
+  },
+  {
+    "AchievementId": 2,
+    "Title": "Học giả từ vựng",
+    "Description": "Học thuộc 100 từ vựng",
+    "IconUrl": "/images/achievements/vocabulary-master.png",
+    "Points": 100,
+    "Criteria": {
+      "Type": "VocabularyCount",
+      "Count": 100
+    }
+  },
+  {
+    "AchievementId": 3,
+    "Title": "Chuyên gia ngữ pháp",
+    "Description": "Hoàn thành 10 bài học ngữ pháp",
+    "IconUrl": "/images/achievements/grammar-expert.png",
+    "Points": 150,
+    "Criteria": {
+      "Type": "GrammarLessonCompletion",
+      "Count": 10
+    }
+  },
+  {
+    "AchievementId": 4,
+    "Title": "Người kiên trì",
+    "Description": "Học tập liên tục 7 ngày",
+    "IconUrl": "/images/achievements/persistence.png",
+    "Points": 75,
+    "Criteria": {
+      "Type": "ConsecutiveDays",
+      "Count": 7
+    }
+  }
+]
