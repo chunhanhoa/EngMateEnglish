@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j9xBpxG06w8=",
+  "dgSpecHash": "KTmeK5vxBqs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Downloads\\Test4\\TiengAnh.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\TiengAnh.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
