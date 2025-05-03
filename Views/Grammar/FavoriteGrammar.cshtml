@@ -1,0 +1,135 @@
+@model List<GrammarModel>
+@{
+    ViewData["Title"] = ViewBag.Title ?? "Ngữ pháp yêu thích";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold mb-4">Ngữ pháp yêu thích</h1>
+            <p class="lead">Danh sách các bài ngữ pháp mà bạn đã đánh dấu yêu thích</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model != null && Model.Count > 0)
+            {
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-header bg-primary text-white">
+                                    <span class="badge bg-light text-dark float-end">@item.Level</span>
+                                    <h5 class="card-title mb-0">@item.Title_NP</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">@(item.Description_NP?.Length > 100 ? item.Description_NP.Substring(0, 100) + "..." : item.Description_NP)</p>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <a href="@Url.Action("Details", "Grammar", new { id = item.ID_NP })" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-book"></i> Xem bài học
+                                        </a>
+                                        <button class="btn btn-sm btn-danger favorite-btn" data-id="@item.ID_NP">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i> Bạn chưa có bài ngữ pháp nào trong danh sách yêu thích.
+                    <hr>
+                    <p class="mb-0">
+                        <a href="@Url.Action("Index", "Grammar")" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-2"></i> Xem danh sách bài học ngữ pháp
+                        </a>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Xử lý nút yêu thích trên trang yêu thích
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const grammarId = this.getAttribute('data-id');
+                    const card = this.closest('.col');
+                    
+                    fetch('@Url.Action("ToggleFavorite", "Grammar")/' + grammarId, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                        },
+                        credentials: 'same-origin'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success && !data.isFavorite) {
+                            // Xóa khỏi danh sách hiển thị với animation
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            card.style.transition = 'opacity 0.5s, transform 0.5s';
+                            
+                            setTimeout(() => {
+                                card.remove();
+                                
+                                // Kiểm tra xem còn item nào không
+                                const remainingItems = document.querySelectorAll('.favorite-btn');
+                                if (remainingItems.length === 0) {
+                                    // Nếu không còn item nào, hiển thị thông báo
+                                    location.reload();
+                                }
+                            }, 500);
+                            
+                            showNotification('Đã xóa khỏi danh sách yêu thích', 'info');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showNotification('Có lỗi xảy ra. Vui lòng thử lại sau.', 'danger');
+                    });
+                });
+            });
+            
+            // Hiển thị thông báo
+            function showNotification(message, type) {
+                const notif = document.createElement('div');
+                notif.className = `alert alert-${type} position-fixed`;
+                notif.style.top = '20px';
+                notif.style.right = '20px';
+                notif.style.zIndex = '9999';
+                notif.style.minWidth = '300px';
+                notif.style.padding = '15px';
+                notif.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+                notif.innerHTML = message;
+                
+                document.body.appendChild(notif);
+                
+                setTimeout(() => {
+                    notif.style.opacity = '0';
+                    notif.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        notif.remove();
+                    }, 500);
+                }, 3000);
+            }
+        });
+    </script>
+}
+
+<form id="antiforgeryForm">
+    @Html.AntiForgeryToken()
+</form>

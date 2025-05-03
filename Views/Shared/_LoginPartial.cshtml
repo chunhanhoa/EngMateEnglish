@@ -7,11 +7,6 @@
 
 <!-- Grammar Lesson Header -->
 <div class="container mt-5 mb-5">
-    <!-- Thêm form token để bảo vệ AJAX request -->
-    <form id="antiforgeryForm">
-        @Html.AntiForgeryToken()
-    </form>
-    
     <div class="row mb-4">
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
@@ -270,47 +265,48 @@
             favoriteBtn.addEventListener('click', function() {
                 const grammarId = this.getAttribute('data-id');
                 
-                // Thực hiện ajax call để cập nhật trạng thái yêu thích
-                fetch('@Url.Action("ToggleFavorite", "Grammar")/' + grammarId, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-                    },
-                    credentials: 'same-origin'
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Cập nhật UI
-                        const icon = this.querySelector('i');
-                        if (data.isFavorite) {
-                            icon.classList.replace('far', 'fas');
-                            this.classList.replace('btn-outline-danger', 'btn-danger');
-                            this.setAttribute('title', 'Đã thêm vào yêu thích');
-                        } else {
-                            icon.classList.replace('fas', 'far');
-                            this.classList.replace('btn-danger', 'btn-outline-danger');
-                            this.setAttribute('title', 'Thêm vào yêu thích');
-                        }
-                        
-                        // Hiển thị thông báo
-                        showNotification(data.message, data.isFavorite ? 'success' : 'info');
-                    } else {
-                        // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-                        if (data.message.includes('đăng nhập')) {
-                            window.location.href = '@Url.Action("Login", "Account")';
-                        } else {
-                            showNotification(data.message, 'warning');
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    showNotification('Có lỗi xảy ra. Vui lòng thử lại sau.', 'danger');
-                });
+                // Thay đổi trạng thái yêu thích
+                if (this.querySelector('i').classList.contains('far')) {
+                    // Thêm vào yêu thích
+                    this.querySelector('i').classList.replace('far', 'fas');
+                    this.classList.replace('btn-outline-danger', 'btn-danger');
+                    
+                    // Lưu vào localStorage
+                    saveToFavorites(grammarId, 'grammar');
+                } else {
+                    // Xóa khỏi yêu thích
+                    this.querySelector('i').classList.replace('fas', 'far');
+                    this.classList.replace('btn-danger', 'btn-outline-danger');
+                    
+                    // Xóa khỏi localStorage
+                    removeFromFavorites(grammarId, 'grammar');
+                }
             });
+            
+            // Hàm lưu vào danh sách yêu thích
+            function saveToFavorites(id, type) {
+                let favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+                if (!favorites.includes(id)) {
+                    favorites.push(id);
+                    localStorage.setItem('grammarFavorites', JSON.stringify(favorites));
+                    
+                    // Hiển thị thông báo
+                    showNotification('Đã thêm vào danh sách yêu thích!', 'success');
+                }
+            }
+            
+            // Hàm xóa khỏi danh sách yêu thích
+            function removeFromFavorites(id, type) {
+                let favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+                const index = favorites.indexOf(id);
+                if (index !== -1) {
+                    favorites.splice(index, 1);
+                    localStorage.setItem('grammarFavorites', JSON.stringify(favorites));
+                    
+                    // Hiển thị thông báo
+                    showNotification('Đã xóa khỏi danh sách yêu thích', 'info');
+                }
+            }
             
             // Hiển thị thông báo
             function showNotification(message, type) {
@@ -334,6 +330,19 @@
                     }, 500);
                 }, 3000);
             }
+            
+            // Kiểm tra và cập nhật nút yêu thích
+            function updateFavoriteButton() {
+                const favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+                const grammarId = favoriteBtn.getAttribute('data-id');
+                if (favorites.includes(grammarId)) {
+                    favoriteBtn.querySelector('i').classList.replace('far', 'fas');
+                    favoriteBtn.classList.replace('btn-outline-danger', 'btn-danger');
+                }
+            }
+            
+            // Cập nhật trạng thái nút yêu thích khi tải trang
+            updateFavoriteButton();
         });
     </script>
 }
@@ -346,16 +355,23 @@
             
         // Xử lý ký tự đặc biệt
         content = System.Web.HttpUtility.HtmlEncode(content);
-                
+        
         // Xử lý xuống dòng
         content = content.Replace("\n", "<br>");
-                
+        
         // Xử lý định dạng đậm (**text**)
         content = System.Text.RegularExpressions.Regex.Replace(content, @"\*\*(.*?)\*\*", "<strong>$1</strong>");
-                
+        
         // Xử lý định dạng nghiêng (*text*)
         content = System.Text.RegularExpressions.Regex.Replace(content, @"\*(.*?)\*", "<em>$1</em>");
         
         return content;
     }
 }
+
+<!-- Thêm liên kết đến trang ngữ pháp yêu thích trong dropdown menu -->
+<li>
+    <a class="dropdown-item" href="@Url.Action("Favorites", "Grammar")">
+        <i class="fas fa-heart me-2"></i> Ngữ pháp yêu thích
+    </a>
+</li>

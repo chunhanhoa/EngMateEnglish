@@ -253,6 +253,72 @@ namespace TiengAnh.Controllers
             
             return Ok(new { Success = result });
         }
+
+        [HttpPost]
+        [Route("Progress/RemoveFavorite/{id}")]
+        public async Task<IActionResult> RemoveFavorite(string id, string type)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Json(new { success = false, message = "Vui lòng đăng nhập để sử dụng tính năng này" });
+            }
+
+            if (type == "vocabulary")
+            {
+                // Xử lý xóa yêu thích từ vựng
+                var vocabularyId = int.Parse(id);
+                var vocabulary = await _vocabularyRepository.GetByVocabularyIdAsync(vocabularyId);
+                
+                if (vocabulary == null)
+                {
+                    return Json(new { success = false, message = "Không tìm thấy từ vựng" });
+                }
+
+                // Khởi tạo danh sách nếu chưa có
+                if (vocabulary.FavoriteByUsers == null)
+                {
+                    vocabulary.FavoriteByUsers = new List<string>();
+                }
+                
+                // Xóa khỏi danh sách yêu thích
+                if (vocabulary.FavoriteByUsers.Contains(userId))
+                {
+                    vocabulary.FavoriteByUsers.Remove(userId);
+                    await _vocabularyRepository.UpdateAsync(vocabulary.Id, vocabulary);
+                }
+            }
+            else if (type == "grammar")
+            {
+                // Xử lý xóa yêu thích ngữ pháp
+                var grammarId = int.Parse(id);
+                var grammar = await _grammarRepository.GetByGrammarIdAsync(grammarId);
+                
+                if (grammar == null)
+                {
+                    return Json(new { success = false, message = "Không tìm thấy bài ngữ pháp" });
+                }
+
+                // Khởi tạo danh sách nếu chưa có
+                if (grammar.FavoriteByUsers == null)
+                {
+                    grammar.FavoriteByUsers = new List<string>();
+                }
+                
+                // Xóa khỏi danh sách yêu thích
+                if (grammar.FavoriteByUsers.Contains(userId))
+                {
+                    grammar.FavoriteByUsers.Remove(userId);
+                    await _grammarRepository.UpdateAsync(grammar.Id, grammar);
+                }
+            }
+            
+            return Json(new 
+            { 
+                success = true,
+                message = "Đã xóa khỏi danh sách yêu thích" 
+            });
+        }
     }
 
     // Model cho API cập nhật tiến độ

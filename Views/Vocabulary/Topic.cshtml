@@ -7,7 +7,7 @@
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     
     // Tính toán cho phân trang
-    int pageSize = 6; // Số từ vựng mỗi trang
+    int pageSize = 6;
     int page = ViewBag.Page != null ? (int)ViewBag.Page : 1;
     if (page < 1) page = 1;
     int totalItems = Model.Count;
@@ -20,8 +20,110 @@
         .ToList();
 }
 
+@section Styles {
+    <style>
+        .favorite-btn {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .favorite-btn i {
+            font-size: 1.2rem;
+            color: #adb5bd;
+            transition: all 0.3s;
+        }
+        
+        .favorite-btn:hover i {
+            color: #dc3545;
+            transform: scale(1.2);
+        }
+        
+        .favorite-btn.active i {
+            color: #dc3545;
+        }
+        
+        .vocabulary-card {
+            transition: all 0.3s ease;
+        }
+        
+        .vocabulary-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .vocabulary-img-container {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .vocabulary-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .audio-btn {
+            background: none;
+            border: none;
+            color: #4e73df;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .audio-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        .quiz-option {
+            padding: 10px 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .quiz-option.selected {
+            background-color: #4e73df;
+            color: white;
+            border-color: #4e73df;
+        }
+        
+        .quiz-option.correct {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        
+        .quiz-option.wrong {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .audio-btn.playing {
+            animation: pulse-audio 1s Retrieves the number of milliseconds elapsed since the Unix Epoch.
+        }
+        
+        @@keyframes pulse-audio {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+}
+
 <!-- Topic Header -->
 <div class="container mt-5">
+    <form id="antiforgeryForm">
+        @Html.AntiForgeryToken()
+    </form>
+    
     <div class="row mb-4">
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
@@ -72,9 +174,6 @@
                         <a href="@Url.Action("Flashcard", "Vocabulary", new { id = topic?.ID_CD })" class="btn btn-sm btn-primary me-2">
                             <i class="fas fa-gamepad me-1"></i> Chơi Flashcards
                         </a>
-                        <a href="@Url.Action("Exercise", "Vocabulary", new { id = topic?.ID_CD })" class="btn btn-sm btn-outline-primary">
-                            <i class="fas fa-tasks me-1"></i> Làm bài tập
-                        </a>
                     </div>
                 </div>
             </div>
@@ -86,35 +185,7 @@
         <div class="col-md-12 mb-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="fw-bold">Danh sách từ vựng</h2>
-                <div class="d-flex align-items-center">
-                    <div class="dropdown me-2">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="levelFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-filter me-1"></i> Trình độ
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="levelFilterDropdown">
-                            <li><a class="dropdown-item active" href="#">Tất cả</a></li>
-                            <li><a class="dropdown-item" href="#">A1 - Sơ cấp</a></li>
-                            <li><a class="dropdown-item" href="#">A2 - Tiền trung cấp</a></li>
-                            <li><a class="dropdown-item" href="#">B1 - Trung cấp</a></li>
-                            <li><a class="dropdown-item" href="#">B2 - Cao trung cấp</a></li>
-                            <li><a class="dropdown-item" href="#">C1 - Nâng cao</a></li>
-                            <li><a class="dropdown-item" href="#">C2 - Thành thạo</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="typeFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-filter me-1"></i> Loại từ
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="typeFilterDropdown">
-                            <li><a class="dropdown-item active" href="#">Tất cả</a></li>
-                            <li><a class="dropdown-item" href="#">Danh từ (Noun)</a></li>
-                            <li><a class="dropdown-item" href="#">Động từ (Verb)</a></li>
-                            <li><a class="dropdown-item" href="#">Tính từ (Adjective)</a></li>
-                            <li><a class="dropdown-item" href="#">Trạng từ (Adverb)</a></li>
-                            <li><a class="dropdown-item" href="#">Giới từ (Preposition)</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <div class="d-flex align-items-center"></div>
             </div>
         </div>
     </div>
@@ -156,8 +227,8 @@
                                         <a href="@Url.Action("Details", "Vocabulary", new { id = vocab.ID_TV })" class="btn btn-sm btn-outline-primary">
                                             Chi tiết <i class="fas fa-arrow-right ms-1"></i>
                                         </a>
-                                        <button class="btn btn-sm @(vocab.IsFavorite ? "btn-danger" : "btn-outline-danger") favorite-btn" data-id="@vocab.ID_TV" title="@(vocab.IsFavorite ? "Đã thêm vào yêu thích" : "Thêm vào yêu thích")">
-                                            <i class="@(vocab.IsFavorite ? "fas" : "far") fa-heart"></i> Yêu thích
+                                        <button class="favorite-btn @(vocab.IsFavorite ? "active" : "")" data-id="@vocab.ID_TV">
+                                            <i class="@(vocab.IsFavorite ? "fas" : "far") fa-heart"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -257,167 +328,131 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Xử lý khi click vào nút bộ lọc trình độ
-            const levelFilterItems = document.querySelectorAll('#levelFilterDropdown + .dropdown-menu .dropdown-item');
-            levelFilterItems.forEach(item => {
-                item.addEventListener('click', function(e) {
+            // Biến trạng thái để ngăn lặp âm thanh
+            let isPlaying = false;
+
+            // Thêm xử lý cho nút yêu thích
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
                     e.preventDefault();
+                    const vocabId = this.getAttribute('data-id');
+                    const heartIcon = this.querySelector('i');
                     
-                    // Cập nhật trạng thái active
-                    levelFilterItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Cập nhật text của button
-                    document.getElementById('levelFilterDropdown').innerHTML = 
-                        `<i class="fas fa-filter me-1"></i> ${this.textContent}`;
-                    
-                    // Lọc các từ vựng
-                    filterVocabulary();
-                });
-            });
-            
-            // Xử lý khi click vào nút bộ lọc loại từ
-            const typeFilterItems = document.querySelectorAll('#typeFilterDropdown + .dropdown-menu .dropdown-item');
-            typeFilterItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Cập nhật trạng thái active
-                    typeFilterItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Cập nhật text của button
-                    document.getElementById('typeFilterDropdown').innerHTML = 
-                        `<i class="fas fa-filter me-1"></i> ${this.textContent}`;
-                    
-                    // Lọc các từ vựng
-                    filterVocabulary();
-                });
-            });
-            
-            // Xử lý khi click vào nút yêu thích
-            const favoriteButtons = document.querySelectorAll('.favorite-btn');
-            favoriteButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const wordId = this.getAttribute('data-id');
-                    
-                    // Lưu trạng thái hiện tại trước khi gọi API
-                    const icon = this.querySelector('i');
-                    const currentlyFavorited = icon.classList.contains('fas');
-                    
-                    // Gọi API để toggle trạng thái yêu thích
-                    window.progressTracker.toggleFavorite(wordId, 'Vocabulary')
-                        .then(data => {
-                            if (data.success) {
-                                if (!currentlyFavorited) {
-                                    // Nếu chưa yêu thích, thêm vào yêu thích
-                                    icon.classList.replace('far', 'fas');
-                                    this.classList.replace('btn-outline-danger', 'btn-danger');
-                                    this.setAttribute('title', 'Đã thêm vào yêu thích');
-                                    showNotification('Đã thêm vào danh sách yêu thích', 'success');
-                                    
-                                    // Cập nhật trang yêu thích nếu đang mở
-                                    updateFavoritesPage('add', wordId, 'Vocabulary');
-                                } else {
-                                    // Nếu đã yêu thích, bỏ yêu thích
-                                    icon.classList.replace('fas', 'far');
-                                    this.classList.replace('btn-danger', 'btn-outline-danger');
-                                    this.setAttribute('title', 'Thêm vào yêu thích');
-                                    showNotification('Đã xóa khỏi danh sách yêu thích', 'info');
-                                    
-                                    // Cập nhật trang yêu thích nếu đang mở
-                                    updateFavoritesPage('remove', wordId, 'Vocabulary');
-                                }
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Lỗi khi cập nhật trạng thái yêu thích:', error);
-                            showNotification('Có lỗi xảy ra. Vui lòng đăng nhập và thử lại', 'danger');
-                        });
-                });
-            });
-            
-            // Hàm lọc từ vựng
-            function filterVocabulary() {
-                const selectedLevel = document.querySelector('#levelFilterDropdown + .dropdown-menu .dropdown-item.active').textContent;
-                const selectedType = document.querySelector('#typeFilterDropdown + .dropdown-menu .dropdown-item.active').textContent;
-                
-                const vocabularyItems = document.querySelectorAll('.vocabulary-item');
-                
-                vocabularyItems.forEach(item => {
-                    const level = item.getAttribute('data-level');
-                    const type = item.getAttribute('data-type');
-                    
-                    const levelMatch = selectedLevel === 'Tất cả' || selectedLevel.startsWith(level);
-                    const typeMatch = selectedType === 'Tất cả' || selectedType.includes(getPartOfSpeechName(type));
-                    
-                    if (levelMatch && typeMatch) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
+                    let token = document.querySelector('input[name="__RequestVerificationToken"]');
+                    if (!token) {
+                        const form = document.createElement('form');
+                        form.innerHTML = '@Html.AntiForgeryToken()';
+                        document.body.appendChild(form);
+                        token = document.querySelector('input[name="__RequestVerificationToken"]');
                     }
+
+                    fetch(`/Vocabulary/ToggleFavorite/${vocabId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'RequestVerificationToken': token ? token.value : ''
+                        },
+                        credentials: 'same-origin'
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            if (data.isFavorite) {
+                                heartIcon.classList.replace('far', 'fas');
+                                this.classList.add('active');
+                            } else {
+                                heartIcon.classList.replace('fas', 'far');
+                                this.classList.remove('active');
+                            }
+                            showNotification(data.message, data.isFavorite ? 'success' : 'info');
+                        } else {
+                            if (data.message.includes('đăng nhập')) {
+                                window.location.href = '/Account/Login?returnUrl=' + encodeURIComponent(window.location.pathname);
+                            } else {
+                                showNotification(data.message, 'warning');
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showNotification('Đã xảy ra lỗi. Vui lòng thử lại sau.', 'danger');
+                    });
                 });
-            }
+            });
             
-            // Hiển thị thông báo
-            function showNotification(message, type) {
-                const notification = document.createElement('div');
-                notification.className = `alert alert-${type} notification-toast`;
-                notification.style.position = 'fixed';
-                notification.style.top = '20px';
-                notification.style.right = '20px';
-                notification.style.zIndex = '9999';
-                notification.style.minWidth = '300px';
-                notification.style.padding = '15px';
-                notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
-                notification.innerHTML = message;
-                
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.remove();
-                }, 3000);
-            }
+            // Xử lý phát âm thanh
+            document.querySelectorAll('.audio-btn').forEach(btn => {
+                // Gỡ bỏ mọi trình xử lý sự kiện cũ
+                const newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+                newBtn.addEventListener('click', function() {
+                    if (isPlaying) return; // Ngăn gọi nếu đang phát
+                    const word = this.getAttribute('data-word');
+                    console.log('Audio button clicked:', word); // Debug
+                    playVocabAudio(word, this);
+                });
+            });
             
-            // Trả về tên đầy đủ của loại từ
-            function getPartOfSpeechName(code) {
-                const types = {
-                    'n': 'Noun',
-                    'v': 'Verb',
-                    'adj': 'Adjective',
-                    'adv': 'Adverb',
-                    'prep': 'Preposition',
-                    'conj': 'Conjunction',
-                    'pron': 'Pronoun',
-                    'det': 'Determiner',
-                    'interj': 'Interjection'
+            function playVocabAudio(word, button) {
+                if (isPlaying) return;
+                isPlaying = true;
+                
+                const audioUrl = `https://ssl.gstatic.com/dictionary/static/sounds/oxford/${word.toLowerCase()}--_us_1.mp3`;
+                window.currentAudio = new Audio(audioUrl);
+                
+                button.classList.add('playing');
+                
+                window.currentAudio.onended = function() {
+                    button.classList.remove('playing');
+                    isPlaying = false;
+                    console.log('Audio ended:', word); // Debug
                 };
                 
-                return types[code] || code;
+                window.currentAudio.onerror = function(e) {
+                    button.classList.remove('playing');
+                    isPlaying = false;
+                    showNotification(`Không thể phát âm thanh cho từ: ${word}`, 'warning');
+                    console.error('Lỗi phát âm thanh:', e);
+                };
+                
+                window.currentAudio.play().catch(e => {
+                    button.classList.remove('playing');
+                    isPlaying = false;
+                    showNotification(`Không thể phát âm thanh cho từ: ${word}`, 'warning');
+                    console.error('Lỗi phát âm thanh:', e);
+                });
             }
             
-            // Hàm cập nhật trang yêu thích nếu đang mở
-            function updateFavoritesPage(action, itemId, itemType) {
-                // Kiểm tra xem có đang mở tab favorites không (nếu dùng iframe hoặc cửa sổ đa tab)
-                const favoritesWindow = window.opener || window.parent;
-                if (favoritesWindow && favoritesWindow !== window) {
-                    try {
-                        // Gửi thông điệp tới cửa sổ khác để cập nhật
-                        favoritesWindow.postMessage({
-                            action: action,
-                            itemId: itemId,
-                            itemType: itemType
-                        }, '*');
-                    } catch (e) {
-                        console.error('Không thể cập nhật trang yêu thích:', e);
-                    }
-                }
+            function showNotification(message, type) {
+                const notif = document.createElement('div');
+                notif.className = `alert alert-${type} position-fixed`;
+                notif.style.top = '20px';
+                notif.style.right = '20px';
+                notif.style.zIndex = '9999';
+                notif.style.minWidth = '300px';
+                notif.style.padding = '15px';
+                notif.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+                notif.innerHTML = message;
+                
+                document.body.appendChild(notif);
+                
+                setTimeout(() => {
+                    notif.style.opacity = '0';
+                    notif.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        document.body.removeChild(notif);
+                    }, 500);
+                }, 3000);
             }
         });
     </script>
 }
-
 @functions {
     public string GetPartOfSpeechName(string code)
     {

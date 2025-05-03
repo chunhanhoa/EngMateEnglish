@@ -30,6 +30,17 @@ namespace TiengAnh.Controllers
             // Lấy danh sách tất cả các chủ đề
             var topics = await _topicRepository.GetAllTopicsAsync();
             
+            // Lấy danh sách tất cả từ vựng để đếm
+            var allVocabularies = await _vocabularyRepository.GetAllAsync();
+            
+            // Cập nhật số lượng từ cho mỗi chủ đề
+            foreach (var topic in topics)
+            {
+                int wordCount = allVocabularies.Count(v => v.ID_CD == topic.ID_CD);
+                topic.WordCount = wordCount;
+                topic.TotalItems = wordCount;
+            }
+            
             // Lấy ID người dùng hiện tại từ claims nếu đã đăng nhập
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
             
@@ -81,13 +92,28 @@ namespace TiengAnh.Controllers
                 return NotFound();
             }
             
-            // Cập nhật trạng thái yêu thích dựa vào người dùng hiện tại
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
-            vocabulary.IsFavorite = !string.IsNullOrEmpty(userId) && vocabulary.FavoriteByUsers != null && 
-                                   vocabulary.FavoriteByUsers.Contains(userId);
+            // Lấy danh sách các từ vựng cùng chủ đề
+            var relatedVocabularies = await _vocabularyRepository.GetByTopicIdAsync(vocabulary.ID_CD);
             
-            var topic = await _topicRepository.GetByTopicIdAsync(vocabulary.ID_CD);
-            ViewBag.Topic = topic;
+            // Loại bỏ từ vựng hiện tại khỏi danh sách
+            relatedVocabularies = relatedVocabularies.Where(v => v.ID_TV != vocabulary.ID_TV).ToList();
+            
+            // Random lấy tối đa 5 từ vựng liên quan
+            var randomRelatedWords = relatedVocabularies
+                .OrderBy(v => Guid.NewGuid()) // Sắp xếp ngẫu nhiên
+                .Take(5)
+                .ToList();
+            
+            // Truyền danh sách từ vựng liên quan qua ViewBag
+            ViewBag.RelatedWords = randomRelatedWords;
+            
+            // Cập nhật trạng thái yêu thích nếu người dùng đã đăng nhập
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!string.IsNullOrEmpty(userId))
+            {
+                vocabulary.IsFavorite = vocabulary.IsFavoriteByUser(userId);
+            }
+            
             return View(vocabulary);
         }
 
@@ -178,6 +204,55 @@ namespace TiengAnh.Controllers
             }
 
             return RedirectToAction("Index", new { message = "Initialized topics" });
+        }
+        
+        [HttpPost]
+        [Route("Vocabulary/ToggleFavorite/{id}")]
+        public async Task<IActionResult> ToggleFavorite(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Json(new { success = false, message = "Vui lòng đăng nhập để sử dụng tính năng này" });
+            }
+
+            var vocabulary = await _vocabularyRepository.GetByVocabularyIdAsync(id);
+            if (vocabulary == null)
+            {
+                return Json(new { success = false, message = "Không tìm thấy từ vựng" });
+            }
+
+            bool isFavorite = false;
+            
+            // Khởi tạo danh sách nếu chưa có
+            if (vocabulary.FavoriteByUsers == null)
+            {
+                vocabulary.FavoriteByUsers = new List<string>();
+            }
+            
+            // Kiểm tra và cập nhật trạng thái yêu thích
+            if (vocabulary.FavoriteByUsers.Contains(userId))
+            {
+                // Xóa khỏi danh sách yêu thích
+                vocabulary.FavoriteByUsers.Remove(userId);
+                isFavorite = false;
+            }
+            else
+            {
+                // Thêm vào danh sách yêu thích
+                vocabulary.FavoriteByUsers.Add(userId);
+                isFavorite = true;
+            }
+            
+            // Cập nhật vào database
+            await _vocabularyRepository.UpdateAsync(vocabulary.Id, vocabulary);
+            
+            return Json(new 
+            { 
+                success = true, 
+                isFavorite = isFavorite,
+                message = isFavorite ? "Đã thêm vào danh sách yêu thích" : "Đã xóa khỏi danh sách yêu thích" 
+            });
         }
     }
 }

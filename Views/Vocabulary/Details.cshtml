@@ -48,15 +48,6 @@
                             <div class="example-card p-3 mb-3 rounded" style="background-color: #f8f9fa;">
                                 <p class="mb-0 font-italic">@Model.Example_TV</p>
                             </div>
-                            
-                            <div class="mt-4">
-                                <button class="btn btn-outline-primary me-2 favorite-btn" data-id="@Model.ID_TV">
-                                    <i class="far fa-heart me-1"></i> Yêu thích
-                                </button>
-                                <button class="btn btn-outline-primary">
-                                    <i class="fas fa-share-alt me-1"></i> Chia sẻ
-                                </button>
-                            </div>
                         </div>
                     </div>
 
@@ -105,11 +96,20 @@
                         Từ liên quan
                     </h4>
                     <div class="related-words">
-                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">House</a>
-                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">Home</a>
-                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">Building</a>
-                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">Apartment</a>
-                        <a href="#" class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">Room</a>
+                        @if (ViewBag.RelatedWords != null && ViewBag.RelatedWords.Count > 0)
+                        {
+                            @foreach (var relatedWord in ViewBag.RelatedWords)
+                            {
+                                <a href="@Url.Action("Details", "Vocabulary", new { id = relatedWord.ID_TV })" 
+                                   class="badge bg-light text-dark p-2 mb-2 me-2 d-inline-block">
+                                    @relatedWord.Word_TV
+                                </a>
+                            }
+                        }
+                        else
+                        {
+                            <p class="text-muted">Không có từ vựng liên quan.</p>
+                        }
                     </div>
                 </div>
             </div>
@@ -123,21 +123,35 @@
             
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body p-4">
-                    <h4 class="card-title mb-3">Hoàn thành câu</h4>
-                    <p>Điền từ <strong>@Model.Word_TV</strong> vào chỗ trống thích hợp:</p>
+                    <h4 class="card-title mb-3">Trắc nghiệm</h4>
+                    <p>Chọn nghĩa tiếng Việt đúng cho từ <strong>@Model.Word_TV</strong>:</p>
                     
-                    <div class="mb-3">
-                        <p>1. I have a black ______ as a pet.</p>
-                        <input type="text" class="form-control" placeholder="Nhập câu trả lời...">
+                    <div class="quiz-container">
+                        <div class="mb-3">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="quizAnswer" id="option1" value="correct">
+                                <label class="form-check-label" for="option1">
+                                    @Model.Meaning_TV
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="quizAnswer" id="option2" value="incorrect1">
+                                <label class="form-check-label" for="option2">
+                                    @GetRandomWrongAnswer(Model.Meaning_TV, 1)
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="quizAnswer" id="option3" value="incorrect2">
+                                <label class="form-check-label" for="option3">
+                                    @GetRandomWrongAnswer(Model.Meaning_TV, 2)
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div>
-                        <p>2. The ______ is sleeping on the sofa.</p>
-                        <input type="text" class="form-control" placeholder="Nhập câu trả lời...">
-                    </div>
-                    
-                    <div class="mt-3">
-                        <button class="btn btn-primary">Kiểm tra</button>
+                    <div class="mt-4">
+                        <button class="btn btn-primary" id="checkAnswerBtn">Kiểm tra đáp án</button>
+                        <div class="feedback-message mt-3" style="display: none;"></div>
                     </div>
                 </div>
             </div>
@@ -166,6 +180,69 @@
                     audio.onended = () => {
                         this.innerHTML = '<i class="fas fa-volume-up fa-lg"></i>';
                     };
+                });
+            }
+
+            // Xử lý kiểm tra đáp án
+            const checkAnswerBtn = document.getElementById('checkAnswerBtn');
+            const feedbackMessage = document.querySelector('.feedback-message');
+            
+            checkAnswerBtn.addEventListener('click', function() {
+                let correctCount = 0;
+                let totalQuestions = 1;
+                
+                // Kiểm tra câu hỏi về nghĩa của từ
+                const selectedWord = document.querySelector('input[name="quizAnswer"]:checked');
+                if (selectedWord && selectedWord.value === 'correct') {
+                    correctCount++;
+                }
+                
+                // Kiểm tra câu hỏi về ví dụ
+                const selectedExample = document.querySelector('input[name="exampleQuiz"]:checked');
+                if (selectedExample && selectedExample.value === 'correct') {
+                    correctCount++;
+                }
+                
+                // Hiển thị kết quả
+                feedbackMessage.style.display = 'block';
+                
+                if (correctCount === 0) {
+                    feedbackMessage.className = 'feedback-message mt-3 alert alert-danger';
+                    feedbackMessage.textContent = 'Bạn chưa chọn đúng đáp án nào. Hãy thử lại!';
+                } else if (correctCount < totalQuestions) {
+                    feedbackMessage.className = 'feedback-message mt-3 alert alert-warning';
+                    feedbackMessage.textContent = `Bạn đã trả lời đúng ${correctCount}/${totalQuestions} câu hỏi. Hãy thử lại!`;
+                } else {
+                    feedbackMessage.className = 'feedback-message mt-3 alert alert-success';
+                    feedbackMessage.textContent = 'Chúc mừng! Bạn đã trả lời đúng tất cả các câu hỏi.';
+                    
+                    // Gọi hàm cập nhật tiến độ
+                    markAsCompleted();
+                }
+                
+                // Đánh dấu đáp án đúng và sai
+                highlightCorrectAnswers();
+            });
+            
+            function highlightCorrectAnswers() {
+                // Đánh dấu đáp án đúng của câu hỏi từ vựng
+                document.querySelectorAll('input[name="quizAnswer"]').forEach(input => {
+                    const label = input.nextElementSibling;
+                    if (input.value === 'correct') {
+                        label.classList.add('text-success', 'fw-bold');
+                    } else if (input.checked) {
+                        label.classList.add('text-danger', 'text-decoration-line-through');
+                    }
+                });
+                
+                // Đánh dấu đáp án đúng của câu hỏi ví dụ
+                document.querySelectorAll('input[name="exampleQuiz"]').forEach(input => {
+                    const label = input.nextElementSibling;
+                    if (input.value === 'correct') {
+                        label.classList.add('text-success', 'fw-bold');
+                    } else if (input.checked) {
+                        label.classList.add('text-danger', 'text-decoration-line-through');
+                    }
                 });
             }
         });
@@ -238,4 +315,71 @@
             }, 3000);
         }
     </script>
+}
+
+@functions {
+    public string GetRandomWrongAnswer(string correctAnswer, int seed)
+    {
+        // Danh sách các đáp án sai dựa trên từng loại từ
+        var animalAnswers = new[] { "Loài thực vật", "Loại hoa", "Nơi ở", "Dụng cụ nhà bếp", "Phương tiện giao thông" };
+        var foodAnswers = new[] { "Loại đồ chơi", "Dụng cụ học tập", "Vật dụng cá nhân", "Nơi công cộng", "Loại thức uống" };
+        var defaultAnswers = new[] { "Thể loại âm nhạc", "Môn thể thao", "Nội thất", "Thiết bị điện tử", "Ngành nghề" };
+        
+        // Chọn danh sách đáp án dựa vào đáp án đúng
+        string[] wrongOptions;
+        if (correctAnswer.Contains("Con") || correctAnswer.Contains("con") || correctAnswer.Contains("động vật"))
+            wrongOptions = animalAnswers;
+        else if (correctAnswer.Contains("ăn") || correctAnswer.Contains("uống") || correctAnswer.Contains("Quả"))
+            wrongOptions = foodAnswers;
+        else
+            wrongOptions = defaultAnswers;
+        
+        // Đảm bảo không trùng với đáp án đúng
+        var index = (seed * 31) % wrongOptions.Length;
+        return wrongOptions[index];
+    }
+    
+    public string GetExampleTranslation(string example, string word, string meaning)
+    {
+        // Tạo bản dịch đơn giản dựa trên câu ví dụ
+        return example.Replace(word, meaning).Replace("I", "Tôi").Replace("my", "của tôi").Replace("you", "bạn")
+                      .Replace("we", "chúng tôi").Replace("they", "họ").Replace("he", "anh ấy").Replace("she", "cô ấy")
+                      .Replace("have", "có").Replace("has", "có").Replace("a", "một").Replace("the", "").Replace("an", "một")
+                      .Replace(".", ".");
+    }
+    
+    public string GetExampleWrongTranslation(string example, string word, string meaning, int seed)
+    {
+        // Tạo bản dịch sai bằng cách thay đổi một số từ trong bản dịch đúng
+        var correctTranslation = GetExampleTranslation(example, word, meaning);
+        
+        var replacements = new Dictionary<string, string[]> {
+            { "Tôi", new[] { "Chúng tôi", "Bạn", "Ai đó", "Họ" } },
+            { meaning, new[] { "chiếc xe", "cái ghế", "quyển sách", "bữa ăn", "ngôi nhà" } },
+            { "có", new[] { "thích", "mua", "mang", "đang tìm", "không thích" } }
+        };
+        
+        // Chọn từ để thay đổi
+        string originalWord = "";
+        string[] replacementOptions = null;
+        foreach (var kvp in replacements)
+        {
+            if (correctTranslation.Contains(kvp.Key))
+            {
+                originalWord = kvp.Key;
+                replacementOptions = kvp.Value;
+                break;
+            }
+        }
+        
+        if (!string.IsNullOrEmpty(originalWord) && replacementOptions != null)
+        {
+            var index = (seed * 31) % replacementOptions.Length;
+            return correctTranslation.Replace(originalWord, replacementOptions[index]);
+        }
+        
+        // Nếu không thay thế được thì thêm một từ vào đầu câu
+        var prefixes = new[] { "Hôm qua ", "Ngày mai ", "Có lẽ ", "Đôi khi ", "Hiếm khi " };
+        return prefixes[seed % prefixes.Length] + correctTranslation;
+    }
 }

@@ -6,7 +6,10 @@
 }
 
 <div class="container mt-5">
-    <!-- Breadcrumbs -->
+    <form id="antiforgeryForm">
+        @Html.AntiForgeryToken()
+    </form>
+    
     <div class="row mb-4">
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
@@ -18,7 +21,6 @@
         </div>
     </div>
 
-    <!-- Header Section -->
     <div class="row mb-4">
         <div class="col-md-12 text-center">
             <div class="favorites-header">
@@ -29,7 +31,6 @@
         </div>
     </div>
 
-    <!-- Tab Navigation -->
     <div class="row mb-4">
         <div class="col-md-8 col-lg-6 mx-auto">
             <ul class="nav nav-pills nav-fill favorites-tabs" id="favoritesTab" role="tablist">
@@ -38,7 +39,7 @@
                         <i class="fas fa-book me-2"></i> Từ vựng
                         @if (vocabularies != null && vocabularies.Any())
                         {
-                            <span class="badge bg-primary ms-2">@vocabularies.Count</span>
+                            <span class="badge bg-primary ms-2" id="vocabulary-count">@vocabularies.Count</span>
                         }
                     </button>
                 </li>
@@ -47,7 +48,7 @@
                         <i class="fas fa-pen me-2"></i> Ngữ pháp
                         @if (grammars != null && grammars.Any())
                         {
-                            <span class="badge bg-primary ms-2">@grammars.Count</span>
+                            <span class="badge bg-primary ms-2" id="grammar-count">@grammars.Count</span>
                         }
                     </button>
                 </li>
@@ -55,16 +56,14 @@
         </div>
     </div>
 
-    <!-- Tab Content -->
     <div class="tab-content" id="favoritesTabContent">
-        <!-- Vocabulary Tab -->
         <div class="tab-pane fade show active" id="vocabulary" role="tabpanel" aria-labelledby="vocabulary-tab">
             @if (vocabularies != null && vocabularies.Any())
             {
                 <div class="row g-4">
                     @foreach (var vocab in vocabularies)
                     {
-                        <div class="col-lg-6 favorite-item" data-item-id="@vocab.ID_TV">
+                        <div class="col-lg-6 favorite-item" data-item-id="@vocab.ID_TV" data-type="vocabulary">
                             <div class="card border-0 shadow-sm h-100 vocabulary-card">
                                 <div class="card-body p-0">
                                     <div class="row g-0">
@@ -93,21 +92,12 @@
                                                     @vocab.Example_TV
                                                 </p>
                                                 
-                                                <div class="vocabulary-info">
-                                                    <h5 class="mb-1">@vocab.Word_TV</h5>
-                                                    <p class="mb-0 text-muted">@vocab.Meaning_TV</p>
-                                                    <div class="badges mt-1">
-                                                        <span class="badge bg-light text-dark">@Html.DisplayPartOfSpeech(vocab.PartOfSpeech ?? "")</span>
-                                                        <span class="badge bg-info text-white">@vocab.Level_TV</span>
-                                                    </div>
-                                                </div>
-
                                                 <div class="action-buttons">
                                                     <a href="@Url.Action("Details", "Vocabulary", new { id = vocab.ID_TV })" class="btn btn-primary">
                                                         <i class="fas fa-book-open me-1"></i> Chi tiết
                                                     </a>
-                                                    <button class="btn btn-outline-danger btn-unfavorite remove-favorite-btn" data-id="@vocab.ID_TV" data-type="vocabulary" title="Bỏ yêu thích">
-                                                        <i class="fas fa-heart me-1"></i> Bỏ yêu thích
+                                                    <button class="btn btn-sm btn-danger remove-favorite-btn" data-id="@vocab.ID_TV" data-type="vocabulary" title="Bỏ yêu thích">
+                                                        <i class="fas fa-heart-broken"></i>
                                                     </button>
                                                 </div>
                                             </div>
@@ -132,20 +122,19 @@
             }
         </div>
 
-        <!-- Grammar Tab -->
         <div class="tab-pane fade" id="grammar" role="tabpanel" aria-labelledby="grammar-tab">
             @if (grammars != null && grammars.Any())
             {
                 <div class="row g-4">
                     @foreach (var grammar in grammars)
                     {
-                        <div class="col-lg-6 favorite-item" data-item-id="@grammar.ID_NP">
+                        <div class="col-lg-6 favorite-item" data-item-id="@grammar.ID_NP" data-type="grammar">
                             <div class="card border-0 shadow-sm h-100 grammar-card">
                                 <div class="card-body p-4">
                                     <div class="d-flex justify-content-between align-items-start mb-3">
                                         <span class="grammar-level level-badge level-@grammar.Level">@grammar.Level</span>
-                                        <button class="btn-icon btn-unfavorite-icon remove-favorite-btn" data-id="@grammar.ID_NP" data-type="grammar" title="Bỏ yêu thích">
-                                            <i class="fas fa-heart text-danger"></i>
+                                        <button class="btn btn-sm btn-danger remove-favorite-btn" data-id="@grammar.ID_NP" data-type="grammar" title="Bỏ yêu thích">
+                                            <i class="fas fa-heart-broken"></i>
                                         </button>
                                     </div>
                                     
@@ -190,511 +179,374 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Xử lý phát âm từ vựng
-            document.querySelectorAll('.audio-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const word = this.dataset.word;
-                    if ('speechSynthesis' in window) {
-                        const utterance = new SpeechSynthesisUtterance(word);
-                        utterance.lang = 'en-US';
-                        window.speechSynthesis.speak(utterance);
-                        
-                        // Hiệu ứng khi phát âm
-                        this.classList.add('playing');
-                        setTimeout(() => {
-                            this.classList.remove('playing');
-                        }, 1000);
-                    }
-                });
-            });
-        });
-        
-        function removeFromFavorites(type, id) {
-            // Xác định loại storage key dựa trên loại
-            const storageKey = type === 'vocabulary' ? 'favorites' : 'grammarFavorites';
-            
-            // Lấy danh sách hiện tại
-            let favorites = JSON.parse(localStorage.getItem(storageKey) || '[]');
-            
-            // Tìm và xóa item
-            const index = favorites.indexOf(id.toString());
-            if (index !== -1) {
-                favorites.splice(index, 1);
-                localStorage.setItem(storageKey, JSON.stringify(favorites));
-                
-                // Hiển thị thông báo
-                showNotification('Đã xóa khỏi danh sách yêu thích', 'info');
-                
-                // Hiệu ứng xóa item
-                const itemElement = document.querySelector(`.favorite-item[data-item-id="${id}"]`);
-                if (itemElement) {
-                    itemElement.classList.add('removing');
+            // Biến trạng thái để ngăn lặp âm thanh
+            let isPlaying = false;
+
+            // Thêm xử lý cho nút bỏ yêu thích
+            document.querySelectorAll('.remove-favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const id = this.getAttribute('data-id');
+                    const type = this.getAttribute('data-type');
+                    const card = this.closest('.favorite-item');
                     
-                    // Xóa item sau khi hoàn thành animation
-                    setTimeout(() => {
-                        itemElement.remove();
-                        
-                        // Kiểm tra nếu không còn item nào
-                        const remainingItems = document.querySelectorAll(`#${type} .favorite-item`);
-                        if (remainingItems.length === 0) {
-                            // Reload trang nếu không còn item nào
-                            window.location.reload();
+                    let token = document.querySelector('input[name="__RequestVerificationToken"]');
+                    if (!token) {
+                        const form = document.createElement('form');
+                        form.innerHTML = '@Html.AntiForgeryToken()';
+                        document.body.appendChild(form);
+                        token = document.querySelector('input[name="__RequestVerificationToken"]');
+                    }
+                    
+                    fetch(`/Progress/RemoveFavorite/${id}?type=${type}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'RequestVerificationToken': token ? token.value : ''
+                        },
+                        credentials: 'same-origin'
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
                         }
-                        
-                        // Cập nhật số lượng hiển thị trên tab
-                        updateBadgeCount(type);
-                    }, 500);
-                }
-            }
-        }
-        
-        function updateBadgeCount(type) {
-            const tabId = type === 'vocabulary' ? 'vocabulary-tab' : 'grammar-tab';
-            const badge = document.querySelector(`#${tabId} .badge`);
-            if (badge) {
-                const currentCount = parseInt(badge.textContent) - 1;
-                badge.textContent = currentCount;
-                if (currentCount <= 0) {
-                    badge.style.display = 'none';
-                }
-            }
-        }
-        
-        function showNotification(message, type) {
-            const notif = document.createElement('div');
-            notif.className = `notification notification-${type}`;
-            notif.innerHTML = `
-                <div class="notification-icon">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
-                </div>
-                <div class="notification-content">
-                    ${message}
-                </div>
-            `;
-            
-            document.body.appendChild(notif);
-            
-            setTimeout(() => {
-                notif.classList.add('show');
-            }, 10);
-            
-            setTimeout(() => {
-                notif.classList.remove('show');
-                setTimeout(() => {
-                    document.body.removeChild(notif);
-                }, 300);
-            }, 3000);
-        }
-    </script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Xử lý khi click vào nút xóa yêu thích
-            document.querySelectorAll('.favorite-btn, .remove-favorite-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const itemId = this.closest('.favorite-item').getAttribute('data-item-id');
-                    const itemType = this.closest('.tab-pane').id === 'vocabulary' ? 'Vocabulary' : 'Grammar';
-                    
-                    window.progressTracker.toggleFavorite(itemId, itemType)
-                        .then(data => {
-                            if (data.success) {
-                                // Xóa phần tử khỏi DOM
-                                this.closest('.favorite-item').remove();
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            card.style.transition = 'opacity 0.5s, transform 0.5s';
+                            
+                            setTimeout(() => {
+                                card.remove();
                                 
-                                // Cập nhật UI
-                                updateFavoritesTab(this.closest('.tab-pane').id);
+                                const remainingItems = document.querySelectorAll(`.favorite-item[data-type="${type}"]`);
+                                if (remainingItems.length === 0) {
+                                    const emptyMessage = `
+                                        <div class="empty-state">
+                                            <i class="fas fa-heart text-muted empty-icon mb-3"></i>
+                                            <h4>Chưa có ${type === 'vocabulary' ? 'từ vựng' : 'bài ngữ pháp'} yêu thích</h4>
+                                            <p class="text-muted">Hãy nhấn vào biểu tượng trái tim để thêm ${type === 'vocabulary' ? 'từ vựng' : 'bài ngữ pháp'} vào danh sách yêu thích của bạn.</p>
+                                            <a href="/${type === 'vocabulary' ? 'Vocabulary' : 'Grammar'}" class="btn btn-primary mt-2">
+                                                <i class="fas fa-search me-2"></i> Khám phá ${type === 'vocabulary' ? 'từ vựng' : 'ngữ pháp'}
+                                            </a>
+                                        </div>`;
+                                    document.querySelector(`#${type}`).innerHTML = emptyMessage;
+                                }
                                 
-                                showNotification(`Đã xóa khỏi danh sách yêu thích`, 'info');
-                            }
-                        });
+                                updateFavoriteCount(type);
+                            }, 500);
+                            
+                            showNotification(data.message, 'info');
+                        } else {
+                            showNotification(data.message, 'warning');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showNotification('Đã xảy ra lỗi. Vui lòng thử lại sau.', 'danger');
+                    });
                 });
             });
             
-            // Lắng nghe thông điệp từ localStorage để cập nhật trang yêu thích
-            window.addEventListener('storage', function(event) {
-                if (event.key === 'favoriteUpdate') {
-                    try {
-                        const message = JSON.parse(event.newValue);
-                        handleFavoritesUpdate(message);
-                    } catch (e) {
-                        console.error('Lỗi khi xử lý thông điệp:', e);
-                    }
-                }
+            // Xử lý phát âm thanh
+            document.querySelectorAll('.audio-btn').forEach(btn => {
+                // Gỡ bỏ mọi trình xử lý sự kiện cũ
+                const newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+                newBtn.addEventListener('click', function() {
+                    if (isPlaying) return; // Ngăn gọi nếu đang phát
+                    const word = this.getAttribute('data-word');
+                    console.log('Audio button clicked:', word); // Debug
+                    playVocabAudio(word, this);
+                });
             });
             
-            // Lắng nghe thông điệp từ các cửa sổ khác để cập nhật trang yêu thích
-            window.addEventListener('message', function(event) {
-                // Đảm bảo nguồn tin cậy
-                if (event.origin === window.location.origin) {
-                    handleFavoritesUpdate(event.data);
-                }
-            });
-            
-            // Xử lý cập nhật trang yêu thích dựa trên thông điệp
-            function handleFavoritesUpdate(message) {
-                const { action, itemId, itemType } = message;
-                const tabId = itemType.toLowerCase();
+            function playVocabAudio(word, button) {
+                if (isPlaying) return;
+                isPlaying = true;
                 
-                if (action === 'remove') {
-                    // Xóa mục khỏi danh sách yêu thích
-                    const item = document.querySelector(`#${tabId} .favorite-item[data-item-id="${itemId}"]`);
-                    if (item) {
-                        item.remove();
-                        updateFavoritesTab(tabId);
-                    }
-                } else if (action === 'add') {
-                    // Reload trang để lấy dữ liệu mới (đơn giản nhất)
-                    window.location.reload();
-                }
+                const audioUrl = `https://ssl.gstatic.com/dictionary/static/sounds/oxford/${word.toLowerCase()}--_us_1.mp3`;
+                window.currentAudio = new Audio(audioUrl);
+                
+                button.classList.add('playing');
+                
+                window.currentAudio.onended = function() {
+                    button.classList.remove('playing');
+                    isPlaying = false;
+                    console.log('Audio ended:', word); // Debug
+                };
+                
+                window.currentAudio.onerror = function(e) {
+                    button.classList.remove('playing');
+                    isPlaying = false;
+                    showNotification(`Không thể phát âm thanh cho từ: ${word}`, 'warning');
+                    console.error('Lỗi phát âm thanh:', e);
+                };
+                
+                window.currentAudio.play().catch(e => {
+                    button.classList.remove('playing');
+                    isPlaying = false;
+                    showNotification(`Không thể phát âm thanh cho từ: ${word}`, 'warning');
+                    console.error('Lỗi phát âm thanh:', e);
+                });
             }
             
-            // Cập nhật giao diện tab yêu thích
-            function updateFavoritesTab(tabId) {
-                const tabPane = document.getElementById(tabId);
-                if (!tabPane) return;
-                
-                const remainingItems = tabPane.querySelectorAll('.favorite-item');
-                
-                // Cập nhật số lượng yêu thích trên tab
-                const badge = document.querySelector(`#${tabId}-tab .badge`);
-                if (badge) {
-                    const count = remainingItems.length;
-                    badge.textContent = count;
-                    
-                    // Ẩn badge nếu count = 0
+            function updateFavoriteCount(type) {
+                const count = document.querySelectorAll(`.favorite-item[data-type="${type}"]`).length;
+                const countElement = document.querySelector(`#${type}-count`);
+                if (countElement) {
+                    countElement.textContent = count;
                     if (count === 0) {
-                        badge.style.display = 'none';
-                    }
-                }
-                
-                // Nếu không còn mục nào, hiển thị thông báo trống
-                if (remainingItems.length === 0) {
-                    const emptyMessage = document.createElement('div');
-                    emptyMessage.className = 'col-12 text-center py-5 empty-state';
-                    
-                    const itemTypeName = tabId === 'vocabulary' ? 'từ vựng' : 'ngữ pháp';
-                    const itemTypeRoute = tabId === 'vocabulary' ? 'Vocabulary' : 'Grammar';
-                    
-                    emptyMessage.innerHTML = `
-                        <div class="mb-4">
-                            <i class="fas fa-heart-broken text-muted" style="font-size: 4rem;"></i>
-                        </div>
-                        <h3 class="mb-3">Chưa có ${itemTypeName} yêu thích</h3>
-                        <p class="text-muted">Hãy nhấn vào biểu tượng trái tim để thêm ${itemTypeName} vào danh sách yêu thích của bạn.</p>
-                        <a href="/${itemTypeRoute}" class="btn btn-primary mt-2">
-                            <i class="fas fa-search me-2"></i> Khám phá ${itemTypeName}
-                        </a>`;
-                    
-                    // Xóa tất cả phần tử con hiện tại của row
-                    const row = tabPane.querySelector('.row');
-                    if (row) {
-                        while (row.firstChild) {
-                            row.removeChild(row.firstChild);
-                        }
-                        row.appendChild(emptyMessage);
+                        countElement.style.display = 'none';
                     }
                 }
             }
             
-            // Hiển thị thông báo
             function showNotification(message, type) {
-                const notification = document.createElement('div');
-                notification.className = `alert alert-${type} notification-toast`;
-                notification.style.position = 'fixed';
-                notification.style.top = '20px';
-                notification.style.right = '20px';
-                notification.style.zIndex = '9999';
-                notification.style.minWidth = '300px';
-                notification.style.padding = '15px';
-                notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
-                notification.innerHTML = message;
+                const notif = document.createElement('div');
+                notif.className = `alert alert-${type} position-fixed`;
+                notif.style.top = '20px';
+                notif.style.right = '20px';
+                notif.style.zIndex = '9999';
+                notif.style.minWidth = '300px';
+                notif.style.padding = '15px';
+                notif.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+                notif.innerHTML = message;
                 
-                document.body.appendChild(notification);
+                document.body.appendChild(notif);
                 
                 setTimeout(() => {
-                    notification.remove();
+                    notif.style.opacity = '0';
+                    notif.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        document.body.removeChild(notif);
+                    }, 500);
                 }, 3000);
             }
         });
     </script>
 }
 
-<style>
-    /* Styling for Favorites Page */
-    .favorites-header {
-        padding: 2rem 0;
-    }
-    
-    .favorites-icon {
-        font-size: 3rem;
-        animation: pulse 1.5s infinite ease-in-out alternate;
-    }
-    
-    @@keyframes pulse {
-        from { transform: scale(1); }
-        to { transform: scale(1.1); }
-    }
-    
-    /* Tab styling */
-    .favorites-tabs {
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        border-radius: 15px;
-        overflow: hidden;
-    }
-    
-    .favorites-tabs .nav-link {
-        padding: 15px;
-        border-radius: 0;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-    
-    .favorites-tabs .nav-link.active {
-        background-color: #4e73fa;
-    }
-    
-    .favorites-tabs .nav-link:hover:not(.active) {
-        background-color: #f8f9fa;
-    }
-    
-    /* Card styling */
-    .favorite-item {
-        transition: all 0.3s ease;
-    }
-    
-    .favorite-item.removing {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    
-    .vocabulary-card {
-        border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-    }
-    
-    .vocabulary-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-    }
-    
-    .vocab-image-container {
-        position: relative;
-        height: 100%;
-        min-height: 200px;
-        background-color: #f8f9fa;
-        overflow: hidden;
-    }
-    
-    .vocabulary-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    
-    .level-badge {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        padding: 5px 10px;
-        border-radius: 30px;
-        font-weight: 600;
-        font-size: 0.75rem;
-        background-color: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .level-A1 { color: #198754; border: 1px solid #198754; }
-    .level-A2 { color: #0d6efd; border: 1px solid #0d6efd; }
-    .level-B1 { color: #fd7e14; border: 1px solid #fd7e14; }
-    .level-B2 { color: #dc3545; border: 1px solid #dc3545; }
-    
-    .vocabulary-content {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .vocabulary-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
-    
-    .part-of-speech {
-        display: inline-block;
-        font-size: 0.8rem;
-        color: #6c757d;
-        padding: 2px 8px;
-        background-color: #f8f9fa;
-        border-radius: 15px;
-        margin-bottom: 10px;
-    }
-    
-    .meaning-label {
-        font-weight: 600;
-    }
-    
-    .example {
-        font-style: italic;
-        font-size: 0.9rem;
-        border-left: 3px solid rgba(78, 115, 250, 0.2);
-        padding-left: 10px;
-    }
-    
-    .action-buttons {
-        margin-top: auto;
-        display: flex;
-        gap: 10px;
-    }
-    
-    /* Audio button */
-    .audio-btn {
-        background: none;
-        border: none;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background-color: #f8f9fa;
-        transition: all 0.3s;
-        cursor: pointer;
-    }
-    
-    .audio-btn:hover {
-        background-color: #4e73fa;
-        color: white;
-    }
-    
-    .audio-btn.playing {
-        animation: playing 1s ease-in-out;
-    }
-    
-    @@keyframes playing {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-    }
-    
-    /* Grammar card */
-    .grammar-card {
-        border-radius: 15px;
-        overflow: hidden;
-        height: 100%;
-        transition: all 0.3s ease;
-    }
-    
-    .grammar-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-    }
-    
-    .grammar-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-    }
-    
-    .grammar-description {
-        color: #6c757d;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    
-    .grammar-meta {
-        display: flex;
-        gap: 20px;
-        font-size: 0.9rem;
-        color: #6c757d;
-    }
-    
-    .btn-icon {
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        font-size: 1.2rem;
-        transition: all 0.3s;
-    }
-    
-    .btn-unfavorite-icon:hover {
-        transform: scale(1.2);
-    }
-    
-    .text-primary-soft {
-        color: #4e73fa;
-    }
-    
-    /* Empty state */
-    .empty-state {
-        text-align: center;
-        padding: 60px 20px;
-    }
-    
-    .empty-icon {
-        font-size: 4rem;
-        opacity: 0.3;
-    }
-    
-    /* Notification */
-    .notification {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        display: flex;
-        align-items: center;
-        background-color: white;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        z-index: 9999;
-        opacity: 0;
-        transform: translateX(30px);
-        transition: all 0.3s ease;
-    }
-    
-    .notification.show {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    
-    .notification-success {
-        border-left: 4px solid #28a745;
-    }
-    
-    .notification-info {
-        border-left: 4px solid #17a2b8;
-    }
-    
-    .notification-icon {
-        margin-right: 15px;
-        font-size: 1.5rem;
-    }
-    
-    .notification-success .notification-icon {
-        color: #28a745;
-    }
-    
-    .notification-info .notification-icon {
-        color: #17a2b8;
-    }
-    
-    /* Responsive adjustments */
-    @@media (max-width: 768px) {
-        .action-buttons {
-            flex-direction: column;
+@section Styles {
+    <style>
+        .favorites-header {
+            padding: 2rem 0;
         }
         
-        .vocabulary-content {
-            padding-bottom: 20px;
+        .favorites-icon {
+            font-size: 3rem;
+            animation: pulse 1.5s infinite ease-in-out alternate;
+        }
+        
+        @@keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        .favorites-tabs {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .favorites-tabs .nav-link {
+            padding: 15px;
+            border-radius: 0;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .favorites-tabs .nav-link.active {
+            background-color: #4e73fa;
+        }
+        
+        .favorites-tabs .nav-link:hover:not(.active) {
+            background-color: #f8f9fa;
+        }
+        
+        .favorite-item {
+            transition: all 0.3s ease;
+        }
+        
+        .favorite-item.removing {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        
+        .vocabulary-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .vocabulary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
         }
         
         .vocab-image-container {
-            min-height: 150px;
+            position: relative;
+            height: 100%;
+            min-height: 200px;
+            background-color: #f8f9fa;
+            overflow: hidden;
         }
-    }
-</style>
+        
+        .vocabulary-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .level-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .level-A1 { color: #198754; border: 1px solid #198754; }
+        .level-A2 { color: #0d6efd; border: 1px solid #0d6efd; }
+        .level-B1 { color: #fd7e14; border: 1px solid #fd7e14; }
+        .level-B2 { color: #dc3545; border: 1px solid #dc3545; }
+        
+        .vocabulary-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .vocabulary-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .part-of-speech {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #6c757d;
+            padding: 2px 8px;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .meaning-label {
+            font-weight: 600;
+        }
+        
+        .example {
+            font-style: italic;
+            font-size: 0.9rem;
+            border-left: 3px solid rgba(78, 115, 250, 0.2);
+            padding-left: 10px;
+        }
+        
+        .action-buttons {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .audio-btn {
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .audio-btn:hover {
+            background-color: #4e73fa;
+            color: white;
+        }
+        
+        .audio-btn.playing {
+            animation: pulse-audio 1s infinite;
+            color: #4e73fa;
+        }
+        
+        @@keyframes pulse-audio {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .grammar-card {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .grammar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .grammar-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .grammar-description {
+            color: #6c757d;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .grammar-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .text-primary-soft {
+            color: #4e73fa;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .empty-icon {
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+        
+        @@media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .vocabulary-content {
+                padding-bottom: 20px;
+            }
+            
+            .vocab-image-container {
+                min-height: 150px;
+            }
+        }
+    </style>
+}
 
 @functions {
     public string GetPartOfSpeechName(string code)
