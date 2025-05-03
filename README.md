@@ -9,7 +9,7 @@ Dự án được xây dựng sử dụng **ASP.NET Core MVC** với ngôn ngữ
 ## Tính năng chính
 
 - **Học từ vựng**: Danh sách từ vựng phong phú theo chủ đề và trình độ
-- **Học ngữ pháp**: Các bài học ngữ pháp từ cơ bản đến nâng cao (A1-B2)
+- **Học ngữ pháp**: Các bài học ngữ pháp từ cơ bản đến nâng cao (A1-C1)
 - **Bài tập thực hành**: Đa dạng loại bài tập (trắc nghiệm, điền khuyết, sắp xếp từ,...)
 - **Kiểm tra đánh giá**: Các bài kiểm tra để đánh giá năng lực
 - **Theo dõi tiến độ**: Hệ thống theo dõi tiến độ học tập của người dùng
