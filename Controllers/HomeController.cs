@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TiengAnh.Models;
 using TiengAnh.Repositories;
-using TiengAnh.Services;
-using MongoDB.Driver;
+using System.Linq;
+using TiengAnh.Services; // Thêm import này cho MongoDbService
 
 namespace TiengAnh.Controllers
 {
@@ -25,10 +25,12 @@ namespace TiengAnh.Controllers
             _logger.LogInformation("Tải dữ liệu chủ đề cho trang chủ");
             var topics = await _topicRepository.GetAllAsync();
             
-            // Log để kiểm tra số lượng chủ đề được tải
-            _logger.LogInformation("Đã tìm thấy {Count} chủ đề từ database", topics.Count);
+            // Chỉ hiển thị 6 chủ đề đầu tiên trên trang chủ
+            var featuredTopics = topics.Take(6).ToList();
             
-            return View(topics);
+            ViewBag.Topics = featuredTopics;
+            
+            return View();
         }
 
         public IActionResult Privacy()

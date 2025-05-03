@@ -53,6 +53,122 @@
       "PackagePath": "staticwebassets\\images\\default-avatar.png"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\exercise-hero.png",
+      "PackagePath": "staticwebassets\\images\\exercise-hero.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\grammar-hero.png",
+      "PackagePath": "staticwebassets\\images\\grammar-hero.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\animals.png",
+      "PackagePath": "staticwebassets\\images\\icons\\animals.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\business.png",
+      "PackagePath": "staticwebassets\\images\\icons\\business.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\entertainment.png",
+      "PackagePath": "staticwebassets\\images\\icons\\entertainment.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\environment.png",
+      "PackagePath": "staticwebassets\\images\\icons\\environment.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\family.png",
+      "PackagePath": "staticwebassets\\images\\icons\\family.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\food.png",
+      "PackagePath": "staticwebassets\\images\\icons\\food.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\health.png",
+      "PackagePath": "staticwebassets\\images\\icons\\health.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\jobs.png",
+      "PackagePath": "staticwebassets\\images\\icons\\jobs.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\school.png",
+      "PackagePath": "staticwebassets\\images\\icons\\school.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\sports.png",
+      "PackagePath": "staticwebassets\\images\\icons\\sports.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\technology.png",
+      "PackagePath": "staticwebassets\\images\\icons\\technology.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\travel.png",
+      "PackagePath": "staticwebassets\\images\\icons\\travel.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\jobs.jpg",
+      "PackagePath": "staticwebassets\\images\\jobs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\test-hero.png",
+      "PackagePath": "staticwebassets\\images\\test-hero.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\animals.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\animals.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\business.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\business.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\entertainment.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\entertainment.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\environment.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\environment.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\family.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\family.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\food.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\food.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\health.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\health.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\jobs.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\jobs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\school.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\school.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\sports.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\sports.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\technology.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\technology.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\travel.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\travel.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary-hero.png",
+      "PackagePath": "staticwebassets\\images\\vocabulary-hero.png"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\animations.js",
       "PackagePath": "staticwebassets\\js\\animations.js"
     },

@@ -1,6 +1,5 @@
 ﻿@using TiengAnh.Models
 @using TiengAnh.Repositories
-@using System.Security.Claims
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +14,6 @@
     <link rel="stylesheet" href="~/css/engmate.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/no-animations.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TiengAnh.styles.css" asp-append-version="true" />
-    <meta name="user-id" content="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
     @await RenderSectionAsync("Styles", required: false)
 
     <style>
@@ -282,8 +280,9 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/progress-tracker.js" asp-append-version="true"></script>
-    <script src="~/js/favorite-handler.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    <script src="~/js/animations.js" asp-append-version="true"></script>
+    <script src="~/js/avatar-handler.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

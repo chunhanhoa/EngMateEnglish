@@ -1,8 +1,6 @@
-@using System.Security.Claims
 @model Dictionary<string, List<GrammarModel>>
 @{
     ViewData["Title"] = "Ngữ pháp tiếng Anh";
-    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 
 <!-- Hero Section -->
@@ -79,6 +77,9 @@
                                     <div class="card-body p-4">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <span class="level-badge level-@grammar.Level">@grammar.Level</span>
+                                            <button class="btn btn-sm btn-outline-danger favorite-btn" data-id="@grammar.ID_NP">
+                                                <i class="far fa-heart"></i>
+                                            </button>
                                         </div>
 
                                         <h3 class="card-title fw-bold mb-3">@grammar.Title_NP</h3>
@@ -146,6 +147,9 @@
                                     <div class="card-body p-4">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <span class="level-badge level-@grammar.Level">@grammar.Level</span>
+                                            <button class="btn btn-sm btn-outline-danger favorite-btn" data-id="@grammar.ID_NP">
+                                                <i class="far fa-heart"></i>
+                                            </button>
                                         </div>
 
                                         <h3 class="card-title fw-bold mb-3">@grammar.Title_NP</h3>
@@ -213,6 +217,9 @@
                                     <div class="card-body p-4">
                                         <div class="d-flex justify-content-between align-items-center mb-3">
                                             <span class="level-badge level-@grammar.Level">@grammar.Level</span>
+                                            <button class="btn btn-sm btn-outline-danger favorite-btn" data-id="@grammar.ID_NP">
+                                                <i class="far fa-heart"></i>
+                                            </button>
                                         </div>
 
                                         <h3 class="card-title fw-bold mb-3">@grammar.Title_NP</h3>
@@ -331,28 +338,51 @@
     }
 </style>
 
-@section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hiển thị thông báo
-            function showNotification(message, type) {
-                const notification = document.createElement('div');
-                notification.className = `alert alert-${type} notification-toast`;
-                notification.style.position = 'fixed';
-                notification.style.top = '20px';
-                notification.style.right = '20px';
-                notification.style.zIndex = '9999';
-                notification.style.minWidth = '300px';
-                notification.style.padding = '15px';
-                notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
-                notification.innerHTML = message;
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Xử lý nút yêu thích
+        document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
                 
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.remove();
-                }, 3000);
+                if (icon.classList.contains('far')) {
+                    icon.classList.replace('far', 'fas');
+                    this.classList.replace('btn-outline-danger', 'btn-danger');
+                    // Lưu vào localStorage
+                    saveFavorite(this.dataset.id);
+                } else {
+                    icon.classList.replace('fas', 'far');
+                    this.classList.replace('btn-danger', 'btn-outline-danger');
+                    // Xóa khỏi localStorage
+                    removeFavorite(this.dataset.id);
+                }
+            });
+            
+            // Kiểm tra trạng thái yêu thích khi tải trang
+            const grammarId = btn.dataset.id;
+            const favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+            if (favorites.includes(grammarId)) {
+                const icon = btn.querySelector('i');
+                icon.classList.replace('far', 'fas');
+                btn.classList.replace('btn-outline-danger', 'btn-danger');
             }
         });
-    </script>
-}
+        
+        function saveFavorite(id) {
+            let favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+            if (!favorites.includes(id)) {
+                favorites.push(id);
+                localStorage.setItem('grammarFavorites', JSON.stringify(favorites));
+            }
+        }
+        
+        function removeFavorite(id) {
+            let favorites = JSON.parse(localStorage.getItem('grammarFavorites') || '[]');
+            const index = favorites.indexOf(id);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                localStorage.setItem('grammarFavorites', JSON.stringify(favorites));
+            }
+        }
+    });
+</script>

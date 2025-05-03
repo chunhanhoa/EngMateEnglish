@@ -27,34 +27,29 @@ namespace TiengAnh.Controllers
 
         public async Task<IActionResult> Index()
         {
-            try
+            // Lấy danh sách tất cả các chủ đề
+            var topics = await _topicRepository.GetAllTopicsAsync();
+            
+            // Lấy ID người dùng hiện tại từ claims nếu đã đăng nhập
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+            
+            if (!string.IsNullOrEmpty(userId))
             {
-                // Lấy tất cả các chủ đề và log số lượng
-                var allTopics = await _topicRepository.GetAllTopicsAsync();
-                _logger.LogInformation("Found {Count} total topics", allTopics.Count);
-                
-                // Lấy các chủ đề Vocabulary - nếu Type_CD chưa có thì lấy tất cả
-                var topics = allTopics.Where(t => string.IsNullOrEmpty(t.Type_CD) || t.Type_CD == "Vocabulary").ToList();
-                _logger.LogInformation("Filtered to {Count} vocabulary topics", topics.Count);
-                
-                // Thêm log để kiểm tra từng topic
+                // Kiểm tra và thiết lập trạng thái yêu thích cho từng chủ đề
                 foreach (var topic in topics)
                 {
-                    _logger.LogInformation("Topic ID: {ID_CD}, Name: {Name_CD}, WordCount: {WordCount}, TotalWords: {TotalWords}", topic.ID_CD, topic.Name_CD, topic.WordCount, topic.TotalWords);
+                    // Chỉ cập nhật khi người dùng đã đăng nhập
+                    if (topic.FavoriteByUsers != null && topic.FavoriteByUsers.Contains(userId))
+                    {
+                        topic.IsFavorite = true;
+                    }
                 }
-                
-                // Trả về view với danh sách chủ đề
-                return View(topics);
             }
-            catch (System.Exception ex)
-            {
-                _logger.LogError("Error in Index action: {Message}", ex.Message);
-                // Hiển thị lỗi cho người dùng hoặc trả về view với danh sách rỗng
-                return View(new List<TopicModel>());
-            }
+            
+            return View(topics);
         }
 
-        public async Task<IActionResult> Topic(int id)
+        public async Task<IActionResult> Topic(int id, int page = 1)
         {
             var topic = await _topicRepository.GetByTopicIdAsync(id);
             if (topic == null)
@@ -73,6 +68,8 @@ namespace TiengAnh.Controllers
             }
             
             ViewBag.Topic = topic;
+            ViewBag.Page = page;
+            
             return View(vocabularies);
         }
 

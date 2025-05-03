@@ -31,5 +31,104 @@
     "IconPath": "/images/icons/school.png",
     "WordCount": 18,
     "BackgroundColor": "#cff4fc"
+  },
+  {
+    "ID_CD": 4,
+    "Name_CD": "Sports",
+    "Description_CD": "Từ vựng về các môn thể thao và hoạt động thể chất",
+    "Image_CD": "/images/topics/sports.jpg",
+    "Level": "A1",
+    "TotalItems": 15,
+    "IconPath": "/images/icons/sports.png",
+    "WordCount": 15,
+    "BackgroundColor": "#e2f3ff"
+  },
+  {
+    "ID_CD": 5,
+    "Name_CD": "Jobs & Professions",
+    "Description_CD": "Từ vựng về nghề nghiệp và công việc",
+    "Image_CD": "/images/topics/jobs.jpg",
+    "Level": "A2",
+    "TotalItems": 20,
+    "IconPath": "/images/icons/jobs.png",
+    "WordCount": 20,
+    "BackgroundColor": "#fff3cd"
+  },
+  {
+    "ID_CD": 6,
+    "Name_CD": "Family",
+    "Description_CD": "Từ vựng về gia đình và các mối quan hệ",
+    "Image_CD": "/images/topics/family.jpg",
+    "Level": "A1",
+    "TotalItems": 12,
+    "IconPath": "/images/icons/family.png",
+    "WordCount": 12,
+    "BackgroundColor": "#ffebdd"
+  },
+  {
+    "ID_CD": 7,
+    "Name_CD": "Travel",
+    "Description_CD": "Từ vựng về du lịch và đi lại",
+    "Image_CD": "/images/topics/travel.jpg",
+    "Level": "A2",
+    "TotalItems": 25,
+    "IconPath": "/images/icons/travel.png",
+    "WordCount": 25,
+    "BackgroundColor": "#d4edda"
+  },
+  {
+    "ID_CD": 8,
+    "Name_CD": "Technology",
+    "Description_CD": "Từ vựng về công nghệ và thiết bị điện tử",
+    "Image_CD": "/images/topics/technology.jpg",
+    "Level": "B1",
+    "TotalItems": 22,
+    "IconPath": "/images/icons/technology.png",
+    "WordCount": 22,
+    "BackgroundColor": "#e8e8ff"
+  },
+  {
+    "ID_CD": 9,
+    "Name_CD": "Health & Medicine",
+    "Description_CD": "Từ vựng về sức khỏe và y tế",
+    "Image_CD": "/images/topics/health.jpg",
+    "Level": "B1",
+    "TotalItems": 18,
+    "IconPath": "/images/icons/health.png",
+    "WordCount": 18,
+    "BackgroundColor": "#ffeaea"
+  },
+  {
+    "ID_CD": 10,
+    "Name_CD": "Environment",
+    "Description_CD": "Từ vựng về môi trường và thiên nhiên",
+    "Image_CD": "/images/topics/environment.jpg",
+    "Level": "B2",
+    "TotalItems": 20,
+    "IconPath": "/images/icons/environment.png",
+    "WordCount": 20,
+    "BackgroundColor": "#c6f6d5"
+  },
+  {
+    "ID_CD": 11,
+    "Name_CD": "Business",
+    "Description_CD": "Từ vựng về kinh doanh và thương mại",
+    "Image_CD": "/images/topics/business.jpg",
+    "Level": "B2",
+    "TotalItems": 20,
+    "IconPath": "/images/icons/business.png",
+    "WordCount": 20,
+    "BackgroundColor": "#e6f2ff"
+  },
+  {
+    "ID_CD": 12,
+    "Name_CD": "Entertainment",
+    "Description_CD": "Từ vựng về giải trí và thời gian rảnh rỗi",
+    "Image_CD": "/images/topics/entertainment.jpg",
+    "Level": "A2",
+    "TotalItems": 20,
+    "IconPath": "/images/icons/entertainment.png",
+    "WordCount": 20,
+    "BackgroundColor": "#fff0f3"
   }
 ]

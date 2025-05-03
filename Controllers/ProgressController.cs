@@ -15,17 +15,20 @@ namespace TiengAnh.Controllers
         private readonly ProgressRepository _progressRepository;
         private readonly VocabularyRepository _vocabularyRepository;
         private readonly GrammarRepository _grammarRepository;
+        private readonly TopicRepository _topicRepository;
 
         public ProgressController(
             ILogger<ProgressController> logger,
             ProgressRepository progressRepository,
             VocabularyRepository vocabularyRepository,
-            GrammarRepository grammarRepository)
+            GrammarRepository grammarRepository,
+            TopicRepository topicRepository)
         {
             _logger = logger;
             _progressRepository = progressRepository;
             _vocabularyRepository = vocabularyRepository;
             _grammarRepository = grammarRepository;
+            _topicRepository = topicRepository;
         }
         
         public async Task<IActionResult> Index()
@@ -241,6 +244,11 @@ namespace TiengAnh.Controllers
             else if (model.Type.ToLower() == "grammar") 
             {
                 result = await _grammarRepository.ToggleFavoriteAsync(model.Id, userId);
+            }
+            else if (model.Type.ToLower() == "topic")
+            {
+                // Thêm xử lý cho Topic
+                result = await _topicRepository.ToggleFavoriteAsync(model.Id, userId);
             }
             
             return Ok(new { Success = result });

@@ -37,6 +37,13 @@ namespace TiengAnh.Models
         [BsonElement("Type_CD")]
         public string Type_CD { get; set; } = "Default";
         
+        // Thêm thuộc tính IsFavorite
+        [BsonIgnore]
+        public bool IsFavorite { get; set; } = false;
+        
+        // Thêm trường FavoriteByUsers để lưu danh sách ID người dùng đã yêu thích
+        public List<string>? FavoriteByUsers { get; set; }
+        
         // Tính toán đường dẫn hình ảnh hoặc trả về hình ảnh mặc định
         public string GetIconPath() 
         {

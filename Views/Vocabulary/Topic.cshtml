@@ -5,6 +5,19 @@
     ViewData["Title"] = ViewBag.Topic?.Name_CD ?? "Chủ đề từ vựng";
     var topic = ViewBag.Topic as TopicModel;
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    
+    // Tính toán cho phân trang
+    int pageSize = 6; // Số từ vựng mỗi trang
+    int page = ViewBag.Page != null ? (int)ViewBag.Page : 1;
+    if (page < 1) page = 1;
+    int totalItems = Model.Count;
+    int totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+    if (page > totalPages && totalPages > 0) page = totalPages;
+    
+    var vocabulariesOnPage = Model
+        .Skip((page - 1) * pageSize)
+        .Take(pageSize)
+        .ToList();
 }
 
 <!-- Topic Header -->
@@ -27,7 +40,7 @@
             <p class="lead">@(topic?.Description_CD ?? "Danh sách từ vựng theo chủ đề.")</p>
             <div class="d-flex align-items-center mt-3">
                 <span class="badge badge-primary me-2">@Model.Count từ vựng</span>
-                <span class="badge badge-warning">Trình độ: A1 - A2</span>
+                <span class="badge badge-warning">Trình độ: @topic?.Level</span>
             </div>
         </div>
         <div class="col-md-4 text-end">
@@ -107,7 +120,7 @@
     </div>
 
     <div class="row g-4">
-        @foreach (var vocab in Model)
+        @foreach (var vocab in vocabulariesOnPage)
         {
             <div class="col-lg-6 vocabulary-item" data-level="@vocab.Level_TV" data-type="@vocab.PartOfSpeech">
                 <div class="card border-0 shadow-sm vocabulary-card h-100">
@@ -155,6 +168,39 @@
             </div>
         }
     </div>
+    
+    <!-- Pagination -->
+    @if (totalPages > 1)
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <nav aria-label="Pagination">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item @(page <= 1 ? "disabled" : "")">
+                            <a class="page-link" href="@Url.Action("Topic", "Vocabulary", new { id = topic?.ID_CD, page = page - 1 })">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </li>
+                        
+                        @for (int i = 1; i <= totalPages; i++)
+                        {
+                            <li class="page-item @(i == page ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Topic", "Vocabulary", new { id = topic?.ID_CD, page = i })">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                        
+                        <li class="page-item @(page >= totalPages ? "disabled" : "")">
+                            <a class="page-link" href="@Url.Action("Topic", "Vocabulary", new { id = topic?.ID_CD, page = page + 1 })">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    }
 </div>
 
 <!-- Practice Section -->
