@@ -4959,6 +4959,1646 @@
       ]
     },
     {
+      "Route": "images/vocabulary/animals/bear.jpg",
+      "AssetFile": "images/vocabulary/animals/bear.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SymLZT54RvA5ta+uP04X4Oirlw3DpQzCxhBIeAlzgJU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:00:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SymLZT54RvA5ta+uP04X4Oirlw3DpQzCxhBIeAlzgJU="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/bear.ndi1qz58uo.jpg",
+      "AssetFile": "images/vocabulary/animals/bear.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SymLZT54RvA5ta+uP04X4Oirlw3DpQzCxhBIeAlzgJU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:00:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ndi1qz58uo"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SymLZT54RvA5ta+uP04X4Oirlw3DpQzCxhBIeAlzgJU="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/bear.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/cat.jpg",
+      "AssetFile": "images/vocabulary/animals/cat.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "55499"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vg05qo4wY5tWxlZReuy6VJT0Vnc6kys+AVUtwWnkt6Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:51:15 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vg05qo4wY5tWxlZReuy6VJT0Vnc6kys+AVUtwWnkt6Q="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/cat.usb06rsc3z.jpg",
+      "AssetFile": "images/vocabulary/animals/cat.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "55499"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vg05qo4wY5tWxlZReuy6VJT0Vnc6kys+AVUtwWnkt6Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:51:15 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "usb06rsc3z"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vg05qo4wY5tWxlZReuy6VJT0Vnc6kys+AVUtwWnkt6Q="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/cat.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/deer.insk32m0vb.jpg",
+      "AssetFile": "images/vocabulary/animals/deer.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "63454"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DlnXy6Yje2txJeBpCBV1lxJVpmp+6+2LFANIcknSyf0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:05:24 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "insk32m0vb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DlnXy6Yje2txJeBpCBV1lxJVpmp+6+2LFANIcknSyf0="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/deer.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/deer.jpg",
+      "AssetFile": "images/vocabulary/animals/deer.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "63454"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DlnXy6Yje2txJeBpCBV1lxJVpmp+6+2LFANIcknSyf0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:05:24 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DlnXy6Yje2txJeBpCBV1lxJVpmp+6+2LFANIcknSyf0="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/dog.jpg",
+      "AssetFile": "images/vocabulary/animals/dog.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "105954"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UCkUA43pTJtIQn683BGHLKrTuKI/pbQt+kBOLEPHo10=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:52:16 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UCkUA43pTJtIQn683BGHLKrTuKI/pbQt+kBOLEPHo10="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/dog.kvqdcd88ys.jpg",
+      "AssetFile": "images/vocabulary/animals/dog.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "105954"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UCkUA43pTJtIQn683BGHLKrTuKI/pbQt+kBOLEPHo10=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:52:16 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kvqdcd88ys"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UCkUA43pTJtIQn683BGHLKrTuKI/pbQt+kBOLEPHo10="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/dog.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/dolphin.1vqs1cts43.jpg",
+      "AssetFile": "images/vocabulary/animals/dolphin.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "125098"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"A2jOn7bceo7C1LYhnQko/YU08c57e/YoCbSG/bw9lNg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:03:02 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1vqs1cts43"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-A2jOn7bceo7C1LYhnQko/YU08c57e/YoCbSG/bw9lNg="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/dolphin.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/dolphin.jpg",
+      "AssetFile": "images/vocabulary/animals/dolphin.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "125098"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"A2jOn7bceo7C1LYhnQko/YU08c57e/YoCbSG/bw9lNg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:03:02 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-A2jOn7bceo7C1LYhnQko/YU08c57e/YoCbSG/bw9lNg="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/eagle.3yo68zvqst.jpg",
+      "AssetFile": "images/vocabulary/animals/eagle.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "108577"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"y6f7ivXpT2x5CmQqUNAd2ExW2iLtjC7r4T3iW8YNsIU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:05:59 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3yo68zvqst"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-y6f7ivXpT2x5CmQqUNAd2ExW2iLtjC7r4T3iW8YNsIU="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/eagle.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/eagle.jpg",
+      "AssetFile": "images/vocabulary/animals/eagle.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "108577"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"y6f7ivXpT2x5CmQqUNAd2ExW2iLtjC7r4T3iW8YNsIU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:05:59 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-y6f7ivXpT2x5CmQqUNAd2ExW2iLtjC7r4T3iW8YNsIU="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/elephant.08sjk1kr9q.jpg",
+      "AssetFile": "images/vocabulary/animals/elephant.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "68826"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oE242Xteh+08tW8E5NOnZRFu+o4FZW55M7teDpKOP7E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:52:55 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "08sjk1kr9q"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oE242Xteh+08tW8E5NOnZRFu+o4FZW55M7teDpKOP7E="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/elephant.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/elephant.jpg",
+      "AssetFile": "images/vocabulary/animals/elephant.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "68826"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oE242Xteh+08tW8E5NOnZRFu+o4FZW55M7teDpKOP7E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:52:55 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oE242Xteh+08tW8E5NOnZRFu+o4FZW55M7teDpKOP7E="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/fox.amxvr4bx99.jpg",
+      "AssetFile": "images/vocabulary/animals/fox.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "63283"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DsnBWDSm7Rj86RnEgJ1bOzIVZcPgHYXr0wDZLHwRoGw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:04:41 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "amxvr4bx99"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DsnBWDSm7Rj86RnEgJ1bOzIVZcPgHYXr0wDZLHwRoGw="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/fox.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/fox.jpg",
+      "AssetFile": "images/vocabulary/animals/fox.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "63283"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DsnBWDSm7Rj86RnEgJ1bOzIVZcPgHYXr0wDZLHwRoGw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:04:41 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DsnBWDSm7Rj86RnEgJ1bOzIVZcPgHYXr0wDZLHwRoGw="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/giraffe.1kxao5ugab.jpg",
+      "AssetFile": "images/vocabulary/animals/giraffe.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95353"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YfQR2EYVQ19K5+ss6S9UmnB/pRwyPPfSNbyc5cUTrdU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:53:54 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1kxao5ugab"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YfQR2EYVQ19K5+ss6S9UmnB/pRwyPPfSNbyc5cUTrdU="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/giraffe.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/giraffe.jpg",
+      "AssetFile": "images/vocabulary/animals/giraffe.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95353"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YfQR2EYVQ19K5+ss6S9UmnB/pRwyPPfSNbyc5cUTrdU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:53:54 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YfQR2EYVQ19K5+ss6S9UmnB/pRwyPPfSNbyc5cUTrdU="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/horse.jpg",
+      "AssetFile": "images/vocabulary/animals/horse.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3eemF2OvG5dHe2sdYCvI+GbVkvx+Tx1x1cWheaA7Knk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:04:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3eemF2OvG5dHe2sdYCvI+GbVkvx+Tx1x1cWheaA7Knk="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/horse.le1f77pfgs.jpg",
+      "AssetFile": "images/vocabulary/animals/horse.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100621"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3eemF2OvG5dHe2sdYCvI+GbVkvx+Tx1x1cWheaA7Knk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:04:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "le1f77pfgs"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3eemF2OvG5dHe2sdYCvI+GbVkvx+Tx1x1cWheaA7Knk="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/horse.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/kangaroo.4u0f37308v.jpg",
+      "AssetFile": "images/vocabulary/animals/kangaroo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "150467"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BL88rwvnaLLzC7/yg/UH05ZMfun5el1kLUTJz0S8krI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:58:26 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4u0f37308v"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BL88rwvnaLLzC7/yg/UH05ZMfun5el1kLUTJz0S8krI="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/kangaroo.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/kangaroo.jpg",
+      "AssetFile": "images/vocabulary/animals/kangaroo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "150467"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BL88rwvnaLLzC7/yg/UH05ZMfun5el1kLUTJz0S8krI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:58:26 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BL88rwvnaLLzC7/yg/UH05ZMfun5el1kLUTJz0S8krI="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/lion.73uxxanqey.jpg",
+      "AssetFile": "images/vocabulary/animals/lion.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "93041"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bdB8zrPLnl6xLTZnMguj5Q/Eje7dEg7sJJxRCKv2rew=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:53:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "73uxxanqey"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bdB8zrPLnl6xLTZnMguj5Q/Eje7dEg7sJJxRCKv2rew="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/lion.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/lion.jpg",
+      "AssetFile": "images/vocabulary/animals/lion.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "93041"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bdB8zrPLnl6xLTZnMguj5Q/Eje7dEg7sJJxRCKv2rew=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:53:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bdB8zrPLnl6xLTZnMguj5Q/Eje7dEg7sJJxRCKv2rew="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/monkey.jpg",
+      "AssetFile": "images/vocabulary/animals/monkey.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70860"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KaoGLXgMDMvcvVV5wkqPHGID0/G6nWw/vGoEc3Q3CX8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:57:48 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KaoGLXgMDMvcvVV5wkqPHGID0/G6nWw/vGoEc3Q3CX8="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/monkey.r7wzcfuzi9.jpg",
+      "AssetFile": "images/vocabulary/animals/monkey.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70860"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KaoGLXgMDMvcvVV5wkqPHGID0/G6nWw/vGoEc3Q3CX8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:57:48 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r7wzcfuzi9"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KaoGLXgMDMvcvVV5wkqPHGID0/G6nWw/vGoEc3Q3CX8="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/monkey.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/panda.6y8f4zq2yi.jpg",
+      "AssetFile": "images/vocabulary/animals/panda.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "120299"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8hTsMd1dZzGMP9+R76vKJIlZJpriQDCy/9E4PCIZRyk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:59:09 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6y8f4zq2yi"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8hTsMd1dZzGMP9+R76vKJIlZJpriQDCy/9E4PCIZRyk="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/panda.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/panda.jpg",
+      "AssetFile": "images/vocabulary/animals/panda.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "120299"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8hTsMd1dZzGMP9+R76vKJIlZJpriQDCy/9E4PCIZRyk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:59:09 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8hTsMd1dZzGMP9+R76vKJIlZJpriQDCy/9E4PCIZRyk="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/penguin.jpg",
+      "AssetFile": "images/vocabulary/animals/penguin.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "55897"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLnGK+1i6/697xY0l2UH0MPVj+vUfnsrxMeVG/zbd70=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:01:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLnGK+1i6/697xY0l2UH0MPVj+vUfnsrxMeVG/zbd70="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/penguin.o1tmujsxi0.jpg",
+      "AssetFile": "images/vocabulary/animals/penguin.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "55897"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLnGK+1i6/697xY0l2UH0MPVj+vUfnsrxMeVG/zbd70=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:01:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o1tmujsxi0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLnGK+1i6/697xY0l2UH0MPVj+vUfnsrxMeVG/zbd70="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/penguin.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/rabbit.jpg",
+      "AssetFile": "images/vocabulary/animals/rabbit.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41411"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PWtZaHncGsJHm/ThB62HyRMd2PpKoisqKaFoQXnxVUw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:59:51 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PWtZaHncGsJHm/ThB62HyRMd2PpKoisqKaFoQXnxVUw="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/rabbit.lm92ew0i07.jpg",
+      "AssetFile": "images/vocabulary/animals/rabbit.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41411"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PWtZaHncGsJHm/ThB62HyRMd2PpKoisqKaFoQXnxVUw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:59:51 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lm92ew0i07"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PWtZaHncGsJHm/ThB62HyRMd2PpKoisqKaFoQXnxVUw="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/rabbit.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/snake.ico0v955bb.jpg",
+      "AssetFile": "images/vocabulary/animals/snake.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70349"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Qk5kdwfVumUqTQNdP4l5fRNScbTYE9rF9ghDHxuf0lE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:03:29 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ico0v955bb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Qk5kdwfVumUqTQNdP4l5fRNScbTYE9rF9ghDHxuf0lE="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/snake.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/snake.jpg",
+      "AssetFile": "images/vocabulary/animals/snake.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70349"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Qk5kdwfVumUqTQNdP4l5fRNScbTYE9rF9ghDHxuf0lE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:03:29 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Qk5kdwfVumUqTQNdP4l5fRNScbTYE9rF9ghDHxuf0lE="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/tiger.jpg",
+      "AssetFile": "images/vocabulary/animals/tiger.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "112060"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jguIkMLVixeRipAy1hHgKrdTK0i0XAR1PwD3Nojlz2Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:55:09 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jguIkMLVixeRipAy1hHgKrdTK0i0XAR1PwD3Nojlz2Y="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/tiger.uxbkzmeqx6.jpg",
+      "AssetFile": "images/vocabulary/animals/tiger.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "112060"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jguIkMLVixeRipAy1hHgKrdTK0i0XAR1PwD3Nojlz2Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:55:09 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uxbkzmeqx6"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jguIkMLVixeRipAy1hHgKrdTK0i0XAR1PwD3Nojlz2Y="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/tiger.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/wolf.13q9cciir4.jpg",
+      "AssetFile": "images/vocabulary/animals/wolf.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "76971"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TcjEQV6xpodw0AuDs+zstCmKi6EA0J4DPP21soVGGus=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:02:29 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "13q9cciir4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TcjEQV6xpodw0AuDs+zstCmKi6EA0J4DPP21soVGGus="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/wolf.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/wolf.jpg",
+      "AssetFile": "images/vocabulary/animals/wolf.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "76971"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TcjEQV6xpodw0AuDs+zstCmKi6EA0J4DPP21soVGGus=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:02:29 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TcjEQV6xpodw0AuDs+zstCmKi6EA0J4DPP21soVGGus="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/zebra.4sr81ps78t.jpg",
+      "AssetFile": "images/vocabulary/animals/zebra.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100605"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pGPf8RvrV8xEkxaLYgmmB9xMV0k3kDkRGrXVyJzaf+k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:57:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4sr81ps78t"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-pGPf8RvrV8xEkxaLYgmmB9xMV0k3kDkRGrXVyJzaf+k="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/zebra.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/zebra.jpg",
+      "AssetFile": "images/vocabulary/animals/zebra.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100605"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pGPf8RvrV8xEkxaLYgmmB9xMV0k3kDkRGrXVyJzaf+k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 05:57:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-pGPf8RvrV8xEkxaLYgmmB9xMV0k3kDkRGrXVyJzaf+k="
+        }
+      ]
+    },
+    {
       "Route": "js/animations.18n24az4tj.js",
       "AssetFile": "js/animations.js.gz",
       "Selectors": [
