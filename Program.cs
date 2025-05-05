@@ -6,32 +6,42 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 using MongoDB.Bson.Serialization.Conventions;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Đăng ký MongoDB services - sửa tham chiếu mơ hồ bằng cách chỉ định đầy đủ namespace
+// Register MongoDB services
 builder.Services.Configure<TiengAnh.Services.MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
-
 builder.Services.AddSingleton<MongoDbService>();
 
-// Đăng ký các repositories
+// Register repositories
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<GrammarRepository>();
 builder.Services.AddScoped<VocabularyRepository>();
 builder.Services.AddScoped<TestRepository>();
+
+// Fix registration of ITestRepository - ensure TestRepository is registered first, then register the interface
+builder.Services.AddScoped<ITestRepository>(sp => sp.GetRequiredService<TestRepository>());
+
 builder.Services.AddScoped<TopicRepository>();
-builder.Services.AddScoped<ExerciseRepository>();
-builder.Services.AddScoped<ProgressRepository>();
 builder.Services.AddScoped<ITopicRepository, TopicRepository>();
+builder.Services.AddScoped<ExerciseRepository>(provider =>
+{
+    var mongoDbService = provider.GetRequiredService<MongoDbService>();
+    var hostEnvironment = provider.GetRequiredService<IWebHostEnvironment>();
+    return new ExerciseRepository(mongoDbService, hostEnvironment.ContentRootPath);
+});
+builder.Services.AddScoped<ProgressRepository>();
 
-// Đăng ký DataSeeder
+// Register DataSeeder and DataImportService
 builder.Services.AddScoped<DataSeeder>();
+builder.Services.AddScoped<DataImportService>();
 
-// Đảm bảo có cấu hình authentication
+// Configure authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -45,13 +55,12 @@ builder.Services.AddAuthentication(options =>
     options.AccessDeniedPath = "/Account/AccessDenied";
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromDays(7);
-    // Thêm các cấu hình khác nếu cần
 });
 
-// Thêm dòng này vào cấu hình services để ghi nhớ rằng đã xử lý các cảnh báo nullable
+// Suppress nullable warnings
 builder.Services.SuppressNullableWarnings();
 
-// Thêm cấu hình cho Kestrel server để xử lý request tốt hơn
+// Configure Kestrel server
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.Limits.MaxRequestBodySize = 52428800; // 50MB
@@ -59,13 +68,13 @@ builder.WebHost.ConfigureKestrel(options =>
     options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(1);
 });
 
-// Tăng thời gian timeout cho HTTP request
+// Configure HTTP client timeout
 builder.Services.AddHttpClient(string.Empty, client =>
 {
     client.Timeout = TimeSpan.FromMinutes(2);
 });
 
-// Cấu hình bổ sung để xử lý lỗi IFeatureCollection disposed
+// Configure IIS to allow synchronous IO
 builder.Services.Configure<IISServerOptions>(options =>
 {
     options.AllowSynchronousIO = true;
@@ -73,14 +82,14 @@ builder.Services.Configure<IISServerOptions>(options =>
 
 var app = builder.Build();
 
-// Thêm cấu hình cho MongoDB Serialization
+// Configure MongoDB serialization
 var pack = new ConventionPack
 {
     new IgnoreExtraElementsConvention(true)
 };
 ConventionRegistry.Register("IgnoreExtraElements", pack, t => true);
 
-// Thêm code để seed dữ liệu khi ứng dụng khởi động
+// Seed data during startup
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -88,19 +97,19 @@ using (var scope = app.Services.CreateScope())
     {
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogInformation("Starting application initialization");
-        
+
+        // Run DataSeeder
         var dataSeeder = services.GetRequiredService<DataSeeder>();
         logger.LogInformation("Running data seeder");
         await dataSeeder.SeedDataAsync();
-        
-        // Kiểm tra xem dữ liệu đã được seed chưa
+
+        // Check seeded data
         var topicRepo = services.GetRequiredService<TopicRepository>();
         var hasTopics = await topicRepo.HasDataAsync();
         logger.LogInformation($"Topics data exists: {hasTopics}");
 
-        // Thêm kiểm tra Vocabularies
         var vocabRepo = services.GetRequiredService<VocabularyRepository>();
-        var topicVocabs = await vocabRepo.GetByTopicIdAsync(1); 
+        var topicVocabs = await vocabRepo.GetByTopicIdAsync(1);
         logger.LogInformation($"Vocabularies for Topic 1: {topicVocabs.Count}");
     }
     catch (Exception ex)
@@ -110,15 +119,55 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Configure the HTTP request pipeline.
+// Import exercises during startup (development only)
+if (app.Environment.IsDevelopment())
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            var dataImportService = services.GetRequiredService<DataImportService>();
+            string exercisesJsonPath = Path.Combine(app.Environment.ContentRootPath, "json", "exercise.json");
+            if (File.Exists(exercisesJsonPath))
+            {
+                await dataImportService.ImportExercisesFromJson(exercisesJsonPath);
+                Console.WriteLine($"Imported exercises from {exercisesJsonPath}");
+            }
+            else
+            {
+                Console.WriteLine($"Exercise JSON file not found at: {exercisesJsonPath}");
+            }
+        }
+        catch (Exception ex)
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occurred while importing exercises");
+        }
+    }
+}
+
+// Seed exercises from JSON
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var exerciseRepository = services.GetRequiredService<ExerciseRepository>();
+        await exerciseRepository.SeedExercisesFromJsonAsync();
+        Console.WriteLine("Seeded exercises from JSON");
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding exercises");
+    }
+}
+
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    // Kiểm tra null trước khi truy cập thuộc tính
-    if (app.Environment?.WebRootPath != null)
-    {
-        // Code sử dụng app.Environment.WebRootPath
-    }
 }
 else
 {
@@ -127,11 +176,9 @@ else
 }
 
 app.UseHttpsRedirection();
-
-// Cấu hình xử lý file tĩnh
 app.UseStaticFiles();
 
-// Chuyển hướng index.html đến trang chủ
+// Redirect index.html to home
 app.Use(async (context, next) =>
 {
     if (context.Request.Path.Value == "/index.html")
@@ -142,10 +189,10 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// Chặn tất cả các yêu cầu đến Swagger
+// Block Swagger requests
 app.Use(async (context, next) =>
 {
-    if (context.Request.Path.StartsWithSegments("/swagger") || 
+    if (context.Request.Path.StartsWithSegments("/swagger") ||
         context.Request.Path == "/index.html" && context.Request.QueryString.Value.Contains("swagger"))
     {
         context.Response.Redirect("/");
@@ -155,19 +202,15 @@ app.Use(async (context, next) =>
 });
 
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Thêm dòng này vào cấu hình middleware
-app.SuppressNullableWarnings();
-
-// Cấu hình routes cho MVC - đảm bảo route mặc định đúng
+// Configure MVC routes
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Đảm bảo rằng cấu hình này chỉ chạy khi không có các route khác xử lý request
+// Fallback route
 app.MapFallbackToController("Index", "Home");
 
 app.Run();

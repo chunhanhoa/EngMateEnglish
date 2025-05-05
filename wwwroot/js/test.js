@@ -1,154 +1,169 @@
-/* EngMate - JavaScript cho phần bài kiểm tra */
+/* EngMate - JavaScript for test functionality */
 
-// Biến toàn cục
+// Global variables
 let currentQuestion = 1;
 let totalQuestions = 0;
 let timeLeft = 0;
 let timerInterval;
+let answeredQuestions = new Set();
 
-// Khởi tạo bài kiểm tra
+// Initialize test
 function initTest(duration, questions) {
     totalQuestions = questions;
-    timeLeft = duration * 60; // Chuyển từ phút sang giây
+    timeLeft = duration * 60; // Convert minutes to seconds
     
-    // Khởi tạo bộ đếm thời gian
+    // Start timer
     startTimer();
     
-    // Khởi tạo hiển thị câu hỏi
+    // Show first question
     showQuestion(currentQuestion);
+    updateProgressBar();
     
-    // Xử lý khi người dùng chọn đáp án
+    // Handle option selection
     $('.test-option').on('click', function() {
-        // Loại bỏ class selected khỏi tất cả các option trong câu hỏi này
-        $(this).closest('.test-options').find('.test-option').removeClass('selected');
+        const questionNumber = $(this).closest('.test-question').attr('id').split('-')[1];
+        answeredQuestions.add(parseInt(questionNumber));
         
-        // Thêm class selected vào option được chọn
-        $(this).addClass('selected');
+        // Update navigation buttons
+        $(`.question-nav-btn[data-question="${questionNumber}"]`).removeClass('btn-outline-secondary btn-primary').addClass('btn-success');
+        
+        // Update progress
+        updateProgressBar();
     });
     
-    // Xử lý khi click nút Câu tiếp theo
+    // Next button click
     $('#nextBtn').on('click', function() {
         if (currentQuestion < totalQuestions) {
             currentQuestion++;
             showQuestion(currentQuestion);
+            updateProgressBar();
         }
     });
     
-    // Xử lý khi click nút Câu trước
+    // Previous button click
     $('#prevBtn').on('click', function() {
         if (currentQuestion > 1) {
             currentQuestion--;
             showQuestion(currentQuestion);
+            updateProgressBar();
+        }
+    });
+    
+    // Question navigation buttons
+    $('.question-nav-btn').on('click', function() {
+        const questionNum = parseInt($(this).data('question'));
+        currentQuestion = questionNum;
+        showQuestion(currentQuestion);
+        updateProgressBar();
+    });
+    
+    // Submit button click
+    $('#submitBtn, #finalSubmitBtn').on('click', function() {
+        if (confirm('Bạn có chắc muốn nộp bài?')) {
+            submitTest();
         }
     });
 }
 
-// Hiển thị câu hỏi theo số thứ tự
+// Show specific question
 function showQuestion(questionNumber) {
-    // Ẩn tất cả các câu hỏi
-    $('.test-question-card').hide();
+    // Hide all questions
+    $('.test-question').addClass('d-none');
     
-    // Hiển thị câu hỏi với số thứ tự tương ứng
-    $('#question-' + questionNumber).show();
+    // Show selected question
+    $(`#question-${questionNumber}`).removeClass('d-none');
     
-    // Cập nhật trạng thái các nút điều hướng
+    // Update navigation buttons
     updateNavigationButtons();
     
-    // Cập nhật thanh tiến trình
-    updateProgressBar();
+    // Update question navigation highlighting
+    $('.question-nav-btn').removeClass('btn-primary');
+    $(`.question-nav-btn[data-question="${questionNumber}"]`).addClass('btn-primary');
+    
+    // Update progress text
+    $('#progress-text').text(`Câu ${questionNumber}/${totalQuestions}`);
 }
 
-// Cập nhật trạng thái các nút điều hướng
+// Update navigation buttons
 function updateNavigationButtons() {
-    // Nút Câu trước: vô hiệu hóa nếu đang ở câu đầu tiên
     $('#prevBtn').prop('disabled', currentQuestion === 1);
     
-    // Nút Câu tiếp theo và Nộp bài
     if (currentQuestion === totalQuestions) {
-        $('#nextBtn').hide();
-        $('#submitBtn').show();
+        $('#nextBtn').addClass('d-none');
+        $('#submitBtn').removeClass('d-none');
     } else {
-        $('#nextBtn').show();
-        $('#submitBtn').hide();
+        $('#nextBtn').removeClass('d-none');
+        $('#submitBtn').addClass('d-none');
     }
-    
-    // Cập nhật text hiển thị tiến trình
-    $('#progressText').text('Câu ' + currentQuestion + '/' + totalQuestions);
 }
 
-// Cập nhật thanh tiến trình
+// Update progress bar
 function updateProgressBar() {
-    let progressPercentage = (currentQuestion / totalQuestions) * 100;
-    $('#progressBar').css('width', progressPercentage + '%');
-    $('#progressBar').attr('aria-valuenow', progressPercentage);
-    $('#progressBar').text(currentQuestion + '/' + totalQuestions);
+    const progress = (answeredQuestions.size / totalQuestions) * 100;
+    $('#progress-bar').css('width', `${progress}%`);
+    $('#progress-percentage').text(`${Math.round(progress)}%`);
 }
 
-// Khởi tạo bộ đếm thời gian
+// Start timer
 function startTimer() {
     timerInterval = setInterval(function() {
-        // Giảm thời gian còn lại
         timeLeft--;
         
-        // Định dạng thời gian (MM:SS)
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
         
-        // Cập nhật hiển thị thời gian
-        $('#timer').text(minutes + ':' + (seconds < 10 ? '0' : '') + seconds);
+        $('#time-remaining').text(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
         
-        // Nếu thời gian hết
         if (timeLeft <= 0) {
-            // Dừng bộ đếm thời gian
             clearInterval(timerInterval);
-            
-            // Tự động nộp bài
             alert('Hết thời gian! Bài kiểm tra của bạn sẽ được nộp tự động.');
             submitTest();
-        }
-        
-        // Cảnh báo khi còn ít thời gian
-        if (timeLeft === 60) { // Còn 1 phút
-            $('#timer').addClass('text-danger').addClass('fw-bold');
-            $('#timer').parent().addClass('animate__animated animate__pulse animate__infinite');
         }
     }, 1000);
 }
 
-// Nộp bài kiểm tra
+// Submit test
 function submitTest() {
-    // Dừng bộ đếm thời gian
+    // Stop timer
     clearInterval(timerInterval);
     
-    // Tính toán kết quả
-    // Trong ứng dụng thực tế, dữ liệu này sẽ được gửi đến server
-    let correctAnswers = 0;
-    let wrongAnswers = 0;
-    let unanswered = 0;
+    // Get answers
+    const answers = [];
+    for (let i = 1; i <= totalQuestions; i++) {
+        const selectedOption = $(`input[name="question-${i}"]:checked`).val();
+        answers.push({
+            questionId: i,
+            selectedOption: selectedOption !== undefined ? parseInt(selectedOption) : -1
+        });
+    }
     
-    // Mô phỏng việc tính điểm
-    // Trong thực tế, điểm sẽ được tính dựa trên câu trả lời thực tế của người dùng
-    correctAnswers = 15;
-    wrongAnswers = 5;
-    unanswered = totalQuestions - correctAnswers - wrongAnswers;
+    // Calculate score
+    const answeredCount = answers.filter(a => a.selectedOption !== -1).length;
+    const notAnsweredCount = totalQuestions - answeredCount;
     
-    // Lưu kết quả vào localStorage để hiển thị ở trang kết quả
-    // Trong ứng dụng thực tế, kết quả sẽ được lưu trữ trong database
-    localStorage.setItem('testResult', JSON.stringify({
-        correctAnswers: correctAnswers,
-        wrongAnswers: wrongAnswers,
-        unanswered: unanswered,
-        score: (correctAnswers / totalQuestions) * 100
+    // Store data in localStorage for result page
+    localStorage.setItem('testAnswers', JSON.stringify(answers));
+    localStorage.setItem('testMetadata', JSON.stringify({
+        testId: getTestId(),
+        totalQuestions: totalQuestions,
+        answeredQuestions: answeredCount,
+        notAnsweredQuestions: notAnsweredCount,
+        timeUsed: timeLeft
     }));
     
-    // Chuyển hướng đến trang kết quả
-    window.location.href = '/Test/Result/' + getTestId();
+    // Redirect to results page
+    window.location.href = `/Test/Result/${getTestId()}`;
 }
 
-// Lấy ID của bài kiểm tra từ URL
+// Extract test ID from URL
 function getTestId() {
-    // Trong thực tế, ID bài kiểm tra có thể được lấy từ nhiều nguồn khác nhau
-    // Đây chỉ là một cách đơn giản để mô phỏng
-    let pathParts = window.location.pathname.split('/');
+    const pathParts = window.location.pathname.split('/');
     return pathParts[pathParts.length - 1];
 }
+
+/* Test script for TiengAnh */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // This script will handle the test functionality
+    console.log('Test script loaded');
+});

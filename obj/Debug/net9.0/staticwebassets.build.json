@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6s78qlmiBmTVeh4uILwQemJ8ovkJksnxM7zRx9rU7os=",
+  "Hash": "yiOsRD1vkxd0W7koVI4P5kRbcbUfupd9Xb0ajREmKoU=",
   "Source": "TiengAnh",
   "BasePath": "_content/TiengAnh",
   "Mode": "Default",
@@ -1172,12 +1172,12 @@
       "OriginalItemSpec": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-r1253dw952.gz",
+      "Identity": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-e2xqulz1oo.gz",
       "SourceId": "TiengAnh",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/TiengAnh",
-      "RelativePath": "js/test#[.{fingerprint=r1253dw952}]?.js.gz",
+      "RelativePath": "js/test#[.{fingerprint=e2xqulz1oo}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1186,8 +1186,8 @@
       "RelatedAsset": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\test.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "4f9aq5wrrx",
-      "Integrity": "0GN3Wv64mi+HxB3/gUozfP1AjWNLjr03i7att2yIdDA=",
+      "Fingerprint": "g935zbitb3",
+      "Integrity": "PPGiQWdsEzTJHJuCvrL5sqOJqPYuIp0UQoGdJlTBTAc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\test.js"
@@ -3118,8 +3118,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "r1253dw952",
-      "Integrity": "nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs=",
+      "Fingerprint": "e2xqulz1oo",
+      "Integrity": "GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\test.js"
@@ -13069,13 +13069,13 @@
       ]
     },
     {
-      "Route": "js/test.js",
-      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-r1253dw952.gz",
+      "Route": "js/test.e2xqulz1oo.js",
+      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-e2xqulz1oo.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000536480687"
+          "Quality": "0.000580046404"
         }
       ],
       "ResponseHeaders": [
@@ -13085,19 +13085,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1863"
+          "Value": "1723"
         },
         {
           "Name": "ETag",
-          "Value": "\"0GN3Wv64mi+HxB3/gUozfP1AjWNLjr03i7att2yIdDA=\""
+          "Value": "\"PPGiQWdsEzTJHJuCvrL5sqOJqPYuIp0UQoGdJlTBTAc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:31:34 GMT"
+          "Value": "Sun, 04 May 2025 14:59:16 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -13113,18 +13113,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs=\""
+          "Value": "W/\"GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "e2xqulz1oo"
+        },
+        {
+          "Name": "label",
+          "Value": "js/test.js"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs="
+          "Value": "sha256-GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU="
         }
       ]
     },
     {
-      "Route": "js/test.js",
+      "Route": "js/test.e2xqulz1oo.js",
       "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\test.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -13134,7 +13142,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5442"
+          "Value": "5261"
         },
         {
           "Name": "Content-Type",
@@ -13142,121 +13150,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs=\""
+          "Value": "\"GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:31:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs="
-        }
-      ]
-    },
-    {
-      "Route": "js/test.js.gz",
-      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-r1253dw952.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1863"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0GN3Wv64mi+HxB3/gUozfP1AjWNLjr03i7att2yIdDA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:31:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-0GN3Wv64mi+HxB3/gUozfP1AjWNLjr03i7att2yIdDA="
-        }
-      ]
-    },
-    {
-      "Route": "js/test.r1253dw952.js",
-      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-r1253dw952.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000536480687"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1863"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0GN3Wv64mi+HxB3/gUozfP1AjWNLjr03i7att2yIdDA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:31:34 GMT"
+          "Value": "Sun, 04 May 2025 14:59:16 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "r1253dw952"
+          "Value": "e2xqulz1oo"
         },
         {
           "Name": "label",
@@ -13264,13 +13172,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs="
+          "Value": "sha256-GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU="
         }
       ]
     },
     {
-      "Route": "js/test.r1253dw952.js",
-      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\test.js",
+      "Route": "js/test.e2xqulz1oo.js.gz",
+      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-e2xqulz1oo.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -13279,7 +13187,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5442"
+          "Value": "1723"
         },
         {
           "Name": "Content-Type",
@@ -13287,56 +13195,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs=\""
+          "Value": "\"PPGiQWdsEzTJHJuCvrL5sqOJqPYuIp0UQoGdJlTBTAc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:31:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "r1253dw952"
-        },
-        {
-          "Name": "label",
-          "Value": "js/test.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-nxBa8AXJl2Fwpg2h4F3D7ALUrDeoK9g+uKr1QIsVChs="
-        }
-      ]
-    },
-    {
-      "Route": "js/test.r1253dw952.js.gz",
-      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-r1253dw952.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1863"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0GN3Wv64mi+HxB3/gUozfP1AjWNLjr03i7att2yIdDA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:31:34 GMT"
+          "Value": "Sun, 04 May 2025 14:59:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13354,7 +13217,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "r1253dw952"
+          "Value": "e2xqulz1oo"
         },
         {
           "Name": "label",
@@ -13362,7 +13225,144 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0GN3Wv64mi+HxB3/gUozfP1AjWNLjr03i7att2yIdDA="
+          "Value": "sha256-PPGiQWdsEzTJHJuCvrL5sqOJqPYuIp0UQoGdJlTBTAc="
+        }
+      ]
+    },
+    {
+      "Route": "js/test.js",
+      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-e2xqulz1oo.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000580046404"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1723"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PPGiQWdsEzTJHJuCvrL5sqOJqPYuIp0UQoGdJlTBTAc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 14:59:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU="
+        }
+      ]
+    },
+    {
+      "Route": "js/test.js",
+      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\test.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5261"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 14:59:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GhRnL6XReNiP+zysaWJAf7hynIfejLKMbcA2K9w/YiU="
+        }
+      ]
+    },
+    {
+      "Route": "js/test.js.gz",
+      "AssetFile": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\compressed\\qf29jbnmt9-e2xqulz1oo.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1723"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PPGiQWdsEzTJHJuCvrL5sqOJqPYuIp0UQoGdJlTBTAc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 14:59:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PPGiQWdsEzTJHJuCvrL5sqOJqPYuIp0UQoGdJlTBTAc="
         }
       ]
     },
@@ -31055,7 +31055,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31108,7 +31108,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31145,7 +31145,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31192,7 +31192,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31253,7 +31253,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31298,7 +31298,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31353,7 +31353,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31414,7 +31414,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31459,7 +31459,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31514,7 +31514,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31567,7 +31567,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31604,7 +31604,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 16:05:10 GMT"
+          "Value": "Sun, 04 May 2025 14:31:38 GMT"
         },
         {
           "Name": "Cache-Control",

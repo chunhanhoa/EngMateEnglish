@@ -1,243 +1,81 @@
-@model List<TestModel>
+@model IEnumerable<TiengAnh.Models.TestModel>
 @{
     ViewData["Title"] = "Bài kiểm tra";
 }
 
-<!-- Hero Section -->
-<section class="hero-section" style="padding: 3rem 0;">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-7 fade-in-left">
-                <h1 class="animate__animated animate__fadeInUp">Kiểm tra trình độ tiếng Anh</h1>
-                <p class="animate__animated animate__fadeInUp animate__delay-1s">
-                    Đánh giá khả năng tiếng Anh của bạn thông qua các bài kiểm tra đa dạng. 
-                    Từ kiểm tra từ vựng đến ngữ pháp, chúng tôi cung cấp nhiều bài kiểm tra phù hợp cho mọi trình độ.
-                </p>
-            </div>
-            <div class="col-md-5 text-center fade-in-right">
-                <img src="~/images/test-hero.png" alt="Test Learning" class="hero-image animate__animated animate__bounceIn animate__delay-1s" style="max-height: 250px;" />
-            </div>
-        </div>
-    </div>
-</section>
+<div class="container py-5">
+    <h1 class="display-4 text-center mb-5">Bài kiểm tra</h1>
 
-<!-- Test Categories Section -->
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold mb-3">Các loại bài kiểm tra</h2>
-            <p class="lead">Chọn một loại bài kiểm tra phù hợp với nhu cầu của bạn</p>
-        </div>
-
-        <div class="row g-4 mb-5">
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                            <i class="fas fa-tasks text-primary fa-2x"></i>
-                        </div>
-                        <h4 class="card-title">Kiểm tra trình độ</h4>
-                        <p class="card-text">Đánh giá toàn diện khả năng tiếng Anh của bạn để xác định trình độ hiện tại.</p>
-                        <a href="#level-tests" class="btn btn-outline-primary">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                            <i class="fas fa-book text-primary fa-2x"></i>
-                        </div>
-                        <h4 class="card-title">Kiểm tra từ vựng</h4>
-                        <p class="card-text">Kiểm tra vốn từ vựng của bạn theo các chủ đề cụ thể.</p>
-                        <a href="#vocabulary-tests" class="btn btn-outline-primary">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="rounded-circle bg-primary-soft d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                            <i class="fas fa-pen text-primary fa-2x"></i>
-                        </div>
-                        <h4 class="card-title">Kiểm tra ngữ pháp</h4>
-                        <p class="card-text">Kiểm tra kiến thức ngữ pháp của bạn với các bài kiểm tra theo từng chủ đề.</p>
-                        <a href="#grammar-tests" class="btn btn-outline-primary">Xem thêm</a>
-                    </div>
-                </div>
+    <!-- Filter buttons -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <a href="/Test" class="btn btn-outline-primary mb-2">Tất cả</a>
+                <a href="/Test/Category/Grammar" class="btn btn-outline-primary mb-2">Ngữ pháp</a>
+                <a href="/Test/Category/Vocabulary" class="btn btn-outline-primary mb-2">Từ vựng</a>
+                <a href="/Test/Category/Level" class="btn btn-outline-primary mb-2">Trình độ</a>
+                <a href="/Test/Level/A1" class="btn btn-outline-secondary mb-2">A1</a>
+                <a href="/Test/Level/A2" class="btn btn-outline-secondary mb-2">A2</a>
+                <a href="/Test/Level/B1" class="btn btn-outline-secondary mb-2">B1</a>
+                <a href="/Test/Level/B2" class="btn btn-outline-secondary mb-2">B2</a>
             </div>
         </div>
     </div>
-</section>
 
-<!-- Level Tests Section -->
-<section id="level-tests" class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold mb-3">Bài kiểm tra trình độ</h2>
-            <p class="lead">Đánh giá trình độ tiếng Anh của bạn</p>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            <h4>Không tìm thấy bài kiểm tra.</h4>
+            <p>Hiện tại chưa có bài kiểm tra nào trong mục này.</p>
         </div>
-
+    }
+    else
+    {
         <div class="row g-4">
-            @foreach (var test in Model.Where(t => t.Category == "General"))
+            @foreach (var test in Model)
             {
-                <div class="col-lg-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="@test.ImageUrl" alt="@test.TestName" class="img-fluid rounded" 
-                                        onerror="this.src='/images/test/default.jpg';this.onerror='';">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h3 class="card-title fw-bold">@test.TestName</h3>
-                                        <span class="level-badge level-@test.Level.Replace("-", "")">@test.Level</span>
-                                    </div>
-                                    <p class="card-text mb-3">@test.Description</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <span class="badge badge-primary me-2">@test.TotalQuestions câu hỏi</span>
-                                            <span class="badge badge-warning">
-                                                <i class="far fa-clock me-1"></i> @test.Duration phút
-                                            </span>
-                                        </div>
-                                        <a href="@Url.Action("Details", "Test", new { id = test.TestID })" class="btn btn-primary">
-                                            Bắt đầu
-                                        </a>
-                                    </div>
-                                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="@test.ImageUrl" class="card-img-top" alt="@test.Title" style="height: 160px; object-fit: cover;" loading="lazy" onerror="this.src='/images/tests/default-test.jpg';this.onerror='';">
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge bg-primary">@test.Level</span>
+                                <span class="badge bg-info">@test.Category</span>
                             </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@test.Title</h5>
+                            <p class="card-text small text-muted">
+                                <i class="bi bi-clock"></i> @test.Duration phút |
+                                <i class="bi bi-question-circle"></i> @test.Questions.Count câu hỏi
+                            </p>
+                            <p class="card-text">@test.Description</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <a href="/Test/Details/@test.Id" class="btn btn-primary w-100 test-detail-link" data-id="@test.Id">
+                                Xem chi tiết
+                            </a>
                         </div>
                     </div>
                 </div>
             }
         </div>
-    </div>
-</section>
+    }
+</div>
 
-<!-- Vocabulary Tests Section -->
-<section id="vocabulary-tests" class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold mb-3">Bài kiểm tra từ vựng</h2>
-            <p class="lead">Kiểm tra vốn từ vựng của bạn theo các chủ đề</p>
-        </div>
-
-        <div class="row g-4">
-            @foreach (var test in Model.Where(t => t.Category == "Vocabulary"))
-            {
-                <div class="col-lg-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="@test.ImageUrl" alt="@test.TestName" class="img-fluid rounded" 
-                                        onerror="this.src='/images/test/default.jpg';this.onerror='';">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h3 class="card-title fw-bold">@test.TestName</h3>
-                                        <span class="level-badge level-@test.Level.Replace("-", "")">@test.Level</span>
-                                    </div>
-                                    <p class="card-text mb-3">@test.Description</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <span class="badge badge-primary me-2">@test.TotalQuestions câu hỏi</span>
-                                            <span class="badge badge-warning">
-                                                <i class="far fa-clock me-1"></i> @test.Duration phút
-                                            </span>
-                                        </div>
-                                        <a href="@Url.Action("Details", "Test", new { id = test.TestID })" class="btn btn-primary">
-                                            Bắt đầu
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-</section>
-
-<!-- Grammar Tests Section -->
-<section id="grammar-tests" class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold mb-3">Bài kiểm tra ngữ pháp</h2>
-            <p class="lead">Kiểm tra kiến thức ngữ pháp của bạn</p>
-        </div>
-
-        <div class="row g-4">
-            @foreach (var test in Model.Where(t => t.Category == "Grammar"))
-            {
-                <div class="col-lg-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="@test.ImageUrl" alt="@test.TestName" class="img-fluid rounded" 
-                                        onerror="this.src='/images/test/default.jpg';this.onerror='';">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h3 class="card-title fw-bold">@test.TestName</h3>
-                                        <span class="level-badge level-@test.Level.Replace("-", "")">@test.Level</span>
-                                    </div>
-                                    <p class="card-text mb-3">@test.Description</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <span class="badge badge-primary me-2">@test.TotalQuestions câu hỏi</span>
-                                            <span class="badge badge-warning">
-                                                <i class="far fa-clock me-1"></i> @test.Duration phút
-                                            </span>
-                                        </div>
-                                        <a href="@Url.Action("Details", "Test", new { id = test.TestID })" class="btn btn-primary">
-                                            Bắt đầu
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-</section>
-
-<!-- Test Tips Section -->
-<section class="py-5 bg-primary text-white text-center">
-    <div class="container">
-        <h2 class="display-5 fw-bold mb-4">Mẹo làm bài kiểm tra</h2>
-        <p class="lead mb-5">Để đạt kết quả tốt nhất khi làm bài kiểm tra</p>
-
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="p-4 bg-white bg-opacity-10 rounded-3 h-100">
-                    <i class="fas fa-book-reader fa-3x mb-3 text-warning"></i>
-                    <h4 class="mb-3">Đọc kỹ hướng dẫn</h4>
-                    <p class="mb-0">Đọc kỹ hướng dẫn và yêu cầu của bài kiểm tra trước khi bắt đầu để hiểu rõ cách làm bài.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-4 bg-white bg-opacity-10 rounded-3 h-100">
-                    <i class="fas fa-clock fa-3x mb-3 text-warning"></i>
-                    <h4 class="mb-3">Quản lý thời gian</h4>
-                    <p class="mb-0">Phân bổ thời gian hợp lý cho từng phần của bài kiểm tra. Đừng dành quá nhiều thời gian cho một câu hỏi khó.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-4 bg-white bg-opacity-10 rounded-3 h-100">
-                    <i class="fas fa-check-double fa-3x mb-3 text-warning"></i>
-                    <h4 class="mb-3">Kiểm tra lại</h4>
-                    <p class="mb-0">Nếu còn thời gian, hãy kiểm tra lại các câu trả lời của bạn để đảm bảo không bỏ sót hoặc làm sai do vội vàng.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@section Scripts {
+    <script>
+        // Log available test data for debugging
+        console.log("Available tests:", @Html.Raw(Json.Serialize(Model)));
+        
+        // Add click handler to debug links
+        document.addEventListener('DOMContentLoaded', function() {
+            const detailLinks = document.querySelectorAll('.test-detail-link');
+            detailLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('Link clicked:', this.href, 'Test ID:', this.getAttribute('data-id'));
+                });
+            });
+        });
+    </script>
+}

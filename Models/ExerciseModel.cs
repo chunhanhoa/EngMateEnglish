@@ -28,8 +28,22 @@ namespace TiengAnh.Models
         // Helper method for char comparisons in views
         public bool IsAnswer(char option)
         {
-            return CorrectAnswer != null && CorrectAnswer.Length > 0 && 
-                   CorrectAnswer[0] == option;
+            if (string.IsNullOrEmpty(CorrectAnswer))
+                return false;
+                
+            // Kiểm tra nếu CorrectAnswer là một chữ cái đơn lẻ
+            if (CorrectAnswer.Length == 1)
+                return CorrectAnswer[0] == option;
+            
+            // Kiểm tra nếu CorrectAnswer là tên đầy đủ của đáp án (ví dụ: "Option A", "A", v.v.)
+            if (CorrectAnswer.Contains(option.ToString(), StringComparison.OrdinalIgnoreCase))
+                return true;
+                
+            // Kiểm tra đặc biệt nếu option là A, B, C, D và CorrectAnswer là đáp án tương ứng
+            return option == 'A' && Option_A == CorrectAnswer ||
+                   option == 'B' && Option_B == CorrectAnswer ||
+                   option == 'C' && Option_C == CorrectAnswer ||
+                   option == 'D' && Option_D == CorrectAnswer;
         }
         
         [BsonElement("Options")]

@@ -1,5 +1,5 @@
 @using TiengAnh.Extensions
-@model List<ExerciseModel>
+@model ExerciseModel
 @{
     ViewData["Title"] = "Trắc nghiệm - " + ViewBag.Topic?.Name_CD ?? "Chủ đề";
     var topic = ViewBag.Topic as TopicModel;
@@ -19,20 +19,19 @@
             </nav>
         </div>
     </div>
-
+    
     <!-- Title and Instructions -->
     <div class="row mb-5">
         <div class="col-md-8">
             <h1 class="display-5 fw-bold mb-3">Trắc nghiệm: @(topic?.Name_CD ?? "Chủ đề")</h1>
-            <p class="lead">Kiểm tra kiến thức với các câu hỏi trắc nghiệm đơn giản. Phù hợp cho người mới bắt đầu.</p>
+            <p class="lead">Chọn đáp án đúng cho câu hỏi bên dưới.</p>
             <div class="card bg-light mb-4">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-lightbulb text-warning me-2"></i>Hướng dẫn</h5>
                     <ul class="mb-0">
-                        <li>Đọc câu hỏi cẩn thận và chọn đáp án đúng</li>
+                        <li>Đọc kỹ câu hỏi và các lựa chọn</li>
                         <li>Mỗi câu hỏi chỉ có một đáp án đúng</li>
-                        <li>Hoàn thành tất cả các câu hỏi trước khi nộp bài</li>
-                        <li>Kết quả sẽ hiển thị sau khi nộp bài</li>
+                        <li>Chọn đáp án bạn cho là đúng</li>
                     </ul>
                 </div>
             </div>
@@ -46,7 +45,7 @@
                     </div>
                 </div>
                 <p class="text-center mb-0">
-                    <span id="answered-count">0</span>/<span id="total-count">@Model.Count</span> câu
+                    <span id="answered-count">0</span>/1 câu
                 </p>
             </div>
         </div>
@@ -56,74 +55,72 @@
     <div class="row">
         <div class="col-lg-8">
             <form id="quiz-form">
-                @foreach (var (exercise, index) in Model.Select((ex, i) => (ex, i + 1)))
-                {
-                    <div class="card border-0 shadow-sm mb-4 question-card" id="question-@index" data-question-id="@exercise.ID_BT">
-                        <div class="card-body p-4">
-                            <h4 class="fw-bold mb-4">Câu @index: @exercise.Question_BT</h4>
-                            
-                            <div class="options-list">
-                                <div class="quiz-option" data-answer="A" data-correct="@(exercise.IsAnswer('A') ? "true" : "false")">
-                                    <span>A. @exercise.Option_A</span>
-                                </div>
-                                <div class="quiz-option" data-answer="B" data-correct="@(exercise.IsAnswer('B') ? "true" : "false")">
-                                    <span>B. @exercise.Option_B</span>
-                                </div>
-                                <div class="quiz-option" data-answer="C" data-correct="@(exercise.IsAnswer('C') ? "true" : "false")">
-                                    <span>C. @exercise.Option_C</span>
-                                </div>
-                                <div class="quiz-option" data-answer="D" data-correct="@(exercise.IsAnswer('D') ? "true" : "false")">
-                                    <span>D. @exercise.Option_D</span>
-                                </div>
+                <div class="card border-0 shadow-sm mb-4 question-card" id="question-1" data-question-id="@Model.ID_BT">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-4">Câu hỏi: @Model.Question_BT</h4>
+                        
+                        <div class="options-list">
+                            <div class="quiz-option" data-answer="A" data-correct="@(Model.Option_A == Model.Answer_BT ? "true" : "false")">
+                                <span>A. @Model.Option_A</span>
                             </div>
-                            
-                            <div class="explanation mt-4 p-3 rounded" style="display: none; background-color: #f8f9fa;">
-                                <p class="mb-0">
-                                    <strong>Giải thích:</strong> @exercise.Explanation_BT
-                                </p>
+                            <div class="quiz-option" data-answer="B" data-correct="@(Model.Option_B == Model.Answer_BT ? "true" : "false")">
+                                <span>B. @Model.Option_B</span>
+                            </div>
+                            <div class="quiz-option" data-answer="C" data-correct="@(Model.Option_C == Model.Answer_BT ? "true" : "false")">
+                                <span>C. @Model.Option_C</span>
+                            </div>
+                            <div class="quiz-option" data-answer="D" data-correct="@(Model.Option_D == Model.Answer_BT ? "true" : "false")">
+                                <span>D. @Model.Option_D</span>
                             </div>
                         </div>
+                        
+                        <!-- Debug info -->
+                        <div class="debug-info mt-2" style="display: none;">
+                            <p class="text-muted small">Debug: CorrectAnswer = "@Model.CorrectAnswer", Answer_BT = "@Model.Answer_BT"</p>
+                        </div>
+                        
+                        <div class="explanation mt-4 p-3 rounded" style="display: none; background-color: #f8f9fa;">
+                            <p class="mb-0">
+                                <strong>Giải thích:</strong> @Model.Explanation_BT
+                            </p>
+                        </div>
                     </div>
-                }
-                
-                <div class="d-flex justify-content-between mb-5">
-                    <button type="button" class="btn btn-outline-primary" id="prevBtn" disabled>
-                        <i class="fas fa-arrow-left me-2"></i> Câu trước
-                    </button>
-                    <div>
-                        <span class="badge bg-primary p-2 me-2" id="progressText">Câu 1/@Model.Count</span>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary" id="nextBtn">
-                        Câu tiếp theo <i class="fas fa-arrow-right ms-2"></i>
-                    </button>
                 </div>
-
-                <div class="d-grid">
-                    <button type="button" class="btn btn-primary btn-lg" id="submitBtn">
-                        <i class="fas fa-check-circle me-2"></i> Nộp bài
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-primary" id="check-answers-btn">
+                        <i class="fas fa-check me-1"></i> Kiểm tra
                     </button>
+                    @if (Model.ID_BT > 1)
+                    {
+                        <button type="button" class="btn btn-outline-secondary" id="prev-exercise-btn">
+                            <i class="fas fa-arrow-left me-1"></i> Bài trước
+                        </button>
+                    }
+                    @if (Model.ID_BT < 36)
+                    {
+                        <button type="button" class="btn btn-outline-secondary" id="next-exercise-btn">
+                            <i class="fas fa-arrow-right me-1"></i> Bài tiếp theo
+                        </button>
+                    }
                 </div>
             </form>
         </div>
-
+        
         <div class="col-lg-4">
             <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
                 <div class="card-body p-4">
-                    <h5 class="card-title mb-3">Danh sách câu hỏi</h5>
-                    <div class="question-navigator d-flex flex-wrap">
-                        @for (int i = 1; i <= Model.Count; i++)
-                        {
-                            <button class="btn btn-outline-secondary question-nav-btn me-2 mb-2" data-question="@i">@i</button>
-                        }
-                    </div>
+                    <h5 class="card-title mb-3">Thông tin</h5>
+                    
+                    <p>Mã bài tập: <strong>#@Model.ID_BT</strong></p>
+                    <p>Trình độ: <span class="badge level-badge level-@Model.Level">@Model.Level</span></p>
+                    
                     <hr />
-                    <div class="d-flex justify-content-between mb-2">
-                        <span><i class="fas fa-circle text-secondary me-2"></i> Chưa trả lời</span>
-                        <span id="unanswered-count">@Model.Count</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fas fa-circle text-primary me-2"></i> Đã trả lời</span>
-                        <span id="nav-answered-count">0</span>
+                    
+                    <div class="d-grid gap-2">
+                        <a href="@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-1"></i> Về trang chủ đề
+                        </a>
                     </div>
                 </div>
             </div>
@@ -143,334 +140,266 @@
                         <div class="score-circle mb-3">
                             <span id="score-percentage">0%</span>
                         </div>
-                        <h4><span id="score-correct">0</span>/<span id="score-total">@Model.Count</span> câu đúng</h4>
+                        <h4><span id="score-correct">0</span>/1 câu đúng</h4>
                         <p id="score-message">Hãy cố gắng hơn!</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <p><strong>Thời gian làm bài:</strong> <span id="time-spent">0 phút 0 giây</span></p>
-                        </div>
-                        <div>
-                            <p><strong>Độ chính xác:</strong> <span id="accuracy">0%</span></p>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" id="reviewBtn">Xem lại bài làm</button>
-                    <button type="button" class="btn btn-success" id="retryBtn">Làm lại</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continue-btn">Tiếp tục</button>
+                    <button type="button" class="btn btn-success" id="retry-btn">Làm lại</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<style>
-    .quiz-option {
-        padding: 1rem;
-        margin-bottom: 0.5rem;
-        border: 1px solid #dee2e6;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .quiz-option:hover {
-        background-color: #f8f9fa;
-    }
-    
-    .quiz-option.selected {
-        background-color: #cfe2ff;
-        border-color: #9ec5fe;
-    }
-    
-    .quiz-option.correct {
-        background-color: #d1e7dd;
-        border-color: #a3cfbb;
-    }
-    
-    .quiz-option.incorrect {
-        background-color: #f8d7da;
-        border-color: #f5c2c7;
-    }
-    
-    .question-nav-btn {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
-    
-    .question-nav-btn.active {
-        background-color: #0d6efd;
-        color: white;
-    }
-    
-    .question-nav-btn.answered {
-        background-color: #cfe2ff;
-        border-color: #9ec5fe;
-    }
-    
-    .score-circle {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background-color: #f8f9fa;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-        border: 10px solid #0d6efd;
-    }
-    
-    .score-circle span {
-        font-size: 2.5rem;
-        font-weight: bold;
-    }
-    
-    .question-card {
-        display: none;
-    }
-    
-    .question-card.active {
-        display: block;
-    }
-</style>
+@section Styles {
+    <style>
+        .level-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        
+        .level-A1, .level-A2 { background-color: #e9f5ff; color: #0d6efd; }
+        .level-B1, .level-B2 { background-color: #e3f9e5; color: #198754; }
+        .level-C1, .level-C2 { background-color: #ffe8e8; color: #dc3545; }
+        
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quiz-option:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .quiz-option.selected {
+            border-color: #0d6efd;
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        
+        .quiz-option.correct {
+            border-color: #198754;
+            background-color: rgba(25, 135, 84, 0.1);
+        }
+        
+        .quiz-option.incorrect {
+            border-color: #dc3545;
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        
+        .correct-indicator {
+            margin-left: 5px;
+            font-weight: bold;
+        }
+        
+        .question-card {
+            display: none;
+        }
+        
+        .question-card:first-child {
+            display: block;
+        }
+        
+        .question-nav-btn.answered {
+            background-color: #0d6efd;
+            color: white;
+        }
+        
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            border: 6px solid #0d6efd;
+        }
+        
+        .score-circle span {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        #back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 99;
+        }
+    </style>
+}
 
 @section Scripts {
     <script>
-        $(document).ready(function() {
-            // Lấy các element DOM
-            const questionCards = document.querySelectorAll('.question-card');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const submitBtn = document.getElementById('submitBtn');
-            const progressBar = document.getElementById('progress-bar');
-            const progressText = document.getElementById('progressText');
-            const answeredCount = document.getElementById('answered-count');
-            const navAnsweredCount = document.getElementById('nav-answered-count');
-            const unansweredCount = document.getElementById('unanswered-count');
-            const totalCount = document.getElementById('total-count');
-            const questionNavBtns = document.querySelectorAll('.question-nav-btn');
-            
-            // Modal elements
-            const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
-            const scorePercentage = document.getElementById('score-percentage');
-            const scoreCorrect = document.getElementById('score-correct');
-            const scoreTotal = document.getElementById('score-total');
-            const scoreMessage = document.getElementById('score-message');
-            const timeSpent = document.getElementById('time-spent');
-            const accuracy = document.getElementById('accuracy');
-            const reviewBtn = document.getElementById('reviewBtn');
-            const retryBtn = document.getElementById('retryBtn');
-            
+        document.addEventListener('DOMContentLoaded', function() {
             // Variables
-            let currentQuestion = 1;
-            let totalQuestions = questionCards.length;
-            let answeredQuestions = new Array(totalQuestions).fill(false);
-            let userAnswers = new Array(totalQuestions).fill(null);
+            const quizForm = document.getElementById('quiz-form');
+            const options = document.querySelectorAll('.quiz-option');
+            const checkBtn = document.getElementById('check-answers-btn');
+            const retryBtn = document.getElementById('retry-btn');
+            const continueBtn = document.getElementById('continue-btn');
+            const nextExerciseBtn = document.getElementById('next-exercise-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const answeredCount = document.getElementById('answered-count');
+            const explanations = document.querySelectorAll('.explanation');
+            const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+            const prevExerciseBtn = document.getElementById('prev-exercise-btn');
+            const debugInfo = document.querySelector('.debug-info');
+            
+            let selectedOption = null;
+            let correct = false;
+            let answered = false;
             let startTime = new Date();
             
-            // Initialize the first question
-            showQuestion(currentQuestion);
-            updateProgress();
+            // Function to reset UI
+            function resetUI() {
+                options.forEach(opt => {
+                    opt.classList.remove('selected', 'correct', 'incorrect');
+                    const indicator = opt.querySelector('.correct-indicator');
+                    if (indicator) {
+                        indicator.remove();
+                    }
+                });
+                explanations.forEach(exp => exp.style.display = 'none');
+                selectedOption = null;
+                answered = false;
+                startTime = new Date();
+                updateProgress();
+            }
             
-            // Add event listeners for the quiz options
-            document.querySelectorAll('.quiz-option').forEach(option => {
+            // Toggle debug info
+            if (prevExerciseBtn) {
+                prevExerciseBtn.addEventListener('click', function() {
+                    const currentId = @Model.ID_BT;
+                    const prevId = currentId - 1;
+                    window.location.href = `/Exercise/MultipleChoice/${prevId}`;
+                });
+            }
+            
+            // Event listeners for options
+            options.forEach(option => {
                 option.addEventListener('click', function() {
-                    // Get the current question card
-                    const questionCard = this.closest('.question-card');
-                    const questionIndex = parseInt(questionCard.id.split('-')[1]) - 1;
-                    
-                    // Remove selected class from all options in this question
-                    questionCard.querySelectorAll('.quiz-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    
-                    // Add selected class to clicked option
+                    if (answered) return;
+                    options.forEach(opt => opt.classList.remove('selected'));
                     this.classList.add('selected');
-                    
-                    // Update answered questions array
-                    answeredQuestions[questionIndex] = true;
-                    userAnswers[questionIndex] = this.getAttribute('data-answer');
-                    
-                    // Update question navigation
-                    questionNavBtns[questionIndex].classList.add('answered');
-                    
-                    // Update progress
+                    selectedOption = this;
                     updateProgress();
                 });
             });
             
-            // Navigation buttons
-            prevBtn.addEventListener('click', function() {
-                if (currentQuestion > 1) {
-                    showQuestion(currentQuestion - 1);
+            // Check answers button
+            checkBtn.addEventListener('click', function() {
+                if (!selectedOption) {
+                    alert('Vui lòng chọn một đáp án!');
+                    return;
                 }
-            });
-            
-            nextBtn.addEventListener('click', function() {
-                if (currentQuestion < totalQuestions) {
-                    showQuestion(currentQuestion + 1);
-                }
-            });
-            
-            // Question navigation buttons
-            questionNavBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const questionNum = parseInt(this.getAttribute('data-question'));
-                    showQuestion(questionNum);
+                
+                answered = true;
+                const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+                correct = isCorrect;
+                
+                let correctOption = null;
+                options.forEach(opt => {
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        correctOption = opt;
+                    }
                 });
-            });
-            
-            // Submit button
-            submitBtn.addEventListener('click', function() {
-                // Check if all questions are answered
-                if (answeredQuestions.every(answered => answered)) {
-                    // Calculate results
-                    let correctCount = 0;
-                    userAnswers.forEach((answer, index) => {
-                        const correctAnswer = document.querySelector(`#question-${index + 1} .quiz-option[data-correct="true"]`).getAttribute('data-answer');
-                        if (answer === correctAnswer) {
-                            correctCount++;
-                        }
-                    });
-                    
-                    // Calculate time spent
-                    const endTime = new Date();
-                    const timeDiff = Math.floor((endTime - startTime) / 1000); // in seconds
-                    const minutes = Math.floor(timeDiff / 60);
-                    const seconds = timeDiff % 60;
-                    
-                    // Calculate percentage
-                    const percentageScore = Math.round((correctCount / totalQuestions) * 100);
-                    
-                    // Update modal content
-                    scorePercentage.textContent = `${percentageScore}%`;
-                    scoreCorrect.textContent = correctCount;
-                    scoreTotal.textContent = totalQuestions;
-                    timeSpent.textContent = `${minutes} phút ${seconds} giây`;
-                    accuracy.textContent = `${percentageScore}%`;
-                    
-                    // Set message based on score
-                    if (percentageScore >= 80) {
-                        scoreMessage.textContent = 'Xuất sắc! Bạn đã nắm vững kiến thức này.';
-                    } else if (percentageScore >= 60) {
-                        scoreMessage.textContent = 'Tốt! Bạn đã hiểu được phần lớn nội dung.';
-                    } else if (percentageScore >= 40) {
-                        scoreMessage.textContent = 'Có thể tốt hơn. Hãy ôn tập lại kiến thức.';
-                    } else {
-                        scoreMessage.textContent = 'Cần cố gắng nhiều hơn. Hãy học lại từ đầu.';
-                    }
-                    
-                    // Show modal
-                    resultsModal.show();
-                    
-                    // Save results to localStorage
-                    saveResults(correctCount, totalQuestions, timeDiff);
+                
+                if (isCorrect) {
+                    selectedOption.classList.add('correct');
                 } else {
-                    // Alert user to answer all questions
-                    alert('Vui lòng trả lời tất cả các câu hỏi trước khi nộp bài!');
-                    
-                    // Go to the first unanswered question
-                    const firstUnansweredIndex = answeredQuestions.findIndex(answered => !answered);
-                    if (firstUnansweredIndex !== -1) {
-                        showQuestion(firstUnansweredIndex + 1);
+                    selectedOption.classList.add('incorrect');
+                    if (correctOption) {
+                        correctOption.classList.add('correct');
+                        const indicator = document.createElement('span');
+                        indicator.className = 'correct-indicator';
+                        indicator.innerHTML = ' <i class="fas fa-check text-success"></i>';
+                        correctOption.querySelector('span').appendChild(indicator);
                     }
                 }
+                
+                explanations.forEach(exp => exp.style.display = 'block');
+                
+                const endTime = new Date();
+                const timeSpentInSeconds = Math.round((endTime - startTime) / 1000);
+                
+                saveResults(correct ? 1 : 0, 1, timeSpentInSeconds);
+                
+                document.getElementById('score-percentage').textContent = correct ? '100%' : '0%';
+                document.getElementById('score-correct').textContent = correct ? '1' : '0';
+                document.getElementById('score-message').textContent = correct ? 'Tuyệt vời!' : 'Hãy cố gắng hơn!';
+                resultsModal.show();
             });
             
-            // Review button
-            reviewBtn.addEventListener('click', function() {
-                resultsModal.hide();
-                reviewQuiz();
-            });
+            // Next exercise button
+            if (nextExerciseBtn) {
+                nextExerciseBtn.addEventListener('click', function() {
+                    const currentId = @Model.ID_BT;
+                    const nextId = currentId + 1;
+                    window.location.href = `/Exercise/MultipleChoice/${nextId}`;
+                });
+            }
             
             // Retry button
             retryBtn.addEventListener('click', function() {
-                location.reload();
+                resetUI();
+                resultsModal.hide();
             });
             
-            // Function to show a specific question
-            function showQuestion(questionNum) {
-                // Hide all question cards
-                questionCards.forEach(card => {
-                    card.classList.remove('active');
-                });
-                
-                // Show the selected question card
-                document.getElementById(`question-${questionNum}`).classList.add('active');
-                
-                // Update current question
-                currentQuestion = questionNum;
-                
-                // Update navigation buttons
-                prevBtn.disabled = currentQuestion === 1;
-                nextBtn.disabled = currentQuestion === totalQuestions;
-                
-                // Update progress text
-                progressText.textContent = `Câu ${currentQuestion}/${totalQuestions}`;
-                
-                // Update question navigation
-                questionNavBtns.forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                questionNavBtns[currentQuestion - 1].classList.add('active');
-            }
-            
-            // Function to update progress
-            function updateProgress() {
-                // Count answered questions
-                const answeredQuestionsCount = answeredQuestions.filter(Boolean).length;
-                
-                // Update progress bar
-                const progressPercentage = Math.round((answeredQuestionsCount / totalQuestions) * 100);
-                progressBar.style.width = `${progressPercentage}%`;
-                progressBar.textContent = `${progressPercentage}%`;
-                
-                // Update counters
-                answeredCount.textContent = answeredQuestionsCount;
-                navAnsweredCount.textContent = answeredQuestionsCount;
-                unansweredCount.textContent = totalQuestions - answeredQuestionsCount;
-            }
-            
-            // Function to review the quiz
-            function reviewQuiz() {
-                // Show all questions
-                questionCards.forEach((card, index) => {
-                    card.classList.add('active');
-                    
-                    // Get the selected option
-                    const selectedOption = card.querySelector('.quiz-option.selected');
-                    
-                    // Get the correct option
-                    const correctOption = card.querySelector('.quiz-option[data-correct="true"]');
-                    
-                    // Mark correct and incorrect answers
-                    if (selectedOption) {
-                        if (selectedOption.getAttribute('data-correct') === 'true') {
-                            selectedOption.classList.add('correct');
-                        } else {
-                            selectedOption.classList.add('incorrect');
-                            correctOption.classList.add('correct');
-                        }
+            // Continue button
+            continueBtn.addEventListener('click', function() {
+                if (correct) {
+                    const currentId = @Model.ID_BT;
+                    if (currentId < 36) {
+                        const nextId = currentId + 1;
+                        window.location.href = `/Exercise/MultipleChoice/${nextId}`;
+                    } else {
+                        window.location.href = `@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })`;
                     }
-                    
-                    // Show explanation
-                    card.querySelector('.explanation').style.display = 'block';
-                });
+                } else {
+                    resetUI();
+                }
+            });
+            
+            // Handle modal close via X button
+            document.getElementById('resultsModal').addEventListener('hidden.bs.modal', function() {
+                resetUI();
+            });
+            
+            // Back to top button
+            window.addEventListener('scroll', function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    createBackToTopButton();
+                }
+            });
+            
+            // Functions
+            function updateProgress() {
+                const selectedCount = selectedOption ? 1 : 0;
+                const percentage = Math.round((selectedCount / 1) * 100);
                 
-                // Hide navigation buttons and submit button
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
-                submitBtn.style.display = 'none';
-                document.getElementById('progressText').style.display = 'none';
+                progressBar.style.width = `${percentage}%`;
+                progressBar.textContent = `${percentage}%`;
+                progressBar.setAttribute('aria-valuenow', percentage);
                 
-                // Add a back to top button
+                answeredCount.textContent = selectedCount;
+            }
+            
+            function createBackToTopButton() {
+                if (document.getElementById('back-to-top-btn')) return;
+                
                 const backToTopBtn = document.createElement('button');
-                backToTopBtn.className = 'btn btn-primary fixed-bottom m-3';
+                backToTopBtn.id = 'back-to-top-btn';
+                backToTopBtn.className = 'btn btn-primary btn-lg';
                 backToTopBtn.innerHTML = '<i class="fas fa-arrow-up me-2"></i> Lên đầu trang';
                 backToTopBtn.addEventListener('click', function() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -483,15 +412,12 @@
                 const topicId = @(topic?.ID_CD ?? 0);
                 const exerciseType = 'multiple-choice';
                 
-                // Get existing results or initialize new object
                 let exerciseResults = JSON.parse(localStorage.getItem('exerciseResults') || '{}');
                 
-                // Create topic results if it doesn't exist
                 if (!exerciseResults[topicId]) {
                     exerciseResults[topicId] = {};
                 }
                 
-                // Save the new result
                 exerciseResults[topicId][exerciseType] = {
                     correctCount: correctCount,
                     totalCount: totalCount,
@@ -500,7 +426,6 @@
                     date: new Date().toISOString()
                 };
                 
-                // Save to localStorage
                 localStorage.setItem('exerciseResults', JSON.stringify(exerciseResults));
             }
         });

@@ -1,0 +1,73 @@
+@model IEnumerable<TiengAnh.Models.TestModel>
+@{
+    ViewData["Title"] = "Test ID Debugging";
+}
+
+<div class="container py-5">
+    <h1 class="display-4 text-center mb-5">Test ID Debugging</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>MongoDB ID</th>
+                    <th>TestIdentifier</th>
+                    <th>JsonId</th>
+                    <th>Title</th>
+                    <th>Questions Count</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var test in Model)
+                {
+                    <tr>
+                        <td>@test.Id</td>
+                        <td>
+                            @test.TestIdentifier
+                            @if (string.IsNullOrEmpty(test.TestIdentifier))
+                            {
+                                <span class="badge bg-danger">Missing!</span>
+                            }
+                        </td>
+                        <td>@test.JsonId</td>
+                        <td>@test.Title</td>
+                        <td>@test.Questions.Count</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(test.TestIdentifier))
+                            {
+                                <a href="/Test/Details/@test.TestIdentifier" class="btn btn-sm btn-primary">Details</a>
+                                <a href="/Test/Take/@test.TestIdentifier" class="btn btn-sm btn-success">Take Test</a>
+                            }
+                            else
+                            {
+                                <span class="text-danger">No valid ID</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="mt-4">
+        <a href="/Test/Debug" target="_blank" class="btn btn-outline-secondary">View JSON Debug Data</a>
+        <a href="/Test/RouteDebug" target="_blank" class="btn btn-outline-secondary ms-2">View Route Debug Data</a>
+        <a href="/Test" class="btn btn-primary ms-2">Return to Test List</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Add direct links to test navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Print test IDs to console for debugging
+            console.log('Test IDs:', @Html.Raw(Json.Serialize(Model.Select(t => new { 
+                id = t.Id, 
+                testId = t.TestIdentifier,
+                jsonId = t.JsonId,
+                title = t.Title
+            }))));
+        });
+    </script>
+}

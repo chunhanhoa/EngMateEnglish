@@ -7,6 +7,10 @@ namespace TiengAnh.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
+        [BsonIgnoreIfDefault]
+        public string Id { get; set; } = string.Empty;
+
+        [BsonIgnore]
+        public string StringId => Id;
     }
 }
