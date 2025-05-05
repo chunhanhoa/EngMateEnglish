@@ -1,0 +1,695 @@
+[{
+  "_id": "test_001",
+  "title": "Basic English Grammar Test",
+  "description": "Test your basic English grammar knowledge",
+  "duration": 30,
+  "level": "A1",
+  "createdAt": "2023-10-15T00:00:00Z",
+  "updatedAt": "2023-10-15T00:00:00Z",
+  "category": "Grammar",
+  "imageUrl": "/images/tests/test-a1.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "What is your name?",
+      "options": [
+        "My name is John",
+        "I am fine",
+        "I am 25 years old",
+        "I am from London"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "questionId": 2,
+      "questionText": "She ___ a student.",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 3,
+      "questionText": "Where ___ you from?",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "questionId": 4,
+      "questionText": "How old ___ you?",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "correctAnswer": 2
+    }
+  ]
+},
+{
+  "_id": "test_002",
+  "title": "Level A2 Assessment",
+  "description": "Comprehensive assessment of your English skills to determine A2 proficiency.",
+  "duration": 40,
+  "level": "A2",
+  "createdAt": "2023-09-05T00:00:00Z",
+  "updatedAt": "2023-09-05T00:00:00Z",
+  "category": "Level",
+  "imageUrl": "/images/tests/test-a2.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "What time ___ you wake up?",
+      "options": [
+        "do",
+        "does",
+        "is",
+        "are"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "questionId": 2,
+      "questionText": "I ___ to school every day.",
+      "options": [
+        "go",
+        "goes",
+        "going",
+        "am go"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "questionId": 3,
+      "questionText": "He ___ coffee in the morning.",
+      "options": [
+        "drink",
+        "drinks",
+        "drinking",
+        "is drink"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 4,
+      "questionText": "They ___ happy to see you.",
+      "options": [
+        "is",
+        "are",
+        "be",
+        "am"
+      ],
+      "correctAnswer": 1
+    }
+  ]
+},
+{
+  "_id": "test_003",
+  "title": "Level B1 Assessment",
+  "description": "Comprehensive assessment of your English skills to determine B1 proficiency.",
+  "duration": 50,
+  "level": "B1",
+  "createdAt": "2023-09-10T00:00:00Z",
+  "updatedAt": "2023-09-10T00:00:00Z",
+  "category": "Level",
+  "imageUrl": "/images/tests/test-b1.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "If I ___ time, I will visit you.",
+      "options": [
+        "have",
+        "has",
+        "had",
+        "having"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "questionId": 2,
+      "questionText": "She ___ to Paris last year.",
+      "options": [
+        "go",
+        "went",
+        "gone",
+        "going"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 3,
+      "questionText": "What ___ you doing yesterday?",
+      "options": [
+        "was",
+        "were",
+        "are",
+        "is"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 4,
+      "questionText": "This book ___ very interesting.",
+      "options": [
+        "is",
+        "are",
+        "be",
+        "am"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "questionId": 5,
+      "questionText": "I ___ him since last week.",
+      "options": [
+        "haven't seen",
+        "didn't see",
+        "don't see",
+        "won't see"
+      ],
+      "correctAnswer": 0
+    }
+  ]
+},
+{
+  "_id": "test_004",
+  "title": "Advanced A1 Level Assessment",
+  "description": "Evaluate basic English skills with advanced questions at A1 level.",
+  "duration": 35,
+  "level": "A1",
+  "createdAt": "2023-09-15T00:00:00Z",
+  "updatedAt": "2023-09-15T00:00:00Z",
+  "category": "Level",
+  "imageUrl": "/images/tests/test-a1-advanced.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "What ___ your favorite color?",
+      "options": [
+        "is",
+        "are",
+        "be",
+        "am"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "questionId": 2,
+      "questionText": "I ___ a dog.",
+      "options": [
+        "has",
+        "have",
+        "had",
+        "having"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 3,
+      "questionText": "This ___ my book.",
+      "options": [
+        "is",
+        "are",
+        "be",
+        "am"
+      ],
+      "correctAnswer": 0
+    }
+  ]
+},
+{
+  "_id": "test_005",
+  "title": "Vocabulary Test: Animals",
+  "description": "Test your vocabulary knowledge about animals.",
+  "duration": 15,
+  "level": "A1",
+  "createdAt": "2023-09-20T00:00:00Z",
+  "updatedAt": "2023-09-20T00:00:00Z",
+  "category": "Vocabulary",
+  "imageUrl": "/images/tests/vocabulary-animals.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "What is this animal? [image of a cat]",
+      "options": [
+        "Dog",
+        "Cat",
+        "Rabbit",
+        "Bird"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 2,
+      "questionText": "Which animal makes the sound 'woof woof'?",
+      "options": [
+        "Cat",
+        "Dog",
+        "Duck",
+        "Sheep"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 3,
+      "questionText": "What is a baby cat called?",
+      "options": [
+        "Puppy",
+        "Kitten",
+        "Cub",
+        "Foal"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 4,
+      "questionText": "Which animal flies?",
+      "options": [
+        "Dog",
+        "Cat",
+        "Bird",
+        "Horse"
+      ],
+      "correctAnswer": 2
+    }
+  ]
+},
+{
+  "_id": "test_006",
+  "title": "Vocabulary Test: Food",
+  "description": "Test your vocabulary knowledge about food.",
+  "duration": 15,
+  "level": "A2",
+  "createdAt": "2023-09-25T00:00:00Z",
+  "updatedAt": "2023-09-25T00:00:00Z",
+  "category": "Vocabulary",
+  "imageUrl": "/images/tests/vocabulary-food.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "What do you call a fruit that is red and round?",
+      "options": [
+        "Banana",
+        "Apple",
+        "Orange",
+        "Grape"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 2,
+      "questionText": "Which food is made from milk?",
+      "options": [
+        "Bread",
+        "Cheese",
+        "Rice",
+        "Chicken"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 3,
+      "questionText": "What is a drink made from fruit?",
+      "options": [
+        "Water",
+        "Juice",
+        "Tea",
+        "Coffee"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 4,
+      "questionText": "Which food is a vegetable?",
+      "options": [
+        "Apple",
+        "Carrot",
+        "Chicken",
+        "Bread"
+      ],
+      "correctAnswer": 1
+    }
+  ]
+},
+{
+  "_id": "test_007",
+  "title": "Vocabulary Test: Family",
+  "description": "Test your vocabulary knowledge about family.",
+  "duration": 10,
+  "level": "A1",
+  "createdAt": "2023-09-30T00:00:00Z",
+  "updatedAt": "2023-09-30T00:00:00Z",
+  "category": "Vocabulary",
+  "imageUrl": "/images/tests/vocabulary-family.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "Who is your mother's husband?",
+      "options": [
+        "Brother",
+        "Father",
+        "Son",
+        "Uncle"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 2,
+      "questionText": "What do you call your father's mother?",
+      "options": [
+        "Sister",
+        "Aunt",
+        "Grandmother",
+        "Cousin"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "questionId": 3,
+      "questionText": "Who is your sister's daughter?",
+      "options": [
+        "Niece",
+        "Nephew",
+        "Cousin",
+        "Aunt"
+      ],
+      "correctAnswer": 0
+    }
+  ]
+},
+{
+  "_id": "test_008",
+  "title": "Vocabulary Test: Travel",
+  "description": "Test your vocabulary knowledge about travel.",
+  "duration": 20,
+  "level": "B1",
+  "createdAt": "2023-10-05T00:00:00Z",
+  "updatedAt": "2023-10-05T00:00:00Z",
+  "category": "Vocabulary",
+  "imageUrl": "/images/tests/vocabulary-travel.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "What do you need to travel to another country?",
+      "options": [
+        "Ticket",
+        "Passport",
+        "Map",
+        "Camera"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 2,
+      "questionText": "Where do you stay when you travel?",
+      "options": [
+        "School",
+        "Hotel",
+        "Park",
+        "Office"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 3,
+      "questionText": "What is a person who travels called?",
+      "options": [
+        "Teacher",
+        "Tourist",
+        "Doctor",
+        "Driver"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 4,
+      "questionText": "What do you use to carry your clothes?",
+      "options": [
+        "Suitcase",
+        "Book",
+        "Phone",
+        "Wallet"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "questionId": 5,
+      "questionText": "What do you buy to travel by plane?",
+      "options": [
+        "Map",
+        "Ticket",
+        "Passport",
+        "Camera"
+      ],
+      "correctAnswer": 1
+    }
+  ]
+},
+{
+  "_id": "test_009",
+  "title": "Grammar Test: Present Simple",
+  "description": "Test your grammar knowledge of the present simple tense.",
+  "duration": 20,
+  "level": "A1",
+  "createdAt": "2023-10-10T00:00:00Z",
+  "updatedAt": "2023-10-10T00:00:00Z",
+  "category": "Grammar",
+  "imageUrl": "/images/tests/grammar-present-simple.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "He ___ to work by bus.",
+      "options": [
+        "go",
+        "goes",
+        "going",
+        "is going"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 2,
+      "questionText": "They ___ in London.",
+      "options": [
+        "live",
+        "lives",
+        "living",
+        "is living"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "questionId": 3,
+      "questionText": "She ___ TV every evening.",
+      "options": [
+        "watch",
+        "watches",
+        "watching",
+        "is watching"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 4,
+      "questionText": "We ___ to the park on Sundays.",
+      "options": [
+        "go",
+        "goes",
+        "going",
+        "is going"
+      ],
+      "correctAnswer": 0
+    }
+  ]
+},
+{
+  "_id": "test_010",
+  "title": "Grammar Test: Past Simple",
+  "description": "Test your grammar knowledge of the past simple tense.",
+  "duration": 25,
+  "level": "A2",
+  "createdAt": "2023-10-15T00:00:00Z",
+  "updatedAt": "2023-10-15T00:00:00Z",
+  "category": "Grammar",
+  "imageUrl": "/images/tests/grammar-past-simple.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "She ___ to the park yesterday.",
+      "options": [
+        "go",
+        "went",
+        "gone",
+        "going"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 2,
+      "questionText": "We ___ a movie last night.",
+      "options": [
+        "watch",
+        "watched",
+        "watching",
+        "watches"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 3,
+      "questionText": "He ___ his homework.",
+      "options": [
+        "do",
+        "did",
+        "done",
+        "doing"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 4,
+      "questionText": "They ___ happy yesterday.",
+      "options": [
+        "was",
+        "were",
+        "are",
+        "is"
+      ],
+      "correctAnswer": 1
+    }
+  ]
+},
+{
+  "_id": "test_011",
+  "title": "Grammar Test: Present Continuous",
+  "description": "Test your grammar knowledge of the present continuous tense.",
+  "duration": 20,
+  "level": "A2",
+  "createdAt": "2023-10-20T00:00:00Z",
+  "updatedAt": "2023-10-20T00:00:00Z",
+  "category": "Grammar",
+  "imageUrl": "/images/tests/grammar-present-continuous.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "She ___ a book now.",
+      "options": [
+        "read",
+        "reads",
+        "is reading",
+        "reading"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "questionId": 2,
+      "questionText": "They ___ in the park.",
+      "options": [
+        "play",
+        "plays",
+        "are playing",
+        "playing"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "questionId": 3,
+      "questionText": "I ___ to music right now.",
+      "options": [
+        "listen",
+        "listens",
+        "am listening",
+        "listening"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "questionId": 4,
+      "questionText": "He ___ his homework now.",
+      "options": [
+        "do",
+        "does",
+        "is doing",
+        "doing"
+      ],
+      "correctAnswer": 2
+    }
+  ]
+},
+{
+  "_id": "test_012",
+  "title": "Grammar Test: Future Simple",
+  "description": "Test your grammar knowledge of the future simple tense.",
+  "duration": 20,
+  "level": "B1",
+  "createdAt": "2023-10-25T00:00:00Z",
+  "updatedAt": "2023-10-25T00:00:00Z",
+  "category": "Grammar",
+  "imageUrl": "/images/tests/grammar-future-simple.jpg",
+  "questions": [
+    {
+      "questionId": 1,
+      "questionText": "I ___ you tomorrow.",
+      "options": [
+        "call",
+        "will call",
+        "calling",
+        "calls"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 2,
+      "questionText": "She ___ to London next week.",
+      "options": [
+        "go",
+        "will go",
+        "going",
+        "goes"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 3,
+      "questionText": "They ___ a new car next month.",
+      "options": [
+        "buy",
+        "will buy",
+        "buying",
+        "buys"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 4,
+      "questionText": "We ___ happy to see you.",
+      "options": [
+        "are",
+        "will be",
+        "being",
+        "be"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "questionId": 5,
+      "questionText": "He ___ his homework tonight.",
+      "options": [
+        "do",
+        "will do",
+        "doing",
+        "does"
+      ],
+      "correctAnswer": 1
+    }
+  ]
+}]

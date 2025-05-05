@@ -6,65 +6,111 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <div class="card shadow-sm">
-                <div class="position-relative">
-                    <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Title" style="height: 240px; object-fit: cover;" onerror="this.src='/images/tests/default-test.jpg';this.onerror='';">
-                    <div class="position-absolute top-0 end-0 m-3">
-                        <span class="badge bg-primary rounded-pill fs-6">@Model.Level</span>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="/Test">Bài kiểm tra</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+                </ol>
+            </nav>
+
+            <!-- Test Details Card -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">@Model.Level</span>
+                        <span class="badge bg-info">@Model.Category</span>
                     </div>
                 </div>
                 <div class="card-body p-4">
-                    <h1 class="card-title h2 mb-3">@Model.Title</h1>
-                    
-                    <div class="mb-4">
-                        <span class="badge bg-info me-2">@Model.Category</span>
-                        <span class="text-muted">
-                            <i class="bi bi-clock me-1"></i> @Model.Duration phút |
-                            <i class="bi bi-question-circle me-1"></i> @Model.Questions.Count câu hỏi
-                        </span>
-                    </div>
-                    
-                    <p class="card-text fs-5 mb-4">@Model.Description</p>
-                    
-                    <div class="card mb-4">
-                        <div class="card-body bg-light">
-                            <h5 class="card-title">Thông tin bài kiểm tra</h5>
-                            <ul class="list-unstyled mb-0">
-                                <li class="mb-2"><strong>Thời gian:</strong> @Model.Duration phút</li>
-                                <li class="mb-2"><strong>Số câu hỏi:</strong> @Model.Questions.Count</li>
-                                <li class="mb-2"><strong>Trình độ:</strong> @Model.Level</li>
-                                <li class="mb-2"><strong>Loại:</strong> @Model.Category</li>
-                                <li><strong>Ngày cập nhật:</strong> @Model.UpdatedAt.ToString("dd/MM/yyyy")</li>
-                            </ul>
+                    <h1 class="card-title mb-3">@Model.Title</h1>
+                    <hr>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <strong><i class="bi bi-clock"></i> Thời gian:</strong> @Model.Duration phút
+                            </div>
+                            <div>
+                                <strong><i class="bi bi-question-circle"></i> Số câu hỏi:</strong> @Model.Questions.Count
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <strong><i class="bi bi-tag"></i> Danh mục:</strong> @Model.Category
+                            </div>
+                            <div>
+                                <strong><i class="bi bi-bar-chart"></i> Trình độ:</strong> @Model.Level
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="d-grid gap-2">
+                    <div class="mb-4">
+                        <h5>Mô tả</h5>
+                        <p>@Model.Description</p>
+                    </div>
+                    <div class="alert alert-info">
+                        <h5><i class="bi bi-info-circle"></i> Hướng dẫn</h5>
+                        <ul class="mb-0">
+                            <li>Đọc kỹ từng câu hỏi và các phương án trả lời.</li>
+                            <li>Chọn đáp án đúng nhất cho mỗi câu hỏi.</li>
+                            <li>Bạn có thể chuyển đổi giữa các câu hỏi trong quá trình làm bài.</li>
+                            <li>Nhớ kiểm tra lại bài làm trước khi nộp.</li>
+                            <li>Kết quả sẽ hiển thị ngay sau khi nộp bài.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-footer bg-white p-4">
+                    <div class="d-flex justify-content-between align-items-center">
                         @{
                             string testId = !string.IsNullOrEmpty(Model.TestIdentifier) ? Model.TestIdentifier : 
                                           (!string.IsNullOrEmpty(Model.JsonId) ? Model.JsonId : Model.Id);
                         }
-                        
-                        <a href="/Test/Take/@testId" class="btn btn-primary btn-lg">
-                            <i class="bi bi-play-fill me-2"></i>Bắt đầu làm bài
-                        </a>
+
                         <a href="/Test" class="btn btn-outline-secondary">
-                            <i class="bi bi-arrow-left me-2"></i>Quay lại danh sách
+                            <i class="bi bi-arrow-left"></i> Quay lại
                         </a>
-                        
-                        <div class="text-center mt-2">
-                            <small class="text-muted">Mã bài kiểm tra: @testId</small>
-                        </div>
+                        <a href="/Test/Take/@testId" class="btn btn-primary">
+                            <i class="bi bi-play-fill"></i> Bắt đầu làm bài
+                        </a>
                     </div>
+                </div>
+            </div>
+
+            <!-- Sample Questions Section -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="mb-4">Ví dụ câu hỏi</h5>
+                    
+                    @if (Model.Questions != null && Model.Questions.Count > 0)
+                    {
+                        var sampleQuestion = Model.Questions.First();
+                        <div class="sample-question p-3 bg-light rounded">
+                            <h6>@sampleQuestion.QuestionText</h6>
+                            <div class="options mt-3">
+                                @for (int i = 0; i < Math.Min(sampleQuestion.Options.Count, 4); i++)
+                                {
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" disabled>
+                                        <label class="form-check-label">
+                                            @sampleQuestion.Options[i]
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <p class="text-muted small">Đây chỉ là ví dụ. Bài kiểm tra thực tế có @Model.Questions.Count câu hỏi.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">
+                            <p class="mb-0">Không có câu hỏi mẫu nào cho bài kiểm tra này.</p>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <script>
-        // Log the current test data for debugging
-        console.log("Test Details:", @Html.Raw(Json.Serialize(Model)));
-    </script>
-}
