@@ -8239,6 +8239,1646 @@
       ]
     },
     {
+      "Route": "images/vocabulary/school/bag.jpg",
+      "AssetFile": "images/vocabulary/school/bag.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "74720"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MxE8rK169FHUBSwGC5I3iO5sitAJIQHrKBu/dHegLcs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:57:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MxE8rK169FHUBSwGC5I3iO5sitAJIQHrKBu/dHegLcs="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/bag.l23lo1vdjx.jpg",
+      "AssetFile": "images/vocabulary/school/bag.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "74720"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MxE8rK169FHUBSwGC5I3iO5sitAJIQHrKBu/dHegLcs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:57:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l23lo1vdjx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MxE8rK169FHUBSwGC5I3iO5sitAJIQHrKBu/dHegLcs="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/bag.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/blackboard.jpg",
+      "AssetFile": "images/vocabulary/school/blackboard.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36884"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mdSaV2PMUeu1uqB0mMlxj8nKAxnRW5IZYxfGTJiJVcs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:56:09 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mdSaV2PMUeu1uqB0mMlxj8nKAxnRW5IZYxfGTJiJVcs="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/blackboard.ngt5n0tr2f.jpg",
+      "AssetFile": "images/vocabulary/school/blackboard.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36884"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mdSaV2PMUeu1uqB0mMlxj8nKAxnRW5IZYxfGTJiJVcs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:56:09 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ngt5n0tr2f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mdSaV2PMUeu1uqB0mMlxj8nKAxnRW5IZYxfGTJiJVcs="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/blackboard.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/book.4vx5xs9k13.jpg",
+      "AssetFile": "images/vocabulary/school/book.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64811"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sHtdZqVG8b11hAkm7wmYGJrJi2QsgEDpOmtMV3D8SCU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:52:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4vx5xs9k13"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sHtdZqVG8b11hAkm7wmYGJrJi2QsgEDpOmtMV3D8SCU="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/book.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/book.jpg",
+      "AssetFile": "images/vocabulary/school/book.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64811"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sHtdZqVG8b11hAkm7wmYGJrJi2QsgEDpOmtMV3D8SCU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:52:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sHtdZqVG8b11hAkm7wmYGJrJi2QsgEDpOmtMV3D8SCU="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/chair.bsegsfdfgy.jpg",
+      "AssetFile": "images/vocabulary/school/chair.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "87868"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"23bqu1+pgfpKhHokQESnaFHgdTwXacbc6ZHPlqE6I9k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:56:37 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bsegsfdfgy"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-23bqu1+pgfpKhHokQESnaFHgdTwXacbc6ZHPlqE6I9k="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/chair.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/chair.jpg",
+      "AssetFile": "images/vocabulary/school/chair.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "87868"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"23bqu1+pgfpKhHokQESnaFHgdTwXacbc6ZHPlqE6I9k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:56:37 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-23bqu1+pgfpKhHokQESnaFHgdTwXacbc6ZHPlqE6I9k="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/classroom.jpg",
+      "AssetFile": "images/vocabulary/school/classroom.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56787"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xSxzGY7hyQe06l8EKmcAMn9oRhfHEFbsF32Wvwwtqe0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:53:18 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xSxzGY7hyQe06l8EKmcAMn9oRhfHEFbsF32Wvwwtqe0="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/classroom.zitrhhbn34.jpg",
+      "AssetFile": "images/vocabulary/school/classroom.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56787"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xSxzGY7hyQe06l8EKmcAMn9oRhfHEFbsF32Wvwwtqe0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:53:18 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zitrhhbn34"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xSxzGY7hyQe06l8EKmcAMn9oRhfHEFbsF32Wvwwtqe0="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/classroom.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/desk.4bed7abyev.jpg",
+      "AssetFile": "images/vocabulary/school/desk.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95928"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sIhbZ9W/aNpTy61VOhIObRxRlWvZ/4c9UnfYtMRuOdg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:56:28 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4bed7abyev"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sIhbZ9W/aNpTy61VOhIObRxRlWvZ/4c9UnfYtMRuOdg="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/desk.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/desk.jpg",
+      "AssetFile": "images/vocabulary/school/desk.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95928"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sIhbZ9W/aNpTy61VOhIObRxRlWvZ/4c9UnfYtMRuOdg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:56:28 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sIhbZ9W/aNpTy61VOhIObRxRlWvZ/4c9UnfYtMRuOdg="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/eraser.jpg",
+      "AssetFile": "images/vocabulary/school/eraser.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "59283"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+Bal5xS6nK1+htfEttbI6Z3OZyqccLt95F/79x7iePw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:58:23 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+Bal5xS6nK1+htfEttbI6Z3OZyqccLt95F/79x7iePw="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/eraser.sb5spt0fuq.jpg",
+      "AssetFile": "images/vocabulary/school/eraser.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "59283"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+Bal5xS6nK1+htfEttbI6Z3OZyqccLt95F/79x7iePw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:58:23 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sb5spt0fuq"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+Bal5xS6nK1+htfEttbI6Z3OZyqccLt95F/79x7iePw="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/eraser.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/exam.64uvmzi1u7.jpg",
+      "AssetFile": "images/vocabulary/school/exam.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "132604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yrOpRzx1+8ed4ifR2LHRNrmcyVkkmA+tMSpz4fs4f88=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:54:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "64uvmzi1u7"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yrOpRzx1+8ed4ifR2LHRNrmcyVkkmA+tMSpz4fs4f88="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/exam.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/exam.jpg",
+      "AssetFile": "images/vocabulary/school/exam.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "132604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yrOpRzx1+8ed4ifR2LHRNrmcyVkkmA+tMSpz4fs4f88=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:54:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yrOpRzx1+8ed4ifR2LHRNrmcyVkkmA+tMSpz4fs4f88="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/homework.jpg",
+      "AssetFile": "images/vocabulary/school/homework.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "81132"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"x7xadb/mTt4hJV8IwO8+nWz0Nji1B1cDao78Wkpc0qU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:53:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-x7xadb/mTt4hJV8IwO8+nWz0Nji1B1cDao78Wkpc0qU="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/homework.vend19end8.jpg",
+      "AssetFile": "images/vocabulary/school/homework.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "81132"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"x7xadb/mTt4hJV8IwO8+nWz0Nji1B1cDao78Wkpc0qU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:53:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vend19end8"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-x7xadb/mTt4hJV8IwO8+nWz0Nji1B1cDao78Wkpc0qU="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/homework.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/lesson.c2me45h8b8.jpg",
+      "AssetFile": "images/vocabulary/school/lesson.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "62993"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NC9DdLopjmlFc6eY5FzXSq0jEDkjOdVPp/sGeAaWwV8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:57:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c2me45h8b8"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NC9DdLopjmlFc6eY5FzXSq0jEDkjOdVPp/sGeAaWwV8="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/lesson.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/lesson.jpg",
+      "AssetFile": "images/vocabulary/school/lesson.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "62993"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NC9DdLopjmlFc6eY5FzXSq0jEDkjOdVPp/sGeAaWwV8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:57:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NC9DdLopjmlFc6eY5FzXSq0jEDkjOdVPp/sGeAaWwV8="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/library.h2il79cbjh.jpg",
+      "AssetFile": "images/vocabulary/school/library.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "138252"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uflqAc/SVh1vpxs9LW4OjUpP8NHTWmuxg2o3XeXrHbA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:54:17 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h2il79cbjh"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uflqAc/SVh1vpxs9LW4OjUpP8NHTWmuxg2o3XeXrHbA="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/library.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/library.jpg",
+      "AssetFile": "images/vocabulary/school/library.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "138252"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uflqAc/SVh1vpxs9LW4OjUpP8NHTWmuxg2o3XeXrHbA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:54:17 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uflqAc/SVh1vpxs9LW4OjUpP8NHTWmuxg2o3XeXrHbA="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/notebook.0uw7rhzuvb.jpg",
+      "AssetFile": "images/vocabulary/school/notebook.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "138108"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+DDkYviBoD42OrHc9hx1M7oS/ZRcKvDOzv2KhDQc/JM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:55:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0uw7rhzuvb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+DDkYviBoD42OrHc9hx1M7oS/ZRcKvDOzv2KhDQc/JM="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/notebook.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/notebook.jpg",
+      "AssetFile": "images/vocabulary/school/notebook.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "138108"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+DDkYviBoD42OrHc9hx1M7oS/ZRcKvDOzv2KhDQc/JM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:55:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+DDkYviBoD42OrHc9hx1M7oS/ZRcKvDOzv2KhDQc/JM="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/paper.70130gnr3o.jpg",
+      "AssetFile": "images/vocabulary/school/paper.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89721"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KWjlQT3HZib36gkIqLN4DhJ86dDpvpF/Ps42xvFyYeo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:58:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "70130gnr3o"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KWjlQT3HZib36gkIqLN4DhJ86dDpvpF/Ps42xvFyYeo="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/paper.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/paper.jpg",
+      "AssetFile": "images/vocabulary/school/paper.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89721"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KWjlQT3HZib36gkIqLN4DhJ86dDpvpF/Ps42xvFyYeo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:58:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KWjlQT3HZib36gkIqLN4DhJ86dDpvpF/Ps42xvFyYeo="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/pen.jpg",
+      "AssetFile": "images/vocabulary/school/pen.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "46316"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P4x6517fQXWxThB7OdqShwuyL2BueewCDgZLiMIDXYs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:55:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-P4x6517fQXWxThB7OdqShwuyL2BueewCDgZLiMIDXYs="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/pen.t1oktgoj9t.jpg",
+      "AssetFile": "images/vocabulary/school/pen.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "46316"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P4x6517fQXWxThB7OdqShwuyL2BueewCDgZLiMIDXYs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:55:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t1oktgoj9t"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-P4x6517fQXWxThB7OdqShwuyL2BueewCDgZLiMIDXYs="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/pen.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/pencil.jpg",
+      "AssetFile": "images/vocabulary/school/pencil.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15903"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MT85WVaVDGv8K3vBthu1TXPaLhFEssHFO1SkdvLsCkc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:52:02 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MT85WVaVDGv8K3vBthu1TXPaLhFEssHFO1SkdvLsCkc="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/pencil.voxh85g3wr.jpg",
+      "AssetFile": "images/vocabulary/school/pencil.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15903"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MT85WVaVDGv8K3vBthu1TXPaLhFEssHFO1SkdvLsCkc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:52:02 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "voxh85g3wr"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MT85WVaVDGv8K3vBthu1TXPaLhFEssHFO1SkdvLsCkc="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/pencil.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/ruler.jpg",
+      "AssetFile": "images/vocabulary/school/ruler.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "141640"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Q+Evw9sowzcYqUJIzCLyx0JHAeNYfHA/+F1afyEZSqQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:56:50 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Q+Evw9sowzcYqUJIzCLyx0JHAeNYfHA/+F1afyEZSqQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/ruler.z8kf9xwcic.jpg",
+      "AssetFile": "images/vocabulary/school/ruler.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "141640"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Q+Evw9sowzcYqUJIzCLyx0JHAeNYfHA/+F1afyEZSqQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:56:50 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "z8kf9xwcic"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Q+Evw9sowzcYqUJIzCLyx0JHAeNYfHA/+F1afyEZSqQ="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/ruler.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/school.2f4t2mpj3w.jpg",
+      "AssetFile": "images/vocabulary/school/school.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25270"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nmXcQhIQyv1aLitXb2kDNI9YkZnkBmmdgE1G56x5Vm4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 03 May 2025 08:58:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2f4t2mpj3w"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nmXcQhIQyv1aLitXb2kDNI9YkZnkBmmdgE1G56x5Vm4="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/school.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/school.jpg",
+      "AssetFile": "images/vocabulary/school/school.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25270"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nmXcQhIQyv1aLitXb2kDNI9YkZnkBmmdgE1G56x5Vm4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 03 May 2025 08:58:10 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nmXcQhIQyv1aLitXb2kDNI9YkZnkBmmdgE1G56x5Vm4="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/student.jpg",
+      "AssetFile": "images/vocabulary/school/student.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109955"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FKw1fjzg5bXvtmvvVNUpJyBnszbkCL49YOhMFfwM8NM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:53:42 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FKw1fjzg5bXvtmvvVNUpJyBnszbkCL49YOhMFfwM8NM="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/student.wrgswsk3go.jpg",
+      "AssetFile": "images/vocabulary/school/student.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "109955"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FKw1fjzg5bXvtmvvVNUpJyBnszbkCL49YOhMFfwM8NM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:53:42 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wrgswsk3go"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FKw1fjzg5bXvtmvvVNUpJyBnszbkCL49YOhMFfwM8NM="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/student.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/table.5yu3xzm5bs.jpg",
+      "AssetFile": "images/vocabulary/school/table.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84683"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"k3MdVlDVIq7VewQO5vmjeGt/SSxzHABPdv1LhlFdFZw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:52:41 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5yu3xzm5bs"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-k3MdVlDVIq7VewQO5vmjeGt/SSxzHABPdv1LhlFdFZw="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/table.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/table.jpg",
+      "AssetFile": "images/vocabulary/school/table.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84683"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"k3MdVlDVIq7VewQO5vmjeGt/SSxzHABPdv1LhlFdFZw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:52:41 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-k3MdVlDVIq7VewQO5vmjeGt/SSxzHABPdv1LhlFdFZw="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/teacher.0smf933xk3.jpg",
+      "AssetFile": "images/vocabulary/school/teacher.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "60447"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Nn6d9M0UT3qJDrbnMX7xqYJNrNrHYBNFd48jl7oUMg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:55:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0smf933xk3"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8Nn6d9M0UT3qJDrbnMX7xqYJNrNrHYBNFd48jl7oUMg="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/school/teacher.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/school/teacher.jpg",
+      "AssetFile": "images/vocabulary/school/teacher.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "60447"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Nn6d9M0UT3qJDrbnMX7xqYJNrNrHYBNFd48jl7oUMg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 14:55:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8Nn6d9M0UT3qJDrbnMX7xqYJNrNrHYBNFd48jl7oUMg="
+        }
+      ]
+    },
+    {
       "Route": "js/animations.18n24az4tj.js",
       "AssetFile": "js/animations.js.gz",
       "Selectors": [
