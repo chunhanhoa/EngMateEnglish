@@ -49,5 +49,18 @@ namespace TiengAnh.Models
         {
             return string.IsNullOrEmpty(IconPath) ? "/images/topics/default.png" : IconPath;
         }
+        
+        // New properties for exercise counts
+        [BsonIgnore]
+        public int ExerciseCount { get; set; }
+        
+        [BsonIgnore]
+        public int MultipleChoiceCount { get; set; }
+        
+        [BsonIgnore]
+        public int FillBlankCount { get; set; }
+        
+        [BsonIgnore]
+        public int WordOrderingCount { get; set; }
     }
 }

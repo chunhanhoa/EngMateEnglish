@@ -76,6 +76,45 @@ namespace TiengAnh.Models
 
         [BsonElement("IsVerified")]
         public bool IsVerified { get; set; } = false;
+
+        [BsonElement("IsPremium")]
+        public bool IsPremium { get; set; } = false;
+
+        [BsonElement("PremiumExpiry")]
+        public DateTime? PremiumExpiry { get; set; }
+
+        [BsonElement("FavoriteVocabularyTopics")]
+        public List<string> FavoriteVocabularyTopics { get; set; } = new List<string>();
+
+        [BsonElement("FavoriteGrammarItems")]
+        public List<string> FavoriteGrammarItems { get; set; } = new List<string>();
+
+        [BsonElement("FavoriteVocabularies")]
+        public List<string> FavoriteVocabularies { get; set; } = new List<string>();
+
+        [BsonElement("FavoriteVocabularyIds")]
+        public List<int> FavoriteVocabularyIds { get; set; } = new List<int>();
+
+        [BsonElement("FavoriteGrammarIds")]
+        public List<int> FavoriteGrammarIds { get; set; } = new List<int>();
+
+        // Helper method to get avatar URL with cache busting
+        public string GetAvatarUrl(bool addTimestamp = true)
+        {
+            string defaultAvatar = "/images/default-avatar.png";
+            
+            if (string.IsNullOrEmpty(Avatar))
+                return defaultAvatar;
+                
+            // Ensure avatar path starts with /
+            string avatarPath = Avatar.StartsWith("/") ? Avatar : "/" + Avatar;
+            
+            // Add timestamp to prevent caching
+            if (addTimestamp)
+                return $"{avatarPath}?v={DateTime.Now.Ticks}";
+            
+            return avatarPath;
+        }
     }
     
     // Xóa các lớp model trùng lặp ở đây để tránh xung đột

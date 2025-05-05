@@ -2,16 +2,10 @@
 @{
     ViewData["Title"] = "Hồ sơ người dùng";
     bool isEditMode = ViewContext.HttpContext.Request.Query.ContainsKey("edit");
-    string cacheBuster = DateTime.Now.Ticks.ToString();
     string defaultAvatarPath = "/images/default-avatar.png";
-    bool hasAvatar = !string.IsNullOrEmpty(Model?.Avatar);
-    string avatarUrl = hasAvatar ? Model.Avatar : defaultAvatarPath;
-    if (!string.IsNullOrEmpty(avatarUrl) && !avatarUrl.StartsWith("/"))
-    {
-        avatarUrl = "/" + avatarUrl;
-    }
-    string avatarUrlWithTimestamp = $"{avatarUrl}?v={cacheBuster}";
     string userIdFromClaims = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    // Use the GetAvatarUrl helper method
+    string avatarUrl = Model?.GetAvatarUrl() ?? defaultAvatarPath;
 }
 
 <div class="container mt-5">
@@ -39,15 +33,16 @@
         <div class="col-lg-4 mb-4 mb-lg-0">
             <div class="card border-0 shadow-sm text-center">
                 <div class="card-body p-4">
-                    <div class="position-relative mb-4 mx-auto" style="width: 150px;">
+                    <div class="avatar-container position-relative mb-4">
                         <img id="avatar-preview" 
-                             src="@avatarUrlWithTimestamp" 
+                             src="@avatarUrl" 
                              alt="@Model?.FullName" 
                              class="rounded-circle img-fluid avatar-image"
                              data-userid="@userIdFromClaims"
-                             data-original-src="@avatarUrl"
+                             data-original-src="@(Model?.Avatar ?? defaultAvatarPath)"
                              style="width: 150px; height: 150px; object-fit: cover;"
-                             onerror="handleAvatarError(this, '@avatarUrl', '@defaultAvatarPath')">
+                             onerror="handleAvatarError(this, '@(Model?.Avatar ?? defaultAvatarPath)', '@defaultAvatarPath')">
+                        
                         @if (isEditMode)
                         {
                             <div class="image-upload">
@@ -297,12 +292,12 @@
             </div>
             <div class="modal-body text-center">
                 <div class="avatar-preview mb-3">
-                    <img src="@avatarUrlWithTimestamp" id="modal-avatar-preview" 
+                    <img src="@avatarUrl" id="modal-avatar-preview" 
                          class="rounded-circle img-thumbnail avatar-image" 
                          style="width: 200px; height: 200px; object-fit: cover;" 
                          data-userid="@userIdFromClaims"
-                         data-original-src="@avatarUrl"
-                         onerror="handleAvatarError(this, '@avatarUrl', '@defaultAvatarPath')">
+                         data-original-src="@(Model?.Avatar ?? defaultAvatarPath)"
+                         onerror="handleAvatarError(this, '@(Model?.Avatar ?? defaultAvatarPath)', '@defaultAvatarPath')">
                 </div>
                 
                 <div class="mb-3">

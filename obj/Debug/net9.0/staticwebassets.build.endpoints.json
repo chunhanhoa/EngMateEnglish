@@ -6599,6 +6599,1646 @@
       ]
     },
     {
+      "Route": "images/vocabulary/food/apple.jpg",
+      "AssetFile": "images/vocabulary/food/apple.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "90790"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8AeVogpgl4vwGVdyfgu2be9P7c/FogYotNEtzSqfdZc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:39:35 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8AeVogpgl4vwGVdyfgu2be9P7c/FogYotNEtzSqfdZc="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/apple.sxpz6pgfb3.jpg",
+      "AssetFile": "images/vocabulary/food/apple.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "90790"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8AeVogpgl4vwGVdyfgu2be9P7c/FogYotNEtzSqfdZc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:39:35 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sxpz6pgfb3"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8AeVogpgl4vwGVdyfgu2be9P7c/FogYotNEtzSqfdZc="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/apple.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/banana.jpg",
+      "AssetFile": "images/vocabulary/food/banana.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89667"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mT2wIG8rqfQoAzMvMYs1tw0GHaZ+hwrlUt6D5LpUvug=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:40:30 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mT2wIG8rqfQoAzMvMYs1tw0GHaZ+hwrlUt6D5LpUvug="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/banana.xyzuot0mxh.jpg",
+      "AssetFile": "images/vocabulary/food/banana.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89667"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mT2wIG8rqfQoAzMvMYs1tw0GHaZ+hwrlUt6D5LpUvug=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:40:30 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xyzuot0mxh"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mT2wIG8rqfQoAzMvMYs1tw0GHaZ+hwrlUt6D5LpUvug="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/banana.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/bread.e7vscvtu7e.jpg",
+      "AssetFile": "images/vocabulary/food/bread.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64531"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+kTx682gTisz8N2xWt0bwhV68uD7mFBpOSTMROLLSHI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:41:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e7vscvtu7e"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+kTx682gTisz8N2xWt0bwhV68uD7mFBpOSTMROLLSHI="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/bread.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/bread.jpg",
+      "AssetFile": "images/vocabulary/food/bread.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64531"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+kTx682gTisz8N2xWt0bwhV68uD7mFBpOSTMROLLSHI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:41:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+kTx682gTisz8N2xWt0bwhV68uD7mFBpOSTMROLLSHI="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/cake.jpg",
+      "AssetFile": "images/vocabulary/food/cake.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89507"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"umfhpQw0g614y1sxiwtzKhrdvY2z8s4nbpXPsIIAzDk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:49:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-umfhpQw0g614y1sxiwtzKhrdvY2z8s4nbpXPsIIAzDk="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/cake.uvorxgzmxf.jpg",
+      "AssetFile": "images/vocabulary/food/cake.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89507"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"umfhpQw0g614y1sxiwtzKhrdvY2z8s4nbpXPsIIAzDk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:49:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uvorxgzmxf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-umfhpQw0g614y1sxiwtzKhrdvY2z8s4nbpXPsIIAzDk="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/cake.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/cheese.jpg",
+      "AssetFile": "images/vocabulary/food/cheese.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "86487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"INyKE2iqUvkjImzYofc4FKgNdqj7TIKOJ61IEBVrkwU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:46:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-INyKE2iqUvkjImzYofc4FKgNdqj7TIKOJ61IEBVrkwU="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/cheese.kzy4e5pzkf.jpg",
+      "AssetFile": "images/vocabulary/food/cheese.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "86487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"INyKE2iqUvkjImzYofc4FKgNdqj7TIKOJ61IEBVrkwU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:46:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kzy4e5pzkf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-INyKE2iqUvkjImzYofc4FKgNdqj7TIKOJ61IEBVrkwU="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/cheese.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/chicken.jpg",
+      "AssetFile": "images/vocabulary/food/chicken.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hnq91qkAg9UIKentiCFg4XCXlpzJ6HNILWPFOgsx10U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:44:17 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hnq91qkAg9UIKentiCFg4XCXlpzJ6HNILWPFOgsx10U="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/chicken.q981qc1qh4.jpg",
+      "AssetFile": "images/vocabulary/food/chicken.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hnq91qkAg9UIKentiCFg4XCXlpzJ6HNILWPFOgsx10U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:44:17 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q981qc1qh4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hnq91qkAg9UIKentiCFg4XCXlpzJ6HNILWPFOgsx10U="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/chicken.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/chocolate.jpg",
+      "AssetFile": "images/vocabulary/food/chocolate.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "59735"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TW/LVw3YSwekRdfsKuJQGa74lu9fMefDWl5+DeBbbqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:46:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TW/LVw3YSwekRdfsKuJQGa74lu9fMefDWl5+DeBbbqw="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/chocolate.zgdicgzev1.jpg",
+      "AssetFile": "images/vocabulary/food/chocolate.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "59735"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TW/LVw3YSwekRdfsKuJQGa74lu9fMefDWl5+DeBbbqw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:46:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zgdicgzev1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TW/LVw3YSwekRdfsKuJQGa74lu9fMefDWl5+DeBbbqw="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/chocolate.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/coffee.gtj293bo0i.jpg",
+      "AssetFile": "images/vocabulary/food/coffee.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "62337"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LOojaavbm0X/VxwK9MkRa8cHkWJ3U9CRTHtsNKk2giM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:42:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gtj293bo0i"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LOojaavbm0X/VxwK9MkRa8cHkWJ3U9CRTHtsNKk2giM="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/coffee.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/coffee.jpg",
+      "AssetFile": "images/vocabulary/food/coffee.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "62337"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LOojaavbm0X/VxwK9MkRa8cHkWJ3U9CRTHtsNKk2giM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:42:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LOojaavbm0X/VxwK9MkRa8cHkWJ3U9CRTHtsNKk2giM="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/egg.2p67fbp4v5.jpg",
+      "AssetFile": "images/vocabulary/food/egg.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21603"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WtcwwqpXJramI15H5fumhljM/V5WG3y+8Uc0nBg5ybc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:45:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2p67fbp4v5"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WtcwwqpXJramI15H5fumhljM/V5WG3y+8Uc0nBg5ybc="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/egg.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/egg.jpg",
+      "AssetFile": "images/vocabulary/food/egg.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21603"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WtcwwqpXJramI15H5fumhljM/V5WG3y+8Uc0nBg5ybc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:45:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WtcwwqpXJramI15H5fumhljM/V5WG3y+8Uc0nBg5ybc="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/fish.f7xhhfwdzg.jpg",
+      "AssetFile": "images/vocabulary/food/fish.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "229868"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"W08u+GZ5gX5Larl6P4YcJ2tj6Ei7DsAz4TmC1YGwliw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:47:45 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "f7xhhfwdzg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-W08u+GZ5gX5Larl6P4YcJ2tj6Ei7DsAz4TmC1YGwliw="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/fish.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/fish.jpg",
+      "AssetFile": "images/vocabulary/food/fish.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "229868"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"W08u+GZ5gX5Larl6P4YcJ2tj6Ei7DsAz4TmC1YGwliw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:47:45 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-W08u+GZ5gX5Larl6P4YcJ2tj6Ei7DsAz4TmC1YGwliw="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/fruit.jpg",
+      "AssetFile": "images/vocabulary/food/fruit.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "243797"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KfmngF+PLGVXdekaf1gAJYaR9msnGtViXsnv3cp4fW0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:45:16 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KfmngF+PLGVXdekaf1gAJYaR9msnGtViXsnv3cp4fW0="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/fruit.tz67mp0caw.jpg",
+      "AssetFile": "images/vocabulary/food/fruit.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "243797"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KfmngF+PLGVXdekaf1gAJYaR9msnGtViXsnv3cp4fW0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:45:16 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tz67mp0caw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KfmngF+PLGVXdekaf1gAJYaR9msnGtViXsnv3cp4fW0="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/fruit.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/milk.3un8t9dthk.jpg",
+      "AssetFile": "images/vocabulary/food/milk.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "63311"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qzu/1JGUCbRYnee1JASB8aviuulJLWbGcRsVY/1Aj+Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:45:50 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3un8t9dthk"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qzu/1JGUCbRYnee1JASB8aviuulJLWbGcRsVY/1Aj+Q="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/milk.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/milk.jpg",
+      "AssetFile": "images/vocabulary/food/milk.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "63311"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qzu/1JGUCbRYnee1JASB8aviuulJLWbGcRsVY/1Aj+Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:45:50 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qzu/1JGUCbRYnee1JASB8aviuulJLWbGcRsVY/1Aj+Q="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/orange.8fv16kvnir.jpg",
+      "AssetFile": "images/vocabulary/food/orange.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rGRnZ+XYo9Kw7eFJs5v2LIWL1iYNUEeht85KfuA27a8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:49:08 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8fv16kvnir"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rGRnZ+XYo9Kw7eFJs5v2LIWL1iYNUEeht85KfuA27a8="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/orange.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/orange.jpg",
+      "AssetFile": "images/vocabulary/food/orange.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rGRnZ+XYo9Kw7eFJs5v2LIWL1iYNUEeht85KfuA27a8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:49:08 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rGRnZ+XYo9Kw7eFJs5v2LIWL1iYNUEeht85KfuA27a8="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/pizza.htfifj22bv.jpg",
+      "AssetFile": "images/vocabulary/food/pizza.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "155706"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"a6TWtbC2wwf2zdxrsCyKXSU41CArJGH6lsmZr8j30Rs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:47:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "htfifj22bv"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-a6TWtbC2wwf2zdxrsCyKXSU41CArJGH6lsmZr8j30Rs="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/pizza.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/pizza.jpg",
+      "AssetFile": "images/vocabulary/food/pizza.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "155706"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"a6TWtbC2wwf2zdxrsCyKXSU41CArJGH6lsmZr8j30Rs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:47:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-a6TWtbC2wwf2zdxrsCyKXSU41CArJGH6lsmZr8j30Rs="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/rice.jpg",
+      "AssetFile": "images/vocabulary/food/rice.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "51164"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z3PMy2feD4N9/Nuy5zlmDyyPOgkSEABWwjKbK1KGtNo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:41:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-z3PMy2feD4N9/Nuy5zlmDyyPOgkSEABWwjKbK1KGtNo="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/rice.zf1i4qnc3r.jpg",
+      "AssetFile": "images/vocabulary/food/rice.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "51164"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z3PMy2feD4N9/Nuy5zlmDyyPOgkSEABWwjKbK1KGtNo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:41:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zf1i4qnc3r"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-z3PMy2feD4N9/Nuy5zlmDyyPOgkSEABWwjKbK1KGtNo="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/rice.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/salad.jpg",
+      "AssetFile": "images/vocabulary/food/salad.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "156515"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YktqY+rwRmtt3urRcXQFA2W7B7rQGbBWqUpTnQqyXGM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:48:26 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YktqY+rwRmtt3urRcXQFA2W7B7rQGbBWqUpTnQqyXGM="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/salad.mrgunlju2r.jpg",
+      "AssetFile": "images/vocabulary/food/salad.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "156515"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YktqY+rwRmtt3urRcXQFA2W7B7rQGbBWqUpTnQqyXGM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:48:26 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mrgunlju2r"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YktqY+rwRmtt3urRcXQFA2W7B7rQGbBWqUpTnQqyXGM="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/salad.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/soup.jpg",
+      "AssetFile": "images/vocabulary/food/soup.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xvgkfv23OvkcPb2+iXTSh5nq2lHhFp39zDnLc1G+Fos=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:48:18 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xvgkfv23OvkcPb2+iXTSh5nq2lHhFp39zDnLc1G+Fos="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/soup.ucd3qinh0v.jpg",
+      "AssetFile": "images/vocabulary/food/soup.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xvgkfv23OvkcPb2+iXTSh5nq2lHhFp39zDnLc1G+Fos=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:48:18 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ucd3qinh0v"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xvgkfv23OvkcPb2+iXTSh5nq2lHhFp39zDnLc1G+Fos="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/soup.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/tea.e5aioky1g7.jpg",
+      "AssetFile": "images/vocabulary/food/tea.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "80883"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HrQsi5NNLlqG0ZIqdAJRyLgZlJKo0cVM2bVpB1a++Kc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:42:54 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e5aioky1g7"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HrQsi5NNLlqG0ZIqdAJRyLgZlJKo0cVM2bVpB1a++Kc="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/tea.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/tea.jpg",
+      "AssetFile": "images/vocabulary/food/tea.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "80883"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HrQsi5NNLlqG0ZIqdAJRyLgZlJKo0cVM2bVpB1a++Kc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:42:54 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HrQsi5NNLlqG0ZIqdAJRyLgZlJKo0cVM2bVpB1a++Kc="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/vegetable.jpg",
+      "AssetFile": "images/vocabulary/food/vegetable.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "202667"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VzdLT2nbztW/qiv73MVtmZpHgYS2wPiW2gRCCzx4Pjs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:44:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VzdLT2nbztW/qiv73MVtmZpHgYS2wPiW2gRCCzx4Pjs="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/vegetable.pob606v2dh.jpg",
+      "AssetFile": "images/vocabulary/food/vegetable.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "202667"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VzdLT2nbztW/qiv73MVtmZpHgYS2wPiW2gRCCzx4Pjs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:44:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pob606v2dh"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VzdLT2nbztW/qiv73MVtmZpHgYS2wPiW2gRCCzx4Pjs="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/vegetable.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/water.g4fsuyii3d.jpg",
+      "AssetFile": "images/vocabulary/food/water.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "76381"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cH5KQ6QtJJOW+lf4GztMsj+GpzDLlbhOxFIibpdVnJ8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:43:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g4fsuyii3d"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cH5KQ6QtJJOW+lf4GztMsj+GpzDLlbhOxFIibpdVnJ8="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/food/water.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/food/water.jpg",
+      "AssetFile": "images/vocabulary/food/water.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "76381"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cH5KQ6QtJJOW+lf4GztMsj+GpzDLlbhOxFIibpdVnJ8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 12:43:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cH5KQ6QtJJOW+lf4GztMsj+GpzDLlbhOxFIibpdVnJ8="
+        }
+      ]
+    },
+    {
       "Route": "js/animations.18n24az4tj.js",
       "AssetFile": "js/animations.js.gz",
       "Selectors": [
@@ -8085,6 +9725,304 @@
         {
           "Name": "label",
           "Value": "js/avatar-handler.js.gz"
+        }
+      ]
+    },
+    {
+      "Route": "js/avatar-manager.61i4z0bqvv.js",
+      "AssetFile": "js/avatar-manager.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000633312223"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1578"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RqQyWM6eawBxWwhe9m3Y0JOcNcWwSyBhWlTmQlnMqYo=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"tphoK51+x1e73O8RGYjA2K0G8z4pinAtCUBCwM65FL0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 09:08:21 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "61i4z0bqvv"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tphoK51+x1e73O8RGYjA2K0G8z4pinAtCUBCwM65FL0="
+        },
+        {
+          "Name": "label",
+          "Value": "js/avatar-manager.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/avatar-manager.61i4z0bqvv.js",
+      "AssetFile": "js/avatar-manager.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5130"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tphoK51+x1e73O8RGYjA2K0G8z4pinAtCUBCwM65FL0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 09:08:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "61i4z0bqvv"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tphoK51+x1e73O8RGYjA2K0G8z4pinAtCUBCwM65FL0="
+        },
+        {
+          "Name": "label",
+          "Value": "js/avatar-manager.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/avatar-manager.61i4z0bqvv.js.gz",
+      "AssetFile": "js/avatar-manager.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1578"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RqQyWM6eawBxWwhe9m3Y0JOcNcWwSyBhWlTmQlnMqYo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 09:08:21 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "61i4z0bqvv"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RqQyWM6eawBxWwhe9m3Y0JOcNcWwSyBhWlTmQlnMqYo="
+        },
+        {
+          "Name": "label",
+          "Value": "js/avatar-manager.js.gz"
+        }
+      ]
+    },
+    {
+      "Route": "js/avatar-manager.js",
+      "AssetFile": "js/avatar-manager.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000633312223"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1578"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RqQyWM6eawBxWwhe9m3Y0JOcNcWwSyBhWlTmQlnMqYo=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"tphoK51+x1e73O8RGYjA2K0G8z4pinAtCUBCwM65FL0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 09:08:21 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tphoK51+x1e73O8RGYjA2K0G8z4pinAtCUBCwM65FL0="
+        }
+      ]
+    },
+    {
+      "Route": "js/avatar-manager.js",
+      "AssetFile": "js/avatar-manager.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5130"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tphoK51+x1e73O8RGYjA2K0G8z4pinAtCUBCwM65FL0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 09:08:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tphoK51+x1e73O8RGYjA2K0G8z4pinAtCUBCwM65FL0="
+        }
+      ]
+    },
+    {
+      "Route": "js/avatar-manager.js.gz",
+      "AssetFile": "js/avatar-manager.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1578"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RqQyWM6eawBxWwhe9m3Y0JOcNcWwSyBhWlTmQlnMqYo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 05 May 2025 09:08:21 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RqQyWM6eawBxWwhe9m3Y0JOcNcWwSyBhWlTmQlnMqYo="
         }
       ]
     },

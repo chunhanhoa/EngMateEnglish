@@ -23,15 +23,18 @@ namespace TiengAnh.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly MongoDbService _mongoDbService;
         private readonly UserRepository _userRepository;
+        private readonly string _webRootPath;
 
         public AccountController(
             ILogger<AccountController> logger,
             MongoDbService mongoDbService,
-            UserRepository userRepository) : base(mongoDbService)
+            UserRepository userRepository,
+            IWebHostEnvironment environment) : base(mongoDbService)
         {
             _logger = logger;
             _mongoDbService = mongoDbService;
             _userRepository = userRepository;
+            _webRootPath = environment.WebRootPath;
         }
 
         [HttpGet]
@@ -353,12 +356,14 @@ namespace TiengAnh.Controllers
             {
                 if (string.IsNullOrEmpty(model.AvatarData))
                 {
-                    _logger.LogWarning("UpdateAvatar: Không có dữ liệu ảnh");
+                    _logger.LogWarning("UpdateAvatar: No avatar data provided");
                     return Json(new { success = false, message = "Không có dữ liệu ảnh" });
                 }
 
                 string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 string userEmail = User.FindFirstValue(ClaimTypes.Email);
+                
+                _logger.LogInformation($"UpdateAvatar: Processing for user ID: {userId}, Email: {userEmail}");
                 
                 var user = await _userRepository.GetByUserIdAsync(userId);
                 if (user == null && !string.IsNullOrEmpty(userEmail))
@@ -374,14 +379,31 @@ namespace TiengAnh.Controllers
 
                 _logger.LogInformation($"UpdateAvatar: Found user: ID={user.Id}, Email={user.Email}, Current Avatar={user.Avatar}");
 
+                // Handle direct path (from existing avatar)
                 if (model.AvatarData.StartsWith("/images/avatar/"))
                 {
+                    _logger.LogInformation($"UpdateAvatar: Using direct path: {model.AvatarData}");
+                    
+                    // Make sure the file exists
+                    string physicalPath = Path.Combine(_webRootPath, model.AvatarData.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+                    if (!System.IO.File.Exists(physicalPath))
+                    {
+                        _logger.LogWarning($"UpdateAvatar: Avatar file does not exist at {physicalPath}");
+                        return Json(new { success = false, message = "File ảnh không tồn tại" });
+                    }
+                    
                     user.Avatar = model.AvatarData;
                     var updateResult = await _userRepository.UpdateUserAsync(user);
                     
                     if (updateResult)
                     {
                         _logger.LogInformation($"UpdateAvatar: Updated avatar to {user.Avatar} for user ID: {user.Id}");
+                        
+                        // Set cache control headers
+                        Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+                        Response.Headers["Pragma"] = "no-cache";
+                        Response.Headers["Expires"] = "0";
+                        
                         return Json(new { 
                             success = true, 
                             avatarUrl = user.Avatar,
@@ -395,78 +417,88 @@ namespace TiengAnh.Controllers
                         return Json(new { success = false, message = "Lỗi cập nhật vào database" });
                     }
                 }
-
-                try 
+                else
                 {
-                    string base64Data = model.AvatarData;
-                    string dataPrefix = "data:image/";
-                    
-                    int startIndex = base64Data.IndexOf(dataPrefix);
-                    if (startIndex < 0)
+                    try 
                     {
-                        _logger.LogWarning("UpdateAvatar: Định dạng ảnh không hợp lệ");
-                        return Json(new { success = false, message = "Định dạng ảnh không hợp lệ" });
-                    }
-                    
-                    startIndex += dataPrefix.Length;
-                    int endIndex = base64Data.IndexOf(";base64,", startIndex);
-                    if (endIndex < 0)
-                    {
-                        _logger.LogWarning("UpdateAvatar: Định dạng dữ liệu không hợp lệ");
-                        return Json(new { success = false, message = "Định dạng dữ liệu không hợp lệ" });
-                    }
-                    
-                    string fileExtension = base64Data.Substring(startIndex, endIndex - startIndex);
-                    if (!new[] { "jpg", "jpeg", "png", "gif" }.Contains(fileExtension.ToLower()))
-                    {
-                        _logger.LogWarning($"UpdateAvatar: Unsupported file extension: {fileExtension}");
-                        return Json(new { success = false, message = "Chỉ hỗ trợ định dạng JPG, JPEG, PNG, GIF" });
-                    }
-
-                    int dataIndex = base64Data.IndexOf("base64,") + "base64,".Length;
-                    string imageData = base64Data.Substring(dataIndex);
-                    
-                    string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "avatar");
-                    if (!Directory.Exists(uploadsFolder))
-                    {
-                        Directory.CreateDirectory(uploadsFolder);
-                    }
-                    
-                    string fileName = $"{user.Id}_{DateTime.Now:yyyyMMddHHmmss}.{fileExtension}";
-                    string filePath = Path.Combine(uploadsFolder, fileName);
-                    
-                    byte[] imageBytes = Convert.FromBase64String(imageData);
-                    await System.IO.File.WriteAllBytesAsync(filePath, imageBytes);
-                    
-                    string avatarPath = $"/images/avatar/{fileName}";
-                    
-                    user.Avatar = avatarPath;
-                    bool result = await _userRepository.UpdateUserAsync(user);
-                    
-                    if (result)
-                    {
-                        _logger.LogInformation($"UpdateAvatar: Updated avatar to {avatarPath} for user ID: {user.Id}");
-                        Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
-                        Response.Headers.Add("Pragma", "no-cache");
-                        Response.Headers.Add("Expires", "0");
+                        // Handle base64 data
+                        string base64Data = model.AvatarData;
+                        string dataPrefix = "data:image/";
                         
-                        return Json(new { 
-                            success = true, 
-                            avatarUrl = avatarPath,
-                            message = "Cập nhật ảnh đại diện thành công!",
-                            reload = true
-                        });
+                        int startIndex = base64Data.IndexOf(dataPrefix);
+                        if (startIndex < 0)
+                        {
+                            _logger.LogWarning("UpdateAvatar: Invalid image format");
+                            return Json(new { success = false, message = "Định dạng ảnh không hợp lệ" });
+                        }
+                        
+                        startIndex += dataPrefix.Length;
+                        int endIndex = base64Data.IndexOf(";base64,", startIndex);
+                        if (endIndex < 0)
+                        {
+                            _logger.LogWarning("UpdateAvatar: Invalid data format");
+                            return Json(new { success = false, message = "Định dạng dữ liệu không hợp lệ" });
+                        }
+                        
+                        string fileExtension = base64Data.Substring(startIndex, endIndex - startIndex);
+                        if (!new[] { "jpg", "jpeg", "png", "gif" }.Contains(fileExtension.ToLower()))
+                        {
+                            _logger.LogWarning($"UpdateAvatar: Unsupported file extension: {fileExtension}");
+                            return Json(new { success = false, message = "Chỉ hỗ trợ định dạng JPG, JPEG, PNG, GIF" });
+                        }
+
+                        int dataIndex = base64Data.IndexOf("base64,") + "base64,".Length;
+                        string imageData = base64Data.Substring(dataIndex);
+                        
+                        // Ensure avatar directory exists
+                        string uploadsFolder = Path.Combine(_webRootPath, "images", "avatar");
+                        if (!Directory.Exists(uploadsFolder))
+                        {
+                            Directory.CreateDirectory(uploadsFolder);
+                            _logger.LogInformation($"UpdateAvatar: Created avatar directory at {uploadsFolder}");
+                        }
+                        
+                        // Generate unique filename
+                        string fileName = $"{user.Id}_{DateTime.Now:yyyyMMddHHmmss}.{fileExtension}";
+                        string filePath = Path.Combine(uploadsFolder, fileName);
+                        
+                        // Save file
+                        byte[] imageBytes = Convert.FromBase64String(imageData);
+                        await System.IO.File.WriteAllBytesAsync(filePath, imageBytes);
+                        
+                        _logger.LogInformation($"UpdateAvatar: Saved image to {filePath}");
+                        
+                        // Update user avatar path
+                        string avatarPath = $"/images/avatar/{fileName}";
+                        bool result = await _userRepository.UpdateUserAvatarAsync(user.Id, avatarPath);
+                        
+                        if (result)
+                        {
+                            _logger.LogInformation($"UpdateAvatar: Updated avatar to {avatarPath} for user ID: {user.Id}");
+                            
+                            // Set cache control headers
+                            Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+                            Response.Headers["Pragma"] = "no-cache";
+                            Response.Headers["Expires"] = "0";
+                            
+                            return Json(new { 
+                                success = true, 
+                                avatarUrl = avatarPath + $"?v={DateTime.Now.Ticks}",
+                                message = "Cập nhật ảnh đại diện thành công!",
+                                reload = true
+                            });
+                        }
+                        else
+                        {
+                            _logger.LogWarning($"UpdateAvatar: Failed to update avatar in database for user ID: {user.Id}");
+                            return Json(new { success = false, message = "Lỗi cập nhật vào database" });
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        _logger.LogWarning($"UpdateAvatar: Failed to update avatar in database for user ID: {user.Id}");
-                        return Json(new { success = false, message = "Lỗi cập nhật vào database" });
+                        _logger.LogError($"UpdateAvatar: Error processing avatar data: {ex.Message}, StackTrace: {ex.StackTrace}");
+                        return Json(new { success = false, message = $"Lỗi khi lưu ảnh: {ex.Message}" });
                     }
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError($"UpdateAvatar: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
-                    return Json(new { success = false, message = $"Lỗi khi lưu ảnh: {ex.Message}" });
                 }
             }
             catch (Exception ex)

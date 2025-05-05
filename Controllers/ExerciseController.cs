@@ -13,17 +13,46 @@ namespace TiengAnh.Controllers
     {
         private readonly ExerciseRepository _exerciseRepository;
         private readonly TopicRepository _topicRepository;
+        private readonly ILogger<ExerciseController> _logger;
 
-        public ExerciseController(ExerciseRepository exerciseRepository, TopicRepository topicRepository)
+        public ExerciseController(
+            ExerciseRepository exerciseRepository, 
+            TopicRepository topicRepository,
+            ILogger<ExerciseController> logger)
         {
             _exerciseRepository = exerciseRepository;
             _topicRepository = topicRepository;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index()
         {
-            var topics = await _topicRepository.GetAllTopicsAsync();
-            return View(topics);
+            try
+            {
+                var topics = await _topicRepository.GetAllTopicsAsync();
+                
+                // For each topic, get the exercises count
+                foreach (var topic in topics)
+                {
+                    var exercises = await _exerciseRepository.GetExercisesByTopicIdAsync(topic.ID_CD);
+                    topic.ExerciseCount = exercises.Count;
+                    
+                    // Count by exercise type
+                    topic.MultipleChoiceCount = exercises.Count(e => e.ExerciseType == "MultipleChoice");
+                    topic.FillBlankCount = exercises.Count(e => e.ExerciseType == "FillBlank");
+                    topic.WordOrderingCount = exercises.Count(e => e.ExerciseType == "WordOrdering");
+                    
+                    _logger.LogInformation($"Topic {topic.ID_CD} ({topic.Name_CD}): {topic.ExerciseCount} exercises " +
+                        $"(MC: {topic.MultipleChoiceCount}, FB: {topic.FillBlankCount}, WO: {topic.WordOrderingCount})");
+                }
+                
+                return View(topics);
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving topics and exercises for Index view");
+                return View(new List<TopicModel>());
+            }
         }
 
         [HttpGet]

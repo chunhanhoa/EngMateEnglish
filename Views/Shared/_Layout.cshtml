@@ -95,93 +95,90 @@
                             </ul>
                         </li>
                     </ul>
-                        <!-- Đăng nhập/Đăng ký hoặc User Profile -->
-                        <div class="user-menu">
-                            <ul class="navbar-nav">
-                                @if (User.Identity?.IsAuthenticated == true)
+                    <!-- Đăng nhập/Đăng ký hoặc User Profile -->
+                    <div class="user-menu">
+                        <ul class="navbar-nav">
+                            @if (User.Identity?.IsAuthenticated == true)
+                            {
+                                var username = User.Identity.Name;
+                                string userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                                var user = !string.IsNullOrEmpty(userId) ? await UserRepository.GetByUserIdAsync(userId) : null;
+                                if (user == null && !string.IsNullOrEmpty(username))
                                 {
-                                    var username = User.Identity.Name;
-                                    string userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-                                    var user = !string.IsNullOrEmpty(userId) ? await UserRepository.GetByUserIdAsync(userId) : null;
-                                    if (user == null && !string.IsNullOrEmpty(username))
-                                    {
-                                        user = await UserRepository.GetByEmailAsync(username);
-                                    }
-                                    var avatarPath = user != null && !string.IsNullOrEmpty(user.Avatar) ? user.Avatar : "/images/default-avatar.png";
-                                    var timestamp = DateTime.Now.Ticks;
-                                    var avatarWithTimestamp = $"{avatarPath}?v={timestamp}";
+                                    user = await UserRepository.GetByEmailAsync(username);
+                                }
+                                var avatarUrl = user?.Avatar ?? "/images/default-avatar.png";
+                                avatarUrl = avatarUrl.StartsWith("/") ? avatarUrl : "/" + avatarUrl;
+                                var timestamp = DateTime.Now.Ticks;
+                                var avatarWithTimestamp = $"{avatarUrl}?v={timestamp}";
 
-                                    <li class="nav-item dropdown">
-                                        <button class="btn dropdown-toggle d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="@avatarWithTimestamp" 
-                                                 alt="@username" 
-                                                 class="rounded-circle me-2 img-fluid avatar" 
-                                                 style="width: 30px; height: 30px; object-fit: cover;"
-                                                 data-username="@username"
-                                                 data-userid="@userId"
-                                                 data-original-src="@avatarPath"
-                                                 onerror="handleAvatarError(this, '@avatarPath', '/images/default-avatar.png')">
-                                            <span class="user-name">@username</span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li class="nav-item dropdown">
+                                    <button class="btn dropdown-toggle d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="@avatarWithTimestamp" 
+                                             alt="@username" 
+                                             class="rounded-circle me-2 img-fluid avatar" 
+                                             style="width: 30px; height: 30px; object-fit: cover;"
+                                             data-userid="@userId"
+                                             data-original-src="@avatarUrl"
+                                             onerror="handleAvatarError(this, '@avatarUrl', '/images/default-avatar.png')">
+                                        <span class="user-name">@username</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="@Url.Action("Profile", "Account")">
+                                                <i class="fas fa-user me-2"></i> Hồ sơ của tôi
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="@Url.Action("Index", "Progress")">
+                                                <i class="fas fa-chart-line me-2"></i> Tiến trình học
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="@Url.Action("Favorites", "Progress")">
+                                                <i class="fas fa-heart me-2"></i> Mục yêu thích
+                                            </a>
+                                        </li>
+                                        @if (User.IsInRole("Admin"))
+                                        {
                                             <li>
-                                                <a class="dropdown-item" href="@Url.Action("Profile", "Account")">
-                                                    <i class="fas fa-user me-2"></i> Hồ sơ của tôi
+                                                <a class="dropdown-item" href="@Url.Action("ManageUsers", "Account")">
+                                                    <i class="fas fa-users-cog me-2"></i> Quản lý người dùng
                                                 </a>
                                             </li>
-                                            <li>
-                                                <a class="dropdown-item" href="@Url.Action("Index", "Progress")">
-                                                    <i class="fas fa-chart-line me-2"></i> Tiến trình học
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="@Url.Action("Favorites", "Progress")">
-                                                    <i class="fas fa-heart me-2"></i> Mục yêu thích
-                                                </a>
-                                            </li>
-                                            @if (User.IsInRole("Admin"))
-                                            {
-                                                <li>
-                                                    <a class="dropdown-item" href="@Url.Action("ManageUsers", "Account")">
-                                                        <i class="fas fa-users-cog me-2"></i> Quản lý người dùng
-                                                    </a>
-                                                </li>
-                                            }
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li>
-                                                <a class="dropdown-item" href="@Url.Action("Logout", "Account")">
-                                                    <i class="fas fa-sign-out-alt me-2"></i> Đăng xuất
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="nav-item">
-                                        <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary me-2">
-                                            <i class="fas fa-sign-in-alt me-1"></i> Đăng nhập
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="@Url.Action("Register", "Account")" class="btn btn-primary">
-                                            <i class="fas fa-user-plus me-1"></i> Đăng ký
-                                        </a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
+                                        }
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="@Url.Action("Logout", "Account")">
+                                                <i class="fas fa-sign-out-alt me-2"></i> Đăng xuất
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary me-2">
+                                        <i class="fas fa-sign-in-alt me-1"></i> Đăng nhập
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Register", "Account")" class="btn btn-primary">
+                                        <i class="fas fa-user-plus me-1"></i> Đăng ký
+                                    </a>
+                                </li>
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-
     <main role="main" class="pb-3 flex-grow-1">
         @RenderBody()
         <div style="padding-bottom: 2.5rem;"></div>
     </main>
-
     <footer class="footer mt-auto py-5 text-white">
         <div class="container">
             <div class="row g-4">
@@ -244,7 +241,6 @@
             </div>
         </div>
     </footer>
-
     <style>
         .footer {
             background: linear-gradient(135deg, #3a5af4 0%, #4e73fa 100%);
@@ -263,14 +259,12 @@
             padding-bottom: 8px;
         }
     </style>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/animations.js" asp-append-version="true"></script>
     <script src="~/js/avatar-handler.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

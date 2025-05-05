@@ -54,5 +54,14 @@ namespace TiengAnh.Models
         {
             return FavoriteByUsers != null && FavoriteByUsers.Contains(userId);
         }
+
+        [BsonElement("title")]
+        public string Title { get; set; } = string.Empty;
+
+        [BsonElement("summary")]
+        public string Summary { get; set; } = string.Empty;
+
+        [BsonElement("id_grammar")]
+        public int ID { get; set; }
     }
 }

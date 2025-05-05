@@ -7,13 +7,17 @@ using TiengAnh.Services;
 using System;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 
 namespace TiengAnh.Repositories
 {
     public class UserRepository : BaseRepository<UserModel>
     {
-        public UserRepository(MongoDbService mongoDbService) : base(mongoDbService, "Users")
+        private readonly ILogger<UserRepository> _logger;
+
+        public UserRepository(MongoDbService mongoDbService, ILogger<UserRepository> logger) : base(mongoDbService, "Users")
         {
+            _logger = logger;
         }
 
         public async Task<UserModel> GetByEmailAsync(string email)
@@ -103,69 +107,80 @@ namespace TiengAnh.Repositories
         {
             try
             {
-                Console.WriteLine($"UpdateUserAsync: Updating user - ID: {user.Id}, UserId: {user.UserId}, Email: {user.Email}, Avatar: {user.Avatar}");
-                Console.WriteLine($"UpdateUserAsync: DateOfBirth: {user.DateOfBirth}");
+                _logger.LogInformation($"UpdateUserAsync: Updating user - ID: {user.Id}, UserId: {user.UserId}, Email: {user.Email}, Avatar: {user.Avatar}");
 
                 if (user == null || (string.IsNullOrEmpty(user.Id) && string.IsNullOrEmpty(user.UserId) && string.IsNullOrEmpty(user.Email)))
                 {
-                    Console.WriteLine("UpdateUserAsync: Invalid user data");
+                    _logger.LogWarning("UpdateUserAsync: Invalid user data");
                     return false;
                 }
 
                 var filter = Builders<UserModel>.Filter.Empty;
 
+                // Use Id as primary identifier if available
                 if (!string.IsNullOrEmpty(user.Id))
                 {
-                    Console.WriteLine($"UpdateUserAsync: Using Id: {user.Id} for filter");
-                    try
-                    {
-                        var objectId = new ObjectId(user.Id);
-                        filter = Builders<UserModel>.Filter.Eq("_id", objectId);
-                    }
-                    catch
-                    {
-                        filter = Builders<UserModel>.Filter.Eq(u => u.Id, user.Id);
-                    }
+                    _logger.LogInformation($"UpdateUserAsync: Using Id: {user.Id} for filter");
+                    filter = Builders<UserModel>.Filter.Eq(u => u.Id, user.Id);
                 }
+                // Otherwise use UserId
                 else if (!string.IsNullOrEmpty(user.UserId))
                 {
-                    Console.WriteLine($"UpdateUserAsync: Using UserId: {user.UserId} for filter");
+                    _logger.LogInformation($"UpdateUserAsync: Using UserId: {user.UserId} for filter");
                     filter = Builders<UserModel>.Filter.Eq(u => u.UserId, user.UserId);
                 }
+                // Fall back to Email
                 else if (!string.IsNullOrEmpty(user.Email))
                 {
-                    Console.WriteLine($"UpdateUserAsync: Using Email: {user.Email} for filter");
+                    _logger.LogInformation($"UpdateUserAsync: Using Email: {user.Email} for filter");
                     filter = Builders<UserModel>.Filter.Eq(u => u.Email, user.Email);
                 }
 
-                var updateDefinition = Builders<UserModel>.Update
-                    .Set(u => u.FullName, user.FullName)
-                    .Set(u => u.Phone, user.Phone ?? "")
-                    .Set(u => u.Address, user.Address ?? "")
-                    .Set(u => u.Gender, user.Gender ?? "")
-                    .Set(u => u.Bio, user.Bio ?? "")
-                    .Set("DateOfBirth", user.DateOfBirth);
-
-                if (!string.IsNullOrEmpty(user.Username))
-                {
-                    updateDefinition = updateDefinition
-                        .Set(u => u.Username, user.Username)
-                        .Set(u => u.UserName, user.Username);
-                }
-
-                if (!string.IsNullOrEmpty(user.Avatar))
-                {
-                    updateDefinition = updateDefinition.Set(u => u.Avatar, user.Avatar);
-                }
-
-                var result = await _collection.UpdateOneAsync(filter, updateDefinition);
-                Console.WriteLine($"UpdateUserAsync: Result - MatchedCount: {result.MatchedCount}, ModifiedCount: {result.ModifiedCount}");
-
-                return result.ModifiedCount > 0 || result.MatchedCount > 0;
+                var result = await _collection.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = false });
+                
+                _logger.LogInformation($"UpdateUserAsync: Update result - Matched: {result.MatchedCount}, Modified: {result.ModifiedCount}");
+                
+                return result.ModifiedCount > 0;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"UpdateUserAsync: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                _logger.LogError(ex, "Error in UpdateUserAsync");
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateUserAvatarAsync(string userId, string avatarPath)
+        {
+            try
+            {
+                _logger.LogInformation($"UpdateUserAvatarAsync: Setting avatar {avatarPath} for user {userId}");
+                
+                var filter = Builders<UserModel>.Filter.Empty;
+                
+                if (!string.IsNullOrEmpty(userId))
+                {
+                    // Try to match by Id first
+                    if (ObjectId.TryParse(userId, out _))
+                        filter = Builders<UserModel>.Filter.Eq(u => u.Id, userId);
+                    else
+                        filter = Builders<UserModel>.Filter.Eq(u => u.UserId, userId);
+                }
+                else
+                {
+                    _logger.LogWarning("UpdateUserAvatarAsync: Invalid user ID");
+                    return false;
+                }
+                
+                var update = Builders<UserModel>.Update.Set(u => u.Avatar, avatarPath);
+                var result = await _collection.UpdateOneAsync(filter, update);
+                
+                _logger.LogInformation($"UpdateUserAvatarAsync: Update result - Matched: {result.MatchedCount}, Modified: {result.ModifiedCount}");
+                
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error in UpdateUserAvatarAsync for user {userId}");
                 return false;
             }
         }
