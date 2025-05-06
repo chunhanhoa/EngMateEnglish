@@ -125,51 +125,33 @@ namespace TiengAnh.Controllers
         [Authorize]
         public async Task<IActionResult> Profile()
         {
-            try
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userEmail = User.FindFirstValue(ClaimTypes.Email);
+            
+            _logger.LogInformation($"Profile: Loading for user ID: {userId}, Email: {userEmail}");
+            
+            var user = await _userRepository.GetByUserIdAsync(userId);
+            if (user == null && !string.IsNullOrEmpty(userEmail))
             {
-                _logger.LogInformation($"Profile: User.Identity.IsAuthenticated: {User.Identity?.IsAuthenticated}");
-                _logger.LogInformation($"Profile: User.Identity.Name: {User.Identity?.Name}");
-                
-                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                _logger.LogInformation($"Profile: User ID from Claims: {userId}");
-                
-                if (string.IsNullOrEmpty(userId))
-                {
-                    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                    return RedirectToAction("Login");
-                }
-
-                var user = await _userRepository.GetByUserIdAsync(userId);
-                if (user == null)
-                {
-                    var email = User.FindFirstValue(ClaimTypes.Email);
-                    if (!string.IsNullOrEmpty(email))
-                    {
-                        user = await _userRepository.GetByEmailAsync(email);
-                        _logger.LogInformation($"Profile: Found user by email: {email}, User: {user?.Id}");
-                    }
-                }
-                else
-                {
-                    _logger.LogInformation($"Profile: Found user by userId: {userId}, User: {user?.Id}, Avatar: {user?.Avatar}");
-                }
-
-                if (user == null)
-                {
-                    _logger.LogWarning($"Profile: User not found for ID: {userId}");
-                    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                    return RedirectToAction("Login");
-                }
-
-                ViewBag.CurrentUser = user;
-                return View(user);
+                user = await _userRepository.GetByEmailAsync(userEmail);
             }
-            catch (Exception ex)
+
+            if (user == null)
             {
-                _logger.LogError($"Profile: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
-                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi tải thông tin người dùng.";
+                _logger.LogWarning($"Profile: User not found for ID: {userId}, Email: {userEmail}");
+                TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng.";
                 return RedirectToAction("Index", "Home");
             }
+            
+            // Ensure the avatar URL includes cache busting
+            if (!string.IsNullOrEmpty(user.Avatar))
+            {
+                user.Avatar = user.Avatar + (user.Avatar.Contains("?") ? "&" : "?") + $"v={DateTime.Now.Ticks}";
+            }
+            
+            _logger.LogInformation($"Profile: Loaded for user ID: {user.Id}, Avatar: {user.Avatar}");
+            
+            return View(user);
         }
 
         [HttpGet]

@@ -98,22 +98,10 @@ namespace TiengAnh.Models
         [BsonElement("FavoriteGrammarIds")]
         public List<int> FavoriteGrammarIds { get; set; } = new List<int>();
 
-        // Helper method to get avatar URL with cache busting
+        // Helper method to get avatar URL with cache busting - now returns empty string
         public string GetAvatarUrl(bool addTimestamp = true)
         {
-            string defaultAvatar = "/images/default-avatar.png";
-            
-            if (string.IsNullOrEmpty(Avatar))
-                return defaultAvatar;
-                
-            // Ensure avatar path starts with /
-            string avatarPath = Avatar.StartsWith("/") ? Avatar : "/" + Avatar;
-            
-            // Add timestamp to prevent caching
-            if (addTimestamp)
-                return $"{avatarPath}?v={DateTime.Now.Ticks}";
-            
-            return avatarPath;
+            return string.Empty; // Return empty string instead of avatar URL
         }
     }
     

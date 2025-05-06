@@ -2,10 +2,8 @@
 @{
     ViewData["Title"] = "Hồ sơ người dùng";
     bool isEditMode = ViewContext.HttpContext.Request.Query.ContainsKey("edit");
-    string defaultAvatarPath = "/images/default-avatar.png";
     string userIdFromClaims = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    // Use the GetAvatarUrl helper method
-    string avatarUrl = Model?.GetAvatarUrl() ?? defaultAvatarPath;
+    string timestamp = DateTime.Now.Ticks.ToString();
 }
 
 <div class="container mt-5">
@@ -22,84 +20,75 @@
     
     @if (TempData["SuccessMessage"] != null)
     {
-        <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
     
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
     <div class="row">
-        <!-- Profile Sidebar -->
-        <div class="col-lg-4 mb-4 mb-lg-0">
-            <div class="card border-0 shadow-sm text-center">
-                <div class="card-body p-4">
-                    <div class="avatar-container position-relative mb-4">
-                        <img id="avatar-preview" 
-                             src="@avatarUrl" 
-                             alt="@Model?.FullName" 
-                             class="rounded-circle img-fluid avatar-image"
-                             data-userid="@userIdFromClaims"
-                             data-original-src="@(Model?.Avatar ?? defaultAvatarPath)"
-                             style="width: 150px; height: 150px; object-fit: cover;"
-                             onerror="handleAvatarError(this, '@(Model?.Avatar ?? defaultAvatarPath)', '@defaultAvatarPath')">
-                        
-                        @if (isEditMode)
+        <div class="col-lg-4 mb-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h3 class="fw-bold mb-0">
+                        @(isEditMode ? "Chỉnh sửa thông tin" : "Thông tin cá nhân")
+                        @if (!isEditMode)
                         {
-                            <div class="image-upload">
-                                <label for="avatar-upload" class="btn btn-sm btn-primary position-absolute bottom-0 end-0" style="border-radius: 50%; width: 40px; height: 40px;">
-                                    <i class="fas fa-camera"></i>
-                                </label>
-                                <input id="avatar-upload" name="AvatarFile" type="file" style="display: none;" accept="image/*">
-                            </div>
+                            <a href="@Url.Action("Profile", "Account", new { edit = true })" class="btn btn-sm btn-outline-primary float-end">
+                                <i class="fas fa-edit"></i> Chỉnh sửa
+                            </a>
                         }
-                        else
-                        {
-                            <button id="edit-avatar-btn" type="button" class="btn btn-sm btn-primary position-absolute bottom-0 end-0" style="border-radius: 50%; width: 40px; height: 40px;">
-                                <i class="fas fa-camera"></i>
+                    </h3>
+                </div>
+                <div class="card-body text-center pt-4">
+                    <div class="avatar-container mb-3">
+                        <img id="user-avatar" src="@(string.IsNullOrEmpty(Model.Avatar) ? "/images/default-avatar.png" : Model.Avatar + $"?v={timestamp}")" 
+                             class="img-fluid rounded-circle avatar-img" alt="Avatar" onerror="this.src='/images/default-avatar.png'">
+                        <div class="avatar-overlay">
+                            <button type="button" id="change-avatar-btn" class="btn btn-sm btn-light">
+                                <i class="fas fa-camera"></i> Thay đổi
                             </button>
-                        }
+                        </div>
                     </div>
+                    
+                    <button type="button" id="upload-avatar-btn" class="btn btn-primary btn-sm mb-3">
+                        <i class="fas fa-upload me-1"></i> Tải lên ảnh đại diện
+                    </button>
                     
                     <h4 class="fw-bold mb-0">@Model.FullName</h4>
-                    <p class="text-muted mb-3">@Model.Username</p>
+                    <p class="text-muted">@Model.Username</p>
                     
-                    <div class="d-flex justify-content-center mb-3">
-                        <div class="badge badge-primary py-2 px-3 me-2">
-                            <i class="fas fa-medal me-1"></i> Trình độ @Model.Level
+                    <div class="d-flex justify-content-center mt-3">
+                        <div class="badge bg-primary-soft text-primary me-2">
+                            <i class="fas fa-graduation-cap me-1"></i> @Model.Level
                         </div>
-                        <div class="badge badge-success py-2 px-3">
-                            <i class="fas fa-star me-1"></i> @Model.Points điểm
+                        <div class="badge bg-success-soft text-success">
+                            <i class="fas fa-star me-1"></i> @Model.Points XP
                         </div>
                     </div>
                     
-                    <div class="text-start mt-4">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center border-top-0">
-                                <span class="fw-bold"><i class="fas fa-user me-2 text-primary"></i> Thông tin cá nhân</span>
-                                @if (!isEditMode)
-                                {
-                                    <a href="?edit=true" class="btn btn-sm btn-outline-primary px-3">
-                                        <i class="fas fa-edit me-1"></i> Chỉnh sửa
-                                    </a>
-                                }
-                            </li>
-                            <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
-                                <span class="fw-bold"><i class="fas fa-lock me-2 text-primary"></i> Bảo mật</span>
-                                <a href="@Url.Action("ChangePassword", "Account")" class="btn btn-sm btn-outline-primary px-3">
-                                    <i class="fas fa-key me-1"></i> Đổi mật khẩu
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="mt-4">
+                        <a href="@Url.Action("ChangePassword", "Account")" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-key me-1"></i> Đổi mật khẩu
+                        </a>
                     </div>
+                    
+                    <input type="file" id="avatar-upload" accept="image/*" style="display: none;" />
                 </div>
             </div>
         </div>
-        
-        <!-- Profile Content -->
+
         <div class="col-lg-8">
             @if (isEditMode)
             {
-                <!-- Edit Profile Form -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -109,7 +98,6 @@
                         <form asp-action="UpdateProfile" method="post" asp-antiforgery="true">
                             <input type="hidden" asp-for="Id" />
                             <input type="hidden" asp-for="UserId" />
-                            <input type="hidden" asp-for="Avatar" id="avatar-path" />
                             <input type="hidden" asp-for="Email" />
                             <input type="hidden" asp-for="Username" />
                             <input type="hidden" asp-for="UserName" />
@@ -120,6 +108,7 @@
                             <input type="hidden" asp-for="CreatedAt" />
                             <input type="hidden" asp-for="IsVerified" />
                             <input type="hidden" asp-for="PasswordHash" />
+                            <input type="hidden" asp-for="Avatar" />
 
                             <div class="row mb-3">
                                 <div class="col-md-6 mb-3 mb-md-0">
@@ -207,7 +196,6 @@
             }
             else
             {
-                <!-- User Info Card -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -282,40 +270,49 @@
     </div>
 </div>
 
-<!-- Avatar Edit Modal -->
-<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+<!-- Modal for cropping avatar -->
+<div class="modal fade" id="avatar-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="avatarModalLabel">Cập nhật ảnh đại diện</h5>
+                <h5 class="modal-title">Cập nhật ảnh đại diện</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body text-center">
-                <div class="avatar-preview mb-3">
-                    <img src="@avatarUrl" id="modal-avatar-preview" 
-                         class="rounded-circle img-thumbnail avatar-image" 
-                         style="width: 200px; height: 200px; object-fit: cover;" 
-                         data-userid="@userIdFromClaims"
-                         data-original-src="@(Model?.Avatar ?? defaultAvatarPath)"
-                         onerror="handleAvatarError(this, '@(Model?.Avatar ?? defaultAvatarPath)', '@defaultAvatarPath')">
+            <div class="modal-body">
+                <div class="img-container mb-3">
+                    <img id="avatar-image" src="" alt="Avatar Preview" class="img-fluid">
                 </div>
-                
-                <div class="mb-3">
-                    <label for="modal-avatar-upload" class="btn btn-outline-primary">
-                        <i class="fas fa-upload me-2"></i> Chọn ảnh
-                    </label>
-                    <input id="modal-avatar-upload" type="file" accept="image/*" style="display: none;">
+                <div class="cropper-controls d-flex justify-content-center gap-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="rotate-left">
+                        <i class="fas fa-undo"></i> Xoay trái
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="rotate-right">
+                        <i class="fas fa-redo"></i> Xoay phải
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="zoom-in">
+                        <i class="fas fa-search-plus"></i> Phóng to
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="zoom-out">
+                        <i class="fas fa-search-minus"></i> Thu nhỏ
+                    </button>
                 </div>
             </div>
             <div class="modal-footer">
+                <div class="upload-status" style="display: none;">
+                    <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
+                        <span class="visually-hidden">Đang tải...</span>
+                    </div>
+                    <span>Đang tải lên...</span>
+                </div>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-primary" id="save-avatar-btn">Lưu thay đổi</button>
+                <button type="button" class="btn btn-primary" id="save-avatar">Lưu ảnh</button>
             </div>
         </div>
     </div>
 </div>
 
 @section Styles {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
     <style>
         .progress-circle { margin: 0 auto; }
         .circular-chart { display: block; max-width: 100%; max-height: 100%; }
@@ -323,10 +320,6 @@
         .circle { fill: none; stroke-width: 2; stroke-linecap: round; animation: progress 1s ease-out forwards; }
         .progress-value { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
         @@keyframes progress { 0% { stroke-dasharray: 0 100; } }
-        .avatar-error { border: 2px solid #ffcccb; opacity: 0.8; }
-        .avatar-success { border: 2px solid #d4edda; }
-        img.avatar-loading { position: relative; background-color: #f8f9fa; animation: pulse 1.5s infinite ease-in-out; }
-        @@keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
         .activity-timeline .activity-item:last-child { border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
         .bg-primary-soft { background-color: rgba(78, 115, 250, 0.1); }
         .bg-success-soft { background-color: rgba(92, 184, 92, 0.1); }
@@ -335,145 +328,205 @@
         .info-item { margin-bottom: 0.5rem; }
         .info-item label { display: block; color: #6c757d; font-size: 0.875rem; margin-bottom: 0.25rem; }
         .info-item p { font-weight: 500; margin-bottom: 0; }
-        .image-upload { cursor: pointer; }
-        .image-upload:hover .btn { opacity: 0.9; }
         .form-control:focus, .form-select:focus { border-color: #4e73fa; box-shadow: 0 0 0 0.25rem rgba(78, 115, 250, 0.25); }
+        .avatar-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 3px solid #f8f9fa;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .avatar-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .avatar-container:hover .avatar-overlay {
+            opacity: 1;
+        }
+        
+        .img-container {
+            max-height: 400px;
+            text-align: center;
+        }
+        
+        .img-container img {
+            max-width: 100%;
+            max-height: 400px;
+        }
+        
+        .cropper-view-box,
+        .cropper-face {
+            border-radius: 50%;
+        }
     </style>
 }
 
 @section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script>
-        // Avatar upload preview trong form
-        const avatarUpload = document.getElementById('avatar-upload');
-        if (avatarUpload) {
-            avatarUpload.addEventListener('change', function() {
-                if (this.files && this.files[0]) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.querySelector('#avatar-preview').src = e.target.result;
-                        document.querySelector('#avatar-path').value = e.target.result;
+        $(document).ready(function() {
+            let cropper;
+            
+            // Change avatar button click handler
+            $("#change-avatar-btn").click(function() {
+                $("#avatar-upload").click();
+            });
+            
+            // New upload avatar button click handler
+            $("#upload-avatar-btn").click(function() {
+                $("#avatar-upload").click();
+            });
+            
+            // Handle file selection
+            $("#avatar-upload").change(function() {
+                var file = this.files[0];
+                if (file) {
+                    // Check file type
+                    if (!file.type.match('image.*')) {
+                        alert('Vui lòng chọn file hình ảnh.');
+                        return;
                     }
-                    reader.readAsDataURL(this.files[0]);
+                    
+                    // Check file size (max 5MB)
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('Kích thước file quá lớn. Vui lòng chọn file dưới 5MB.');
+                        return;
+                    }
+                    
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Set preview image
+                        $("#avatar-image").attr('src', e.target.result);
+                        
+                        // Show modal
+                        var avatarModal = new bootstrap.Modal(document.getElementById('avatar-modal'));
+                        avatarModal.show();
+                        
+                        // Initialize cropper when modal is shown
+                        $('#avatar-modal').on('shown.bs.modal', function() {
+                            if (cropper) {
+                                cropper.destroy();
+                            }
+                            
+                            cropper = new Cropper(document.getElementById('avatar-image'), {
+                                aspectRatio: 1,
+                                viewMode: 1,
+                                dragMode: 'move',
+                                autoCropArea: 0.8,
+                                responsive: true,
+                                guides: true,
+                                highlight: false,
+                                cropBoxMovable: true,
+                                cropBoxResizable: true,
+                                zoomOnWheel: true
+                            });
+                        });
+                    }
+                    reader.readAsDataURL(file);
                 }
             });
-        }
-
-        // Avatar edit button (non-edit mode)
-        const editAvatarBtn = document.getElementById('edit-avatar-btn');
-        if (editAvatarBtn) {
-            editAvatarBtn.addEventListener('click', function() {
-                const avatarModal = new bootstrap.Modal(document.getElementById('avatarModal'));
-                avatarModal.show();
+            
+            // Cropper control buttons
+            $('#rotate-left').click(function() {
+                cropper.rotate(-90);
             });
-        }
-
-        // Modal avatar upload
-        const modalAvatarUpload = document.getElementById('modal-avatar-upload');
-        if (modalAvatarUpload) {
-            modalAvatarUpload.addEventListener('change', function() {
-                if (this.files && this.files[0]) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.querySelector('#modal-avatar-preview').src = e.target.result;
-                    }
-                    reader.readAsDataURL(this.files[0]);
+            
+            $('#rotate-right').click(function() {
+                cropper.rotate(90);
+            });
+            
+            $('#zoom-in').click(function() {
+                cropper.zoom(0.1);
+            });
+            
+            $('#zoom-out').click(function() {
+                cropper.zoom(-0.1);
+            });
+            
+            // Save avatar click handler
+            $("#save-avatar").click(function() {
+                if (!cropper) {
+                    alert('Không thể xử lý hình ảnh. Vui lòng thử lại.');
+                    return;
                 }
-            });
-        }
-
-        // Save avatar button in modal
-        const saveAvatarBtn = document.getElementById('save-avatar-btn');
-        if (saveAvatarBtn) {
-            saveAvatarBtn.addEventListener('click', function() {
-                const originalButtonText = this.innerHTML;
-                this.disabled = true;
-                this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang lưu...';
-
-                const newAvatarSrc = document.querySelector('#modal-avatar-preview').src;
-                const token = document.querySelector('form input[name="__RequestVerificationToken"]')?.value;
-
-                fetch('@Url.Action("UpdateAvatar", "Account")', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'RequestVerificationToken': token || ''
+                
+                // Show loading state
+                $(this).prop('disabled', true);
+                $('.upload-status').show();
+                
+                var canvas = cropper.getCroppedCanvas({
+                    width: 300,
+                    height: 300,
+                    fillColor: '#fff',
+                    imageSmoothingEnabled: true,
+                    imageSmoothingQuality: 'high',
+                });
+                
+                var avatarData = canvas.toDataURL('image/jpeg', 0.8);
+                
+                // Send to server
+                $.ajax({
+                    url: '@Url.Action("UpdateAvatar", "Account")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ AvatarData: avatarData }),
+                    beforeSend: function(xhr) {
+                        // Add anti-forgery token
+                        xhr.setRequestHeader("RequestVerificationToken", 
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
                     },
-                    body: JSON.stringify({ avatarData: newAvatarSrc })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        showNotification('Cập nhật ảnh đại diện thành công!', 'success');
-                        bootstrap.Modal.getInstance(document.getElementById('avatarModal')).hide();
-                        if (data.reload) {
-                            setTimeout(() => window.location.reload(), 1000);
+                    success: function(response) {
+                        if (response.success) {
+                            // Update displayed avatar with cache busting
+                            var timestamp = new Date().getTime();
+                            var newAvatarUrl = response.avatarUrl + '?v=' + timestamp;
+                            $("#user-avatar").attr('src', newAvatarUrl);
+                            
+                            // Close modal
+                            $("#avatar-modal").modal('hide');
+                            
+                            // Show success message
+                            alert(response.message || 'Cập nhật ảnh đại diện thành công!');
+                        } else {
+                            alert(response.message || 'Có lỗi xảy ra khi cập nhật ảnh đại diện.');
                         }
-                    } else {
-                        showNotification('Có lỗi xảy ra: ' + data.message, 'error');
-                        this.disabled = false;
-                        this.innerHTML = originalButtonText;
+                    },
+                    error: function(xhr) {
+                        console.error('Upload error:', xhr);
+                        alert('Đã xảy ra lỗi khi tải lên ảnh. Vui lòng thử lại sau.');
+                    },
+                    complete: function() {
+                        // Reset loading state
+                        $("#save-avatar").prop('disabled', false);
+                        $('.upload-status').hide();
                     }
-                })
-                .catch(error => {
-                    showNotification('Có lỗi xảy ra khi cập nhật ảnh đại diện: ' + error.message, 'error');
-                    this.disabled = false;
-                    this.innerHTML = originalButtonText;
                 });
             });
-        }
-
-        // Auto-dismiss alerts
-        const alerts = document.querySelectorAll('.alert');
-        alerts.forEach(alert => {
-            setTimeout(() => {
-                const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
-                if (bsAlert) bsAlert.close();
-            }, 5000);
+            
+            // Reset cropper when modal is hidden
+            $('#avatar-modal').on('hidden.bs.modal', function() {
+                if (cropper) {
+                    cropper.destroy();
+                    cropper = null;
+                }
+            });
         });
-
-        // Hiển thị thông báo
-        function showNotification(message, type) {
-            document.querySelectorAll('.notification-toast').forEach(n => n.remove());
-            const notificationDiv = document.createElement('div');
-            notificationDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show notification-toast position-fixed`;
-            notificationDiv.style.top = '20px';
-            notificationDiv.style.right = '20px';
-            notificationDiv.style.zIndex = '9999';
-            notificationDiv.style.minWidth = '300px';
-            notificationDiv.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
-            notificationDiv.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i> ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            `;
-            document.body.appendChild(notificationDiv);
-            setTimeout(() => {
-                try {
-                    bootstrap.Alert.getOrCreateInstance(notificationDiv).close();
-                } catch (e) {
-                    notificationDiv.remove();
-                }
-            }, 5000);
-        }
-
-        // Thêm kiểm tra form trước khi submit
-        const profileForm = document.querySelector('form[asp-action="UpdateProfile"]');
-        if (profileForm) {
-            profileForm.addEventListener('submit', function(e) {
-                const requiredFields = profileForm.querySelectorAll('[required]');
-                let isValid = true;
-                requiredFields.forEach(field => {
-                    if (!field.value.trim()) {
-                        isValid = false;
-                        field.classList.add('is-invalid');
-                    } else {
-                        field.classList.remove('is-invalid');
-                    }
-                });
-                if (!isValid) {
-                    e.preventDefault();
-                    showNotification('Vui lòng điền đầy đủ thông tin bắt buộc', 'error');
-                }
-            });
-        }
     </script>
 }

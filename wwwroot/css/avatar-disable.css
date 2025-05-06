@@ -1,0 +1,27 @@
+/* Disable all avatar styling */
+img[src*="avatar"], 
+.avatar, 
+.avatar-image, 
+.rounded-circle[src*="avatar"] {
+    display: none !important;
+}
+
+.avatar-container, 
+.avatar-preview, 
+.image-upload, 
+#avatarModal {
+    display: none !important;
+}
+
+/* Fix user dropdown styling now that avatar is gone */
+.user-menu .btn {
+    padding: 8px 12px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    display: inline-block;
+    margin-left: 5px;
+}

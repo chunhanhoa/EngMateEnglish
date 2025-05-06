@@ -1,851 +1,1427 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\TiengAnh.bundle.scp.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\TiengAnh.bundle.scp.css",
       "PackagePath": "staticwebassets\\TiengAnh.pg6yj2y2c8.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\css\\avatar-fix.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\avatar-disable.css",
+      "PackagePath": "staticwebassets\\css\\avatar-disable.css"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\avatar-fix.css",
       "PackagePath": "staticwebassets\\css\\avatar-fix.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\css\\engmate.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\avatar.css",
+      "PackagePath": "staticwebassets\\css\\avatar.css"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\engmate.css",
       "PackagePath": "staticwebassets\\css\\engmate.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\css\\fix-avatar.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\fix-avatar.css",
       "PackagePath": "staticwebassets\\css\\fix-avatar.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\css\\no-animations.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\no-animations.css",
       "PackagePath": "staticwebassets\\css\\no-animations.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\Logo.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\Logo.png",
       "PackagePath": "staticwebassets\\images\\Logo.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\Logo.webp",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\Logo.webp",
       "PackagePath": "staticwebassets\\images\\Logo.webp"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\TrangChu.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\TrangChu.jpg",
       "PackagePath": "staticwebassets\\images\\TrangChu.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\avatar\\20250429095724_e7d11a2e.jpeg",
-      "PackagePath": "staticwebassets\\images\\avatar\\20250429095724_e7d11a2e.jpeg"
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\65f123456789abcdef012346_20250506200852.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\65f123456789abcdef012346_20250506200852.jpeg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\avatar\\20250429100154_b53c5124.png",
-      "PackagePath": "staticwebassets\\images\\avatar\\20250429100154_b53c5124.png"
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\680fac297243a2ab2230dc26_20250506200557.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\680fac297243a2ab2230dc26_20250506200557.jpeg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\default-avatar.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\68132d74b072769a058215ab_20250506200816.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\68132d74b072769a058215ab_20250506200816.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\default-avatar.png",
       "PackagePath": "staticwebassets\\images\\default-avatar.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\exercise-hero.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\exercise-hero.png",
       "PackagePath": "staticwebassets\\images\\exercise-hero.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\grammar-hero.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\grammar-hero.png",
       "PackagePath": "staticwebassets\\images\\grammar-hero.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\animals.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\animals.png",
       "PackagePath": "staticwebassets\\images\\icons\\animals.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\business.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\business.png",
       "PackagePath": "staticwebassets\\images\\icons\\business.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\entertainment.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\entertainment.png",
       "PackagePath": "staticwebassets\\images\\icons\\entertainment.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\environment.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\environment.png",
       "PackagePath": "staticwebassets\\images\\icons\\environment.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\family.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\family.png",
       "PackagePath": "staticwebassets\\images\\icons\\family.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\food.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\food.png",
       "PackagePath": "staticwebassets\\images\\icons\\food.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\health.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\health.png",
       "PackagePath": "staticwebassets\\images\\icons\\health.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\jobs.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\jobs.png",
       "PackagePath": "staticwebassets\\images\\icons\\jobs.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\school.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\school.png",
       "PackagePath": "staticwebassets\\images\\icons\\school.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\sports.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\sports.png",
       "PackagePath": "staticwebassets\\images\\icons\\sports.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\technology.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\technology.png",
       "PackagePath": "staticwebassets\\images\\icons\\technology.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\icons\\travel.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\travel.png",
       "PackagePath": "staticwebassets\\images\\icons\\travel.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\jobs.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\jobs.jpg",
       "PackagePath": "staticwebassets\\images\\jobs.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\test-hero.png",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\test-hero.png",
       "PackagePath": "staticwebassets\\images\\test-hero.png"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\animals.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\animals.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\animals.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\business.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\business.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\business.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\entertainment.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\entertainment.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\entertainment.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\environment.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\environment.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\environment.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\family.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\family.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\family.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\food.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\food.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\food.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\health.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\health.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\health.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\jobs.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\jobs.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\jobs.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\school.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\school.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\school.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\sports.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\sports.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\sports.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\technology.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\technology.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\technology.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\topics\\travel.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\travel.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\travel.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary-hero.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary-hero.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary-hero.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\bear.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\bear.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\bear.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\cat.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\cat.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\cat.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\deer.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\deer.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\deer.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\dog.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\dog.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\dog.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\dolphin.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\dolphin.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\dolphin.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\eagle.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\eagle.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\eagle.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\elephant.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\elephant.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\elephant.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\fox.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\fox.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\fox.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\giraffe.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\giraffe.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\giraffe.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\horse.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\horse.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\horse.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\kangaroo.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\kangaroo.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\kangaroo.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\lion.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\lion.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\lion.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\monkey.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\monkey.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\monkey.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\panda.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\panda.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\panda.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\penguin.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\penguin.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\penguin.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\rabbit.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\rabbit.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\rabbit.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\snake.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\snake.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\snake.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\tiger.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\tiger.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\tiger.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\wolf.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\wolf.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\wolf.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\animals\\zebra.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\zebra.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\zebra.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\apple.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\advertisement.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\advertisement.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\brand.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\brand.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\budget.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\budget.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\company.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\company.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\competition.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\competition.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\contract.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\contract.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\customer.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\customer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\employee.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\employee.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\industry.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\industry.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\investment.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\investment.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\manager.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\manager.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\market.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\market.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\meeting.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\meeting.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\office.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\office.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\product.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\product.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\profit.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\profit.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\project.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\project.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\salary.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\salary.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\service.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\service.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\business\\strategy.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\business\\strategy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\actor.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\actor.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\art.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\art.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\audience.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\audience.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\band.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\band.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\book.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\book.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\cinema.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\cinema.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\concert.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\concert.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\dance.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\dance.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\festival.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\festival.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\game.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\game.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\movie.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\movie.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\music.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\music.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\painting.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\painting.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\party.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\party.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\performance.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\performance.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\show.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\show.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\song.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\song.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\stage.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\stage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\theater.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\theater.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\entertainment\\ticket.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\entertainment\\ticket.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\air.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\air.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\biodiversity.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\biodiversity.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\climate.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\climate.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\conservation.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\conservation.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\desert.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\desert.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\ecosystem.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\ecosystem.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\energy.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\energy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\forest.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\forest.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\lake.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\lake.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\mountain.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\mountain.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\ocean.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\ocean.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\plant.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\plant.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\pollution.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\pollution.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\recycle.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\recycle.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\river.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\river.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\soil.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\soil.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\tree.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\tree.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\water.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\water.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\weather.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\weather.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\environment\\wildlife.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\environment\\wildlife.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\aunt.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\aunt.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\brother.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\brother.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\child.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\child.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\cousin.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\cousin.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\daughter.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\daughter.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\family.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\family.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\father.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\father.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\grandfather.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\grandfather.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\grandmother.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\grandmother.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\husband.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\husband.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\mother.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\mother.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\nephew.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\nephew.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\niece.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\niece.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\parent.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\parent.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\relative.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\relative.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\sibling.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\sibling.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\sister.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\sister.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\son.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\son.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\uncle.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\uncle.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\family\\wife.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\family\\wife.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\apple.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\apple.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\banana.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\banana.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\banana.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\bread.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\bread.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\bread.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\cake.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\cake.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\cake.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\cheese.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\cheese.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\cheese.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\chicken.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\chicken.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\chicken.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\chocolate.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\chocolate.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\chocolate.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\coffee.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\coffee.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\coffee.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\egg.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\egg.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\egg.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\fish.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\fish.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\fish.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\fruit.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\fruit.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\fruit.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\milk.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\milk.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\milk.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\orange.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\orange.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\orange.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\pizza.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\pizza.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\pizza.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\rice.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\rice.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\rice.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\salad.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\salad.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\salad.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\soup.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\soup.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\soup.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\tea.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\tea.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\tea.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\vegetable.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\vegetable.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\vegetable.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\food\\water.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\food\\water.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\food\\water.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\bag.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\allergy.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\allergy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\bandage.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\bandage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\blood.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\blood.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\cold.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\cold.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\cough.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\cough.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\doctor.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\doctor.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\fever.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\fever.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\headache.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\headache.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\health.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\health.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\hospital.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\hospital.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\injection.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\injection.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\injury.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\injury.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\medicine.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\medicine.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\nurse.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\nurse.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\pain.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\pain.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\pharmacy.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\pharmacy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\surgery.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\surgery.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\temperature.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\temperature.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\virus.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\virus.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\health\\xray.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\health\\xray.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\actor.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\actor.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\architect.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\architect.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\artist.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\artist.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\chef.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\chef.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\dentist.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\dentist.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\doctor.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\doctor.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\driver.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\driver.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\engineer.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\engineer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\farmer.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\farmer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\father.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\father.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\firefighter.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\firefighter.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\journalist.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\journalist.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\lawyer.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\lawyer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\mechanic.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\mechanic.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\nurse.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\nurse.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\pilot.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\pilot.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\police.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\police.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\scientist.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\scientist.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\singer.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\singer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\teacher.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\teacher.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\jobs\\writer.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\jobs\\writer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\bag.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\bag.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\blackboard.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\blackboard.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\blackboard.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\book.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\book.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\book.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\chair.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\chair.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\chair.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\classroom.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\classroom.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\classroom.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\desk.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\desk.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\desk.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\eraser.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\eraser.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\eraser.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\exam.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\exam.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\exam.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\homework.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\homework.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\homework.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\lesson.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\lesson.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\lesson.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\library.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\library.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\library.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\notebook.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\notebook.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\notebook.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\paper.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\paper.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\paper.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\pen.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\pen.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\pen.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\pencil.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\pencil.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\pencil.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\ruler.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\ruler.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\ruler.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\school.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\school.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\school.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\student.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\student.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\student.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\table.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\table.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\table.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\school\\teacher.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\school\\teacher.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\school\\teacher.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\application.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\archery.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\archery.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\badminton.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\badminton.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\baseball.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\baseball.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\basketball.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\basketball.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\boxing.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\boxing.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\cycling.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\cycling.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\football.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\football.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\gymnastics.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\gymnastics.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\hockey.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\hockey.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\judo.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\judo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\karate.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\karate.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\running.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\running.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\skiing.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\skiing.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\soccer.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\soccer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\surfing.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\surfing.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\swimming.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\swimming.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\tennis.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\tennis.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\volleyball.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\volleyball.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\wrestling.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\wrestling.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\sports\\yoga.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\sports\\yoga.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\application.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\application.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\battery.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\battery.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\battery.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\camera.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\camera.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\camera.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\charger.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\charger.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\charger.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\computer.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\computer.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\computer.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\drone.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\drone.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\drone.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\headphones.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\headphones.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\headphones.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\internet.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\internet.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\internet.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\keyboard.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\keyboard.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\keyboard.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\laptop.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\laptop.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\laptop.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\microphone.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\microphone.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\microphone.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\monitor.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\monitor.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\monitor.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\mouse.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\mouse.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\mouse.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\printer.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\printer.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\printer.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\router.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\router.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\router.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\smartphone.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\smartphone.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\smartphone.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\software.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\software.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\software.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\speaker.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\speaker.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\speaker.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\tablet.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\tablet.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\tablet.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\technology\\television.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\technology\\television.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\technology\\television.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\airplane.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\airplane.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\airplane.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\airport.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\airport.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\airport.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\beach.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\beach.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\beach.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\bus.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\bus.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\bus.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\car.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\car.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\car.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\city.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\city.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\city.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\guide.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\guide.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\guide.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\hotel.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\hotel.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\hotel.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\luggage.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\luggage.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\luggage.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\map.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\map.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\map.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\mountain.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\mountain.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\mountain.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\museum.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\museum.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\museum.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\passport.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\passport.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\passport.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\ship.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\ship.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\ship.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\suitcase.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\suitcase.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\suitcase.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\ticket.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\ticket.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\ticket.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\tourist.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\tourist.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\tourist.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\train.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\train.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\train.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\vacation.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\vacation.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\vacation.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\images\\vocabulary\\travel\\village.jpg",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\travel\\village.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\travel\\village.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\animations.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\animations.js",
       "PackagePath": "staticwebassets\\js\\animations.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\avatar-cache-buster.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\avatar-cache-buster.js",
       "PackagePath": "staticwebassets\\js\\avatar-cache-buster.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\avatar-db-loader.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\avatar-db-loader.js",
       "PackagePath": "staticwebassets\\js\\avatar-db-loader.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\avatar-fix.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\avatar-fix.js",
       "PackagePath": "staticwebassets\\js\\avatar-fix.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\avatar-handler.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\avatar-handler.js",
       "PackagePath": "staticwebassets\\js\\avatar-handler.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\avatar-manager.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\avatar-manager.js",
       "PackagePath": "staticwebassets\\js\\avatar-manager.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\favorite-handler.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\favorite-handler.js",
       "PackagePath": "staticwebassets\\js\\favorite-handler.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\progress-tracker.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\progress-tracker.js",
       "PackagePath": "staticwebassets\\js\\progress-tracker.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\js\\test.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\test.js",
       "PackagePath": "staticwebassets\\js\\test.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\Downloads\\Test4\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {

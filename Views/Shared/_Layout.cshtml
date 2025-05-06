@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/engmate.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/no-animations.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/avatar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TiengAnh.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 
@@ -107,20 +108,20 @@
                                 {
                                     user = await UserRepository.GetByEmailAsync(username);
                                 }
-                                var avatarUrl = user?.Avatar ?? "/images/default-avatar.png";
-                                avatarUrl = avatarUrl.StartsWith("/") ? avatarUrl : "/" + avatarUrl;
-                                var timestamp = DateTime.Now.Ticks;
-                                var avatarWithTimestamp = $"{avatarUrl}?v={timestamp}";
 
                                 <li class="nav-item dropdown">
                                     <button class="btn dropdown-toggle d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="@avatarWithTimestamp" 
-                                             alt="@username" 
-                                             class="rounded-circle me-2 img-fluid avatar" 
-                                             style="width: 30px; height: 30px; object-fit: cover;"
-                                             data-userid="@userId"
-                                             data-original-src="@avatarUrl"
-                                             onerror="handleAvatarError(this, '@avatarUrl', '/images/default-avatar.png')">
+                                        @if (user != null && !string.IsNullOrEmpty(user.Avatar))
+                                        {
+                                            <img src="@(user.Avatar)" class="rounded-circle me-2 avatar" alt="@username" 
+                                                width="30" height="30" style="object-fit: cover;"
+                                                onerror="this.onerror=null; this.src='/images/default-avatar.png?v=@DateTime.Now.Ticks';">
+                                        }
+                                        else
+                                        {
+                                            <img src="/images/default-avatar.png" class="rounded-circle me-2 avatar" alt="@username" 
+                                                width="30" height="30" style="object-fit: cover;">
+                                        }
                                         <span class="user-name">@username</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -264,7 +265,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/animations.js" asp-append-version="true"></script>
-    <script src="~/js/avatar-handler.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
