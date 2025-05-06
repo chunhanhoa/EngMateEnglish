@@ -1,5 +1,6 @@
 ﻿@using TiengAnh.Models
 @using TiengAnh.Repositories
+@using Microsoft.AspNetCore.Authentication
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +42,27 @@
 </head>
 <body>
     @inject TiengAnh.Repositories.UserRepository UserRepository
+
+    @{
+        var username = User.Identity.Name;
+        string userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        UserModel user = null;
+        
+        try
+        {
+            user = !string.IsNullOrEmpty(userId) ? await UserRepository.GetByUserIdAsync(userId) : null;
+            if (user == null && !string.IsNullOrEmpty(username))
+            {
+                user = await UserRepository.GetByEmailAsync(username);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log but continue - don't crash the layout
+            Console.WriteLine($"Error fetching user: {ex.Message}");
+        }
+    }
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary-soft">
             <div class="container">
@@ -101,14 +123,6 @@
                         <ul class="navbar-nav">
                             @if (User.Identity?.IsAuthenticated == true)
                             {
-                                var username = User.Identity.Name;
-                                string userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-                                var user = !string.IsNullOrEmpty(userId) ? await UserRepository.GetByUserIdAsync(userId) : null;
-                                if (user == null && !string.IsNullOrEmpty(username))
-                                {
-                                    user = await UserRepository.GetByEmailAsync(username);
-                                }
-
                                 <li class="nav-item dropdown">
                                     <button class="btn dropdown-toggle d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                         @if (user != null && !string.IsNullOrEmpty(user.Avatar))
@@ -242,6 +256,22 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Toast notification container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+        <!-- Toasts will be dynamically inserted here -->
+    </div>
+    
+    <!-- Hidden fields for toast notifications -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <input type="hidden" id="temp-success-message" value="@TempData["SuccessMessage"]" />
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <input type="hidden" id="temp-error-message" value="@TempData["ErrorMessage"]" />
+    }
+    
     <style>
         .footer {
             background: linear-gradient(135deg, #3a5af4 0%, #4e73fa 100%);
@@ -265,6 +295,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/animations.js" asp-append-version="true"></script>
+    <script src="~/js/notification-toasts.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

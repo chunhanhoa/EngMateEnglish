@@ -15,17 +15,15 @@ using TiengAnh.Repositories;
 
 namespace TiengAnh.Controllers
 {
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
         protected readonly MongoDbService _mongoDbService;
         protected readonly UserRepository _userRepository;
         private readonly ILogger<BaseController> _logger;
 
-        public BaseController(MongoDbService mongoDbService = null, UserRepository userRepository = null, ILogger<BaseController> logger = null)
+        public BaseController(MongoDbService mongoDbService)
         {
             _mongoDbService = mongoDbService;
-            _userRepository = userRepository;
-            _logger = logger;
         }
 
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)

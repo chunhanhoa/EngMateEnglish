@@ -7,6 +7,7 @@ using Microsoft.Extensions.FileProviders;
 using MongoDB.Bson.Serialization.Conventions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
+using TiengAnh.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,33 @@ builder.Services.AddAuthentication(options =>
     options.AccessDeniedPath = "/Account/AccessDenied";
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromDays(7);
+})
+.AddGoogle(options =>
+{
+    options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+    options.CallbackPath = "/signin-google";
+    
+    // Fix correlation issues by configuring events
+    options.Events.OnTicketReceived = ctx =>
+    {
+        Console.WriteLine("Google authentication ticket received successfully");
+        return Task.CompletedTask;
+    };
+
+    options.Events.OnRemoteFailure = ctx =>
+    {
+        Console.WriteLine($"Google authentication failed: {ctx.Failure?.Message}");
+        ctx.Response.Redirect("/Account/Login?error=Google_auth_failed");
+        ctx.HandleResponse();
+        return Task.CompletedTask;
+    };
+
+    // Override the default CORS validation to fix correlation issues
+    options.CorrelationCookie.SameSite = SameSiteMode.Lax;
+    options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    
+    options.SaveTokens = true;
 });
 
 // Suppress nullable warnings
@@ -177,6 +205,9 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// Add debug middleware to help with OAuth troubleshooting
+app.UseMiddleware<OAuthDebugMiddleware>();
 
 // Redirect index.html to home
 app.Use(async (context, next) =>

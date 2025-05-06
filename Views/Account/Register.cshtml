@@ -13,6 +13,35 @@
                         <h1 class="h3 fw-bold mb-3">Tạo tài khoản EngMate</h1>
                         <p class="text-muted">Đăng ký để bắt đầu học tiếng Anh cùng EngMate</p>
                     </div>
+                    
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        </div>
+                    }
+                    
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    
+                    <!-- Google signup button -->
+                    <div class="d-grid mb-4">
+                        <form asp-action="ExternalLogin" asp-controller="Account" method="post">
+                            <input type="hidden" name="provider" value="Google" />
+                            <button type="submit" class="btn btn-danger w-100 d-flex align-items-center justify-content-center py-2">
+                                <i class="fab fa-google me-2"></i> Đăng ký với Google
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="text-center my-4">
+                        <span class="divider-text">Hoặc đăng ký với email</span>
+                    </div>
 
                     <form asp-controller="Account" asp-action="Register" method="post">
                         <div class="mb-3">
@@ -21,6 +50,7 @@
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 <input type="text" class="form-control" id="fullName" asp-for="FullName" placeholder="Nhập họ và tên của bạn" required autofocus>
                             </div>
+                            <span asp-validation-for="FullName" class="text-danger"></span>
                         </div>
                         
                         <div class="mb-3">
@@ -29,6 +59,7 @@
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                 <input type="email" class="form-control" id="email" asp-for="Email" placeholder="Nhập địa chỉ email" required>
                             </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         
                         <div class="mb-3">
@@ -37,6 +68,7 @@
                                 <span class="input-group-text"><i class="fas fa-at"></i></span>
                                 <input type="text" class="form-control" id="userName" asp-for="UserName" placeholder="Chọn tên người dùng" required>
                             </div>
+                            <span asp-validation-for="UserName" class="text-danger"></span>
                         </div>
                         
                         <div class="mb-3">
@@ -46,6 +78,7 @@
                                 <input type="password" class="form-control" id="password" asp-for="Password" placeholder="Tạo mật khẩu (ít nhất 8 ký tự)" required>
                             </div>
                             <div class="form-text">Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số.</div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         
                         <div class="mb-4">
@@ -54,6 +87,7 @@
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input type="password" class="form-control" id="confirmPassword" asp-for="ConfirmPassword" placeholder="Nhập lại mật khẩu" required>
                             </div>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                         </div>
                         
                         <div class="mb-4">
@@ -62,6 +96,7 @@
                                 <label class="form-check-label" for="acceptTerms">
                                     Tôi đồng ý với <a href="#" class="text-decoration-none">Điều khoản sử dụng</a> và <a href="#" class="text-decoration-none">Chính sách riêng tư</a>
                                 </label>
+                                <span asp-validation-for="AcceptTerms" class="text-danger"></span>
                             </div>
                         </div>
                         
@@ -69,18 +104,6 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-user-plus me-2"></i> Đăng ký
                             </button>
-                        </div>
-                        
-                        <div class="text-center my-4">
-                            <span class="divider-text">Hoặc đăng ký với</span>
-                        </div>
-                        
-                        <div class="d-grid">
-                            <form asp-action="ExternalLogin" asp-route-provider="Google" method="post">
-                                <button type="submit" class="btn btn-outline-danger w-100">
-                                    <i class="fab fa-google me-2"></i> Google
-                                </button>
-                            </form>
                         </div>
                         
                         <div class="text-center mt-4">

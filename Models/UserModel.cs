@@ -2,109 +2,79 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace TiengAnh.Models
 {
-    [BsonIgnoreExtraElements]
-    public class UserModel : BaseModel
+    public class UserModel
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("_id")]
+        public string Id { get; set; }
+        
+        // Add a dedicated field for Google IDs that is not marked as the document ID
+        [BsonElement("GoogleId")]
+        public string GoogleId { get; set; }
+        
+        // For compatibility with existing code
         [BsonElement("UserId")]
-        public string UserId { get; set; } = string.Empty;
-        
-        [BsonElement("Username")]
-        public string Username { get; set; } = string.Empty;
-        
-        [BsonElement("UserName")]
-        public string UserName 
-        { 
-            get { return Username; }
-            set { Username = value; }
-        }
+        public string UserId { get; set; }
         
         [BsonElement("Email")]
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; }
         
-        [BsonElement("PasswordHash")]
-        public string PasswordHash { get; set; } = string.Empty;
+        [BsonElement("Username")]
+        public string Username { get; set; }
+        
+        [BsonElement("UserName")]
+        public string UserName { get; set; }
         
         [BsonElement("FullName")]
-        public string FullName { get; set; } = string.Empty;
+        public string FullName { get; set; }
+        
+        [BsonElement("PasswordHash")]
+        public string PasswordHash { get; set; }
         
         [BsonElement("Avatar")]
-        public string? Avatar { get; set; }
-        
-        [BsonElement("Level")]
-        public string Level { get; set; } = "A1";
+        public string Avatar { get; set; }
         
         [BsonElement("Role")]
-        public string Role { get; set; } = "User";
+        public string Role { get; set; }
         
         [BsonElement("Roles")]
-        public List<string> Roles { get; set; } = new List<string>();
+        public List<string> Roles { get; set; }
         
-        [BsonElement("RegisterDate")]
-        public DateTime RegisterDate { get; set; } = DateTime.Now;
+        [BsonElement("Level")]
+        public string Level { get; set; }
         
         [BsonElement("Points")]
         public int Points { get; set; }
         
         [BsonElement("Phone")]
-        public string Phone { get; set; } = string.Empty;
-        
-        [BsonElement("Address")]
-        public string Address { get; set; } = string.Empty;
-        
-        [BsonElement("DateOfBirth")]
-        [DataType(DataType.Date)]
-        public DateTime? DateOfBirth { get; set; }
+        public string Phone { get; set; }
         
         [BsonElement("Gender")]
-        public string Gender { get; set; } = string.Empty;
+        public string Gender { get; set; }
+        
+        [BsonElement("Address")]
+        public string Address { get; set; }
         
         [BsonElement("Bio")]
-        public string Bio { get; set; } = string.Empty;
+        public string Bio { get; set; }
         
-        [BsonElement("Specialization")]
-        public string Specialization { get; set; } = string.Empty;
-
+        [BsonElement("DateOfBirth")]
+        public DateTime? DateOfBirth { get; set; }
+        
         [BsonElement("CreatedAt")]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-
+        public DateTime? CreatedAt { get; set; }
+        
+        [BsonElement("RegisterDate")]
+        public DateTime RegisterDate { get; set; }
+        
         [BsonElement("LastLogin")]
         public DateTime? LastLogin { get; set; }
-
+        
         [BsonElement("IsVerified")]
-        public bool IsVerified { get; set; } = false;
-
-        [BsonElement("IsPremium")]
-        public bool IsPremium { get; set; } = false;
-
-        [BsonElement("PremiumExpiry")]
-        public DateTime? PremiumExpiry { get; set; }
-
-        [BsonElement("FavoriteVocabularyTopics")]
-        public List<string> FavoriteVocabularyTopics { get; set; } = new List<string>();
-
-        [BsonElement("FavoriteGrammarItems")]
-        public List<string> FavoriteGrammarItems { get; set; } = new List<string>();
-
-        [BsonElement("FavoriteVocabularies")]
-        public List<string> FavoriteVocabularies { get; set; } = new List<string>();
-
-        [BsonElement("FavoriteVocabularyIds")]
-        public List<int> FavoriteVocabularyIds { get; set; } = new List<int>();
-
-        [BsonElement("FavoriteGrammarIds")]
-        public List<int> FavoriteGrammarIds { get; set; } = new List<int>();
-
-        // Helper method to get avatar URL with cache busting - now returns empty string
-        public string GetAvatarUrl(bool addTimestamp = true)
-        {
-            return string.Empty; // Return empty string instead of avatar URL
-        }
+        public bool IsVerified { get; set; }
     }
-    
-    // Xóa các lớp model trùng lặp ở đây để tránh xung đột
-    // LoginViewModel và RegisterViewModel đã được chuyển vào namespace Models.ViewModels
 }

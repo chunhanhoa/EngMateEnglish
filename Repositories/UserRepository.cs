@@ -11,13 +11,18 @@ using Microsoft.Extensions.Logging;
 
 namespace TiengAnh.Repositories
 {
-    public class UserRepository : BaseRepository<UserModel>
+    // Change to implement our own repository rather than extending BaseRepository
+    public class UserRepository
     {
+        private readonly IMongoCollection<UserModel> _collection;
         private readonly ILogger<UserRepository> _logger;
+        private readonly MongoDbService _mongoDbService;
 
-        public UserRepository(MongoDbService mongoDbService, ILogger<UserRepository> logger) : base(mongoDbService, "Users")
+        public UserRepository(MongoDbService mongoDbService, ILogger<UserRepository> logger)
         {
+            _mongoDbService = mongoDbService;
             _logger = logger;
+            _collection = _mongoDbService.GetCollection<UserModel>("Users");
         }
 
         public async Task<UserModel> GetByEmailAsync(string email)
@@ -48,41 +53,50 @@ namespace TiengAnh.Repositories
         {
             if (string.IsNullOrEmpty(userId))
             {
-                Console.WriteLine("GetByUserIdAsync: userId is null or empty");
+                _logger.LogWarning("GetByUserIdAsync called with null or empty userId");
                 return null;
             }
 
             try
             {
-                Console.WriteLine($"GetByUserIdAsync: Querying for userId: {userId}");
-                var filter = Builders<UserModel>.Filter.Or(
-                    Builders<UserModel>.Filter.Eq(u => u.Id, userId),
-                    Builders<UserModel>.Filter.Eq(u => u.UserId, userId),
-                    Builders<UserModel>.Filter.Eq("_id", ObjectId.Parse(userId))
-                );
+                _logger.LogInformation($"GetByUserIdAsync: Looking up user with ID: {userId}");
+                
+                // Create a filter that checks multiple ID fields
+                var filter = Builders<UserModel>.Filter.Empty;
+                
+                // First try as MongoDB ObjectId if it's a valid format
+                bool isValidObjectId = ObjectId.TryParse(userId, out _);
+                if (isValidObjectId)
+                {
+                    filter = Builders<UserModel>.Filter.Eq("_id", new ObjectId(userId));
+                    _logger.LogInformation("Using ObjectId filter");
+                }
+                else
+                {
+                    // If not a valid ObjectId, use it as a string ID in different fields
+                    filter = Builders<UserModel>.Filter.Or(
+                        Builders<UserModel>.Filter.Eq(u => u.UserId, userId),
+                        Builders<UserModel>.Filter.Eq(u => u.GoogleId, userId)
+                    );
+                    _logger.LogInformation("Using string ID filter");
+                }
+
                 var user = await _collection.Find(filter).FirstOrDefaultAsync();
-                Console.WriteLine(user != null
-                    ? $"GetByUserIdAsync: Found user - ID: {user.Id}, UserId: {user.UserId}, Avatar: {user.Avatar}"
-                    : $"GetByUserIdAsync: No user found for userId: {userId}");
-                return user;
-            }
-            catch (FormatException)
-            {
-                // Nếu userId không phải ObjectId, thử lại mà không parse _id
-                Console.WriteLine($"GetByUserIdAsync: userId {userId} is not a valid ObjectId, trying alternative query");
-                var filter = Builders<UserModel>.Filter.Or(
-                    Builders<UserModel>.Filter.Eq(u => u.Id, userId),
-                    Builders<UserModel>.Filter.Eq(u => u.UserId, userId)
-                );
-                var user = await _collection.Find(filter).FirstOrDefaultAsync();
-                Console.WriteLine(user != null
-                    ? $"GetByUserIdAsync: Found user - ID: {user.Id}, UserId: {user.UserId}, Avatar: {user.Avatar}"
-                    : $"GetByUserIdAsync: No user found for userId: {userId}");
+                
+                if (user != null)
+                {
+                    _logger.LogInformation($"Found user with ID {userId}, Email: {user.Email}");
+                }
+                else
+                {
+                    _logger.LogWarning($"No user found with ID {userId}");
+                }
+                
                 return user;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"GetByUserIdAsync: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                _logger.LogError($"GetByUserIdAsync error: {ex.Message}, Stack trace: {ex.StackTrace}");
                 return null;
             }
         }

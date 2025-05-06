@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Hồ sơ người dùng";
     bool isEditMode = ViewContext.HttpContext.Request.Query.ContainsKey("edit");
-    string userIdFromClaims = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    string userIdFromClaims = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
     string timestamp = DateTime.Now.Ticks.ToString();
 }
 
@@ -227,7 +227,16 @@
                             <div class="col-md-6">
                                 <div class="info-item">
                                     <label>Ngày sinh</label>
-                                    <p>@(Model.DateOfBirth.HasValue ? Model.DateOfBirth.Value.ToString("dd/MM/yyyy") : "Chưa cập nhật")</p>
+                                    <p>
+                                        @if (Model.DateOfBirth.HasValue)
+                                        {
+                                            <span>@Model.DateOfBirth.Value.ToString("dd/MM/yyyy")</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Chưa cập nhật</span>
+                                        }
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -254,14 +263,6 @@
                                     <p>@(string.IsNullOrEmpty(Model.Bio) ? "Chưa cập nhật" : Model.Bio)</p>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="info-item">
-                                    <label>Thông tin tài khoản</label>
-                                    <p>Đã tham gia @(Model.CreatedAt.Year < DateTime.Now.Year 
-                                       ? $"{DateTime.Now.Year - Model.CreatedAt.Year} năm trước" 
-                                       : "trong năm nay")</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -285,15 +286,6 @@
                 <div class="cropper-controls d-flex justify-content-center gap-2">
                     <button type="button" class="btn btn-sm btn-outline-secondary" id="rotate-left">
                         <i class="fas fa-undo"></i> Xoay trái
-                    </button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" id="rotate-right">
-                        <i class="fas fa-redo"></i> Xoay phải
-                    </button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" id="zoom-in">
-                        <i class="fas fa-search-plus"></i> Phóng to
-                    </button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" id="zoom-out">
-                        <i class="fas fa-search-minus"></i> Thu nhỏ
                     </button>
                 </div>
             </div>

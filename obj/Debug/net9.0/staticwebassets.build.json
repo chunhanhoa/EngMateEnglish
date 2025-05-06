@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LiXMpepsDXwoM12mBOnOq2gLftpWcFRf7V3+rje9TgM=",
+  "Hash": "Qs0UGtxP4b114PP6ufSWs1cOv41lqGWDLKudQ01wb/w=",
   "Source": "TiengAnh",
   "BasePath": "_content/TiengAnh",
   "Mode": "Default",
@@ -1487,6 +1487,27 @@
       "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\tw24uxyb5b-r52svluqsq.gz",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "js/notification-toasts#[.{fingerprint=r52svluqsq}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\notification-toasts.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "breb6ec1bj",
+      "Integrity": "iSL/+hRAi2C6XtLTX3N0uCfO5sjf9/jLHgiuOFaUQp0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\notification-toasts.js"
+    },
+    {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\u380i5tshx-kbrnm935zg.gz",
       "SourceId": "TiengAnh",
       "SourceType": "Discovered",
@@ -1947,6 +1968,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\avatar\\68132d74b072769a058215ab_20250506200816.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681a1bb4300410deda9f9aab_20250506213309#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "c2k12exde8",
+      "Integrity": "1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\default-avatar.png",
@@ -7850,6 +7892,27 @@
       "OriginalItemSpec": "wwwroot\\js\\favorite-handler.js"
     },
     {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\notification-toasts.js",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "js/notification-toasts#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "r52svluqsq",
+      "Integrity": "EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\notification-toasts.js"
+    },
+    {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\progress-tracker.js",
       "SourceId": "TiengAnh",
       "SourceType": "Discovered",
@@ -11801,6 +11864,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-FEGqvO82kD4baRByMqSi6GX+l4NWdpcAfYDYLZt5YYs="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681a1bb4300410deda9f9aab_20250506213309.c2k12exde8.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23122"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 14:33:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c2k12exde8"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681a1bb4300410deda9f9aab_20250506213309.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681a1bb4300410deda9f9aab_20250506213309.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23122"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 14:33:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk="
         }
       ]
     },
@@ -36355,6 +36500,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-AsCMqFivykY2fxRAVsT8nKhpAP3KzFAMOKCAul71F3I="
+        }
+      ]
+    },
+    {
+      "Route": "js/notification-toasts.js",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\tw24uxyb5b-r52svluqsq.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001039501040"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "961"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iSL/+hRAi2C6XtLTX3N0uCfO5sjf9/jLHgiuOFaUQp0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 14:15:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU="
+        }
+      ]
+    },
+    {
+      "Route": "js/notification-toasts.js",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\notification-toasts.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2581"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 14:15:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU="
+        }
+      ]
+    },
+    {
+      "Route": "js/notification-toasts.js.gz",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\tw24uxyb5b-r52svluqsq.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "961"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iSL/+hRAi2C6XtLTX3N0uCfO5sjf9/jLHgiuOFaUQp0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 14:15:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iSL/+hRAi2C6XtLTX3N0uCfO5sjf9/jLHgiuOFaUQp0="
+        }
+      ]
+    },
+    {
+      "Route": "js/notification-toasts.r52svluqsq.js",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\tw24uxyb5b-r52svluqsq.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001039501040"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "961"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iSL/+hRAi2C6XtLTX3N0uCfO5sjf9/jLHgiuOFaUQp0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 14:15:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r52svluqsq"
+        },
+        {
+          "Name": "label",
+          "Value": "js/notification-toasts.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU="
+        }
+      ]
+    },
+    {
+      "Route": "js/notification-toasts.r52svluqsq.js",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\notification-toasts.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2581"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 14:15:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r52svluqsq"
+        },
+        {
+          "Name": "label",
+          "Value": "js/notification-toasts.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EbNHWZgbftLe1x7k/Mwk2oimcrmYOKvg//W0334F5pU="
+        }
+      ]
+    },
+    {
+      "Route": "js/notification-toasts.r52svluqsq.js.gz",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\tw24uxyb5b-r52svluqsq.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "961"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iSL/+hRAi2C6XtLTX3N0uCfO5sjf9/jLHgiuOFaUQp0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 14:15:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r52svluqsq"
+        },
+        {
+          "Name": "label",
+          "Value": "js/notification-toasts.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iSL/+hRAi2C6XtLTX3N0uCfO5sjf9/jLHgiuOFaUQp0="
         }
       ]
     },

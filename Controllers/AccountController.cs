@@ -15,6 +15,10 @@ using TiengAnh.Models.ViewModels;
 using TiengAnh.Repositories;
 using TiengAnh.Services;
 using BCrypt.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text.Json;
+using Microsoft.AspNetCore.Authentication.Google;
 
 namespace TiengAnh.Controllers
 {
@@ -24,17 +28,20 @@ namespace TiengAnh.Controllers
         private readonly MongoDbService _mongoDbService;
         private readonly UserRepository _userRepository;
         private readonly string _webRootPath;
+        private readonly IConfiguration _configuration;
 
         public AccountController(
             ILogger<AccountController> logger,
             MongoDbService mongoDbService,
             UserRepository userRepository,
-            IWebHostEnvironment environment) : base(mongoDbService)
+            IWebHostEnvironment environment,
+            IConfiguration configuration) : base(mongoDbService)
         {
             _logger = logger;
             _mongoDbService = mongoDbService;
             _userRepository = userRepository;
             _webRootPath = environment.WebRootPath;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -780,9 +787,164 @@ namespace TiengAnh.Controllers
         }
 
         [HttpPost]
-        public IActionResult ExternalLogin(string provider)
+        public IActionResult ExternalLogin(string provider, string returnUrl = null)
         {
-            return RedirectToAction("Index", "Home");
+            // Request a redirect to the external login provider
+            var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl });
+            var properties = new AuthenticationProperties 
+            { 
+                RedirectUri = redirectUrl,
+                Items =
+                {
+                    { "returnUrl", returnUrl },
+                    { "scheme", provider }
+                }
+            };
+            
+            _logger.LogInformation($"Starting external login with provider: {provider}, redirectUrl: {redirectUrl}");
+            
+            return Challenge(properties, provider);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null)
+        {
+            returnUrl = returnUrl ?? Url.Content("~/");
+
+            try
+            {
+                // Get the login info directly from Google scheme
+                var info = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
+                if (info == null || !info.Succeeded)
+                {
+                    _logger.LogWarning("Google authentication failed");
+                    TempData["ErrorMessage"] = "Đăng nhập bằng Google thất bại.";
+                    return RedirectToAction(nameof(Login));
+                }
+
+                // Extract login info
+                var externalClaims = info.Principal.Claims.ToList();
+                var emailClaim = externalClaims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+                var nameClaim = externalClaims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+                var surnameClaim = externalClaims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
+                var givenNameClaim = externalClaims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
+                
+                // Get the Google-specific ID (sub or nameidentifier claim)
+                var googleIdClaim = externalClaims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?.Value 
+                                 ?? externalClaims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                
+                _logger.LogInformation($"Google ID: {googleIdClaim ?? "not found"}");
+                
+                var userFullName = !string.IsNullOrEmpty(nameClaim) ? nameClaim : 
+                                  (!string.IsNullOrEmpty(givenNameClaim) && !string.IsNullOrEmpty(surnameClaim)) ? 
+                                  $"{givenNameClaim} {surnameClaim}" : emailClaim;
+
+                _logger.LogInformation($"Google login - Email: {emailClaim}, Name: {userFullName}");
+
+                if (string.IsNullOrEmpty(emailClaim))
+                {
+                    _logger.LogWarning("No email claim found from Google provider");
+                    TempData["ErrorMessage"] = "Không thể lấy email từ tài khoản Google.";
+                    return RedirectToAction(nameof(Login));
+                }
+
+                // Find user by email
+                var user = await _userRepository.GetByEmailAsync(emailClaim);
+                
+                if (user == null)
+                {
+                    // Create a new user if not exists
+                    user = new UserModel
+                    {
+                        Email = emailClaim,
+                        Username = emailClaim.Split('@')[0],
+                        UserName = emailClaim.Split('@')[0],
+                        FullName = userFullName ?? "Người dùng Google",
+                        Avatar = "/images/avatar/default.jpg",
+                        Role = "User",
+                        Roles = new List<string> { "User" },
+                        CreatedAt = DateTime.Now,
+                        RegisterDate = DateTime.Now,
+                        IsVerified = true,
+                        GoogleId = googleIdClaim, // Store the Google ID
+                        // Generate a strong random password they'll never use (since they'll use Google auth)
+                        PasswordHash = BCrypt.Net.BCrypt.HashPassword(Guid.NewGuid().ToString())
+                    };
+
+                    await _mongoDbService.GetCollection<UserModel>("Users").InsertOneAsync(user);
+                    _logger.LogInformation($"Created new user with Google account: {emailClaim}");
+                }
+                else if (!string.IsNullOrEmpty(googleIdClaim) && user.GoogleId != googleIdClaim)
+                {
+                    // Update the GoogleId if it's missing or different
+                    user.GoogleId = googleIdClaim;
+                    await _userRepository.UpdateUserAsync(user);
+                    _logger.LogInformation($"Updated GoogleId for user: {user.Email}");
+                }
+
+                // Update last login
+                user.LastLogin = DateTime.Now;
+                await _userRepository.UpdateUserAsync(user);
+
+                // Create claims
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id ?? user.UserId ?? user.GoogleId ?? Guid.NewGuid().ToString()),
+                    new Claim(ClaimTypes.Name, user.UserName ?? user.Username ?? emailClaim),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, user.Role ?? (user.Roles?.FirstOrDefault() ?? "User"))
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
+                };
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
+
+                _logger.LogInformation($"User {emailClaim} logged in with Google successfully");
+                
+                TempData["SuccessMessage"] = "Đăng nhập bằng Google thành công!";
+                return LocalRedirect(returnUrl);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"ExternalLoginCallback error: {ex.Message}, Stack: {ex.StackTrace}");
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi xử lý đăng nhập với Google: " + ex.Message;
+                return RedirectToAction(nameof(Login));
+            }
+        }
+
+        [HttpGet("Account/DebugOAuth")]
+        public IActionResult DebugOAuth()
+        {
+            var scheme = Request.Scheme;
+            var host = Request.Host.Value;
+            var pathBase = Request.PathBase.Value;
+            
+            var baseUrl = $"{scheme}://{host}{pathBase}";
+            var callbackUrl = $"{baseUrl}/signin-google";
+            
+            var debugInfo = new
+            {
+                BaseUrl = baseUrl,
+                CallbackUrl = callbackUrl,
+                RequestScheme = Request.Scheme,
+                RequestHost = Request.Host.Value,
+                RequestPathBase = Request.PathBase.Value,
+                GoogleClientId = _configuration["Authentication:Google:ClientId"]?.Substring(0, 10) + "...", // Only show beginning for security
+                AuthSchemes = string.Join(", ", HttpContext.RequestServices
+                    .GetRequiredService<IAuthenticationSchemeProvider>()
+                    .GetAllSchemesAsync().Result
+                    .Select(s => s.Name))
+            };
+            
+            return Json(debugInfo);
         }
 
         [HttpGet]

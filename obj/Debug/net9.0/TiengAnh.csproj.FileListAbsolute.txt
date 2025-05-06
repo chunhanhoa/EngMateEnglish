@@ -765,6 +765,20 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAn (1)\DoAn\obj\De
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAn (1)\DoAn\obj\Debug\net9.0\TiengAnh.genruntimeconfig.cache
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAn (1)\DoAn\obj\Debug\net9.0\ref\TiengAnh.dll
 C:\Users\ASUS\Downloads\Test4\obj\Debug\net9.0\compressed\kgapm5glef-5ipweew5fc.gz
+C:\Users\ASUS\Downloads\Test4\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\ASUS\Downloads\Test4\obj\Debug\net9.0\compressed\tw24uxyb5b-r52svluqsq.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.csproj.AssemblyReference.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.AssemblyInfoInputs.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.AssemblyInfo.cs
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cache
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cs
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.sourcelink.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\refint\TiengAnh.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.pdb
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\web.config
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\appsettings.json
@@ -782,8 +796,8 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\n
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\json\users.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\json\user_achievements.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\json\vocabularies.json
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.staticwebassets.runtime.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.staticwebassets.endpoints.json
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.staticwebassets.runtime.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.exe
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.deps.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.runtimeconfig.json
@@ -791,21 +805,13 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\n
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\TiengAnh.pdb
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\BCrypt.Net-Next.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\DnsClient.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\MongoDB.Bson.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\MongoDB.Driver.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\SharpCompress.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\Snappier.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\bin\Debug\net9.0\ZstdSharp.dll
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.csproj.AssemblyReference.cache
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.AssemblyInfoInputs.cache
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.AssemblyInfo.cs
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.csproj.CoreCompileInputs.cache
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cache
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.RazorAssemblyInfo.cs
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.sourcelink.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\scopedcss\bundle\TiengAnh.styles.css
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\scopedcss\projectbundle\TiengAnh.bundle.scp.css
@@ -824,6 +830,7 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\n
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\o1spavlecy-k3z261ad2j.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\oo1fr1lsy7-61i4z0bqvv.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\kxzlo6fflb-kkca0xhlkc.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\tw24uxyb5b-r52svluqsq.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\dufysslt1n-gv2s2a169w.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\unmac4mia2-pewmqhatka.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\qf29jbnmt9-e2xqulz1oo.gz
@@ -898,8 +905,5 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\n
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.TiengAnh.props
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\staticwebassets.pack.json
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.csproj.Up2Date
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.dll
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\refint\TiengAnh.dll
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.pdb
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\TiengAnh.genruntimeconfig.cache
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\ref\TiengAnh.dll

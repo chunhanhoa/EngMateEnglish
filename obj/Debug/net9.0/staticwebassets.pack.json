@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\images\\avatar\\68132d74b072769a058215ab_20250506200816.jpeg"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\default-avatar.png",
       "PackagePath": "staticwebassets\\images\\default-avatar.png"
     },
@@ -1171,6 +1175,10 @@
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\favorite-handler.js",
       "PackagePath": "staticwebassets\\js\\favorite-handler.js"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\notification-toasts.js",
+      "PackagePath": "staticwebassets\\js\\notification-toasts.js"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\progress-tracker.js",
