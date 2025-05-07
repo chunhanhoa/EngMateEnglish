@@ -36,7 +36,6 @@ builder.Services.AddScoped<ExerciseRepository>(provider =>
     var hostEnvironment = provider.GetRequiredService<IWebHostEnvironment>();
     return new ExerciseRepository(mongoDbService, hostEnvironment.ContentRootPath);
 });
-builder.Services.AddScoped<ProgressRepository>();
 
 // Register DataSeeder and DataImportService
 builder.Services.AddScoped<DataSeeder>();
@@ -129,7 +128,7 @@ using (var scope = app.Services.CreateScope())
         // Run DataSeeder
         var dataSeeder = services.GetRequiredService<DataSeeder>();
         logger.LogInformation("Running data seeder");
-        await dataSeeder.SeedDataAsync();
+        await dataSeeder.SeedAllDataAsync(); // Changed from SeedDataAsync to SeedAllDataAsync
 
         // Check seeded data
         var topicRepo = services.GetRequiredService<TopicRepository>();

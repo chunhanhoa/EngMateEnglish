@@ -198,23 +198,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\avatar\68132d74b072769a058215ab_20250506200816.jpeg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\avatar\681a1bb4300410deda9f9aab_20250506213309.jpeg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\avatar\681a1bb4300410deda9f9aab_20250506215754.jpeg'))">
       <SourceType>Package</SourceType>
       <SourceId>TiengAnh</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/TiengAnh</BasePath>
-      <RelativePath>images/avatar/681a1bb4300410deda9f9aab_20250506213309.jpeg</RelativePath>
+      <RelativePath>images/avatar/681a1bb4300410deda9f9aab_20250506215754.jpeg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>c2k12exde8</Fingerprint>
-      <Integrity>1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk=</Integrity>
+      <Fingerprint>7pylzzrhx1</Fingerprint>
+      <Integrity>Ff7c39FxWOCdy6oTc47S5uVYjOhkFuh4pc/gEhxsLa4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\avatar\681a1bb4300410deda9f9aab_20250506213309.jpeg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\avatar\681a1bb4300410deda9f9aab_20250506215754.jpeg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\default-avatar.png'))">
       <SourceType>Package</SourceType>

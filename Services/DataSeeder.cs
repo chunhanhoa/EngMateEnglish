@@ -13,31 +13,36 @@ namespace TiengAnh.Services
     public class DataSeeder
     {
         private readonly MongoDbService _mongoDbService;
+        private readonly IWebHostEnvironment _env;
         private readonly ILogger<DataSeeder> _logger;
-        private readonly string _contentRootPath;
-        private readonly IWebHostEnvironment _environment;
-
-        public DataSeeder(MongoDbService mongoDbService, ILogger<DataSeeder> logger, IWebHostEnvironment environment)
+        
+        public DataSeeder(
+            MongoDbService mongoDbService, 
+            IWebHostEnvironment env,
+            ILogger<DataSeeder> logger)
         {
             _mongoDbService = mongoDbService;
+            _env = env;
             _logger = logger;
-            _environment = environment;
-            _contentRootPath = environment.ContentRootPath;
         }
 
-        public async Task SeedDataAsync()
+        public async Task SeedAllDataAsync()
         {
-            _logger.LogInformation("Starting to seed data...");
-            
-            await SeedTestsAsync();
-            await SeedTopicsAsync();
-            await SeedVocabulariesAsync();
-            await SeedGrammarAsync();
-            await SeedExercisesAsync();
-            await SeedUsersAsync();
-            await SeedProgressAsync();
-            
-            _logger.LogInformation("Data seeding completed.");
+            try
+            {
+                await SeedUsersAsync();
+                await SeedGrammarAsync();
+                await SeedVocabularyAsync();
+                await SeedTestsAsync();
+                await SeedTopicsAsync();
+                
+                _logger.LogInformation("Data seeding completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error seeding data: {ex.Message}");
+                throw;
+            }
         }
 
         private async Task SeedTestsAsync()
@@ -46,10 +51,9 @@ namespace TiengAnh.Services
             {
                 var testCollection = _mongoDbService.GetCollection<TestModel>("Tests");
                 
-                // Check if collection is empty before seeding
                 if (await testCollection.CountDocumentsAsync(FilterDefinition<TestModel>.Empty) == 0)
                 {
-                    string jsonPath = Path.Combine(_contentRootPath, "json", "test.json");
+                    string jsonPath = Path.Combine(_env.ContentRootPath, "json", "test.json");
                     if (File.Exists(jsonPath))
                     {
                         string jsonContent = File.ReadAllText(jsonPath);
@@ -58,7 +62,6 @@ namespace TiengAnh.Services
                         
                         if (tests != null && tests.Any())
                         {
-                            // Process each test to ensure proper ID mapping
                             foreach (var test in tests)
                             {
                                 test.OnDeserialized();
@@ -72,7 +75,6 @@ namespace TiengAnh.Services
                     {
                         _logger.LogWarning($"Test JSON file not found at {jsonPath}");
                         
-                        // If JSON file not found, seed with basic test data
                         await SeedBasicTestDataAsync(testCollection);
                     }
                 }
@@ -89,7 +91,6 @@ namespace TiengAnh.Services
         
         private async Task SeedBasicTestDataAsync(IMongoCollection<TestModel> testCollection)
         {
-            // Create some basic test data
             var tests = new List<TestModel>
             {
                 new TestModel
@@ -123,7 +124,6 @@ namespace TiengAnh.Services
                 }
             };
             
-            // Make sure each test has proper ID mapping
             foreach (var test in tests)
             {
                 test.OnDeserialized();
@@ -193,13 +193,12 @@ namespace TiengAnh.Services
             }
             else
             {
-                // Cập nhật Type_CD cho các topic hiện có nếu chưa có
                 var updateDefinition = Builders<TopicModel>.Update.Set(t => t.Type_CD, "Vocabulary");
                 await topicCollection.UpdateManyAsync(t => string.IsNullOrEmpty(t.Type_CD), updateDefinition);
             }
         }
         
-        private async Task SeedVocabulariesAsync()
+        private async Task SeedVocabularyAsync()
         {
             _logger.LogInformation("Checking Vocabularies collection");
             var vocabularyCollection = _mongoDbService.GetCollection<VocabularyModel>("Vocabularies");
@@ -348,81 +347,6 @@ namespace TiengAnh.Services
             }
         }
         
-        private async Task SeedExercisesAsync()
-        {
-            var exerciseCollection = _mongoDbService.GetCollection<ExerciseModel>("Exercises");
-            
-            if (await exerciseCollection.CountDocumentsAsync(FilterDefinition<ExerciseModel>.Empty) == 0)
-            {
-                await exerciseCollection.InsertManyAsync(new List<ExerciseModel>
-                {
-                    new ExerciseModel
-                    {
-                        ID_BT = 1,
-                        Question = "What color is the sky?",
-                        Question_BT = "What color is the sky?",
-                        CorrectAnswer = "Blue",
-                        Answer_BT = "Blue",
-                        Options = new List<string> { "Red", "Blue", "Green", "Yellow" },
-                        Option_A = "Red",
-                        Option_B = "Blue",
-                        Option_C = "Green",
-                        Option_D = "Yellow",
-                        ExerciseType = "MultipleChoice",
-                        Level = "A1",
-                        ID_CD = 1,
-                        Explanation = "The sky appears blue because of the way sunlight is scattered by the atmosphere.",
-                        Explanation_BT = "The sky appears blue because of the way sunlight is scattered by the atmosphere."
-                    },
-                    new ExerciseModel
-                    {
-                        ID_BT = 2,
-                        Question = "She ___ to school every day.",
-                        CorrectAnswer = "goes",
-                        Options = new List<string> { "go", "goes", "going", "went" },
-                        ExerciseType = "FillBlank",
-                        Level = "A1",
-                        ID_CD = 1,
-                        Explanation = "With third person singular (she), we add -s or -es to the base form of the verb."
-                    },
-                    new ExerciseModel
-                    {
-                        ID_BT = 3,
-                        Question = "to school I go every day",
-                        CorrectAnswer = "I go to school every day",
-                        ExerciseType = "WordOrdering",
-                        Level = "A1",
-                        ID_CD = 1,
-                        Explanation = "The correct word order in English is typically Subject-Verb-Object."
-                    },
-                    new ExerciseModel 
-                    { 
-                        ID_BT = 4,
-                        Question = "The cat ___ on the sofa.",
-                        CorrectAnswer = "is",
-                        Options = new List<string> { "is", "are", "am", "be" },
-                        ExerciseType = "FillBlank",
-                        Level = "A1",
-                        ID_CD = 1,
-                        Explanation = "Với chủ ngữ là 'The cat' (số ít), ta dùng 'is'.",
-                        TopicName = "Animals"
-                    },
-                    new ExerciseModel 
-                    { 
-                        ID_BT = 5,
-                        Question = "Put the words in the correct order: 'cat, black, a, is, it'",
-                        CorrectAnswer = "It is a black cat",
-                        Options = new List<string> { "It", "is", "a", "black", "cat" },
-                        ExerciseType = "WordOrdering",
-                        Level = "A1",
-                        ID_CD = 1,
-                        Explanation = "Thứ tự đúng: subject + verb + article + adjective + noun.",
-                        TopicName = "Animals"
-                    }
-                });
-            }
-        }
-        
         private async Task SeedUsersAsync()
         {
             var userCollection = _mongoDbService.GetCollection<UserModel>("Users");
@@ -436,7 +360,7 @@ namespace TiengAnh.Services
                         UserId = "user123",
                         UserName = "hocsinh001",
                         Email = "demo@example.com",
-                        PasswordHash = "Password123!", // Trong thực tế phải hash password
+                        PasswordHash = "Password123!", 
                         FullName = "Nguyễn Văn A",
                         Avatar = "/images/avatar/default.jpg",
                         Level = "A2",
@@ -449,69 +373,13 @@ namespace TiengAnh.Services
                         UserId = "admin123",
                         UserName = "admin001",
                         Email = "admin@example.com",
-                        PasswordHash = "Admin123!", // Trong thực tế phải hash password
+                        PasswordHash = "Admin123!", 
                         FullName = "Trần Thị B",
                         Avatar = "/images/avatar/admin.jpg",
                         Level = "C1",
                         RegisterDate = DateTime.Now.AddYears(-1),
                         Points = 1200,
                         Roles = new List<string> { "Admin", "Teacher" }
-                    }
-                });
-            }
-        }
-        
-        private async Task SeedProgressAsync()
-        {
-            var progressCollection = _mongoDbService.GetCollection<ProgressModel>("Progress");
-            
-            if (await progressCollection.CountDocumentsAsync(FilterDefinition<ProgressModel>.Empty) == 0)
-            {
-                await progressCollection.InsertManyAsync(new List<ProgressModel>
-                {
-                    new ProgressModel
-                    {
-                        UserId = "user123",
-                        VocabularyProgress = 65,
-                        GrammarProgress = 40,
-                        ExerciseProgress = 30,
-                        TotalPoints = 750,
-                        Level = "A2",
-                        LastCompletedItems = new List<LastCompletedItemModel>
-                        {
-                            new LastCompletedItemModel 
-                            { 
-                                Id = 1, 
-                                Type = "Vocabulary", 
-                                Title = "Animals", 
-                                CompletedDate = DateTime.Now.AddDays(-1),
-                                Score = 85
-                            },
-                            new LastCompletedItemModel 
-                            { 
-                                Id = 2, 
-                                Type = "Grammar", 
-                                Title = "Simple Present Tense", 
-                                CompletedDate = DateTime.Now.AddDays(-3),
-                                Score = 75
-                            },
-                            new LastCompletedItemModel 
-                            { 
-                                Id = 3, 
-                                Type = "Exercise", 
-                                Title = "Vocabulary Exercise", 
-                                CompletedDate = DateTime.Now.AddDays(-5),
-                                Score = 90
-                            }
-                        },
-                        CompletedTopics = new List<CompletedTopicModel>
-                        {
-                            new CompletedTopicModel { TopicId = 1, TopicName = "Animals", CompletionPercentage = 100 },
-                            new CompletedTopicModel { TopicId = 2, TopicName = "Food & Drinks", CompletionPercentage = 80 },
-                            new CompletedTopicModel { TopicId = 3, TopicName = "School", CompletionPercentage = 60 },
-                            new CompletedTopicModel { TopicId = 4, TopicName = "Family", CompletionPercentage = 40 },
-                            new CompletedTopicModel { TopicId = 5, TopicName = "Sports", CompletionPercentage = 20 }
-                        }
                     }
                 });
             }

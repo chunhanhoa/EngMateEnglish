@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Qs0UGtxP4b114PP6ufSWs1cOv41lqGWDLKudQ01wb/w=",
+  "Hash": "XvYOl6adDFjEL3rexdlHrkLHAaSalUbgpMYSGMhYxh0=",
   "Source": "TiengAnh",
   "BasePath": "_content/TiengAnh",
   "Mode": "Default",
@@ -1970,12 +1970,12 @@
       "OriginalItemSpec": "wwwroot\\images\\avatar\\68132d74b072769a058215ab_20250506200816.jpeg"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg",
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506215754.jpeg",
       "SourceId": "TiengAnh",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
       "BasePath": "_content/TiengAnh",
-      "RelativePath": "images/avatar/681a1bb4300410deda9f9aab_20250506213309#[.{fingerprint}]?.jpeg",
+      "RelativePath": "images/avatar/681a1bb4300410deda9f9aab_20250506215754#[.{fingerprint}]?.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1984,11 +1984,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2k12exde8",
-      "Integrity": "1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk=",
+      "Fingerprint": "7pylzzrhx1",
+      "Integrity": "Ff7c39FxWOCdy6oTc47S5uVYjOhkFuh4pc/gEhxsLa4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg"
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506215754.jpeg"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\default-avatar.png",
@@ -11868,8 +11868,8 @@
       ]
     },
     {
-      "Route": "images/avatar/681a1bb4300410deda9f9aab_20250506213309.c2k12exde8.jpeg",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg",
+      "Route": "images/avatar/681a1bb4300410deda9f9aab_20250506215754.7pylzzrhx1.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506215754.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11878,7 +11878,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "23122"
+          "Value": "28482"
         },
         {
           "Name": "Content-Type",
@@ -11886,11 +11886,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk=\""
+          "Value": "\"Ff7c39FxWOCdy6oTc47S5uVYjOhkFuh4pc/gEhxsLa4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 14:33:09 GMT"
+          "Value": "Tue, 06 May 2025 14:57:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11900,21 +11900,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2k12exde8"
+          "Value": "7pylzzrhx1"
         },
         {
           "Name": "label",
-          "Value": "images/avatar/681a1bb4300410deda9f9aab_20250506213309.jpeg"
+          "Value": "images/avatar/681a1bb4300410deda9f9aab_20250506215754.jpeg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk="
+          "Value": "sha256-Ff7c39FxWOCdy6oTc47S5uVYjOhkFuh4pc/gEhxsLa4="
         }
       ]
     },
     {
-      "Route": "images/avatar/681a1bb4300410deda9f9aab_20250506213309.jpeg",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506213309.jpeg",
+      "Route": "images/avatar/681a1bb4300410deda9f9aab_20250506215754.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506215754.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11923,7 +11923,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "23122"
+          "Value": "28482"
         },
         {
           "Name": "Content-Type",
@@ -11931,11 +11931,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk=\""
+          "Value": "\"Ff7c39FxWOCdy6oTc47S5uVYjOhkFuh4pc/gEhxsLa4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 14:33:09 GMT"
+          "Value": "Tue, 06 May 2025 14:57:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11945,7 +11945,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1KVR+isar6Q/CEe8TGiiiXwzGXS0JToA0soB9sBMXlk="
+          "Value": "sha256-Ff7c39FxWOCdy6oTc47S5uVYjOhkFuh4pc/gEhxsLa4="
         }
       ]
     },
@@ -37124,7 +37124,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:34:21 GMT"
+          "Value": "Wed, 07 May 2025 06:57:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37177,7 +37177,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:34:21 GMT"
+          "Value": "Wed, 07 May 2025 06:57:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37214,7 +37214,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:34:21 GMT"
+          "Value": "Wed, 07 May 2025 06:57:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37261,7 +37261,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:34:21 GMT"
+          "Value": "Wed, 07 May 2025 06:57:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37322,7 +37322,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:34:21 GMT"
+          "Value": "Wed, 07 May 2025 06:57:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37367,7 +37367,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 25 Mar 2025 03:34:21 GMT"
+          "Value": "Wed, 07 May 2025 06:57:26 GMT"
         },
         {
           "Name": "Cache-Control",
