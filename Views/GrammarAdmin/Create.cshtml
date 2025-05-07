@@ -1,0 +1,104 @@
+@model GrammarModel
+@{
+    ViewData["Title"] = "Thêm bài ngữ pháp mới";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "GrammarAdmin")">Quản lý ngữ pháp</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thêm bài ngữ pháp mới</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-4">
+            <h3 class="fw-bold mb-4">Thêm bài ngữ pháp mới</h3>
+            
+            <form asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                
+                <div class="form-group mb-3">
+                    <label asp-for="Title_NP" class="form-label">Tiêu đề <span class="text-danger">*</span></label>
+                    <input asp-for="Title_NP" class="form-control" placeholder="Nhập tiêu đề bài ngữ pháp" required />
+                    <span asp-validation-for="Title_NP" class="text-danger"></span>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="Level" class="form-label">Trình độ <span class="text-danger">*</span></label>
+                            <select asp-for="Level" class="form-select" required>
+                                <option value="A1">A1 - Cơ bản</option>
+                                <option value="A2">A2 - Sơ cấp</option>
+                                <option value="B1">B1 - Trung cấp</option>
+                                <option value="B2">B2 - Nâng cao</option>
+                                <option value="C1">C1 - Cao cấp</option>
+                            </select>
+                            <span asp-validation-for="Level" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="Created" class="form-label">Ngày tạo</label>
+                            <input asp-for="Created" type="datetime-local" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+                            <span asp-validation-for="Created" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Description_NP" class="form-label">Mô tả</label>
+                    <textarea asp-for="Description_NP" class="form-control" rows="3" placeholder="Nhập mô tả ngắn gọn về bài ngữ pháp"></textarea>
+                    <span asp-validation-for="Description_NP" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label asp-for="Content_NP" class="form-label">Nội dung <span class="text-danger">*</span></label>
+                    <textarea asp-for="Content_NP" id="grammarEditor" class="form-control" rows="15" required></textarea>
+                    <span asp-validation-for="Content_NP" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label asp-for="Exercise" class="form-label">Bài tập</label>
+                    <textarea asp-for="Exercise" id="exerciseEditor" class="form-control" rows="10"></textarea>
+                    <span asp-validation-for="Exercise" class="text-danger"></span>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="@Url.Action("Index", "GrammarAdmin")" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Quay lại
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Lưu bài ngữ pháp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize CKEditor for rich text editing
+            ClassicEditor
+                .create(document.querySelector('#grammarEditor'))
+                .catch(error => {
+                    console.error(error);
+                });
+                
+            ClassicEditor
+                .create(document.querySelector('#exerciseEditor'))
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+}

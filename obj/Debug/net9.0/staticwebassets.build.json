@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XvYOl6adDFjEL3rexdlHrkLHAaSalUbgpMYSGMhYxh0=",
+  "Hash": "0Z/SF8Ub6pel9f9ygr5TgdK0Nnf5/ANM4OVpVsrQT1A=",
   "Source": "TiengAnh",
   "BasePath": "_content/TiengAnh",
   "Mode": "Default",
@@ -2913,6 +2913,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\vocabulary\\animals\\kangaroo.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\koala.jpg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/vocabulary/animals/koala#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6p9bufw0nz",
+      "Integrity": "JoAy/9QidVXw4rrsaKNkNW0XJmYcrS7txEiTVt8P6eg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\vocabulary\\animals\\koala.jpg"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\lion.jpg",
@@ -15554,6 +15575,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-BL88rwvnaLLzC7/yg/UH05ZMfun5el1kLUTJz0S8krI="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/koala.6p9bufw0nz.jpg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\koala.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "183875"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JoAy/9QidVXw4rrsaKNkNW0XJmYcrS7txEiTVt8P6eg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 15:39:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6p9bufw0nz"
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/koala.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JoAy/9QidVXw4rrsaKNkNW0XJmYcrS7txEiTVt8P6eg="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/koala.jpg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\koala.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "183875"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JoAy/9QidVXw4rrsaKNkNW0XJmYcrS7txEiTVt8P6eg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 15:39:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JoAy/9QidVXw4rrsaKNkNW0XJmYcrS7txEiTVt8P6eg="
         }
       ]
     },

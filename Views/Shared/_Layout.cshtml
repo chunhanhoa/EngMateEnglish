@@ -1,6 +1,7 @@
 ﻿@using TiengAnh.Models
 @using TiengAnh.Repositories
 @using Microsoft.AspNetCore.Authentication
+@using System.Security.Claims
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,11 +140,17 @@
                                         </li>
                                         @if (User.IsInRole("Admin"))
                                         {
-                                            <li>
-                                                <a class="dropdown-item" href="@Url.Action("ManageUsers", "Account")">
-                                                    <i class="fas fa-users-cog me-2"></i> Quản lý người dùng
-                                                </a>
-                                            </li>
+                                            <div class="dropdown-divider"></div>
+                                            <h6 class="dropdown-header">Quản trị viên</h6>
+                                            <a class="dropdown-item" href="@Url.Action("Index", "VocabularyAdmin")">
+                                                <i class="fas fa-book mr-2"></i> Quản lý từ vựng
+                                            </a>
+                                            <a class="dropdown-item" href="@Url.Action("Index", "GrammarAdmin")">
+                                                <i class="fas fa-book-open mr-2"></i> Quản lý ngữ pháp
+                                            </a>
+                                            <a class="dropdown-item" href="@Url.Action("ManageUsers", "Account")">
+                                                <i class="fas fa-users mr-2"></i> Quản lý người dùng
+                                            </a>
                                         }
                                         <li><hr class="dropdown-divider"></li>
                                         <li>

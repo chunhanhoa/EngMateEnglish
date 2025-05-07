@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using MongoDB.Bson;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace TiengAnh.Repositories
 
         public async Task<GrammarModel> GetByGrammarIdAsync(int grammarId)
         {
-            return await _collection.Find(x => x.ID_NP == grammarId).FirstOrDefaultAsync();
+            // Make sure we're filtering by ID_NP, not the MongoDB ObjectId
+            var filter = Builders<GrammarModel>.Filter.Eq(x => x.ID_NP, grammarId);
+            return await _collection.Find(filter).FirstOrDefaultAsync();
         }
         
         public async Task<Dictionary<string, List<GrammarModel>>> GetGroupedGrammarAsync()
@@ -92,6 +95,14 @@ namespace TiengAnh.Repositories
             {
                 return false;
             }
+        }
+
+        // Override UpdateAsync to better handle our specific case
+        public new async Task UpdateAsync(string id, GrammarModel updatedEntity)
+        {
+            // Use the MongoDB Object ID for the update
+            var filter = Builders<GrammarModel>.Filter.Eq("_id", ObjectId.Parse(id));
+            await _collection.ReplaceOneAsync(filter, updatedEntity);
         }
     }
 }

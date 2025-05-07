@@ -1,0 +1,157 @@
+@model VocabularyModel
+@{
+    ViewData["Title"] = "Thêm từ vựng mới";
+    var topic = ViewBag.Topic as TopicModel;
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "VocabularyAdmin")">Quản lý từ vựng</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("ManageTopic", "VocabularyAdmin", new { id = topic?.ID_CD })">@(topic?.Name_CD ?? "Chủ đề")</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thêm từ vựng mới</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-4">
+            <h3 class="fw-bold mb-4">Thêm từ vựng mới cho chủ đề: @topic?.Name_CD</h3>
+            
+            <form asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="ID_CD" value="@topic?.ID_CD" />
+                <input type="hidden" asp-for="TopicName" value="@topic?.Name_CD" />
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="Word_TV" class="form-label">Từ vựng <span class="text-danger">*</span></label>
+                            <input asp-for="Word_TV" class="form-control" placeholder="Nhập từ vựng" required />
+                            <span asp-validation-for="Word_TV" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Meaning_TV" class="form-label">Nghĩa <span class="text-danger">*</span></label>
+                            <input asp-for="Meaning_TV" class="form-control" placeholder="Nhập nghĩa của từ" required />
+                            <span asp-validation-for="Meaning_TV" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Example_TV" class="form-label">Ví dụ <span class="text-danger">*</span></label>
+                            <textarea asp-for="Example_TV" class="form-control" rows="3" placeholder="Nhập câu ví dụ" required></textarea>
+                            <span asp-validation-for="Example_TV" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="Level_TV" class="form-label">Trình độ <span class="text-danger">*</span></label>
+                            <select asp-for="Level_TV" class="form-select" required>
+                                <option value="A1">A1 - Cơ bản</option>
+                                <option value="A2">A2 - Sơ cấp</option>
+                                <option value="B1">B1 - Trung cấp</option>
+                                <option value="B2">B2 - Nâng cao</option>
+                                <option value="C1">C1 - Cao cấp</option>
+                            </select>
+                            <span asp-validation-for="Level_TV" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="PartOfSpeech" class="form-label">Loại từ <span class="text-danger">*</span></label>
+                            <select asp-for="PartOfSpeech" class="form-select" required onchange="updateIdLt(this.value)">
+                                <option value="noun">Danh từ (noun)</option>
+                                <option value="verb">Động từ (verb)</option>
+                                <option value="adjective">Tính từ (adjective)</option>
+                                <option value="adverb">Trạng từ (adverb)</option>
+                                <option value="pronoun">Đại từ (pronoun)</option>
+                                <option value="preposition">Giới từ (preposition)</option>
+                                <option value="conjunction">Liên từ (conjunction)</option>
+                                <option value="interjection">Thán từ (interjection)</option>
+                            </select>
+                            <span asp-validation-for="PartOfSpeech" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="ID_LT" class="form-label">Mã loại từ</label>
+                            <input asp-for="ID_LT" class="form-control" readonly />
+                            <span asp-validation-for="ID_LT" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Audio_TV" class="form-label">Đường dẫn âm thanh</label>
+                            <input asp-for="Audio_TV" class="form-control" placeholder="/audio/example.mp3" />
+                            <small class="text-muted">Để trống để tự động tạo đường dẫn theo tên từ</small>
+                            <span asp-validation-for="Audio_TV" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Image_TV" class="form-label">Đường dẫn hình ảnh</label>
+                            <input asp-for="Image_TV" class="form-control" placeholder="/images/vocabulary/topic/example.jpg" />
+                            <small class="text-muted">Để trống để tự động tạo đường dẫn theo tên từ</small>
+                            <span asp-validation-for="Image_TV" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="@Url.Action("ManageTopic", "VocabularyAdmin", new { id = topic?.ID_CD })" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Quay lại
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Lưu từ vựng
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateIdLt(partOfSpeech) {
+            let idLtValue = '';
+            
+            switch(partOfSpeech) {
+                case 'noun':
+                    idLtValue = 'n';
+                    break;
+                case 'verb':
+                    idLtValue = 'v';
+                    break;
+                case 'adjective':
+                    idLtValue = 'adj';
+                    break;
+                case 'adverb':
+                    idLtValue = 'adv';
+                    break;
+                case 'pronoun':
+                    idLtValue = 'pron';
+                    break;
+                case 'preposition':
+                    idLtValue = 'prep';
+                    break;
+                case 'conjunction':
+                    idLtValue = 'conj';
+                    break;
+                case 'interjection':
+                    idLtValue = 'interj';
+                    break;
+                default:
+                    idLtValue = 'n';
+            }
+            
+            document.getElementById('ID_LT').value = idLtValue;
+        }
+        
+        // Initialize ID_LT value
+        document.addEventListener('DOMContentLoaded', function() {
+            const partOfSpeech = document.getElementById('PartOfSpeech').value;
+            updateIdLt(partOfSpeech);
+        });
+    </script>
+}

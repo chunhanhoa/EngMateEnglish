@@ -96,6 +96,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF2b3JpdGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/GrammarAdmin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbW1hckFkbWluXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/GrammarAdmin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbW1hckFkbWluXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/GrammarAdmin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbW1hckFkbWluXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/GrammarAdmin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbW1hckFkbWluXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/Grammar/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbW1hclxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -162,6 +178,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/Test/ViewIds.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxWaWV3SWRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/VocabularyAdmin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJ1bGFyeUFkbWluXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/VocabularyAdmin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJ1bGFyeUFkbWluXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/VocabularyAdmin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJ1bGFyeUFkbWluXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/VocabularyAdmin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJ1bGFyeUFkbWluXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/VocabularyAdmin/ManageTopic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVm9jYWJ1bGFyeUFkbWluXE1hbmFnZVRvcGljLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/Views/Vocabulary/Details.cshtml]
