@@ -110,7 +110,7 @@ namespace TiengAnh.Controllers
                                 authProperties);
                             
                             _logger.LogInformation($"User {user.Email} logged in successfully");
-                            return RedirectToAction("Profile", "Account");
+                            return RedirectToAction("Index", "Home");
                         }
                     }
 
@@ -910,7 +910,7 @@ namespace TiengAnh.Controllers
                 _logger.LogInformation($"User {emailClaim} logged in with Google successfully");
                 
                 TempData["SuccessMessage"] = "Đăng nhập bằng Google thành công!";
-                return LocalRedirect(returnUrl);
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
