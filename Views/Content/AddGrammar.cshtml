@@ -1,0 +1,166 @@
+@model TiengAnh.Models.GrammarModel
+
+@{
+    ViewData["Title"] = "Thêm bài học ngữ pháp";
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow">
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="mb-0 fs-4"><i class="fas fa-plus-circle me-2"></i> Thêm bài học ngữ pháp mới</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="AddGrammar" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-12 mb-3">
+                                <label asp-for="Title_NP" class="form-label fw-bold">Tiêu đề bài học</label>
+                                <input asp-for="Title_NP" class="form-control form-control-lg" placeholder="Nhập tiêu đề bài học ngữ pháp" required />
+                                <span asp-validation-for="Title_NP" class="text-danger"></span>
+                                <div class="form-text">Ví dụ: Thì hiện tại đơn, Thì quá khứ đơn, Câu điều kiện loại 1...</div>
+                            </div>
+                            
+                            <div class="col-md-12 mb-3">
+                                <label asp-for="Description_NP" class="form-label fw-bold">Mô tả ngắn</label>
+                                <textarea asp-for="Description_NP" class="form-control" rows="3" placeholder="Nhập mô tả ngắn về bài học ngữ pháp này" required></textarea>
+                                <span asp-validation-for="Description_NP" class="text-danger"></span>
+                                <div class="form-text">Mô tả súc tích giúp người học hiểu được nội dung chính của bài học.</div>
+                            </div>
+                            
+                            <div class="col-md-12 mb-3">
+                                <label asp-for="Content_NP" class="form-label fw-bold">Nội dung chi tiết</label>
+                                <textarea asp-for="Content_NP" id="grammarContent" class="form-control" rows="15" placeholder="Nhập nội dung chi tiết của bài học ngữ pháp" required></textarea>
+                                <span asp-validation-for="Content_NP" class="text-danger"></span>
+                                <div class="form-text">Bạn có thể sử dụng cú pháp Markdown để định dạng nội dung.</div>
+                            </div>
+                            
+                            <div class="col-md-12 mb-3">
+                                <label asp-for="VideoUrl_NP" class="form-label fw-bold">Đường dẫn video YouTube</label>
+                                <input asp-for="VideoUrl_NP" class="form-control" placeholder="Nhập đường dẫn video YouTube (vd: https://www.youtube.com/watch?v=xxxx)" />
+                                <span asp-validation-for="VideoUrl_NP" class="text-danger"></span>
+                                <div class="form-text">Video hướng dẫn sẽ được hiển thị kèm bài học.</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Level" class="form-label fw-bold">Cấp độ</label>
+                                <select asp-for="Level" id="Level" class="form-select">
+                                    <option value="A1">A1 (Sơ cấp 1)</option>
+                                    <option value="A2">A2 (Sơ cấp 2)</option>
+                                    <option value="B1">B1 (Trung cấp 1)</option>
+                                    <option value="B2">B2 (Trung cấp 2)</option>
+                                    <option value="C1">C1 (Cao cấp 1)</option>
+                                    <option value="C2">C2 (Cao cấp 2)</option>
+                                </select>
+                                <span asp-validation-for="Level" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="TopicName" class="form-label fw-bold">Chủ đề</label>
+                                <input asp-for="TopicName" id="TopicName" class="form-control" placeholder="Nhập chủ đề của bài học" />
+                                <span asp-validation-for="TopicName" class="text-danger"></span>
+                                <div class="form-text">Ví dụ: Tenses, Conditionals, Passive Voice...</div>
+                            </div>
+                        </div>
+
+                        <!-- Examples Section -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Examples</label>
+                            <div id="examples-container">
+                                <div class="example-item mb-2 input-group">
+                                    <input type="text" name="Examples" class="form-control" placeholder="Enter an example sentence...">
+                                    <button type="button" class="btn btn-outline-danger remove-example">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" id="add-example" class="btn btn-sm btn-outline-success mt-2">
+                                <i class="fas fa-plus"></i> Add Another Example
+                            </button>
+                            <div class="form-text text-muted">Add example sentences that demonstrate the grammar point.</div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-controller="Grammar" asp-action="Index" class="btn btn-outline-secondary btn-lg px-4 me-md-2">
+                                <i class="fas fa-arrow-left me-2"></i> Quay lại
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg px-4">
+                                <i class="fas fa-save me-2"></i> Lưu bài học
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // Basic initialization of a rich text editor (can be improved with a proper WYSIWYG editor like TinyMCE or CKEditor)
+        document.addEventListener('DOMContentLoaded', function() {
+            const contentTextarea = document.getElementById('grammarContent');
+            
+            // Add event listener to show a message about saving
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function() {
+                console.log('Đang lưu bài học ngữ pháp...');
+            });
+            
+            // Auto-set TopicName based on Level selection
+            const levelSelect = document.getElementById('Level');
+            const topicNameInput = document.getElementById('TopicName');
+            
+            // Function to update topic name based on level
+            function updateTopicName() {
+                const selectedLevel = levelSelect.value;
+                
+                if (selectedLevel === 'A1' || selectedLevel === 'A2') {
+                    topicNameInput.value = 'Basic Grammar';
+                } else if (selectedLevel === 'B1' || selectedLevel === 'B2') {
+                    topicNameInput.value = 'Intermediate Grammar';
+                } else if (selectedLevel === 'C1' || selectedLevel === 'C2') {
+                    topicNameInput.value = 'Advanced Grammar';
+                }
+            }
+            
+            // Set initial value based on default level
+            updateTopicName();
+            
+            // Add event listener to level dropdown
+            levelSelect.addEventListener('change', updateTopicName);
+
+            // Examples handling
+            document.getElementById('add-example').addEventListener('click', function() {
+                const container = document.getElementById('examples-container');
+                const newExampleDiv = document.createElement('div');
+                newExampleDiv.className = 'example-item mb-2 input-group';
+                newExampleDiv.innerHTML = `
+                    <input type="text" name="Examples" class="form-control" placeholder="Enter an example sentence...">
+                    <button type="button" class="btn btn-outline-danger remove-example">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                container.appendChild(newExampleDiv);
+            });
+
+            // Event delegation for removing examples
+            document.getElementById('examples-container').addEventListener('click', function(e) {
+                if (e.target.classList.contains('remove-example') || e.target.closest('.remove-example')) {
+                    const exampleItem = e.target.closest('.example-item');
+                    // Don't remove if it's the last example
+                    if (document.querySelectorAll('.example-item').length > 1) {
+                        exampleItem.remove();
+                    } else {
+                        // Clear the input instead of removing
+                        exampleItem.querySelector('input').value = '';
+                    }
+                }
+            });
+        });
+    </script>
+}

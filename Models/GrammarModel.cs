@@ -11,13 +11,13 @@ namespace TiengAnh.Models
         public int ID_NP { get; set; }
         
         [BsonElement("Title_NP")]
-        public string Title_NP { get; set; } = string.Empty;
+        public string Title_NP { get; set; } = null!;
         
         [BsonElement("Description_NP")]
         public string Description_NP { get; set; } = null!;
         
         [BsonElement("Content_NP")]
-        public string Content_NP { get; set; } = string.Empty;
+        public string? Content_NP { get; set; }
         
         [BsonElement("Content")]
         public string? Content
@@ -36,7 +36,10 @@ namespace TiengAnh.Models
         public string TopicName { get; set; } = null!;
         
         [BsonElement("Level")]
-        public string Level { get; set; } = "A1";
+        public string Level { get; set; } = null!;
+        
+        [BsonElement("VideoUrl_NP")]
+        public string? VideoUrl_NP { get; set; }
         
         [BsonElement("Examples")]
         public List<string>? Examples { get; set; }
@@ -44,36 +47,15 @@ namespace TiengAnh.Models
         [BsonElement("ProgressPercentage")]
         public int ProgressPercentage { get; set; }
         
-        [BsonElement("IsFavorite")]
+        [BsonIgnore]
         public bool IsFavorite { get; set; }
         
         [BsonElement("FavoriteByUsers")]
-        public List<string>? FavoriteByUsers { get; set; } = new List<string>();
+        public List<string> FavoriteByUsers { get; set; } = new List<string>();
         
-        [BsonElement("Exercise")]
-        public string? Exercise { get; set; }
-        
-        [BsonElement("Created")]
-        public DateTime? Created { get; set; }
-        
-        [BsonElement("AuthorId")]
-        public string? AuthorId { get; set; }
-        
-        [BsonElement("AuthorName")]
-        public string? AuthorName { get; set; }
-        
-        [BsonElement("ViewCount")]
-        public int ViewCount { get; set; }
-        
-        [BsonElement("IsPublished")]
-        public bool IsPublished { get; set; } = true;
-
         public bool IsFavoriteByUser(string userId)
         {
-            if (string.IsNullOrEmpty(userId) || FavoriteByUsers == null)
-                return false;
-                
-            return FavoriteByUsers.Contains(userId);
+            return FavoriteByUsers != null && FavoriteByUsers.Contains(userId);
         }
 
         [BsonElement("title")]

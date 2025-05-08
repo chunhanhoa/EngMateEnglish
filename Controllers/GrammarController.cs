@@ -136,5 +136,129 @@ namespace TiengAnh.Controllers
             
             return View("FavoriteGrammar", favoriteGrammar);
         }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var grammar = await _grammarRepository.GetByGrammarIdAsync(id);
+            if (grammar == null)
+            {
+                return NotFound();
+            }
+
+            await _grammarRepository.DeleteAsync(grammar.Id);
+            TempData["SuccessMessage"] = "Grammar deleted successfully!";
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var grammar = await _grammarRepository.GetByGrammarIdAsync(id);
+            
+            if (grammar == null)
+            {
+                return NotFound();
+            }
+            
+            return View(grammar);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, GrammarModel grammar)
+        {
+            if (id != grammar.ID_NP)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Đảm bảo các trường quan trọng không bị mất khi cập nhật
+                    var existingGrammar = await _grammarRepository.GetByGrammarIdAsync(id);
+                    
+                    if (existingGrammar == null)
+                    {
+                        return NotFound();
+                    }
+                    
+                    // Giữ lại Id gốc
+                    grammar.Id = existingGrammar.Id;
+                    
+                    // Đảm bảo các collection không bị null
+                    if (grammar.FavoriteByUsers == null)
+                    {
+                        grammar.FavoriteByUsers = existingGrammar.FavoriteByUsers ?? new List<string>();
+                    }
+                    
+                    if (grammar.Examples == null)
+                    {
+                        grammar.Examples = existingGrammar.Examples ?? new List<string>();
+                    }
+                    
+                    // Process YouTube URL if provided
+                    if (!string.IsNullOrEmpty(grammar.VideoUrl_NP))
+                    {
+                        // Convert watch URLs to embed format if needed
+                        grammar.VideoUrl_NP = ConvertYouTubeUrlToEmbed(grammar.VideoUrl_NP);
+                    }
+                    
+                    await _grammarRepository.UpdateAsync(grammar.Id, grammar);
+                    
+                    TempData["SuccessMessage"] = "Cập nhật bài học ngữ pháp thành công!";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"Lỗi khi cập nhật ngữ pháp: {ex.Message}");
+                    ModelState.AddModelError("", "Đã xảy ra lỗi khi cập nhật. Vui lòng thử lại.");
+                }
+            }
+            
+            return View(grammar);
+        }
+        
+        // Helper method to convert YouTube URLs to embed format
+        private string ConvertYouTubeUrlToEmbed(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+                return url;
+
+            // Check if it's already an embed URL
+            if (url.Contains("youtube.com/embed/"))
+                return url;
+
+            // Handle youtube.com/watch?v= format
+            if (url.Contains("youtube.com/watch?v="))
+            {
+                var videoId = url.Split("v=")[1];
+                // Remove any additional parameters
+                if (videoId.Contains('&'))
+                {
+                    videoId = videoId.Split('&')[0];
+                }
+                return $"https://www.youtube.com/embed/{videoId}";
+            }
+
+            // Handle youtu.be/ format
+            if (url.Contains("youtu.be/"))
+            {
+                var videoId = url.Split("youtu.be/")[1];
+                // Remove any additional parameters
+                if (videoId.Contains('?'))
+                {
+                    videoId = videoId.Split('?')[0];
+                }
+                return $"https://www.youtube.com/embed/{videoId}";
+            }
+
+            return url; // Return as is if no pattern matched
+        }
     }
 }

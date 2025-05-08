@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using System.Security.Claims;
 using TiengAnh.Models;
 using TiengAnh.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TiengAnh.Controllers
 {
@@ -253,6 +255,60 @@ namespace TiengAnh.Controllers
                 isFavorite = isFavorite,
                 message = isFavorite ? "Đã thêm vào danh sách yêu thích" : "Đã xóa khỏi danh sách yêu thích" 
             });
+        }
+
+        // GET: Display confirmation page before deleting
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vocabulary = await _vocabularyRepository.GetByVocabularyIdAsync(id);
+            if (vocabulary == null)
+            {
+                return NotFound();
+            }
+            
+            return View(vocabulary);
+        }
+        
+        // POST: Process the vocabulary deletion
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            try
+            {
+                var vocabulary = await _vocabularyRepository.GetByVocabularyIdAsync(id);
+                if (vocabulary == null)
+                {
+                    return NotFound();
+                }
+                
+                var result = await _vocabularyRepository.DeleteVocabularyAsync(id);
+                
+                if (result)
+                {
+                    _logger.LogInformation($"Admin deleted vocabulary item {id}: {vocabulary.Word_TV}");
+                    TempData["SuccessMessage"] = $"Từ vựng '{vocabulary.Word_TV}' đã được xóa thành công.";
+                    
+                    // If there was an image, we could delete it here
+                    // DeleteVocabularyImage(vocabulary.Image_TV);
+                    
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Không thể xóa từ vựng. Vui lòng thử lại.";
+                    return RedirectToAction(nameof(Details), new { id });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error deleting vocabulary with ID {id}");
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi xóa từ vựng.";
+                return RedirectToAction(nameof(Details), new { id });
+            }
         }
     }
 }

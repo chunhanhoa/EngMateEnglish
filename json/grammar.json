@@ -33,7 +33,7 @@
   },
   {
     "ID_NP": 3,
-    "Title_NP": "Past Simple Tense",
+    "Title_NP": "Simple Past Tense",
     "Description_NP": "Học cách diễn đạt hành động đã xảy ra trong quá khứ bằng thì quá khứ đơn",
     "Content_NP": "Thì quá khứ đơn được dùng để diễn tả:\n- Một hành động đã hoàn thành trong quá khứ.\n- Một thói quen, hành động lặp đi lặp lại trong quá khứ.\n- Một chuỗi hành động xảy ra liên tiếp trong quá khứ.\n- Một tình trạng, trạng thái tồn tại trong quá khứ.\n\n**Cấu trúc:**\n**Khẳng định:**\n- I/You/He/She/It/We/They + V-ed hoặc V2 (với động từ bất quy tắc).\n\n**Phủ định:**\n- I/You/He/She/It/We/They + did not (didn't) + động từ nguyên thể.\n\n**Nghi vấn:**\n- Did + I/you/he/she/it/we/they + động từ nguyên thể?\n\n**Dấu hiệu nhận biết:**\nThường đi với các trạng từ chỉ thời gian quá khứ như: yesterday, last week/month/year, ... ago, in 1990, when I was young...",
     "TimeUpload_NP": { "$date": "2023-09-20T14:25:00Z" },
@@ -49,7 +49,7 @@
   },
   {
     "ID_NP": 4,
-    "Title_NP": "Future Simple Tense",
+    "Title_NP": "Simple Future Tense",
     "Description_NP": "Học cách diễn đạt hành động sẽ xảy ra trong tương lai bằng thì tương lai đơn",
     "Content_NP": "Thì tương lai đơn được dùng để diễn tả:\n- Một hành động, sự việc sẽ xảy ra trong tương lai.\n- Một quyết định tức thời được đưa ra tại thời điểm nói.\n- Một dự đoán về tương lai.\n- Một lời hứa, lời đề nghị, lời cảnh báo.\n\n**Cấu trúc:**\n**Khẳng định:**\n- I/You/He/She/It/We/They + will ('ll) + động từ nguyên thể.\n\n**Phủ định:**\n- I/You/He/She/It/We/They + will not (won't) + động từ nguyên thể.\n\n**Nghi vấn:**\n- Will + I/you/he/she/it/we/they + động từ nguyên thể?\n\n**Dấu hiệu nhận biết:**\nThường đi với các trạng từ chỉ thời gian tương lai như: tomorrow, next week/month/year, in the future, soon...",
     "TimeUpload_NP": { "$date": "2023-09-22T09:45:00Z" },

@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\vocabulary-form.css",
+      "PackagePath": "staticwebassets\\css\\vocabulary-form.css"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -59,6 +63,14 @@
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\68132d74b072769a058215ab_20250506200816.jpeg",
       "PackagePath": "staticwebassets\\images\\avatar\\68132d74b072769a058215ab_20250506200816.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\68199e23d01ffc0bba6c6210_20250508130922.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\68199e23d01ffc0bba6c6210_20250508130922.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\6819c633311f350ed0c3d2c2_20250508122530.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\6819c633311f350ed0c3d2c2_20250508122530.jpeg"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681a1bb4300410deda9f9aab_20250506215754.jpeg",
@@ -229,10 +241,6 @@
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\kangaroo.jpg"
     },
     {
-      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\koala.jpg",
-      "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\koala.jpg"
-    },
-    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\lion.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\lion.jpg"
     },
@@ -243,10 +251,6 @@
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\panda.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\panda.jpg"
-    },
-    {
-      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\penguin.jpg",
-      "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\penguin.jpg"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\rabbit.jpg",

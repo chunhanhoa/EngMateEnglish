@@ -1,5 +1,4 @@
 using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -16,9 +15,7 @@ namespace TiengAnh.Repositories
 
         public async Task<GrammarModel> GetByGrammarIdAsync(int grammarId)
         {
-            // Make sure we're filtering by ID_NP, not the MongoDB ObjectId
-            var filter = Builders<GrammarModel>.Filter.Eq(x => x.ID_NP, grammarId);
-            return await _collection.Find(filter).FirstOrDefaultAsync();
+            return await _collection.Find(x => x.ID_NP == grammarId).FirstOrDefaultAsync();
         }
         
         public async Task<Dictionary<string, List<GrammarModel>>> GetGroupedGrammarAsync()
@@ -97,12 +94,24 @@ namespace TiengAnh.Repositories
             }
         }
 
-        // Override UpdateAsync to better handle our specific case
-        public new async Task UpdateAsync(string id, GrammarModel updatedEntity)
+        public async Task<int> GetNextIdAsync()
         {
-            // Use the MongoDB Object ID for the update
-            var filter = Builders<GrammarModel>.Filter.Eq("_id", ObjectId.Parse(id));
-            await _collection.ReplaceOneAsync(filter, updatedEntity);
+            try
+            {
+                // Find the highest ID_NP value
+                var grammar = await _collection.Find(_ => true)
+                    .SortByDescending(x => x.ID_NP)
+                    .Limit(1)
+                    .FirstOrDefaultAsync();
+
+                // Return the highest ID + 1, or 1 if no records exist
+                return grammar != null ? grammar.ID_NP + 1 : 1;
+            }
+            catch
+            {
+                // Default to 1 if there's an error
+                return 1;
+            }
         }
     }
 }

@@ -81,5 +81,33 @@ namespace TiengAnh.Repositories
                 return false;
             }
         }
+
+        // Add this method to the VocabularyRepository class
+        public async Task<int> GetNextIdAsync()
+        {
+            try
+            {
+                // Find the highest ID_TV value
+                var vocabulary = await _collection.Find(_ => true)
+                    .SortByDescending(x => x.ID_TV)
+                    .Limit(1)
+                    .FirstOrDefaultAsync();
+
+                // Return the highest ID + 1, or 1 if no records exist
+                return vocabulary != null ? vocabulary.ID_TV + 1 : 1;
+            }
+            catch
+            {
+                // Default to 1 if there's an error
+                return 1;
+            }
+        }
+
+        // Add method to delete vocabulary by ID
+        public async Task<bool> DeleteVocabularyAsync(int vocabId)
+        {
+            var result = await _collection.DeleteOneAsync(x => x.ID_TV == vocabId);
+            return result.DeletedCount > 0;
+        }
     }
 }

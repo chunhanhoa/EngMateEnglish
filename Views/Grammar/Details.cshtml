@@ -73,6 +73,8 @@
                     }
                 </div>
             </div>
+            
+            <!-- Removed YouTube Video Section from left column -->
         </div>
 
         <!-- Right Column (Sidebar) -->
@@ -115,14 +117,20 @@
                 </div>
             </div>
 
-            <!-- Video Tutorial -->
+            <!-- Video Tutorial (using VideoUrl_NP only) -->
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
                     <h4 class="fw-bold mb-3 text-primary">Video hướng dẫn</h4>
                     <div class="ratio ratio-16x9 mb-3">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        @{
+                            // Use VideoUrl_NP if available, otherwise use a default URL
+                            string videoUrl = !string.IsNullOrEmpty(Model.VideoUrl_NP) 
+                                ? Model.VideoUrl_NP 
+                                : "https://www.youtube.com/embed/nvVdIJ0las0";
+                        }
+                        <iframe src="@videoUrl" title="YouTube video" allowfullscreen></iframe>
                     </div>
-                    <p class="small text-muted mb-0 content-text">Video này sẽ giúp bạn hiểu rõ hơn về Simple Present Tense và cách sử dụng.</p>
+                    <p class="small text-muted mb-0 content-text">Video này sẽ giúp bạn hiểu rõ hơn về @Model.Title_NP và cách sử dụng.</p>
                 </div>
             </div>
         </div>

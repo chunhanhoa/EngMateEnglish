@@ -1,0 +1,35 @@
+/* Styling for vocabulary form */
+.form-label.fw-bold {
+    color: #495057;
+}
+
+#imagePreview {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+#speakButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#speakButton i {
+    margin-right: 5px;
+}
+
+.alert {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Make required field labels red asterisk */
+.form-label span.text-danger {
+    font-weight: bold;
+}

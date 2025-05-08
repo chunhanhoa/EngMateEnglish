@@ -57,6 +57,14 @@
                             <p>Từ "@Model.Word_TV" thuộc chủ đề <strong>@Model.TopicName</strong> và thường xuất hiện trong các bài học trình độ @Model.Level_TV.</p>
                         </div>
                     </div>
+
+                    @* Add this in the actions section of your details page *@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@Model.ID_TV" class="btn btn-danger">
+                            <i class="fas fa-trash-alt me-2"></i>Xóa từ vựng
+                        </a>
+                    }
                 </div>
             </div>
         </div>
