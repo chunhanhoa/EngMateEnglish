@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\css\\fix-avatar.css"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\hover-translate.css",
+      "PackagePath": "staticwebassets\\css\\hover-translate.css"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\no-animations.css",
       "PackagePath": "staticwebassets\\css\\no-animations.css"
     },
@@ -251,6 +255,10 @@
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\panda.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\panda.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\penguin.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\penguin.jpg"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\rabbit.jpg",
@@ -1183,6 +1191,10 @@
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\favorite-handler.js",
       "PackagePath": "staticwebassets\\js\\favorite-handler.js"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\hover-translate.js",
+      "PackagePath": "staticwebassets\\js\\hover-translate.js"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\js\\notification-toasts.js",

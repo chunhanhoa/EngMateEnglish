@@ -1791,6 +1791,304 @@
       ]
     },
     {
+      "Route": "css/hover-translate.css",
+      "AssetFile": "css/hover-translate.css.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001148105626"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "870"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mrwv+YsKjGQZbRsoUTMOBPm+PlqaWAi08SXL6YTpMOA=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 14:06:39 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y="
+        }
+      ]
+    },
+    {
+      "Route": "css/hover-translate.css",
+      "AssetFile": "css/hover-translate.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 14:06:39 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y="
+        }
+      ]
+    },
+    {
+      "Route": "css/hover-translate.css.gz",
+      "AssetFile": "css/hover-translate.css.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "870"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mrwv+YsKjGQZbRsoUTMOBPm+PlqaWAi08SXL6YTpMOA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 14:06:39 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mrwv+YsKjGQZbRsoUTMOBPm+PlqaWAi08SXL6YTpMOA="
+        }
+      ]
+    },
+    {
+      "Route": "css/hover-translate.qrq51cjkgl.css",
+      "AssetFile": "css/hover-translate.css.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001148105626"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "870"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mrwv+YsKjGQZbRsoUTMOBPm+PlqaWAi08SXL6YTpMOA=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 14:06:39 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qrq51cjkgl"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y="
+        },
+        {
+          "Name": "label",
+          "Value": "css/hover-translate.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/hover-translate.qrq51cjkgl.css",
+      "AssetFile": "css/hover-translate.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 14:06:39 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qrq51cjkgl"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y="
+        },
+        {
+          "Name": "label",
+          "Value": "css/hover-translate.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/hover-translate.qrq51cjkgl.css.gz",
+      "AssetFile": "css/hover-translate.css.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "870"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mrwv+YsKjGQZbRsoUTMOBPm+PlqaWAi08SXL6YTpMOA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 14:06:39 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qrq51cjkgl"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mrwv+YsKjGQZbRsoUTMOBPm+PlqaWAi08SXL6YTpMOA="
+        },
+        {
+          "Name": "label",
+          "Value": "css/hover-translate.css.gz"
+        }
+      ]
+    },
+    {
       "Route": "css/no-animations.4a39jewb29.css",
       "AssetFile": "css/no-animations.css.gz",
       "Selectors": [
@@ -7325,6 +7623,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-8hTsMd1dZzGMP9+R76vKJIlZJpriQDCy/9E4PCIZRyk="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/penguin.jpg",
+      "AssetFile": "images/vocabulary/animals/penguin.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "55897"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLnGK+1i6/697xY0l2UH0MPVj+vUfnsrxMeVG/zbd70=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:01:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLnGK+1i6/697xY0l2UH0MPVj+vUfnsrxMeVG/zbd70="
+        }
+      ]
+    },
+    {
+      "Route": "images/vocabulary/animals/penguin.o1tmujsxi0.jpg",
+      "AssetFile": "images/vocabulary/animals/penguin.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "55897"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLnGK+1i6/697xY0l2UH0MPVj+vUfnsrxMeVG/zbd70=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 04 May 2025 06:01:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o1tmujsxi0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLnGK+1i6/697xY0l2UH0MPVj+vUfnsrxMeVG/zbd70="
+        },
+        {
+          "Name": "label",
+          "Value": "images/vocabulary/animals/penguin.jpg"
         }
       ]
     },
@@ -27943,6 +28323,304 @@
         {
           "Name": "label",
           "Value": "js/favorite-handler.js.gz"
+        }
+      ]
+    },
+    {
+      "Route": "js/hover-translate.josi2ww9yi.js",
+      "AssetFile": "js/hover-translate.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000289603244"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3452"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cBPfVGIAmgoXYJtjAUJGqFMhIwQDm0vaFZgAC1O8xRo=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 17:20:13 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "josi2ww9yi"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM="
+        },
+        {
+          "Name": "label",
+          "Value": "js/hover-translate.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/hover-translate.josi2ww9yi.js",
+      "AssetFile": "js/hover-translate.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12889"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 17:20:13 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "josi2ww9yi"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM="
+        },
+        {
+          "Name": "label",
+          "Value": "js/hover-translate.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/hover-translate.josi2ww9yi.js.gz",
+      "AssetFile": "js/hover-translate.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3452"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cBPfVGIAmgoXYJtjAUJGqFMhIwQDm0vaFZgAC1O8xRo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 17:20:13 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "josi2ww9yi"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cBPfVGIAmgoXYJtjAUJGqFMhIwQDm0vaFZgAC1O8xRo="
+        },
+        {
+          "Name": "label",
+          "Value": "js/hover-translate.js.gz"
+        }
+      ]
+    },
+    {
+      "Route": "js/hover-translate.js",
+      "AssetFile": "js/hover-translate.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000289603244"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3452"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cBPfVGIAmgoXYJtjAUJGqFMhIwQDm0vaFZgAC1O8xRo=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 17:20:13 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM="
+        }
+      ]
+    },
+    {
+      "Route": "js/hover-translate.js",
+      "AssetFile": "js/hover-translate.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12889"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 17:20:13 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM="
+        }
+      ]
+    },
+    {
+      "Route": "js/hover-translate.js.gz",
+      "AssetFile": "js/hover-translate.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3452"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cBPfVGIAmgoXYJtjAUJGqFMhIwQDm0vaFZgAC1O8xRo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 17:20:13 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cBPfVGIAmgoXYJtjAUJGqFMhIwQDm0vaFZgAC1O8xRo="
         }
       ]
     },

@@ -46,21 +46,38 @@
         
         .vocabulary-card {
             transition: all 0.3s ease;
+            height: 100%;
         }
         
         .vocabulary-card:hover {
             transform: translateY(-5px);
         }
         
+        .vocabulary-card .col-md-4 {
+            padding-right: 0;
+            height: 240px; /* Cố định chiều cao của column chứa ảnh */
+        }
+        
+        .vocabulary-card .col-md-8 {
+            display: flex;
+            flex-direction: column;
+        }
+        
         .vocabulary-img-container {
             height: 100%;
+            width: 100%;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
         }
         
         .vocabulary-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
         
         .audio-btn {
@@ -194,17 +211,17 @@
         @foreach (var vocab in vocabulariesOnPage)
         {
             <div class="col-lg-6 vocabulary-item" data-level="@vocab.Level_TV" data-type="@vocab.PartOfSpeech">
-                <div class="card border-0 shadow-sm vocabulary-card h-100">
+                <div class="card border-0 shadow-sm vocabulary-card">
                     <div class="card-body p-0">
-                        <div class="row g-0">
+                        <div class="row g-0 h-100">
                             <div class="col-md-4">
                                 <div class="vocabulary-img-container">
-                                    <img src="@vocab.Image_TV" alt="@vocab.Word_TV" class="img-fluid vocabulary-img"
+                                    <img src="@vocab.Image_TV" alt="@vocab.Word_TV" class="vocabulary-img"
                                         onerror="this.src='/images/vocabulary/default.jpg';this.onerror='';">
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <div class="p-3">
+                                <div class="p-3 h-100 d-flex flex-column">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
                                         <div>
                                             <h3 class="vocabulary-title word">@vocab.Word_TV</h3>
@@ -223,7 +240,7 @@
                                     <p class="vocabulary-translation mb-2"><strong>Nghĩa:</strong> @vocab.Meaning_TV</p>
                                     <p class="example text-muted mb-3"><em>@vocab.Example_TV</em></p>
                                     
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between mt-auto">
                                         <a href="@Url.Action("Details", "Vocabulary", new { id = vocab.ID_TV })" class="btn btn-sm btn-outline-primary">
                                             Chi tiết <i class="fas fa-arrow-right ms-1"></i>
                                         </a>

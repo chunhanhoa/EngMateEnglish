@@ -1,0 +1,95 @@
+.hover-translate-tooltip {
+    position: absolute;
+    width: 250px; /* Kích thước mặc định, sẽ được điều chỉnh bởi JS */
+    max-width: 400px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    padding: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: tooltip-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes tooltip-pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.tooltip-content {
+    padding: 15px;
+}
+
+.tooltip-word {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+    max-height: 100px;
+    overflow-y: auto;
+    line-height: 1.4;
+}
+
+.tooltip-translation {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    min-height: 20px;
+    max-height: 150px;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+.tooltip-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+
+.tooltip-speak-btn {
+    background: #4e73fa;
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tooltip-speak-btn:hover {
+    background: #3a5ad9;
+    transform: scale(1.1);
+}
+
+.tooltip-speak-btn:active {
+    transform: scale(0.95);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #4e73fa;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Hiệu ứng khi hover vào văn bản có thể dịch */
+.translatable {
+    text-decoration: underline dotted #4e73fa;
+    cursor: pointer;
+}
+
+.translatable:hover {
+    background-color: rgba(78, 115, 250, 0.1);
+}
