@@ -8,7 +8,8 @@
     "TotalItems": 15,
     "IconPath": "/images/icons/animals.png",
     "WordCount": 15,
-    "BackgroundColor": "#f8d7da"
+    "BackgroundColor": "#f8d7da",
+    "PrimaryWordTypes": ["n", "adj"]
   },
   {
     "ID_CD": 2,
@@ -19,7 +20,8 @@
     "TotalItems": 20,
     "IconPath": "/images/icons/food.png",
     "WordCount": 20,
-    "BackgroundColor": "#d1e7dd"
+    "BackgroundColor": "#d1e7dd",
+    "PrimaryWordTypes": ["n", "v"]
   },
   {
     "ID_CD": 3,
@@ -30,7 +32,8 @@
     "TotalItems": 18,
     "IconPath": "/images/icons/school.png",
     "WordCount": 18,
-    "BackgroundColor": "#cff4fc"
+    "BackgroundColor": "#cff4fc",
+    "PrimaryWordTypes": ["n", "v", "adj"]
   },
   {
     "ID_CD": 4,
@@ -41,7 +44,8 @@
     "TotalItems": 15,
     "IconPath": "/images/icons/sports.png",
     "WordCount": 15,
-    "BackgroundColor": "#e2f3ff"
+    "BackgroundColor": "#e2f3ff",
+    "PrimaryWordTypes": ["n", "v", "adj"]
   },
   {
     "ID_CD": 5,
@@ -52,7 +56,8 @@
     "TotalItems": 20,
     "IconPath": "/images/icons/jobs.png",
     "WordCount": 20,
-    "BackgroundColor": "#fff3cd"
+    "BackgroundColor": "#fff3cd",
+    "PrimaryWordTypes": ["n", "v"]
   },
   {
     "ID_CD": 6,
@@ -63,7 +68,8 @@
     "TotalItems": 12,
     "IconPath": "/images/icons/family.png",
     "WordCount": 12,
-    "BackgroundColor": "#ffebdd"
+    "BackgroundColor": "#ffebdd",
+    "PrimaryWordTypes": ["n", "adj", "pron"]
   },
   {
     "ID_CD": 7,
@@ -74,7 +80,8 @@
     "TotalItems": 25,
     "IconPath": "/images/icons/travel.png",
     "WordCount": 25,
-    "BackgroundColor": "#d4edda"
+    "BackgroundColor": "#d4edda",
+    "PrimaryWordTypes": ["n", "v", "adj"]
   },
   {
     "ID_CD": 8,
@@ -85,7 +92,8 @@
     "TotalItems": 22,
     "IconPath": "/images/icons/technology.png",
     "WordCount": 22,
-    "BackgroundColor": "#e8e8ff"
+    "BackgroundColor": "#e8e8ff",
+    "PrimaryWordTypes": ["n", "v", "adj"]
   },
   {
     "ID_CD": 9,
@@ -96,7 +104,8 @@
     "TotalItems": 18,
     "IconPath": "/images/icons/health.png",
     "WordCount": 18,
-    "BackgroundColor": "#ffeaea"
+    "BackgroundColor": "#ffeaea",
+    "PrimaryWordTypes": ["n", "v", "adj"]
   },
   {
     "ID_CD": 10,
@@ -107,7 +116,8 @@
     "TotalItems": 20,
     "IconPath": "/images/icons/environment.png",
     "WordCount": 20,
-    "BackgroundColor": "#c6f6d5"
+    "BackgroundColor": "#c6f6d5",
+    "PrimaryWordTypes": ["n", "adj", "v"]
   },
   {
     "ID_CD": 11,
@@ -118,7 +128,8 @@
     "TotalItems": 20,
     "IconPath": "/images/icons/business.png",
     "WordCount": 20,
-    "BackgroundColor": "#e6f2ff"
+    "BackgroundColor": "#e6f2ff",
+    "PrimaryWordTypes": ["n", "v", "adj"]
   },
   {
     "ID_CD": 12,
@@ -129,6 +140,67 @@
     "TotalItems": 20,
     "IconPath": "/images/icons/entertainment.png",
     "WordCount": 20,
-    "BackgroundColor": "#fff0f3"
+    "BackgroundColor": "#fff0f3",
+    "PrimaryWordTypes": ["n", "v", "adj"]
+  },
+  {
+    "ID_CD": 13,
+    "Name_CD": "Adverbs",
+    "Description_CD": "Từ vựng về trạng từ mô tả cách thức, thời gian, nơi chốn",
+    "Image_CD": "/images/topics/adverbs.jpg",
+    "Level": "A2",
+    "TotalItems": 15,
+    "IconPath": "/images/icons/adverbs.png",
+    "WordCount": 15,
+    "BackgroundColor": "#f3e8ff",
+    "PrimaryWordTypes": ["adv"]
+  },
+  {
+    "ID_CD": 14,
+    "Name_CD": "Prepositions",
+    "Description_CD": "Từ vựng về giới từ chỉ vị trí, thời gian và mối quan hệ",
+    "Image_CD": "/images/topics/prepositions.jpg",
+    "Level": "A1",
+    "TotalItems": 12,
+    "IconPath": "/images/icons/prepositions.png",
+    "WordCount": 12,
+    "BackgroundColor": "#e0f7fa",
+    "PrimaryWordTypes": ["prep"]
+  },
+  {
+    "ID_CD": 15,
+    "Name_CD": "Conjunctions",
+    "Description_CD": "Từ vựng về liên từ nối các mệnh đề và câu",
+    "Image_CD": "/images/topics/conjunctions.jpg",
+    "Level": "A2",
+    "TotalItems": 10,
+    "IconPath": "/images/icons/conjunctions.png",
+    "WordCount": 10,
+    "BackgroundColor": "#fce4ec",
+    "PrimaryWordTypes": ["conj"]
+  },
+  {
+    "ID_CD": 16,
+    "Name_CD": "Determiners",
+    "Description_CD": "Từ vựng về hạn định từ như mạo từ, lượng từ",
+    "Image_CD": "/images/topics/determiners.jpg",
+    "Level": "A1",
+    "TotalItems": 10,
+    "IconPath": "/images/icons/determiners.png",
+    "WordCount": 10,
+    "BackgroundColor": "#f1f8e9",
+    "PrimaryWordTypes": ["det"]
+  },
+  {
+    "ID_CD": 17,
+    "Name_CD": "Interjections",
+    "Description_CD": "Từ vựng về thán từ biểu đạt cảm xúc",
+    "Image_CD": "/images/topics/interjections.jpg",
+    "Level": "A1",
+    "TotalItems": 8,
+    "IconPath": "/images/icons/interjections.png",
+    "WordCount": 8,
+    "BackgroundColor": "#fffde7",
+    "PrimaryWordTypes": ["interj"]
   }
 ]

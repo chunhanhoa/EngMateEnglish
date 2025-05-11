@@ -36,11 +36,16 @@
                     </div>
 
                     <div class="row mb-4">
-                        <div class="col-md-5">
-                            <img src="@Model.Image_TV" alt="@Model.Word_TV" class="img-fluid rounded shadow-sm" 
-                                 onerror="this.src='/images/vocabulary/default.jpg';this.onerror='';" />
-                        </div>
-                        <div class="col-md-7">
+                        @{
+                            bool isNoImageTopic = new[] { 13, 14, 15, 16, 17 }.Contains(Model.ID_CD);
+                        }
+                        @if (!isNoImageTopic)
+                        {
+                            <div class="col-md-5">
+                                <img src="@Model.Image_TV" alt="@Model.Word_TV" class="img-fluid rounded shadow-sm" />
+                            </div>
+                        }
+                        <div class="@(isNoImageTopic ? "col-md-12" : "col-md-7")">
                             <h3 class="fw-bold mb-3">Nghĩa</h3>
                             <p class="lead mb-4">@Model.Meaning_TV</p>
 
@@ -58,7 +63,6 @@
                         </div>
                     </div>
 
-                    @* Add this in the actions section of your details page *@
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-action="Delete" asp-route-id="@Model.ID_TV" class="btn btn-danger">
@@ -174,7 +178,6 @@
             const audioBtn = document.querySelector('.audio-btn');
             if (audioBtn) {
                 audioBtn.addEventListener('click', function() {
-                    // In a real app, this would play the actual audio from Model.Audio_TV
                     const word = '@Model.Word_TV';
                     const audioUrl = 'https://ssl.gstatic.com/dictionary/static/sounds/oxford/' + word.toLowerCase() + '--_us_1.mp3';
                     const audio = new Audio(audioUrl);
@@ -205,24 +208,15 @@
                     correctCount++;
                 }
                 
-                // Kiểm tra câu hỏi về ví dụ
-                const selectedExample = document.querySelector('input[name="exampleQuiz"]:checked');
-                if (selectedExample && selectedExample.value === 'correct') {
-                    correctCount++;
-                }
-                
                 // Hiển thị kết quả
                 feedbackMessage.style.display = 'block';
                 
                 if (correctCount === 0) {
                     feedbackMessage.className = 'feedback-message mt-3 alert alert-danger';
                     feedbackMessage.textContent = 'Bạn chưa chọn đúng đáp án nào. Hãy thử lại!';
-                } else if (correctCount < totalQuestions) {
-                    feedbackMessage.className = 'feedback-message mt-3 alert alert-warning';
-                    feedbackMessage.textContent = `Bạn đã trả lời đúng ${correctCount}/${totalQuestions} câu hỏi. Hãy thử lại!`;
                 } else {
                     feedbackMessage.className = 'feedback-message mt-3 alert alert-success';
-                    feedbackMessage.textContent = 'Chúc mừng! Bạn đã trả lời đúng tất cả các câu hỏi.';
+                    feedbackMessage.textContent = 'Chúc mừng! Bạn đã trả lời đúng.';
                     
                     // Gọi hàm cập nhật tiến độ
                     markAsCompleted();
@@ -233,7 +227,6 @@
             });
             
             function highlightCorrectAnswers() {
-                // Đánh dấu đáp án đúng của câu hỏi từ vựng
                 document.querySelectorAll('input[name="quizAnswer"]').forEach(input => {
                     const label = input.nextElementSibling;
                     if (input.value === 'correct') {
@@ -242,86 +235,48 @@
                         label.classList.add('text-danger', 'text-decoration-line-through');
                     }
                 });
+            }
+
+            // Gửi cập nhật tiến độ khi hoàn thành từ vựng
+            function markAsCompleted() {
+                const vocabularyId = @Model.ID_TV;
+                const vocabularyTitle = "@Model.Word_TV";
+                const topicId = @Model.ID_CD;
+                const topicName = "@Model.TopicName";
                 
-                // Đánh dấu đáp án đúng của câu hỏi ví dụ
-                document.querySelectorAll('input[name="exampleQuiz"]').forEach(input => {
-                    const label = input.nextElementSibling;
-                    if (input.value === 'correct') {
-                        label.classList.add('text-success', 'fw-bold');
-                    } else if (input.checked) {
-                        label.classList.add('text-danger', 'text-decoration-line-through');
+                window.progressTracker.updateProgress({
+                    type: 'Vocabulary',
+                    title: vocabularyTitle,
+                    score: 100,
+                    pointsEarned: 5,
+                    topicId: topicId,
+                    topicName: topicName,
+                    completionPercentage: 100
+                }).then(data => {
+                    if (data.success) {
+                        showNotification('Đã cập nhật tiến độ học tập', 'success');
                     }
                 });
             }
-        });
-
-        // Xử lý nút yêu thích
-        document.querySelectorAll('.favorite-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = parseInt(this.dataset.id, 10);
+            
+            // Hiển thị thông báo
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type} notification-toast position-fixed`;
+                notification.style.top = '20px';
+                notification.style.right = '20px';
+                notification.style.zIndex = '9999';
+                notification.style.minWidth = '300px';
+                notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+                notification.innerHTML = message;
                 
-                window.progressTracker.toggleFavorite(id, 'Vocabulary')
-                    .then(data => {
-                        // Cập nhật giao diện
-                        if (data.success) {
-                            // Đổi icon nếu thành công
-                            const icon = this.querySelector('i');
-                            if (icon.classList.contains('far')) {
-                                icon.classList.replace('far', 'fas');
-                                this.setAttribute('title', 'Đã thêm vào yêu thích');
-                                showNotification('Đã thêm vào mục yêu thích', 'success');
-                            } else {
-                                icon.classList.replace('fas', 'far');
-                                this.setAttribute('title', 'Thêm vào yêu thích');
-                                showNotification('Đã xóa khỏi mục yêu thích', 'info');
-                            }
-                        }
-                    });
-            });
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
         });
-        
-        // Gửi cập nhật tiến độ khi hoàn thành từ vựng
-        function markAsCompleted() {
-            const vocabularyId = @Model.ID_TV;
-            const vocabularyTitle = "@Model.Word_TV";
-            const topicId = @Model.ID_CD;
-            const topicName = "@Model.TopicName";
-            
-            window.progressTracker.updateProgress({
-                type: 'Vocabulary',
-                title: vocabularyTitle,
-                score: 100,
-                pointsEarned: 5,
-                topicId: topicId,
-                topicName: topicName,
-                completionPercentage: 100
-            }).then(data => {
-                if (data.success) {
-                    showNotification('Đã cập nhật tiến độ học tập', 'success');
-                }
-            });
-        }
-        
-        // Hiển thị thông báo
-        function showNotification(message, type) {
-            // Tạo phần tử thông báo
-            const notification = document.createElement('div');
-            notification.className = `alert alert-${type} notification-toast position-fixed`;
-            notification.style.top = '20px';
-            notification.style.right = '20px';
-            notification.style.zIndex = '9999';
-            notification.style.minWidth = '300px';
-            notification.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
-            notification.innerHTML = message;
-            
-            // Thêm vào body
-            document.body.appendChild(notification);
-            
-            // Tự động xóa sau 3 giây
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
     </script>
 }
 
@@ -345,49 +300,5 @@
         // Đảm bảo không trùng với đáp án đúng
         var index = (seed * 31) % wrongOptions.Length;
         return wrongOptions[index];
-    }
-    
-    public string GetExampleTranslation(string example, string word, string meaning)
-    {
-        // Tạo bản dịch đơn giản dựa trên câu ví dụ
-        return example.Replace(word, meaning).Replace("I", "Tôi").Replace("my", "của tôi").Replace("you", "bạn")
-                      .Replace("we", "chúng tôi").Replace("they", "họ").Replace("he", "anh ấy").Replace("she", "cô ấy")
-                      .Replace("have", "có").Replace("has", "có").Replace("a", "một").Replace("the", "").Replace("an", "một")
-                      .Replace(".", ".");
-    }
-    
-    public string GetExampleWrongTranslation(string example, string word, string meaning, int seed)
-    {
-        // Tạo bản dịch sai bằng cách thay đổi một số từ trong bản dịch đúng
-        var correctTranslation = GetExampleTranslation(example, word, meaning);
-        
-        var replacements = new Dictionary<string, string[]> {
-            { "Tôi", new[] { "Chúng tôi", "Bạn", "Ai đó", "Họ" } },
-            { meaning, new[] { "chiếc xe", "cái ghế", "quyển sách", "bữa ăn", "ngôi nhà" } },
-            { "có", new[] { "thích", "mua", "mang", "đang tìm", "không thích" } }
-        };
-        
-        // Chọn từ để thay đổi
-        string originalWord = "";
-        string[] replacementOptions = null;
-        foreach (var kvp in replacements)
-        {
-            if (correctTranslation.Contains(kvp.Key))
-            {
-                originalWord = kvp.Key;
-                replacementOptions = kvp.Value;
-                break;
-            }
-        }
-        
-        if (!string.IsNullOrEmpty(originalWord) && replacementOptions != null)
-        {
-            var index = (seed * 31) % replacementOptions.Length;
-            return correctTranslation.Replace(originalWord, replacementOptions[index]);
-        }
-        
-        // Nếu không thay thế được thì thêm một từ vào đầu câu
-        var prefixes = new[] { "Hôm qua ", "Ngày mai ", "Có lẽ ", "Đôi khi ", "Hiếm khi " };
-        return prefixes[seed % prefixes.Length] + correctTranslation;
     }
 }

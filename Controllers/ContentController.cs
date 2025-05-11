@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using TiengAnh.Models;
 using TiengAnh.Repositories;
@@ -43,71 +44,89 @@ namespace TiengAnh.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddVocabulary(VocabularyModel model, IFormFile ImageFile)
+        public async Task<IActionResult> AddVocabulary(VocabularyModel model, IFormFile? ImageFile)
         {
+            // Remove any ModelState errors related to the ImageFile since it's optional
+            ModelState.Remove("ImageFile");
+
             try
             {
                 // Load topics for dropdown in case we need to return the view with errors
                 ViewBag.Topics = await _topicRepository.GetAllAsync();
 
+                // Remove Image_TV from ModelState to prevent validation errors if null
+                ModelState.Remove("Image_TV");
+
                 // Validate input
                 if (!ModelState.IsValid)
                 {
-                    TempData["ErrorMessage"] = "Vui lòng điền đầy đủ thông tin bắt buộc.";
+                    var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                    TempData["ErrorMessage"] = $"Vui lòng điền đầy đủ thông tin bắt buộc: {string.Join(", ", errors)}";
                     return View(model);
                 }
 
-                if (ImageFile == null || ImageFile.Length == 0)
+                // Process image if provided
+                if (ImageFile != null && ImageFile.Length > 0)
                 {
-                    TempData["ErrorMessage"] = "Vui lòng chọn hình ảnh minh họa.";
-                    return View(model);
-                }
+                    // Validate file size and extension
+                    if (ImageFile.Length > 2 * 1024 * 1024) // 2MB max
+                    {
+                        TempData["ErrorMessage"] = "Kích thước hình ảnh không được vượt quá 2MB.";
+                        return View(model);
+                    }
 
-                // Validate file size and extension
-                if (ImageFile.Length > 2 * 1024 * 1024) // 2MB max
-                {
-                    TempData["ErrorMessage"] = "Kích thước hình ảnh không được vượt quá 2MB.";
-                    return View(model);
-                }
+                    string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
+                    string fileExtension = Path.GetExtension(ImageFile.FileName).ToLowerInvariant();
+                    if (!allowedExtensions.Contains(fileExtension))
+                    {
+                        TempData["ErrorMessage"] = "Chỉ chấp nhận file hình ảnh JPG, JPEG hoặc PNG.";
+                        return View(model);
+                    }
 
-                string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
-                string fileExtension = Path.GetExtension(ImageFile.FileName).ToLowerInvariant();
-                if (!allowedExtensions.Contains(fileExtension))
+                    // Process image upload
+                    string topicFolderName = model.TopicName.ToLower().Replace(" & ", "_").Replace(" ", "_");
+                    string uploadFolder = Path.Combine(_hostEnvironment.WebRootPath, "images", "vocabulary", topicFolderName);
+
+                    // Create directory if it doesn't exist
+                    if (!Directory.Exists(uploadFolder))
+                    {
+                        Directory.CreateDirectory(uploadFolder);
+                    }
+
+                    // Create a unique filename
+                    string uniqueFileName = $"{model.Word_TV.ToLower()}{fileExtension}";
+                    string filePath = Path.Combine(uploadFolder, uniqueFileName);
+
+                    // Save the file
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await ImageFile.CopyToAsync(fileStream);
+                    }
+
+                    // Set the image path
+                    model.Image_TV = $"/images/vocabulary/{topicFolderName}/{uniqueFileName}";
+                }
+                else
                 {
-                    TempData["ErrorMessage"] = "Chỉ chấp nhận file hình ảnh JPG, JPEG hoặc PNG.";
-                    return View(model);
+                    // Set a default image path or leave it empty based on part of speech
+                    string[] noImageTypes = { "adv", "prep", "conj", "det", "interj" };
+                    if (noImageTypes.Contains(model.ID_LT))
+                    {
+                        model.Image_TV = null; // No image needed for these types
+                    }
+                    else
+                    {
+                        model.Image_TV = "/images/vocabulary/default.jpg"; // Default image for other types
+                    }
                 }
 
                 // Get the next ID
                 int nextId = await _vocabularyRepository.GetNextIdAsync();
                 model.ID_TV = nextId;
 
-                // Process image upload
-                string topicFolderName = model.TopicName.ToLower().Replace(" & ", "_").Replace(" ", "_");
-                string uploadFolder = Path.Combine(_hostEnvironment.WebRootPath, "images", "vocabulary", topicFolderName);
-                
-                // Create directory if it doesn't exist
-                if (!Directory.Exists(uploadFolder))
-                {
-                    Directory.CreateDirectory(uploadFolder);
-                }
-
-                // Create a unique filename
-                string uniqueFileName = $"{model.Word_TV.ToLower()}{fileExtension}";
-                string filePath = Path.Combine(uploadFolder, uniqueFileName);
-                
-                // Save the file
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await ImageFile.CopyToAsync(fileStream);
-                }
-
-                // Set the image path
-                model.Image_TV = $"/images/vocabulary/{topicFolderName}/{uniqueFileName}";
-                
                 // Set audio path (will be handled by text-to-speech on client side)
                 model.Audio_TV = $"/audio/{model.Word_TV.ToLower()}.mp3";
-                
+
                 // Initialize other properties
                 model.IsFavorite = false;
                 model.FavoriteByUsers = new List<string>();
@@ -125,6 +144,7 @@ namespace TiengAnh.Controllers
             }
         }
 
+        // Rest of the controller remains unchanged
         [HttpGet]
         public IActionResult AddGrammar()
         {
@@ -137,24 +157,16 @@ namespace TiengAnh.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Generate ID for new grammar entry
                 int nextId = await _grammarRepository.GetNextIdAsync();
                 grammar.ID_NP = nextId;
-                
-                // Set current date/time
                 grammar.TimeUpload_NP = DateTime.Now;
-                
-                // Initialize empty collections to avoid null reference errors
                 grammar.FavoriteByUsers = new List<string>();
-                
-                // Process YouTube URL if provided
+
                 if (!string.IsNullOrEmpty(grammar.VideoUrl_NP))
                 {
-                    // Convert watch URLs to embed format if needed
                     grammar.VideoUrl_NP = ConvertYouTubeUrlToEmbed(grammar.VideoUrl_NP);
                 }
-                
-                // Filter out any empty example entries
+
                 if (grammar.Examples != null)
                 {
                     grammar.Examples = grammar.Examples.Where(e => !string.IsNullOrWhiteSpace(e)).ToList();
@@ -163,7 +175,7 @@ namespace TiengAnh.Controllers
                 {
                     grammar.Examples = new List<string>();
                 }
-                
+
                 await _grammarRepository.CreateAsync(grammar);
                 TempData["SuccessMessage"] = "Grammar added successfully!";
                 return RedirectToAction("Index", "Grammar");
@@ -171,21 +183,17 @@ namespace TiengAnh.Controllers
             return View(grammar);
         }
 
-        // Helper method to convert YouTube URLs to embed format
         private string ConvertYouTubeUrlToEmbed(string url)
         {
             if (string.IsNullOrEmpty(url))
                 return url;
 
-            // Check if it's already an embed URL
             if (url.Contains("youtube.com/embed/"))
                 return url;
 
-            // Handle youtube.com/watch?v= format
             if (url.Contains("youtube.com/watch?v="))
             {
                 var videoId = url.Split("v=")[1];
-                // Remove any additional parameters
                 if (videoId.Contains('&'))
                 {
                     videoId = videoId.Split('&')[0];
@@ -193,11 +201,9 @@ namespace TiengAnh.Controllers
                 return $"https://www.youtube.com/embed/{videoId}";
             }
 
-            // Handle youtu.be/ format
             if (url.Contains("youtu.be/"))
             {
                 var videoId = url.Split("youtu.be/")[1];
-                // Remove any additional parameters
                 if (videoId.Contains('?'))
                 {
                     videoId = videoId.Split('?')[0];
@@ -205,7 +211,7 @@ namespace TiengAnh.Controllers
                 return $"https://www.youtube.com/embed/{videoId}";
             }
 
-            return url; // Return as is if no pattern matched
+            return url;
         }
     }
 }

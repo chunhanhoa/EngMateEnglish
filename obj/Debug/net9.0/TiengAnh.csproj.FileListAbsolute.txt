@@ -1378,7 +1378,6 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\n
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\r0oddzukdf-0h7hwahalg.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\4jupqwyat5-0qbapc0tid.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\sk4vshlr8d-4a39jewb29.gz
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\iijk969xo7-9jw33jrxfu.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\kubyan0w2r-4uq40js17q.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\rx9f2lwypc-9lkn66e9uq.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\47u2crj2zu-18n24az4tj.gz
@@ -1519,7 +1518,6 @@ C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\kgapm5glef-5ipweew5f
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\r0oddzukdf-0h7hwahalg.gz
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\4jupqwyat5-0qbapc0tid.gz
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\sk4vshlr8d-4a39jewb29.gz
-C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\iijk969xo7-9jw33jrxfu.gz
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\kubyan0w2r-4uq40js17q.gz
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\rx9f2lwypc-9lkn66e9uq.gz
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\47u2crj2zu-18n24az4tj.gz
@@ -1611,5 +1609,7 @@ C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\TiengAnh.genruntimeconfig.cache
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\ref\TiengAnh.dll
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\pkrr831ylm-qrq51cjkgl.gz
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
+C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\iijk969xo7-m7dv3dvddq.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\pkrr831ylm-qrq51cjkgl.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\iijk969xo7-m7dv3dvddq.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz

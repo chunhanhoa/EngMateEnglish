@@ -81,6 +81,10 @@
       "PackagePath": "staticwebassets\\images\\avatar\\681a1bb4300410deda9f9aab_20250506215754.jpeg"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250509104556.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\681d7a2dca08adcc3adf6062_20250509104556.jpeg"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\default-avatar.png",
       "PackagePath": "staticwebassets\\images\\default-avatar.png"
     },
@@ -93,12 +97,24 @@
       "PackagePath": "staticwebassets\\images\\grammar-hero.png"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\adverbs.png",
+      "PackagePath": "staticwebassets\\images\\icons\\adverbs.png"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\animals.png",
       "PackagePath": "staticwebassets\\images\\icons\\animals.png"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\business.png",
       "PackagePath": "staticwebassets\\images\\icons\\business.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\conjunctions.png",
+      "PackagePath": "staticwebassets\\images\\icons\\conjunctions.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\determiners.png",
+      "PackagePath": "staticwebassets\\images\\icons\\determiners.png"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\entertainment.png",
@@ -121,8 +137,16 @@
       "PackagePath": "staticwebassets\\images\\icons\\health.png"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\interjections.png",
+      "PackagePath": "staticwebassets\\images\\icons\\interjections.png"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\jobs.png",
       "PackagePath": "staticwebassets\\images\\icons\\jobs.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\prepositions.png",
+      "PackagePath": "staticwebassets\\images\\icons\\prepositions.png"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\icons\\school.png",
@@ -149,12 +173,24 @@
       "PackagePath": "staticwebassets\\images\\test-hero.png"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\adverbs.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\adverbs.jpg"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\animals.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\animals.jpg"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\business.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\business.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\conjunctions.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\conjunctions.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\determiners.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\determiners.jpg"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\entertainment.jpg",
@@ -177,8 +213,16 @@
       "PackagePath": "staticwebassets\\images\\topics\\health.jpg"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\interjections.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\interjections.jpg"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\jobs.jpg",
       "PackagePath": "staticwebassets\\images\\topics\\jobs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\prepositions.jpg",
+      "PackagePath": "staticwebassets\\images\\topics\\prepositions.jpg"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\topics\\school.jpg",
@@ -243,6 +287,10 @@
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\kangaroo.jpg",
       "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\kangaroo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\koala.jpg",
+      "PackagePath": "staticwebassets\\images\\vocabulary\\animals\\koala.jpg"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\vocabulary\\animals\\lion.jpg",
