@@ -957,7 +957,6 @@ D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0
 D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\r0oddzukdf-0h7hwahalg.gz
 D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\4jupqwyat5-0qbapc0tid.gz
 D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\sk4vshlr8d-4a39jewb29.gz
-D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\iijk969xo7-9jw33jrxfu.gz
 D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\rx9f2lwypc-9lkn66e9uq.gz
 D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\47u2crj2zu-18n24az4tj.gz
 D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\lbem10hklu-a1eznoi3zd.gz
@@ -1610,6 +1609,9 @@ C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\ref\TiengAnh.dll
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\pkrr831ylm-qrq51cjkgl.gz
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
 C:\Users\ASUS\Downloads\EngMate\obj\Debug\net9.0\compressed\iijk969xo7-m7dv3dvddq.gz
+D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\pkrr831ylm-qrq51cjkgl.gz
+D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\iijk969xo7-m7dv3dvddq.gz
+D:\3_Study_Everything_43GB\1_Devoloper_Newbie_3GB\1_My_GitHub\2_ALL_Repository\0_DACS_WEB_TA\EngMate\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\pkrr831ylm-qrq51cjkgl.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\iijk969xo7-m7dv3dvddq.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz

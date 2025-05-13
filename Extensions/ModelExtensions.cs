@@ -15,6 +15,41 @@ namespace TiengAnh.Extensions
             return exercise.Answer_BT == option;
         }
         
+        // Enhanced method to check if an answer is correct with better handling of different formats
+        public static bool IsCorrectAnswerImproved(this ExerciseModel exercise, string selectedOption)
+        {
+            // Null safety check
+            if (string.IsNullOrEmpty(exercise.Answer_BT) || string.IsNullOrEmpty(selectedOption))
+                return false;
+            
+            string correctAnswer = exercise.Answer_BT.Trim();
+            selectedOption = selectedOption.Trim();
+            
+            // Direct match (case insensitive)
+            if (string.Equals(correctAnswer, selectedOption, StringComparison.OrdinalIgnoreCase))
+                return true;
+            
+            // Check if correctAnswer is one of A, B, C, D and matches the selectedOption
+            if (new[] { "A", "B", "C", "D" }.Contains(correctAnswer, StringComparer.OrdinalIgnoreCase) && 
+                string.Equals(correctAnswer, selectedOption, StringComparison.OrdinalIgnoreCase))
+                return true;
+            
+            // Check if correctAnswer matches one of the option contents
+            switch (selectedOption.ToUpper())
+            {
+                case "A":
+                    return string.Equals(exercise.Option_A, correctAnswer, StringComparison.OrdinalIgnoreCase);
+                case "B":
+                    return string.Equals(exercise.Option_B, correctAnswer, StringComparison.OrdinalIgnoreCase);
+                case "C":
+                    return string.Equals(exercise.Option_C, correctAnswer, StringComparison.OrdinalIgnoreCase);
+                case "D":
+                    return string.Equals(exercise.Option_D, correctAnswer, StringComparison.OrdinalIgnoreCase);
+                default:
+                    return false;
+            }
+        }
+        
         // Phương thức này chuyển đổi char thành string
         public static string ToOptionString(this char c)
         {

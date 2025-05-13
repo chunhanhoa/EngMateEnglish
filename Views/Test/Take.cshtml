@@ -24,7 +24,7 @@
 
             <!-- Test content -->
             <div class="card shadow-sm">
-                <div class="card-body">
+                <div class="card-body p-4">
                     <div id="test-progress" class="mb-4">
                         <div class="progress" style="height: 10px;">
                             <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -42,18 +42,20 @@
                             var questionNumber = i + 1;
                             
                             <div class="test-question @(questionNumber > 1 ? "d-none" : "")" id="question-@questionNumber">
-                                <h5 class="card-title">Câu @questionNumber: @question.QuestionText</h5>
-                                
-                                <div class="test-options mt-4">
-                                    @for (int j = 0; j < question.Options.Count; j++)
-                                    {
-                                        <div class="form-check test-option mb-3">
-                                            <input class="form-check-input" type="radio" name="question-@questionNumber" id="q@(questionNumber)-option@(j)" value="@j">
-                                            <label class="form-check-label" for="q@(questionNumber)-option@(j)">
-                                                @question.Options[j]
-                                            </label>
-                                        </div>
-                                    }
+                                <div class="question-container p-4 mb-4 bg-light rounded">
+                                    <h5 class="card-title mb-4 fw-bold">Câu @questionNumber: @question.QuestionText</h5>
+                                    
+                                    <div class="test-options">
+                                        @for (int j = 0; j < question.Options.Count; j++)
+                                        {
+                                            <div class="form-check test-option mb-3 p-3 border rounded hover-option">
+                                                <input class="form-check-input" type="radio" name="question-@questionNumber" id="q@(questionNumber)-option@(j)" value="@j">
+                                                <label class="form-check-label w-100 ms-2" for="q@(questionNumber)-option@(j)">
+                                                    @question.Options[j]
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         }
@@ -64,9 +66,6 @@
                             </button>
                             <button type="button" id="nextBtn" class="btn btn-primary">
                                 Câu tiếp theo <i class="bi bi-arrow-right"></i>
-                            </button>
-                            <button type="button" id="submitBtn" class="btn btn-success d-none">
-                                Nộp bài
                             </button>
                         </div>
                     </form>
@@ -113,6 +112,68 @@
         </div>
     </div>
 </div>
+
+<!-- Custom Notification -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080">
+    <div id="notification-toast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="bi bi-exclamation-circle me-2"></i>
+                <span id="notification-message">Thông báo</span>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Make option areas appear clickable */
+    .test-option {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        padding: 12px !important;
+        border-color: #dee2e6 !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .test-option:hover {
+        background-color: rgba(13, 110, 253, 0.1);
+        border-color: #b8daff !important;
+        transform: translateY(-2px);
+    }
+    
+    .test-option .form-check-input:checked ~ .form-check-label {
+        font-weight: 500;
+    }
+    
+    .hover-option {
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .question-container {
+        border-left: 4px solid #0d6efd;
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+        background-color: #f8f9fa !important;
+    }
+    
+    .form-check-input {
+        width: 1.2em;
+        height: 1.2em;
+        margin-top: 0.25em;
+    }
+    
+    .form-check-label {
+        cursor: pointer;
+        padding: 4px 0;
+        font-size: 1.05rem;
+    }
+    
+    .card-title {
+        color: #0d6efd;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 0.75rem;
+    }
+</style>
 
 @section Scripts {
     <script>
@@ -182,12 +243,17 @@
                 
                 // Get answers
                 const answers = [];
+                const userAnswers = [];
                 for (let i = 1; i <= totalQuestions; i++) {
                     const selectedOption = $(`input[name="question-${i}"]:checked`).val();
+                    const selectedValue = selectedOption !== undefined ? parseInt(selectedOption) : -1;
+                    
                     answers.push({
                         questionId: i,
-                        selectedOption: selectedOption !== undefined ? parseInt(selectedOption) : -1
+                        selectedOption: selectedValue
                     });
+                    
+                    userAnswers.push(selectedValue);
                 }
                 
                 // Calculate score
@@ -201,18 +267,83 @@
                 });
                 
                 const score = Math.round((correctCount / totalQuestions) * 100);
+                const timeUsed = @Model.Duration * 60 - timeLeft;
+                const timeTaken = formatTime(timeUsed);
                 
-                // Show result
-                alert(`Điểm của bạn: ${score}% (${correctCount}/${totalQuestions} câu đúng)`);
+                // Prepare submission data
+                const submissionData = {
+                    testId: '@Model.Id',
+                    userAnswers: userAnswers,
+                    score: score,
+                    correctCount: correctCount,
+                    timeUsed: timeUsed,
+                    timeTaken: timeTaken
+                };
                 
-                // Redirect back to tests page
-                window.location.href = '/Test';
+                // Disable buttons during submission
+                $('#finalSubmitBtn, #submitBtn').prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...');
+                
+                // Submit via AJAX to server
+                $.ajax({
+                    url: '@Url.Action("SubmitTest", "Test")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(submissionData),
+                    success: function(response) {
+                        // Redirect to results page
+                        window.location.href = response.redirectUrl;
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error submitting test:', error);
+                        showNotification('Có lỗi xảy ra khi nộp bài. Vui lòng thử lại.', 'danger');
+                        $('#finalSubmitBtn, #submitBtn').prop('disabled', false).html('<i class="bi bi-check2-circle"></i> Nộp bài kiểm tra');
+                    }
+                });
+            }
+            
+            // Helper function to format time
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            // Function to show notification
+            function showNotification(message, type = 'danger') {
+                // Set message
+                $('#notification-message').text(message);
+                
+                // Set type (change background color)
+                const toast = $('#notification-toast');
+                toast.removeClass('bg-danger bg-success bg-warning bg-info');
+                toast.addClass(`bg-${type}`);
+                
+                // Create Bootstrap toast instance if not already created
+                const toastInstance = new bootstrap.Toast(document.getElementById('notification-toast'), {
+                    delay: 5000 // Auto hide after 5 seconds
+                });
+                
+                // Show toast
+                toastInstance.show();
             }
 
             // Initialize test
             startTimer();
             showQuestion(1);
             updateProgressBar();
+
+            // Make the entire option container clickable
+            $(document).on('click', '.test-option', function(e) {
+                // Don't trigger if clicked directly on the radio button (it already handles that)
+                if (e.target.type !== 'radio') {
+                    // Find the radio input inside this option container and click it
+                    const radioInput = $(this).find('input[type="radio"]');
+                    radioInput.prop('checked', true);
+                    
+                    // Trigger the change event to update the UI
+                    radioInput.trigger('change');
+                }
+            });
 
             // Event handlers
             $('.test-option input').on('change', function() {
@@ -237,7 +368,30 @@
                 }
             });
             
-            $('#submitBtn, #finalSubmitBtn').on('click', function() {
+            // Separate handlers for submit buttons
+            $('#submitBtn').on('click', function() {
+                if (confirm('Bạn có chắc muốn nộp bài?')) {
+                    submitTest();
+                }
+            });
+            
+            $('#finalSubmitBtn').on('click', function() {
+                // Check if all questions have been answered
+                if (answeredQuestions.size < totalQuestions) {
+                    // Some questions are still unanswered
+                    showNotification('Vui lòng trả lời tất cả các câu hỏi.');
+                    
+                    // Find and navigate to the first unanswered question
+                    for (let i = 1; i <= totalQuestions; i++) {
+                        if (!answeredQuestions.has(i)) {
+                            showQuestion(i);
+                            break;
+                        }
+                    }
+                    return;
+                }
+                
+                // All questions answered, ask for confirmation
                 if (confirm('Bạn có chắc muốn nộp bài?')) {
                     submitTest();
                 }

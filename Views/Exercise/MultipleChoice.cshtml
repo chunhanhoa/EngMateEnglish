@@ -1,433 +1,379 @@
 @using TiengAnh.Extensions
-@model ExerciseModel
+@model TiengAnh.Models.ExerciseModel
 @{
-    ViewData["Title"] = "Trắc nghiệm - " + ViewBag.Topic?.Name_CD ?? "Chủ đề";
-    var topic = ViewBag.Topic as TopicModel;
+    ViewData["Title"] = "Bài tập trắc nghiệm";
+    var topic = ViewBag.Topic as TiengAnh.Models.TopicModel;
+
+    // Get progress information
+    int currentQuestion = ViewBag.CurrentQuestionNumber ?? 1;
+    int totalQuestions = ViewBag.TotalQuestions ?? 1;
+    int progressPercentage = (int)Math.Round((double)currentQuestion / totalQuestions * 100);
+
+    // Optional navigation IDs
+    int? previousId = ViewBag.PreviousExerciseId;
+    int? nextId = ViewBag.NextExerciseId;
+    bool isLastExercise = ViewBag.IsLastExercise ?? false;
+    int topicId = topic?.ID_CD ?? 0;
 }
 
-<!-- Header Section -->
-<div class="container mt-5">
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })">@(topic?.Name_CD ?? "Chủ đề")</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Trắc nghiệm</li>
-                </ol>
-            </nav>
+<div class="container mt-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })">@topic?.Name_CD</a></li>
+            <li class="breadcrumb-item active">Trắc nghiệm</li>
+        </ol>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span>Câu hỏi @currentQuestion/@totalQuestions</span>
+            <span>@progressPercentage%</span>
         </div>
-    </div>
-    
-    <!-- Title and Instructions -->
-    <div class="row mb-5">
-        <div class="col-md-8">
-            <h1 class="display-5 fw-bold mb-3">Trắc nghiệm: @(topic?.Name_CD ?? "Chủ đề")</h1>
-            <p class="lead">Chọn đáp án đúng cho câu hỏi bên dưới.</p>
-            <div class="card bg-light mb-4">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="fas fa-lightbulb text-warning me-2"></i>Hướng dẫn</h5>
-                    <ul class="mb-0">
-                        <li>Đọc kỹ câu hỏi và các lựa chọn</li>
-                        <li>Mỗi câu hỏi chỉ có một đáp án đúng</li>
-                        <li>Chọn đáp án bạn cho là đúng</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 text-end">
-            <div class="progress-container bg-light p-3 rounded shadow-sm">
-                <h5 class="mb-3">Tiến độ</h5>
-                <div class="progress mb-2" style="height: 25px;">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar">
-                        0%
-                    </div>
-                </div>
-                <p class="text-center mb-0">
-                    <span id="answered-count">0</span>/1 câu
-                </p>
-            </div>
+        <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" 
+                 style="width: @progressPercentage%;" 
+                 aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </div>
 
-    <!-- Quiz Questions -->
-    <div class="row">
-        <div class="col-lg-8">
-            <form id="quiz-form">
-                <div class="card border-0 shadow-sm mb-4 question-card" id="question-1" data-question-id="@Model.ID_BT">
-                    <div class="card-body p-4">
-                        <h4 class="fw-bold mb-4">Câu hỏi: @Model.Question_BT</h4>
-                        
-                        <div class="options-list">
-                            <div class="quiz-option" data-answer="A" data-correct="@(Model.Option_A == Model.Answer_BT ? "true" : "false")">
-                                <span>A. @Model.Option_A</span>
-                            </div>
-                            <div class="quiz-option" data-answer="B" data-correct="@(Model.Option_B == Model.Answer_BT ? "true" : "false")">
-                                <span>B. @Model.Option_B</span>
-                            </div>
-                            <div class="quiz-option" data-answer="C" data-correct="@(Model.Option_C == Model.Answer_BT ? "true" : "false")">
-                                <span>C. @Model.Option_C</span>
-                            </div>
-                            <div class="quiz-option" data-answer="D" data-correct="@(Model.Option_D == Model.Answer_BT ? "true" : "false")">
-                                <span>D. @Model.Option_D</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Debug info -->
-                        <div class="debug-info mt-2" style="display: none;">
-                            <p class="text-muted small">Debug: CorrectAnswer = "@Model.CorrectAnswer", Answer_BT = "@Model.Answer_BT"</p>
-                        </div>
-                        
-                        <div class="explanation mt-4 p-3 rounded" style="display: none; background-color: #f8f9fa;">
-                            <p class="mb-0">
-                                <strong>Giải thích:</strong> @Model.Explanation_BT
-                            </p>
-                        </div>
+    <!-- Exercise Content -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white py-3">
+            <h5 class="mb-0 ps-3">Câu hỏi @currentQuestion: @Model.Question_BT</h5>
+        </div>
+        <div class="card-body p-4">
+            <form id="exerciseForm">
+                <div class="mb-4 px-2">
+                    <div class="form-check mb-3 p-3 rounded hover-option">
+                        <input class="form-check-input" type="radio" name="answer" id="optionA" value="A">
+                        <label class="form-check-label ms-2" for="optionA">
+                            A. @Model.Option_A
+                        </label>
+                    </div>
+                    <div class="form-check mb-3 p-3 rounded hover-option">
+                        <input class="form-check-input" type="radio" name="answer" id="optionB" value="B">
+                        <label class="form-check-label ms-2" for="optionB">
+                            B. @Model.Option_B
+                        </label>
+                    </div>
+                    <div class="form-check mb-3 p-3 rounded hover-option">
+                        <input class="form-check-input" type="radio" name="answer" id="optionC" value="C">
+                        <label class="form-check-label ms-2" for="optionC">
+                            C. @Model.Option_C
+                        </label>
+                    </div>
+                    <div class="form-check mb-3 p-3 rounded hover-option">
+                        <input class="form-check-input" type="radio" name="answer" id="optionD" value="D">
+                        <label class="form-check-label ms-2" for="optionD">
+                            D. @Model.Option_D
+                        </label>
                     </div>
                 </div>
-                
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button type="button" class="btn btn-primary" id="check-answers-btn">
-                        <i class="fas fa-check me-1"></i> Kiểm tra
-                    </button>
-                    @if (Model.ID_BT > 1)
+
+                <div id="resultFeedback" class="alert d-none mb-4 mx-2"></div>
+
+                <div class="d-flex justify-content-between px-2">
+                    @if (previousId.HasValue)
                     {
-                        <button type="button" class="btn btn-outline-secondary" id="prev-exercise-btn">
-                            <i class="fas fa-arrow-left me-1"></i> Bài trước
-                        </button>
+                        <a href="@Url.Action("MultipleChoice", "Exercise", new { id = previousId })" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Câu trước
+                        </a>
                     }
-                    @if (Model.ID_BT < 36)
+                    else
                     {
-                        <button type="button" class="btn btn-outline-secondary" id="next-exercise-btn">
-                            <i class="fas fa-arrow-right me-1"></i> Bài tiếp theo
-                        </button>
+                        <div></div> <!-- Empty div to maintain flex layout -->
                     }
+
+                    <button type="button" id="checkAnswer" class="btn btn-primary">Kiểm tra</button>
+
+                    <div id="nextButtonContainer">
+                        @if (nextId.HasValue)
+                        {
+                            <a href="@Url.Action("MultipleChoice", "Exercise", new { id = nextId })" id="nextButton" class="btn btn-secondary" style="display: none;">
+                                Câu tiếp <i class="fas fa-arrow-right"></i>
+                            </a>
+                        }
+                        else if (isLastExercise)
+                        {
+                            <a href="#" id="showResultsButton" class="btn btn-success" style="display: none;">
+                                Xem kết quả <i class="fas fa-check"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })" id="finishButton" class="btn btn-success" style="display: none;">
+                                Hoàn thành <i class="fas fa-check"></i>
+                            </a>
+                        }
+                    </div>
                 </div>
             </form>
-        </div>
-        
-        <div class="col-lg-4">
-            <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
-                <div class="card-body p-4">
-                    <h5 class="card-title mb-3">Thông tin</h5>
-                    
-                    <p>Mã bài tập: <strong>#@Model.ID_BT</strong></p>
-                    <p>Trình độ: <span class="badge level-badge level-@Model.Level">@Model.Level</span></p>
-                    
-                    <hr />
-                    
-                    <div class="d-grid gap-2">
-                        <a href="@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })" class="btn btn-outline-primary">
-                            <i class="fas fa-arrow-left me-1"></i> Về trang chủ đề
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Results Modal -->
-    <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultsModalLabel">Kết quả bài tập</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="text-center mb-4">
-                        <div class="score-circle mb-3">
-                            <span id="score-percentage">0%</span>
-                        </div>
-                        <h4><span id="score-correct">0</span>/1 câu đúng</h4>
-                        <p id="score-message">Hãy cố gắng hơn!</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="continue-btn">Tiếp tục</button>
-                    <button type="button" class="btn btn-success" id="retry-btn">Làm lại</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
-@section Styles {
-    <style>
-        .level-badge {
-            padding: 0.25rem 0.5rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-        }
-        
-        .level-A1, .level-A2 { background-color: #e9f5ff; color: #0d6efd; }
-        .level-B1, .level-B2 { background-color: #e3f9e5; color: #198754; }
-        .level-C1, .level-C2 { background-color: #ffe8e8; color: #dc3545; }
-        
-        .quiz-option {
-            padding: 15px;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .quiz-option:hover {
-            background-color: #f8f9fa;
-        }
-        
-        .quiz-option.selected {
-            border-color: #0d6efd;
-            background-color: rgba(13, 110, 253, 0.1);
-        }
-        
-        .quiz-option.correct {
-            border-color: #198754;
-            background-color: rgba(25, 135, 84, 0.1);
-        }
-        
-        .quiz-option.incorrect {
-            border-color: #dc3545;
-            background-color: rgba(220, 53, 69, 0.1);
-        }
-        
-        .correct-indicator {
-            margin-left: 5px;
-            font-weight: bold;
-        }
-        
-        .question-card {
-            display: none;
-        }
-        
-        .question-card:first-child {
-            display: block;
-        }
-        
-        .question-nav-btn.answered {
-            background-color: #0d6efd;
-            color: white;
-        }
-        
-        .score-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            border: 6px solid #0d6efd;
-        }
-        
-        .score-circle span {
-            font-size: 2rem;
-            font-weight: bold;
-        }
-        
-        #back-to-top-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: none;
-            z-index: 99;
-        }
-    </style>
-}
-
 @section Scripts {
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Variables
-            const quizForm = document.getElementById('quiz-form');
-            const options = document.querySelectorAll('.quiz-option');
-            const checkBtn = document.getElementById('check-answers-btn');
-            const retryBtn = document.getElementById('retry-btn');
-            const continueBtn = document.getElementById('continue-btn');
-            const nextExerciseBtn = document.getElementById('next-exercise-btn');
-            const progressBar = document.getElementById('progress-bar');
-            const answeredCount = document.getElementById('answered-count');
-            const explanations = document.querySelectorAll('.explanation');
-            const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
-            const prevExerciseBtn = document.getElementById('prev-exercise-btn');
-            const debugInfo = document.querySelector('.debug-info');
-            
-            let selectedOption = null;
-            let correct = false;
-            let answered = false;
-            let startTime = new Date();
-            
-            // Function to reset UI
-            function resetUI() {
-                options.forEach(opt => {
-                    opt.classList.remove('selected', 'correct', 'incorrect');
-                    const indicator = opt.querySelector('.correct-indicator');
-                    if (indicator) {
-                        indicator.remove();
-                    }
-                });
-                explanations.forEach(exp => exp.style.display = 'none');
-                selectedOption = null;
-                answered = false;
-                startTime = new Date();
-                updateProgress();
+        $(document).ready(function() {
+            // Store exercise answers and progress
+            if (!localStorage.getItem('exerciseAnswers')) {
+                localStorage.setItem('exerciseAnswers', JSON.stringify({
+                    topicId: @topicId,
+                    correctCount: 0,
+                    totalCount: 0,
+                    answers: {}
+                }));
             }
             
-            // Toggle debug info
-            if (prevExerciseBtn) {
-                prevExerciseBtn.addEventListener('click', function() {
-                    const currentId = @Model.ID_BT;
-                    const prevId = currentId - 1;
-                    window.location.href = `/Exercise/MultipleChoice/${prevId}`;
-                });
+            // Load previous answers for this topic
+            let exerciseData = JSON.parse(localStorage.getItem('exerciseAnswers'));
+            
+            // Reset if we're starting a new topic
+            if (exerciseData.topicId !== @topicId) {
+                exerciseData = {
+                    topicId: @topicId,
+                    correctCount: 0,
+                    totalCount: 0,
+                    answers: {}
+                };
+                localStorage.setItem('exerciseAnswers', JSON.stringify(exerciseData));
             }
             
-            // Event listeners for options
-            options.forEach(option => {
-                option.addEventListener('click', function() {
-                    if (answered) return;
-                    options.forEach(opt => opt.classList.remove('selected'));
-                    this.classList.add('selected');
-                    selectedOption = this;
-                    updateProgress();
-                });
-            });
+            // The correct answer from the model - ensure it's normalized
+            const correctAnswerRaw = "@Model.Answer_BT";
+            const questionId = @Model.ID_BT;
             
-            // Check answers button
-            checkBtn.addEventListener('click', function() {
-                if (!selectedOption) {
-                    alert('Vui lòng chọn một đáp án!');
+            // Debug information to verify what the correct answer is
+            console.log("Correct answer from model:", correctAnswerRaw);
+            
+            // Add CSS classes to highlight options better
+            $(".form-check-label").addClass("option-label");
+            
+            // Check if this question has already been answered
+            if (exerciseData.answers[questionId]) {
+                const savedAnswer = exerciseData.answers[questionId];
+                $(`#option${savedAnswer.selected}`).prop('checked', true);
+                
+                // Mark the options
+                markOptions(savedAnswer.selected, correctAnswerRaw);
+                
+                const resultDiv = $("#resultFeedback");
+                if (savedAnswer.isCorrect) {
+                    resultDiv.removeClass("d-none alert-danger").addClass("alert-success");
+                    resultDiv.html("<strong>Chính xác!</strong> " + (
+                        "@(!string.IsNullOrEmpty(Model.Explanation_BT) ? Model.Explanation_BT : "Bạn đã trả lời đúng.")"
+                    ));
+                } else {
+                    resultDiv.removeClass("d-none alert-success").addClass("alert-danger");
+                    resultDiv.html("<strong>Chưa chính xác!</strong> " + 
+                        "Đáp án đúng là: <strong>" + correctAnswerRaw + "</strong>. " + 
+                        "@(!string.IsNullOrEmpty(Model.Explanation_BT) ? Model.Explanation_BT : "")"
+                    );
+                }
+                
+                // Show the next button
+                $("#checkAnswer").prop('disabled', true);
+                $("#nextButton, #showResultsButton, #finishButton").show();
+            }
+            
+            $("#checkAnswer").click(function() {
+                const selectedAnswer = $("input[name='answer']:checked").val();
+                if (!selectedAnswer) {
+                    alert("Vui lòng chọn một đáp án!");
                     return;
                 }
                 
-                answered = true;
-                const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
-                correct = isCorrect;
+                console.log("Selected answer:", selectedAnswer);
                 
-                let correctOption = null;
-                options.forEach(opt => {
-                    if (opt.getAttribute('data-correct') === 'true') {
-                        correctOption = opt;
-                    }
-                });
+                // Check if the selected answer is correct
+                const isCorrect = isAnswerCorrect(selectedAnswer, correctAnswerRaw);
+                console.log("Is correct:", isCorrect);
+                
+                // Mark the options visually
+                markOptions(selectedAnswer, correctAnswerRaw);
+                
+                const resultDiv = $("#resultFeedback");
                 
                 if (isCorrect) {
-                    selectedOption.classList.add('correct');
+                    resultDiv.removeClass("d-none alert-danger").addClass("alert-success");
+                    resultDiv.html("<strong>Chính xác!</strong> " + (
+                        "@(!string.IsNullOrEmpty(Model.Explanation_BT) ? Model.Explanation_BT : "Bạn đã trả lời đúng.")"
+                    ));
                 } else {
-                    selectedOption.classList.add('incorrect');
-                    if (correctOption) {
-                        correctOption.classList.add('correct');
-                        const indicator = document.createElement('span');
-                        indicator.className = 'correct-indicator';
-                        indicator.innerHTML = ' <i class="fas fa-check text-success"></i>';
-                        correctOption.querySelector('span').appendChild(indicator);
+                    resultDiv.removeClass("d-none alert-success").addClass("alert-danger");
+                    resultDiv.html("<strong>Chưa chính xác!</strong> " + 
+                        "Đáp án đúng là: <strong>" + correctAnswerRaw + "</strong>. " + 
+                        "@(!string.IsNullOrEmpty(Model.Explanation_BT) ? Model.Explanation_BT : "")"
+                    );
+                }
+                
+                // Update the local storage with this answer
+                exerciseData = JSON.parse(localStorage.getItem('exerciseAnswers'));
+                
+                // Only count this question if it hasn't been answered before
+                if (!exerciseData.answers[questionId]) {
+                    exerciseData.totalCount++;
+                    if (isCorrect) {
+                        exerciseData.correctCount++;
                     }
                 }
                 
-                explanations.forEach(exp => exp.style.display = 'block');
-                
-                const endTime = new Date();
-                const timeSpentInSeconds = Math.round((endTime - startTime) / 1000);
-                
-                saveResults(correct ? 1 : 0, 1, timeSpentInSeconds);
-                
-                document.getElementById('score-percentage').textContent = correct ? '100%' : '0%';
-                document.getElementById('score-correct').textContent = correct ? '1' : '0';
-                document.getElementById('score-message').textContent = correct ? 'Tuyệt vời!' : 'Hãy cố gắng hơn!';
-                resultsModal.show();
-            });
-            
-            // Next exercise button
-            if (nextExerciseBtn) {
-                nextExerciseBtn.addEventListener('click', function() {
-                    const currentId = @Model.ID_BT;
-                    const nextId = currentId + 1;
-                    window.location.href = `/Exercise/MultipleChoice/${nextId}`;
-                });
-            }
-            
-            // Retry button
-            retryBtn.addEventListener('click', function() {
-                resetUI();
-                resultsModal.hide();
-            });
-            
-            // Continue button
-            continueBtn.addEventListener('click', function() {
-                if (correct) {
-                    const currentId = @Model.ID_BT;
-                    if (currentId < 36) {
-                        const nextId = currentId + 1;
-                        window.location.href = `/Exercise/MultipleChoice/${nextId}`;
-                    } else {
-                        window.location.href = `@Url.Action("Topic", "Exercise", new { id = topic?.ID_CD })`;
-                    }
-                } else {
-                    resetUI();
-                }
-            });
-            
-            // Handle modal close via X button
-            document.getElementById('resultsModal').addEventListener('hidden.bs.modal', function() {
-                resetUI();
-            });
-            
-            // Back to top button
-            window.addEventListener('scroll', function() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    createBackToTopButton();
-                }
-            });
-            
-            // Functions
-            function updateProgress() {
-                const selectedCount = selectedOption ? 1 : 0;
-                const percentage = Math.round((selectedCount / 1) * 100);
-                
-                progressBar.style.width = `${percentage}%`;
-                progressBar.textContent = `${percentage}%`;
-                progressBar.setAttribute('aria-valuenow', percentage);
-                
-                answeredCount.textContent = selectedCount;
-            }
-            
-            function createBackToTopButton() {
-                if (document.getElementById('back-to-top-btn')) return;
-                
-                const backToTopBtn = document.createElement('button');
-                backToTopBtn.id = 'back-to-top-btn';
-                backToTopBtn.className = 'btn btn-primary btn-lg';
-                backToTopBtn.innerHTML = '<i class="fas fa-arrow-up me-2"></i> Lên đầu trang';
-                backToTopBtn.addEventListener('click', function() {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-                document.body.appendChild(backToTopBtn);
-            }
-            
-            // Function to save results to localStorage
-            function saveResults(correctCount, totalCount, timeInSeconds) {
-                const topicId = @(topic?.ID_CD ?? 0);
-                const exerciseType = 'multiple-choice';
-                
-                let exerciseResults = JSON.parse(localStorage.getItem('exerciseResults') || '{}');
-                
-                if (!exerciseResults[topicId]) {
-                    exerciseResults[topicId] = {};
-                }
-                
-                exerciseResults[topicId][exerciseType] = {
-                    correctCount: correctCount,
-                    totalCount: totalCount,
-                    percentage: Math.round((correctCount / totalCount) * 100),
-                    timeInSeconds: timeInSeconds,
-                    date: new Date().toISOString()
+                // Save the answer
+                exerciseData.answers[questionId] = {
+                    selected: selectedAnswer,
+                    correct: correctAnswerRaw,
+                    isCorrect: isCorrect
                 };
                 
-                localStorage.setItem('exerciseResults', JSON.stringify(exerciseResults));
+                localStorage.setItem('exerciseAnswers', JSON.stringify(exerciseData));
+                
+                // Disable the check button and show the next button
+                $(this).prop('disabled', true);
+                $("#nextButton, #showResultsButton, #finishButton").show();
+            });
+            
+            // Function to determine if an answer is correct
+            function isAnswerCorrect(selected, correct) {
+                // Direct match
+                if (selected === correct) return true;
+                
+                // Case insensitive match
+                if (selected.toUpperCase() === correct.toUpperCase()) return true;
+                
+                // Match based on selected option (A, B, C, D) and correct answer content
+                const options = {
+                    'A': '@Model.Option_A',
+                    'B': '@Model.Option_B',
+                    'C': '@Model.Option_C',
+                    'D': '@Model.Option_D'
+                };
+                
+                // If correct is A, B, C, D and selected matches that letter
+                if (['A', 'B', 'C', 'D'].includes(correct) && selected === correct) return true;
+                
+                // If correct is one of the option contents and selected is the corresponding letter
+                for (const [letter, content] of Object.entries(options)) {
+                    if (content === correct && selected === letter) return true;
+                }
+                
+                return false;
             }
+            
+            // Function to mark options visually
+            function markOptions(selectedAnswer, correctAnswer) {
+                // First reset all options
+                $(".form-check-input").parent().removeClass("correct-option incorrect-option");
+                
+                // Find the correct option based on its value or content
+                let correctOptionElement = null;
+                
+                // If correctAnswer is one of A, B, C, D
+                if (['A', 'B', 'C', 'D'].includes(correctAnswer)) {
+                    correctOptionElement = $(`#option${correctAnswer}`).parent();
+                } else {
+                    // Try to find by option text content
+                    $(".form-check-label").each(function() {
+                        if ($(this).text().trim().includes(correctAnswer)) {
+                            correctOptionElement = $(this).parent();
+                            return false; // break loop
+                        }
+                    });
+                }
+                
+                // Mark the selected option
+                const selectedOption = $(`#option${selectedAnswer}`).parent();
+                
+                if (isAnswerCorrect(selectedAnswer, correctAnswer)) {
+                    // Correct answer
+                    selectedOption.addClass("correct-option");
+                } else {
+                    // Incorrect answer
+                    selectedOption.addClass("incorrect-option");
+                    if (correctOptionElement) {
+                        correctOptionElement.addClass("correct-option");
+                    }
+                }
+            }
+            
+            // Handle showing results for the last question
+            $("#showResultsButton").click(function(e) {
+                e.preventDefault();
+                
+                const exerciseData = JSON.parse(localStorage.getItem('exerciseAnswers'));
+                const correctCount = exerciseData.correctCount;
+                const totalCount = exerciseData.totalCount;
+                
+                window.location.href = "@Url.Action("Result", "Exercise")?topicId=@topicId&correctAnswers=" + 
+                    correctCount + "&totalQuestions=" + totalCount;
+            });
         });
     </script>
+}
+
+@section Styles {
+    <style>
+        .hover-option {
+            transition: all 0.2s ease-in-out;
+            border: 1px solid transparent;
+        }
+        
+        .hover-option:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+            border-color: #dee2e6;
+        }
+        
+        .correct-option {
+            background-color: rgba(25, 135, 84, 0.1);
+            border-radius: 0.25rem;
+            padding: 0.5rem 1rem;
+            border-left: 4px solid #198754;
+        }
+        
+        .incorrect-option {
+            background-color: rgba(220, 53, 69, 0.1);
+            border-radius: 0.25rem;
+            padding: 0.5rem 1rem;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .option-label {
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 1.05rem;
+        }
+        
+        .form-check {
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+            border-radius: 0.5rem;
+        }
+        
+        .form-check-input {
+            width: 1.2em;
+            height: 1.2em;
+            margin-top: 0.25em;
+        }
+        
+        #resultFeedback {
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+        }
+        
+        .card-header {
+            border-bottom: 0;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        
+        .card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+    </style>
 }

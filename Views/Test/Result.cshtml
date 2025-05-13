@@ -1,111 +1,110 @@
-@model TestModel
+@model TiengAnh.Models.TestModel
 @{
-    ViewData["Title"] = "Kết quả kiểm tra";
+    ViewData["Title"] = "Kết quả bài kiểm tra";
+    
+    // Get data from TempData (populated by the controller)
+    var score = TempData["Score"] != null ? Convert.ToInt32(TempData["Score"]) : 0;
+    var correctCount = TempData["CorrectCount"] != null ? Convert.ToInt32(TempData["CorrectCount"]) : 0;
+    var totalQuestions = Model.Questions.Count;
+    var timeTaken = TempData["TimeTaken"]?.ToString() ?? "00:00";
+    
+    // Keep the data available for the next request (for Detail view)
+    TempData.Keep("UserAnswers");
+    TempData.Keep("Score");
+    TempData.Keep("CorrectCount");
+    TempData.Keep("TimeTaken");
+    
+    // Determine message based on score
+    string message = score >= 80 ? "Xuất sắc!" :
+                    score >= 70 ? "Tốt!" :
+                    score >= 60 ? "Khá!" :
+                    score >= 50 ? "Trung bình!" : "Cần cố gắng hơn!";
+                    
+    // Determine color based on score
+    string colorClass = score >= 80 ? "success" :
+                      score >= 60 ? "info" :
+                      score >= 50 ? "warning" : "danger";
 }
 
-<div class="container mt-5">
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Test")">Bài kiểm tra</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action("Details", "Test", new { id = Model.TestID })">@Model.TestName</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Kết quả</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-
-    <!-- Test Result Section -->
-    <div class="row mb-5">
-        <div class="col-md-12 text-center">
-            <h1 class="display-4 fw-bold mb-3">Kết quả bài kiểm tra</h1>
-            <p class="lead">@Model.TestName</p>
-        </div>
-    </div>
-
-    <div class="row justify-content-center mb-5">
+<div class="container py-5">
+    <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="test-result-card p-5">
-                <div class="mb-4">
-                    <i class="fas fa-award text-warning fa-4x mb-3"></i>
-                    <h2 class="fw-bold">Chúc mừng! Bạn đã hoàn thành bài kiểm tra</h2>
-                </div>
-                
-                <div class="row justify-content-center mb-4">
-                    <div class="col-6">
-                        <div class="progress" style="height: 25px;">
-                            <div class="progress-bar bg-success" id="scoreProgressBar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row justify-content-center mb-5">
-                    <div class="col-md-6">
-                        <div class="card border-0 bg-light p-4">
-                            <div class="test-score mb-2">75%</div>
-                            <div class="test-feedback good">Tốt</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="result-stats mb-5">
-                    <div class="row g-3 justify-content-center">
-                        <div class="col-md-3">
-                            <div class="card border-0 bg-light">
-                                <div class="card-body p-3">
-                                    <h3 class="text-success fw-bold mb-0" id="correctAnswers">15</h3>
-                                    <p class="mb-0">Câu đúng</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card border-0 bg-light">
-                                <div class="card-body p-3">
-                                    <h3 class="text-danger fw-bold mb-0" id="wrongAnswers">5</h3>
-                                    <p class="mb-0">Câu sai</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card border-0 bg-light">
-                                <div class="card-body p-3">
-                                    <h3 class="text-warning fw-bold mb-0" id="unansweredCount">0</h3>
-                                    <p class="mb-0">Câu bỏ qua</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-4">
-                    <h4 class="mb-3">Nhận xét</h4>
-                    <p>Bạn đã làm tốt trong phần từ vựng và ngữ pháp cơ bản. Hãy cố gắng cải thiện thêm phần thì trong tiếng Anh.</p>
+            <div class="card border-0 shadow">
+                <div class="card-body p-5 text-center">
+                    <h1 class="mb-4">Kết quả bài kiểm tra</h1>
+                    <h2 class="text-primary mb-3">@Model.Title</h2>
                     
-                    <div class="row mt-4">
-                        <div class="col-md-6 offset-md-3">
-                            <div class="alert alert-info">
-                                <h5><i class="fas fa-lightbulb me-2"></i> Gợi ý cải thiện</h5>
-                                <ul class="mb-0 text-start">
-                                    <li>Ôn lại các thì trong tiếng Anh</li>
-                                    <li>Học thêm về danh từ đếm được và không đếm được</li>
-                                    <li>Làm thêm bài tập về mạo từ</li>
-                                </ul>
+                    <div class="score-circle mx-auto mb-4 position-relative" style="width: 200px; height: 200px;">
+                        <svg class="position-absolute top-0 start-0" width="200" height="200" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="#eeeeee" stroke-width="10" />
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="var(--bs-@colorClass)" stroke-width="10" 
+                                    stroke-dasharray="565.48" stroke-dashoffset="@(565.48 - (565.48 * score / 100))" 
+                                    transform="rotate(-90 100 100)" />
+                        </svg>
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <h1 class="display-3 fw-bold mb-0">@score%</h1>
+                            <p class="fw-bold text-@colorClass">@message</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-check-circle text-success me-2"></i>Câu đúng</h5>
+                                    <p class="display-6 mb-0">@correctCount/@totalQuestions</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-clock text-info me-2"></i>Thời gian</h5>
+                                    <p class="display-6 mb-0">@timeTaken</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="mt-5">
-                    <a href="@Url.Action("Review", "Test", new { id = Model.TestID })" class="btn btn-primary me-2">
-                        <i class="fas fa-search me-2"></i> Xem lại đáp án
-                    </a>
-                    <a href="@Url.Action("Index", "Test")" class="btn btn-outline-primary">
-                        <i class="fas fa-th-list me-2"></i> Quay lại danh sách
-                    </a>
+                    
+                    <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                        <a href="@Url.Action("Detail", "Test", new { id = Model.Id })" class="btn btn-primary btn-lg">
+                            <i class="bi bi-list-check me-2"></i>Xem chi tiết bài làm
+                        </a>
+                        <a href="@Url.Action("Index", "Test")" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-arrow-left me-2"></i>Quay lại danh sách
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .score-circle circle {
+        transition: stroke-dashoffset 1s ease-in-out;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Animation for score display
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate the number counting up
+            const score = @score;
+            let currentScore = 0;
+            const duration = 1500; // 1.5 seconds
+            const frameRate = 30; // 30 fps
+            const increment = score / (duration / (1000 / frameRate));
+            
+            const counter = setInterval(function() {
+                currentScore += increment;
+                if (currentScore >= score) {
+                    currentScore = score;
+                    clearInterval(counter);
+                }
+                document.querySelector('.display-3').textContent = Math.round(currentScore) + '%';
+            }, 1000 / frameRate);
+        });
+    </script>
+}

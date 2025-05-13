@@ -1,43 +1,120 @@
-@section Scripts 
-{
+@model TiengAnh.Models.ExerciseResultModel
+@{
+    ViewData["Title"] = "Kết quả bài tập";
+    double percentage = (double)Model.CorrectAnswers / Model.TotalQuestions * 100;
+    string resultClass = percentage >= 80 ? "success" :
+                        percentage >= 60 ? "primary" :
+                        percentage >= 40 ? "warning" : "danger";
+    string resultMessage = percentage >= 80 ? "Xuất sắc! Bạn đã nắm vững kiến thức này." :
+                          percentage >= 60 ? "Tốt! Bạn hiểu phần lớn nội dung." :
+                          percentage >= 40 ? "Có thể tốt hơn. Hãy ôn tập lại." :
+                          "Cần cố gắng nhiều hơn. Hãy học lại từ đầu.";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exercise")">Bài tập</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Topic", "Exercise", new { id = Model.TopicId })">@Model.TopicName</a></li>
+                    <li class="breadcrumb-item active">Kết quả</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5 text-center">
+                    <h1 class="display-4 mb-4">Kết quả bài tập</h1>
+                    
+                    <div class="result-circle mb-4 bg-@resultClass text-white">
+                        <span class="display-4 fw-bold">@Math.Round(percentage)%</span>
+                    </div>
+                    
+                    <h2 class="mb-3">@Model.CorrectAnswers/@Model.TotalQuestions câu đúng</h2>
+                    <p class="lead mb-4">@resultMessage</p>
+                    
+                    <div class="progress mb-4" style="height: 30px;">
+                        <div class="progress-bar bg-@resultClass" role="progressbar" 
+                             style="width: @percentage%;" 
+                             aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100">
+                            @Math.Round(percentage)%
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <a href="@Url.Action("Topic", "Exercise", new { id = Model.TopicId })" class="btn btn-primary btn-lg">
+                            <i class="fas fa-chevron-left me-2"></i> Quay lại chủ đề
+                        </a>
+                        <a href="@Url.Action("Index", "Exercise")" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-home me-2"></i> Trang chủ bài tập
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card border-0 shadow-sm mt-4">
+                <div class="card-body p-4">
+                    <h3 class="mb-4">Phân tích chi tiết</h3>
+                    
+                    <div class="row text-center">
+                        <div class="col-md-6 mb-3">
+                            <div class="p-3 rounded bg-success bg-opacity-10">
+                                <h4 class="text-success">@Model.CorrectAnswers</h4>
+                                <p class="mb-0">Câu trả lời đúng</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="p-3 rounded bg-danger bg-opacity-10">
+                                <h4 class="text-danger">@(Model.TotalQuestions - Model.CorrectAnswers)</h4>
+                                <p class="mb-0">Câu trả lời sai</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <p class="mb-1">Hoàn thành vào: @Model.CompletionDate.ToString("dd/MM/yyyy HH:mm")</p>
+                        <p class="text-muted small">Thời gian hoàn thành bài tập</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .result-circle {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+</style>
+
+@section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Lấy thông tin từ kết quả bài tập
-            const correctAnswers = @Model.CorrectAnswers;
-            const totalQuestions = @Model.TotalQuestions;
-            const topicId = @Model.TopicId;
-            const topicName = "@Model.TopicName";
-            const exerciseType = "@Model.ExerciseType";
+            // Clear the stored exercise answers since we've completed this set
+            localStorage.removeItem('exerciseAnswers');
             
-            // Tính tỉ lệ chính xác
-            const correctPercentage = Math.round((correctAnswers / totalQuestions) * 100);
-            
-            // Tính điểm thưởng dựa vào tỉ lệ chính xác
-            const pointsEarned = calculatePoints(correctPercentage);
-            
-            // Cập nhật tiến độ
-            window.progressTracker.updateProgress({
-                type: 'Exercise',
-                title: exerciseType + ' - ' + topicName,
-                score: correctPercentage,
-                pointsEarned: pointsEarned,
-                topicId: topicId,
-                topicName: topicName,
-                completionPercentage: correctPercentage
-            }).then(data => {
-                if (data.success) {
-                    console.log('Đã cập nhật tiến độ bài tập thành công');
-                }
-            });
-            
-            // Hàm tính điểm thưởng
-            function calculatePoints(percentage) {
-                if (percentage >= 90) return 20;
-                if (percentage >= 80) return 15;
-                if (percentage >= 70) return 10;
-                if (percentage >= 60) return 8;
-                if (percentage >= 50) return 5;
-                return 3; // Ít nhất cũng cho 3 điểm khi hoàn thành
+            // Track progress if we have a progress tracker
+            if (typeof window.progressTracker !== 'undefined') {
+                window.progressTracker.updateProgress({
+                    type: 'Exercise',
+                    title: '@Model.ExerciseType - @Model.TopicName',
+                    score: @Math.Round(percentage),
+                    pointsEarned: @(Math.Round(percentage) >= 80 ? 10 : Math.Round(percentage) >= 60 ? 5 : 2),
+                    topicId: @Model.TopicId,
+                    topicName: '@Model.TopicName',
+                    completionPercentage: @Math.Round(percentage)
+                });
             }
         });
     </script>

@@ -7,6 +7,7 @@ using System.IO;
 using TiengAnh.Models;
 using TiengAnh.Repositories;
 using System.Linq;
+using System.Text.Json;
 
 namespace TiengAnh.Controllers
 {
@@ -206,6 +207,114 @@ namespace TiengAnh.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error retrieving test for taking: {ex.Message}");
+                return RedirectToAction("Index");
+            }
+        }
+
+        // GET: /Test/Result
+        [HttpGet]
+        public async Task<IActionResult> Result(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                var test = await _testRepository.GetByStringIdAsync(id);
+                if (test == null)
+                {
+                    return NotFound();
+                }
+
+                // For GET requests, we'll just render the view with test data
+                // The actual results will be populated by JavaScript
+                return View(test);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving test for result: {ex.Message}");
+                return RedirectToAction("Index");
+            }
+        }
+
+        // POST: /Test/SubmitTest
+        [HttpPost]
+        public async Task<IActionResult> SubmitTest([FromBody] TestSubmissionModel submission)
+        {
+            if (submission == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var test = await _testRepository.GetByStringIdAsync(submission.TestId);
+                if (test == null)
+                {
+                    return NotFound();
+                }
+
+                // Store the submission data in TempData so it's available across requests
+                TempData["UserAnswers"] = JsonSerializer.Serialize(submission.UserAnswers);
+                TempData["Score"] = submission.Score;
+                TempData["CorrectCount"] = submission.CorrectCount;
+                TempData["TimeTaken"] = submission.TimeTaken;
+                TempData["TimeUsed"] = submission.TimeUsed;
+
+                // Return success response
+                return Ok(new { redirectUrl = Url.Action("Result", "Test", new { id = submission.TestId }) });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error processing test submission: {ex.Message}");
+                return StatusCode(500, "An error occurred while processing your submission.");
+            }
+        }
+
+        // GET: /Test/Detail
+        [HttpGet]
+        public async Task<IActionResult> Detail(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                var test = await _testRepository.GetByStringIdAsync(id);
+                if (test == null)
+                {
+                    return NotFound();
+                }
+
+                // Check if we have test data in TempData
+                if (TempData.ContainsKey("UserAnswers"))
+                {
+                    ViewBag.UserAnswers = JsonSerializer.Deserialize<int[]>(TempData["UserAnswers"].ToString());
+                    ViewBag.Score = TempData["Score"];
+                    ViewBag.CorrectCount = TempData["CorrectCount"];
+                    ViewBag.TimeTaken = TempData["TimeTaken"];
+                    
+                    // Keep the data available for the next request too
+                    TempData.Keep("UserAnswers");
+                    TempData.Keep("Score");
+                    TempData.Keep("CorrectCount");
+                    TempData.Keep("TimeTaken");
+                }
+                else
+                {
+                    // If we don't have data, redirect to test taking page
+                    return RedirectToAction("Take", new { id = id });
+                }
+
+                return View(test);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving test details: {ex.Message}");
                 return RedirectToAction("Index");
             }
         }

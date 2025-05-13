@@ -98,6 +98,20 @@
         background-color: #f8d7da;
         color: #721c24;
     }
+    
+    .correct-answer {
+        background-color: rgba(25, 135, 84, 0.1);
+        border-left: 4px solid #198754;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+    }
+    
+    .incorrect-answer {
+        background-color: rgba(220, 53, 69, 0.1);
+        border-left: 4px solid #dc3545;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+    }
 </style>
 
 @section Scripts {
@@ -111,66 +125,149 @@
                 const container = document.getElementById('multiple-choice-questions');
                 container.innerHTML = '';
                 
+                // Tạo các câu hỏi từ danh sách từ vựng
                 vocabularies.forEach((vocab, index) => {
                     const questionContainer = document.createElement('div');
                     questionContainer.className = 'question-container mb-4';
+                    questionContainer.dataset.id = vocab.ID_TV;
                     
+                    // Tạo câu hỏi
                     const question = document.createElement('p');
                     question.className = 'fw-bold';
                     question.textContent = `${index + 1}. Nghĩa của từ "${vocab.Word_TV}" là gì?`;
                     
+                    // Tạo container cho các tùy chọn
                     const options = document.createElement('div');
                     options.className = 'options';
                     
-                    const correctOption = document.createElement('div');
-                    correctOption.className = 'form-check';
-                    correctOption.innerHTML = `
-                        <input class="form-check-input" type="radio" name="question-${index}" id="option-${index}-1" value="correct">
-                        <label class="form-check-label" for="option-${index}-1">${vocab.Meaning_TV}</label>
-                    `;
+                    // Tạo mảng chứa đáp án đúng và các đáp án sai
+                    const correctAnswer = vocab.Meaning_TV;
+                    const incorrectAnswers = getRandomWrongAnswers(correctAnswer);
                     
-                    const incorrectOption1 = document.createElement('div');
-                    incorrectOption1.className = 'form-check';
-                    incorrectOption1.innerHTML = `
-                        <input class="form-check-input" type="radio" name="question-${index}" id="option-${index}-2" value="incorrect">
-                        <label class="form-check-label" for="option-${index}-2">Một loại đồ ăn</label>
-                    `;
+                    // Kết hợp đáp án đúng và các đáp án sai, sau đó trộn ngẫu nhiên
+                    const allAnswers = [correctAnswer, ...incorrectAnswers];
+                    shuffleArray(allAnswers);
                     
-                    const incorrectOption2 = document.createElement('div');
-                    incorrectOption2.className = 'form-check';
-                    incorrectOption2.innerHTML = `
-                        <input class="form-check-input" type="radio" name="question-${index}" id="option-${index}-3" value="incorrect">
-                        <label class="form-check-label" for="option-${index}-3">Một loại xe</label>
-                    `;
+                    // Tạo các tùy chọn
+                    allAnswers.forEach((answer, optionIndex) => {
+                        const optionContainer = document.createElement('div');
+                        optionContainer.className = 'form-check mb-2';
+                        
+                        const input = document.createElement('input');
+                        input.className = 'form-check-input';
+                        input.type = 'radio';
+                        input.name = `question-${index}`;
+                        input.id = `option-${index}-${optionIndex}`;
+                        input.value = answer === correctAnswer ? 'correct' : 'incorrect';
+                        
+                        const label = document.createElement('label');
+                        label.className = 'form-check-label';
+                        label.htmlFor = `option-${index}-${optionIndex}`;
+                        label.textContent = answer;
+                        
+                        optionContainer.appendChild(input);
+                        optionContainer.appendChild(label);
+                        options.appendChild(optionContainer);
+                    });
                     
-                    const incorrectOption3 = document.createElement('div');
-                    incorrectOption3.className = 'form-check';
-                    incorrectOption3.innerHTML = `
-                        <input class="form-check-input" type="radio" name="question-${index}" id="option-${index}-4" value="incorrect">
-                        <label class="form-check-label" for="option-${index}-4">Một loại cây</label>
-                    `;
-                    
-                    options.appendChild(correctOption);
-                    options.appendChild(incorrectOption1);
-                    options.appendChild(incorrectOption2);
-                    options.appendChild(incorrectOption3);
+                    // Tạo container cho phản hồi
+                    const feedback = document.createElement('div');
+                    feedback.className = 'feedback mt-2 d-none';
                     
                     questionContainer.appendChild(question);
                     questionContainer.appendChild(options);
+                    questionContainer.appendChild(feedback);
                     
                     container.appendChild(questionContainer);
                 });
                 
+                // Thêm nút kiểm tra
                 const submitBtn = document.createElement('button');
                 submitBtn.className = 'btn btn-primary';
-                submitBtn.textContent = 'Nộp bài';
-                submitBtn.addEventListener('click', function() {
-                    const correctCount = document.querySelectorAll('input[type="radio"][value="correct"]:checked').length;
-                    const totalCount = vocabularies.length;
-                    showResult('mc', correctCount, totalCount);
-                });
+                submitBtn.textContent = 'Kiểm tra';
+                submitBtn.addEventListener('click', checkMultipleChoiceAnswers);
                 
                 container.appendChild(submitBtn);
+            }
+            
+            // Hàm kiểm tra đáp án trắc nghiệm
+            function checkMultipleChoiceAnswers() {
+                const questions = document.querySelectorAll('#multiple-choice-questions .question-container');
+                let correctCount = 0;
+                let totalAnswered = 0;
+                
+                questions.forEach(question => {
+                    const selectedOption = question.querySelector('input[type="radio"]:checked');
+                    
+                    if (selectedOption) {
+                        totalAnswered++;
+                        const isCorrect = selectedOption.value === 'correct';
+                        
+                        // Hiển thị phản hồi
+                        const feedback = question.querySelector('.feedback');
+                        feedback.classList.remove('d-none');
+                        
+                        if (isCorrect) {
+                            correctCount++;
+                            feedback.className = 'feedback mt-2 alert alert-success';
+                            feedback.textContent = 'Chính xác!';
+                            
+                            // Đánh dấu đáp án đúng
+                            selectedOption.parentElement.classList.add('correct-answer');
+                        } else {
+                            feedback.className = 'feedback mt-2 alert alert-danger';
+                            feedback.textContent = 'Chưa đúng! Hãy thử lại.';
+                            
+                            // Đánh dấu đáp án sai
+                            selectedOption.parentElement.classList.add('incorrect-answer');
+                            
+                            // Tìm và đánh dấu đáp án đúng
+                            const options = question.querySelectorAll('input[type="radio"]');
+                            options.forEach(option => {
+                                if (option.value === 'correct') {
+                                    option.parentElement.classList.add('correct-answer');
+                                }
+                            });
+                        }
+                    }
+                });
+                
+                if (totalAnswered === 0) {
+                    alert('Vui lòng chọn ít nhất một đáp án!');
+                    return;
+                }
+                
+                // Hiển thị kết quả tổng quan
+                showResult('mc', correctCount, questions.length);
+            }
+            
+            // Hàm tạo ra các đáp án sai ngẫu nhiên
+            function getRandomWrongAnswers(correctAnswer) {
+                const wrongAnswers = [
+                    'Một loại đồ ăn phổ biến',
+                    'Một loại phương tiện di chuyển',
+                    'Một loại cây cối',
+                    'Một hoạt động giải trí',
+                    'Một loại động vật',
+                    'Một địa điểm du lịch',
+                    'Một nghề nghiệp',
+                    'Một môn thể thao'
+                ];
+                
+                // Trộn mảng để lấy ngẫu nhiên
+                shuffleArray(wrongAnswers);
+                
+                // Trả về 3 đáp án sai đầu tiên
+                return wrongAnswers.slice(0, 3);
+            }
+            
+            // Hàm trộn ngẫu nhiên một mảng
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
             }
             
             // Tạo bài tập nối từ
