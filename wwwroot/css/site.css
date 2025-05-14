@@ -143,3 +143,37 @@ img[src=""] {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* Styling for test question navigation */
+.question-navigation-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.question-nav-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.question-nav-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.question-nav-btn.btn-success {
+    color: white;
+}
+
+.question-nav-btn.btn-primary {
+    color: white;
+}

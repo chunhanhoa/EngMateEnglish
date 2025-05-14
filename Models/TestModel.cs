@@ -72,6 +72,9 @@ namespace TiengAnh.Models
             set { Title = value; }
         }
         
+        [BsonIgnore]
+        public CompletedTestModel CompletionInfo { get; set; }
+        
         // Add OnDeserialized method for compatibility with DataSeeder
         public void OnDeserialized()
         {

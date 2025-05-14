@@ -75,29 +75,27 @@
 
         <div class="col-lg-3">
             <!-- Question navigation -->
-            <div class="card shadow-sm">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Câu hỏi</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Danh sách câu hỏi</h5>
-                    <div class="question-nav d-flex flex-wrap gap-2 mt-3">
-                        @for (int i = 1; i <= Model.Questions.Count; i++)
-                        {
-                            <button class="btn btn-sm btn-outline-secondary question-nav-btn" data-question="@i">@i</button>
+                    <div class="question-navigation-grid">
+                        @{
+                            var questionsCount = Model.Questions.Count;
+                            var questionsPerRow = (int)Math.Ceiling(questionsCount / 4.0);
                         }
-                    </div>
-                    
-                    <div class="mt-4">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="badge bg-success me-2"> </div>
-                            <small>Đã trả lời</small>
-                        </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="badge bg-secondary me-2"> </div>
-                            <small>Chưa trả lời</small>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="badge bg-primary me-2"> </div>
-                            <small>Đang xem</small>
-                        </div>
+                        
+                        @for (int row = 0; row < 4; row++)
+                        {
+                            <div class="question-nav-row mb-2">
+                                @for (int i = row * questionsPerRow; i < Math.Min((row + 1) * questionsPerRow, questionsCount); i++)
+                                {
+                                    <button type="button" class="btn btn-outline-secondary question-nav-btn" 
+                                            data-question="@(i + 1)">@(i + 1)</button>
+                                }
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -1,21 +1,41 @@
 @model IEnumerable<TiengAnh.Models.TestModel>
 @{
     ViewData["Title"] = "Bài kiểm tra";
+
+    string currentCategory = Context.Request.Path.Value?.Contains("/Category/") == true 
+        ? Context.Request.Path.Value.Split("/").Last() : "";
+    string currentLevel = Context.Request.Path.Value?.Contains("/Level/") == true 
+        ? Context.Request.Path.Value.Split("/").Last() : "";
+    bool isCompleted = Context.Request.Path.Value?.Contains("/Completed") == true;
+    bool isAllActive = string.IsNullOrEmpty(currentCategory) && string.IsNullOrEmpty(currentLevel) && !isCompleted;
+
+    Func<DateTime, string> formatVietnamTime = (dateTime) => {
+        try {
+            TimeZoneInfo vietnamZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+            DateTime utcDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
+            DateTime vietnamTime = TimeZoneInfo.ConvertTimeFromUtc(utcDateTime, vietnamZone);
+            return vietnamTime.ToString("dd/MM/yyyy HH:mm");
+        } catch {
+            return dateTime.ToString("dd/MM/yyyy HH:mm");
+        }
+    };
 }
 
 <div class="container py-5">
-    <h1 class="display-4 text-center mb-5">Bài kiểm tra</h1>
+    <h1 class="display-4 text-center mb-5">@(isCompleted ? "Bài kiểm tra đã hoàn thành" : "Bài kiểm tra")</h1>
 
-    <!-- Filter buttons -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="d-flex flex-wrap justify-content-center gap-2">
-                <a href="/Test" class="btn btn-outline-primary mb-2">Tất cả</a>
-                <a href="/Test/Category/Grammar" class="btn btn-outline-primary mb-2">Ngữ pháp</a>
-                <a href="/Test/Category/Vocabulary" class="btn btn-outline-primary mb-2">Từ vựng</a>
-                <a href="/Test/Level/A1" class="btn btn-outline-secondary mb-2">A1</a>
-                <a href="/Test/Level/A2" class="btn btn-outline-secondary mb-2">A2</a>
-                <a href="/Test/Level/B1" class="btn btn-outline-secondary mb-2">B1</a>
+                <a href="/Test" class="btn @(isAllActive ? "btn-primary" : "btn-outline-primary") mb-2">Tất cả</a>
+                <a href="/Test/Category/Grammar" class="btn @(currentCategory == "Grammar" ? "btn-primary" : "btn-outline-primary") mb-2">Ngữ pháp</a>
+                <a href="/Test/Category/Vocabulary" class="btn @(currentCategory == "Vocabulary" ? "btn-primary" : "btn-outline-primary") mb-2">Từ vựng</a>
+                <a href="/Test/Level/A1" class="btn @(currentLevel == "A1" ? "btn-secondary" : "btn-outline-secondary") mb-2">A1</a>
+                <a href="/Test/Level/A2" class="btn @(currentLevel == "A2" ? "btn-secondary" : "btn-outline-secondary") mb-2">A2</a>
+                <a href="/Test/Level/B1" class="btn @(currentLevel == "B1" ? "btn-secondary" : "btn-outline-secondary") mb-2">B1</a>
+                <a href="/Test/Completed" class="btn @(isCompleted ? "btn-success" : "btn-outline-success") mb-2">
+                    <i class="bi bi-check-circle-fill me-1"></i>Bài đã hoàn thành
+                </a>
             </div>
         </div>
     </div>
@@ -24,7 +44,14 @@
     {
         <div class="alert alert-info text-center">
             <h4>Không tìm thấy bài kiểm tra.</h4>
-            <p>Hiện tại chưa có bài kiểm tra nào trong mục này.</p>
+            @if (isCompleted && ViewBag.CompletedMessage != null)
+            {
+                <p>@ViewBag.CompletedMessage</p>
+            }
+            else
+            {
+                <p>Hiện tại chưa có bài kiểm tra nào trong mục này.</p>
+            }
         </div>
     }
     else
@@ -38,6 +65,10 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="badge bg-primary">@test.Level</span>
                                 <span class="badge bg-info">@test.Category</span>
+                                @if (isCompleted && test.CompletionInfo != null)
+                                {
+                                    <span class="badge bg-success">Điểm: @test.CompletionInfo.Score%</span>
+                                }
                             </div>
                         </div>
                         <div class="card-body">
@@ -47,11 +78,47 @@
                                 <i class="bi bi-question-circle"></i> @test.Questions.Count câu hỏi
                             </p>
                             <p class="card-text">@test.Description</p>
+
+                            @if (isCompleted && test.CompletionInfo != null)
+                            {
+                                <div class="mt-3">
+                                    <p class="small text-success mb-1">
+                                        <i class="bi bi-check-circle-fill me-1"></i>Hoàn thành: @formatVietnamTime(test.CompletionInfo.CompletedAt) (GMT+7)
+                                    </p>
+                                    <p class="small text-muted mb-2">
+                                        <i class="bi bi-stopwatch me-1"></i>Thời gian: @test.CompletionInfo.TimeTaken
+                                    </p>
+                                    <div class="progress" style="height: 10px;">
+                                        <div class="progress-bar @(test.CompletionInfo.Score >= 80 ? "bg-success" : test.CompletionInfo.Score >= 60 ? "bg-info" : test.CompletionInfo.Score >= 40 ? "bg-warning" : "bg-danger")"
+                                             role="progressbar"
+                                             style="width: @test.CompletionInfo.Score%;"
+                                             aria-valuenow="@test.CompletionInfo.Score"
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-1">
+                                        <small class="text-muted">Đúng @test.CompletionInfo.CorrectCount/20 câu</small>
+                                        <small class="@(test.CompletionInfo.Score >= 80 ? "text-success" : test.CompletionInfo.Score >= 60 ? "text-info" : test.CompletionInfo.Score >= 40 ? "text-warning" : "text-danger")">
+                                            @test.CompletionInfo.Score%
+                                        </small>
+                                    </div>
+                                </div>
+                            }
                         </div>
                         <div class="card-footer bg-transparent border-top-0">
-                            <a href="/Test/Details/@test.Id" class="btn btn-primary w-100 test-detail-link" data-id="@test.Id">
-                                Xem chi tiết
-                            </a>
+                            @if (isCompleted && test.CompletionInfo != null)
+                            {
+                                <a href="/Test/Result/@test.Id" class="btn btn-success w-100">
+                                    <i class="bi bi-trophy me-1"></i>Xem kết quả
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/Test/Details/@test.Id" class="btn btn-primary w-100 test-detail-link" data-id="@test.Id">
+                                    Xem chi tiết
+                                </a>
+                            }
                         </div>
                     </div>
                 </div>
@@ -62,14 +129,12 @@
 
 @section Scripts {
     <script>
-        // Log available test data for debugging
         console.log("Available tests:", @Html.Raw(Json.Serialize(Model)));
-        
-        // Add click handler to debug links
-        document.addEventListener('DOMContentLoaded', function() {
+
+        document.addEventListener('DOMContentLoaded', function () {
             const detailLinks = document.querySelectorAll('.test-detail-link');
             detailLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     console.log('Link clicked:', this.href, 'Test ID:', this.getAttribute('data-id'));
                 });
             });

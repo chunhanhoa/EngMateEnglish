@@ -97,8 +97,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Test" asp-action="Index">
-                                <i class="fas fa-check-circle"></i> Kiểm tra
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Test" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")" 
+                               asp-controller="Test" 
+                               asp-action="Index">
+                                <i class="fas fa-file-alt me-1"></i> Bài kiểm tra
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Test" && ViewContext.RouteData.Values["action"]?.ToString() == "Progress" ? "active" : "")" 
+                               asp-controller="Test" 
+                               asp-action="Progress">
+                                <i class="fas fa-chart-line me-1"></i> Tiến trình
                             </a>
                         </li>
                         <li class="nav-item">
@@ -231,27 +240,13 @@
                                 <i class="fas fa-pencil-alt me-2 text-primary"></i> Ngữ pháp
                             </a>
                         </li>
-                        <li class="mb-3">
-                            <a href="/Home/Contact" class="text-white text-decoration-none fs-5">
-                                <i class="fas fa-envelope me-2 text-primary"></i> Liên hệ
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-5 col-md-12">
                     <h3 class="fs-2 fw-bold mb-3">Kết nối với chúng tôi</h3>
                     <div class="d-flex mb-4">
-                        <a href="#" class="text-white fs-2 me-4 text-decoration-none">
+                        <a href="https://www.facebook.com/profile.php?id=61576148285969" target="_blank" class="text-white fs-2 me-4 text-decoration-none">
                             <i class="fab fa-facebook-square"></i>
-                        </a>
-                        <a href="#" class="text-white fs-2 me-4 text-decoration-none">
-                            <i class="fab fa-twitter-square"></i>
-                        </a>
-                        <a href="#" class="text-white fs-2 me-4 text-decoration-none">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-white fs-2 text-decoration-none">
-                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>

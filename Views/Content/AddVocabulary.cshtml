@@ -249,7 +249,7 @@
                 clearTimeout(typingTimer);
                 const word = $(this).val().trim();
                 
-                if (word.length > 2) {
+                if (word.length >= 1) {
                     typingTimer = setTimeout(function() {
                         fetchWordDetails(word);
                     }, doneTypingInterval);

@@ -24,6 +24,7 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<GrammarRepository>();
 builder.Services.AddScoped<VocabularyRepository>();
 builder.Services.AddScoped<TestRepository>();
+builder.Services.AddScoped<UserTestRepository>(); // Add this line
 
 // Fix registration of ITestRepository - ensure TestRepository is registered first, then register the interface
 builder.Services.AddScoped<ITestRepository>(sp => sp.GetRequiredService<TestRepository>());
@@ -82,6 +83,15 @@ builder.Services.AddAuthentication(options =>
     options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     
     options.SaveTokens = true;
+});
+
+// Add session services
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromDays(7);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
 });
 
 // Suppress nullable warnings
@@ -207,6 +217,9 @@ app.UseStaticFiles();
 
 // Add debug middleware to help with OAuth troubleshooting
 app.UseMiddleware<OAuthDebugMiddleware>();
+
+// Add session middleware
+app.UseSession();
 
 // Redirect index.html to home
 app.Use(async (context, next) =>

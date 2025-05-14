@@ -29,7 +29,8 @@
                         </div>
                     </div>
                     
-                    <form asp-action="EditUser" method="post">
+                    <form asp-action="EditUser" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
                         <input type="hidden" asp-for="Id" />
                         <input type="hidden" asp-for="UserId" />
                         <input type="hidden" asp-for="Avatar" />
@@ -37,6 +38,8 @@
                         <input type="hidden" asp-for="CreatedAt" />
                         <input type="hidden" asp-for="RegisterDate" />
                         <input type="hidden" asp-for="LastLogin" />
+                        <input type="hidden" asp-for="IsVerified" />
+                        <input type="hidden" asp-for="UserName" />
                         
                         <div class="mb-3">
                             <label asp-for="FullName" class="form-label">Họ và tên</label>
@@ -82,34 +85,24 @@
                                 <span asp-validation-for="Gender" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
-                                <label asp-for="Level" class="form-label">Trình độ</label>
-                                <select asp-for="Level" class="form-select">
-                                    <option value="A1">A1</option>
-                                    <option value="A2">A2</option>
-                                    <option value="B1">B1</option>
-                                    <option value="B2">B2</option>
-                                    <option value="C1">C1</option>
-                                    <option value="C2">C2</option>
-                                </select>
-                                <span asp-validation-for="Level" class="text-danger"></span>
-                            </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-md-6">
                                 <label asp-for="Role" class="form-label">Vai trò</label>
                                 <select asp-for="Role" class="form-select">
                                     <option value="User">User</option>
-                                    <option value="Student">Student</option>
-                                    <option value="Teacher">Teacher</option>
                                     <option value="Admin">Admin</option>
                                 </select>
                                 <span asp-validation-for="Role" class="text-danger"></span>
                             </div>
-                            <div class="col-md-6">
-                                <label asp-for="Points" class="form-label">Điểm</label>
-                                <input asp-for="Points" class="form-control" type="number" min="0" />
-                                <span asp-validation-for="Points" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Ảnh đại diện</label>
+                            <div class="d-flex align-items-center gap-3">
+                                <img id="avatarPreview" src="@(string.IsNullOrEmpty(Model.Avatar) ? "/images/avatar/default.jpg" : Model.Avatar)" 
+                                     class="rounded-circle" alt="Avatar Preview" width="80" height="80" style="object-fit: cover;">
+                                <div class="flex-grow-1">
+                                    <input type="file" name="AvatarFile" id="avatarUpload" class="form-control" accept="image/*" />
+                                    <div class="form-text">Hỗ trợ định dạng: JPG, PNG, GIF (tối đa 2MB)</div>
+                                </div>
                             </div>
                         </div>
                         
@@ -142,4 +135,15 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById('avatarUpload').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatarPreview').src = e.target.result;
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+    </script>
 }

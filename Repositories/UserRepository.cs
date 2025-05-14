@@ -121,44 +121,25 @@ namespace TiengAnh.Repositories
         {
             try
             {
-                _logger.LogInformation($"UpdateUserAsync: Updating user - ID: {user.Id}, UserId: {user.UserId}, Email: {user.Email}, Avatar: {user.Avatar}");
-
-                if (user == null || (string.IsNullOrEmpty(user.Id) && string.IsNullOrEmpty(user.UserId) && string.IsNullOrEmpty(user.Email)))
+                var filter = Builders<UserModel>.Filter.Eq(u => u.Id, user.Id);
+                
+                // If Id is null but UserId is not, try using UserId instead
+                if (string.IsNullOrEmpty(user.Id) && !string.IsNullOrEmpty(user.UserId))
                 {
-                    _logger.LogWarning("UpdateUserAsync: Invalid user data");
-                    return false;
-                }
-
-                var filter = Builders<UserModel>.Filter.Empty;
-
-                // Use Id as primary identifier if available
-                if (!string.IsNullOrEmpty(user.Id))
-                {
-                    _logger.LogInformation($"UpdateUserAsync: Using Id: {user.Id} for filter");
-                    filter = Builders<UserModel>.Filter.Eq(u => u.Id, user.Id);
-                }
-                // Otherwise use UserId
-                else if (!string.IsNullOrEmpty(user.UserId))
-                {
-                    _logger.LogInformation($"UpdateUserAsync: Using UserId: {user.UserId} for filter");
                     filter = Builders<UserModel>.Filter.Eq(u => u.UserId, user.UserId);
                 }
-                // Fall back to Email
-                else if (!string.IsNullOrEmpty(user.Email))
-                {
-                    _logger.LogInformation($"UpdateUserAsync: Using Email: {user.Email} for filter");
-                    filter = Builders<UserModel>.Filter.Eq(u => u.Email, user.Email);
-                }
-
-                var result = await _collection.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = false });
                 
-                _logger.LogInformation($"UpdateUserAsync: Update result - Matched: {result.MatchedCount}, Modified: {result.ModifiedCount}");
+                // Create replacement document (full replace)
+                var result = await _collection.ReplaceOneAsync(filter, user);
                 
-                return result.ModifiedCount > 0;
+                _logger.LogInformation($"UpdateUserAsync: MatchedCount={result.MatchedCount}, ModifiedCount={result.ModifiedCount}, User={user.Id}, Email={user.Email}");
+                
+                // Return true if a document was found (matched), regardless of whether it was modified
+                return result.MatchedCount > 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in UpdateUserAsync");
+                _logger.LogError($"Error updating user: {ex.Message}");
                 return false;
             }
         }

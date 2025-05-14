@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "V1RfSXwC+kRGGP9oPblSgQSgRa6tksRQCcaBfO1Les0=",
+  "Hash": "GRhGtk7b3x6vw0kh6njAfdreX9knmx+KZP9gy5oUXCw=",
   "Source": "TiengAnh",
   "BasePath": "_content/TiengAnh",
   "Mode": "Default",
@@ -626,12 +626,12 @@
       "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-m7dv3dvddq.gz",
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-g0qmuw0u6y.gz",
       "SourceId": "TiengAnh",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/TiengAnh",
-      "RelativePath": "css/site#[.{fingerprint=m7dv3dvddq}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=g0qmuw0u6y}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -640,8 +640,8 @@
       "RelatedAsset": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "h4tqom454k",
-      "Integrity": "Dzq0ECyjWlqWlJ+GihelEavGIEHeA+QOMKhTvHq18w0=",
+      "Fingerprint": "h4wgm5ezxm",
+      "Integrity": "obBDCBsC1Jt/lZkb/td+Zhrn/Q16H0AfIoQT8ima9EQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\site.css"
@@ -1963,8 +1963,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "m7dv3dvddq",
-      "Integrity": "ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg=",
+      "Fingerprint": "g0qmuw0u6y",
+      "Integrity": "0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2010,6 +2010,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "t343subebc",
+      "Integrity": "iTt3KLoIao5R63ilatyAE1rqx4ms2uUnhYknyQ2cbxc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\65f123456789abcdef012346_20250506200852.jpeg",
@@ -2157,6 +2178,237 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250509104556.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514132126.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514132126#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dc14m6hvlp",
+      "Integrity": "zV152Hd6RXIoCuZv94OGQWsmaqCT+k3v9c1fvE2x/mI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514132126.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514133016.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514133016#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "h5j0ghu8e8",
+      "Integrity": "C8sMPlx71FaYvLG3DgQt1aKJDUAAW/6TA8nXn5+RJIs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514133016.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134201.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514134201#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8ekg8rqvq5",
+      "Integrity": "wIDIicjSdnaXJxeHwsPrH1UVEZT/dmhI7Ef8VbRQkcE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134201.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134328.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514134328#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "14cntgg7fh",
+      "Integrity": "EdoJE1CP6BMIdZQ1yFzKxrwHZIkwUAcpEXwfToBqKwU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134328.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134348.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514134348#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jsvmkb0fdd",
+      "Integrity": "jVUDJzTy+EGLCqO+GGCxVYYU2HgZUjOCkxj2rrMMfx8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134348.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134405.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514134405#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dv7ls8bfc1",
+      "Integrity": "GUd9/t2jm+xKaRLaUGSkkJgWC7ayzjS+8o4jCpDPU8c=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134405.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134958.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514134958#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dy2bskrebi",
+      "Integrity": "S4DEmPTXNz+3ayypitWehyelcb9WOJDhhVOlkexxSsg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134958.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514135238.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514135238#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u6i14o6015",
+      "Integrity": "qqkJDI6xlJedzS5/VjUxcmbltnHkvwS0qsoTuj1DhsQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514135238.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514155904.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/681d7a2dca08adcc3adf6062_20250514155904#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hb20vlvwep",
+      "Integrity": "QxGZCnOR90mBTlf+FATFx+dd30iFeyibJxBXGjs+eK0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514155904.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\68243e4f2c743c357abf840d_20250514135539.jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/68243e4f2c743c357abf840d_20250514135539#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ggffnupwj3",
+      "Integrity": "ADs3eYJT0SRtU6Rh1lfBqHaRVqMdGtGfxad1XfHcJFc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\68243e4f2c743c357abf840d_20250514135539.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6).jpeg",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "images/avatar/f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6)#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "v5x04crppv",
+      "Integrity": "48vWz/JuIsI9IRumWFRRULN9S18kC522sTkluIKknlk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar\\f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6).jpeg"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\default-avatar.png",
@@ -11745,12 +11997,12 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-m7dv3dvddq.gz",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-g0qmuw0u6y.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000811688312"
+          "Quality": "0.000719942405"
         }
       ],
       "ResponseHeaders": [
@@ -11760,15 +12012,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1231"
+          "Value": "1388"
         },
         {
           "Name": "ETag",
-          "Value": "\"Dzq0ECyjWlqWlJ+GihelEavGIEHeA+QOMKhTvHq18w0=\""
+          "Value": "\"obBDCBsC1Jt/lZkb/td+Zhrn/Q16H0AfIoQT8ima9EQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 05:28:47 GMT"
+          "Value": "Wed, 14 May 2025 08:43:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11788,13 +12040,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg=\""
+          "Value": "W/\"0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg="
+          "Value": "sha256-0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg="
         }
       ]
     },
@@ -11809,7 +12061,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3172"
+          "Value": "3773"
         },
         {
           "Name": "Content-Type",
@@ -11817,11 +12069,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg=\""
+          "Value": "\"0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 05:28:47 GMT"
+          "Value": "Wed, 14 May 2025 08:43:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11831,13 +12083,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg="
+          "Value": "sha256-0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-m7dv3dvddq.gz",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-g0qmuw0u6y.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11846,7 +12098,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1231"
+          "Value": "1388"
         },
         {
           "Name": "Content-Type",
@@ -11854,11 +12106,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Dzq0ECyjWlqWlJ+GihelEavGIEHeA+QOMKhTvHq18w0=\""
+          "Value": "\"obBDCBsC1Jt/lZkb/td+Zhrn/Q16H0AfIoQT8ima9EQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 05:28:47 GMT"
+          "Value": "Wed, 14 May 2025 08:43:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11876,18 +12128,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Dzq0ECyjWlqWlJ+GihelEavGIEHeA+QOMKhTvHq18w0="
+          "Value": "sha256-obBDCBsC1Jt/lZkb/td+Zhrn/Q16H0AfIoQT8ima9EQ="
         }
       ]
     },
     {
-      "Route": "css/site.m7dv3dvddq.css",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-m7dv3dvddq.gz",
+      "Route": "css/site.g0qmuw0u6y.css",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-g0qmuw0u6y.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000811688312"
+          "Quality": "0.000719942405"
         }
       ],
       "ResponseHeaders": [
@@ -11897,15 +12149,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1231"
+          "Value": "1388"
         },
         {
           "Name": "ETag",
-          "Value": "\"Dzq0ECyjWlqWlJ+GihelEavGIEHeA+QOMKhTvHq18w0=\""
+          "Value": "\"obBDCBsC1Jt/lZkb/td+Zhrn/Q16H0AfIoQT8ima9EQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 05:28:47 GMT"
+          "Value": "Wed, 14 May 2025 08:43:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11925,13 +12177,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg=\""
+          "Value": "W/\"0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "m7dv3dvddq"
+          "Value": "g0qmuw0u6y"
         },
         {
           "Name": "label",
@@ -11939,12 +12191,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg="
+          "Value": "sha256-0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg="
         }
       ]
     },
     {
-      "Route": "css/site.m7dv3dvddq.css",
+      "Route": "css/site.g0qmuw0u6y.css",
       "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -11954,7 +12206,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3172"
+          "Value": "3773"
         },
         {
           "Name": "Content-Type",
@@ -11962,11 +12214,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg=\""
+          "Value": "\"0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 05:28:47 GMT"
+          "Value": "Wed, 14 May 2025 08:43:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11976,7 +12228,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "m7dv3dvddq"
+          "Value": "g0qmuw0u6y"
         },
         {
           "Name": "label",
@@ -11984,13 +12236,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ort+0YfEefJF5Zg92E9pu/w1Xc7gRi6K7OIy/wgFPEg="
+          "Value": "sha256-0PTwneToriqwcfrIlfDBDfisj8ZrmFeOCrA4vkyq7dg="
         }
       ]
     },
     {
-      "Route": "css/site.m7dv3dvddq.css.gz",
-      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-m7dv3dvddq.gz",
+      "Route": "css/site.g0qmuw0u6y.css.gz",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\obj\\Debug\\net9.0\\compressed\\iijk969xo7-g0qmuw0u6y.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11999,7 +12251,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1231"
+          "Value": "1388"
         },
         {
           "Name": "Content-Type",
@@ -12007,11 +12259,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Dzq0ECyjWlqWlJ+GihelEavGIEHeA+QOMKhTvHq18w0=\""
+          "Value": "\"obBDCBsC1Jt/lZkb/td+Zhrn/Q16H0AfIoQT8ima9EQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 05:28:47 GMT"
+          "Value": "Wed, 14 May 2025 08:43:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12029,7 +12281,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "m7dv3dvddq"
+          "Value": "g0qmuw0u6y"
         },
         {
           "Name": "label",
@@ -12037,7 +12289,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Dzq0ECyjWlqWlJ+GihelEavGIEHeA+QOMKhTvHq18w0="
+          "Value": "sha256-obBDCBsC1Jt/lZkb/td+Zhrn/Q16H0AfIoQT8ima9EQ="
         }
       ]
     },
@@ -12638,6 +12890,88 @@
       ]
     },
     {
+      "Route": "images/avatar/0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "79586"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iTt3KLoIao5R63ilatyAE1rqx4ms2uUnhYknyQ2cbxc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 08:11:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iTt3KLoIao5R63ilatyAE1rqx4ms2uUnhYknyQ2cbxc="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.t343subebc.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "79586"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iTt3KLoIao5R63ilatyAE1rqx4ms2uUnhYknyQ2cbxc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 08:11:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t343subebc"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iTt3KLoIao5R63ilatyAE1rqx4ms2uUnhYknyQ2cbxc="
+        }
+      ]
+    },
+    {
       "Route": "images/avatar/65f123456789abcdef012346_20250506200852.6bueqwaxi4.jpeg",
       "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\65f123456789abcdef012346_20250506200852.jpeg",
       "Selectors": [],
@@ -13208,6 +13542,908 @@
         {
           "Name": "integrity",
           "Value": "sha256-xNdeEUVmtBP5l8pYc7CTKkN2w7WOYd7evu5/hjomf/4="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514132126.dc14m6hvlp.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514132126.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16746"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zV152Hd6RXIoCuZv94OGQWsmaqCT+k3v9c1fvE2x/mI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:21:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dc14m6hvlp"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514132126.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zV152Hd6RXIoCuZv94OGQWsmaqCT+k3v9c1fvE2x/mI="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514132126.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514132126.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16746"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zV152Hd6RXIoCuZv94OGQWsmaqCT+k3v9c1fvE2x/mI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:21:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zV152Hd6RXIoCuZv94OGQWsmaqCT+k3v9c1fvE2x/mI="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514133016.h5j0ghu8e8.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514133016.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12106"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"C8sMPlx71FaYvLG3DgQt1aKJDUAAW/6TA8nXn5+RJIs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:30:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h5j0ghu8e8"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514133016.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-C8sMPlx71FaYvLG3DgQt1aKJDUAAW/6TA8nXn5+RJIs="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514133016.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514133016.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12106"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"C8sMPlx71FaYvLG3DgQt1aKJDUAAW/6TA8nXn5+RJIs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:30:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-C8sMPlx71FaYvLG3DgQt1aKJDUAAW/6TA8nXn5+RJIs="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134201.8ekg8rqvq5.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134201.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23178"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wIDIicjSdnaXJxeHwsPrH1UVEZT/dmhI7Ef8VbRQkcE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:42:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8ekg8rqvq5"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514134201.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wIDIicjSdnaXJxeHwsPrH1UVEZT/dmhI7Ef8VbRQkcE="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134201.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134201.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23178"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wIDIicjSdnaXJxeHwsPrH1UVEZT/dmhI7Ef8VbRQkcE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:42:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wIDIicjSdnaXJxeHwsPrH1UVEZT/dmhI7Ef8VbRQkcE="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134328.14cntgg7fh.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134328.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12167"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EdoJE1CP6BMIdZQ1yFzKxrwHZIkwUAcpEXwfToBqKwU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:43:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "14cntgg7fh"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514134328.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EdoJE1CP6BMIdZQ1yFzKxrwHZIkwUAcpEXwfToBqKwU="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134328.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134328.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12167"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EdoJE1CP6BMIdZQ1yFzKxrwHZIkwUAcpEXwfToBqKwU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:43:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EdoJE1CP6BMIdZQ1yFzKxrwHZIkwUAcpEXwfToBqKwU="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134348.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134348.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22039"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jVUDJzTy+EGLCqO+GGCxVYYU2HgZUjOCkxj2rrMMfx8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:43:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jVUDJzTy+EGLCqO+GGCxVYYU2HgZUjOCkxj2rrMMfx8="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134348.jsvmkb0fdd.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134348.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22039"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jVUDJzTy+EGLCqO+GGCxVYYU2HgZUjOCkxj2rrMMfx8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:43:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jsvmkb0fdd"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514134348.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jVUDJzTy+EGLCqO+GGCxVYYU2HgZUjOCkxj2rrMMfx8="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134405.dv7ls8bfc1.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134405.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18172"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GUd9/t2jm+xKaRLaUGSkkJgWC7ayzjS+8o4jCpDPU8c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:44:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dv7ls8bfc1"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514134405.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GUd9/t2jm+xKaRLaUGSkkJgWC7ayzjS+8o4jCpDPU8c="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134405.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134405.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18172"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GUd9/t2jm+xKaRLaUGSkkJgWC7ayzjS+8o4jCpDPU8c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:44:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GUd9/t2jm+xKaRLaUGSkkJgWC7ayzjS+8o4jCpDPU8c="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134958.dy2bskrebi.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134958.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22125"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"S4DEmPTXNz+3ayypitWehyelcb9WOJDhhVOlkexxSsg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:49:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dy2bskrebi"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514134958.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-S4DEmPTXNz+3ayypitWehyelcb9WOJDhhVOlkexxSsg="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514134958.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514134958.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22125"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"S4DEmPTXNz+3ayypitWehyelcb9WOJDhhVOlkexxSsg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:49:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-S4DEmPTXNz+3ayypitWehyelcb9WOJDhhVOlkexxSsg="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514135238.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514135238.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10058"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qqkJDI6xlJedzS5/VjUxcmbltnHkvwS0qsoTuj1DhsQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:52:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qqkJDI6xlJedzS5/VjUxcmbltnHkvwS0qsoTuj1DhsQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514135238.u6i14o6015.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514135238.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10058"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qqkJDI6xlJedzS5/VjUxcmbltnHkvwS0qsoTuj1DhsQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:52:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u6i14o6015"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514135238.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qqkJDI6xlJedzS5/VjUxcmbltnHkvwS0qsoTuj1DhsQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514155904.hb20vlvwep.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514155904.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16838"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QxGZCnOR90mBTlf+FATFx+dd30iFeyibJxBXGjs+eK0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 08:59:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hb20vlvwep"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/681d7a2dca08adcc3adf6062_20250514155904.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QxGZCnOR90mBTlf+FATFx+dd30iFeyibJxBXGjs+eK0="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/681d7a2dca08adcc3adf6062_20250514155904.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\681d7a2dca08adcc3adf6062_20250514155904.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16838"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QxGZCnOR90mBTlf+FATFx+dd30iFeyibJxBXGjs+eK0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 08:59:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QxGZCnOR90mBTlf+FATFx+dd30iFeyibJxBXGjs+eK0="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/68243e4f2c743c357abf840d_20250514135539.ggffnupwj3.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\68243e4f2c743c357abf840d_20250514135539.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22918"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ADs3eYJT0SRtU6Rh1lfBqHaRVqMdGtGfxad1XfHcJFc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:55:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ggffnupwj3"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/68243e4f2c743c357abf840d_20250514135539.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ADs3eYJT0SRtU6Rh1lfBqHaRVqMdGtGfxad1XfHcJFc="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/68243e4f2c743c357abf840d_20250514135539.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\68243e4f2c743c357abf840d_20250514135539.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22918"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ADs3eYJT0SRtU6Rh1lfBqHaRVqMdGtGfxad1XfHcJFc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 06:55:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ADs3eYJT0SRtU6Rh1lfBqHaRVqMdGtGfxad1XfHcJFc="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6).jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "69998"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"48vWz/JuIsI9IRumWFRRULN9S18kC522sTkluIKknlk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 09:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-48vWz/JuIsI9IRumWFRRULN9S18kC522sTkluIKknlk="
+        }
+      ]
+    },
+    {
+      "Route": "images/avatar/f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6).v5x04crppv.jpeg",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\DoAnCoSo\\wwwroot\\images\\avatar\\f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6).jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "69998"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"48vWz/JuIsI9IRumWFRRULN9S18kC522sTkluIKknlk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 09:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "v5x04crppv"
+        },
+        {
+          "Name": "label",
+          "Value": "images/avatar/f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6).jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-48vWz/JuIsI9IRumWFRRULN9S18kC522sTkluIKknlk="
         }
       ]
     },

@@ -71,33 +71,13 @@
                             </div>
                         </div>
                         
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <label asp-for="Role" class="form-label">Vai trò</label>
-                                <select asp-for="Role" class="form-select">
-                                    <option value="User">User</option>
-                                    <option value="Student">Student</option>
-                                    <option value="Teacher">Teacher</option>
-                                    <option value="Admin">Admin</option>
-                                </select>
-                                <span asp-validation-for="Role" class="text-danger"></span>
-                            </div>
-                            <div class="col-md-4">
-                                <label asp-for="Level" class="form-label">Trình độ</label>
-                                <select asp-for="Level" class="form-select">
-                                    <option value="A1">A1</option>
-                                    <option value="A2">A2</option>
-                                    <option value="B1">B1</option>
-                                    <option value="B2">B2</option>
-                                    <option value="C1">C1</option>
-                                    <option value="C2">C2</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label asp-for="Points" class="form-label">Điểm</label>
-                                <input asp-for="Points" class="form-control" type="number" min="0" />
-                                <span asp-validation-for="Points" class="text-danger"></span>
-                            </div>
+                        <div class="mb-3">
+                            <label asp-for="Role" class="form-label">Vai trò</label>
+                            <select asp-for="Role" class="form-select">
+                                <option value="User">User</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                            <span asp-validation-for="Role" class="text-danger"></span>
                         </div>
                         
                         <div class="d-flex justify-content-end gap-2 mt-4">

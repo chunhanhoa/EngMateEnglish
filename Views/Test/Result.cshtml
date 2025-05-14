@@ -5,14 +5,20 @@
     // Get data from TempData (populated by the controller)
     var score = TempData["Score"] != null ? Convert.ToInt32(TempData["Score"]) : 0;
     var correctCount = TempData["CorrectCount"] != null ? Convert.ToInt32(TempData["CorrectCount"]) : 0;
-    var totalQuestions = Model.Questions.Count;
+    var totalQuestions = 20;
     var timeTaken = TempData["TimeTaken"]?.ToString() ?? "00:00";
+    
+    // Get completion time from TempData if available
+    var completedAt = TempData["CompletedAt"] != null ? 
+        Convert.ToDateTime(TempData["CompletedAt"]) : 
+        DateTime.Now;
     
     // Keep the data available for the next request (for Detail view)
     TempData.Keep("UserAnswers");
     TempData.Keep("Score");
     TempData.Keep("CorrectCount");
     TempData.Keep("TimeTaken");
+    TempData.Keep("CompletedAt");
     
     // Determine message based on score
     string message = score >= 80 ? "Xuất sắc!" :
@@ -64,6 +70,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Add completion time display here -->
+                    <div class="text-muted mb-4">
+                        Nộp lúc: @completedAt.ToString("dd/MM/yyyy HH:mm") (GMT+7)
                     </div>
                     
                     <div class="d-grid gap-3 d-md-flex justify-content-md-center">

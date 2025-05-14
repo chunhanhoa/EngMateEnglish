@@ -600,51 +600,100 @@ namespace TiengAnh.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> EditUser(UserModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditUser(UserModel model, IFormFile AvatarFile)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                _logger.LogInformation($"EditUser POST: ID={model.Id}, Email={model.Email}, Role={model.Role}");
+                
+                // Find existing user
+                var existingUser = await _userRepository.GetByUserIdAsync(model.Id ?? model.UserId);
+                if (existingUser == null)
                 {
-                    var existingUser = await _userRepository.GetByUserIdAsync(model.Id);
-                    if (existingUser == null)
-                    {
-                        return NotFound();
-                    }
-
-                    existingUser.FullName = model.FullName;
-                    existingUser.Username = model.Username;
-                    existingUser.Email = model.Email;
-                    existingUser.Phone = model.Phone;
-                    existingUser.Address = model.Address;
-                    existingUser.Gender = model.Gender;
-                    existingUser.DateOfBirth = model.DateOfBirth;
-                    existingUser.Bio = model.Bio;
-                    existingUser.Level = model.Level;
+                    TempData["ErrorMessage"] = "Không tìm thấy người dùng.";
+                    return View(model);
+                }
+                
+                // Update user properties
+                existingUser.FullName = model.FullName;
+                existingUser.Email = model.Email;
+                existingUser.Username = model.Username;
+                existingUser.UserName = model.Username; // Ensure UserName is also updated
+                existingUser.Phone = model.Phone;
+                existingUser.Address = model.Address;
+                existingUser.Bio = model.Bio;
+                existingUser.Gender = model.Gender;
+                existingUser.DateOfBirth = model.DateOfBirth;
+                
+                // Set Role and Roles collection
+                if (!string.IsNullOrEmpty(model.Role))
+                {
                     existingUser.Role = model.Role;
-                    existingUser.Roles = model.Roles;
-                    existingUser.Points = model.Points;
                     
-                    bool updateResult = await _userRepository.UpdateUserAsync(existingUser);
-                    
-                    if (updateResult)
+                    // Initialize Roles collection if it's null
+                    if (existingUser.Roles == null)
                     {
-                        TempData["SuccessMessage"] = "Cập nhật thông tin người dùng thành công!";
-                        return RedirectToAction("ManageUsers");
+                        existingUser.Roles = new List<string>();
                     }
-                    else
+                    
+                    // Update Roles collection
+                    if (!existingUser.Roles.Contains(model.Role))
                     {
-                        TempData["ErrorMessage"] = "Không thể cập nhật thông tin người dùng.";
+                        existingUser.Roles.Clear();
+                        existingUser.Roles.Add(model.Role);
                     }
                 }
-                catch (Exception ex)
+                
+                // Handle avatar file upload if any
+                if (AvatarFile != null && AvatarFile.Length > 0)
                 {
-                    _logger.LogError($"EditUser: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
-                    TempData["ErrorMessage"] = "Đã xảy ra lỗi khi cập nhật thông tin người dùng.";
+                    try
+                    {
+                        string uploadsFolder = Path.Combine(_webRootPath, "images", "avatar");
+                        if (!Directory.Exists(uploadsFolder))
+                        {
+                            Directory.CreateDirectory(uploadsFolder);
+                        }
+                        
+                        string uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(AvatarFile.FileName)}";
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await AvatarFile.CopyToAsync(stream);
+                        }
+                        
+                        existingUser.Avatar = $"/images/avatar/{uniqueFileName}";
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError($"Avatar upload error: {ex.Message}");
+                        // Don't fail the whole update if just the avatar fails
+                    }
+                }
+                
+                // Save changes
+                var result = await _userRepository.UpdateUserAsync(existingUser);
+
+                if (result)
+                {
+                    TempData["SuccessMessage"] = "Cập nhật thông tin người dùng thành công!";
+                    return RedirectToAction("ManageUsers");
+                }
+                else
+                {
+                    _logger.LogWarning($"EditUser: UpdateUserAsync returned false for user {model.Id ?? model.UserId}");
+                    TempData["ErrorMessage"] = "Không thể cập nhật thông tin người dùng. Người dùng không tồn tại hoặc có lỗi xảy ra.";
+                    return View(model);
                 }
             }
-
-            return View(model);
+            catch (Exception ex)
+            {
+                _logger.LogError($"EditUser error: {ex.Message}");
+                TempData["ErrorMessage"] = $"Lỗi: {ex.Message}";
+                return View(model);
+            }
         }
 
         [HttpGet]
@@ -959,6 +1008,25 @@ namespace TiengAnh.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public IActionResult DebugEditUser(string id)
+        {
+            var user = _userRepository.GetByUserIdAsync(id).Result;
+            if (user == null)
+            {
+                return Json(new { success = false, message = "User not found" });
+            }
+            
+            return Json(new { 
+                success = true, 
+                userId = user.Id,
+                userName = user.Username,
+                userRole = user.Role,
+                roles = user.Roles
+            });
         }
     }
     

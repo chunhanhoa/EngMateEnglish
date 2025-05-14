@@ -1,26 +1,51 @@
 @model TiengAnh.Models.TestModel
 @{
-    ViewData["Title"] = "Chi tiết bài làm";
+    ViewData["Title"] = "Chi tiết bài kiểm tra";
+    var userAnswers = ViewBag.UserAnswers as int[];
+    var score = ViewBag.Score != null ? Convert.ToInt32(ViewBag.Score) : 0;
+    var correctCount = ViewBag.CorrectCount != null ? Convert.ToInt32(ViewBag.CorrectCount) : 0;
+    var timeTaken = ViewBag.TimeTaken as string ?? "00:00";
     
-    var userAnswers = ViewBag.UserAnswers as int[] ?? new int[Model.Questions.Count];
-    var score = ViewBag.Score ?? 0;
-    var correctCount = ViewBag.CorrectCount ?? 0;
-    var timeTaken = ViewBag.TimeTaken ?? "00:00";
+    // Get completion time if available
+    var completedAt = ViewBag.CompletedAt != null ? 
+        Convert.ToDateTime(ViewBag.CompletedAt) : 
+        DateTime.Now;
 }
 
 <div class="container py-5">
-    <div class="card border-0 shadow-sm mb-4">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h1 class="h3 mb-0">@Model.Title - Chi tiết bài làm</h1>
-                <div class="badge bg-primary p-2 fs-6">Điểm: @score%</div>
+    <div class="card border-0 shadow mb-4">
+        <div class="card-body p-4">
+            <h1 class="h2 mb-3">@Model.Title - Chi tiết bài làm</h1>
+            
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                <div>
+                    <span class="badge bg-primary me-2">@Model.Level</span>
+                    <span class="badge bg-info me-2">@Model.Category</span>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <strong class="d-block">Điểm số</strong>
+                        <span class="text-@(score >= 80 ? "success" : score >= 60 ? "info" : score >= 50 ? "warning" : "danger") fs-4">@score%</span>
+                    </div>
+                    <div class="me-4">
+                        <strong class="d-block">Câu đúng</strong>
+                        <span class="fs-4">@correctCount/@Model.Questions.Count</span>
+                    </div>
+                    <div>
+                        <strong class="d-block">Thời gian</strong>
+                        <span class="fs-4">@timeTaken</span>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex flex-wrap gap-2 mb-3">
-                <div class="badge bg-secondary p-2">@Model.Level</div>
-                <div class="badge bg-info p-2">@Model.Category</div>
-                <div class="badge bg-dark p-2"><i class="bi bi-clock me-1"></i>@timeTaken</div>
-                <div class="badge bg-success p-2"><i class="bi bi-check-circle me-1"></i>@correctCount/@Model.Questions.Count câu đúng</div>
+            
+            <!-- Add completion time display here -->
+            <div class="alert alert-light mb-4">
+                <small class="d-block text-muted">
+                    <i class="bi bi-calendar-check me-1"></i>Nộp bài lúc: @completedAt.ToString("dd/MM/yyyy HH:mm") (GMT+7)
+                </small>
             </div>
+            
             <a href="@Url.Action("Result", "Test", new { id = Model.Id })" class="btn btn-outline-primary">
                 <i class="bi bi-arrow-left me-1"></i>Quay lại trang kết quả
             </a>

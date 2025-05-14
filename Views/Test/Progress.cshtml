@@ -1,0 +1,328 @@
+@model TestProgressModel
+@{
+    ViewData["Title"] = "Tiến trình học tập";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Test")">Bài kiểm tra</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tiến trình học tập</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold">Tiến trình học tập của bạn</h1>
+            <p class="text-muted">Theo dõi quá trình học tập và xem tiến độ của bạn qua các bài kiểm tra</p>
+        </div>
+    </div>
+    
+    <!-- Overall Progress -->
+    <div class="row mb-4">
+        <div class="col-md-4 mb-4 mb-md-0">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Tiến trình tổng quan</h5>
+                    <div class="progress-circle position-relative mx-auto my-4" style="width: 150px; height: 150px;">
+                        <svg class="circular-chart" viewBox="0 0 36 36">
+                            <path class="circle-bg"
+                                d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" stroke="#4e73fa" stroke-dasharray="@Model.CompletionPercentage, 100"
+                                d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="progress-value fw-bold fs-4">@Math.Round(Model.CompletionPercentage)%</div>
+                    </div>
+                    <p>Đã hoàn thành @Model.CompletedCount / @Model.TotalAvailableTests bài kiểm tra</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4 mb-md-0">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Điểm trung bình</h5>
+                    <div class="display-1 fw-bold my-4 @(Model.AverageScore >= 80 ? "text-success" : Model.AverageScore >= 60 ? "text-primary" : "text-warning")">
+                        @Math.Round(Model.AverageScore, 1)
+                    </div>
+                    <p>Dựa trên @Model.CompletedCount bài kiểm tra đã hoàn thành</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-center mb-3">Thống kê học tập</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item border-0 d-flex justify-content-between align-items-center">
+                            <span>Tổng bài kiểm tra:</span>
+                            <span class="fw-bold">@Model.TotalAvailableTests</span>
+                        </li>
+                        <li class="list-group-item border-0 d-flex justify-content-between align-items-center">
+                            <span>Đã hoàn thành:</span>
+                            <span class="fw-bold">@Model.CompletedCount</span>
+                        </li>
+                        <li class="list-group-item border-0 d-flex justify-content-between align-items-center">
+                            <span>Chưa hoàn thành:</span>
+                            <span class="fw-bold">@(Model.TotalAvailableTests - Model.CompletedCount)</span>
+                        </li>
+                        @if (Model.CompletedCount > 0)
+                        {
+                            <li class="list-group-item border-0 d-flex justify-content-between align-items-center">
+                                <span>Thời gian trung bình:</span>
+                                <span class="fw-bold">
+                                    @{
+                                        // Fix: Parse time values safely by handling various formats
+                                        double avgTimeDouble = 0;
+                                        
+                                        if (Model.CompletedTests.Any())
+                                        {
+                                            var totalSeconds = 0.0;
+                                            var validCount = 0;
+                                            
+                                            foreach (var test in Model.CompletedTests)
+                                            {
+                                                if (test.TimeTaken == null) continue;
+                                                
+                                                string timeTaken = test.TimeTaken.ToString();
+                                                
+                                                // Handle different possible formats
+                                                if (double.TryParse(timeTaken, out double secondsValue))
+                                                {
+                                                    totalSeconds += secondsValue;
+                                                    validCount++;
+                                                }
+                                                else if (timeTaken.Contains(':'))
+                                                {
+                                                    // Handle "minutes:seconds" format
+                                                    var parts = timeTaken.Split(':');
+                                                    if (parts.Length == 2 && 
+                                                        double.TryParse(parts[0], out double minutesValue) && 
+                                                        double.TryParse(parts[1], out double secsValue))
+                                                    {
+                                                        totalSeconds += (minutesValue * 60 + secsValue);
+                                                        validCount++;
+                                                    }
+                                                }
+                                            }
+                                            
+                                            if (validCount > 0)
+                                            {
+                                                avgTimeDouble = totalSeconds / validCount;
+                                            }
+                                        }
+                                        
+                                        var minutes = Math.Floor(avgTimeDouble / 60);
+                                        var seconds = Math.Round(avgTimeDouble % 60);
+                                        @($"{minutes:0}:{seconds:00}")
+                                    }
+                                </span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Progress by Category -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-4">Tiến trình theo danh mục</h5>
+                    
+                    @if (Model.CategoryProgress.Count == 0)
+                    {
+                        <div class="alert alert-info">Chưa có dữ liệu danh mục.</div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Danh mục</th>
+                                        <th>Tiến độ</th>
+                                        <th class="text-center">Đã hoàn thành</th>
+                                        <th class="text-center">Điểm TB</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var category in Model.CategoryProgress)
+                                    {
+                                        <tr>
+                                            <td>@category.Key</td>
+                                            <td class="w-25">
+                                                <div class="progress" style="height: 10px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar" 
+                                                         style="width: @category.Value.CompletionPercentage%;" 
+                                                         aria-valuenow="@category.Value.CompletionPercentage" 
+                                                         aria-valuemin="0" 
+                                                         aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="text-muted">@Math.Round(category.Value.CompletionPercentage)%</small>
+                                            </td>
+                                            <td class="text-center">@category.Value.CompletedTests / @category.Value.TotalTests</td>
+                                            <td class="text-center">
+                                                @if (category.Value.CompletedTests > 0)
+                                                {
+                                                    <span class="@(category.Value.AverageScore >= 80 ? "text-success" : category.Value.AverageScore >= 60 ? "text-primary" : "text-warning")">
+                                                        @Math.Round(category.Value.AverageScore, 1)
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span>-</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Progress by Level -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-4">Tiến trình theo trình độ</h5>
+                    
+                    @if (Model.LevelProgress.Count == 0)
+                    {
+                        <div class="alert alert-info">Chưa có dữ liệu trình độ.</div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Trình độ</th>
+                                        <th>Tiến độ</th>
+                                        <th class="text-center">Đã hoàn thành</th>
+                                        <th class="text-center">Điểm TB</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var level in Model.LevelProgress)
+                                    {
+                                        <tr>
+                                            <td>@level.Key</td>
+                                            <td class="w-25">
+                                                <div class="progress" style="height: 10px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" 
+                                                         style="width: @level.Value.CompletionPercentage%;" 
+                                                         aria-valuenow="@level.Value.CompletionPercentage" 
+                                                         aria-valuemin="0" 
+                                                         aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="text-muted">@Math.Round(level.Value.CompletionPercentage)%</small>
+                                            </td>
+                                            <td class="text-center">@level.Value.CompletedTests / @level.Value.TotalTests</td>
+                                            <td class="text-center">
+                                                @if (level.Value.CompletedTests > 0)
+                                                {
+                                                    <span class="@(level.Value.AverageScore >= 80 ? "text-success" : level.Value.AverageScore >= 60 ? "text-primary" : "text-warning")">
+                                                        @Math.Round(level.Value.AverageScore, 1)
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span>-</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Completions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-4">Bài kiểm tra gần đây</h5>
+                    
+                    @if (Model.RecentCompletions == null || !Model.RecentCompletions.Any())
+                    {
+                        <div class="alert alert-info">
+                            Bạn chưa hoàn thành bài kiểm tra nào. Hãy thử làm một bài kiểm tra và quay lại đây sau.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Bài kiểm tra</th>
+                                        <th>Danh mục</th>
+                                        <th>Trình độ</th>
+                                        <th class="text-center">Điểm</th>
+                                        <th class="text-end">Ngày làm bài</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var test in Model.RecentCompletions)
+                                    {
+                                        <tr>
+                                            <td>@test.TestTitle</td>
+                                            <td>@test.TestCategory</td>
+                                            <td>@test.TestLevel</td>
+                                            <td class="text-center">
+                                                <span class="badge rounded-pill @(test.Score >= 80 ? "bg-success" : test.Score >= 60 ? "bg-primary" : "bg-warning")">
+                                                    @test.Score
+                                                </span>
+                                            </td>
+                                            <td class="text-end">@test.CompletedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                                            <td class="text-end">
+                                                <a href="@Url.Action("Detail", "Test", new { id = test.TestId })" class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-eye"></i> Xem chi tiết
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .progress-circle { position: relative; }
+        .circular-chart { display: block; max-width: 100%; max-height: 100%; }
+        .circle-bg { fill: none; stroke: #eee; stroke-width: 2; }
+        .circle { fill: none; stroke-width: 2; stroke-linecap: round; animation: progress 1s ease-out forwards; }
+        .progress-value { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        @@keyframes progress { 0% { stroke-dasharray: 0 100; } }
+    </style>
+}
