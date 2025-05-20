@@ -64,13 +64,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\hover-translate.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2059"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y=\u0022"},{"Name":"Last-Modified","Value":"Thu, 08 May 2025 14:06:39 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2059"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y=\u0022"},{"Name":"Last-Modified","Value":"Thu, 15 May 2025 14:10:12 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TiengAnh/css/hover-translate.qrq51cjkgl.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\hover-translate.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qrq51cjkgl"},{"Name":"integrity","Value":"sha256-xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y="},{"Name":"label","Value":"_content/TiengAnh/css/hover-translate.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2059"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y=\u0022"},{"Name":"Last-Modified","Value":"Thu, 08 May 2025 14:06:39 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2059"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022xpecCBUqCR8ui0CexemtB218c4b5lYcXeg6Xpk/3M5Y=\u0022"},{"Name":"Last-Modified","Value":"Thu, 15 May 2025 14:10:12 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TiengAnh/css/no-animations.4a39jewb29.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\no-animations.css'))</AssetFile>
@@ -3856,13 +3856,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\hover-translate.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"josi2ww9yi"},{"Name":"integrity","Value":"sha256-s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM="},{"Name":"label","Value":"_content/TiengAnh/js/hover-translate.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"12889"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 08 May 2025 17:20:13 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"12889"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 15 May 2025 14:16:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TiengAnh/js/hover-translate.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\hover-translate.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"12889"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 08 May 2025 17:20:13 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"12889"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022s2OxmSjqAwImkEIBKIUOgNrQ5WgP0KT23vctPPpyeCM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 15 May 2025 14:16:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TiengAnh/js/notification-toasts.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\notification-toasts.js'))</AssetFile>

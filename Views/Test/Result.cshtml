@@ -91,6 +91,14 @@
     </div>
 </div>
 
+@if (ViewBag.InfoMessage != null)
+{
+    <div class="alert alert-info mt-3">
+        <i class="bi bi-info-circle me-2"></i>
+        @ViewBag.InfoMessage
+    </div>
+}
+
 <style>
     .score-circle circle {
         transition: stroke-dashoffset 1s ease-in-out;

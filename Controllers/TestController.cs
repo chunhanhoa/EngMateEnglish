@@ -179,6 +179,39 @@ namespace TiengAnh.Controllers
 
                 _logger.LogInformation($"Take action - Looking for test with ID: {id}");
                 
+                // Save current test data to session before clearing TempData
+                if (TempData.ContainsKey("UserAnswers") && 
+                    TempData.ContainsKey("Score") && 
+                    TempData.ContainsKey("CorrectCount") &&
+                    TempData.ContainsKey("SelectedQuestionIds"))
+                {
+                    // Create a dictionary to store all the data we need
+                    var savedTestData = new Dictionary<string, string>
+                    {
+                        ["UserAnswers"] = TempData["UserAnswers"]?.ToString(),
+                        ["Score"] = TempData["Score"]?.ToString(),
+                        ["CorrectCount"] = TempData["CorrectCount"]?.ToString(),
+                        ["TimeTaken"] = TempData["TimeTaken"]?.ToString(),
+                        ["CompletedAt"] = TempData["CompletedAt"]?.ToString(),
+                        ["SelectedQuestionIds"] = TempData["SelectedQuestionIds"]?.ToString(),
+                        ["QuestionOrder"] = TempData["QuestionOrder"]?.ToString()
+                    };
+                    
+                    // Save to session with a key that includes the test ID
+                    string sessionKey = $"LastCompletedTest_{id}";
+                    HttpContext.Session.SetString(sessionKey, JsonSerializer.Serialize(savedTestData));
+                }
+                
+                // Clear any existing test results from TempData when starting a new test attempt
+                if (TempData.ContainsKey("UserAnswers")) TempData.Remove("UserAnswers");
+                if (TempData.ContainsKey("Score")) TempData.Remove("Score");  
+                if (TempData.ContainsKey("CorrectCount")) TempData.Remove("CorrectCount");
+                if (TempData.ContainsKey("TimeTaken")) TempData.Remove("TimeTaken");
+                if (TempData.ContainsKey("TimeUsed")) TempData.Remove("TimeUsed");
+                if (TempData.ContainsKey("CompletedAt")) TempData.Remove("CompletedAt");
+                if (TempData.ContainsKey("SelectedQuestionIds")) TempData.Remove("SelectedQuestionIds");
+                if (TempData.ContainsKey("QuestionOrder")) TempData.Remove("QuestionOrder");
+                
                 // Get all tests first for matching
                 var allTests = await _testRepository.GetAllTestsAsync();
                 _logger.LogInformation($"Take action - Found {allTests.Count} total tests");
@@ -207,19 +240,25 @@ namespace TiengAnh.Controllers
                     return NotFound();
                 }
 
-                    var allQuestions = test.Questions.ToList();
-                    var random = new Random();
-                    var randomQuestions = allQuestions
-                        .OrderBy(q => random.Next())
-                        .Take(20)
-                        .ToList();
-                        
-                    test.Questions = randomQuestions;
+                var allQuestions = test.Questions.ToList();
+                var random = new Random();
+                var randomQuestions = allQuestions
+                    .OrderBy(q => random.Next())
+                    .Take(20)
+                    .ToList();
                     
-                    // Store the selected question IDs in TempData for later use
-                    TempData["SelectedQuestionIds"] = JsonSerializer.Serialize(
-                        randomQuestions.Select(q => q.QuestionId).ToList()
-                    );
+                test.Questions = randomQuestions;
+                
+                // Store the selected question IDs in TempData for later use
+                var selectedQuestionIds = randomQuestions.Select(q => q.QuestionId).ToList();
+                TempData["SelectedQuestionIds"] = JsonSerializer.Serialize(selectedQuestionIds);
+                
+                // Store the questions in their original order with their IDs for exact matching later
+                var orderedQuestions = randomQuestions.Select((q, index) => new {
+                    QuestionId = q.QuestionId,
+                    Order = index
+                }).ToDictionary(x => x.QuestionId, x => x.Order);
+                TempData["QuestionOrder"] = JsonSerializer.Serialize(orderedQuestions);
 
                 _logger.LogInformation($"Found test for taking: {test.Title} with ID: {test.TestIdentifier}");
                 return View(test);
@@ -246,6 +285,12 @@ namespace TiengAnh.Controllers
                 if (test == null)
                 {
                     return NotFound();
+                }
+
+                // Pass along any info messages to the view
+                if (TempData.ContainsKey("InfoMessage"))
+                {
+                    ViewBag.InfoMessage = TempData["InfoMessage"];
                 }
 
                 // For GET requests, we'll just render the view with test data
@@ -287,10 +332,15 @@ namespace TiengAnh.Controllers
                 TempData["TimeUsed"] = submission.TimeUsed;
                 TempData["CompletedAt"] = vietnamTime; // Store completion time
 
-                // If we have selected question IDs, keep them
+                // Keep both selected question IDs and their order
                 if (TempData.ContainsKey("SelectedQuestionIds"))
                 {
                     TempData.Keep("SelectedQuestionIds");
+                }
+                
+                if (TempData.ContainsKey("QuestionOrder"))
+                {
+                    TempData.Keep("QuestionOrder");
                 }
 
                 // Get current user ID if authenticated
@@ -332,9 +382,93 @@ namespace TiengAnh.Controllers
                     return NotFound();
                 }
 
-                // Check if we have test data in TempData
-                if (TempData.ContainsKey("UserAnswers"))
+                // Check if we have COMPLETE test data in TempData
+                bool hasCompleteData = TempData.ContainsKey("UserAnswers") &&
+                    TempData.ContainsKey("Score") &&
+                    TempData.ContainsKey("CorrectCount") &&
+                    TempData.ContainsKey("SelectedQuestionIds");
+
+                // Get current user ID
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                UserTestModel userTest = null;
+                
+                // Try to get the completed test from database if user is logged in
+                if (!string.IsNullOrEmpty(userId))
                 {
+                    userTest = await _userTestRepository.GetByUserAndTestIdAsync(userId, id);
+                }
+
+                // Get completed test from session as fallback
+                var sessionTest = GetCompletedTestsFromSession()?.FirstOrDefault(t => t.TestId == id);
+
+                // Check for saved test data in session (from interrupted retake)
+                string sessionKey = $"LastCompletedTest_{id}";
+                Dictionary<string, string> savedTestData = null;
+                if (!hasCompleteData && HttpContext.Session.GetString(sessionKey) is string savedJson)
+                {
+                    savedTestData = JsonSerializer.Deserialize<Dictionary<string, string>>(savedJson);
+                    if (savedTestData != null && 
+                        savedTestData.ContainsKey("UserAnswers") && 
+                        savedTestData.ContainsKey("Score") && 
+                        savedTestData.ContainsKey("CorrectCount") &&
+                        savedTestData.ContainsKey("SelectedQuestionIds"))
+                    {
+                        // We found saved test data, restore it
+                        hasCompleteData = true;
+                        
+                        ViewBag.UserAnswers = JsonSerializer.Deserialize<int[]>(savedTestData["UserAnswers"]);
+                        ViewBag.Score = Convert.ToInt32(savedTestData["Score"]);
+                        ViewBag.CorrectCount = Convert.ToInt32(savedTestData["CorrectCount"]);
+                        ViewBag.TimeTaken = savedTestData["TimeTaken"];
+                        
+                        if (savedTestData.ContainsKey("CompletedAt") && !string.IsNullOrEmpty(savedTestData["CompletedAt"]))
+                        {
+                            ViewBag.CompletedAt = Convert.ToDateTime(savedTestData["CompletedAt"]);
+                        }
+                        
+                        var selectedQuestionIds = JsonSerializer.Deserialize<List<int>>(savedTestData["SelectedQuestionIds"]);
+                        
+                        Dictionary<int, int> questionOrder = null;
+                        if (savedTestData.ContainsKey("QuestionOrder") && !string.IsNullOrEmpty(savedTestData["QuestionOrder"]))
+                        {
+                            questionOrder = JsonSerializer.Deserialize<Dictionary<int, int>>(savedTestData["QuestionOrder"]);
+                        }
+                        
+                        // Create a dictionary of all questions for easy lookup
+                        var allQuestionsDict = test.Questions.ToDictionary(q => q.QuestionId);
+                        
+                        // Build new questions list with the exact questions in the exact order
+                        var orderedQuestions = new List<TestQuestionModel>();
+                        
+                        foreach (var questionId in selectedQuestionIds)
+                        {
+                            if (allQuestionsDict.TryGetValue(questionId, out var question))
+                            {
+                                orderedQuestions.Add(question);
+                            }
+                        }
+                        
+                        // If we have question order information, use it to sort
+                        if (questionOrder != null)
+                        {
+                            orderedQuestions = orderedQuestions
+                                .OrderBy(q => questionOrder.ContainsKey(q.QuestionId) ? 
+                                    questionOrder[q.QuestionId] : int.MaxValue)
+                                .ToList();
+                        }
+                        
+                        // Replace the questions with our ordered list
+                        test.Questions = orderedQuestions;
+                        
+                        // Add a message to indicate we're showing saved results
+                        ViewBag.InfoMessage = "Hiển thị kết quả chi tiết của lần làm bài gần nhất đã hoàn thành.";
+                    }
+                }
+
+                // Use the most recent completed test data source
+                if (hasCompleteData && savedTestData == null)
+                {
+                    // We have complete data in TempData, use it
                     ViewBag.UserAnswers = JsonSerializer.Deserialize<int[]>(TempData["UserAnswers"].ToString());
                     ViewBag.Score = TempData["Score"];
                     ViewBag.CorrectCount = TempData["CorrectCount"];
@@ -346,29 +480,63 @@ namespace TiengAnh.Controllers
                         ViewBag.CompletedAt = Convert.ToDateTime(TempData["CompletedAt"]);
                     }
                     
-                    // Keep the data available for the next request too
+                    // Get the selected question IDs in the exact order they were presented
+                    var selectedQuestionIds = JsonSerializer.Deserialize<List<int>>(
+                        TempData["SelectedQuestionIds"].ToString());
+                    
+                    Dictionary<int, int> questionOrder = null;
+                    if (TempData.ContainsKey("QuestionOrder"))
+                    {
+                        questionOrder = JsonSerializer.Deserialize<Dictionary<int, int>>(
+                            TempData["QuestionOrder"].ToString());
+                    }
+                    
+                    // Create a dictionary of all questions for easy lookup
+                    var allQuestionsDict = test.Questions.ToDictionary(q => q.QuestionId);
+                    
+                    // Build new questions list with the exact questions in the exact order
+                    var orderedQuestions = new List<TestQuestionModel>();
+                    
+                    foreach (var questionId in selectedQuestionIds)
+                    {
+                        if (allQuestionsDict.TryGetValue(questionId, out var question))
+                        {
+                            orderedQuestions.Add(question);
+                        }
+                    }
+                    
+                    // If we have question order information, use it to sort
+                    if (questionOrder != null)
+                    {
+                        orderedQuestions = orderedQuestions
+                            .OrderBy(q => questionOrder.ContainsKey(q.QuestionId) ? 
+                                questionOrder[q.QuestionId] : int.MaxValue)
+                            .ToList();
+                    }
+                    
+                    // Replace the questions with our ordered list
+                    test.Questions = orderedQuestions;
+                    
+                    // Keep the data for future requests
                     TempData.Keep("UserAnswers");
                     TempData.Keep("Score");
                     TempData.Keep("CorrectCount");
                     TempData.Keep("TimeTaken");
                     TempData.Keep("CompletedAt");
-                    
-                    if (TempData.ContainsKey("SelectedQuestionIds"))
-                    {
-                        var selectedQuestionIds = JsonSerializer.Deserialize<List<int>>(
-                            TempData["SelectedQuestionIds"].ToString());
-                        
-                        // Filter the questions to only include those that were shown during the test
-                        test.Questions = test.Questions
-                            .Where(q => selectedQuestionIds.Contains(q.QuestionId))
-                            .ToList();
-                        
-                        TempData.Keep("SelectedQuestionIds");
-                    }
+                    TempData.Keep("SelectedQuestionIds");
+                    TempData.Keep("QuestionOrder");
                 }
-                else
+                else if (!hasCompleteData && (userTest != null || sessionTest != null))
                 {
-                    // If we don't have data, redirect to test taking page
+                    // We have a completed test in database or session but no saved data
+                    // Since we can't show the exact questions/answers from a past attempt,
+                    // redirect to the Result page which shows the summary
+                    TempData["InfoMessage"] = "Chi tiết câu hỏi không còn khả dụng sau khi bạn đã bắt đầu làm lại bài kiểm tra. Đây là tổng kết kết quả của bài làm trước đó.";
+                    return RedirectToAction("Result", new { id = id });
+                }
+                else if (!hasCompleteData)
+                {
+                    // No test data available anywhere - redirect to Take action
                     return RedirectToAction("Take", new { id = id });
                 }
 
@@ -500,14 +668,22 @@ namespace TiengAnh.Controllers
                             CorrectCount = ut.CorrectCount,
                             TotalQuestions = ut.TotalQuestions,
                             TimeTaken = ut.TimeTaken,
-                            CompletedAt = ut.CompletedAt
+                            CompletedAt = ut.CompletedAt,
+                            // Add a property for Detail URL to use in the view
+                            DetailUrl = Url.Action("Detail", "Test", new { id = ut.TestId })
                         }).ToList();
                     }
                 }
                 else
                 {
                     // User not logged in, fall back to session
-                    completedTests = GetCompletedTestsFromSession() ?? new List<CompletedTestModel>();
+                    var sessionTests = GetCompletedTestsFromSession() ?? new List<CompletedTestModel>();
+                    
+                    // Add Detail URLs to the session tests
+                    completedTests = sessionTests.Select(test => {
+                        test.DetailUrl = Url.Action("Detail", "Test", new { id = test.TestId });
+                        return test;
+                    }).ToList();
                 }
                 
                 // Update progress model with completed tests
@@ -574,6 +750,9 @@ namespace TiengAnh.Controllers
                     .OrderByDescending(t => t.CompletedAt)
                     .Take(5)
                     .ToList();
+                
+                // Add a flag to ViewBag to indicate we want to use Detail links
+                ViewBag.UseDetailLinks = true;
                 
                 return View(progressModel);
             }

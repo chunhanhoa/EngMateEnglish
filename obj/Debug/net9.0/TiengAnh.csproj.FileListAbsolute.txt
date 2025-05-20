@@ -1673,7 +1673,6 @@ C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\o1spavlecy-k3z261ad2j.gz
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\oo1fr1lsy7-61i4z0bqvv.gz
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\kxzlo6fflb-kkca0xhlkc.gz
-C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\tw24uxyb5b-r52svluqsq.gz
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\dufysslt1n-gv2s2a169w.gz
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\unmac4mia2-pewmqhatka.gz
@@ -1755,6 +1754,7 @@ C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\TiengAnh.genruntimeconfig.cache
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\ref\TiengAnh.dll
 C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\iijk969xo7-g0qmuw0u6y.gz
+C:\Users\ASUS\Downloads\18_Update_G_Dien_Exercise_Exam\EngMate\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\pkrr831ylm-qrq51cjkgl.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\iijk969xo7-g0qmuw0u6y.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\DoAnCoSo\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz

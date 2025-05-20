@@ -14,5 +14,8 @@ namespace TiengAnh.Models
         public int TotalQuestions { get; set; }
         public string TimeTaken { get; set; }
         public DateTime CompletedAt { get; set; }
+        
+        // Add this property for the Detail URL
+        public string DetailUrl { get; set; }
     }
 }
