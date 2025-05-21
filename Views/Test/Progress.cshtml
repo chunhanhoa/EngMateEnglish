@@ -298,7 +298,7 @@
                                                     @test.Score
                                                 </span>
                                             </td>
-                                            <td class="text-end">@test.CompletedAt.AddHours(7).ToString("dd/MM/yyyy HH:mm")</td>
+                                            <td class="text-end">@test.CompletedAt.ToString("dd/MM/yyyy HH:mm")</td>
                                             <td class="text-end">
                                                 <a href="@Url.Action("Detail", "Test", new { id = test.TestId })" class="btn btn-sm btn-outline-primary">
                                                     <i class="fas fa-eye"></i> Xem chi tiết
