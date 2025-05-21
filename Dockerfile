@@ -6,23 +6,19 @@ ENV ASPNETCORE_URLS=http://+:8080
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Cài đặt Newtonsoft.Json trước vào image
-RUN dotnet new console -n temp && \
-    cd temp && \
-    dotnet add package Newtonsoft.Json --version 13.0.3 && \
-    cd ..
-
 # Sao chép và khôi phục project
 COPY ["TiengAnh.csproj", "./"]
-RUN dotnet restore "TiengAnh.csproj"
+# Thêm packages cần thiết trực tiếp
+RUN dotnet add package Newtonsoft.Json --version 13.0.3
+RUN dotnet restore "TiengAnh.csproj" --verbosity normal
 
-# Sao chép mã nguồn và build
+# Sao chép toàn bộ mã nguồn và build với debug output
 COPY . .
-RUN dotnet build "TiengAnh.csproj" -c Release -o /app/build
+RUN dotnet build "TiengAnh.csproj" -c Release -o /app/build --verbosity detailed
 
 # Xuất bản ứng dụng
 FROM build AS publish
-RUN dotnet publish "TiengAnh.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "TiengAnh.csproj" -c Release -o /app/publish
 
 # Tạo image cuối cùng
 FROM base AS final
