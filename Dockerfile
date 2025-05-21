@@ -6,15 +6,26 @@ ENV ASPNETCORE_URLS=http://+:8080
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
+# Tạo nuget.config để cấu hình nguồn package
+RUN echo '<?xml version="1.0" encoding="utf-8"?>\
+<configuration>\
+  <packageSources>\
+    <clear />\
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />\
+  </packageSources>\
+</configuration>' > nuget.config
+
 # Sao chép và khôi phục project
 COPY ["TiengAnh.csproj", "./"]
-# Thêm packages cần thiết trực tiếp
-RUN dotnet add package Newtonsoft.Json --version 13.0.3
-RUN dotnet restore "TiengAnh.csproj" --verbosity normal
 
-# Sao chép toàn bộ mã nguồn và build với debug output
+# Thêm package reference vào file csproj
+RUN sed -i 's/<\/Project>/  <ItemGroup>\n    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" \/>\n  <\/ItemGroup>\n<\/Project>/g' TiengAnh.csproj
+
+RUN dotnet restore "TiengAnh.csproj" --configfile nuget.config
+
+# Sao chép toàn bộ mã nguồn và build
 COPY . .
-RUN dotnet build "TiengAnh.csproj" -c Release -o /app/build --verbosity detailed
+RUN dotnet build "TiengAnh.csproj" -c Release -o /app/build
 
 # Xuất bản ứng dụng
 FROM build AS publish
