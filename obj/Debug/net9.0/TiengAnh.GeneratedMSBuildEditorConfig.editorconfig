@@ -32,10 +32,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGVVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Account/Debug.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZWJ1Zy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Account/DeleteUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZWxldGVVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,18 +64,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGVudFxBZGRWb2NhYnVsYXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Debug/CheckAvatar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidWdcQ2hlY2tBdmF0YXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Debug/ShowAvatar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidWdcU2hvd0F2YXRhci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Exercise/FillBlank.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpc2VcRmlsbEJsYW5rLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Exercise/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpc2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -94,10 +78,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Exercise/Topic.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpc2VcVG9waWMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Exercise/WordOrdering.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpc2VcV29yZE9yZGVyaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Favorites/Index.cshtml]
@@ -130,10 +110,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/OneDrive/Máy tính/Code/All_File/Do an co so/DoAnCoSo/DoAnCoSo/Views/Shared/Error.cshtml]

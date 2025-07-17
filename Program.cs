@@ -94,9 +94,6 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// Suppress nullable warnings
-builder.Services.SuppressNullableWarnings();
-
 // Configure Kestrel server
 builder.WebHost.ConfigureKestrel(options =>
 {
