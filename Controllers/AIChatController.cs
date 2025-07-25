@@ -1,9 +1,7 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TiengAnh.Controllers
 {
-    [Authorize]
     public class AIChatController : Controller
     {
         public IActionResult Index()
