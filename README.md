@@ -1,5 +1,5 @@
 # (EngMate)
-Chờ xíu xiu cho trang load nha :> | Bạn có thể truy cập dự án tại đây nè:  [EngMate](https://engmateenglish.onrender.com/)
+Chờ xíu xiu cho trang load nha :> | Bạn có thể truy cập dự án tại đây nè:  <a href="https://engmateenglish.onrender.com/" target="_blank">EngMate</a>
 
 ## Giới thiệu
 
