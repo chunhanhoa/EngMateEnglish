@@ -136,6 +136,13 @@
                                 </ul>
                             </li>
                         }
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "AIChat" ? "active" : "")" 
+                               asp-controller="AIChat" 
+                               asp-action="Index">
+                                <i class="fas fa-robot me-1"></i> Trò chuyện AI
+                            </a>
+                        </li>
                     </ul>
                     <!-- Đăng nhập/Đăng ký hoặc User Profile -->
                     <div class="user-menu">

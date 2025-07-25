@@ -1,0 +1,1486 @@
+@{
+    ViewData["Title"] = "Trò chuyện với AI";
+}
+
+<div class="container-fluid py-2 py-md-4">
+    <div class="row">
+        <div class="col-12 col-lg-8 col-xl-6 mx-auto">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                        <h3 class="mb-2 mb-md-0 h5 h-md-3">
+                            <i class="fas fa-robot me-2"></i>
+                            Trò chuyện với AI Assistant
+                        </h3>
+                        <div class="language-selector">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <input type="radio" class="btn-check" name="language" id="btnVi" value="vietnamese" checked>
+                                <label class="btn btn-outline-light" for="btnVi">Tiếng Việt</label>
+                                
+                                <input type="radio" class="btn-check" name="language" id="btnEn" value="english">
+                                <label class="btn btn-outline-light" for="btnEn">English</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-body p-0">
+                    <!-- Voice Call Interface (Hidden by default) -->
+                    <div id="voiceCallInterface" class="voice-call-interface d-none">
+                        <div class="call-screen">
+                            <div class="call-avatar">
+                                <div class="avatar-circle">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="call-status" id="callStatus">Đang kết nối...</div>
+                            </div>
+                            
+                            <div class="call-info">
+                                <h3 class="caller-name">AI Assistant</h3>
+                                <p class="call-duration" id="callDuration">00:00</p>
+                            </div>
+                            
+                            <div class="voice-indicator-container">
+                                <div class="voice-wave" id="voiceWave">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            
+                            <div class="call-controls">
+                                <button class="btn btn-success btn-lg rounded-circle me-3" id="muteBtn" title="Tắt/Bật tiếng">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <button class="btn btn-danger btn-lg rounded-circle" id="endCallBtn" title="Kết thúc cuộc gọi">
+                                    <i class="fas fa-phone-slash"></i>
+                                </button>
+                                <button class="btn btn-info btn-lg rounded-circle ms-3" id="speakerBtn" title="Tắt/Bật loa">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="conversation-display mt-3">
+                                <div id="liveTranscript" class="live-transcript"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Messages Container -->
+                    <div id="chatMessages" class="chat-messages p-2 p-md-4" style="height: 60vh; min-height: 400px; max-height: 600px; overflow-y: auto;">
+                        <div class="message ai-message" id="greetingMessage">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-bubble" id="greetingText">
+                                    Xin chào! Tôi là AI Assistant của EngMate. Tôi có thể giúp bạn học tiếng Anh, trả lời câu hỏi và trò chuyện về nhiều chủ đề khác nhau. Hãy bắt đầu cuộc trò chuyện nhé!
+                                </div>
+                                <div class="message-time">
+                                    <small class="text-muted" id="greetingTime">Vừa xong</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Input -->
+                    <div class="chat-input-container border-top">
+                        <div class="p-2 p-md-3">
+                            <div class="input-group">
+                                <input type="text" id="messageInput" class="form-control border-0" 
+                                       placeholder="Nhập tin nhắn của bạn..." 
+                                       style="box-shadow: none;">
+                                <button class="btn btn-primary px-2 px-md-3" id="sendBtn" type="button">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span class="d-none d-md-inline ms-1">Gửi</span>
+                                </button>
+                                <button class="btn btn-outline-primary px-2 px-md-3" id="voiceBtn" type="button" title="Bắt đầu cuộc gọi thoại">
+                                    <i class="fas fa-phone"></i>
+                                    <span class="d-none d-md-inline ms-1">Gọi</span>
+                                </button>
+                            </div>
+                            <div class="mt-2">
+                                <small class="text-muted">
+                                    <span id="typingIndicator" style="display: none;">
+                                        <i class="fas fa-circle-notch fa-spin"></i> AI đang suy nghĩ...
+                                    </span>
+                                    <span id="voiceIndicator" style="display: none;">
+                                        <i class="fas fa-microphone text-danger"></i> Đang nghe...
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-2 p-md-3">
+                            <h6 class="card-title mb-3">Gợi ý câu hỏi:</h6>
+                            <div class="d-flex flex-wrap gap-1 gap-md-2" id="quickQuestions">
+                                <button class="btn btn-outline-primary btn-sm quick-question" data-question="Hãy giải thích về thì hiện tại đơn trong tiếng Anh">
+                                    <span class="d-none d-sm-inline">Thì hiện tại đơn</span>
+                                    <span class="d-sm-none">Present Simple</span>
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm quick-question" data-question="Tôi muốn học từ vựng về động vật">
+                                    <span class="d-none d-sm-inline">Từ vựng động vật</span>
+                                    <span class="d-sm-none">Animals</span>
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm quick-question" data-question="Làm thế nào để cải thiện phát âm tiếng Anh?">
+                                    <span class="d-none d-sm-inline">Cải thiện phát âm</span>
+                                    <span class="d-sm-none">Pronunciation</span>
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm quick-question" data-question="Cho tôi một bài tập về Present Continuous">
+                                    <span class="d-none d-sm-inline">Bài tập Present Continuous</span>
+                                    <span class="d-sm-none">Exercise</span>
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm quick-question" data-question="Tôi muốn luyện tập conversation">
+                                    <span class="d-none d-sm-inline">Luyện conversation</span>
+                                    <span class="d-sm-none">Conversation</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .chat-messages {
+            background: #f8f9fa;
+        }
+        
+        .message {
+            display: flex;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.3s ease-out;
+        }
+        
+        .message.user-message {
+            flex-direction: row-reverse;
+        }
+        
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 8px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        /* Responsive avatar sizes */
+        @@media (min-width: 768px) {
+            .message-avatar {
+                width: 40px;
+                height: 40px;
+                margin: 0 10px;
+                font-size: 16px;
+            }
+            .message {
+                margin-bottom: 20px;
+            }
+        }
+        
+        .ai-message .message-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .user-message .message-avatar {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .message-content {
+            max-width: 85%;
+            min-width: 0;
+            flex: 1;
+        }
+        
+        /* Responsive message content width */
+        @@media (min-width: 576px) {
+            .message-content {
+                max-width: 80%;
+            }
+        }
+        
+        @@media (min-width: 768px) {
+            .message-content {
+                max-width: 70%;
+            }
+        }
+        
+        .message-bubble {
+            padding: 10px 14px;
+            border-radius: 16px;
+            word-wrap: break-word;
+            word-break: break-word;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+        
+        /* Responsive message bubble */
+        @@media (min-width: 768px) {
+            .message-bubble {
+                padding: 12px 16px;
+                border-radius: 18px;
+                font-size: 15px;
+            }
+        }
+        
+        .ai-message .message-bubble {
+            background: white;
+            border: 1px solid #e9ecef;
+            color: #333;
+        }
+        
+        .user-message .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .message-time {
+            margin-top: 4px;
+            text-align: right;
+        }
+        
+        .user-message .message-time {
+            text-align: left;
+        }
+        
+        .chat-input-container {
+            background: white;
+        }
+        
+        .quick-question {
+            margin: 1px;
+            font-size: 12px;
+            padding: 4px 8px;
+        }
+        
+        /* Responsive quick question buttons */
+        @@media (min-width: 576px) {
+            .quick-question {
+                margin: 2px;
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+        }
+        
+        @@media (min-width: 768px) {
+            .quick-question {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        
+        .language-selector .btn-outline-light {
+            border-color: rgba(255,255,255,0.3);
+            color: white;
+            font-size: 12px;
+            padding: 4px 8px;
+        }
+        
+        /* Responsive language selector */
+        @@media (min-width: 768px) {
+            .language-selector .btn-outline-light {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+        
+        .language-selector .btn-outline-light:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .language-selector .btn-check:checked + .btn-outline-light {
+            background-color: white;
+            color: #667eea;
+            border-color: white;
+        }
+        
+        @@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #voiceBtn.recording {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 8px 14px;
+        }
+        
+        /* Responsive typing indicator */
+        @@media (min-width: 768px) {
+            .typing-indicator {
+                padding: 10px 16px;
+            }
+        }
+        
+        .typing-dots {
+            display: flex;
+            gap: 3px;
+        }
+        
+        @@media (min-width: 768px) {
+            .typing-dots {
+                gap: 4px;
+            }
+        }
+        
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #6c757d;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        
+        /* Responsive typing dots */
+        @@media (min-width: 768px) {
+            .typing-dots span {
+                width: 8px;
+                height: 8px;
+            }
+        }
+        
+        .typing-dots span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        
+        .typing-dots span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @@keyframes typing {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Custom scrollbar for chat messages */
+        .chat-messages {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e0 #f7fafc;
+        }
+        
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f7fafc;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 3px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+        
+        /* Mobile specific adjustments */
+        @@media (max-width: 575.98px) {
+            .card {
+                margin: 0 5px;
+            }
+            
+            .message-bubble {
+                max-width: 100%;
+            }
+            
+            .btn-group-sm > .btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+            
+            .input-group .btn {
+                border-radius: 0;
+            }
+            
+            .input-group .btn:last-child {
+                border-top-right-radius: 0.375rem;
+                border-bottom-right-radius: 0.375rem;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @@media (min-width: 576px) and (max-width: 991.98px) {
+            .col-lg-8 {
+                max-width: 90%;
+            }
+        }
+        
+        /* Prevent horizontal scroll on small screens */
+        @@media (max-width: 575.98px) {
+            .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            .card-body {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            
+            .quick-question {
+                font-size: 11px;
+                padding: 3px 6px;
+                margin: 1px;
+            }
+        }
+        
+        /* Voice Call Interface Styles */
+        .voice-call-interface {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1000;
+            border-radius: 0.5rem;
+        }
+        
+        .call-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .call-avatar {
+            margin-bottom: 2rem;
+        }
+        
+        .avatar-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @@keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+        
+        .call-status {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .call-info {
+            margin-bottom: 2rem;
+        }
+        
+        .caller-name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .call-duration {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+        
+        .voice-indicator-container {
+            margin-bottom: 2rem;
+        }
+        
+        .voice-wave {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+        }
+        
+        .voice-wave span {
+            width: 4px;
+            height: 20px;
+            background: white;
+            border-radius: 2px;
+            animation: voice-wave 1.2s ease-in-out infinite;
+        }
+        
+        .voice-wave span:nth-child(1) { animation-delay: 0s; }
+        .voice-wave span:nth-child(2) { animation-delay: 0.1s; }
+        .voice-wave span:nth-child(3) { animation-delay: 0.2s; }
+        .voice-wave span:nth-child(4) { animation-delay: 0.3s; }
+        .voice-wave span:nth-child(5) { animation-delay: 0.4s; }
+        
+        @@keyframes voice-wave {
+            0%, 40%, 100% { transform: scaleY(0.4); opacity: 0.3; }
+            20% { transform: scaleY(1); opacity: 1; }
+        }
+        
+        .voice-wave.active span {
+            animation: voice-wave-active 0.6s ease-in-out infinite;
+        }
+        
+        @@keyframes voice-wave-active {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+        
+        .call-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .call-controls .btn {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .call-controls .btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .call-controls .btn-danger {
+            background: #dc3545;
+            animation: call-button-pulse 2s infinite;
+        }
+        
+        @@keyframes call-button-pulse {
+            0% { box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3); }
+            50% { box-shadow: 0 4px 20px rgba(220, 53, 69, 0.6); }
+            100% { box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3); }
+        }
+        
+        .conversation-display {
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .live-transcript {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            min-height: 60px;
+            max-height: 120px;
+            overflow-y: auto;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+        
+        .muted .btn i::before {
+            content: "\f6a9"; /* fa-microphone-slash */
+        }
+        
+        .speaker-off .btn i::before {
+            content: "\f6a9"; /* fa-volume-mute */
+        }
+        
+        /* Mobile responsive for voice call */
+        @@media (max-width: 575.98px) {
+            .call-screen {
+                padding: 1rem;
+            }
+            
+            .avatar-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .caller-name {
+                font-size: 1.5rem;
+            }
+            
+            .call-controls .btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        class AIChat {
+            constructor() {
+                // Gán API key cố định
+                this.apiProvider = 'gemini';
+                this.apiKey = 'AIzaSyBcbTynQ2M2YPIIapsfe9tn59qRNPt21gw';
+                this.model = 'gemini-1.5-flash';
+                this.language = 'vietnamese';
+                this.isListening = false;
+                this.recognition = null;
+                this.conversationHistory = [];
+                this.isInVoiceCall = false;
+                this.callStartTime = null;
+                this.callTimer = null;
+                this.isMuted = false;
+                this.isSpeakerOn = true;
+                this.continuousRecognition = null;
+                this.speechSynthesis = window.speechSynthesis;
+                this.currentUtterance = null;
+                this.voiceCallInterface = null;
+                this.chatMessages = null;
+                
+                this.initElements();
+                this.initEventListeners();
+                this.initSpeechRecognition();
+                this.updateQuickQuestions();
+                this.updateGreeting();
+            }
+            
+            initElements() {
+                this.chatMessages = document.getElementById('chatMessages');
+                this.messageInput = document.getElementById('messageInput');
+                this.sendBtn = document.getElementById('sendBtn');
+                this.voiceBtn = document.getElementById('voiceBtn');
+                this.typingIndicator = document.getElementById('typingIndicator');
+                this.voiceIndicator = document.getElementById('voiceIndicator');
+                this.languageRadios = document.querySelectorAll('input[name="language"]');
+                this.quickQuestionsContainer = document.getElementById('quickQuestions');
+                this.greetingText = document.getElementById('greetingText');
+                this.greetingTime = document.getElementById('greetingTime');
+                this.voiceCallInterface = document.getElementById('voiceCallInterface');
+                this.endCallBtn = document.getElementById('endCallBtn');
+                this.muteBtn = document.getElementById('muteBtn');
+                this.speakerBtn = document.getElementById('speakerBtn');
+                this.callStatus = document.getElementById('callStatus');
+                this.callDuration = document.getElementById('callDuration');
+                this.voiceWave = document.getElementById('voiceWave');
+                this.liveTranscript = document.getElementById('liveTranscript');
+            }
+            
+            initEventListeners() {
+                // Send message
+                this.sendBtn.addEventListener('click', () => this.sendMessage());
+                this.messageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+                
+                // Voice input
+                this.voiceBtn.addEventListener('click', () => this.toggleVoiceInput());
+                
+                // Language selection
+                this.languageRadios.forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        this.language = e.target.value;
+                        this.updateSpeechRecognitionLanguage();
+                        this.updateQuickQuestions();
+                        this.updatePlaceholder();
+                        this.updateGreeting();
+                        this.updateTypingIndicator();
+                    });
+                });
+                
+                // Quick questions
+                this.quickQuestionsContainer.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('quick-question')) {
+                        const question = e.target.getAttribute('data-question');
+                        this.messageInput.value = question;
+                        this.sendMessage();
+                    }
+                });
+                
+                // Voice call controls
+                this.endCallBtn?.addEventListener('click', () => this.endVoiceCall());
+                this.muteBtn?.addEventListener('click', () => this.toggleMute());
+                this.speakerBtn?.addEventListener('click', () => this.toggleSpeaker());
+                
+                // Update voice button to start call
+                this.voiceBtn.addEventListener('click', () => {
+                    if (this.isInVoiceCall) {
+                        this.endVoiceCall();
+                    } else {
+                        this.startVoiceCall();
+                    }
+                });
+            }
+            
+            initSpeechRecognition() {
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    this.recognition = new SpeechRecognition();
+                    this.recognition.continuous = false;
+                    this.recognition.interimResults = false;
+                    this.updateSpeechRecognitionLanguage();
+                    
+                    this.recognition.onstart = () => {
+                        this.isListening = true;
+                        this.voiceBtn.classList.add('recording');
+                        this.voiceIndicator.style.display = 'inline';
+                    };
+                    
+                    this.recognition.onend = () => {
+                        this.isListening = false;
+                        this.voiceBtn.classList.remove('recording');
+                        this.voiceIndicator.style.display = 'none';
+                    };
+                    
+                    this.recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        this.messageInput.value = transcript;
+                    };
+                    
+                    this.recognition.onerror = (event) => {
+                        console.error('Speech recognition error:', event.error);
+                        this.showNotification('Lỗi nhận diện giọng nói: ' + event.error, 'error');
+                    };
+                } else {
+                    this.voiceBtn.style.display = 'none';
+                    console.log('Speech recognition not supported');
+                }
+            }
+            
+            updateSpeechRecognitionLanguage() {
+                if (this.recognition) {
+                    this.recognition.lang = this.language === 'vietnamese' ? 'vi-VN' : 'en-US';
+                }
+            }
+            
+            updatePlaceholder() {
+                const placeholder = this.language === 'vietnamese' 
+                    ? 'Nhập tin nhắn của bạn...' 
+                    : 'Type your message...';
+                this.messageInput.placeholder = placeholder;
+            }
+            
+            updateQuickQuestions() {
+                const questions = this.language === 'vietnamese' ? {
+                    'Hãy giải thích về thì hiện tại đơn trong tiếng Anh': 'Thì hiện tại đơn',
+                    'Tôi muốn học từ vựng về động vật': 'Từ vựng động vật',
+                    'Làm thế nào để cải thiện phát âm tiếng Anh?': 'Cải thiện phát âm',
+                    'Cho tôi một bài tập về Present Continuous': 'Bài tập Present Continuous',
+                    'Tôi muốn luyện tập conversation': 'Luyện conversation'
+                } : {
+                    'Explain the present simple tense in English': 'Present Simple',
+                    'I want to learn animal vocabulary': 'Animal Vocabulary',
+                    'How can I improve my English pronunciation?': 'Improve Pronunciation',
+                    'Give me an exercise about Present Continuous': 'Present Continuous Exercise',
+                    'I want to practice conversation': 'Practice Conversation'
+                };
+                
+                this.quickQuestionsContainer.innerHTML = '';
+                Object.entries(questions).forEach(([question, label]) => {
+                    const button = document.createElement('button');
+                    button.className = 'btn btn-outline-primary btn-sm quick-question';
+                    button.setAttribute('data-question', question);
+                    button.textContent = label;
+                    this.quickQuestionsContainer.appendChild(button);
+                });
+            }
+            
+            updateGreeting() {
+                const greetings = {
+                    vietnamese: {
+                        text: 'Xin chào! Tôi là AI Assistant của EngMate. Tôi có thể giúp bạn học tiếng Anh, trả lời câu hỏi và trò chuyện về nhiều chủ đề khác nhau. Hãy bắt đầu cuộc trò chuyện nhé!',
+                        time: 'Vừa xong'
+                    },
+                    english: {
+                        text: 'Hello! I am the AI Assistant of EngMate. I can help you learn English, answer questions, and chat about various topics. Let\'s start the conversation!',
+                        time: 'Just now'
+                    }
+                };
+                
+                const greeting = greetings[this.language];
+                this.greetingText.innerHTML = greeting.text;
+                this.greetingTime.textContent = greeting.time;
+            }
+            
+            updateTypingIndicator() {
+                const indicators = {
+                    vietnamese: 'AI đang suy nghĩ...',
+                    english: 'AI is thinking...'
+                };
+                
+                // Update the typing indicator text in the HTML
+                const typingSpan = document.querySelector('#typingIndicator');
+                if (typingSpan) {
+                    typingSpan.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> ${indicators[this.language]}`;
+                }
+            }
+            
+            initSpeechRecognition() {
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    this.recognition = new SpeechRecognition();
+                    this.recognition.continuous = false;
+                    this.recognition.interimResults = false;
+                    this.updateSpeechRecognitionLanguage();
+                    
+                    this.recognition.onstart = () => {
+                        this.isListening = true;
+                        this.voiceBtn.classList.add('recording');
+                        this.voiceIndicator.style.display = 'inline';
+                    };
+                    
+                    this.recognition.onend = () => {
+                        this.isListening = false;
+                        this.voiceBtn.classList.remove('recording');
+                        this.voiceIndicator.style.display = 'none';
+                    };
+                    
+                    this.recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        this.messageInput.value = transcript;
+                    };
+                    
+                    this.recognition.onerror = (event) => {
+                        console.error('Speech recognition error:', event.error);
+                        this.showNotification('Lỗi nhận diện giọng nói: ' + event.error, 'error');
+                    };
+                } else {
+                    this.voiceBtn.style.display = 'none';
+                    console.log('Speech recognition not supported');
+                }
+            }
+            
+            getSystemPrompt() {
+                if (this.language === 'english') {
+                    return `You are a smart and friendly AI assistant for EngMate - an English learning app. 
+                        Please respond ONLY in English naturally and helpfully. 
+                        Your expertise is teaching English, including vocabulary, grammar, pronunciation, and communication. 
+                        Always encourage learners and provide practical advice.
+                        IMPORTANT: Always respond in English regardless of the user's language.`;
+                } else {
+                    return `Bạn là một AI assistant thông minh và thân thiện của EngMate - ứng dụng học tiếng Anh. 
+                        Hãy trả lời CHỈ bằng tiếng Việt một cách tự nhiên và hữu ích. 
+                        Chuyên môn của bạn là giảng dạy tiếng Anh, bao gồm từ vựng, ngữ pháp, phát âm và giao tiếp. 
+                        Hãy luôn khuyến khích người học và đưa ra lời khuyên thực tế.
+                        QUAN TRỌNG: Luôn trả lời bằng tiếng Việt bất kể người dùng nói tiếng gì.`;
+                }
+            }
+            
+            addMessage(content, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}-message`;
+                
+                const currentTime = new Date().toLocaleTimeString('vi-VN', { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+                
+                messageDiv.innerHTML = `
+                    <div class="message-avatar">
+                        <i class="fas fa-${sender === 'user' ? 'user' : 'robot'}"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            ${this.formatMessage(content)}
+                        </div>
+                        <div class="message-time">
+                            <small class="text-muted">${currentTime}</small>
+                        </div>
+                    </div>
+                `;
+                
+                this.chatMessages.appendChild(messageDiv);
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
+            
+            formatMessage(content) {
+                // Convert markdown-like formatting
+                return content
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/`(.*?)`/g, '<code>$1</code>')
+                    .replace(/\n/g, '<br>');
+            }
+            
+            showTypingIndicator() {
+                const typingTexts = {
+                    vietnamese: 'đang suy nghĩ...',
+                    english: 'is thinking...'
+                };
+                
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message ai-message typing-message';
+                typingDiv.innerHTML = `
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <div class="typing-indicator">
+                                <div class="typing-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                this.chatMessages.appendChild(typingDiv);
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
+            
+            hideTypingIndicator() {
+                const typingMessage = this.chatMessages.querySelector('.typing-message');
+                if (typingMessage) {
+                    typingMessage.remove();
+                }
+            }
+            
+            speakText(text) {
+                // Removed automatic text-to-speech functionality
+                // This method is kept for potential manual use
+            }
+            
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info'} position-fixed`;
+                notification.style.cssText = `
+                    top: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                    min-width: 300px;
+                    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+                `;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 500);
+                }, 3000);
+            }
+            
+            // Thêm phương thức sendMessage
+            async sendMessage() {
+                const message = this.messageInput.value.trim();
+                if (!message) return;
+                
+                // Disable input while processing
+                this.messageInput.disabled = true;
+                this.sendBtn.disabled = true;
+                
+                // Add user message to chat
+                this.addMessage(message, 'user');
+                this.messageInput.value = '';
+                
+                // Add to conversation history
+                this.conversationHistory.push({
+                    role: 'user',
+                    parts: [{ text: message }]
+                });
+                
+                // Show typing indicator
+                this.showTypingIndicator();
+                
+                try {
+                    const response = await this.callGeminiAPI(message);
+                    this.hideTypingIndicator();
+                    
+                    if (response) {
+                        this.addMessage(response, 'ai');
+                        // Add AI response to conversation history
+                        this.conversationHistory.push({
+                            role: 'model',
+                            parts: [{ text: response }]
+                        });
+                    } else {
+                        this.addMessage(
+                            this.language === 'vietnamese' 
+                                ? 'Xin lỗi, tôi không thể trả lời lúc này. Vui lòng thử lại sau.'
+                                : 'Sorry, I cannot respond right now. Please try again later.',
+                            'ai'
+                        );
+                    }
+                } catch (error) {
+                    this.hideTypingIndicator();
+                    console.error('Error:', error);
+                    this.addMessage(
+                        this.language === 'vietnamese' 
+                            ? 'Đã xảy ra lỗi khi xử lý tin nhắn. Vui lòng thử lại.'
+                            : 'An error occurred while processing your message. Please try again.',
+                        'ai'
+                    );
+                }
+                
+                // Re-enable input
+                this.messageInput.disabled = false;
+                this.sendBtn.disabled = false;
+                this.messageInput.focus();
+            }
+            
+            // Thêm phương thức toggleVoiceInput
+            toggleVoiceInput() {
+                if (this.isInVoiceCall) {
+                    this.endVoiceCall();
+                } else {
+                    this.startVoiceCall();
+                }
+            }
+            
+            // Thêm phương thức startVoiceCall
+            async startVoiceCall() {
+                try {
+                    // Request microphone permission
+                    await navigator.mediaDevices.getUserMedia({ audio: true });
+                    
+                    this.isInVoiceCall = true;
+                    this.callStartTime = new Date();
+                    
+                    // Show voice call interface
+                    this.voiceCallInterface.classList.remove('d-none');
+                    
+                    // Update call status
+                    this.callStatus.textContent = this.language === 'vietnamese' ? 'Đã kết nối' : 'Connected';
+                    
+                    // Start call timer
+                    this.startCallTimer();
+                    
+                    // Initialize continuous speech recognition
+                    this.initContinuousRecognition();
+                    
+                    // Start listening
+                    this.startContinuousListening();
+                    
+                    // Welcome message
+                    const welcomeMessage = this.language === 'vietnamese' 
+                        ? 'Xin chào! Tôi đã sẵn sàng trò chuyện với bạn. Hãy nói gì đó để bắt đầu!'
+                        : 'Hello! I\'m ready to chat with you. Say something to get started!';
+                    
+                    this.speakText(welcomeMessage);
+                    this.liveTranscript.innerHTML = `<div class="ai-response">${welcomeMessage}</div>`;
+                    
+                } catch (error) {
+                    console.error('Error starting voice call:', error);
+                    this.showNotification(
+                        this.language === 'vietnamese' 
+                            ? 'Không thể truy cập microphone. Vui lòng cho phép quyền truy cập.'
+                            : 'Cannot access microphone. Please allow microphone permission.',
+                        'error'
+                    );
+                }
+            }
+            
+            // Thêm phương thức endVoiceCall
+            endVoiceCall() {
+                this.isInVoiceCall = false;
+                
+                // Hide voice call interface
+                this.voiceCallInterface.classList.add('d-none');
+                
+                // Stop all voice processes
+                this.stopContinuousListening();
+                this.stopCallTimer();
+                this.stopSpeech();
+                
+                // Reset states
+                this.isMuted = false;
+                this.isSpeakerOn = true;
+                this.updateMuteButton();
+                this.updateSpeakerButton();
+                
+                // Final message
+                const farewellMessage = this.language === 'vietnamese' 
+                    ? 'Cám ơn bạn đã trò chuyện với tôi. Hẹn gặp lại!'
+                    : 'Thank you for chatting with me. See you again!';
+                
+                this.addMessage(farewellMessage, 'ai');
+            }
+            
+            initContinuousRecognition() {
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    this.continuousRecognition = new SpeechRecognition();
+                    
+                    this.continuousRecognition.continuous = true;
+                    this.continuousRecognition.interimResults = true;
+                    this.continuousRecognition.lang = this.language === 'vietnamese' ? 'vi-VN' : 'en-US';
+                    
+                    let finalTranscript = '';
+                    let isProcessing = false;
+                    
+                    this.continuousRecognition.onresult = (event) => {
+                        if (this.isMuted) return;
+                        
+                        let interimTranscript = '';
+                        
+                        for (let i = event.resultIndex; i < event.results.length; i++) {
+                            const transcript = event.results[i][0].transcript;
+                            
+                            if (event.results[i].isFinal) {
+                                finalTranscript += transcript;
+                            } else {
+                                interimTranscript += transcript;
+                            }
+                        }
+                        
+                        // Update live transcript
+                        this.liveTranscript.innerHTML = `
+                            <div class="user-speech">${finalTranscript}</div>
+                            <div class="interim-speech" style="opacity: 0.6; font-style: italic;">${interimTranscript}</div>
+                        `;
+                        
+                        // Process when we have a complete sentence
+                        if (finalTranscript.trim() && !isProcessing) {
+                            const sentence = finalTranscript.trim();
+                            if (sentence.length > 3) { // Avoid processing very short utterances
+                                isProcessing = true;
+                                this.processVoiceMessage(sentence);
+                                finalTranscript = '';
+                                
+                                // Reset processing flag after a delay
+                                setTimeout(() => {
+                                    isProcessing = false;
+                                }, 2000);
+                            }
+                        }
+                        
+                        // Show voice activity
+                        this.showVoiceActivity();
+                    };
+                    
+                    this.continuousRecognition.onerror = (event) => {
+                        console.error('Speech recognition error:', event.error);
+                        if (event.error === 'not-allowed') {
+                            this.endVoiceCall();
+                            this.showNotification(
+                                this.language === 'vietnamese' 
+                                    ? 'Quyền truy cập microphone bị từ chối'
+                                    : 'Microphone access denied',
+                                'error'
+                            );
+                        }
+                    };
+                    
+                    this.continuousRecognition.onend = () => {
+                        if (this.isInVoiceCall && !this.isMuted) {
+                            // Restart recognition if call is still active
+                            setTimeout(() => {
+                                if (this.isInVoiceCall && !this.isMuted) {
+                                    this.continuousRecognition.start();
+                                }
+                            }, 100);
+                        }
+                    };
+                }
+            }
+            
+            startContinuousListening() {
+                if (this.continuousRecognition && !this.isMuted) {
+                    try {
+                        this.continuousRecognition.start();
+                    } catch (error) {
+                        console.error('Error starting continuous recognition:', error);
+                    }
+                }
+            }
+            
+            stopContinuousListening() {
+                if (this.continuousRecognition) {
+                    this.continuousRecognition.stop();
+                }
+            }
+            
+            async processVoiceMessage(message) {
+                if (!message.trim()) return;
+                
+                // Stop current speech to avoid overlap
+                this.stopSpeech();
+                
+                // Add user message to conversation history
+                this.conversationHistory.push({
+                    role: 'user',
+                    parts: [{ text: message }]
+                });
+                
+                try {
+                    // Get AI response
+                    const response = await this.callGeminiAPI(message);
+                    
+                    if (response) {
+                        // Add AI response to conversation history
+                        this.conversationHistory.push({
+                            role: 'model',
+                            parts: [{ text: response }]
+                        });
+                        
+                        // Update live transcript with AI response
+                        this.liveTranscript.innerHTML = `
+                            <div class="user-speech" style="margin-bottom: 10px; padding: 8px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                                <strong>Bạn:</strong> ${message}
+                            </div>
+                            <div class="ai-response" style="padding: 8px; background: rgba(255,255,255,0.2); border-radius: 8px;">
+                                <strong>AI:</strong> ${response}
+                            </div>
+                        `;
+                        
+                        // Speak the response if speaker is on
+                        if (this.isSpeakerOn) {
+                            this.speakText(response);
+                        }
+                        
+                        // Also add to chat messages for history
+                        this.addMessage(message, 'user');
+                        this.addMessage(response, 'ai');
+                    }
+                } catch (error) {
+                    console.error('Error processing voice message:', error);
+                    const errorMessage = this.language === 'vietnamese' 
+                        ? 'Xin lỗi, tôi không nghe rõ. Bạn có thể nói lại không?'
+                        : 'Sorry, I didn\'t catch that. Could you repeat?';
+                    
+                    this.speakText(errorMessage);
+                    this.liveTranscript.innerHTML = `<div class="ai-response">${errorMessage}</div>`;
+                }
+            }
+            
+            speakText(text) {
+                if (!this.isSpeakerOn || !text) return;
+                
+                // Stop any current speech
+                this.stopSpeech();
+                
+                // Create new utterance
+                this.currentUtterance = new SpeechSynthesisUtterance(text);
+                this.currentUtterance.lang = this.language === 'vietnamese' ? 'vi-VN' : 'en-US';
+                this.currentUtterance.rate = 0.9;
+                this.currentUtterance.pitch = 1.1;
+                this.currentUtterance.volume = 1;
+                
+                // Select a good voice
+                const voices = this.speechSynthesis.getVoices();
+                const preferredVoice = voices.find(voice => {
+                    if (this.language === 'vietnamese') {
+                        return voice.lang.includes('vi') || voice.name.includes('Vietnamese');
+                    } else {
+                        return voice.lang.includes('en') && voice.name.includes('Google');
+                    }
+                });
+                
+                if (preferredVoice) {
+                    this.currentUtterance.voice = preferredVoice;
+                }
+                
+                // Add event listeners
+                this.currentUtterance.onstart = () => {
+                    this.voiceWave.classList.add('active');
+                };
+                
+                this.currentUtterance.onend = () => {
+                    this.voiceWave.classList.remove('active');
+                };
+                
+                this.currentUtterance.onerror = (event) => {
+                    console.error('Speech synthesis error:', event.error);
+                    this.voiceWave.classList.remove('active');
+                };
+                
+                // Speak
+                this.speechSynthesis.speak(this.currentUtterance);
+            }
+            
+            stopSpeech() {
+                if (this.speechSynthesis.speaking) {
+                    this.speechSynthesis.cancel();
+                }
+                this.voiceWave.classList.remove('active');
+            }
+            
+            toggleMute() {
+                this.isMuted = !this.isMuted;
+                this.updateMuteButton();
+                
+                if (this.isMuted) {
+                    this.stopContinuousListening();
+                } else {
+                    this.startContinuousListening();
+                }
+            }
+            
+            toggleSpeaker() {
+                this.isSpeakerOn = !this.isSpeakerOn;
+                this.updateSpeakerButton();
+                
+                if (!this.isSpeakerOn) {
+                    this.stopSpeech();
+                }
+            }
+            
+            updateMuteButton() {
+                const icon = this.muteBtn.querySelector('i');
+                if (this.isMuted) {
+                    icon.className = 'fas fa-microphone-slash';
+                    this.muteBtn.classList.add('btn-secondary');
+                    this.muteBtn.classList.remove('btn-success');
+                } else {
+                    icon.className = 'fas fa-microphone';
+                    this.muteBtn.classList.add('btn-success');
+                    this.muteBtn.classList.remove('btn-secondary');
+                }
+            }
+            
+            updateSpeakerButton() {
+                const icon = this.speakerBtn.querySelector('i');
+                if (this.isSpeakerOn) {
+                    icon.className = 'fas fa-volume-up';
+                    this.speakerBtn.classList.add('btn-info');
+                    this.speakerBtn.classList.remove('btn-secondary');
+                } else {
+                    icon.className = 'fas fa-volume-mute';
+                    this.speakerBtn.classList.add('btn-secondary');
+                    this.speakerBtn.classList.remove('btn-info');
+                }
+            }
+            
+            showVoiceActivity() {
+                this.voiceWave.classList.add('active');
+                clearTimeout(this.voiceActivityTimeout);
+                this.voiceActivityTimeout = setTimeout(() => {
+                    if (!this.speechSynthesis.speaking) {
+                        this.voiceWave.classList.remove('active');
+                    }
+                }, 1000);
+            }
+            
+            startCallTimer() {
+                this.callTimer = setInterval(() => {
+                    if (this.callStartTime) {
+                        const elapsed = new Date() - this.callStartTime;
+                        const minutes = Math.floor(elapsed / 60000);
+                        const seconds = Math.floor((elapsed % 60000) / 1000);
+                        this.callDuration.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    }
+                }, 1000);
+            }
+            
+            stopCallTimer() {
+                if (this.callTimer) {
+                    clearInterval(this.callTimer);
+                    this.callTimer = null;
+                }
+            }
+            
+            // Thêm phương thức callGeminiAPI
+            async callGeminiAPI(message) {
+                const systemPrompt = this.getSystemPrompt();
+                
+                // Prepare conversation history with system prompt
+                const contents = [
+                    {
+                        role: 'user',
+                        parts: [{ text: systemPrompt }]
+                    },
+                    {
+                        role: 'model',
+                        parts: [{ text: 'Tôi hiểu. Tôi sẽ trả lời theo yêu cầu của bạn.' }]
+                    },
+                    ...this.conversationHistory,
+                    {
+                        role: 'user',
+                        parts: [{ text: message }]
+                    }
+                ];
+                
+                const requestBody = {
+                    contents: contents,
+                    generationConfig: {
+                        temperature: 0.7,
+                        topK: 40,
+                        topP: 0.95,
+                        maxOutputTokens: 2048,
+                    }
+                };
+                
+                try {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent?key=${this.apiKey}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(requestBody)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`API Error: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+                        return data.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error('No valid response from API');
+                    }
+                } catch (error) {
+                    console.error('Gemini API Error:', error);
+                    throw error;
+                }
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            window.aiChat = new AIChat();
+        });
+    </script>
+}
