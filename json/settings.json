@@ -1,14 +1,27 @@
-{
+[{
+  "_id": {
+    "$oid": "680f65afcfcdc1d4c8e4c332"
+  },
   "ApplicationSettings": {
     "SiteName": "Học Tiếng Anh Online",
     "Description": "Nền tảng học tiếng Anh trực tuyến",
     "Version": "1.0.0",
     "Maintenance": false,
     "DefaultLanguage": "vi-VN",
-    "SupportedLanguages": ["vi-VN", "en-US"]
+    "SupportedLanguages": [
+      "vi-VN",
+      "en-US"
+    ]
   },
   "LearningSettings": {
-    "LevelsAvailable": ["A1", "A2", "B1", "B2", "C1", "C2"],
+    "LevelsAvailable": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1",
+      "C2"
+    ],
     "PointsPerCompletedExercise": 10,
     "PointsPerCompletedTest": 50,
     "PointsToLevelUp": {
@@ -24,4 +37,4 @@
     "EnablePushNotifications": false,
     "DefaultReminderFrequency": "Daily"
   }
-}
+}]

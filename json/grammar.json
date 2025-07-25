@@ -1,194 +1,356 @@
 [
   {
+    "_id": {
+      "$oid": "681622793bc5dcb10477854b"
+    },
     "ID_NP": 1,
     "Title_NP": "Simple Present Tense",
     "Description_NP": "Học cách diễn đạt thói quen, sự thật và hoạt động thường xuyên bằng thì hiện tại đơn",
-    "Content_NP": "Thì hiện tại đơn được dùng để diễn tả:\n- Một sự thật, chân lý khách quan.\n- Một thói quen, hành động lặp đi lặp lại ở hiện tại.\n- Một khả năng, một tình trạng ở hiện tại.\n- Lịch trình, thời gian biểu đã định sẵn.\n\n**Cấu trúc:**\n**Khẳng định:**\n- I/You/We/They + động từ nguyên thể.\n- He/She/It + động từ nguyên thể + s/es.\n\n**Phủ định:**\n- I/You/We/They + do not (don't) + động từ nguyên thể.\n- He/She/It + does not (doesn't) + động từ nguyên thể.\n\n**Nghi vấn:**\n- Do + I/you/we/they + động từ nguyên thể?\n- Does + he/she/it + động từ nguyên thể?\n\n**Dấu hiệu nhận biết:**\nThường đi với các trạng từ chỉ tần suất như: always, usually, often, sometimes, rarely, never, every day/week/month/year...",
-    "TimeUpload_NP": { "$date": "2023-09-15T08:30:00Z" },
-    "ID_CD": 1,
+    "Content_NP": "Thì hiện tại đơn được dùng để diễn tả:\r\n- Một sự thật, chân lý khách quan.\r\n- Một thói quen, hành động lặp đi lặp lại ở hiện tại.\r\n- Một khả năng, một tình trạng ở hiện tại.\r\n- Lịch trình, thời gian biểu đã định sẵn.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/We/They + động từ nguyên thể.\r\n- He/She/It + động từ nguyên thể + s/es.\r\n\r\nPhủ định:\r\n- I/You/We/They + do not (don't) + động từ nguyên thể.\r\n- He/She/It + does not (doesn't) + động từ nguyên thể.\r\n\r\nNghi vấn:\r\n- Do + I/you/we/they + động từ nguyên thể?\r\n- Does + he/she/it + động từ nguyên thể?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với các trạng từ chỉ tần suất như: always, usually, often, sometimes, rarely, never, every day/week/month/year...",
+    "Content": "Thì hiện tại đơn được dùng để diễn tả:\r\n- Một sự thật, chân lý khách quan.\r\n- Một thói quen, hành động lặp đi lặp lại ở hiện tại.\r\n- Một khả năng, một tình trạng ở hiện tại.\r\n- Lịch trình, thời gian biểu đã định sẵn.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/We/They + động từ nguyên thể.\r\n- He/She/It + động từ nguyên thể + s/es.\r\n\r\nPhủ định:\r\n- I/You/We/They + do not (don't) + động từ nguyên thể.\r\n- He/She/It + does not (doesn't) + động từ nguyên thể.\r\n\r\nNghi vấn:\r\n- Do + I/you/we/they + động từ nguyên thể?\r\n- Does + he/she/it + động từ nguyên thể?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với các trạng từ chỉ tần suất như: always, usually, often, sometimes, rarely, never, every day/week/month/year...",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Basic Grammar",
     "Level": "A1",
+    "VideoUrl_NP": "https://www.youtube.com/embed/nvVdIJ0las0",
     "Examples": [
       "I go to school every day.",
       "She doesn't like coffee.",
       "Do they play football on weekends?"
     ],
-    "IsFavorite": false
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [
+      "682d86a74f20c074ecaa9294"
+    ],
+    "title": "",
+    "summary": "",
+    "id_grammar": 1
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb10477854c"
+    },
     "ID_NP": 2,
     "Title_NP": "Present Continuous Tense",
     "Description_NP": "Hiểu và sử dụng thì hiện tại tiếp diễn để diễn đạt hành động đang diễn ra",
-    "Content_NP": "Thì hiện tại tiếp diễn được dùng để diễn tả:\n- Một hành động đang diễn ra tại thời điểm nói.\n- Một hành động đang diễn ra trong giai đoạn hiện tại, không nhất thiết ở thời điểm nói.\n- Một hành động đã được sắp xếp, lên kế hoạch trong tương lai gần.\n- Diễn tả sự phàn nàn với always, constantly.\n\n**Cấu trúc:**\n**Khẳng định:**\n- I am (I'm) + V-ing.\n- You/We/They are (You're/We're/They're) + V-ing.\n- He/She/It is (He's/She's/It's) + V-ing.\n\n**Phủ định:**\n- I am not (I'm not) + V-ing.\n- You/We/They are not (aren't) + V-ing.\n- He/She/It is not (isn't) + V-ing.\n\n**Nghi vấn:**\n- Am I + V-ing?\n- Are you/we/they + V-ing?\n- Is he/she/it + V-ing?\n\n**Dấu hiệu nhận biết:**\nThường đi với các trạng từ chỉ thời gian như: now, at the moment, at present, currently, right now...",
-    "TimeUpload_NP": { "$date": "2023-09-17T10:15:00Z" },
-    "ID_CD": 1,
+    "Content_NP": "Thì hiện tại tiếp diễn được dùng để diễn tả:\r\n- Một hành động đang diễn ra tại thời điểm nói.\r\n- Một hành động đang diễn ra trong giai đoạn hiện tại, không nhất thiết ở thời điểm nói.\r\n- Một hành động đã được sắp xếp, lên kế hoạch trong tương lai gần.\r\n- Diễn tả sự phàn nàn với always, constantly.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I am (I'm) + V-ing.\r\n- You/We/They are (You're/We're/They're) + V-ing.\r\n- He/She/It is (He's/She's/It's) + V-ing.\r\n\r\nPhủ định:\r\n- I am not (I'm not) + V-ing.\r\n- You/We/They are not (aren't) + V-ing.\r\n- He/She/It is not (isn't) + V-ing.\r\n\r\nNghi vấn:\r\n- Am I + V-ing?\r\n- Are you/we/they + V-ing?\r\n- Is he/she/it + V-ing?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với các trạng từ chỉ thời gian như: now, at the moment, at present, currently, right now...",
+    "Content": "Thì hiện tại tiếp diễn được dùng để diễn tả:\r\n- Một hành động đang diễn ra tại thời điểm nói.\r\n- Một hành động đang diễn ra trong giai đoạn hiện tại, không nhất thiết ở thời điểm nói.\r\n- Một hành động đã được sắp xếp, lên kế hoạch trong tương lai gần.\r\n- Diễn tả sự phàn nàn với always, constantly.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I am (I'm) + V-ing.\r\n- You/We/They are (You're/We're/They're) + V-ing.\r\n- He/She/It is (He's/She's/It's) + V-ing.\r\n\r\nPhủ định:\r\n- I am not (I'm not) + V-ing.\r\n- You/We/They are not (aren't) + V-ing.\r\n- He/She/It is not (isn't) + V-ing.\r\n\r\nNghi vấn:\r\n- Am I + V-ing?\r\n- Are you/we/they + V-ing?\r\n- Is he/she/it + V-ing?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với các trạng từ chỉ thời gian như: now, at the moment, at present, currently, right now...",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Basic Grammar",
     "Level": "A1",
+    "VideoUrl_NP": "https://www.youtube.com/embed/AKzG_ZS-Ydg",
     "Examples": [
       "I am studying English now.",
       "She isn't watching TV right now.",
       "Are they working on the project?"
     ],
-    "IsFavorite": true
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 2
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb10477854d"
+    },
     "ID_NP": 3,
-    "Title_NP": "Simple Past Tense",
+    "Title_NP": "Past Simple Tense",
     "Description_NP": "Học cách diễn đạt hành động đã xảy ra trong quá khứ bằng thì quá khứ đơn",
-    "Content_NP": "Thì quá khứ đơn được dùng để diễn tả:\n- Một hành động đã hoàn thành trong quá khứ.\n- Một thói quen, hành động lặp đi lặp lại trong quá khứ.\n- Một chuỗi hành động xảy ra liên tiếp trong quá khứ.\n- Một tình trạng, trạng thái tồn tại trong quá khứ.\n\n**Cấu trúc:**\n**Khẳng định:**\n- I/You/He/She/It/We/They + V-ed hoặc V2 (với động từ bất quy tắc).\n\n**Phủ định:**\n- I/You/He/She/It/We/They + did not (didn't) + động từ nguyên thể.\n\n**Nghi vấn:**\n- Did + I/you/he/she/it/we/they + động từ nguyên thể?\n\n**Dấu hiệu nhận biết:**\nThường đi với các trạng từ chỉ thời gian quá khứ như: yesterday, last week/month/year, ... ago, in 1990, when I was young...",
-    "TimeUpload_NP": { "$date": "2023-09-20T14:25:00Z" },
-    "ID_CD": 2,
+    "Content_NP": "Thì quá khứ đơn được dùng để diễn tả:\r\n- Một hành động đã hoàn thành trong quá khứ.\r\n- Một thói quen, hành động lặp đi lặp lại trong quá khứ.\r\n- Một chuỗi hành động xảy ra liên tiếp trong quá khứ.\r\n- Một tình trạng, trạng thái tồn tại trong quá khứ.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/He/She/It/We/They + V-ed hoặc V2 (với động từ bất quy tắc).\r\n\r\nPhủ định:\r\n- I/You/He/She/It/We/They + did not (didn't) + động từ nguyên thể.\r\n\r\nNghi vấn:\r\n- Did + I/you/he/she/it/we/they + động từ nguyên thể?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với các trạng từ chỉ thời gian quá khứ như: yesterday, last week/month/year, ... ago, in 1990, when I was young...",
+    "Content": "Thì quá khứ đơn được dùng để diễn tả:\r\n- Một hành động đã hoàn thành trong quá khứ.\r\n- Một thói quen, hành động lặp đi lặp lại trong quá khứ.\r\n- Một chuỗi hành động xảy ra liên tiếp trong quá khứ.\r\n- Một tình trạng, trạng thái tồn tại trong quá khứ.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/He/She/It/We/They + V-ed hoặc V2 (với động từ bất quy tắc).\r\n\r\nPhủ định:\r\n- I/You/He/She/It/We/They + did not (didn't) + động từ nguyên thể.\r\n\r\nNghi vấn:\r\n- Did + I/you/he/she/it/we/they + động từ nguyên thể?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với các trạng từ chỉ thời gian quá khứ như: yesterday, last week/month/year, ... ago, in 1990, when I was young...",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Basic Grammar",
     "Level": "A2",
+    "VideoUrl_NP": "https://www.youtube.com/embed/MI3S3kdkofo",
     "Examples": [
       "I visited my grandparents last weekend.",
       "She didn't go to school yesterday.",
       "Did they finish the project?"
     ],
-    "IsFavorite": true
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 3
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb10477854e"
+    },
     "ID_NP": 4,
-    "Title_NP": "Simple Future Tense",
+    "Title_NP": "Future Simple Tense",
     "Description_NP": "Học cách diễn đạt hành động sẽ xảy ra trong tương lai bằng thì tương lai đơn",
-    "Content_NP": "Thì tương lai đơn được dùng để diễn tả:\n- Một hành động, sự việc sẽ xảy ra trong tương lai.\n- Một quyết định tức thời được đưa ra tại thời điểm nói.\n- Một dự đoán về tương lai.\n- Một lời hứa, lời đề nghị, lời cảnh báo.\n\n**Cấu trúc:**\n**Khẳng định:**\n- I/You/He/She/It/We/They + will ('ll) + động từ nguyên thể.\n\n**Phủ định:**\n- I/You/He/She/It/We/They + will not (won't) + động từ nguyên thể.\n\n**Nghi vấn:**\n- Will + I/you/he/she/it/we/they + động từ nguyên thể?\n\n**Dấu hiệu nhận biết:**\nThường đi với các trạng từ chỉ thời gian tương lai như: tomorrow, next week/month/year, in the future, soon...",
-    "TimeUpload_NP": { "$date": "2023-09-22T09:45:00Z" },
-    "ID_CD": 2,
+    "Content_NP": "Thì tương lai đơn được dùng để diễn tả:\r\n- Một hành động, sự việc sẽ xảy ra trong tương lai.\r\n- Một quyết định tức thời được đưa ra tại thời điểm nói.\r\n- Một dự đoán về tương lai.\r\n- Một lời hứa, lời đề nghị, lời cảnh báo.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/He/She/It/We/They + will ('ll) + động từ nguyên thể.\r\n\r\nPhủ định:\r\n- I/You/He/She/It/We/They + will not (won't) + động từ nguyên thể.\r\n\r\nNghi vấn:\r\n- Will + I/you/he/she/it/we/they + động từ nguyên thể?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với các trạng từ chỉ thời gian tương lai như: tomorrow, next week/month/year, in the future, soon...",
+    "Content": "Thì tương lai đơn được dùng để diễn tả:\r\n- Một hành động, sự việc sẽ xảy ra trong tương lai.\r\n- Một quyết định tức thời được đưa ra tại thời điểm nói.\r\n- Một dự đoán về tương lai.\r\n- Một lời hứa, lời đề nghị, lời cảnh báo.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/He/She/It/We/They + will ('ll) + động từ nguyên thể.\r\n\r\nPhủ định:\r\n- I/You/He/She/It/We/They + will not (won't) + động từ nguyên thể.\r\n\r\nNghi vấn:\r\n- Will + I/you/he/she/it/we/they + động từ nguyên thể?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với các trạng từ chỉ thời gian tương lai như: tomorrow, next week/month/year, in the future, soon...",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Basic Grammar",
     "Level": "A2",
+    "VideoUrl_NP": "https://www.youtube.com/embed/n14zCZAvSjI",
     "Examples": [
       "I will call you tomorrow.",
       "She won't be at home next weekend.",
       "Will they attend the meeting?"
     ],
-    "IsFavorite": false
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 4
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb10477854f"
+    },
     "ID_NP": 5,
     "Title_NP": "Present Perfect Tense",
     "Description_NP": "Học cách sử dụng thì hiện tại hoàn thành để nói về hành động đã hoàn thành nhưng có liên quan đến hiện tại",
-    "Content_NP": "Thì hiện tại hoàn thành được dùng để diễn tả:\n- Một hành động đã xảy ra trong quá khứ nhưng có kết quả hoặc ảnh hưởng đến hiện tại.\n- Một hành động bắt đầu trong quá khứ và vẫn đang tiếp tục ở hiện tại.\n- Một hành động vừa mới hoàn thành.\n- Một kinh nghiệm cho tới thời điểm hiện tại.\n\n**Cấu trúc:**\n**Khẳng định:**\n- I/You/We/They + have ('ve) + V3/ed (quá khứ phân từ).\n- He/She/It + has ('s) + V3/ed (quá khứ phân từ).\n\n**Phủ định:**\n- I/You/We/They + have not (haven't) + V3/ed.\n- He/She/It + has not (hasn't) + V3/ed.\n\n**Nghi vấn:**\n- Have + I/you/we/they + V3/ed?\n- Has + he/she/it + V3/ed?\n\n**Dấu hiệu nhận biết:**\nThường đi với: since, for, just, already, yet, ever, never, recently, so far, up to now...",
-    "TimeUpload_NP": { "$date": "2023-09-25T11:30:00Z" },
-    "ID_CD": 3,
+    "Content_NP": "Thì hiện tại hoàn thành được dùng để diễn tả:\r\n- Một hành động đã xảy ra trong quá khứ nhưng có kết quả hoặc ảnh hưởng đến hiện tại.\r\n- Một hành động bắt đầu trong quá khứ và vẫn đang tiếp tục ở hiện tại.\r\n- Một hành động vừa mới hoàn thành.\r\n- Một kinh nghiệm cho tới thời điểm hiện tại.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/We/They + have ('ve) + V3/ed (quá khứ phân từ).\r\n- He/She/It + has ('s) + V3/ed (quá khứ phân từ).\r\n\r\nPhủ định:\r\n- I/You/We/They + have not (haven't) + V3/ed.\r\n- He/She/It + has not (hasn't) + V3/ed.\r\n\r\nNghi vấn:\r\n- Have + I/you/we/they + V3/ed?\r\n- Has + he/she/it + V3/ed?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với: since, for, just, already, yet, ever, never, recently, so far, up to now...",
+    "Content": "Thì hiện tại hoàn thành được dùng để diễn tả:\r\n- Một hành động đã xảy ra trong quá khứ nhưng có kết quả hoặc ảnh hưởng đến hiện tại.\r\n- Một hành động bắt đầu trong quá khứ và vẫn đang tiếp tục ở hiện tại.\r\n- Một hành động vừa mới hoàn thành.\r\n- Một kinh nghiệm cho tới thời điểm hiện tại.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/We/They + have ('ve) + V3/ed (quá khứ phân từ).\r\n- He/She/It + has ('s) + V3/ed (quá khứ phân từ).\r\n\r\nPhủ định:\r\n- I/You/We/They + have not (haven't) + V3/ed.\r\n- He/She/It + has not (hasn't) + V3/ed.\r\n\r\nNghi vấn:\r\n- Have + I/you/we/they + V3/ed?\r\n- Has + he/she/it + V3/ed?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với: since, for, just, already, yet, ever, never, recently, so far, up to now...",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Intermediate Grammar",
     "Level": "B1",
+    "VideoUrl_NP": "https://www.youtube.com/embed/553eeL1Dvho",
     "Examples": [
       "I have lived in this city for 5 years.",
       "She hasn't finished her homework yet.",
       "Have you ever visited Paris?"
     ],
-    "IsFavorite": false
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 5
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb104778550"
+    },
     "ID_NP": 6,
     "Title_NP": "Past Perfect Tense",
     "Description_NP": "Học cách sử dụng thì quá khứ hoàn thành để nói về hành động xảy ra trước một hành động khác trong quá khứ",
-    "Content_NP": "Thì quá khứ hoàn thành được dùng để diễn tả:\n- Một hành động xảy ra trước một hành động khác trong quá khứ.\n- Một hành động đã hoàn thành trước một mốc thời gian trong quá khứ.\n- Một hành động đã xảy ra trong quá khứ nhưng kết quả của nó ảnh hưởng đến một hành động khác trong quá khứ.\n\n**Cấu trúc:**\n**Khẳng định:**\n- I/You/He/She/It/We/They + had ('d) + V3/ed (quá khứ phân từ).\n\n**Phủ định:**\n- I/You/He/She/It/We/They + had not (hadn't) + V3/ed.\n\n**Nghi vấn:**\n- Had + I/you/he/she/it/we/they + V3/ed?\n\n**Dấu hiệu nhận biết:**\nThường đi với: before, after, by the time, when, until, already, just...\nThường đi kèm với thì quá khứ đơn trong câu có hai mệnh đề: hành động xảy ra trước dùng thì quá khứ hoàn thành, hành động xảy ra sau dùng thì quá khứ đơn.",
-    "TimeUpload_NP": { "$date": "2023-09-27T13:20:00Z" },
-    "ID_CD": 3,
+    "Content_NP": "Thì quá khứ hoàn thành được dùng để diễn tả:\r\n- Một hành động xảy ra trước một hành động khác trong quá khứ.\r\n- Một hành động đã hoàn thành trước một mốc thời gian trong quá khứ.\r\n- Một hành động đã xảy ra trong quá khứ nhưng kết quả của nó ảnh hưởng đến một hành động khác trong quá khứ.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/He/She/It/We/They + had ('d) + V3/ed (quá khứ phân từ).\r\n\r\nPhủ định:\r\n- I/You/He/She/It/We/They + had not (hadn't) + V3/ed.\r\n\r\nNghi vấn:\r\n- Had + I/you/he/she/it/we/they + V3/ed?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với: before, after, by the time, when, until, already, just...\r\nThường đi kèm với thì quá khứ đơn trong câu có hai mệnh đề: hành động xảy ra trước dùng thì quá khứ hoàn thành, hành động xảy ra sau dùng thì quá khứ đơn.",
+    "Content": "Thì quá khứ hoàn thành được dùng để diễn tả:\r\n- Một hành động xảy ra trước một hành động khác trong quá khứ.\r\n- Một hành động đã hoàn thành trước một mốc thời gian trong quá khứ.\r\n- Một hành động đã xảy ra trong quá khứ nhưng kết quả của nó ảnh hưởng đến một hành động khác trong quá khứ.\r\n\r\nCấu trúc:\r\nKhẳng định:\r\n- I/You/He/She/It/We/They + had ('d) + V3/ed (quá khứ phân từ).\r\n\r\nPhủ định:\r\n- I/You/He/She/It/We/They + had not (hadn't) + V3/ed.\r\n\r\nNghi vấn:\r\n- Had + I/you/he/she/it/we/they + V3/ed?\r\n\r\nDấu hiệu nhận biết:\r\nThường đi với: before, after, by the time, when, until, already, just...\r\nThường đi kèm với thì quá khứ đơn trong câu có hai mệnh đề: hành động xảy ra trước dùng thì quá khứ hoàn thành, hành động xảy ra sau dùng thì quá khứ đơn.",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Intermediate Grammar",
     "Level": "B1",
+    "VideoUrl_NP": "https://www.youtube.com/embed/Jjj5-KnpdIQ",
     "Examples": [
       "I had already left when she called.",
       "She hadn't finished her work before the deadline.",
       "Had they arrived by the time you left?"
     ],
-    "IsFavorite": true
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 6
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb104778551"
+    },
     "ID_NP": 7,
     "Title_NP": "Reported Speech",
     "Description_NP": "Học cách chuyển đổi câu trực tiếp thành câu gián tiếp trong tiếng Anh",
-    "Content_NP": "Câu tường thuật là cách chuyển đổi lời nói trực tiếp thành lời nói gián tiếp, được sử dụng khi thuật lại những gì người khác đã nói.\n\n**Các quy tắc chuyển đổi:**\n**1. Đại từ:**\n- Đổi ngôi thứ nhất (I, me, my, mine, we, us, our) theo ngôi của người thuật lại.\n- Đổi ngôi thứ hai (you, your, yours) theo đối tượng của câu trực tiếp.\n- Ngôi thứ ba (he, she, they, his, her, their) thường giữ nguyên.\n\n**2. Thì của động từ:**\n- Present Simple → Past Simple.\n- Present Continuous → Past Continuous.\n- Present Perfect → Past Perfect.\n- Past Simple → Past Perfect.\n- Will → Would.\n- Can → Could.\n- May → Might.\n- Must → Had to.\n\n**3. Trạng từ chỉ thời gian và nơi chốn:**\n- Now → Then.\n- Today → That day.\n- Yesterday → The day before/The previous day.\n- Tomorrow → The next day/The following day.\n- Here → There.\n- This → That.\n- These → Those.\n\n**Câu trực tiếp và gián tiếp:**\n**Câu trần thuật:**\n- Trực tiếp: \"I am studying English.\" (She said)\n- Gián tiếp: She said (that) she was studying English.\n\n**Câu hỏi:**\n- Trực tiếp: \"Do you speak English?\" (He asked me)\n- Gián tiếp: He asked me if/whether I spoke English.\n\n**Câu mệnh lệnh:**\n- Trực tiếp: \"Close the door!\" (She told me)\n- Gián tiếp: She told me to close the door.",
-    "TimeUpload_NP": { "$date": "2023-09-29T15:40:00Z" },
-    "ID_CD": 4,
+    "Content_NP": "Câu tường thuật là cách chuyển đổi lời nói trực tiếp thành lời nói gián tiếp, được sử dụng khi thuật lại những gì người khác đã nói.\r\n\r\n**Các quy tắc chuyển đổi:**\r\n**1. Đại từ:**\r\n- Đổi ngôi thứ nhất (I, me, my, mine, we, us, our) theo ngôi của người thuật lại.\r\n- Đổi ngôi thứ hai (you, your, yours) theo đối tượng của câu trực tiếp.\r\n- Ngôi thứ ba (he, she, they, his, her, their) thường giữ nguyên.\r\n\r\n**2. Thì của động từ:**\r\n- Present Simple → Past Simple.\r\n- Present Continuous → Past Continuous.\r\n- Present Perfect → Past Perfect.\r\n- Past Simple → Past Perfect.\r\n- Will → Would.\r\n- Can → Could.\r\n- May → Might.\r\n- Must → Had to.\r\n\r\n**3. Trạng từ chỉ thời gian và nơi chốn:**\r\n- Now → Then.\r\n- Today → That day.\r\n- Yesterday → The day before/The previous day.\r\n- Tomorrow → The next day/The following day.\r\n- Here → There.\r\n- This → That.\r\n- These → Those.\r\n\r\n**Câu trực tiếp và gián tiếp:**\r\n**Câu trần thuật:**\r\n- Trực tiếp: \"I am studying English.\" (She said)\r\n- Gián tiếp: She said (that) she was studying English.\r\n\r\n**Câu hỏi:**\r\n- Trực tiếp: \"Do you speak English?\" (He asked me)\r\n- Gián tiếp: He asked me if/whether I spoke English.\r\n\r\n**Câu mệnh lệnh:**\r\n- Trực tiếp: \"Close the door!\" (She told me)\r\n- Gián tiếp: She told me to close the door.",
+  "Content": "Câu tường thuật là cách chuyển đổi lời nói trực tiếp thành lời nói gián tiếp, được sử dụng khi thuật lại những gì người khác đã nói.\r\n\r\n**Các quy tắc chuyển đổi:**\r\n**1. Đại từ:**\r\n- Đổi ngôi thứ nhất (I, me, my, mine, we, us, our) theo ngôi của người thuật lại.\r\n- Đổi ngôi thứ hai (you, your, yours) theo đối tượng của câu trực tiếp.\r\n- Ngôi thứ ba (he, she, they, his, her, their) thường giữ nguyên.\r\n\r\n**2. Thì của động từ:**\r\n- Present Simple → Past Simple.\r\n- Present Continuous → Past Continuous.\r\n- Present Perfect → Past Perfect.\r\n- Past Simple → Past Perfect.\r\n- Will → Would.\r\n- Can → Could.\r\n- May → Might.\r\n- Must → Had to.\r\n\r\n**3. Trạng từ chỉ thời gian và nơi chốn:**\r\n- Now → Then.\r\n- Today → That day.\r\n- Yesterday → The day before/The previous day.\r\n- Tomorrow → The next day/The following day.\r\n- Here → There.\r\n- This → That.\r\n- These → Those.\r\n\r\n**Câu trực tiếp và gián tiếp:**\r\n**Câu trần thuật:**\r\n- Trực tiếp: \"I am studying English.\" (She said)\r\n- Gián tiếp: She said (that) she was studying English.\r\n\r\n**Câu hỏi:**\r\n- Trực tiếp: \"Do you speak English?\" (He asked me)\r\n- Gián tiếp: He asked me if/whether I spoke English.\r\n\r\n**Câu mệnh lệnh:**\r\n- Trực tiếp: \"Close the door!\" (She told me)\r\n- Gián tiếp: She told me to close the door.",
+
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Intermediate Grammar",
     "Level": "B2",
+    "VideoUrl_NP": "https://www.youtube.com/embed/eplQBhE0-Hg",
     "Examples": [
       "Direct: \"I will call you tomorrow.\" → Reported: She said she would call me the next day.",
       "Direct: \"Have you finished your homework?\" → Reported: She asked me if I had finished my homework.",
       "Direct: \"Don't be late!\" → Reported: He told me not to be late."
     ],
-    "IsFavorite": false
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 7
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb104778552"
+    },
     "ID_NP": 8,
     "Title_NP": "Conditional Sentences",
     "Description_NP": "Học cách sử dụng các loại câu điều kiện khác nhau trong tiếng Anh",
-    "Content_NP": "Câu điều kiện được dùng để diễn tả một hành động hoặc sự việc chỉ xảy ra khi một điều kiện nào đó được thỏa mãn.\n\n**Các loại câu điều kiện:**\n**1. Câu điều kiện loại 0 (Zero Conditional):**\n- **Cấu trúc:** If + S + V(hiện tại đơn), S + V(hiện tại đơn).\n- **Ý nghĩa:** Diễn tả một sự thật, quy luật tự nhiên hoặc thói quen.\n- **Ví dụ:** If you heat water to 100°C, it boils.\n\n**2. Câu điều kiện loại 1 (First Conditional):**\n- **Cấu trúc:** If + S + V(hiện tại đơn), S + will/can/may + V(nguyên thể).\n- **Ý nghĩa:** Diễn tả một điều kiện có thể xảy ra ở hiện tại hoặc tương lai.\n- **Ví dụ:** If it rains tomorrow, I will stay at home.\n\n**3. Câu điều kiện loại 2 (Second Conditional):**\n- **Cấu trúc:** If + S + V(quá khứ đơn), S + would/could/might + V(nguyên thể).\n- **Ý nghĩa:** Diễn tả một điều kiện không có thật ở hiện tại hoặc một tình huống khó có thể xảy ra trong tương lai.\n- **Ví dụ:** If I had a lot of money, I would travel around the world.\n\n**4. Câu điều kiện loại 3 (Third Conditional):**\n- **Cấu trúc:** If + S + had + V3/ed, S + would/could/might + have + V3/ed.\n- **Ý nghĩa:** Diễn tả một điều kiện không có thật trong quá khứ và kết quả giả định của nó.\n- **Ví dụ:** If I had studied harder, I would have passed the exam.\n\n**5. Câu điều kiện hỗn hợp (Mixed Conditional):**\n- **Cấu trúc:** If + S + had + V3/ed, S + would/could/might + V(nguyên thể) (hoặc ngược lại).\n- **Ý nghĩa:** Điều kiện xảy ra ở thời điểm này nhưng kết quả lại ở thời điểm khác.\n- **Ví dụ:** If I had studied medicine (quá khứ), I would be a doctor now (hiện tại).",
-    "TimeUpload_NP": { "$date": "2023-10-02T10:10:00Z" },
-    "ID_CD": 4,
+    "Content_NP": "Câu điều kiện được dùng để diễn tả một hành động hoặc sự việc chỉ xảy ra khi một điều kiện nào đó được thỏa mãn.\r\n\r\nCác loại câu điều kiện:\r\n1. Câu điều kiện loại 0 (Zero Conditional):\r\n- Cấu trúc: If + S + V(hiện tại đơn), S + V(hiện tại đơn).\r\n- Ý nghĩa: Diễn tả một sự thật, quy luật tự nhiên hoặc thói quen.\r\n- Ví dụ: If you heat water to 100°C, it boils.\r\n\r\n2. Câu điều kiện loại 1 (First Conditional):\r\n- Cấu trúc: If + S + V(hiện tại đơn), S + will/can/may + V(nguyên thể).\r\n- Ý nghĩa: Diễn tả một điều kiện có thể xảy ra ở hiện tại hoặc tương lai.\r\n- Ví dụ: If it rains tomorrow, I will stay at home.\r\n\r\n3. Câu điều kiện loại 2 (Second Conditional):\r\n- Cấu trúc: If + S + V(quá khứ đơn), S + would/could/might + V(nguyên thể).\r\n- Ý nghĩa: Diễn tả một điều kiện không có thật ở hiện tại hoặc một tình huống khó có thể xảy ra trong tương lai.\r\n- Ví dụ: If I had a lot of money, I would travel around the world.\r\n\r\n4. Câu điều kiện loại 3 (Third Conditional):\r\n- Cấu trúc: If + S + had + V3/ed, S + would/could/might + have + V3/ed.\r\n- Ý nghĩa: Diễn tả một điều kiện không có thật trong quá khứ và kết quả giả định của nó.\r\n- Ví dụ: If I had studied harder, I would have passed the exam.\r\n\r\n5. Câu điều kiện hỗn hợp (Mixed Conditional):\r\n- Cấu trúc: If + S + had + V3/ed, S + would/could/might + V(nguyên thể) (hoặc ngược lại).\r\n- Ý nghĩa: Điều kiện xảy ra ở thời điểm này nhưng kết quả lại ở thời điểm khác.\r\n- Ví dụ: If I had studied medicine (quá khứ), I would be a doctor now (hiện tại).",
+    "Content": "Câu điều kiện được dùng để diễn tả một hành động hoặc sự việc chỉ xảy ra khi một điều kiện nào đó được thỏa mãn.\r\n\r\nCác loại câu điều kiện:\r\n1. Câu điều kiện loại 0 (Zero Conditional):\r\n- Cấu trúc: If + S + V(hiện tại đơn), S + V(hiện tại đơn).\r\n- Ý nghĩa: Diễn tả một sự thật, quy luật tự nhiên hoặc thói quen.\r\n- Ví dụ: If you heat water to 100°C, it boils.\r\n\r\n2. Câu điều kiện loại 1 (First Conditional):\r\n- Cấu trúc: If + S + V(hiện tại đơn), S + will/can/may + V(nguyên thể).\r\n- Ý nghĩa: Diễn tả một điều kiện có thể xảy ra ở hiện tại hoặc tương lai.\r\n- Ví dụ: If it rains tomorrow, I will stay at home.\r\n\r\n3. Câu điều kiện loại 2 (Second Conditional):\r\n- Cấu trúc: If + S + V(quá khứ đơn), S + would/could/might + V(nguyên thể).\r\n- Ý nghĩa: Diễn tả một điều kiện không có thật ở hiện tại hoặc một tình huống khó có thể xảy ra trong tương lai.\r\n- Ví dụ: If I had a lot of money, I would travel around the world.\r\n\r\n4. Câu điều kiện loại 3 (Third Conditional):\r\n- Cấu trúc: If + S + had + V3/ed, S + would/could/might + have + V3/ed.\r\n- Ý nghĩa: Diễn tả một điều kiện không có thật trong quá khứ và kết quả giả định của nó.\r\n- Ví dụ: If I had studied harder, I would have passed the exam.\r\n\r\n5. Câu điều kiện hỗn hợp (Mixed Conditional):\r\n- Cấu trúc: If + S + had + V3/ed, S + would/could/might + V(nguyên thể) (hoặc ngược lại).\r\n- Ý nghĩa: Điều kiện xảy ra ở thời điểm này nhưng kết quả lại ở thời điểm khác.\r\n- Ví dụ: If I had studied medicine (quá khứ), I would be a doctor now (hiện tại).",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Intermediate Grammar",
     "Level": "B2",
+    "VideoUrl_NP": "https://www.youtube.com/embed/4H3-2smRJJY",
     "Examples": [
       "If you study hard, you will pass the exam.",
       "If I were you, I would take that job.",
       "If she had arrived on time, she wouldn't have missed the meeting."
     ],
-    "IsFavorite": true
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 8
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb104778553"
+    },
     "ID_NP": 9,
     "Title_NP": "Passive Voice",
     "Description_NP": "Học cách sử dụng câu bị động trong tiếng Anh để nhấn mạnh đối tượng bị tác động",
-    "Content_NP": "Câu bị động được sử dụng khi muốn nhấn mạnh đến đối tượng bị tác động hoặc khi không biết/không cần biết chủ thể thực hiện hành động.\n\n**Cấu trúc câu bị động:**\n**Công thức chung:** Subject + to be (ở thì tương ứng) + past participle (V3/ed) + (by + agent).\n\n**Các thì trong câu bị động:**\n- **Hiện tại đơn:** S + am/is/are + V3/ed.\n  Active: They build houses. → Passive: Houses are built (by them).\n- **Hiện tại tiếp diễn:** S + am/is/are + being + V3/ed.\n  Active: They are building a house. → Passive: A house is being built (by them).\n- **Hiện tại hoàn thành:** S + have/has + been + V3/ed.\n  Active: They have built a house. → Passive: A house has been built (by them).\n- **Quá khứ đơn:** S + was/were + V3/ed.\n  Active: They built a house. → Passive: A house was built (by them).\n- **Quá khứ tiếp diễn:** S + was/were + being + V3/ed.\n  Active: They were building a house. → Passive: A house was being built (by them).\n- **Quá khứ hoàn thành:** S + had + been + V3/ed.\n  Active: They had built a house. → Passive: A house had been built (by them).\n- **Tương lai đơn:** S + will + be + V3/ed.\n  Active: They will build a house. → Passive: A house will be built (by them).\n- **Tương lai hoàn thành:** S + will + have + been + V3/ed.\n  Active: They will have built a house. → Passive: A house will have been built (by them).\n\n**Trường hợp đặc biệt:**\n**1. Động từ khuyết thiếu:**\n- S + modal + be + V3/ed.\n  Active: You must clean the room. → Passive: The room must be cleaned.\n\n**2. Câu với hai tân ngữ:**\n- Active: He gave me a book.\n  Passive: I was given a book (by him). HOẶC: A book was given to me (by him).\n\n**3. Câu hỏi:**\n- Active: Who wrote this book?\n  Passive: By whom was this book written? HOẶC: Who was this book written by?",
-    "TimeUpload_NP": { "$date": "2023-10-05T16:05:00Z" },
-    "ID_CD": 5,
+    "Content_NP": "Câu bị động được sử dụng khi muốn nhấn mạnh đến đối tượng bị tác động hoặc khi không biết/không cần biết chủ thể thực hiện hành động.\r\n\r\nCấu trúc câu bị động:\r\nCông thức chung: Subject + to be (ở thì tương ứng) + past participle (V3/ed) + (by + agent).\r\n\r\nCác thì trong câu bị động:\r\n- Hiện tại đơn: S + am/is/are + V3/ed.\r\n  Active: They build houses. → Passive: Houses are built (by them).\r\n- Hiện tại tiếp diễn: S + am/is/are + being + V3/ed.\r\n  Active: They are building a house. → Passive: A house is being built (by them).\r\n- Hiện tại hoàn thành: S + have/has + been + V3/ed.\r\n  Active: They have built a house. → Passive: A house has been built (by them).\r\n- Quá khứ đơn: S + was/were + V3/ed.\r\n  Active: They built a house. → Passive: A house was built (by them).\r\n- Quá khứ tiếp diễn: S + was/were + being + V3/ed.\r\n  Active: They were building a house. → Passive: A house was being built (by them).\r\n- Quá khứ hoàn thành: S + had + been + V3/ed.\r\n  Active: They had built a house. → Passive: A house had been built (by them).\r\n- Tương lai đơn: S + will + be + V3/ed.\r\n  Active: They will build a house. → Passive: A house will be built (by them).\r\n- Tương lai hoàn thành: S + will + have + been + V3/ed.\r\n  Active: They will have built a house. → Passive: A house will have been built (by them).\r\n\r\nTrường hợp đặc biệt:\r\n1. Động từ khuyết thiếu:\r\n- S + modal + be + V3/ed.\r\n  Active: You must clean the room. → Passive: The room must be cleaned.\r\n\r\n2. Câu với hai tân ngữ:\r\n- Active: He gave me a book.\r\n  Passive: I was given a book (by him). HOẶC: A book was given to me (by him).\r\n\r\n3. Câu hỏi:\r\n- Active: Who wrote this book?\r\n  Passive: By whom was this book written? HOẶC: Who was this book written by?",
+    "Content": "Câu bị động được sử dụng khi muốn nhấn mạnh đến đối tượng bị tác động hoặc khi không biết/không cần biết chủ thể thực hiện hành động.\r\n\r\nCấu trúc câu bị động:\r\nCông thức chung: Subject + to be (ở thì tương ứng) + past participle (V3/ed) + (by + agent).\r\n\r\nCác thì trong câu bị động:\r\n- Hiện tại đơn: S + am/is/are + V3/ed.\r\n  Active: They build houses. → Passive: Houses are built (by them).\r\n- Hiện tại tiếp diễn: S + am/is/are + being + V3/ed.\r\n  Active: They are building a house. → Passive: A house is being built (by them).\r\n- Hiện tại hoàn thành: S + have/has + been + V3/ed.\r\n  Active: They have built a house. → Passive: A house has been built (by them).\r\n- Quá khứ đơn: S + was/were + V3/ed.\r\n  Active: They built a house. → Passive: A house was built (by them).\r\n- Quá khứ tiếp diễn: S + was/were + being + V3/ed.\r\n  Active: They were building a house. → Passive: A house was being built (by them).\r\n- Quá khứ hoàn thành: S + had + been + V3/ed.\r\n  Active: They had built a house. → Passive: A house had been built (by them).\r\n- Tương lai đơn: S + will + be + V3/ed.\r\n  Active: They will build a house. → Passive: A house will be built (by them).\r\n- Tương lai hoàn thành: S + will + have + been + V3/ed.\r\n  Active: They will have built a house. → Passive: A house will have been built (by them).\r\n\r\nTrường hợp đặc biệt:\r\n1. Động từ khuyết thiếu:\r\n- S + modal + be + V3/ed.\r\n  Active: You must clean the room. → Passive: The room must be cleaned.\r\n\r\n2. Câu với hai tân ngữ:\r\n- Active: He gave me a book.\r\n  Passive: I was given a book (by him). HOẶC: A book was given to me (by him).\r\n\r\n3. Câu hỏi:\r\n- Active: Who wrote this book?\r\n  Passive: By whom was this book written? HOẶC: Who was this book written by?",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Advanced Grammar",
     "Level": "C1",
+    "VideoUrl_NP": "https://www.youtube.com/embed/N7uvEllP5Jg",
     "Examples": [
       "The novel was written by a famous author.",
       "The new bridge is being constructed by a local company.",
       "All the tickets had been sold before we arrived."
     ],
-    "IsFavorite": false
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [
+      "682d86a74f20c074ecaa9294"
+    ],
+    "title": "",
+    "summary": "",
+    "id_grammar": 9
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb104778554"
+    },
     "ID_NP": 10,
     "Title_NP": "Inversion",
     "Description_NP": "Học cách sử dụng đảo ngữ để nhấn mạnh và tạo phong cách trong tiếng Anh",
-    "Content_NP": "Đảo ngữ là cấu trúc đặc biệt trong tiếng Anh khi trợ động từ hoặc động từ được đặt trước chủ ngữ, thường để nhấn mạnh hoặc tạo phong cách trong văn viết.\n\n**Các loại đảo ngữ:**\n**1. Đảo ngữ hoàn toàn (Full inversion):** Động từ chính đứng trước chủ ngữ.\n- Với trạng từ chỉ nơi chốn: In walked the manager. (= The manager walked in.)\n- Khi kể chuyện: \"I don't like it,\" said John. (= John said, \"I don't like it.\")\n- Với Here/There: Here comes the bus. (= The bus comes here.)\n\n**2. Đảo ngữ một phần (Partial inversion):** Trợ động từ đứng trước chủ ngữ.\n- Sau các cụm từ phủ định: Never have I seen such a beautiful sunset. (= I have never seen such a beautiful sunset.)\n- Sau hardly/scarcely...when, no sooner...than: Hardly had I arrived when it started to rain. (= I had hardly arrived when it started to rain.)\n- Sau only + trạng ngữ: Only then did I realize my mistake. (= I only realized my mistake then.)\n- Sau các trạng từ phủ định đầu câu: Seldom does he visit his parents. (= He seldom visits his parents.)\n- Với các biểu hiện: not only...but also, so...that, such...that, neither...nor, nowhere: Not only did she pass the exam, but she also got the highest score.\n\n**3. Đảo ngữ trong câu điều kiện:**\n- Câu điều kiện loại 1: Should it rain, we will cancel the picnic. (= If it rains, we will cancel the picnic.)\n- Câu điều kiện loại 2: Were I in your position, I would accept the offer. (= If I were in your position, I would accept the offer.)\n- Câu điều kiện loại 3: Had I known about the problem, I would have fixed it. (= If I had known about the problem, I would have fixed it.)\n\n**4. Với as, though và than:**\n- Child as he is, he knows a lot about computers. (= Although he is a child, he knows a lot about computers.)\n- Try as I might, I couldn't lift the box. (= Although I tried hard, I couldn't lift the box.)\n\n**5. So, neither, nor (để đồng ý với câu trước):**\n- \"I can swim.\" \"So can I.\" (= I can swim too.)\n- \"I don't like coffee.\" \"Neither do I.\" (= I don't like coffee either.)",
-    "TimeUpload_NP": { "$date": "2023-10-07T09:15:00Z" },
-    "ID_CD": 5,
+    "Content_NP": "Đảo ngữ là cấu trúc đặc biệt trong tiếng Anh khi trợ động từ hoặc động từ được đặt trước chủ ngữ, thường để nhấn mạnh hoặc tạo phong cách trong văn viết.\r\n\r\n**Các loại đảo ngữ:**\r\n**1. Đảo ngữ hoàn toàn (Full inversion):** Động từ chính đứng trước chủ ngữ.\r\n- Với trạng từ chỉ nơi chốn: In walked the manager. (= The manager walked in.)\r\n- Khi kể chuyện: \"I don't like it,\" said John. (= John said, \"I don't like it.\")\r\n- Với Here/There: Here comes the bus. (= The bus comes here.)\r\n\r\n**2. Đảo ngữ một phần (Partial inversion):** Trợ động từ đứng trước chủ ngữ.\r\n- Sau các cụm từ phủ định: Never have I seen such a beautiful sunset. (= I have never seen such a beautiful sunset.)\r\n- Sau hardly/scarcely...when, no sooner...than: Hardly had I arrived when it started to rain. (= I had hardly arrived when it started to rain.)\r\n- Sau only + trạng ngữ: Only then did I realize my mistake. (= I only realized my mistake then.)\r\n- Sau các trạng từ phủ định đầu câu: Seldom does he visit his parents. (= He seldom visits his parents.)\r\n- Với các biểu hiện: not only...but also, so...that, such...that, neither...nor, nowhere: Not only did she pass the exam, but she also got the highest score.\r\n\r\n**3. Đảo ngữ trong câu điều kiện:**\r\n- Câu điều kiện loại 1: Should it rain, we will cancel the picnic. (= If it rains, we will cancel the picnic.)\r\n- Câu điều kiện loại 2: Were I in your position, I would accept the offer. (= If I were in your position, I would accept the offer.)\r\n- Câu điều kiện loại 3: Had I known about the problem, I would have fixed it. (= If I had known about the problem, I would have fixed it.)\r\n\r\n**4. Với as, though và than:**\r\n- Child as he is, he knows a lot about computers. (= Although he is a child, he knows a lot about computers.)\r\n- Try as I might, I couldn't lift the box. (= Although I tried hard, I couldn't lift the box.)\r\n\r\n**5. So, neither, nor (để đồng ý với câu trước):**\r\n- \"I can swim.\" \"So can I.\" (= I can swim too.)\r\n- \"I don't like coffee.\" \"Neither do I.\" (= I don't like coffee either.)",
+  "Content": "Đảo ngữ là cấu trúc đặc biệt trong tiếng Anh khi trợ động từ hoặc động từ được đặt trước chủ ngữ, thường để nhấn mạnh hoặc tạo phong cách trong văn viết.\r\n\r\n**Các loại đảo ngữ:**\r\n**1. Đảo ngữ hoàn toàn (Full inversion):** Động từ chính đứng trước chủ ngữ.\r\n- Với trạng từ chỉ nơi chốn: In walked the manager. (= The manager walked in.)\r\n- Khi kể chuyện: \"I don't like it,\" said John. (= John said, \"I don't like it.\")\r\n- Với Here/There: Here comes the bus. (= The bus comes here.)\r\n\r\n**2. Đảo ngữ một phần (Partial inversion):** Trợ động từ đứng trước chủ ngữ.\r\n- Sau các cụm từ phủ định: Never have I seen such a beautiful sunset. (= I have never seen such a beautiful sunset.)\r\n- Sau hardly/scarcely...when, no sooner...than: Hardly had I arrived when it started to rain. (= I had hardly arrived when it started to rain.)\r\n- Sau only + trạng ngữ: Only then did I realize my mistake. (= I only realized my mistake then.)\r\n- Sau các trạng từ phủ định đầu câu: Seldom does he visit his parents. (= He seldom visits his parents.)\r\n- Với các biểu hiện: not only...but also, so...that, such...that, neither...nor, nowhere: Not only did she pass the exam, but she also got the highest score.\r\n\r\n**3. Đảo ngữ trong câu điều kiện:**\r\n- Câu điều kiện loại 1: Should it rain, we will cancel the picnic. (= If it rains, we will cancel the picnic.)\r\n- Câu điều kiện loại 2: Were I in your position, I would accept the offer. (= If I were in your position, I would accept the offer.)\r\n- Câu điều kiện loại 3: Had I known about the problem, I would have fixed it. (= If I had known about the problem, I would have fixed it.)\r\n\r\n**4. Với as, though và than:**\r\n- Child as he is, he knows a lot about computers. (= Although he is a child, he knows a lot about computers.)\r\n- Try as I might, I couldn't lift the box. (= Although I tried hard, I couldn't lift the box.)\r\n\r\n**5. So, neither, nor (để đồng ý với câu trước):**\r\n- \"I can swim.\" \"So can I.\" (= I can swim too.)\r\n- \"I don't like coffee.\" \"Neither do I.\" (= I don't like coffee either.)",
+
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Advanced Grammar",
     "Level": "C1",
+    "VideoUrl_NP": "https://www.youtube.com/embed/ivrER84mTOc",
     "Examples": [
       "Never before had I seen such a magnificent view.",
       "Hardly had I stepped outside when it began to rain heavily.",
       "Had I known you were coming, I would have prepared dinner."
     ],
-    "IsFavorite": true
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 10
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb104778555"
+    },
     "ID_NP": 11,
     "Title_NP": "Cleft Sentences",
     "Description_NP": "Học cách sử dụng câu chẻ để nhấn mạnh thông tin quan trọng trong câu",
-    "Content_NP": "Câu chẻ là một cấu trúc được sử dụng để nhấn mạnh một phần cụ thể của câu bằng cách \"chẻ\" câu đơn thành hai mệnh đề, một với \"it is/was\" hoặc \"what\" và một mệnh đề quan hệ.\n\n**Các loại câu chẻ:**\n**1. It-cleft (nhấn mạnh đối tượng, trạng từ, hoặc tân ngữ):**\n- **Cấu trúc:** It + be + từ/cụm từ được nhấn mạnh + that/who/when... + phần còn lại của câu.\n- **Câu gốc:** Sarah bought a new car yesterday.\n- **Nhấn mạnh chủ ngữ:** It was Sarah who/that bought a new car yesterday.\n- **Nhấn mạnh đối tượng:** It was a new car that Sarah bought yesterday.\n- **Nhấn mạnh thời gian:** It was yesterday that Sarah bought a new car.\n\n**2. Wh-cleft (nhấn mạnh một hành động hoặc tình huống cả câu):**\n- **Cấu trúc:** What + phần còn lại của câu + be + từ/cụm từ được nhấn mạnh.\n- **Câu gốc:** Sarah bought a new car yesterday.\n- **Nhấn mạnh hành động:** What Sarah did yesterday was (to) buy a new car.\n- **Nhấn mạnh chủ ngữ:** What bought a new car yesterday was Sarah.\n\n**3. All-cleft:**\n- **Cấu trúc:** All + that/who... + phần còn lại của câu.\n- **Ví dụ:** All (that) I want is a good night's sleep.\n\n**4. The thing/person/place/reason... cleft:**\n- **Cấu trúc:** The + thing/person/place/reason... + that/who/where/why... + phần còn lại của câu + be + thông tin được nhấn mạnh.\n- **Ví dụ:** The place where we first met was in Paris.\n- **Ví dụ:** The reason (why) I called you was to invite you to dinner.\n\n**Mục đích sử dụng câu chẻ:**\n- Nhấn mạnh một phần cụ thể của câu.\n- Tạo sự tương phản.\n- Làm cho thông tin quan trọng nổi bật.\n- Tạo sự liên kết mạch lạc trong văn bản.",
-    "TimeUpload_NP": { "$date": "2023-10-09T14:25:00Z" },
-    "ID_CD": 6,
+    "Content_NP": "Câu chẻ là một cấu trúc được sử dụng để nhấn mạnh một phần cụ thể của câu bằng cách \"chẻ\" câu đơn thành hai mệnh đề, một với \"it is/was\" hoặc \"what\" và một mệnh đề quan hệ.\r\n\r\n**Các loại câu chẻ:**\r\n**1. It-cleft (nhấn mạnh đối tượng, trạng từ, hoặc tân ngữ):**\r\n- **Cấu trúc:** It + be + từ/cụm từ được nhấn mạnh + that/who/when... + phần còn lại của câu.\r\n- **Câu gốc:** Sarah bought a new car yesterday.\r\n- **Nhấn mạnh chủ ngữ:** It was Sarah who/that bought a new car yesterday.\r\n- **Nhấn mạnh đối tượng:** It was a new car that Sarah bought yesterday.\r\n- **Nhấn mạnh thời gian:** It was yesterday that Sarah bought a new car.\r\n\r\n**2. Wh-cleft (nhấn mạnh một hành động hoặc tình huống cả câu):**\r\n- **Cấu trúc:** What + phần còn lại của câu + be + từ/cụm từ được nhấn mạnh.\r\n- **Câu gốc:** Sarah bought a new car yesterday.\r\n- **Nhấn mạnh hành động:** What Sarah did yesterday was (to) buy a new car.\r\n- **Nhấn mạnh chủ ngữ:** What bought a new car yesterday was Sarah.\r\n\r\n**3. All-cleft:**\r\n- **Cấu trúc:** All + that/who... + phần còn lại của câu.\r\n- **Ví dụ:** All (that) I want is a good night's sleep.\r\n\r\n**4. The thing/person/place/reason... cleft:**\r\n- **Cấu trúc:** The + thing/person/place/reason... + that/who/where/why... + phần còn lại của câu + be + thông tin được nhấn mạnh.\r\n- **Ví dụ:** The place where we first met was in Paris.\r\n- **Ví dụ:** The reason (why) I called you was to invite you to dinner.\r\n\r\n**Mục đích sử dụng câu chẻ:**\r\n- Nhấn mạnh một phần cụ thể của câu.\r\n- Tạo sự tương phản.\r\n- Làm cho thông tin quan trọng nổi bật.\r\n- Tạo sự liên kết mạch lạc trong văn bản.",
+    "Content": "Câu chẻ là một cấu trúc được sử dụng để nhấn mạnh một phần cụ thể của câu bằng cách \"chẻ\" câu đơn thành hai mệnh đề, một với \"it is/was\" hoặc \"what\" và một mệnh đề quan hệ.\r\n\r\n**Các loại câu chẻ:**\r\n**1. It-cleft (nhấn mạnh đối tượng, trạng từ, hoặc tân ngữ):**\r\n- **Cấu trúc:** It + be + từ/cụm từ được nhấn mạnh + that/who/when... + phần còn lại của câu.\r\n- **Câu gốc:** Sarah bought a new car yesterday.\r\n- **Nhấn mạnh chủ ngữ:** It was Sarah who/that bought a new car yesterday.\r\n- **Nhấn mạnh đối tượng:** It was a new car that Sarah bought yesterday.\r\n- **Nhấn mạnh thời gian:** It was yesterday that Sarah bought a new car.\r\n\r\n**2. Wh-cleft (nhấn mạnh một hành động hoặc tình huống cả câu):**\r\n- **Cấu trúc:** What + phần còn lại của câu + be + từ/cụm từ được nhấn mạnh.\r\n- **Câu gốc:** Sarah bought a new car yesterday.\r\n- **Nhấn mạnh hành động:** What Sarah did yesterday was (to) buy a new car.\r\n- **Nhấn mạnh chủ ngữ:** What bought a new car yesterday was Sarah.\r\n\r\n**3. All-cleft:**\r\n- **Cấu trúc:** All + that/who... + phần còn lại của câu.\r\n- **Ví dụ:** All (that) I want is a good night's sleep.\r\n\r\n**4. The thing/person/place/reason... cleft:**\r\n- **Cấu trúc:** The + thing/person/place/reason... + that/who/where/why... + phần còn lại của câu + be + thông tin được nhấn mạnh.\r\n- **Ví dụ:** The place where we first met was in Paris.\r\n- **Ví dụ:** The reason (why) I called you was to invite you to dinner.\r\n\r\n**Mục đích sử dụng câu chẻ:**\r\n- Nhấn mạnh một phần cụ thể của câu.\r\n- Tạo sự tương phản.\r\n- Làm cho thông tin quan trọng nổi bật.\r\n- Tạo sự liên kết mạch lạc trong văn bản.",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Advanced Grammar",
     "Level": "C2",
+    "VideoUrl_NP": "https://www.youtube.com/embed/Dj0ePce_xmE",
     "Examples": [
       "It was in 2010 that we moved to London.",
       "What I need most is some time to myself.",
       "The reason why she left early was that she had another appointment."
     ],
-    "IsFavorite": false
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 11
   },
   {
+    "_id": {
+      "$oid": "681622793bc5dcb104778556"
+    },
     "ID_NP": 12,
     "Title_NP": "Subjunctive Mood",
     "Description_NP": "Tìm hiểu về thức giả định và cách sử dụng trong tiếng Anh trang trọng và học thuật",
-    "Content_NP": "Thức giả định là một dạng ngữ pháp được sử dụng để diễn tả mong ước, giả định, khả năng, đề nghị hay đòi hỏi không có thực trong hiện tại hoặc khó có thể thực hiện được. Thức giả định thường xuất hiện trong ngôn ngữ trang trọng, hàn lâm và các biểu thức cố định.\n\n**Các dạng của thức giả định:**\n**1. Thức giả định hiện tại (Present Subjunctive):**\n- **Cấu trúc:** Động từ nguyên mẫu không có 'to' cho tất cả các ngôi.\n- **Sử dụng:**\n  - Sau các động từ/cụm từ chỉ yêu cầu, đòi hỏi, đề nghị: suggest, recommend, insist, demand, request, propose, require, be essential, be crucial...\n- **Ví dụ:** I suggest that he go to the doctor. (NOT: goes)\n- **Ví dụ:** The teacher recommended that everyone be present for the exam. (NOT: is/are)\n\n**2. Thức giả định quá khứ (Past Subjunctive):**\n- **Cấu trúc:** Sử dụng 'were' cho tất cả các ngôi.\n- **Sử dụng:**\n  - Trong câu điều kiện loại 2.\n  - Sau các cấu trúc: as if, as though, if only, wish, suppose, I'd rather, it's high time...\n- **Ví dụ:** If I were you, I would accept the job offer. (NOT: was - mặc dù 'was' cũng được chấp nhận trong ngôn ngữ không trang trọng)\n- **Ví dụ:** She acts as if she were the boss. (NOT: was - trong ngôn ngữ trang trọng)\n\n**3. Thức giả định hoàn thành (Perfect Subjunctive):**\n- **Cấu trúc:** Should/would/could/might + have + V3/ed.\n- **Sử dụng:**\n  - Để nói về tình huống không có thật trong quá khứ.\n- **Ví dụ:** If only he had been more careful. (= I wish he had been more careful, but he wasn't.)\n\n**4. Các biểu thức cố định có thức giả định:**\n- God bless you!\n- Long live the King!\n- Be that as it may...\n- Come what may...\n- So be it.\n- Heaven forbid!\n- Truth be told...\n- Far be it from me to criticize, but...\n\n**5. Các cấu trúc thường sử dụng thức giả định:**\n- **I wish (that)...** I wish (that) he were here now.\n- **If only...** If only it were summer.\n- **As if/as though...** He talks as if he knew everything.\n- **Would rather that...** I would rather that you didn't leave yet.\n- **It's time that...** It's time that we went home.\n- **Lest...** He spoke quietly lest the baby wake up.\n\nThức giả định là một khía cạnh tinh tế của tiếng Anh, thường xuất hiện trong văn phong trang trọng và học thuật, giúp diễn đạt các ý tưởng phức tạp về điều kiện, giả định và mong ước.",
-    "TimeUpload_NP": { "$date": "2023-10-12T11:50:00Z" },
-    "ID_CD": 6,
+    "Content_NP": "Thức giả định là một dạng ngữ pháp được sử dụng để diễn tả mong ước, giả định, khả năng, đề nghị hay đòi hỏi không có thực trong hiện tại hoặc khó có thể thực hiện được. Thức giả định thường xuất hiện trong ngôn ngữ trang trọng, hàn lâm và các biểu thức cố định.\r\n\r\nCác dạng của thức giả định:\r\n1. Thức giả định hiện tại (Present Subjunctive):\r\n- Cấu trúc: Động từ nguyên mẫu không có 'to' cho tất cả các ngôi.\r\n- Sử dụng:\r\n  - Sau các động từ/cụm từ chỉ yêu cầu, đòi hỏi, đề nghị: suggest, recommend, insist, demand, request, propose, require, be essential, be crucial...\r\n- Ví dụ: I suggest that he go to the doctor. (NOT: goes)\r\n- Ví dụ: The teacher recommended that everyone be present for the exam. (NOT: is/are)\r\n\r\n2. Thức giả định quá khứ (Past Subjunctive):\r\n- Cấu trúc: Sử dụng 'were' cho tất cả các ngôi.\r\n- Sử dụng:\r\n  - Trong câu điều kiện loại 2.\r\n  - Sau các cấu trúc: as if, as though, if only, wish, suppose, I'd rather, it's high time...\r\n- Ví dụ: If I were you, I would accept the job offer. (NOT: was - mặc dù 'was' cũng được chấp nhận trong ngôn ngữ không trang trọng)\r\n- Ví dụ: She acts as if she were the boss. (NOT: was - trong ngôn ngữ trang trọng)\r\n\r\n3. Thức giả định hoàn thành (Perfect Subjunctive):\r\n- Cấu trúc: Should/would/could/might + have + V3/ed.\r\n- Sử dụng:\r\n  - Để nói về tình huống không có thật trong quá khứ.\r\n- Ví dụ: If only he had been more careful. (= I wish he had been more careful, but he wasn't.)\r\n\r\n4. Các biểu thức cố định có thức giả định:\r\n- God bless you!\r\n- Long live the King!\r\n- Be that as it may...\r\n- Come what may...\r\n- So be it.\r\n- Heaven forbid!\r\n- Truth be told...\r\n- Far be it from me to criticize, but...\r\n\r\n5. Các cấu trúc thường sử dụng thức giả định:\r\n- I wish (that)... I wish (that) he were here now.\r\n- If only... If only it were summer.\r\n- As if/as though... He talks as if he knew everything.\r\n- Would rather that... I would rather that you didn't leave yet.\r\n- It's time that... It's time that we went home.\r\n- Lest... He spoke quietly lest the baby wake up.\r\n\r\nThức giả định là một khía cạnh tinh tế của tiếng Anh, thường xuất hiện trong văn phong trang trọng và học thuật, giúp diễn đạt các ý tưởng phức tạp về điều kiện, giả định và mong ước.",
+    "Content": "Thức giả định là một dạng ngữ pháp được sử dụng để diễn tả mong ước, giả định, khả năng, đề nghị hay đòi hỏi không có thực trong hiện tại hoặc khó có thể thực hiện được. Thức giả định thường xuất hiện trong ngôn ngữ trang trọng, hàn lâm và các biểu thức cố định.\r\n\r\nCác dạng của thức giả định:\r\n1. Thức giả định hiện tại (Present Subjunctive):\r\n- Cấu trúc: Động từ nguyên mẫu không có 'to' cho tất cả các ngôi.\r\n- Sử dụng:\r\n  - Sau các động từ/cụm từ chỉ yêu cầu, đòi hỏi, đề nghị: suggest, recommend, insist, demand, request, propose, require, be essential, be crucial...\r\n- Ví dụ: I suggest that he go to the doctor. (NOT: goes)\r\n- Ví dụ: The teacher recommended that everyone be present for the exam. (NOT: is/are)\r\n\r\n2. Thức giả định quá khứ (Past Subjunctive):\r\n- Cấu trúc: Sử dụng 'were' cho tất cả các ngôi.\r\n- Sử dụng:\r\n  - Trong câu điều kiện loại 2.\r\n  - Sau các cấu trúc: as if, as though, if only, wish, suppose, I'd rather, it's high time...\r\n- Ví dụ: If I were you, I would accept the job offer. (NOT: was - mặc dù 'was' cũng được chấp nhận trong ngôn ngữ không trang trọng)\r\n- Ví dụ: She acts as if she were the boss. (NOT: was - trong ngôn ngữ trang trọng)\r\n\r\n3. Thức giả định hoàn thành (Perfect Subjunctive):\r\n- Cấu trúc: Should/would/could/might + have + V3/ed.\r\n- Sử dụng:\r\n  - Để nói về tình huống không có thật trong quá khứ.\r\n- Ví dụ: If only he had been more careful. (= I wish he had been more careful, but he wasn't.)\r\n\r\n4. Các biểu thức cố định có thức giả định:\r\n- God bless you!\r\n- Long live the King!\r\n- Be that as it may...\r\n- Come what may...\r\n- So be it.\r\n- Heaven forbid!\r\n- Truth be told...\r\n- Far be it from me to criticize, but...\r\n\r\n5. Các cấu trúc thường sử dụng thức giả định:\r\n- I wish (that)... I wish (that) he were here now.\r\n- If only... If only it were summer.\r\n- As if/as though... He talks as if he knew everything.\r\n- Would rather that... I would rather that you didn't leave yet.\r\n- It's time that... It's time that we went home.\r\n- Lest... He spoke quietly lest the baby wake up.\r\n\r\nThức giả định là một khía cạnh tinh tế của tiếng Anh, thường xuất hiện trong văn phong trang trọng và học thuật, giúp diễn đạt các ý tưởng phức tạp về điều kiện, giả định và mong ước.",
+    "TimeUpload_NP": {
+      "$date": {
+        "$numberLong": "1735689600000"
+      }
+    },
+    "ID_CD": 0,
     "TopicName": "Advanced Grammar",
     "Level": "C2",
+    "VideoUrl_NP": "https://www.youtube.com/embed/OUwkVFgaL5E",
     "Examples": [
       "The committee insists that each member be present at the meeting.",
       "If I were you, I would reconsider that decision.",
       "I wish she were more understanding about the situation."
     ],
-    "IsFavorite": true
+    "ProgressPercentage": 0,
+    "FavoriteByUsers": [],
+    "title": "",
+    "summary": "",
+    "id_grammar": 12
   }
 ]
