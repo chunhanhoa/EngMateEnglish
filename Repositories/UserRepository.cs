@@ -117,6 +117,55 @@ namespace TiengAnh.Repositories
             }
         }
 
+        public async Task<PagedResult<UserModel>> GetUsersWithPagingAsync(int page = 1, int pageSize = 10, string searchTerm = "")
+        {
+            try
+            {
+                var filter = Builders<UserModel>.Filter.Empty;
+                
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    var searchFilter = Builders<UserModel>.Filter.Or(
+                        Builders<UserModel>.Filter.Regex(u => u.FullName, new BsonRegularExpression(searchTerm, "i")),
+                        Builders<UserModel>.Filter.Regex(u => u.Email, new BsonRegularExpression(searchTerm, "i")),
+                        Builders<UserModel>.Filter.Regex(u => u.Username, new BsonRegularExpression(searchTerm, "i"))
+                    );
+                    filter = searchFilter;
+                }
+
+                var totalItems = await _collection.CountDocumentsAsync(filter);
+                var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+                
+                var users = await _collection
+                    .Find(filter)
+                    .Sort(Builders<UserModel>.Sort.Descending(u => u.RegisterDate))
+                    .Skip((page - 1) * pageSize)
+                    .Limit(pageSize)
+                    .ToListAsync();
+
+                return new PagedResult<UserModel>
+                {
+                    Items = users,
+                    CurrentPage = page,
+                    TotalPages = totalPages,
+                    TotalItems = (int)totalItems,
+                    PageSize = pageSize
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"GetUsersWithPagingAsync: Error: {ex.Message}");
+                return new PagedResult<UserModel>
+                {
+                    Items = new List<UserModel>(),
+                    CurrentPage = page,
+                    TotalPages = 0,
+                    TotalItems = 0,
+                    PageSize = pageSize
+                };
+            }
+        }
+
         public async Task<bool> UpdateUserAsync(UserModel user)
         {
             try

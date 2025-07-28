@@ -320,6 +320,22 @@ namespace TiengAnh.Controllers
                 }
 
                 var avatarPath = !string.IsNullOrEmpty(user.Avatar) ? user.Avatar : "/images/default-avatar.png";
+                
+                // Kiểm tra file avatar có tồn tại không
+                if (!avatarPath.Contains("default-avatar"))
+                {
+                    string physicalPath = Path.Combine(_webRootPath, avatarPath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+                    if (!System.IO.File.Exists(physicalPath))
+                    {
+                        _logger.LogWarning($"Avatar file not found at {physicalPath}, using default");
+                        avatarPath = "/images/default-avatar.png";
+                        
+                        // Cập nhật database về default avatar
+                        user.Avatar = avatarPath;
+                        await _userRepository.UpdateUserAsync(user);
+                    }
+                }
+                
                 var timestamp = DateTime.Now.Ticks;
                 var avatarWithTimestamp = $"{avatarPath}?v={timestamp}";
 
@@ -327,7 +343,7 @@ namespace TiengAnh.Controllers
                 Response.Headers.Add("Pragma", "no-cache");
                 Response.Headers.Add("Expires", "0");
 
-                return Json(new { success = true, avatarPath, avatarWithTimestamp });
+                return Json(new { success = true, avatarPath, avatarWithTimestamp, fileExists = true });
             }
             catch (Exception ex)
             {
@@ -367,6 +383,14 @@ namespace TiengAnh.Controllers
                 }
 
                 _logger.LogInformation($"UpdateAvatar: Found user: ID={user.Id}, Email={user.Email}, Current Avatar={user.Avatar}");
+
+                // Ensure avatar directory exists
+                string uploadsFolder = Path.Combine(_webRootPath, "images", "avatar");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    _logger.LogInformation($"UpdateAvatar: Created avatar directory at {uploadsFolder}");
+                }
 
                 // Handle direct path (from existing avatar)
                 if (model.AvatarData.StartsWith("/images/avatar/"))
@@ -439,12 +463,22 @@ namespace TiengAnh.Controllers
                         int dataIndex = base64Data.IndexOf("base64,") + "base64,".Length;
                         string imageData = base64Data.Substring(dataIndex);
                         
-                        // Ensure avatar directory exists
-                        string uploadsFolder = Path.Combine(_webRootPath, "images", "avatar");
-                        if (!Directory.Exists(uploadsFolder))
+                        // Delete old avatar file if exists and not default
+                        if (!string.IsNullOrEmpty(user.Avatar) && !user.Avatar.Contains("default-avatar"))
                         {
-                            Directory.CreateDirectory(uploadsFolder);
-                            _logger.LogInformation($"UpdateAvatar: Created avatar directory at {uploadsFolder}");
+                            try
+                            {
+                                string oldPhysicalPath = Path.Combine(_webRootPath, user.Avatar.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+                                if (System.IO.File.Exists(oldPhysicalPath))
+                                {
+                                    System.IO.File.Delete(oldPhysicalPath);
+                                    _logger.LogInformation($"Deleted old avatar: {oldPhysicalPath}");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogWarning($"Could not delete old avatar: {ex.Message}");
+                            }
                         }
                         
                         // Generate unique filename
@@ -456,6 +490,13 @@ namespace TiengAnh.Controllers
                         await System.IO.File.WriteAllBytesAsync(filePath, imageBytes);
                         
                         _logger.LogInformation($"UpdateAvatar: Saved image to {filePath}");
+                        
+                        // Verify file was saved successfully
+                        if (!System.IO.File.Exists(filePath))
+                        {
+                            _logger.LogError($"Avatar file was not saved successfully: {filePath}");
+                            return Json(new { success = false, message = "Lỗi lưu file ảnh" });
+                        }
                         
                         // Update user avatar path
                         string avatarPath = $"/images/avatar/{fileName}";
@@ -565,12 +606,15 @@ namespace TiengAnh.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> ManageUsers()
+        public async Task<IActionResult> ManageUsers(int page = 1, string search = "")
         {
             try
             {
-                var users = await _userRepository.GetAllUsersAsync();
-                return View(users);
+                const int pageSize = 10;
+                var pagedUsers = await _userRepository.GetUsersWithPagingAsync(page, pageSize, search);
+                
+                ViewBag.CurrentSearch = search;
+                return View(pagedUsers);
             }
             catch (Exception ex)
             {

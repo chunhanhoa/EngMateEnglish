@@ -1,11 +1,11 @@
-@model List<UserModel>
+@model PagedResult<UserModel>
 @{
     ViewData["Title"] = "Quản lý người dùng";
 }
 
-<div class="container mt-5">
-    <div class="row mb-4">
-        <div class="col-md-12">
+<div class="container-fluid mt-3 mt-md-5">
+    <div class="row mb-3 mb-md-4">
+        <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
@@ -17,7 +17,7 @@
     
     @if (TempData["SuccessMessage"] != null)
     {
-        <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+        <div class="alert alert-success alert-dismissible fade show mb-3 mb-md-4" role="alert">
             <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -25,83 +25,318 @@
     
     @if (TempData["ErrorMessage"] != null)
     {
-        <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show mb-3 mb-md-4" role="alert">
             <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
 
-    <div class="card border-0 shadow-sm mb-4">
-        <div class="card-body p-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="fw-bold mb-0">Danh sách người dùng</h3>
-                <a href="@Url.Action("CreateUser", "Account")" class="btn btn-primary">
-                    <i class="fas fa-plus me-2"></i> Thêm người dùng
+    <div class="card border-0 shadow-sm mb-3 mb-md-4">
+        <div class="card-body p-3 p-md-4">
+            <!-- Header Section -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 mb-md-4">
+                <h3 class="fw-bold mb-2 mb-md-0 fs-5 fs-md-3">Danh sách người dùng</h3>
+                <a href="@Url.Action("CreateUser", "Account")" class="btn btn-primary btn-sm btn-md-regular">
+                    <i class="fas fa-plus me-2"></i> 
+                    <span class="d-none d-sm-inline">Thêm người dùng</span>
+                    <span class="d-sm-none">Thêm</span>
                 </a>
             </div>
-            
-            <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle">
-                    <thead>
-                        <tr>
-                            <th>Họ tên</th>
-                            <th>Tên đăng nhập</th>
-                            <th>Email</th>
-                            <th>Vai trò</th>
-                            <th>Ngày đăng ký</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var user in Model)
+
+            <!-- Search Section -->
+            <div class="row mb-3 mb-md-4">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <form method="get" class="d-flex">
+                        <input type="text" name="search" value="@ViewBag.CurrentSearch" 
+                               class="form-control form-control-sm" placeholder="Tìm kiếm theo tên, email, username...">
+                        <button type="submit" class="btn btn-outline-primary btn-sm ms-2">
+                            <i class="fas fa-search"></i>
+                            <span class="d-none d-sm-inline ms-1">Tìm</span>
+                        </button>
+                        @if (!string.IsNullOrEmpty(ViewBag.CurrentSearch))
                         {
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="@(string.IsNullOrEmpty(user.Avatar) ? "/images/avatar/default.jpg" : user.Avatar)" 
-                                             class="rounded-circle me-2" alt="@user.FullName" width="40" height="40" style="object-fit: cover;">
-                                        <div>@user.FullName</div>
-                                    </div>
-                                </td>
-                                <td>@user.Username</td>
-                                <td>@user.Email</td>
-                                <td>
-                                    @if (user.Role == "Admin")
-                                    {
-                                        <span class="badge bg-danger">@user.Role</span>
-                                    }
-                                    else if (user.Role == "Teacher")
-                                    {
-                                        <span class="badge bg-success">@user.Role</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-primary">@user.Role</span>
-                                    }
-                                </td>
-                                <td>@user.RegisterDate.ToString("dd/MM/yyyy")</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="@Url.Action("EditUser", "Account", new { id = user.Id ?? user.UserId })" 
-                                           class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="@Url.Action("DeleteUser", "Account", new { id = user.Id ?? user.UserId })" 
-                                           class="btn btn-sm btn-outline-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <a href="@Url.Action("ManageUsers")" class="btn btn-outline-secondary btn-sm ms-2">
+                                <i class="fas fa-times"></i>
+                            </a>
                         }
-                    </tbody>
-                </table>
+                    </form>
+                </div>
             </div>
+
+            <!-- Stats Section -->
+            <div class="row mb-3 mb-md-4">
+                <div class="col-12">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
+                        <span class="text-muted small">
+                            Hiển thị @Model.StartItem - @Model.EndItem của @Model.TotalItems người dùng
+                            @if (!string.IsNullOrEmpty(ViewBag.CurrentSearch))
+                            {
+                                <span class="text-primary">(tìm kiếm: "@ViewBag.CurrentSearch")</span>
+                            }
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Card View (visible on small screens) -->
+            <div class="d-block d-lg-none">
+                @if (Model.Items.Any())
+                {
+                    @foreach (var user in Model.Items)
+                    {
+                        <div class="card mb-3 border">
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="@(string.IsNullOrEmpty(user.Avatar) ? "/images/default-avatar.png" : user.Avatar)" 
+                                             class="rounded-circle img-fluid avatar-image" alt="@user.FullName" 
+                                             style="max-width: 50px; height: 50px; object-fit: cover;"
+                                             onerror="this.src='/images/default-avatar.png?v=' + Date.now(); this.onerror=null;">
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="card-title mb-1">@user.FullName</h6>
+                                        <p class="card-text small text-muted mb-1">@user.Email</p>
+                                        <p class="card-text small mb-2">
+                                            @if (user.Role == "Admin")
+                                            {
+                                                <span class="badge bg-danger">@user.Role</span>
+                                            }
+                                            else if (user.Role == "Teacher")
+                                            {
+                                                <span class="badge bg-success">@user.Role</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-primary">@user.Role</span>
+                                            }
+                                        </p>
+                                        <div class="d-flex gap-2">
+                                            <a href="@Url.Action("EditUser", "Account", new { id = user.Id ?? user.UserId })" 
+                                               class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("DeleteUser", "Account", new { id = user.Id ?? user.UserId })" 
+                                               class="btn btn-sm btn-outline-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center py-5">
+                        <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">Không có người dùng nào</h5>
+                        @if (!string.IsNullOrEmpty(ViewBag.CurrentSearch))
+                        {
+                            <p class="text-muted">Không tìm thấy kết quả cho "@ViewBag.CurrentSearch"</p>
+                            <a href="@Url.Action("ManageUsers")" class="btn btn-outline-primary btn-sm">Xóa bộ lọc</a>
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- Desktop Table View (hidden on small screens) -->
+            <div class="d-none d-lg-block">
+                @if (Model.Items.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Họ tên</th>
+                                    <th>Tên đăng nhập</th>
+                                    <th>Email</th>
+                                    <th>Vai trò</th>
+                                    <th>Ngày đăng ký</th>
+                                    <th width="120">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model.Items)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@(string.IsNullOrEmpty(user.Avatar) ? "/images/default-avatar.png" : user.Avatar)" 
+                                                     class="rounded-circle me-3 avatar-image" alt="@user.FullName" 
+                                                     width="40" height="40" style="object-fit: cover;"
+                                                     onerror="this.src='/images/default-avatar.png?v=' + Date.now(); this.onerror=null;">
+                                                <div>@user.FullName</div>
+                                            </div>
+                                        </td>
+                                        <td>@user.Username</td>
+                                        <td>@user.Email</td>
+                                        <td>
+                                            @if (user.Role == "Admin")
+                                            {
+                                                <span class="badge bg-danger">@user.Role</span>
+                                            }
+                                            else if (user.Role == "Teacher")
+                                            {
+                                                <span class="badge bg-success">@user.Role</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-primary">@user.Role</span>
+                                            }
+                                        </td>
+                                        <td>@user.RegisterDate.ToString("dd/MM/yyyy")</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="@Url.Action("EditUser", "Account", new { id = user.Id ?? user.UserId })" 
+                                                   class="btn btn-sm btn-outline-primary" title="Chỉnh sửa">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="@Url.Action("DeleteUser", "Account", new { id = user.Id ?? user.UserId })" 
+                                                   class="btn btn-sm btn-outline-danger" title="Xóa">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-5">
+                        <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">Không có người dùng nào</h5>
+                        @if (!string.IsNullOrEmpty(ViewBag.CurrentSearch))
+                        {
+                            <p class="text-muted">Không tìm thấy kết quả cho "@ViewBag.CurrentSearch"</p>
+                            <a href="@Url.Action("ManageUsers")" class="btn btn-outline-primary">Xóa bộ lọc</a>
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- Pagination -->
+            @if (Model.TotalPages > 1)
+            {
+                <nav aria-label="User pagination" class="mt-4">
+                    <ul class="pagination pagination-sm justify-content-center flex-wrap">
+                        <!-- First page -->
+                        @if (Model.CurrentPage > 2)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("ManageUsers", new { page = 1, search = ViewBag.CurrentSearch })">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                        }
+
+                        <!-- Previous page -->
+                        @if (Model.HasPreviousPage)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("ManageUsers", new { page = Model.CurrentPage - 1, search = ViewBag.CurrentSearch })">
+                                    <i class="fas fa-angle-left"></i>
+                                </a>
+                            </li>
+                        }
+
+                        <!-- Page numbers -->
+                        @{
+                            int startPage = Math.Max(1, Model.CurrentPage - 2);
+                            int endPage = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
+                        }
+
+                        @for (int i = startPage; i <= endPage; i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("ManageUsers", new { page = i, search = ViewBag.CurrentSearch })">
+                                    @i
+                                </a>
+                            </li>
+                        }
+
+                        <!-- Next page -->
+                        @if (Model.HasNextPage)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("ManageUsers", new { page = Model.CurrentPage + 1, search = ViewBag.CurrentSearch })">
+                                    <i class="fas fa-angle-right"></i>
+                                </a>
+                            </li>
+                        }
+
+                        <!-- Last page -->
+                        @if (Model.CurrentPage < Model.TotalPages - 1)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("ManageUsers", new { page = Model.TotalPages, search = ViewBag.CurrentSearch })">
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+
+                <!-- Page info for mobile -->
+                <div class="text-center mt-3 d-block d-md-none">
+                    <small class="text-muted">
+                        Trang @Model.CurrentPage / @Model.TotalPages
+                    </small>
+                </div>
+            }
         </div>
     </div>
 </div>
 
 <style>
+    /* Mobile optimizations */
+    @@media (max-width: 575.98px) {
+        .container-fluid {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .card-body {
+            padding: 1rem !important;
+        }
+        
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+        
+        .pagination {
+            margin-bottom: 0;
+        }
+        
+        .pagination .page-link {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+        
+        .badge {
+            font-size: 0.65rem;
+        }
+    }
+
+    /* Tablet optimizations */
+    @@media (min-width: 576px) and (max-width: 991.98px) {
+        .btn-md-regular {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+        }
+    }
+
+    /* Desktop optimizations */
+    @@media (min-width: 992px) {
+        .pagination .page-link {
+            padding: 0.375rem 0.75rem;
+        }
+    }
+
     .level-badge {
         padding: 0.25rem 0.5rem;
         border-radius: 20px;
@@ -122,4 +357,40 @@
         background-color: #ffe8e8;
         color: #dc3545;
     }
+
+    /* Responsive table improvements */
+    @@media (max-width: 991.98px) {
+        .table-responsive {
+            border: none;
+        }
+    }
+
+    /* Card hover effects */
+    .card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Pagination improvements */
+    .pagination .page-item.active .page-link {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+    }
+
+    /* Search form improvements */
+    .form-control:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
 </style>
+
+<script src="~/js/unified-avatar-manager.js"></script>
