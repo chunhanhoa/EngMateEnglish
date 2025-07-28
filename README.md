@@ -1,4 +1,5 @@
-# (EngMate)
+# EngMate - English Learning
+
 Chờ xíu xiu cho trang load nha :> | Bạn có thể truy cập dự án tại đây nè:  <a href="https://engmateenglish.onrender.com/" target="_blank">EngMate</a>
 
 ## Giới thiệu
@@ -9,82 +10,48 @@ Dự án được xây dựng sử dụng **ASP.NET Core MVC** với ngôn ngữ
 
 ## Tính năng chính
 
-- **Học từ vựng**: Danh sách từ vựng phong phú theo chủ đề và trình độ
-- **Học ngữ pháp**: Các bài học ngữ pháp từ cơ bản đến nâng cao (A1-C1)
-- **Bài tập thực hành**: Đa dạng loại bài tập (trắc nghiệm, điền khuyết, sắp xếp từ,...)
-- **Kiểm tra đánh giá**: Các bài kiểm tra để đánh giá năng lực
-- **Theo dõi tiến độ**: Hệ thống theo dõi tiến độ học tập của người dùng
+### Học tập
+- **Học từ vựng**: Danh sách từ vựng phong phú theo chủ đề và trình độ với hình ảnh minh họa
+- **Học ngữ pháp**: Các bài học ngữ pháp từ cơ bản đến nâng cao (A1-C1) với video hướng dẫn
+- **Bài tập thực hành**: Trắc nghiệm (Multiple Choice)
+- **Kiểm tra đánh giá**: Các bài kiểm tra để đánh giá năng lực theo từng chủ đề
+
+### AI và Công nghệ
+- **Trò chuyện AI**: Tính năng chat với AI để luyện tập và hội thoại tiếng Anh cùng AI
+- **Text-to-Speech**: Phát âm từ vựng tự động
+- **Responsive Design**: Giao diện thích ứng đa thiết bị
+
+### Quản lý người dùng
+- **Đăng nhập đa phương thức**: Hỗ trợ đăng nhập bằng Google OAuth và tài khoản thường
 - **Yêu thích**: Lưu từ vựng và ngữ pháp yêu thích để học lại
+- **Theo dõi tiến độ**: Hệ thống theo dõi tiến độ học tập của người dùng
+- **Phân quyền**: Hệ thống phân quyền Admin và User
+
+### Thống kê và Báo cáo (Dành cho Admin)
+- **Dashboard thống kê**: Theo dõi số lượng người dùng, hoạt động học tập
+- **Biểu đồ tăng trưởng**: Visualize sự phát triển của platform
+- **Quản lý nội dung**: Thêm/sửa/xóa từ vựng, ngữ pháp, bài tập
 
 ## Công nghệ sử dụng
 
-- **ASP.NET Core MVC**: Framework phát triển web
+### Backend
+- **ASP.NET Core MVC 9.0**: Framework phát triển web
 - **C#**: Ngôn ngữ lập trình backend
 - **MongoDB**: Cơ sở dữ liệu NoSQL
+- **Google OAuth 2.0**: Xác thực người dùng qua Google
+- **Cookie Authentication**: Quản lý phiên đăng nhập
+
+### Frontend
 - **Bootstrap 5**: Framework CSS cho giao diện đáp ứng
 - **Font Awesome**: Thư viện biểu tượng
 - **JavaScript/jQuery**: Tương tác phía client
 - **AJAX**: Giao tiếp bất đồng bộ với server
+- **Chart.js**: Hiển thị biểu đồ thống kê
 
-## Kiến trúc dự án
+### Middleware & Services
+- **Session Management**: Quản lý phiên người dùng
+- **Static Files**: Phục vụ tài nguyên tĩnh
+- **Data Seeding**: Tự động khởi tạo dữ liệu mẫu
+- **File Upload**: Xử lý upload hình ảnh cho từ vựng
 
-- **Models**: Định nghĩa cấu trúc dữ liệu (GrammarModel, VocabularyModel, TestModel,...)
-- **Views**: Giao diện người dùng
-- **Controllers**: Xử lý logic ứng dụng
-- **Repositories**: Truy cập và thao tác dữ liệu
-- **Services**: Xử lý các dịch vụ như kết nối MongoDB, seeding dữ liệu
-
-## Cài đặt
-
-### Yêu cầu
-
-- [.NET 9.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
-- [MongoDB](https://www.mongodb.com/try/download/community)
-- Một công cụ phát triển như [Visual Studio](https://visualstudio.microsoft.com/) hoặc [Visual Studio Code](https://code.visualstudio.com/)
-
-### Hướng dẫn cài đặt
-
-1. **Clone repository:**
-
-   ```bash
-   git clone https://github.com/your-username/DoAnCoSo.git
-   ```
-
-2. **Mở dự án:**
-
-   Mở file solution TiengAnh.sln bằng Visual Studio hoặc mở thư mục dự án bằng Visual Studio Code.
-
-3. **Cấu hình MongoDB:**
-
-   Cập nhật chuỗi kết nối MongoDB trong file appsettings.json:
-   
-   ```json
-   "MongoDbSettings": {
-     "ConnectionString": "mongodb://localhost:27017",
-     "DatabaseName": "TiengAnh"
-   }
-   ```
-
-4. **Khởi tạo dữ liệu:**
-
-   Ứng dụng sử dụng `DataSeeder` để tạo dữ liệu mẫu khi khởi động lần đầu.
-
-5. **Build và chạy dự án:**
-
-   ```bash
-   dotnet build
-   dotnet run
-   ```
-
-6. **Truy cập ứng dụng:**
-
-   Mở trình duyệt và truy cập địa chỉ: http://localhost:5000
-
-## Cấu trúc chính
-
-- **/Controllers**: Chứa các controller xử lý logic ứng dụng
-- **/Models**: Định nghĩa cấu trúc dữ liệu
-- **/Views**: Chứa giao diện người dùng
-- **/Repositories**: Lớp truy cập dữ liệu
-- **/Services**: Các dịch vụ như MongoDbService, DataSeeder
-- **/wwwroot**: Tài nguyên tĩnh như CSS, JavaScript, images
+**Phát triển bởi**: Đội ngũ phát triển EngMate  
