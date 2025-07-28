@@ -68,5 +68,19 @@ namespace TiengAnh.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        // Health check endpoint để keep alive
+        [HttpGet("/health")]
+        public IActionResult Health()
+        {
+            return Ok(new { status = "healthy", timestamp = DateTime.UtcNow });
+        }
+
+        // Ping endpoint nhanh hơn
+        [HttpGet("/ping")]
+        public IActionResult Ping()
+        {
+            return Ok("pong");
+        }
     }
 }

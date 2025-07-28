@@ -14,6 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Add health checks
+builder.Services.AddHealthChecks();
+
 // Register MongoDB services
 builder.Services.Configure<TiengAnh.Services.MongoDbSettings>(
     builder.Configuration.GetSection("MongoDbSettings"));
@@ -44,6 +47,12 @@ builder.Services.AddScoped<DataImportService>();
 
 // Add User Statistics Service
 builder.Services.AddScoped<UserStatisticsService>();
+
+// Add Keep-Alive Service cho production
+if (!builder.Environment.IsDevelopment())
+{
+    builder.Services.AddHostedService<KeepAliveService>();
+}
 
 // Configure authentication
 builder.Services.AddAuthentication(options =>
@@ -103,6 +112,9 @@ builder.WebHost.ConfigureKestrel(options =>
     options.Limits.MaxRequestBodySize = 52428800; // 50MB
     options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(2);
     options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(1);
+    
+    // Tối ưu cho cold start
+    options.AddServerHeader = false;
 });
 
 // Configure HTTP client timeout
@@ -200,6 +212,47 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "An error occurred while seeding exercises");
     }
 }
+
+// Tối ưu hóa seeding cho production
+if (app.Environment.IsDevelopment())
+{
+    // Seed data during startup chỉ trong development
+    using (var scope = app.Services.CreateScope())
+    {
+        // ...existing seeding code...
+    }
+}
+else
+{
+    // Production: Chỉ kiểm tra và seed nếu cần thiết
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogInformation("Production startup - checking data");
+
+            var topicRepo = services.GetRequiredService<TopicRepository>();
+            var hasTopics = await topicRepo.HasDataAsync();
+            
+            if (!hasTopics)
+            {
+                var dataSeeder = services.GetRequiredService<DataSeeder>();
+                await dataSeeder.SeedAllDataAsync();
+                logger.LogInformation("Seeded data in production");
+            }
+        }
+        catch (Exception ex)
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "Error during production startup");
+        }
+    }
+}
+
+// Add health check endpoints
+app.MapHealthChecks("/health");
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
