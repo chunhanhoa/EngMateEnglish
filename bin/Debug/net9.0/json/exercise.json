@@ -1,971 +1,1122 @@
-[
-  {
-    "ID_BT": 1,
-    "Question": "Which animal is known for its black and white stripes?",
-    "Question_BT": "Which animal is known for its black and white stripes?",
-    "CorrectAnswer": "B",
-    "Answer_BT": "Zebra",
-    "Options": [
-      "Tiger",
-      "Zebra",
-      "Panda",
-      "Giraffe"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 1,
-    "Explanation": "A zebra is an animal recognized for its distinctive black and white stripes.",
-    "Explanation_BT": "A zebra is an animal recognized for its distinctive black and white stripes.",
-    "TopicName": "Animals"
+[{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b624"
   },
-  {
-    "ID_BT": 2,
-    "Question": "Choose the correct sentence about animals:",
-    "Question_BT": "Choose the correct sentence about animals:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "The elephant is the largest land animal.",
-    "Options": [
-      "The elephant is the largest land animal.",
-      "The elephant is the smallest land animal.",
-      "The elephant is a type of bird.",
-      "The elephant lives in the ocean."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 1,
-    "Explanation": "The elephant is correctly described as the largest land animal.",
-    "Explanation_BT": "The elephant is correctly described as the largest land animal.",
-    "TopicName": "Animals"
+  "ID_BT": 1,
+  "Question": "Which animal is known for its black and white stripes?",
+  "Question_BT": "Which animal is known for its black and white stripes?",
+  "CorrectAnswer": "B",
+  "Answer_BT": "Zebra",
+  "Options": [
+    "Tiger",
+    "Zebra",
+    "Panda",
+    "Giraffe"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 1,
+  "Explanation": "A zebra is an animal recognized for its distinctive black and white stripes.",
+  "Explanation_BT": "A zebra is an animal recognized for its distinctive black and white stripes.",
+  "TopicName": "Animals"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b625"
   },
-  {
-    "ID_BT": 3,
-    "Question": "Complete the sentence: 'A _____ is a pet that meows.'",
-    "Question_BT": "Complete the sentence: 'A _____ is a pet that meows.'",
-    "CorrectAnswer": "C",
-    "Answer_BT": "cat",
-    "Options": [
-      "dog",
-      "bird",
-      "cat",
-      "fish"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 1,
-    "Explanation": "A cat is a common pet known for making a 'meow' sound.",
-    "Explanation_BT": "A cat is a common pet known for making a 'meow' sound.",
-    "TopicName": "Animals"
+  "ID_BT": 2,
+  "Question": "Choose the correct sentence about animals:",
+  "Question_BT": "Choose the correct sentence about animals:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "The elephant is the largest land animal.",
+  "Options": [
+    "The elephant is the largest land animal.",
+    "The elephant is the smallest land animal.",
+    "The elephant is a type of bird.",
+    "The elephant lives in the ocean."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 1,
+  "Explanation": "The elephant is correctly described as the largest land animal.",
+  "Explanation_BT": "The elephant is correctly described as the largest land animal.",
+  "TopicName": "Animals"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b626"
   },
-  {
-    "ID_BT": 4,
-    "Question": "Which of these is a type of fruit?",
-    "Question_BT": "Which of these is a type of fruit?",
-    "CorrectAnswer": "D",
-    "Answer_BT": "Apple",
-    "Options": [
-      "Carrot",
-      "Potato",
-      "Broccoli",
-      "Apple"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 2,
-    "Explanation": "Apple is a fruit, while carrot, potato, and broccoli are vegetables.",
-    "Explanation_BT": "Apple is a fruit, while carrot, potato, and broccoli are vegetables.",
-    "TopicName": "Food & Drinks"
+  "ID_BT": 3,
+  "Question": "Complete the sentence: 'A _____ is a pet that meows.'",
+  "Question_BT": "Complete the sentence: 'A _____ is a pet that meows.'",
+  "CorrectAnswer": "C",
+  "Answer_BT": "cat",
+  "Options": [
+    "dog",
+    "bird",
+    "cat",
+    "fish"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 1,
+  "Explanation": "A cat is a common pet known for making a 'meow' sound.",
+  "Explanation_BT": "A cat is a common pet known for making a 'meow' sound.",
+  "TopicName": "Animals"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b627"
   },
-  {
-    "ID_BT": 5,
-    "Question": "Complete the sentence: 'I’d like a glass of _____.'",
-    "Question_BT": "Complete the sentence: 'I’d like a glass of _____.'",
-    "CorrectAnswer": "A",
-    "Answer_BT": "juice",
-    "Options": [
-      "juice",
-      "bread",
-      "rice",
-      "soup"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 2,
-    "Explanation": "Juice is a drink that can be served in a glass, while the others are not typically consumed this way.",
-    "Explanation_BT": "Juice is a drink that can be served in a glass, while the others are not typically consumed this way.",
-    "TopicName": "Food & Drinks"
+  "ID_BT": 4,
+  "Question": "Which of these is a type of fruit?",
+  "Question_BT": "Which of these is a type of fruit?",
+  "CorrectAnswer": "D",
+  "Answer_BT": "Apple",
+  "Options": [
+    "Carrot",
+    "Potato",
+    "Broccoli",
+    "Apple"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 2,
+  "Explanation": "Apple is a fruit, while carrot, potato, and broccoli are vegetables.",
+  "Explanation_BT": "Apple is a fruit, while carrot, potato, and broccoli are vegetables.",
+  "TopicName": "Food & Drinks"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b628"
   },
-  {
-    "ID_BT": 6,
-    "Question": "Which is NOT a dairy product?",
-    "Question_BT": "Which is NOT a dairy product?",
-    "CorrectAnswer": "C",
-    "Answer_BT": "Tofu",
-    "Options": [
-      "Milk",
-      "Cheese",
-      "Tofu",
-      "Yogurt"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 2,
-    "Explanation": "Tofu is made from soybeans and is not a dairy product, while milk, cheese, and yogurt are derived from milk.",
-    "Explanation_BT": "Tofu is made from soybeans and is not a dairy product, while milk, cheese, and yogurt are derived from milk.",
-    "TopicName": "Food & Drinks"
+  "ID_BT": 5,
+  "Question": "Complete the sentence: 'I’d like a glass of _____.'",
+  "Question_BT": "Complete the sentence: 'I’d like a glass of _____.'",
+  "CorrectAnswer": "A",
+  "Answer_BT": "juice",
+  "Options": [
+    "juice",
+    "bread",
+    "rice",
+    "soup"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 2,
+  "Explanation": "Juice is a drink that can be served in a glass, while the others are not typically consumed this way.",
+  "Explanation_BT": "Juice is a drink that can be served in a glass, while the others are not typically consumed this way.",
+  "TopicName": "Food & Drinks"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b629"
   },
-  {
-    "ID_BT": 7,
-    "Question": "What do you use to write on a blackboard?",
-    "Question_BT": "What do you use to write on a blackboard?",
-    "CorrectAnswer": "B",
-    "Answer_BT": "Chalk",
-    "Options": [
-      "Pen",
-      "Chalk",
-      "Marker",
-      "Pencil"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 3,
-    "Explanation": "Chalk is traditionally used to write on a blackboard in a classroom.",
-    "Explanation_BT": "Chalk is traditionally used to write on a blackboard in a classroom.",
-    "TopicName": "School"
+  "ID_BT": 6,
+  "Question": "Which is NOT a dairy product?",
+  "Question_BT": "Which is NOT a dairy product?",
+  "CorrectAnswer": "C",
+  "Answer_BT": "Tofu",
+  "Options": [
+    "Milk",
+    "Cheese",
+    "Tofu",
+    "Yogurt"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 2,
+  "Explanation": "Tofu is made from soybeans and is not a dairy product, while milk, cheese, and yogurt are derived from milk.",
+  "Explanation_BT": "Tofu is made from soybeans and is not a dairy product, while milk, cheese, and yogurt are derived from milk.",
+  "TopicName": "Food & Drinks"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b62a"
   },
-  {
-    "ID_BT": 8,
-    "Question": "Choose the correct sentence about school:",
-    "Question_BT": "Choose the correct sentence about school:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "I have a test in math tomorrow.",
-    "Options": [
-      "I have a test in math tomorrow.",
-      "I have a test on math tomorrow.",
-      "I have a test for math tomorrow.",
-      "I have a test at math tomorrow."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 3,
-    "Explanation": "The preposition 'in' is used with subjects like math when referring to tests.",
-    "Explanation_BT": "The preposition 'in' is used with subjects like math when referring to tests.",
-    "TopicName": "School"
+  "ID_BT": 7,
+  "Question": "What do you use to write on a blackboard?",
+  "Question_BT": "What do you use to write on a blackboard?",
+  "CorrectAnswer": "B",
+  "Answer_BT": "Chalk",
+  "Options": [
+    "Pen",
+    "Chalk",
+    "Marker",
+    "Pencil"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 3,
+  "Explanation": "Chalk is traditionally used to write on a blackboard in a classroom.",
+  "Explanation_BT": "Chalk is traditionally used to write on a blackboard in a classroom.",
+  "TopicName": "School"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b62b"
   },
-  {
-    "ID_BT": 9,
-    "Question": "Which is NOT found in a classroom?",
-    "Question_BT": "Which is NOT found in a classroom?",
-    "CorrectAnswer": "D",
-    "Answer_BT": "Refrigerator",
-    "Options": [
-      "Desk",
-      "Blackboard",
-      "Notebook",
-      "Refrigerator"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 3,
-    "Explanation": "A refrigerator is typically found in a kitchen, not a classroom, unlike desks, blackboards, and notebooks.",
-    "Explanation_BT": "A refrigerator is typically found in a kitchen, not a classroom, unlike desks, blackboards, and notebooks.",
-    "TopicName": "School"
+  "ID_BT": 8,
+  "Question": "Choose the correct sentence about school:",
+  "Question_BT": "Choose the correct sentence about school:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "I have a test in math tomorrow.",
+  "Options": [
+    "I have a test in math tomorrow.",
+    "I have a test on math tomorrow.",
+    "I have a test for math tomorrow.",
+    "I have a test at math tomorrow."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 3,
+  "Explanation": "The preposition 'in' is used with subjects like math when referring to tests.",
+  "Explanation_BT": "The preposition 'in' is used with subjects like math when referring to tests.",
+  "TopicName": "School"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b62c"
   },
-  {
-    "ID_BT": 10,
-    "Question": "Which sport uses a racket?",
-    "Question_BT": "Which sport uses a racket?",
-    "CorrectAnswer": "C",
-    "Answer_BT": "Tennis",
-    "Options": [
-      "Football",
-      "Swimming",
-      "Tennis",
-      "Boxing"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 4,
-    "Explanation": "Tennis is a sport that requires a racket to hit the ball.",
-    "Explanation_BT": "Tennis is a sport that requires a racket to hit the ball.",
-    "TopicName": "Sports"
+  "ID_BT": 9,
+  "Question": "Which is NOT found in a classroom?",
+  "Question_BT": "Which is NOT found in a classroom?",
+  "CorrectAnswer": "D",
+  "Answer_BT": "Refrigerator",
+  "Options": [
+    "Desk",
+    "Blackboard",
+    "Notebook",
+    "Refrigerator"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 3,
+  "Explanation": "A refrigerator is typically found in a kitchen, not a classroom, unlike desks, blackboards, and notebooks.",
+  "Explanation_BT": "A refrigerator is typically found in a kitchen, not a classroom, unlike desks, blackboards, and notebooks.",
+  "TopicName": "School"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b62d"
   },
-  {
-    "ID_BT": 11,
-    "Question": "Complete the sentence: 'I enjoy _____ in the pool.'",
-    "Question_BT": "Complete the sentence: 'I enjoy _____ in the pool.'",
-    "CorrectAnswer": "B",
-    "Answer_BT": "swimming",
-    "Options": [
-      "running",
-      "swimming",
-      "cycling",
-      "boxing"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 4,
-    "Explanation": "Swimming is the sport associated with a pool.",
-    "Explanation_BT": "Swimming is the sport associated with a pool.",
-    "TopicName": "Sports"
+  "ID_BT": 10,
+  "Question": "Which sport uses a racket?",
+  "Question_BT": "Which sport uses a racket?",
+  "CorrectAnswer": "C",
+  "Answer_BT": "Tennis",
+  "Options": [
+    "Football",
+    "Swimming",
+    "Tennis",
+    "Boxing"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 4,
+  "Explanation": "Tennis is a sport that requires a racket to hit the ball.",
+  "Explanation_BT": "Tennis is a sport that requires a racket to hit the ball.",
+  "TopicName": "Sports"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b62e"
   },
-  {
-    "ID_BT": 12,
-    "Question": "Which sport is played on a field with a ball and goals?",
-    "Question_BT": "Which sport is played on a field with a ball and goals?",
-    "CorrectAnswer": "A",
-    "Answer_BT": "Football",
-    "Options": [
-      "Football",
-      "Basketball",
-      "Volleyball",
-      "Gymnastics"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 4,
-    "Explanation": "Football (soccer) is played on a field with a ball and goals at each end.",
-    "Explanation_BT": "Football (soccer) is played on a field with a ball and goals at each end.",
-    "TopicName": "Sports"
+  "ID_BT": 11,
+  "Question": "Complete the sentence: 'I enjoy _____ in the pool.'",
+  "Question_BT": "Complete the sentence: 'I enjoy _____ in the pool.'",
+  "CorrectAnswer": "B",
+  "Answer_BT": "swimming",
+  "Options": [
+    "running",
+    "swimming",
+    "cycling",
+    "boxing"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 4,
+  "Explanation": "Swimming is the sport associated with a pool.",
+  "Explanation_BT": "Swimming is the sport associated with a pool.",
+  "TopicName": "Sports"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b62f"
   },
-  {
-    "ID_BT": 13,
-    "Question": "Which job involves treating sick people?",
-    "Question_BT": "Which job involves treating sick people?",
-    "CorrectAnswer": "B",
-    "Answer_BT": "Doctor",
-    "Options": [
-      "Teacher",
-      "Doctor",
-      "Engineer",
-      "Chef"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 5,
-    "Explanation": "A doctor is a professional who treats sick people.",
-    "Explanation_BT": "A doctor is a professional who treats sick people.",
-    "TopicName": "Jobs & Professions"
+  "ID_BT": 12,
+  "Question": "Which sport is played on a field with a ball and goals?",
+  "Question_BT": "Which sport is played on a field with a ball and goals?",
+  "CorrectAnswer": "A",
+  "Answer_BT": "Football",
+  "Options": [
+    "Football",
+    "Basketball",
+    "Volleyball",
+    "Gymnastics"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 4,
+  "Explanation": "Football (soccer) is played on a field with a ball and goals at each end.",
+  "Explanation_BT": "Football (soccer) is played on a field with a ball and goals at each end.",
+  "TopicName": "Sports"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b630"
   },
-  {
-    "ID_BT": 14,
-    "Question": "Choose the correct sentence about jobs:",
-    "Question_BT": "Choose the correct sentence about jobs:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "She works as a nurse in a hospital.",
-    "Options": [
-      "She works as a nurse in a hospital.",
-      "She works like a nurse in a hospital.",
-      "She works for a nurse in a hospital.",
-      "She works at a nurse in a hospital."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 5,
-    "Explanation": "The phrase 'works as' is used to describe someone's job or profession.",
-    "Explanation_BT": "The phrase 'works as' is used to describe someone's job or profession.",
-    "TopicName": "Jobs & Professions"
+  "ID_BT": 13,
+  "Question": "Which job involves treating sick people?",
+  "Question_BT": "Which job involves treating sick people?",
+  "CorrectAnswer": "B",
+  "Answer_BT": "Doctor",
+  "Options": [
+    "Teacher",
+    "Doctor",
+    "Engineer",
+    "Chef"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 5,
+  "Explanation": "A doctor is a professional who treats sick people.",
+  "Explanation_BT": "A doctor is a professional who treats sick people.",
+  "TopicName": "Jobs & Professions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b631"
   },
-  {
-    "ID_BT": 15,
-    "Question": "Which job is NOT related to food?",
-    "Question_BT": "Which job is NOT related to food?",
-    "CorrectAnswer": "D",
-    "Answer_BT": "Lawyer",
-    "Options": [
-      "Chef",
-      "Baker",
-      "Waiter",
-      "Lawyer"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 5,
-    "Explanation": "A lawyer works in the legal field, while chef, baker, and waiter are jobs related to food preparation or service.",
-    "Explanation_BT": "A lawyer works in the legal field, while chef, baker, and waiter are jobs related to food preparation or service.",
-    "TopicName": "Jobs & Professions"
+  "ID_BT": 14,
+  "Question": "Choose the correct sentence about jobs:",
+  "Question_BT": "Choose the correct sentence about jobs:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "She works as a nurse in a hospital.",
+  "Options": [
+    "She works as a nurse in a hospital.",
+    "She works like a nurse in a hospital.",
+    "She works for a nurse in a hospital.",
+    "She works at a nurse in a hospital."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 5,
+  "Explanation": "The phrase 'works as' is used to describe someone's job or profession.",
+  "Explanation_BT": "The phrase 'works as' is used to describe someone's job or profession.",
+  "TopicName": "Jobs & Professions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b632"
   },
-  {
-    "ID_BT": 16,
-    "Question": "Who is the youngest in a family?",
-    "Question_BT": "Who is the youngest in a family?",
-    "CorrectAnswer": "C",
-    "Answer_BT": "Baby",
-    "Options": [
-      "Grandparent",
-      "Parent",
-      "Baby",
-      "Aunt"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 6,
-    "Explanation": "A baby is typically the youngest member of a family.",
-    "Explanation_BT": "A baby is typically the youngest member of a family.",
-    "TopicName": "Family"
+  "ID_BT": 15,
+  "Question": "Which job is NOT related to food?",
+  "Question_BT": "Which job is NOT related to food?",
+  "CorrectAnswer": "D",
+  "Answer_BT": "Lawyer",
+  "Options": [
+    "Chef",
+    "Baker",
+    "Waiter",
+    "Lawyer"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 5,
+  "Explanation": "A lawyer works in the legal field, while chef, baker, and waiter are jobs related to food preparation or service.",
+  "Explanation_BT": "A lawyer works in the legal field, while chef, baker, and waiter are jobs related to food preparation or service.",
+  "TopicName": "Jobs & Professions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b633"
   },
-  {
-    "ID_BT": 17,
-    "Question": "Complete the sentence: 'My _____ is my mother’s sister.'",
-    "Question_BT": "Complete the sentence: 'My _____ is my mother’s sister.'",
-    "CorrectAnswer": "B",
-    "Answer_BT": "aunt",
-    "Options": [
-      "grandmother",
-      "aunt",
-      "sister",
-      "cousin"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 6,
-    "Explanation": "An aunt is the sister of one’s mother or father.",
-    "Explanation_BT": "An aunt is the sister of one’s mother or father.",
-    "TopicName": "Family"
+  "ID_BT": 16,
+  "Question": "Who is the youngest in a family?",
+  "Question_BT": "Who is the youngest in a family?",
+  "CorrectAnswer": "C",
+  "Answer_BT": "Baby",
+  "Options": [
+    "Grandparent",
+    "Parent",
+    "Baby",
+    "Aunt"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 6,
+  "Explanation": "A baby is typically the youngest member of a family.",
+  "Explanation_BT": "A baby is typically the youngest member of a family.",
+  "TopicName": "Family"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b634"
   },
-  {
-    "ID_BT": 18,
-    "Question": "Choose the correct sentence about family:",
-    "Question_BT": "Choose the correct sentence about family:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "I have two brothers and one sister.",
-    "Options": [
-      "I have two brothers and one sister.",
-      "I have two brother and one sister.",
-      "I have two brothers and one sisters.",
-      "I have two brother and one sisters."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 6,
-    "Explanation": "The correct plural forms are 'brothers' and 'sister' for siblings.",
-    "Explanation_BT": "The correct plural forms are 'brothers' and 'sister' for siblings.",
-    "TopicName": "Family"
+  "ID_BT": 17,
+  "Question": "Complete the sentence: 'My _____ is my mother’s sister.'",
+  "Question_BT": "Complete the sentence: 'My _____ is my mother’s sister.'",
+  "CorrectAnswer": "B",
+  "Answer_BT": "aunt",
+  "Options": [
+    "grandmother",
+    "aunt",
+    "sister",
+    "cousin"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 6,
+  "Explanation": "An aunt is the sister of one’s mother or father.",
+  "Explanation_BT": "An aunt is the sister of one’s mother or father.",
+  "TopicName": "Family"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b635"
   },
-  {
-    "ID_BT": 19,
-    "Question": "What do you need to travel to another country?",
-    "Question_BT": "What do you need to travel to another country?",
-    "CorrectAnswer": "B",
-    "Answer_BT": "Passport",
-    "Options": [
-      "Map",
-      "Passport",
-      "Ticket",
-      "Suitcase"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 7,
-    "Explanation": "A passport is a required document for international travel.",
-    "Explanation_BT": "A passport is a required document for international travel.",
-    "TopicName": "Travel"
+  "ID_BT": 18,
+  "Question": "Choose the correct sentence about family:",
+  "Question_BT": "Choose the correct sentence about family:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "I have two brothers and one sister.",
+  "Options": [
+    "I have two brothers and one sister.",
+    "I have two brother and one sister.",
+    "I have two brothers and one sisters.",
+    "I have two brother and one sisters."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 6,
+  "Explanation": "The correct plural forms are 'brothers' and 'sister' for siblings.",
+  "Explanation_BT": "The correct plural forms are 'brothers' and 'sister' for siblings.",
+  "TopicName": "Family"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b636"
   },
-  {
-    "ID_BT": 20,
-    "Question": "Complete the sentence: 'We’re staying at a _____ during our trip.'",
-    "Question_BT": "Complete the sentence: 'We’re staying at a _____ during our trip.'",
-    "CorrectAnswer": "A",
-    "Answer_BT": "hotel",
-    "Options": [
-      "hotel",
-      "airport",
-      "museum",
-      "beach"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 7,
-    "Explanation": "A hotel is a place where people stay during a trip for accommodation.",
-    "Explanation_BT": "A hotel is a place where people stay during a trip for accommodation.",
-    "TopicName": "Travel"
+  "ID_BT": 19,
+  "Question": "What do you need to travel to another country?",
+  "Question_BT": "What do you need to travel to another country?",
+  "CorrectAnswer": "B",
+  "Answer_BT": "Passport",
+  "Options": [
+    "Map",
+    "Passport",
+    "Ticket",
+    "Suitcase"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 7,
+  "Explanation": "A passport is a required document for international travel.",
+  "Explanation_BT": "A passport is a required document for international travel.",
+  "TopicName": "Travel"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b637"
   },
-  {
-    "ID_BT": 21,
-    "Question": "Which is NOT a mode of transportation?",
-    "Question_BT": "Which is NOT a mode of transportation?",
-    "CorrectAnswer": "D",
-    "Answer_BT": "Luggage",
-    "Options": [
-      "Train",
-      "Airplane",
-      "Bus",
-      "Luggage"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 7,
-    "Explanation": "Luggage refers to bags or suitcases, not a mode of transportation, unlike train, airplane, and bus.",
-    "Explanation_BT": "Luggage refers to bags or suitcases, not a mode of transportation, unlike train, airplane, and bus.",
-    "TopicName": "Travel"
+  "ID_BT": 20,
+  "Question": "Complete the sentence: 'We’re staying at a _____ during our trip.'",
+  "Question_BT": "Complete the sentence: 'We’re staying at a _____ during our trip.'",
+  "CorrectAnswer": "A",
+  "Answer_BT": "hotel",
+  "Options": [
+    "hotel",
+    "airport",
+    "museum",
+    "beach"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 7,
+  "Explanation": "A hotel is a place where people stay during a trip for accommodation.",
+  "Explanation_BT": "A hotel is a place where people stay during a trip for accommodation.",
+  "TopicName": "Travel"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b638"
   },
-  {
-    "ID_BT": 22,
-    "Question": "Which device is used to take photos?",
-    "Question_BT": "Which device is used to take photos?",
-    "CorrectAnswer": "C",
-    "Answer_BT": "Camera",
-    "Options": [
-      "Laptop",
-      "Printer",
-      "Camera",
-      "Router"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B1",
-    "ID_CD": 8,
-    "Explanation": "A camera is specifically designed for taking photos.",
-    "Explanation_BT": "A camera is specifically designed for taking photos.",
-    "TopicName": "Technology"
+  "ID_BT": 21,
+  "Question": "Which is NOT a mode of transportation?",
+  "Question_BT": "Which is NOT a mode of transportation?",
+  "CorrectAnswer": "D",
+  "Answer_BT": "Luggage",
+  "Options": [
+    "Train",
+    "Airplane",
+    "Bus",
+    "Luggage"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 7,
+  "Explanation": "Luggage refers to bags or suitcases, not a mode of transportation, unlike train, airplane, and bus.",
+  "Explanation_BT": "Luggage refers to bags or suitcases, not a mode of transportation, unlike train, airplane, and bus.",
+  "TopicName": "Travel"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b639"
   },
-  {
-    "ID_BT": 23,
-    "Question": "Choose the correct sentence about technology:",
-    "Question_BT": "Choose the correct sentence about technology:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "I use my smartphone to browse the internet.",
-    "Options": [
-      "I use my smartphone to browse the internet.",
-      "I use my smartphone to browse the printer.",
-      "I use my smartphone to browse the keyboard.",
-      "I use my smartphone to browse the charger."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B1",
-    "ID_CD": 8,
-    "Explanation": "A smartphone is used to browse the internet, not a printer, keyboard, or charger.",
-    "Explanation_BT": "A smartphone is used to browse the internet, not a printer, keyboard, or charger.",
-    "TopicName": "Technology"
+  "ID_BT": 22,
+  "Question": "Which device is used to take photos?",
+  "Question_BT": "Which device is used to take photos?",
+  "CorrectAnswer": "C",
+  "Answer_BT": "Camera",
+  "Options": [
+    "Laptop",
+    "Printer",
+    "Camera",
+    "Router"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B1",
+  "ID_CD": 8,
+  "Explanation": "A camera is specifically designed for taking photos.",
+  "Explanation_BT": "A camera is specifically designed for taking photos.",
+  "TopicName": "Technology"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b63a"
   },
-  {
-    "ID_BT": 24,
-    "Question": "Complete the sentence: 'I need a new _____ for my computer.'",
-    "Question_BT": "Complete the sentence: 'I need a new _____ for my computer.'",
-    "CorrectAnswer": "B",
-    "Answer_BT": "monitor",
-    "Options": [
-      "headphones",
-      "monitor",
-      "speaker",
-      "drone"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B1",
-    "ID_CD": 8,
-    "Explanation": "A monitor is a screen essential for using a computer.",
-    "Explanation_BT": "A monitor is a screen essential for using a computer.",
-    "TopicName": "Technology"
+  "ID_BT": 23,
+  "Question": "Choose the correct sentence about technology:",
+  "Question_BT": "Choose the correct sentence about technology:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "I use my smartphone to browse the internet.",
+  "Options": [
+    "I use my smartphone to browse the internet.",
+    "I use my smartphone to browse the printer.",
+    "I use my smartphone to browse the keyboard.",
+    "I use my smartphone to browse the charger."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B1",
+  "ID_CD": 8,
+  "Explanation": "A smartphone is used to browse the internet, not a printer, keyboard, or charger.",
+  "Explanation_BT": "A smartphone is used to browse the internet, not a printer, keyboard, or charger.",
+  "TopicName": "Technology"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b63b"
   },
-  {
-    "ID_BT": 25,
-    "Question": "Which term describes a high body temperature?",
-    "Question_BT": "Which term describes a high body temperature?",
-    "CorrectAnswer": "A",
-    "Answer_BT": "Fever",
-    "Options": [
-      "Fever",
-      "Cough",
-      "Pain",
-      "Allergy"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B1",
-    "ID_CD": 9,
-    "Explanation": "Fever refers to a high body temperature, often a symptom of illness.",
-    "Explanation_BT": "Fever refers to a high body temperature, often a symptom of illness.",
-    "TopicName": "Health & Medicine"
+  "ID_BT": 24,
+  "Question": "Complete the sentence: 'I need a new _____ for my computer.'",
+  "Question_BT": "Complete the sentence: 'I need a new _____ for my computer.'",
+  "CorrectAnswer": "B",
+  "Answer_BT": "monitor",
+  "Options": [
+    "headphones",
+    "monitor",
+    "speaker",
+    "drone"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B1",
+  "ID_CD": 8,
+  "Explanation": "A monitor is a screen essential for using a computer.",
+  "Explanation_BT": "A monitor is a screen essential for using a computer.",
+  "TopicName": "Technology"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b63c"
   },
-  {
-    "ID_BT": 26,
-    "Question": "Complete the sentence: 'The doctor gave me _____ for my headache.'",
-    "Question_BT": "Complete the sentence: 'The doctor gave me _____ for my headache.'",
-    "CorrectAnswer": "C",
-    "Answer_BT": "medicine",
-    "Options": [
-      "bandage",
-      "injection",
-      "medicine",
-      "x-ray"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B1",
-    "ID_CD": 9,
-    "Explanation": "Medicine is commonly prescribed to treat a headache.",
-    "Explanation_BT": "Medicine is commonly prescribed to treat a headache.",
-    "TopicName": "Health & Medicine"
+  "ID_BT": 25,
+  "Question": "Which term describes a high body temperature?",
+  "Question_BT": "Which term describes a high body temperature?",
+  "CorrectAnswer": "A",
+  "Answer_BT": "Fever",
+  "Options": [
+    "Fever",
+    "Cough",
+    "Pain",
+    "Allergy"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B1",
+  "ID_CD": 9,
+  "Explanation": "Fever refers to a high body temperature, often a symptom of illness.",
+  "Explanation_BT": "Fever refers to a high body temperature, often a symptom of illness.",
+  "TopicName": "Health & Medicine"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b63d"
   },
-  {
-    "ID_BT": 27,
-    "Question": "Which is NOT a place related to healthcare?",
-    "Question_BT": "Which is NOT a place related to healthcare?",
-    "CorrectAnswer": "D",
-    "Answer_BT": "Museum",
-    "Options": [
-      "Hospital",
-      "Pharmacy",
-      "Clinic",
-      "Museum"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B1",
-    "ID_CD": 9,
-    "Explanation": "A museum is not related to healthcare, unlike hospitals, pharmacies, and clinics.",
-    "Explanation_BT": "A museum is not related to healthcare, unlike hospitals, pharmacies, and clinics.",
-    "TopicName": "Health & Medicine"
+  "ID_BT": 26,
+  "Question": "Complete the sentence: 'The doctor gave me _____ for my headache.'",
+  "Question_BT": "Complete the sentence: 'The doctor gave me _____ for my headache.'",
+  "CorrectAnswer": "C",
+  "Answer_BT": "medicine",
+  "Options": [
+    "bandage",
+    "injection",
+    "medicine",
+    "x-ray"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B1",
+  "ID_CD": 9,
+  "Explanation": "Medicine is commonly prescribed to treat a headache.",
+  "Explanation_BT": "Medicine is commonly prescribed to treat a headache.",
+  "TopicName": "Health & Medicine"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b63e"
   },
-  {
-    "ID_BT": 28,
-    "Question": "Which term refers to reusing materials?",
-    "Question_BT": "Which term refers to reusing materials?",
-    "CorrectAnswer": "B",
-    "Answer_BT": "Recycle",
-    "Options": [
-      "Pollution",
-      "Recycle",
-      "Conservation",
-      "Biodiversity"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B2",
-    "ID_CD": 10,
-    "Explanation": "Recycle means to process and reuse materials to reduce waste.",
-    "Explanation_BT": "Recycle means to process and reuse materials to reduce waste.",
-    "TopicName": "Environment"
+  "ID_BT": 27,
+  "Question": "Which is NOT a place related to healthcare?",
+  "Question_BT": "Which is NOT a place related to healthcare?",
+  "CorrectAnswer": "D",
+  "Answer_BT": "Museum",
+  "Options": [
+    "Hospital",
+    "Pharmacy",
+    "Clinic",
+    "Museum"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B1",
+  "ID_CD": 9,
+  "Explanation": "A museum is not related to healthcare, unlike hospitals, pharmacies, and clinics.",
+  "Explanation_BT": "A museum is not related to healthcare, unlike hospitals, pharmacies, and clinics.",
+  "TopicName": "Health & Medicine"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b63f"
   },
-  {
-    "ID_BT": 29,
-    "Question": "Choose the correct sentence about the environment:",
-    "Question_BT": "Choose the correct sentence about the environment:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "Planting trees helps reduce air pollution.",
-    "Options": [
-      "Planting trees helps reduce air pollution.",
-      "Planting trees increases air pollution.",
-      "Planting trees reduces water pollution.",
-      "Planting trees increases soil pollution."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B2",
-    "ID_CD": 10,
-    "Explanation": "Trees absorb carbon dioxide and release oxygen, helping to reduce air pollution.",
-    "Explanation_BT": "Trees absorb carbon dioxide and release oxygen, helping to reduce air pollution.",
-    "TopicName": "Environment"
+  "ID_BT": 28,
+  "Question": "Which term refers to reusing materials?",
+  "Question_BT": "Which term refers to reusing materials?",
+  "CorrectAnswer": "B",
+  "Answer_BT": "Recycle",
+  "Options": [
+    "Pollution",
+    "Recycle",
+    "Conservation",
+    "Biodiversity"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B2",
+  "ID_CD": 10,
+  "Explanation": "Recycle means to process and reuse materials to reduce waste.",
+  "Explanation_BT": "Recycle means to process and reuse materials to reduce waste.",
+  "TopicName": "Environment"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b640"
   },
-  {
-    "ID_BT": 30,
-    "Question": "Complete the sentence: 'The _____ is home to many fish.'",
-    "Question_BT": "Complete the sentence: 'The _____ is home to many fish.'",
-    "CorrectAnswer": "C",
-    "Answer_BT": "ocean",
-    "Options": [
-      "forest",
-      "desert",
-      "ocean",
-      "mountain"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B2",
-    "ID_CD": 10,
-    "Explanation": "The ocean is a large body of water where many fish live.",
-    "Explanation_BT": "The ocean is a large body of water where many fish live.",
-    "TopicName": "Environment"
+  "ID_BT": 29,
+  "Question": "Choose the correct sentence about the environment:",
+  "Question_BT": "Choose the correct sentence about the environment:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "Planting trees helps reduce air pollution.",
+  "Options": [
+    "Planting trees helps reduce air pollution.",
+    "Planting trees increases air pollution.",
+    "Planting trees reduces water pollution.",
+    "Planting trees increases soil pollution."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B2",
+  "ID_CD": 10,
+  "Explanation": "Trees absorb carbon dioxide and release oxygen, helping to reduce air pollution.",
+  "Explanation_BT": "Trees absorb carbon dioxide and release oxygen, helping to reduce air pollution.",
+  "TopicName": "Environment"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b641"
   },
-  {
-    "ID_BT": 31,
-    "Question": "What is the term for money earned by a company?",
-    "Question_BT": "What is the term for money earned by a company?",
-    "CorrectAnswer": "B",
-    "Answer_BT": "Profit",
-    "Options": [
-      "Budget",
-      "Profit",
-      "Salary",
-      "Investment"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B2",
-    "ID_CD": 11,
-    "Explanation": "Profit is the money a company earns after expenses are deducted.",
-    "Explanation_BT": "Profit is the money a company earns after expenses are deducted.",
-    "TopicName": "Business"
+  "ID_BT": 30,
+  "Question": "Complete the sentence: 'The _____ is home to many fish.'",
+  "Question_BT": "Complete the sentence: 'The _____ is home to many fish.'",
+  "CorrectAnswer": "C",
+  "Answer_BT": "ocean",
+  "Options": [
+    "forest",
+    "desert",
+    "ocean",
+    "mountain"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B2",
+  "ID_CD": 10,
+  "Explanation": "The ocean is a large body of water where many fish live.",
+  "Explanation_BT": "The ocean is a large body of water where many fish live.",
+  "TopicName": "Environment"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b642"
   },
-  {
-    "ID_BT": 32,
-    "Question": "Complete the sentence: 'The _____ hired new employees.'",
-    "Question_BT": "Complete the sentence: 'The _____ hired new employees.'",
-    "CorrectAnswer": "A",
-    "Answer_BT": "company",
-    "Options": [
-      "company",
-      "customer",
-      "product",
-      "market"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B2",
-    "ID_CD": 11,
-    "Explanation": "A company is an organization that can hire employees.",
-    "Explanation_BT": "A company is an organization that can hire employees.",
-    "TopicName": "Business"
+  "ID_BT": 31,
+  "Question": "What is the term for money earned by a company?",
+  "Question_BT": "What is the term for money earned by a company?",
+  "CorrectAnswer": "B",
+  "Answer_BT": "Profit",
+  "Options": [
+    "Budget",
+    "Profit",
+    "Salary",
+    "Investment"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B2",
+  "ID_CD": 11,
+  "Explanation": "Profit is the money a company earns after expenses are deducted.",
+  "Explanation_BT": "Profit is the money a company earns after expenses are deducted.",
+  "TopicName": "Business"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b643"
   },
-  {
-    "ID_BT": 33,
-    "Question": "Which is NOT related to business operations?",
-    "Question_BT": "Which is NOT related to business operations?",
-    "CorrectAnswer": "D",
-    "Answer_BT": "Concert",
-    "Options": [
-      "Meeting",
-      "Contract",
-      "Strategy",
-      "Concert"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "B2",
-    "ID_CD": 11,
-    "Explanation": "A concert is an entertainment event, not part of business operations, unlike meetings, contracts, and strategies.",
-    "Explanation_BT": "A concert is an entertainment event, not part of business operations, unlike meetings, contracts, and strategies.",
-    "TopicName": "Business"
+  "ID_BT": 32,
+  "Question": "Complete the sentence: 'The _____ hired new employees.'",
+  "Question_BT": "Complete the sentence: 'The _____ hired new employees.'",
+  "CorrectAnswer": "A",
+  "Answer_BT": "company",
+  "Options": [
+    "company",
+    "customer",
+    "product",
+    "market"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B2",
+  "ID_CD": 11,
+  "Explanation": "A company is an organization that can hire employees.",
+  "Explanation_BT": "A company is an organization that can hire employees.",
+  "TopicName": "Business"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b644"
   },
-  {
-    "ID_BT": 34,
-    "Question": "Where would you watch a movie?",
-    "Question_BT": "Where would you watch a movie?",
-    "CorrectAnswer": "C",
-    "Answer_BT": "Cinema",
-    "Options": [
-      "Theater",
-      "Concert",
-      "Cinema",
-      "Festival"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 12,
-    "Explanation": "A cinema is a place specifically designed for watching movies.",
-    "Explanation_BT": "A cinema is a place specifically designed for watching movies.",
-    "TopicName": "Entertainment"
+  "ID_BT": 33,
+  "Question": "Which is NOT related to business operations?",
+  "Question_BT": "Which is NOT related to business operations?",
+  "CorrectAnswer": "D",
+  "Answer_BT": "Concert",
+  "Options": [
+    "Meeting",
+    "Contract",
+    "Strategy",
+    "Concert"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "B2",
+  "ID_CD": 11,
+  "Explanation": "A concert is an entertainment event, not part of business operations, unlike meetings, contracts, and strategies.",
+  "Explanation_BT": "A concert is an entertainment event, not part of business operations, unlike meetings, contracts, and strategies.",
+  "TopicName": "Business"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b645"
   },
-  {
-    "ID_BT": 35,
-    "Question": "Complete the sentence: 'The _____ performed live music.'",
-    "Question_BT": "Complete the sentence: 'The _____ performed live music.'",
-    "CorrectAnswer": "B",
-    "Answer_BT": "band",
-    "Options": [
-      "actor",
-      "band",
-      "audience",
-      "stage"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 12,
-    "Explanation": "A band is a group of musicians who perform live music.",
-    "Explanation_BT": "A band is a group of musicians who perform live music.",
-    "TopicName": "Entertainment"
+  "ID_BT": 34,
+  "Question": "Where would you watch a movie?",
+  "Question_BT": "Where would you watch a movie?",
+  "CorrectAnswer": "C",
+  "Answer_BT": "Cinema",
+  "Options": [
+    "Theater",
+    "Concert",
+    "Cinema",
+    "Festival"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 12,
+  "Explanation": "A cinema is a place specifically designed for watching movies.",
+  "Explanation_BT": "A cinema is a place specifically designed for watching movies.",
+  "TopicName": "Entertainment"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b646"
   },
-  {
-    "ID_BT": 36,
-    "Question": "Choose the correct sentence about entertainment:",
-    "Question_BT": "Choose the correct sentence about entertainment:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "We’re going to a festival this weekend.",
-    "Options": [
-      "We’re going to a festival this weekend.",
-      "We’re going at a festival this weekend.",
-      "We’re going for a festival this weekend.",
-      "We’re going on a festival this weekend."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 12,
-    "Explanation": "The preposition 'to' is used when referring to attending an event like a festival.",
-    "Explanation_BT": "The preposition 'to' is used when referring to attending an event like a festival.",
-    "TopicName": "Entertainment"
+  "ID_BT": 35,
+  "Question": "Complete the sentence: 'The _____ performed live music.'",
+  "Question_BT": "Complete the sentence: 'The _____ performed live music.'",
+  "CorrectAnswer": "B",
+  "Answer_BT": "band",
+  "Options": [
+    "actor",
+    "band",
+    "audience",
+    "stage"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 12,
+  "Explanation": "A band is a group of musicians who perform live music.",
+  "Explanation_BT": "A band is a group of musicians who perform live music.",
+  "TopicName": "Entertainment"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b647"
   },
-  {
-    "ID_BT": 37,
-    "Question": "Choose the correct sentence about adverbs:",
-    "Question_BT": "Choose the correct sentence about adverbs:",
-    "CorrectAnswer": "B",
-    "Answer_BT": "She sings beautifully.",
-    "Options": [
-      "She sings beautiful.",
-      "She sings beautifully.",
-      "She sing beautifully.",
-      "She sings beauty."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 13,
-    "Explanation": "The adverb 'beautifully' is used to describe how she sings.",
-    "Explanation_BT": "The adverb 'beautifully' is used to describe how she sings.",
-    "TopicName": "Adverbs"
+  "ID_BT": 36,
+  "Question": "Choose the correct sentence about entertainment:",
+  "Question_BT": "Choose the correct sentence about entertainment:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "We’re going to a festival this weekend.",
+  "Options": [
+    "We’re going to a festival this weekend.",
+    "We’re going at a festival this weekend.",
+    "We’re going for a festival this weekend.",
+    "We’re going on a festival this weekend."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 12,
+  "Explanation": "The preposition 'to' is used when referring to attending an event like a festival.",
+  "Explanation_BT": "The preposition 'to' is used when referring to attending an event like a festival.",
+  "TopicName": "Entertainment"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b648"
   },
-  {
-    "ID_BT": 38,
-    "Question": "Choose the correct sentence using an adverb of time:",
-    "Question_BT": "Choose the correct sentence using an adverb of time:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "We will meet tomorrow.",
-    "Options": [
-      "We will meet tomorrow.",
-      "We will meet on tomorrow.",
-      "We will meet in tomorrow.",
-      "We will meet at tomorrow."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 13,
-    "Explanation": "The adverb 'tomorrow' does not require a preposition.",
-    "Explanation_BT": "The adverb 'tomorrow' does not require a preposition.",
-    "TopicName": "Adverbs"
+  "ID_BT": 37,
+  "Question": "Choose the correct sentence about adverbs:",
+  "Question_BT": "Choose the correct sentence about adverbs:",
+  "CorrectAnswer": "B",
+  "Answer_BT": "She sings beautifully.",
+  "Options": [
+    "She sings beautiful.",
+    "She sings beautifully.",
+    "She sing beautifully.",
+    "She sings beauty."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 13,
+  "Explanation": "The adverb 'beautifully' is used to describe how she sings.",
+  "Explanation_BT": "The adverb 'beautifully' is used to describe how she sings.",
+  "TopicName": "Adverbs"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b649"
   },
-  {
-    "ID_BT": 39,
-    "Question": "Choose the correct sentence using an adverb of manner:",
-    "Question_BT": "Choose the correct sentence using an adverb of manner:",
-    "CorrectAnswer": "C",
-    "Answer_BT": "He drives carefully.",
-    "Options": [
-      "He drives careful.",
-      "He drives care.",
-      "He drives carefully.",
-      "He drives caring."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 13,
-    "Explanation": "The adverb 'carefully' is used to describe how he drives.",
-    "Explanation_BT": "The adverb 'carefully' is used to describe how he drives.",
-    "TopicName": "Adverbs"
+  "ID_BT": 38,
+  "Question": "Choose the correct sentence using an adverb of time:",
+  "Question_BT": "Choose the correct sentence using an adverb of time:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "We will meet tomorrow.",
+  "Options": [
+    "We will meet tomorrow.",
+    "We will meet on tomorrow.",
+    "We will meet in tomorrow.",
+    "We will meet at tomorrow."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 13,
+  "Explanation": "The adverb 'tomorrow' does not require a preposition.",
+  "Explanation_BT": "The adverb 'tomorrow' does not require a preposition.",
+  "TopicName": "Adverbs"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b64a"
   },
-  {
-    "ID_BT": 40,
-    "Question": "Choose the correct sentence about prepositions:",
-    "Question_BT": "Choose the correct sentence about prepositions:",
-    "CorrectAnswer": "C",
-    "Answer_BT": "The keys are on the table.",
-    "Options": [
-      "The keys are in the table.",
-      "The keys are at the table.",
-      "The keys are on the table.",
-      "The keys are into the table."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 14,
-    "Explanation": "The preposition 'on' is used to indicate the position on a surface.",
-    "Explanation_BT": "The preposition 'on' is used to indicate the position on a surface.",
-    "TopicName": "Prepositions"
+  "ID_BT": 39,
+  "Question": "Choose the correct sentence using an adverb of manner:",
+  "Question_BT": "Choose the correct sentence using an adverb of manner:",
+  "CorrectAnswer": "C",
+  "Answer_BT": "He drives carefully.",
+  "Options": [
+    "He drives careful.",
+    "He drives care.",
+    "He drives carefully.",
+    "He drives caring."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 13,
+  "Explanation": "The adverb 'carefully' is used to describe how he drives.",
+  "Explanation_BT": "The adverb 'carefully' is used to describe how he drives.",
+  "TopicName": "Adverbs"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b64b"
   },
-  {
-    "ID_BT": 41,
-    "Question": "Choose the correct sentence with a preposition of time:",
-    "Question_BT": "Choose the correct sentence with a preposition of time:",
-    "CorrectAnswer": "B",
-    "Answer_BT": "The meeting is at 3 PM.",
-    "Options": [
-      "The meeting is in 3 PM.",
-      "The meeting is at 3 PM.",
-      "The meeting is on 3 PM.",
-      "The meeting is by 3 PM."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 14,
-    "Explanation": "The preposition 'at' is used to indicate a specific time.",
-    "Explanation_BT": "The preposition 'at' is used to indicate a specific time.",
-    "TopicName": "Prepositions"
+  "ID_BT": 40,
+  "Question": "Choose the correct sentence about prepositions:",
+  "Question_BT": "Choose the correct sentence about prepositions:",
+  "CorrectAnswer": "C",
+  "Answer_BT": "The keys are on the table.",
+  "Options": [
+    "The keys are in the table.",
+    "The keys are at the table.",
+    "The keys are on the table.",
+    "The keys are into the table."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 14,
+  "Explanation": "The preposition 'on' is used to indicate the position on a surface.",
+  "Explanation_BT": "The preposition 'on' is used to indicate the position on a surface.",
+  "TopicName": "Prepositions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b64c"
   },
-  {
-    "ID_BT": 42,
-    "Question": "Choose the correct sentence with a preposition of place:",
-    "Question_BT": "Choose the correct sentence with a preposition of place:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "She is sitting next to me.",
-    "Options": [
-      "She is sitting next to me.",
-      "She is sitting in next to me.",
-      "She is sitting by next to me.",
-      "She is sitting at next to me."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 14,
-    "Explanation": "The preposition 'next to' indicates position beside someone.",
-    "Explanation_BT": "The preposition 'next to' indicates position beside someone.",
-    "TopicName": "Prepositions"
+  "ID_BT": 41,
+  "Question": "Choose the correct sentence with a preposition of time:",
+  "Question_BT": "Choose the correct sentence with a preposition of time:",
+  "CorrectAnswer": "B",
+  "Answer_BT": "The meeting is at 3 PM.",
+  "Options": [
+    "The meeting is in 3 PM.",
+    "The meeting is at 3 PM.",
+    "The meeting is on 3 PM.",
+    "The meeting is by 3 PM."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 14,
+  "Explanation": "The preposition 'at' is used to indicate a specific time.",
+  "Explanation_BT": "The preposition 'at' is used to indicate a specific time.",
+  "TopicName": "Prepositions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b64d"
   },
-  {
-    "ID_BT": 43,
-    "Question": "Choose the correct sentence about conjunctions:",
-    "Question_BT": "Choose the correct sentence about conjunctions:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "I wanted to go out, but it was raining.",
-    "Options": [
-      "I wanted to go out, but it was raining.",
-      "I wanted to go out, and it was raining.",
-      "I wanted to go out, because it was raining.",
-      "I wanted to go out, so it was raining."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 15,
-    "Explanation": "The conjunction 'but' is used to show contrast between two ideas.",
-    "Explanation_BT": "The conjunction 'but' is used to show contrast between two ideas.",
-    "TopicName": "Conjunctions"
+  "ID_BT": 42,
+  "Question": "Choose the correct sentence with a preposition of place:",
+  "Question_BT": "Choose the correct sentence with a preposition of place:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "She is sitting next to me.",
+  "Options": [
+    "She is sitting next to me.",
+    "She is sitting in next to me.",
+    "She is sitting by next to me.",
+    "She is sitting at next to me."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 14,
+  "Explanation": "The preposition 'next to' indicates position beside someone.",
+  "Explanation_BT": "The preposition 'next to' indicates position beside someone.",
+  "TopicName": "Prepositions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b64e"
   },
-  {
-    "ID_BT": 44,
-    "Question": "Choose the correct sentence with a conjunction of addition:",
-    "Question_BT": "Choose the correct sentence with a conjunction of addition:",
-    "CorrectAnswer": "B",
-    "Answer_BT": "She likes apples and oranges.",
-    "Options": [
-      "She likes apples but oranges.",
-      "She likes apples and oranges.",
-      "She likes apples or oranges.",
-      "She likes apples so oranges."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 15,
-    "Explanation": "The conjunction 'and' is used to connect items in a list.",
-    "Explanation_BT": "The conjunction 'and' is used to connect items in a list.",
-    "TopicName": "Conjunctions"
+  "ID_BT": 43,
+  "Question": "Choose the correct sentence about conjunctions:",
+  "Question_BT": "Choose the correct sentence about conjunctions:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "I wanted to go out, but it was raining.",
+  "Options": [
+    "I wanted to go out, but it was raining.",
+    "I wanted to go out, and it was raining.",
+    "I wanted to go out, because it was raining.",
+    "I wanted to go out, so it was raining."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 15,
+  "Explanation": "The conjunction 'but' is used to show contrast between two ideas.",
+  "Explanation_BT": "The conjunction 'but' is used to show contrast between two ideas.",
+  "TopicName": "Conjunctions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b64f"
   },
-  {
-    "ID_BT": 45,
-    "Question": "Choose the correct sentence with a conjunction of reason:",
-    "Question_BT": "Choose the correct sentence with a conjunction of reason:",
-    "CorrectAnswer": "C",
-    "Answer_BT": "He stayed home because he was sick.",
-    "Options": [
-      "He stayed home but he was sick.",
-      "He stayed home and he was sick.",
-      "He stayed home because he was sick.",
-      "He stayed home or he was sick."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A2",
-    "ID_CD": 15,
-    "Explanation": "The conjunction 'because' is used to explain the reason.",
-    "Explanation_BT": "The conjunction 'because' is used to explain the reason.",
-    "TopicName": "Conjunctions"
+  "ID_BT": 44,
+  "Question": "Choose the correct sentence with a conjunction of addition:",
+  "Question_BT": "Choose the correct sentence with a conjunction of addition:",
+  "CorrectAnswer": "B",
+  "Answer_BT": "She likes apples and oranges.",
+  "Options": [
+    "She likes apples but oranges.",
+    "She likes apples and oranges.",
+    "She likes apples or oranges.",
+    "She likes apples so oranges."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 15,
+  "Explanation": "The conjunction 'and' is used to connect items in a list.",
+  "Explanation_BT": "The conjunction 'and' is used to connect items in a list.",
+  "TopicName": "Conjunctions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b650"
   },
-  {
-    "ID_BT": 46,
-    "Question": "Choose the correct sentence about determiners:",
-    "Question_BT": "Choose the correct sentence about determiners:",
-    "CorrectAnswer": "D",
-    "Answer_BT": "There are some apples in the basket.",
-    "Options": [
-      "There is some apples in the basket.",
-      "There are any apples in the basket.",
-      "There is any apples in the basket.",
-      "There are some apples in the basket."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 16,
-    "Explanation": "The determiner 'some' is used with plural countable nouns in affirmative sentences.",
-    "Explanation_BT": "The determiner 'some' is used with plural countable nouns in affirmative sentences.",
-    "TopicName": "Determiners"
+  "ID_BT": 45,
+  "Question": "Choose the correct sentence with a conjunction of reason:",
+  "Question_BT": "Choose the correct sentence with a conjunction of reason:",
+  "CorrectAnswer": "C",
+  "Answer_BT": "He stayed home because he was sick.",
+  "Options": [
+    "He stayed home but he was sick.",
+    "He stayed home and he was sick.",
+    "He stayed home because he was sick.",
+    "He stayed home or he was sick."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A2",
+  "ID_CD": 15,
+  "Explanation": "The conjunction 'because' is used to explain the reason.",
+  "Explanation_BT": "The conjunction 'because' is used to explain the reason.",
+  "TopicName": "Conjunctions"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b651"
   },
-  {
-    "ID_BT": 47,
-    "Question": "Choose the correct sentence with a quantifier:",
-    "Question_BT": "Choose the correct sentence with a quantifier:",
-    "CorrectAnswer": "C",
-    "Answer_BT": "There are many books on the shelf.",
-    "Options": [
-      "There is many books on the shelf.",
-      "There are much books on the shelf.",
-      "There are many books on the shelf.",
-      "There are few books on the shelf."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 16,
-    "Explanation": "The quantifier 'many' is used with plural countable nouns.",
-    "Explanation_BT": "The quantifier 'many' is used with plural countable nouns.",
-    "TopicName": "Determiners"
+  "ID_BT": 46,
+  "Question": "Choose the correct sentence about determiners:",
+  "Question_BT": "Choose the correct sentence about determiners:",
+  "CorrectAnswer": "D",
+  "Answer_BT": "There are some apples in the basket.",
+  "Options": [
+    "There is some apples in the basket.",
+    "There are any apples in the basket.",
+    "There is any apples in the basket.",
+    "There are some apples in the basket."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 16,
+  "Explanation": "The determiner 'some' is used with plural countable nouns in affirmative sentences.",
+  "Explanation_BT": "The determiner 'some' is used with plural countable nouns in affirmative sentences.",
+  "TopicName": "Determiners"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b652"
   },
-  {
-    "ID_BT": 48,
-    "Question": "Choose the correct sentence with an article:",
-    "Question_BT": "Choose the correct sentence with an article:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "She is reading a book.",
-    "Options": [
-      "She is reading a book.",
-      "She is reading an book.",
-      "She is reading the book.",
-      "She is reading book."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 16,
-    "Explanation": "The article 'a' is used before singular countable nouns starting with a consonant sound.",
-    "Explanation_BT": "The article 'a' is used before singular countable nouns starting with a consonant sound.",
-    "TopicName": "Determiners"
+  "ID_BT": 47,
+  "Question": "Choose the correct sentence with a quantifier:",
+  "Question_BT": "Choose the correct sentence with a quantifier:",
+  "CorrectAnswer": "C",
+  "Answer_BT": "There are many books on the shelf.",
+  "Options": [
+    "There is many books on the shelf.",
+    "There are much books on the shelf.",
+    "There are many books on the shelf.",
+    "There are few books on the shelf."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 16,
+  "Explanation": "The quantifier 'many' is used with plural countable nouns.",
+  "Explanation_BT": "The quantifier 'many' is used with plural countable nouns.",
+  "TopicName": "Determiners"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b653"
   },
-  {
-    "ID_BT": 49,
-    "Question": "Choose the correct sentence about interjections:",
-    "Question_BT": "Choose the correct sentence about interjections:",
-    "CorrectAnswer": "A",
-    "Answer_BT": "Wow! That’s amazing!",
-    "Options": [
-      "Wow! That’s amazing!",
-      "Oh! That’s amazing!",
-      "Oops! That’s amazing!",
-      "Ah! That’s amazing!"
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 17,
-    "Explanation": "The interjection 'Wow!' is used to express amazement or surprise.",
-    "Explanation_BT": "The interjection 'Wow!' is used to express amazement or surprise.",
-    "TopicName": "Interjections"
+  "ID_BT": 48,
+  "Question": "Choose the correct sentence with an article:",
+  "Question_BT": "Choose the correct sentence with an article:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "She is reading a book.",
+  "Options": [
+    "She is reading a book.",
+    "She is reading an book.",
+    "She is reading the book.",
+    "She is reading book."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 16,
+  "Explanation": "The article 'a' is used before singular countable nouns starting with a consonant sound.",
+  "Explanation_BT": "The article 'a' is used before singular countable nouns starting with a consonant sound.",
+  "TopicName": "Determiners"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b654"
   },
-  {
-    "ID_BT": 50,
-    "Question": "Choose the correct sentence expressing surprise:",
-    "Question_BT": "Choose the correct sentence expressing surprise:",
-    "CorrectAnswer": "B",
-    "Answer_BT": "Oh no! I forgot my keys.",
-    "Options": [
-      "Oops! I forgot my keys.",
-      "Oh no! I forgot my keys.",
-      "Ah! I forgot my keys.",
-      "Wow! I forgot my keys."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 17,
-    "Explanation": "The interjection 'Oh no!' expresses surprise and disappointment.",
-    "Explanation_BT": "The interjection 'Oh no!' expresses surprise and disappointment.",
-    "TopicName": "Interjections"
+  "ID_BT": 49,
+  "Question": "Choose the correct sentence about interjections:",
+  "Question_BT": "Choose the correct sentence about interjections:",
+  "CorrectAnswer": "A",
+  "Answer_BT": "Wow! That’s amazing!",
+  "Options": [
+    "Wow! That’s amazing!",
+    "Oh! That’s amazing!",
+    "Oops! That’s amazing!",
+    "Ah! That’s amazing!"
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 17,
+  "Explanation": "The interjection 'Wow!' is used to express amazement or surprise.",
+  "Explanation_BT": "The interjection 'Wow!' is used to express amazement or surprise.",
+  "TopicName": "Interjections"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b655"
   },
-  {
-    "ID_BT": 51,
-    "Question": "Choose the correct sentence expressing regret:",
-    "Question_BT": "Choose the correct sentence expressing regret:",
-    "CorrectAnswer": "C",
-    "Answer_BT": "Oops! I dropped the glass.",
-    "Options": [
-      "Wow! I dropped the glass.",
-      "Oh no! I dropped the glass.",
-      "Oops! I dropped the glass.",
-      "Ah! I dropped the glass."
-    ],
-    "ExerciseType": "MultipleChoice",
-    "Level": "A1",
-    "ID_CD": 17,
-    "Explanation": "The interjection 'Oops!' is used to express regret or acknowledge a mistake.",
-    "Explanation_BT": "The interjection 'Oops!' is used to express regret or acknowledge a mistake.",
-    "TopicName": "Interjections"
-  }
-]
+  "ID_BT": 50,
+  "Question": "Choose the correct sentence expressing surprise:",
+  "Question_BT": "Choose the correct sentence expressing surprise:",
+  "CorrectAnswer": "B",
+  "Answer_BT": "Oh no! I forgot my keys.",
+  "Options": [
+    "Oops! I forgot my keys.",
+    "Oh no! I forgot my keys.",
+    "Ah! I forgot my keys.",
+    "Wow! I forgot my keys."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 17,
+  "Explanation": "The interjection 'Oh no!' expresses surprise and disappointment.",
+  "Explanation_BT": "The interjection 'Oh no!' expresses surprise and disappointment.",
+  "TopicName": "Interjections"
+},
+{
+  "_id": {
+    "$oid": "68245235f0ed1ea519e9b656"
+  },
+  "ID_BT": 51,
+  "Question": "Choose the correct sentence expressing regret:",
+  "Question_BT": "Choose the correct sentence expressing regret:",
+  "CorrectAnswer": "C",
+  "Answer_BT": "Oops! I dropped the glass.",
+  "Options": [
+    "Wow! I dropped the glass.",
+    "Oh no! I dropped the glass.",
+    "Oops! I dropped the glass.",
+    "Ah! I dropped the glass."
+  ],
+  "ExerciseType": "MultipleChoice",
+  "Level": "A1",
+  "ID_CD": 17,
+  "Explanation": "The interjection 'Oops!' is used to express regret or acknowledge a mistake.",
+  "Explanation_BT": "The interjection 'Oops!' is used to express regret or acknowledge a mistake.",
+  "TopicName": "Interjections"
+}]

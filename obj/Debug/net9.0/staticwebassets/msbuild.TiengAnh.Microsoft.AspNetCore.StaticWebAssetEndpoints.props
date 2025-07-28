@@ -40,13 +40,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\engmate.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"0h7hwahalg"},{"Name":"integrity","Value":"sha256-FFgeKQSLcf0OR4sQZ3CdvQ5ap5fpKF5SiJvCecJS9v4="},{"Name":"label","Value":"_content/TiengAnh/css/engmate.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"15140"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022FFgeKQSLcf0OR4sQZ3CdvQ5ap5fpKF5SiJvCecJS9v4=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Jul 2025 02:44:41 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"15140"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022FFgeKQSLcf0OR4sQZ3CdvQ5ap5fpKF5SiJvCecJS9v4=\u0022"},{"Name":"Last-Modified","Value":"Mon, 28 Jul 2025 04:48:41 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TiengAnh/css/engmate.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\engmate.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-FFgeKQSLcf0OR4sQZ3CdvQ5ap5fpKF5SiJvCecJS9v4="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"15140"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022FFgeKQSLcf0OR4sQZ3CdvQ5ap5fpKF5SiJvCecJS9v4=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Jul 2025 02:44:41 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"15140"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022FFgeKQSLcf0OR4sQZ3CdvQ5ap5fpKF5SiJvCecJS9v4=\u0022"},{"Name":"Last-Modified","Value":"Mon, 28 Jul 2025 04:48:41 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TiengAnh/css/fix-avatar.0qbapc0tid.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\fix-avatar.css'))</AssetFile>

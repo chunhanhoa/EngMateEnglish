@@ -1,0 +1,144 @@
+[{
+  "_id": {
+    "$oid": "682c40b7ff523b1957e71d27"
+  },
+  "userId": "68243766905fae03c26b5c36",
+  "testId": "test_001",
+  "testTitle": "Basic English Grammar Test",
+  "testCategory": "Grammar",
+  "testLevel": "A1",
+  "imageUrl": "/images/tests/test-a1.jpg",
+  "score": 35,
+  "correctCount": 7,
+  "totalQuestions": 50,
+  "timeTaken": "0:18",
+  "completedAt": {
+    "$date": "2025-05-20T08:43:35.495Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d7ed4fd707f07e7c48496"
+  },
+  "userId": "682d7e75fd707f07e7c48495",
+  "testId": "test_001",
+  "testTitle": "Basic English Grammar Test",
+  "testCategory": "Grammar",
+  "testLevel": "A1",
+  "imageUrl": "/images/tests/test-a1.jpg",
+  "score": 40,
+  "correctCount": 8,
+  "totalQuestions": 50,
+  "timeTaken": "0:22",
+  "completedAt": {
+    "$date": "2025-05-21T14:20:52.419Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d8bb14f20c074ecaa9295"
+  },
+  "userId": "682d86a74f20c074ecaa9294",
+  "testId": "test_006",
+  "testTitle": "Vocabulary Test: Food",
+  "testCategory": "Vocabulary",
+  "testLevel": "A2",
+  "imageUrl": "/images/tests/vocabulary-food.jpg",
+  "score": 60,
+  "correctCount": 12,
+  "totalQuestions": 50,
+  "timeTaken": "0:18",
+  "completedAt": {
+    "$date": "2025-05-27T05:59:56.117Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d8c4f9c128615a676f269"
+  },
+  "userId": "65f123456789abcdef012346",
+  "testId": "test_006",
+  "testTitle": "Vocabulary Test: Food",
+  "testCategory": "Vocabulary",
+  "testLevel": "A2",
+  "imageUrl": "/images/tests/vocabulary-food.jpg",
+  "score": 50,
+  "correctCount": 10,
+  "totalQuestions": 50,
+  "timeTaken": "0:16",
+  "completedAt": {
+    "$date": "2025-05-21T08:18:23.328Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "682da9ed4f0a6c3aa1e231e1"
+  },
+  "userId": "682da8714f0a6c3aa1e231e0",
+  "testId": "test_006",
+  "testTitle": "Vocabulary Test: Food",
+  "testCategory": "Vocabulary",
+  "testLevel": "A2",
+  "imageUrl": "/images/tests/vocabulary-food.jpg",
+  "score": 100,
+  "correctCount": 20,
+  "totalQuestions": 50,
+  "timeTaken": "3:00",
+  "completedAt": {
+    "$date": "2025-05-21T17:24:45.143Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68355408287e581be0232cdf"
+  },
+  "userId": "682d866b4f20c074ecaa9293",
+  "testId": "test_006",
+  "testTitle": "Vocabulary Test: Food",
+  "testCategory": "Vocabulary",
+  "testLevel": "A2",
+  "imageUrl": "/images/tests/vocabulary-food.jpg",
+  "score": 5,
+  "correctCount": 1,
+  "totalQuestions": 50,
+  "timeTaken": "0:13",
+  "completedAt": {
+    "$date": "2025-05-27T12:56:24.426Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6835541f287e581be0232ce1"
+  },
+  "userId": "682d866b4f20c074ecaa9293",
+  "testId": "test_003",
+  "testTitle": "Level B1 Assessment",
+  "testCategory": "Level",
+  "testLevel": "B1",
+  "imageUrl": "/images/tests/test-b1.jpg",
+  "score": 15,
+  "correctCount": 3,
+  "totalQuestions": 50,
+  "timeTaken": "0:15",
+  "completedAt": {
+    "$date": "2025-05-27T12:56:47.917Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "683555008a43c9f4cff2d4dd"
+  },
+  "userId": "682d86a74f20c074ecaa9294",
+  "testId": "test_009",
+  "testTitle": "Grammar Test: Present Simple",
+  "testCategory": "Grammar",
+  "testLevel": "A1",
+  "imageUrl": "/images/tests/grammar-present-simple.jpg",
+  "score": 45,
+  "correctCount": 9,
+  "totalQuestions": 50,
+  "timeTaken": "0:16",
+  "completedAt": {
+    "$date": "2025-05-27T06:00:32.471Z"
+  }
+}]

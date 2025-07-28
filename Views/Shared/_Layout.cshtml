@@ -115,7 +115,21 @@
                                 <i class="fas fa-heart"></i> Yêu thích
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="AIChat" asp-action="Index">
+                                <i class="fas fa-robot me-1"></i>Trò chuyện AI
+                            </a>
+                        </li>
+                        <!-- Trong _Layout.cshtml -->
                         @if (User.IsInRole("Admin"))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Statistics" asp-action="Index">
+                                <i class="fas fa-chart-bar me-1"></i>Thống kê
+                             </a>
+                        </li>
+                        }
+                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="contentDropdown" role="button" 
@@ -136,12 +150,8 @@
                                 </ul>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="AIChat" asp-action="Index">
-                                <i class="fas fa-robot me-1"></i>Trò chuyện AI
-                            </a>
-                        </li>
                     </ul>
+                    
                     <!-- Đăng nhập/Đăng ký hoặc User Profile -->
                     <div class="user-menu">
                         <ul class="navbar-nav">

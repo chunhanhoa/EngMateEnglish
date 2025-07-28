@@ -1,0 +1,581 @@
+@model TiengAnh.Models.DashboardStatisticsViewModel
+@{
+    ViewData["Title"] = "Thống kê hệ thống";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0 text-gray-800">
+                    <i class="fas fa-chart-bar me-2"></i>Thống kê hệ thống
+                </h1>
+                <button class="btn btn-primary" id="refreshStats">
+                    <i class="fas fa-sync-alt me-1"></i>Làm mới
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview Cards -->
+    <div class="row mb-4">
+        <!-- Total Users -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Tổng số người dùng
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalUsers</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Users Today -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Hoạt động hôm nay
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.ActiveUsersToday</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-check fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Users Today -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Đăng ký hôm nay
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.NewUsersToday</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Users This Week -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Đăng ký tuần này
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.NewUsersThisWeek</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-week fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Charts Row -->
+    <div class="row mb-4">
+        <!-- User Growth Chart - Enlarged -->
+        <div class="col-xl-8 col-lg-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Biểu đồ tăng trưởng người dùng</h6>
+                    <div class="dropdown no-arrow">
+                        <select id="growthPeriod" class="form-select form-select-sm">
+                            <option value="7">7 ngày</option>
+                            <option value="30" selected>30 ngày</option>
+                            <option value="90">90 ngày</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="userGrowthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role Distribution Chart -->
+        <div class="col-xl-4 col-lg-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Phân bố theo vai trò</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                        <canvas id="roleChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        @foreach (var role in Model.UsersByRole)
+                        {
+                            <span class="mr-2 d-block mb-1">
+                                <i class="fas fa-circle" style="color: @GetRoleColor(role.Key)"></i> 
+                                @role.Key: <strong>@role.Value người</strong>
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secondary Row -->
+    <div class="row mb-4">
+        <!-- Activity Chart - Full Width -->
+        <div class="col-lg-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Hoạt động người dùng</h6>
+                    <div class="dropdown no-arrow">
+                        <select id="activityPeriod" class="form-select form-select-sm">
+                            <option value="7" selected>7 ngày</option>
+                            <option value="14">14 ngày</option>
+                            <option value="30">30 ngày</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Users -->
+        <div class="col-lg-4">
+            <div class="card shadow mb-4 h-100">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-users me-2"></i>Người dùng gần đây
+                    </h6>
+                </div>
+                <div class="card-body">
+                    @if (Model.RecentUsers.Any())
+                    {
+                        <div class="recent-users-list">
+                            @foreach (var user in Model.RecentUsers.Take(6))
+                            {
+                                <div class="d-flex align-items-center mb-3 p-2 rounded border-start border-primary border-2">
+                                    <div class="flex-grow-1">
+                                        <div class="font-weight-bold text-dark">@user.FullName</div>
+                                        <div class="small text-muted">@user.Email</div>
+                                        <div class="small text-info">
+                                            <i class="fas fa-calendar-alt me-1"></i>
+                                            @user.RegisterDate.ToString("dd/MM/yyyy")
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-@GetStatusBadgeClass(user.Status)">
+                                            @user.Status
+                                        </span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        
+                        @if (Model.RecentUsers.Count > 6)
+                        {
+                            <div class="text-center mt-3">
+                                <a href="/Account/ManageUsers" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-plus me-1"></i>Xem thêm (@(Model.RecentUsers.Count - 6))
+                                </a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-center py-4">
+                            <i class="fas fa-user-slash fa-2x text-muted mb-2"></i>
+                            <p class="text-muted mb-0">Chưa có người dùng nào.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions Row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-tools me-2"></i>Thao tác nhanh
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <a href="/Account/ManageUsers" class="btn btn-outline-primary w-100 py-3">
+                                <i class="fas fa-users fa-2x mb-2"></i>
+                                <div>Quản lý người dùng</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="/Grammar" class="btn btn-outline-success w-100 py-3">
+                                <i class="fas fa-book fa-2x mb-2"></i>
+                                <div>Quản lý nội dung</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <button class="btn btn-outline-info w-100 py-3" id="exportStats">
+                                <i class="fas fa-download fa-2x mb-2"></i>
+                                <div>Xuất thống kê</div>
+                            </button>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <button class="btn btn-outline-warning w-100 py-3" id="saveStats">
+                                <i class="fas fa-save fa-2x mb-2"></i>
+                                <div>Lưu báo cáo</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .border-left-primary {
+            border-left: 0.25rem solid #4e73df !important;
+        }
+        .border-left-success {
+            border-left: 0.25rem solid #1cc88a !important;
+        }
+        .border-left-info {
+            border-left: 0.25rem solid #36b9cc !important;
+        }
+        .border-left-warning {
+            border-left: 0.25rem solid #f6c23e !important;
+        }
+        .text-xs {
+            font-size: 0.7rem;
+        }
+        .chart-area {
+            position: relative;
+            height: 350px;
+        }
+        .chart-pie {
+            position: relative;
+            height: 220px;
+        }
+        .chart-bar {
+            position: relative;
+            height: 300px;
+        }
+        .recent-users-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .recent-users-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .recent-users-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .recent-users-list::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+        .recent-users-list::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        .card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .bg-success {
+            background-color: #1cc88a !important;
+        }
+        .bg-warning {
+            background-color: #f6c23e !important;
+        }
+        .bg-info {
+            background-color: #36b9cc !important;
+        }
+        .bg-secondary {
+            background-color: #6c757d !important;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let userGrowthChart, roleChart, activityChart;
+
+        $(document).ready(function() {
+            initializeCharts();
+            
+            // Refresh button
+            $('#refreshStats').click(function() {
+                const btn = $(this);
+                btn.prop('disabled', true);
+                btn.html('<i class="fas fa-spinner fa-spin me-1"></i>Đang tải...');
+                
+                setTimeout(() => {
+                    location.reload();
+                }, 500);
+            });
+            
+            // Growth period change
+            $('#growthPeriod').change(function() {
+                const days = $(this).val();
+                loadUserGrowthChart(days);
+            });
+            
+            // Activity period change
+            $('#activityPeriod').change(function() {
+                const days = $(this).val();
+                loadActivityChart(days);
+            });
+
+            // Export stats
+            $('#exportStats').click(function() {
+                const btn = $(this);
+                btn.prop('disabled', true);
+                btn.html('<i class="fas fa-spinner fa-spin fa-2x mb-2"></i><div>Đang xuất...</div>');
+                
+                // Simulate export
+                setTimeout(() => {
+                    btn.prop('disabled', false);
+                    btn.html('<i class="fas fa-download fa-2x mb-2"></i><div>Xuất thống kê</div>');
+                    alert('Tính năng xuất thống kê sẽ được phát triển trong phiên bản tiếp theo!');
+                }, 2000);
+            });
+
+            // Save stats
+            $('#saveStats').click(function() {
+                const btn = $(this);
+                btn.prop('disabled', true);
+                btn.html('<i class="fas fa-spinner fa-spin fa-2x mb-2"></i><div>Đang lưu...</div>');
+                
+                $.post('/Statistics/SaveDailyStatistics')
+                    .done(function(response) {
+                        if (response.success) {
+                            alert('Lưu báo cáo thành công!');
+                        } else {
+                            alert('Lỗi: ' + response.message);
+                        }
+                    })
+                    .fail(function() {
+                        alert('Đã xảy ra lỗi khi lưu báo cáo!');
+                    })
+                    .always(function() {
+                        btn.prop('disabled', false);
+                        btn.html('<i class="fas fa-save fa-2x mb-2"></i><div>Lưu báo cáo</div>');
+                    });
+            });
+        });
+
+        function initializeCharts() {
+            // User Growth Chart
+            const growthCtx = document.getElementById('userGrowthChart').getContext('2d');
+            userGrowthChart = new Chart(growthCtx, {
+                type: 'line',
+                data: {
+                    labels: @Html.Raw(Json.Serialize(Model.UserGrowthChart.Select(x => x.Label))),
+                    datasets: [{
+                        label: 'Người dùng mới',
+                        data: @Html.Raw(Json.Serialize(Model.UserGrowthChart.Select(x => x.Value))),
+                        borderColor: '#4e73df',
+                        backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#4e73df',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff',
+                            borderColor: '#4e73df',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            },
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Role Chart
+            const roleCtx = document.getElementById('roleChart').getContext('2d');
+            roleChart = new Chart(roleCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: @Html.Raw(Json.Serialize(Model.UsersByRole.Keys)),
+                    datasets: [{
+                        data: @Html.Raw(Json.Serialize(Model.UsersByRole.Values)),
+                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b'],
+                        borderWidth: 3,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff'
+                        }
+                    }
+                }
+            });
+
+            // Activity Chart
+            const activityCtx = document.getElementById('activityChart').getContext('2d');
+            activityChart = new Chart(activityCtx, {
+                type: 'bar',
+                data: {
+                    labels: @Html.Raw(Json.Serialize(Model.ActivityChart.Select(x => x.Label))),
+                    datasets: [{
+                        label: 'Người dùng hoạt động',
+                        data: @Html.Raw(Json.Serialize(Model.ActivityChart.Select(x => x.Value))),
+                        backgroundColor: '#36b9cc',
+                        borderColor: '#36b9cc',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            },
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadUserGrowthChart(days) {
+            $.get('/Statistics/GetUserGrowthChart', { days: days })
+                .done(function(response) {
+                    if (response.success) {
+                        userGrowthChart.data.labels = response.data.map(x => x.label);
+                        userGrowthChart.data.datasets[0].data = response.data.map(x => x.value);
+                        userGrowthChart.update('active');
+                    }
+                });
+        }
+
+        function loadActivityChart(days) {
+            $.get('/Statistics/GetActivityChart', { days: days })
+                .done(function(response) {
+                    if (response.success) {
+                        activityChart.data.labels = response.data.map(x => x.label);
+                        activityChart.data.datasets[0].data = response.data.map(x => x.value);
+                        activityChart.update('active');
+                    }
+                });
+        }
+    </script>
+}
+
+@functions {
+    string GetRoleColor(string role)
+    {
+        return role switch
+        {
+            "Admin" => "#e74a3b",
+            "Teacher" => "#f6c23e", 
+            "User" => "#4e73df",
+            _ => "#6c757d"
+        };
+    }
+
+    string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "Online" => "success",
+            "Recently Active" => "warning",
+            "New" => "info",
+            _ => "secondary"
+        };
+    }
+}

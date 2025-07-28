@@ -42,6 +42,9 @@ builder.Services.AddScoped<ExerciseRepository>(provider =>
 builder.Services.AddScoped<DataSeeder>();
 builder.Services.AddScoped<DataImportService>();
 
+// Add User Statistics Service
+builder.Services.AddScoped<UserStatisticsService>();
+
 // Configure authentication
 builder.Services.AddAuthentication(options =>
 {
