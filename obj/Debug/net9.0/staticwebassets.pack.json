@@ -65,6 +65,10 @@
       "PackagePath": "staticwebassets\\images\\avatar\\65f123456789abcdef012346_20250506200852.jpeg"
     },
     {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\images\\avatar\\65f123456789abcdef012346_20250728125107.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\65f123456789abcdef012346_20250728125107.jpeg"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\images\\avatar\\680fac297243a2ab2230dc26_20250506200557.jpeg",
       "PackagePath": "staticwebassets\\images\\avatar\\680fac297243a2ab2230dc26_20250506200557.jpeg"
     },
@@ -127,6 +131,14 @@
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\images\\avatar\\68243e4f2c743c357abf840d_20250514135539.jpeg",
       "PackagePath": "staticwebassets\\images\\avatar\\68243e4f2c743c357abf840d_20250514135539.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\images\\avatar\\682d86a74f20c074ecaa9294_20250728125712.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\682d86a74f20c074ecaa9294_20250728125712.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\images\\avatar\\6882fdaf675e1a565091c42c_20250728130055.jpeg",
+      "PackagePath": "staticwebassets\\images\\avatar\\6882fdaf675e1a565091c42c_20250728130055.jpeg"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\images\\avatar\\f158fb44-551b-4bc2-8596-fe9ab202c5ce_tải xuống (6).jpeg",
@@ -1265,26 +1277,6 @@
       "PackagePath": "staticwebassets\\js\\animations.js"
     },
     {
-      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\js\\avatar-cache-buster.js",
-      "PackagePath": "staticwebassets\\js\\avatar-cache-buster.js"
-    },
-    {
-      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\js\\avatar-db-loader.js",
-      "PackagePath": "staticwebassets\\js\\avatar-db-loader.js"
-    },
-    {
-      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\js\\avatar-fix.js",
-      "PackagePath": "staticwebassets\\js\\avatar-fix.js"
-    },
-    {
-      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\js\\avatar-handler.js",
-      "PackagePath": "staticwebassets\\js\\avatar-handler.js"
-    },
-    {
-      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\js\\avatar-manager.js",
-      "PackagePath": "staticwebassets\\js\\avatar-manager.js"
-    },
-    {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\js\\favorite-handler.js",
       "PackagePath": "staticwebassets\\js\\favorite-handler.js"
     },
@@ -1307,6 +1299,10 @@
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\js\\test.js",
       "PackagePath": "staticwebassets\\js\\test.js"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\js\\unified-avatar-manager.js",
+      "PackagePath": "staticwebassets\\js\\unified-avatar-manager.js"
     },
     {
       "Id": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\lib\\bootstrap\\LICENSE",

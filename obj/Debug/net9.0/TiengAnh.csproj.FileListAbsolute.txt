@@ -1958,11 +1958,6 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\D
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\kubyan0w2r-4uq40js17q.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\rx9f2lwypc-9lkn66e9uq.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\47u2crj2zu-18n24az4tj.gz
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\lbem10hklu-a1eznoi3zd.gz
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\paqjwftw8m-zfqhw7cpwq.gz
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\eajc3r3c7q-a64mgkcvxq.gz
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\o1spavlecy-k3z261ad2j.gz
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\oo1fr1lsy7-61i4z0bqvv.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\kxzlo6fflb-kkca0xhlkc.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\tw24uxyb5b-r52svluqsq.gz
@@ -2043,3 +2038,4 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\D
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\TiengAnh.genruntimeconfig.cache
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\ref\TiengAnh.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\r0oddzukdf-0h7hwahalg.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\spq7xt4a99-17okzkh5tl.gz
