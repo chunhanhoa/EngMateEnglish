@@ -1957,9 +1957,7 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\D
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\iijk969xo7-g0qmuw0u6y.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\kubyan0w2r-4uq40js17q.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\rx9f2lwypc-9lkn66e9uq.gz
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\47u2crj2zu-18n24az4tj.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\kxzlo6fflb-kkca0xhlkc.gz
-C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\tw24uxyb5b-r52svluqsq.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\dufysslt1n-gv2s2a169w.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\unmac4mia2-pewmqhatka.gz
@@ -2039,3 +2037,5 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\D
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\ref\TiengAnh.dll
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\r0oddzukdf-0h7hwahalg.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\spq7xt4a99-17okzkh5tl.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\47u2crj2zu-18n24az4tj.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
