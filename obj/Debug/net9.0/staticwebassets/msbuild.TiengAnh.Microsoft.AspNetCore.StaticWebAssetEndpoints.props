@@ -120,6 +120,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-A3ocAbHomsqfDhGz5xYKTWPa2s0BXRut\u002B5svRTlFzuc="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"268350"},{"Name":"Content-Type","Value":"image/x-icon"},{"Name":"ETag","Value":"\u0022A3ocAbHomsqfDhGz5xYKTWPa2s0BXRut\u002B5svRTlFzuc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Jul 2025 02:44:41 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/TiengAnh/google39df57f868aa5aa6.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\google39df57f868aa5aa6.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ\u002BT3CA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"53"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ\u002BT3CA=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 03:55:01 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/TiengAnh/google39df57f868aa5aa6.jdw78860wo.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\google39df57f868aa5aa6.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"jdw78860wo"},{"Name":"integrity","Value":"sha256-WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ\u002BT3CA="},{"Name":"label","Value":"_content/TiengAnh/google39df57f868aa5aa6.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"53"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ\u002BT3CA=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 03:55:01 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/TiengAnh/images/avatar/0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\avatar\0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

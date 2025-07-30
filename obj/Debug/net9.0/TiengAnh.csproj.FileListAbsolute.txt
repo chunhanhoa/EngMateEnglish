@@ -2039,3 +2039,4 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\D
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\spq7xt4a99-17okzkh5tl.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\47u2crj2zu-18n24az4tj.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\wtwywjsdlq-jdw78860wo.gz

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LMp7V09xUA9txAYP3bbn2PUdVhMMDW24N35DuQz9W0w=",
+  "Hash": "4a0pW4GmcNzG9us9G/lSeWsMEfS+cpNHljIFfXCMSSM=",
   "Source": "TiengAnh",
   "BasePath": "_content/TiengAnh",
   "Mode": "Default",
@@ -1529,6 +1529,27 @@
       "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\obj\\Debug\\net9.0\\compressed\\wtwywjsdlq-jdw78860wo.gz",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "google39df57f868aa5aa6#[.{fingerprint=jdw78860wo}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\google39df57f868aa5aa6.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "ip6p0sylr4",
+      "Integrity": "Nj4Cj931ya8oqsAS1/acvktkkExZstJ/3naRXShxm5E=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\google39df57f868aa5aa6.html"
+    },
+    {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\obj\\Debug\\net9.0\\compressed\\xo1ms1dpnw-gye83jo8yx.gz",
       "SourceId": "TiengAnh",
       "SourceType": "Discovered",
@@ -1926,6 +1947,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\google39df57f868aa5aa6.html",
+      "SourceId": "TiengAnh",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\",
+      "BasePath": "_content/TiengAnh",
+      "RelativePath": "google39df57f868aa5aa6#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jdw78860wo",
+      "Integrity": "WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\google39df57f868aa5aa6.html"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\images\\avatar\\0037932c-1bfb-426b-b9a4-48889684b913__Cat-tastic Moments_ Silly Cat Profile Pic Inspirations_ pfp cat cat icon cat pfp cat aesthetic.jpeg",
@@ -12781,6 +12823,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-mldsD4J8HRz7iRJi9+gsizn628nooK3XWuRx/RSixKI="
+        }
+      ]
+    },
+    {
+      "Route": "google39df57f868aa5aa6.html",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\obj\\Debug\\net9.0\\compressed\\wtwywjsdlq-jdw78860wo.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.014084507042"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Nj4Cj931ya8oqsAS1/acvktkkExZstJ/3naRXShxm5E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Jul 2025 03:55:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA="
+        }
+      ]
+    },
+    {
+      "Route": "google39df57f868aa5aa6.html",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\google39df57f868aa5aa6.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "53"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Jul 2025 03:55:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA="
+        }
+      ]
+    },
+    {
+      "Route": "google39df57f868aa5aa6.html.gz",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\obj\\Debug\\net9.0\\compressed\\wtwywjsdlq-jdw78860wo.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Nj4Cj931ya8oqsAS1/acvktkkExZstJ/3naRXShxm5E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Jul 2025 03:55:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Nj4Cj931ya8oqsAS1/acvktkkExZstJ/3naRXShxm5E="
+        }
+      ]
+    },
+    {
+      "Route": "google39df57f868aa5aa6.jdw78860wo.html",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\obj\\Debug\\net9.0\\compressed\\wtwywjsdlq-jdw78860wo.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.014084507042"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Nj4Cj931ya8oqsAS1/acvktkkExZstJ/3naRXShxm5E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Jul 2025 03:55:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jdw78860wo"
+        },
+        {
+          "Name": "label",
+          "Value": "google39df57f868aa5aa6.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA="
+        }
+      ]
+    },
+    {
+      "Route": "google39df57f868aa5aa6.jdw78860wo.html",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\wwwroot\\google39df57f868aa5aa6.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "53"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Jul 2025 03:55:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jdw78860wo"
+        },
+        {
+          "Name": "label",
+          "Value": "google39df57f868aa5aa6.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WdgtQvSEOny4CYTxPkurtcJDThKwMKlkhYvmoQ+T3CA="
+        }
+      ]
+    },
+    {
+      "Route": "google39df57f868aa5aa6.jdw78860wo.html.gz",
+      "AssetFile": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Code\\All_File\\Do an co so\\EngMateEnglish\\obj\\Debug\\net9.0\\compressed\\wtwywjsdlq-jdw78860wo.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Nj4Cj931ya8oqsAS1/acvktkkExZstJ/3naRXShxm5E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Jul 2025 03:55:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jdw78860wo"
+        },
+        {
+          "Name": "label",
+          "Value": "google39df57f868aa5aa6.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Nj4Cj931ya8oqsAS1/acvktkkExZstJ/3naRXShxm5E="
         }
       ]
     },
