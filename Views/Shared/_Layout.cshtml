@@ -20,25 +20,118 @@
     @await RenderSectionAsync("Styles", required: false)
 
     <style>
-        .language-dropdown .btn { min-width: 150px; text-align: left; }
+        /* Compact navigation styles */
         .navbar-nav { flex-wrap: nowrap; width: auto; overflow-x: visible; }
-        .navbar-nav .nav-item { margin-right: 5px; white-space: nowrap; }
-        .navbar-nav .nav-link { padding: 8px 10px !important; font-size: 1rem; white-space: nowrap; }
-        .navbar { padding-top: 8px !important; padding-bottom: 8px !important; }
+        .navbar-nav .nav-item { margin-right: 8px; white-space: nowrap; }
+        .navbar-nav .nav-link { 
+            padding: 10px 15px !important; 
+            font-size: 0.95rem; 
+            white-space: nowrap;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(78, 115, 250, 0.1);
+            transform: translateY(-1px);
+        }
+        .navbar { padding-top: 10px !important; padding-bottom: 10px !important; }
         .container { max-width: 1400px; }
         .navbar-collapse { justify-content: space-between; flex-wrap: nowrap; }
-        .dropdown-menu { min-width: 220px; padding: 10px 0; }
-        .dropdown-item { padding: 10px 20px; }
-        .user-menu .btn { padding: 8px 12px; font-size: 1rem; }
-        .dropdown { margin-left: 5px; }
-        .guest-menu { display: flex; align-items: center; }
-        .d-flex.align-items-center { flex-wrap: nowrap; white-space: nowrap; }
-        @@media (max-width: 991.98px) {
-            .navbar-nav { flex-direction: column; }
-            .navbar-nav .nav-item { margin-right: 0; margin-bottom: 5px; }
+        
+        /* Dropdown improvements */
+        .dropdown-menu { 
+            min-width: 240px; 
+            padding: 8px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: none;
         }
-        .avatar-error { border: 2px solid #ffcccb; opacity: 0.8; }
-        .avatar-success { border: 2px solid #d4edda; }
+        .dropdown-item { 
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            margin: 2px 8px;
+            transition: all 0.2s ease;
+        }
+        .dropdown-item:hover {
+            background-color: var(--primary-soft);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* User menu styling */
+        .user-menu .btn { 
+            padding: 8px 12px; 
+            font-size: 0.95rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .user-menu .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Badge for dropdown indicators */
+        .nav-link.dropdown-toggle::after {
+            margin-left: 8px;
+        }
+        
+        /* Mobile responsive */
+        @@media (max-width: 991.98px) {
+            .navbar-nav { flex-direction: column; width: 100%; }
+            .navbar-nav .nav-item { margin-right: 0; margin-bottom: 8px; }
+            .navbar-nav .nav-link { 
+                padding: 12px 20px !important;
+                font-size: 1rem;
+            }
+            .dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                box-shadow: none;
+                border: 1px solid #e9ecef;
+                margin-top: 5px;
+            }
+        }
+        
+        /* Active state */
+        .navbar-nav .nav-link.active {
+            background-color: var(--primary);
+            color: white !important;
+            font-weight: 600;
+        }
+        
+        /* Mega menu style for learning dropdown */
+        .mega-menu {
+            min-width: 400px;
+        }
+        
+        .mega-menu .row {
+            margin: 0;
+        }
+        
+        .mega-menu .col {
+            padding: 15px;
+        }
+        
+        .mega-menu h6 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        /* Notification badge */
+        .position-relative .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 0.7rem;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +152,6 @@
         }
         catch (Exception ex)
         {
-            // Log but continue - don't crash the layout
             Console.WriteLine($"Error fetching user: {ex.Message}");
         }
     }
@@ -67,84 +159,118 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary-soft">
             <div class="container">
+                <!-- Brand -->
                 <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
                     <img src="~/images/Logo.png" alt="EngMate Logo" class="me-2 animate__animated animate__bounceIn" width="40" height="40" />
                     <span class="brand-text">EngMate</span>
                 </a>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Trang chủ -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">
-                                <i class="fas fa-home"></i> Trang chủ
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")" 
+                               asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home me-1"></i> Trang chủ
                             </a>
                         </li>
+
+                        <!-- Học tập (Nhóm từ vựng, ngữ pháp, bài tập) -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle @(new[] {"Vocabulary", "Grammar", "Exercise"}.Contains(ViewContext.RouteData.Values["controller"]?.ToString()) ? "active" : "")" 
+                               href="#" id="learningDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-graduation-cap me-1"></i> Học tập
+                            </a>
+                            <div class="dropdown-menu mega-menu" aria-labelledby="learningDropdown">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><i class="fas fa-book text-primary me-2"></i>Từ vựng & Ngữ pháp</h6>
+                                        <a class="dropdown-item" asp-controller="Vocabulary" asp-action="Index">
+                                            <i class="fas fa-book me-2"></i> Từ vựng theo chủ đề
+                                        </a>
+                                        <a class="dropdown-item" asp-controller="Grammar" asp-action="Index">
+                                            <i class="fas fa-pen me-2"></i> Ngữ pháp cơ bản
+                                        </a>
+                                        <a class="dropdown-item" asp-controller="Favorites" asp-action="Index">
+                                            <i class="fas fa-heart me-2"></i> Mục yêu thích
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><i class="fas fa-dumbbell text-primary me-2"></i>Luyện tập</h6>
+                                        <a class="dropdown-item" asp-controller="Exercise" asp-action="Index">
+                                            <i class="fas fa-tasks me-2"></i> Bài tập thực hành
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Kiểm tra & Tiến trình -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle @(ViewContext.RouteData.Values["controller"]?.ToString() == "Test" ? "active" : "")" 
+                               href="#" id="testDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-chart-line me-1"></i> Đánh giá
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="testDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Test" asp-action="Index">
+                                        <i class="fas fa-file-alt me-2"></i> Bài kiểm tra
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Test" asp-action="Progress">
+                                        <i class="fas fa-chart-line me-2"></i> Tiến trình học tập
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Trò chuyện AI -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Vocabulary" asp-action="Index">
-                                <i class="fas fa-book"></i> Từ vựng
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "AIChat" ? "active" : "")" 
+                               asp-controller="AIChat" asp-action="Index">
+                                <i class="fas fa-robot me-1"></i> Trò chuyện AI
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Grammar" asp-action="Index">
-                                <i class="fas fa-pen"></i> Ngữ pháp
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Exercise" asp-action="Index">
-                                <i class="fas fa-tasks"></i> Bài tập
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Test" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")" 
-                               asp-controller="Test" 
-                               asp-action="Index">
-                                <i class="fas fa-file-alt me-1"></i> Bài kiểm tra
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Test" && ViewContext.RouteData.Values["action"]?.ToString() == "Progress" ? "active" : "")" 
-                               asp-controller="Test" 
-                               asp-action="Progress">
-                                <i class="fas fa-chart-line me-1"></i> Tiến trình
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Favorites" asp-action="Index">
-                                <i class="fas fa-heart"></i> Yêu thích
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="AIChat" asp-action="Index">
-                                <i class="fas fa-robot me-1"></i>Trò chuyện AI
-                            </a>
-                        </li>
-                        <!-- Trong _Layout.cshtml -->
+
+                        <!-- Admin Tools (chỉ hiện với Admin) -->
                         @if (User.IsInRole("Admin"))
                         {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Statistics" asp-action="Index">
-                                <i class="fas fa-chart-bar me-1"></i>Thống kê
-                             </a>
-                        </li>
-                        }
-                         @if (User.IsInRole("Admin"))
-                        {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="contentDropdown" role="button" 
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" 
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-plus-circle"></i> Thêm Nội Dung
+                                    <i class="fas fa-cog me-1"></i> Quản trị
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="contentDropdown">
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li>
+                                        <h6 class="dropdown-header">Thêm nội dung</h6>
+                                    </li>
                                     <li>
                                         <a class="dropdown-item" asp-controller="Content" asp-action="AddVocabulary">
-                                            <i class="fas fa-book"></i> Thêm nội dung từ vựng
+                                            <i class="fas fa-book me-2"></i> Thêm từ vựng
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" asp-controller="Content" asp-action="AddGrammar">
-                                            <i class="fas fa-pen"></i> Thêm nội dung ngữ pháp
+                                            <i class="fas fa-pen me-2"></i> Thêm ngữ pháp
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <h6 class="dropdown-header">Quản lý</h6>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="ManageUsers">
+                                            <i class="fas fa-users-cog me-2"></i> Quản lý người dùng
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Statistics" asp-action="Index">
+                                            <i class="fas fa-chart-bar me-2"></i> Thống kê hệ thống
                                         </a>
                                     </li>
                                 </ul>
@@ -152,45 +278,38 @@
                         }
                     </ul>
                     
-                    <!-- Đăng nhập/Đăng ký hoặc User Profile -->
+                    <!-- User Menu -->
                     <div class="user-menu">
                         <ul class="navbar-nav">
                             @if (User.Identity?.IsAuthenticated == true)
                             {
                                 <li class="nav-item dropdown">
-                                    <button class="btn dropdown-toggle d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" 
+                                            id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                         @if (user != null && !string.IsNullOrEmpty(user.Avatar))
                                         {
                                             <img src="@(user.Avatar)" class="rounded-circle me-2 avatar" alt="@username" 
-                                                width="30" height="30" style="object-fit: cover;"
+                                                width="28" height="28" style="object-fit: cover;"
                                                 onerror="this.onerror=null; this.src='/images/default-avatar.png?v=@DateTime.Now.Ticks';">
                                         }
                                         else
                                         {
                                             <img src="/images/default-avatar.png" class="rounded-circle me-2 avatar" alt="@username" 
-                                                width="30" height="30" style="object-fit: cover;">
+                                                width="28" height="28" style="object-fit: cover;">
                                         }
-                                        <span class="user-name">@username</span>
+                                        <span class="user-name d-none d-md-inline">@username</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                         <li>
                                             <a class="dropdown-item" href="@Url.Action("Profile", "Account")">
-                                                <i class="fas fa-user me-2"></i> Hồ sơ của tôi
+                                                <i class="fas fa-user me-2"></i> Hồ sơ cá nhân
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="@Url.Action("Index", "Favorites")">
-                                                <i class="fas fa-heart me-2"></i> Mục yêu thích
+                                                <i class="fas fa-heart me-2"></i> Yêu thích
                                             </a>
                                         </li>
-                                        @if (User.IsInRole("Admin"))
-                                        {
-                                            <li>
-                                                <a class="dropdown-item" href="@Url.Action("ManageUsers", "Account")">
-                                                    <i class="fas fa-users-cog me-2"></i> Quản lý người dùng
-                                                </a>
-                                            </li>
-                                        }
                                         <li><hr class="dropdown-divider"></li>
                                         <li>
                                             <a class="dropdown-item" href="@Url.Action("Logout", "Account")">
@@ -202,14 +321,16 @@
                             }
                             else
                             {
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary me-2">
-                                        <i class="fas fa-sign-in-alt me-1"></i> Đăng nhập
+                                <li class="nav-item me-2">
+                                    <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary">
+                                        <i class="fas fa-sign-in-alt me-1"></i> 
+                                        <span class="d-none d-md-inline">Đăng nhập</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Register", "Account")" class="btn btn-primary">
-                                        <i class="fas fa-user-plus me-1"></i> Đăng ký
+                                        <i class="fas fa-user-plus me-1"></i> 
+                                        <span class="d-none d-md-inline">Đăng ký</span>
                                     </a>
                                 </li>
                             }
@@ -219,10 +340,13 @@
             </div>
         </nav>
     </header>
+
+    <!-- ...existing code... (main content, footer, scripts) -->
     <main role="main" class="pb-3 flex-grow-1">
         @RenderBody()
         <div style="padding-bottom: 2.5rem;"></div>
     </main>
+    
     <footer class="footer mt-auto py-5 text-white">
         <div class="container">
             <div class="row g-4">
@@ -308,6 +432,7 @@
             padding-bottom: 8px;
         }
     </style>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
