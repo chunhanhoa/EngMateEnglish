@@ -1,3 +1,4 @@
+global using Microsoft.AspNetCore.Authorization;
 using TiengAnh.Models;
 using TiengAnh.Repositories;
 using TiengAnh.Services;
@@ -8,11 +9,37 @@ using MongoDB.Bson.Serialization.Conventions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using TiengAnh.Middleware;
+using Microsoft.OpenApi.Models; // <-- thêm
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Swagger services
+builder.Services.AddEndpointsApiExplorer(); // <-- thêm
+builder.Services.AddSwaggerGen(c =>          // <-- thêm
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "EngMate API",
+        Version = "v1",
+        Description = "API JSON để test dữ liệu EngMate",
+        Contact = new OpenApiContact { Name = "EngMate", Url = new Uri("https://engmateenglish.onrender.com/") },
+        License = new OpenApiLicense { Name = "MIT" }
+    });
+
+    // CHỈ include các controller có [ApiController] -> tránh lỗi Ambiguous HTTP method
+    c.DocInclusionPredicate((docName, apiDesc) =>
+    {
+        var cad = apiDesc.ActionDescriptor as ControllerActionDescriptor;
+        return cad?.ControllerTypeInfo
+                  .GetCustomAttributes(typeof(ApiControllerAttribute), inherit: true)
+                  .Any() == true;
+    });
+});
 
 // Add health checks
 builder.Services.AddHealthChecks();
@@ -285,21 +312,37 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// Block Swagger requests
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
+// Chặn truy cập Swagger cho non-admin
 app.Use(async (context, next) =>
 {
-    if (context.Request.Path.StartsWithSegments("/swagger") ||
-        context.Request.Path == "/index.html" && context.Request.QueryString.Value.Contains("swagger"))
+    if (context.Request.Path.StartsWithSegments("/swagger"))
     {
-        context.Response.Redirect("/");
-        return;
+        if (!(context.User?.Identity?.IsAuthenticated ?? false))
+        {
+            context.Response.Redirect("/Account/Login?returnUrl=/swagger");
+            return;
+        }
+        if (!context.User.IsInRole("Admin"))
+        {
+            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+            await context.Response.WriteAsync("Forbidden: Admin only.");
+            return;
+        }
     }
     await next();
 });
 
-app.UseRouting();
-app.UseAuthentication();
-app.UseAuthorization();
+// Bật Swagger UI (cả dev và prod nếu muốn)
+app.UseSwagger(); // <-- thêm
+app.UseSwaggerUI(c => // <-- thêm
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "EngMate API v1");
+    c.RoutePrefix = "swagger";
+});
 
 // Configure MVC routes
 app.MapControllerRoute(
@@ -308,5 +351,26 @@ app.MapControllerRoute(
 
 // Fallback route
 app.MapFallbackToController("Index", "Home");
+
+// Sau app.UseAuthentication(); và app.UseAuthorization();
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.StartsWithSegments("/api"))
+    {
+        if (!(context.User?.Identity?.IsAuthenticated ?? false))
+        {
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            await context.Response.WriteAsync("Yêu cầu đăng nhập Admin để truy cập API");
+            return;
+        }
+        if (!context.User.IsInRole("Admin"))
+        {
+            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+            await context.Response.WriteAsync("Only Admin can access this API");
+            return;
+        }
+    }
+    await next();
+});
 
 app.Run();

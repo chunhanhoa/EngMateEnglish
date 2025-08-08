@@ -93,5 +93,29 @@ namespace TiengAnh.Repositories
                 await _collection.InsertManyAsync(exercises);
             }
         }
+
+        // Tạo ID_BT tiếp theo (max + 1)
+        public async Task<int> GetNextIdAsync()
+        {
+            try
+            {
+                var max = await _collection.Find(_ => true)
+                    .SortByDescending(x => x.ID_BT)
+                    .Limit(1)
+                    .FirstOrDefaultAsync();
+                return max != null ? (max.ID_BT + 1) : 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
+        // Xóa theo ID_BT
+        public async Task<bool> DeleteByExerciseIdAsync(int exerciseId)
+        {
+            var result = await _collection.DeleteOneAsync(x => x.ID_BT == exerciseId);
+            return result.DeletedCount > 0;
+        }
     }
 }

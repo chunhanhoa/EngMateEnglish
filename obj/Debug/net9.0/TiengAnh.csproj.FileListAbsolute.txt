@@ -2040,3 +2040,8 @@ C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\D
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\47u2crj2zu-18n24az4tj.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\yzgn93pvvo-josi2ww9yi.gz
 C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\compressed\wtwywjsdlq-jdw78860wo.gz
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ASUS\OneDrive\Máy tính\Code\All_File\Do an co so\EngMateEnglish\obj\Debug\net9.0\TiengAnh.MvcApplicationPartsAssemblyInfo.cs
