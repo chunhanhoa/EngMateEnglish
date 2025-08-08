@@ -1072,6 +1072,49 @@ namespace TiengAnh.Controllers
                 roles = user.Roles
             });
         }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View(new ForgotPasswordViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                var user = await _userRepository.GetByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError("Email", "Email không tồn tại.");
+                    return View(model);
+                }
+
+                var newHash = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
+                var ok = await _userRepository.UpdatePasswordAsync(user.Id ?? user.UserId, newHash);
+                if (!ok)
+                {
+                    TempData["ErrorMessage"] = "Không thể cập nhật mật khẩu.";
+                    return View(model);
+                }
+
+                TempData["SuccessMessage"] = "Đổi mật khẩu thành công! Vui lòng đăng nhập.";
+                return RedirectToAction("Login");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"ForgotPassword: Error: {ex.Message}, StackTrace: {ex.StackTrace}");
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi đổi mật khẩu.";
+                return View(model);
+            }
+        }
     }
     
     public class AvatarUpdateModel
