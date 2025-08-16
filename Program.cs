@@ -149,6 +149,7 @@ builder.Services.AddHttpClient(string.Empty, client =>
 {
     client.Timeout = TimeSpan.FromMinutes(2);
 });
+builder.Services.AddHttpClient(); // Thêm dòng này để đăng ký IHttpClientFactory
 
 // Configure IIS to allow synchronous IO
 builder.Services.Configure<IISServerOptions>(options =>
