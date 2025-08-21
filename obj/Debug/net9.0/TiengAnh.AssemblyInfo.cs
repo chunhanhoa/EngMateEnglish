@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TiengAnh")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10f6b1d3075e6391899b8c52012d7b8bcce114ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d574be5a3afa916b18d7b6f596c37bc48eea08bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("TiengAnh")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TiengAnh")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
