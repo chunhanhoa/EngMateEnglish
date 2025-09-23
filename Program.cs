@@ -75,11 +75,11 @@ builder.Services.AddScoped<DataImportService>();
 // Add User Statistics Service
 builder.Services.AddScoped<UserStatisticsService>();
 
-// Add Keep-Alive Service cho production
-if (!builder.Environment.IsDevelopment())
-{
-    builder.Services.AddHostedService<KeepAliveService>();
-}
+// Add Keep-Alive Service cho production - COMMENTED OUT
+// if (!builder.Environment.IsDevelopment())
+// {
+//     builder.Services.AddHostedService<KeepAliveService>();
+// }
 
 // Configure authentication
 builder.Services.AddAuthentication(options =>
