@@ -659,10 +659,11 @@
     <script>
         class AIChat {
             constructor() {
-                // Gán API key cố định
+                // API Configuration - Updated với format mới
                 this.apiProvider = 'gemini';
-                this.apiKey = 'AIzaSyDW9UfkgCaLgXcm8DKutk4sOJFqLmMrP54';
-                this.model = 'gemini-1.5-flash';
+                this.apiKey = 'AIzaSyDBCxFzngDvwWbFjIRsFLLqH3JUHaOCgok';
+                this.model = 'gemini-2.0-flash'; // Updated model name
+                this.baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models';
                 this.language = 'vietnamese';
                 this.isListening = false;
                 this.recognition = null;
@@ -1047,78 +1048,120 @@
                     }
                 };
                 
+                // Danh sách các model để thử theo thứ tự
+                const modelsToTry = [
+                    'gemini-2.0-flash',
+                    'gemini-1.5-flash',
+                    'gemini-1.5-pro',
+                    'gemini-pro'
+                ];
+                
                 for (let attempt = 0; attempt <= this.maxRetries; attempt++) {
                     try {
-                        // Kiểm tra rate limit trước khi gửi request
+                        // Kiểm tra rate limit
                         await this.checkRateLimit();
                         
-                        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent?key=${this.apiKey}`, {
+                        // Thử từng model nếu gặp lỗi 404
+                        let currentModel = this.model;
+                        if (attempt > 0) {
+                            const modelIndex = Math.min(attempt, modelsToTry.length - 1);
+                            currentModel = modelsToTry[modelIndex];
+                            console.log(`Trying model: ${currentModel}`);
+                        }
+                        
+                        // Tạo URL API KHÔNG có query parameter key
+                        const apiUrl = `${this.baseUrl}/${currentModel}:generateContent`;
+                        
+                        const response = await fetch(apiUrl, {
                             method: 'POST',
                             headers: {
-                                'Content-Type': 'application/json'
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'X-goog-api-key': this.apiKey  // Dùng header thay vì query param
                             },
                             body: JSON.stringify(requestBody)
                         });
                         
+                        // Kiểm tra response
                         if (response.ok) {
                             const data = await response.json();
                             
-                            if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-                                this.retryAttempts = 0; // Reset retry count on success
+                            if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
+                                this.retryAttempts = 0;
+                                this.model = currentModel; // Cập nhật model thành công
                                 return data.candidates[0].content.parts[0].text;
+                            } else if (data.error) {
+                                throw new Error(`API Error: ${data.error.message || 'Unknown error'}`);
                             } else {
-                                throw new Error('No valid response from API');
+                                throw new Error('Invalid response format from API');
                             }
-                        } else if (response.status === 429) {
-                            // Rate limit exceeded
-                            if (attempt < this.maxRetries) {
-                                const retryDelay = Math.pow(2, attempt) * 2000; // Exponential backoff: 2s, 4s, 8s
-                                console.log(`Rate limit exceeded. Retrying in ${retryDelay/1000} seconds... (Attempt ${attempt + 1}/${this.maxRetries})`);
-                                
-                                // Show user-friendly message
-                                this.showNotification(
-                                    this.language === 'vietnamese' 
-                                        ? `API đang bận, đang thử lại... (${attempt + 1}/${this.maxRetries})`
-                                        : `API is busy, retrying... (${attempt + 1}/${this.maxRetries})`,
-                                    'warning'
-                                );
-                                
-                                await this.delay(retryDelay);
-                                continue;
-                            } else {
-                                throw new Error('Rate limit exceeded after all retries');
-                            }
-                        } else if (response.status === 403) {
-                            throw new Error('API key không hợp lệ hoặc đã hết quota');
                         } else {
-                            throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+                            // Xử lý các loại lỗi khác nhau
+                            const errorText = await response.text();
+                            let errorData = {};
+                            
+                            try {
+                                errorData = JSON.parse(errorText);
+                            } catch (e) {
+                                errorData = { message: errorText };
+                            }
+                            
+                            if (response.status === 404) {
+                                console.warn(`Model ${currentModel} not found (404)`);
+                                // Tiếp tục với model tiếp theo
+                                continue;
+                            } else if (response.status === 400) {
+                                throw new Error(`Bad Request: ${errorData.error?.message || 'Invalid request format'}`);
+                            } else if (response.status === 403) {
+                                throw new Error('API key không hợp lệ hoặc không có quyền truy cập. Vui lòng kiểm tra API key từ Google AI Studio.');
+                            } else if (response.status === 429) {
+                                if (attempt < this.maxRetries) {
+                                    const retryDelay = Math.pow(2, attempt) * 2000;
+                                    console.log(`Rate limit exceeded. Retrying in ${retryDelay/1000} seconds...`);
+                                    
+                                    this.showNotification(
+                                        this.language === 'vietnamese' 
+                                            ? `API đang bận, đang thử lại... (${attempt + 1}/${this.maxRetries})`
+                                            : `API is busy, retrying... (${attempt + 1}/${this.maxRetries})`,
+                                        'warning'
+                                    );
+                                    
+                                    await this.delay(retryDelay);
+                                    continue;
+                                } else {
+                                    throw new Error('Rate limit exceeded after all retries');
+                                }
+                            } else {
+                                throw new Error(`HTTP ${response.status}: ${errorData.error?.message || response.statusText}`);
+                            }
                         }
                     } catch (error) {
+                        console.error(`Attempt ${attempt + 1} failed:`, error);
+                        
                         if (attempt === this.maxRetries) {
-                            console.error('Gemini API Error after all retries:', error);
-                            
-                            // Return user-friendly error message based on error type
-                            if (error.message.includes('Rate limit') || error.message.includes('429')) {
+                            // Trả về thông báo lỗi thân thiện
+                            if (error.message.includes('404') || error.message.includes('not found')) {
                                 return this.language === 'vietnamese' 
-                                    ? 'Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút. 🔄'
-                                    : 'Sorry, the system is overloaded. Please try again in a few minutes. 🔄';
+                                    ? 'Xin lỗi, tất cả các model AI đều không khả dụng hiện tại. Vui lòng thử lại sau. 🚫'
+                                    : 'Sorry, all AI models are currently unavailable. Please try again later. 🚫';
                             } else if (error.message.includes('403') || error.message.includes('API key')) {
                                 return this.language === 'vietnamese' 
-                                    ? 'Có lỗi với API key. Vui lòng liên hệ quản trị viên. 🔑'
-                                    : 'API key error. Please contact the administrator. 🔑';
+                                    ? 'Lỗi xác thực API. Vui lòng kiểm tra API key từ Google AI Studio. 🔑'
+                                    : 'API authentication error. Please check your API key from Google AI Studio. 🔑';
+                            } else if (error.message.includes('Rate limit') || error.message.includes('429')) {
+                                return this.language === 'vietnamese' 
+                                    ? 'Hệ thống đang quá tải. Vui lòng thử lại sau ít phút. 🔄'
+                                    : 'System is overloaded. Please try again in a few minutes. 🔄';
                             } else if (error.message.includes('Failed to fetch') || error.message.includes('network')) {
                                 return this.language === 'vietnamese' 
                                     ? 'Lỗi kết nối mạng. Vui lòng kiểm tra internet của bạn. 🌐'
                                     : 'Network connection error. Please check your internet connection. 🌐';
                             } else {
                                 return this.language === 'vietnamese' 
-                                    ? 'Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau. ⚠️'
-                                    : 'An unexpected error occurred. Please try again later. ⚠️';
+                                    ? `Lỗi không mong muốn: ${error.message} ⚠️`
+                                    : `Unexpected error: ${error.message} ⚠️`;
                             }
                         }
-                        
-                        // Log error for debugging
-                        console.error(`Attempt ${attempt + 1} failed:`, error);
                         
                         // Wait before retrying
                         if (attempt < this.maxRetries) {
@@ -1617,10 +1660,15 @@
                         // Kiểm tra rate limit trước khi gửi request
                         await this.checkRateLimit();
                         
-                        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent?key=${this.apiKey}`, {
+                        // Fixed API URL - remove model from URL and use correct endpoint
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent`;
+                        
+                        const response = await fetch(apiUrl, {
                             method: 'POST',
                             headers: {
-                                'Content-Type': 'application/json'
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'X-goog-api-key': this.apiKey  // Dùng header thay vì query param
                             },
                             body: JSON.stringify(requestBody)
                         });
@@ -1634,6 +1682,19 @@
                             } else {
                                 throw new Error('No valid response from API');
                             }
+                        } else if (response.status === 404) {
+                            // Handle 404 error specifically
+                            console.error('API endpoint not found. Trying alternative model...');
+                            if (this.model === 'gemini-1.5-flash-latest') {
+                                this.model = 'gemini-1.5-flash';
+                                console.log('Switching to gemini-1.5-flash model');
+                                continue; // Retry with different model
+                            } else if (this.model === 'gemini-1.5-flash') {
+                                this.model = 'gemini-pro';
+                                console.log('Switching to gemini-pro model');
+                                continue; // Retry with different model
+                            }
+                            throw new Error('Tất cả các model API đều không khả dụng (404)');
                         } else if (response.status === 429) {
                             // Rate limit exceeded
                             if (attempt < this.maxRetries) {
@@ -1656,14 +1717,19 @@
                         } else if (response.status === 403) {
                             throw new Error('API key không hợp lệ hoặc đã hết quota');
                         } else {
-                            throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+                            const errorText = await response.text();
+                            throw new Error(`API Error: ${response.status} - ${response.statusText}: ${errorText}`);
                         }
                     } catch (error) {
                         if (attempt === this.maxRetries) {
                             console.error('Gemini API Error after all retries:', error);
                             
                             // Return user-friendly error message based on error type
-                            if (error.message.includes('Rate limit') || error.message.includes('429')) {
+                            if (error.message.includes('404') || error.message.includes('not found')) {
+                                return this.language === 'vietnamese' 
+                                    ? 'Xin lỗi, dịch vụ AI tạm thời không khả dụng. Vui lòng thử lại sau hoặc liên hệ quản trị viên. 🚫'
+                                    : 'Sorry, AI service is temporarily unavailable. Please try again later or contact administrator. 🚫';
+                            } else if (error.message.includes('Rate limit') || error.message.includes('429')) {
                                 return this.language === 'vietnamese' 
                                     ? 'Xin lỗi, hệ thống đang quá tải. Vui lòng thử lại sau ít phút. 🔄'
                                     : 'Sorry, the system is overloaded. Please try again in a few minutes. 🔄';
